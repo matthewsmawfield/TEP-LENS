@@ -126,7 +126,17 @@ However, as the sample of strongly lensed transients grows—particularly with h
                     
 ## 5. Conclusion
 
-[Conclusion summarizing the geometry-only test of the Temporal Equivalence Principle using multi-path lens residuals.]
+We have proposed a purely geometric "route-closure" test for the Temporal Equivalence Principle (TEP) using multiply imaged transients. Because TEP modifies the effective speed of light inversely with local gravitational potential depth, time delays along distinct geometric paths through a lens cluster do not sum to zero around a closed loop.
+
+By applying this to the triply imaged supernova SN H0pe, we find that:
+
+    - Under standard General Relativity, the closure residual is identically zero.
+
+    - Under TEP, assuming a coupling of $\alpha=0.05$ calibrated to local domains, the closure residual is non-zero ($-2.28$ days), breaking the absolute Mass Sheet Degeneracy scaling.
+
+    - While current observational uncertainties ($\sim 10$ days) obscure the TEP signal in SN H0pe, upcoming quad-lensed superluminous supernovae (like SN 2025wny) with higher precision cadence will cross the falsification threshold.
+
+Consequently, strong lensing route-closure residuals offer an immediate, binary geometric test of standard General Relativity against potential-dependent temporal propagation.
 
                 
                 

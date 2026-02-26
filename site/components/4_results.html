@@ -1,4 +1,44 @@
 <h2>3. Results</h2>
+
+<h3>3.1 GR Route-Closure Null Test</h3>
 <p>
-[Analysis pipeline execution and results will go here.]
+Using the photometric relative time delays measured by Pierel et al. (2024) for SN H0pe:
 </p>
+<ul>
+    <li>$\Delta t_{AB} = -116.6 \pm 10.8$ days</li>
+    <li>$\Delta t_{CB} = -48.6 \pm 4.0$ days</li>
+</ul>
+<p>
+By definition in General Relativity, time is absolute across the observation plane. If we observe delays between pairs of images from a single source event, the loop must close perfectly to zero. The inferred delay between images A and C is purely arithmetic:
+</p>
+<p>
+$\Delta t_{AC} = \Delta t_{AB} - \Delta t_{CB} = -68.0$ days.
+</p>
+<p>
+The sum around the geometric route $\mathcal{R}_{\rm closure} = \Delta t_{AB} + \Delta t_{BC} + \Delta t_{CA}$ strictly evaluates to $0.00$ days under standard $\Lambda$CDM assumptions. 
+</p>
+
+<h3>3.2 TEP Predicted Closure Residual</h3>
+<p>
+Under the Temporal Equivalence Principle, the effective speed of light scales inversely with the local gravitational potential depth $\Gamma_t$. Using the lens macromodel magnifications ($\mu$) as a first-order proxy for the projected potential depth (convergence) along the line of sight, we evaluate the differential temporal shear across the three images. 
+</p>
+<p>
+For a representative TEP coupling $\alpha = 0.05$, the temporal shear factors evaluate to:
+</p>
+<ul>
+    <li>Path A ($\mu = 5.4$): $\Gamma_A = 1.0366$</li>
+    <li>Path B ($\mu = 2.5$): $\Gamma_B = 1.0199$</li>
+    <li>Path C ($\mu = 2.0$): $\Gamma_C = 1.0151$</li>
+</ul>
+<p>
+Because light on Path A traverses a deeper region of the cluster potential, its apparent transit time is dilated relative to Path C. Weighting the pairwise geometric delays by their respective differential shear factors produces the TEP closure prediction:
+</p>
+<p>
+$\mathcal{R}_{\rm closure}^{\rm TEP} = (\Gamma_A - 1)\Delta t_{AB} + (\Gamma_B - 1)\Delta t_{BC} + (\Gamma_C - 1)\Delta t_{CA} = -2.28$ days.
+</p>
+
+<figure>
+    <img src="public/figures/step_04_closure_residual.png" alt="Bar chart comparing the route closure residual under standard GR (0.00 days) versus the TEP prediction (-2.28 days)." class="figure-responsive">
+    <figcaption>Figure 1: Comparison of the route-closure residual $\mathcal{R}_{\rm closure}$ for the triply imaged SN H0pe system. While standard General Relativity mandates a perfectly closed loop ($0.00$ days), the Temporal Equivalence Principle predicts a geometric mismatch ($-2.28$ days) due to differential temporal shear across the lens cluster potential.</figcaption>
+</figure>
+

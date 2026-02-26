@@ -1,0 +1,11 @@
+{
+  "step": "03",
+  "status": "success",
+  "tep_predictions": {
+    "Gamma_A": 1.0366196879911485,
+    "Gamma_B": 1.0198970004336019,
+    "Gamma_C": 1.015051499783199,
+    "residual_days": -2.2793594134373283,
+    "alpha_assumed": 0.05
+  }
+}

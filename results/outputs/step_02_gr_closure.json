@@ -1,0 +1,11 @@
+{
+  "step": "02",
+  "status": "success",
+  "gr_predictions": {
+    "dt_AB": -116.6,
+    "dt_BC": 48.6,
+    "dt_CA": 68.0,
+    "closure_sum": 0.0,
+    "closure_sum_description": "Under standard General Relativity, the route closure residual must be exactly 0."
+  }
+}

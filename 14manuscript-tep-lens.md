@@ -61,7 +61,38 @@ By isolating this residual, we can construct a test of the TEP framework that is
                     
 ## 3. Results
 
-[Analysis pipeline execution and results will go here.]
+### 3.1 GR Route-Closure Null Test
+
+Using the photometric relative time delays measured by Pierel et al. (2024) for SN H0pe:
+
+    - $\Delta t_{AB} = -116.6 \pm 10.8$ days
+
+    - $\Delta t_{CB} = -48.6 \pm 4.0$ days
+
+By definition in General Relativity, time is absolute across the observation plane. If we observe delays between pairs of images from a single source event, the loop must close perfectly to zero. The inferred delay between images A and C is purely arithmetic:
+
+$\Delta t_{AC} = \Delta t_{AB} - \Delta t_{CB} = -68.0$ days.
+
+The sum around the geometric route $\mathcal{R}_{\rm closure} = \Delta t_{AB} + \Delta t_{BC} + \Delta t_{CA}$ strictly evaluates to $0.00$ days under standard $\Lambda$CDM assumptions. 
+
+### 3.2 TEP Predicted Closure Residual
+
+Under the Temporal Equivalence Principle, the effective speed of light scales inversely with the local gravitational potential depth $\Gamma_t$. Using the lens macromodel magnifications ($\mu$) as a first-order proxy for the projected potential depth (convergence) along the line of sight, we evaluate the differential temporal shear across the three images. 
+
+For a representative TEP coupling $\alpha = 0.05$, the temporal shear factors evaluate to:
+
+    - Path A ($\mu = 5.4$): $\Gamma_A = 1.0366$
+
+    - Path B ($\mu = 2.5$): $\Gamma_B = 1.0199$
+
+    - Path C ($\mu = 2.0$): $\Gamma_C = 1.0151$
+
+Because light on Path A traverses a deeper region of the cluster potential, its apparent transit time is dilated relative to Path C. Weighting the pairwise geometric delays by their respective differential shear factors produces the TEP closure prediction:
+
+$\mathcal{R}_{\rm closure}^{\rm TEP} = (\Gamma_A - 1)\Delta t_{AB} + (\Gamma_B - 1)\Delta t_{BC} + (\Gamma_C - 1)\Delta t_{CA} = -2.28$ days.
+
+    ![Bar chart comparing the route closure residual under standard GR (0.00 days) versus the TEP prediction (-2.28 days).](public/figures/step_04_closure_residual.png)
+    Figure 1: Comparison of the route-closure residual $\mathcal{R}_{\rm closure}$ for the triply imaged SN H0pe system. While standard General Relativity mandates a perfectly closed loop ($0.00$ days), the Temporal Equivalence Principle predicts a geometric mismatch ($-2.28$ days) due to differential temporal shear across the lens cluster potential.
 
                 
                 
@@ -69,7 +100,25 @@ By isolating this residual, we can construct a test of the TEP framework that is
                     
 ## 4. Discussion
 
-[Discussion of TEP vs GR closure residuals and implications for cosmological scaling will go here.]
+### 4.1 Breaking the Mass Sheet Degeneracy
+
+The most significant barrier to precision cosmography using strong lensing time delays is the Mass Sheet Degeneracy (MSD). The addition of a constant density sheet to the lens macromodel rescales the projected potential $\psi(\boldsymbol{\theta})$ and scales the overall time delay $\Delta t$ by a factor $\lambda$ without altering the imaging observables. 
+
+Because $\lambda$ operates as a global scalar, it modifies all pairwise time delays symmetrically. A traditional two-image delay measurement $\Delta t_{AB}$ cannot uniquely separate the Hubble constant $H_0$ from $\lambda$. However, the route-closure residual $\mathcal{R}_{\rm closure}$ is constructed specifically to vanish under symmetric global scaling. By integrating around a closed loop, the linear geometric path differences strictly cancel.
+
+The predicted TEP residual of $-2.28$ days is not an absolute scaling factor; it is a **differential non-linear symmetry breaking**. No uniform mass sheet $\lambda$ can generate a non-zero closure residual from a baseline of zero. Consequently, measuring a statistically significant deviation from zero in a multi-imaged transient directly falsifies standard General Relativistic time propagation, independent of MSD uncertainties.
+
+### 4.2 Multi-Path Transients vs Stochastic Quasars
+
+While strongly lensed quasars (e.g. the TDCOSMO sample) provide high statistical power due to continuous monitoring baselines, the intrinsic stochasticity of Active Galactic Nucleus (AGN) accretion disks makes true route-closure tests difficult. Quasar variability exhibits red noise, and microlensing by stars in the lens galaxy introduces uncorrelated extrinsic variability along each sightline.
+
+A lensed supernova like SN H0pe represents the ideal geometric probe: a single, physically constrained explosion event traversing three distinct spacetime paths. The relative time delays are determined not by cross-correlating noisy stochastic signals, but by aligning the distinct evolutionary phases of the Type Ia light curve. This provides a much tighter constraint on the true differential arrival times required to evaluate $\mathcal{R}_{\rm closure}$.
+
+### 4.3 Observational Feasibility
+
+The predicted TEP residual for SN H0pe ($-2.28$ days) is currently smaller than the $1\sigma$ measurement uncertainties of the observed photometric delays (e.g. $\Delta t_{AB}$ has an error of $\sim 10$ days). Therefore, the existing SN H0pe data cannot yet definitively confirm or falsify the TEP prediction. 
+
+However, as the sample of strongly lensed transients grows—particularly with high-cadence JWST or Roman Space Telescope observations of highly asymmetric quadruple lens configurations (like the recently discovered superluminous SN 2025wny)—the measurement precision on $\Delta t$ will drop below $1$ day. At that threshold, the TEP closure residual becomes a strictly testable, binary geometric prediction.
 
                 
                 

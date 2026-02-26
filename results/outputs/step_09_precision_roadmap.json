@@ -1,0 +1,361 @@
+{
+  "step": "09",
+  "R_tep_true_days": 13.2,
+  "n_models": 8,
+  "thresholds": {
+    "sigma_3sigma_days": 12.445079348883235,
+    "sigma_5sigma_days": 7.467047609329941
+  },
+  "data": [
+    {
+      "sigma_model_days": 1.9952623149688795,
+      "expected_z_score": 18.711944673416053,
+      "p_positive_per_model": 0.9999999999815066,
+      "prob_7_or_8_positive": 1.0,
+      "prob_8_positive": 0.9999999998520526
+    },
+    {
+      "sigma_model_days": 2.1409781984274523,
+      "expected_z_score": 17.43840178945887,
+      "p_positive_per_model": 0.9999999996484875,
+      "prob_7_or_8_positive": 1.0,
+      "prob_8_positive": 0.9999999971879001
+    },
+    {
+      "sigma_model_days": 2.297335849904605,
+      "expected_z_score": 16.25153677386788,
+      "p_positive_per_model": 0.9999999954252499,
+      "prob_7_or_8_positive": 0.9999999999999994,
+      "prob_8_positive": 0.9999999634019995
+    },
+    {
+      "sigma_model_days": 2.4651124477275945,
+      "expected_z_score": 15.145450294190967,
+      "p_positive_per_model": 0.999999957156754,
+      "prob_7_or_8_positive": 0.9999999999999486,
+      "prob_8_positive": 0.9999996572540838
+    },
+    {
+      "sigma_model_days": 2.6451419282878756,
+      "expected_z_score": 14.11464452904262,
+      "p_positive_per_model": 0.9999996985415062,
+      "prob_7_or_8_positive": 0.9999999999974555,
+      "prob_8_positive": 0.9999975883345938
+    },
+    {
+      "sigma_model_days": 2.8383191311359095,
+      "expected_z_score": 13.153995841090625,
+      "p_positive_per_model": 0.999998345466028,
+      "prob_7_or_8_positive": 0.999999999923351,
+      "prob_8_positive": 0.9999867638048728
+    },
+    {
+      "sigma_model_days": 3.0456042467961475,
+      "expected_z_score": 12.258729309930821,
+      "p_positive_per_model": 0.9999926826272962,
+      "prob_7_or_8_positive": 0.9999999985008134,
+      "prob_8_positive": 0.9999414625175783
+    },
+    {
+      "sigma_model_days": 3.268027589410125,
+      "expected_z_score": 11.4243949982652,
+      "p_positive_per_model": 0.9999731754973405,
+      "prob_7_or_8_positive": 0.9999999798546513,
+      "prob_8_positive": 0.9997854241251539
+    },
+    {
+      "sigma_model_days": 3.506694717930174,
+      "expected_z_score": 10.646845833413987,
+      "p_positive_per_model": 0.9999164679467583,
+      "prob_7_or_8_positive": 0.9999998046923596,
+      "prob_8_positive": 0.9993319389143394
+    },
+    {
+      "sigma_model_days": 3.762791931318719,
+      "expected_z_score": 9.922216994221387,
+      "p_positive_per_model": 0.9997742838665968,
+      "prob_7_or_8_positive": 0.9999985747497847,
+      "prob_8_positive": 0.9981956968266118
+    },
+    {
+      "sigma_model_days": 4.037592165067156,
+      "expected_z_score": 9.246906700897249,
+      "p_positive_per_model": 0.9994608831493942,
+      "prob_7_or_8_positive": 0.9999918794164498,
+      "prob_8_positive": 0.995695194541675
+    },
+    {
+      "sigma_model_days": 4.33246131834305,
+      "expected_z_score": 8.617558312310235,
+      "p_positive_per_model": 0.9988434151489329,
+      "prob_7_or_8_positive": 0.9999627176270217,
+      "prob_8_positive": 0.990784689954687
+    },
+    {
+      "sigma_model_days": 4.648865043214833,
+      "expected_z_score": 8.031043641746857,
+      "p_positive_per_model": 0.9977400962210331,
+      "prob_7_or_8_positive": 0.9998582865837904,
+      "prob_8_positive": 0.9820631258780179
+    },
+    {
+      "sigma_model_days": 4.988376029699982,
+      "expected_z_score": 7.484447408206951,
+      "p_positive_per_model": 0.9959293358365467,
+      "prob_7_or_8_positive": 0.9995435286417047,
+      "prob_8_positive": 0.9678948971180377
+    },
+    {
+      "sigma_model_days": 5.352681822847105,
+      "expected_z_score": 6.975052745950627,
+      "p_positive_per_model": 0.9931694545039813,
+      "prob_7_or_8_positive": 0.9987288614289488,
+      "prob_8_positive": 0.9466443188820702
+    },
+    {
+      "sigma_model_days": 5.743593210706889,
+      "expected_z_score": 6.500327700271568,
+      "p_positive_per_model": 0.9892251625288284,
+      "prob_7_or_8_positive": 0.996886586282543,
+      "prob_8_positive": 0.9169829031231894
+    },
+    {
+      "sigma_model_days": 6.163053224884457,
+      "expected_z_score": 6.057912642373726,
+      "p_positive_per_model": 0.983895031343984,
+      "prob_7_or_8_positive": 0.9931915928861067,
+      "prob_8_positive": 0.8781933399199302
+    },
+    {
+      "sigma_model_days": 6.613146798410532,
+      "expected_z_score": 5.64560854079683,
+      "p_positive_per_model": 0.9770343470125652,
+      "prob_7_or_8_positive": 0.9865318083265556,
+      "prob_8_positive": 0.8303833845609522
+    },
+    {
+      "sigma_model_days": 7.0961111289359895,
+      "expected_z_score": 5.261366031093689,
+      "p_positive_per_model": 0.9685695296733275,
+      "prob_7_or_8_positive": 0.9756188422460129,
+      "prob_8_positive": 0.7745445800869107
+    },
+    {
+      "sigma_model_days": 7.614346798760308,
+      "expected_z_score": 4.903275229429826,
+      "p_positive_per_model": 0.9585027592917899,
+      "prob_7_or_8_positive": 0.9591909682649222,
+      "prob_8_positive": 0.7124377764708588
+    },
+    {
+      "sigma_model_days": 8.170429706966102,
+      "expected_z_score": 4.569556239473882,
+      "p_positive_per_model": 0.9469076519225219,
+      "prob_7_or_8_positive": 0.9362580442274825,
+      "prob_8_positive": 0.6463399624234345
+    },
+    {
+      "sigma_model_days": 8.767123872968682,
+      "expected_z_score": 4.258550305393077,
+      "p_positive_per_model": 0.9339182535928774,
+      "prob_7_or_8_positive": 0.9063154188447252,
+      "prob_8_positive": 0.5787232239137138
+    },
+    {
+      "sigma_model_days": 9.4073951751209,
+      "expected_z_score": 3.968711566979527,
+      "p_positive_per_model": 0.9197141563480793,
+      "prob_7_or_8_positive": 0.8694635500079744,
+      "prob_8_positive": 0.5119446042078558
+    },
+    {
+      "sigma_model_days": 10.094426092661207,
+      "expected_z_score": 3.698599375926182,
+      "p_positive_per_model": 0.904504373896645,
+      "prob_7_or_8_positive": 0.8264050087214225,
+      "prob_8_positive": 0.44800758871492125
+    },
+    {
+      "sigma_model_days": 10.831631524280024,
+      "expected_z_score": 3.446871135060272,
+      "p_positive_per_model": 0.8885120336799023,
+      "prob_7_or_8_positive": 0.7783315403247004,
+      "prob_8_positive": 0.38842440831007097
+    },
+    {
+      "sigma_model_days": 11.622675761930955,
+      "expected_z_score": 3.212275624941545,
+      "p_positive_per_model": 0.8719612194825175,
+      "prob_7_or_8_positive": 0.7267427370529014,
+      "prob_8_positive": 0.3341776192951788
+    },
+    {
+      "sigma_model_days": 12.471490704255336,
+      "expected_z_score": 2.99364678465508,
+      "p_positive_per_model": 0.8550666236087348,
+      "prob_7_or_8_positive": 0.6732466566481525,
+      "prob_8_positive": 0.2857588156529483
+    },
+    {
+      "sigma_model_days": 13.382295400150314,
+      "expected_z_score": 2.789897915885966,
+      "p_positive_per_model": 0.8380261391659983,
+      "prob_7_or_8_positive": 0.6193842127185987,
+      "prob_8_positive": 0.24325429695223688
+    },
+    {
+      "sigma_model_days": 14.359617019622142,
+      "expected_z_score": 2.6000162814671044,
+      "p_positive_per_model": 0.8210161687871413,
+      "prob_7_or_8_positive": 0.5665018653951279,
+      "prob_8_positive": 0.20644942627398088
+    },
+    {
+      "sigma_model_days": 15.408313356160553,
+      "expected_z_score": 2.4230580715521555,
+      "p_positive_per_model": 0.8041892299568902,
+      "prob_7_or_8_positive": 0.5156794906644613,
+      "prob_8_positive": 0.1749306945179137
+    },
+    {
+      "sigma_model_days": 16.533596972482687,
+      "expected_z_score": 2.2581437123928785,
+      "p_positive_per_model": 0.7876733628176182,
+      "prob_7_or_8_positive": 0.46770743898982503,
+      "prob_8_positive": 0.14817306741192487
+    },
+    {
+      "sigma_model_days": 17.741061109663505,
+      "expected_z_score": 2.104453494403067,
+      "p_positive_per_model": 0.7715728540937219,
+      "prob_7_or_8_positive": 0.42310016004302176,
+      "prob_8_positive": 0.1256074842038428
+    },
+    {
+      "sigma_model_days": 19.03670748843425,
+      "expected_z_score": 1.9612234977783176,
+      "p_positive_per_model": 0.7559698459686175,
+      "prob_7_or_8_positive": 0.38213236276733376,
+      "prob_8_positive": 0.10666840031196878
+    },
+    {
+      "sigma_model_days": 20.42697614083592,
+      "expected_z_score": 1.8277417954198416,
+      "p_positive_per_model": 0.7409264753137029,
+      "prob_7_or_8_positive": 0.3448855347174973,
+      "prob_8_positive": 0.09082405935002255
+    },
+    {
+      "sigma_model_days": 21.918777420506526,
+      "expected_z_score": 1.7033449142888792,
+      "p_positive_per_model": 0.7264872692012934,
+      "prob_7_or_8_positive": 0.31129589679912945,
+      "prob_8_positive": 0.07759327198795009
+    },
+    {
+      "sigma_model_days": 23.51952635070959,
+      "expected_z_score": 1.58741453760285,
+      "p_positive_per_model": 0.7126815969155699,
+      "prob_7_or_8_positive": 0.28119822161883945,
+      "prob_8_positive": 0.06655249717198411
+    },
+    {
+      "sigma_model_days": 25.23717948083162,
+      "expected_z_score": 1.4793744314814148,
+      "p_positive_per_model": 0.6995260417476208,
+      "prob_7_or_8_positive": 0.25436271269629757,
+      "prob_8_positive": 0.05733648898896675
+    },
+    {
+      "sigma_model_days": 27.080274434544172,
+      "expected_z_score": 1.3786875807663193,
+      "p_positive_per_model": 0.6870266062268028,
+      "prob_7_or_8_positive": 0.2305241072322429,
+      "prob_8_positive": 0.049635048340553434
+    },
+    {
+      "sigma_model_days": 29.05797234620535,
+      "expected_z_score": 1.2848535197785498,
+      "p_positive_per_model": 0.6751807026447951,
+      "prob_7_or_8_positive": 0.20940337684504956,
+      "prob_8_positive": 0.04318770932748709
+    },
+    {
+      "sigma_model_days": 31.180103396431758,
+      "expected_z_score": 1.1974058447452853,
+      "p_positive_per_model": 0.6639789083419109,
+      "prob_7_or_8_positive": 0.19072302497511215,
+      "prob_8_positive": 0.0377775919970958
+    },
+    {
+      "sigma_model_days": 33.45721567317598,
+      "expected_z_score": 1.1159098955321287,
+      "p_positive_per_model": 0.6534064841893745,
+      "prob_7_or_8_positive": 0.1742172029935034,
+      "prob_8_positive": 0.03322519355624914
+    },
+    {
+      "sigma_model_days": 35.90062760117446,
+      "expected_z_score": 1.0399605951576265,
+      "p_positive_per_model": 0.6434446669437499,
+      "prob_7_or_8_positive": 0.1596378488852597,
+      "prob_8_positive": 0.029382560926710596
+    },
+    {
+      "sigma_model_days": 38.522484200367515,
+      "expected_z_score": 0.9691804363513379,
+      "p_positive_per_model": 0.6340717533856595,
+      "prob_7_or_8_positive": 0.1467579099600797,
+      "prob_8_positive": 0.026128065337350726
+    },
+    {
+      "sigma_model_days": 41.33581745292436,
+      "expected_z_score": 0.9032176051476243,
+      "p_positive_per_model": 0.6252639978090347,
+      "prob_7_or_8_positive": 0.13537252124681268,
+      "prob_8_positive": 0.023361858257665
+    },
+    {
+      "sigma_model_days": 44.35461107892892,
+      "expected_z_score": 0.8417442321884357,
+      "p_positive_per_model": 0.6169963456251877,
+      "prob_7_or_8_positive": 0.12529881911308632,
+      "prob_8_positive": 0.021002003873829916
+    },
+    {
+      "sigma_model_days": 47.59387004269495,
+      "expected_z_score": 0.7844547630431703,
+      "p_positive_per_model": 0.6092430254426687,
+      "prob_7_or_8_positive": 0.11637489810291171,
+      "prob_8_positive": 0.01898123774999903
+    },
+    {
+      "sigma_model_days": 51.06969513519263,
+      "expected_z_score": 0.7310644394452559,
+      "p_positive_per_model": 0.6019780206055815,
+      "prob_7_or_8_positive": 0.10845827689615375,
+      "prob_8_positive": 0.017244280431154592
+    },
+    {
+      "sigma_model_days": 54.7993630032998,
+      "expected_z_score": 0.6813078838964155,
+      "p_positive_per_model": 0.59517543926348,
+      "prob_7_or_8_positive": 0.1014241275817133,
+      "prob_8_positive": 0.015745628812520143
+    },
+    {
+      "sigma_model_days": 58.80141202366502,
+      "expected_z_score": 0.6349377806033619,
+      "p_positive_per_model": 0.5888097999084457,
+      "prob_7_or_8_positive": 0.09516343804299066,
+      "prob_8_positive": 0.014447750623743455
+    },
+    {
+      "sigma_model_days": 63.09573444801933,
+      "expected_z_score": 0.5917236461905028,
+      "p_positive_per_model": 0.5828562471480573,
+      "prob_7_or_8_positive": 0.08958121558297055,
+      "prob_8_positive": 0.013319614187794688
+    }
+  ]
+}

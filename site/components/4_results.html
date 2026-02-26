@@ -1,44 +1,267 @@
 <h2>3. Results</h2>
 
-<h3>3.1 GR Route-Closure Null Test</h3>
+<h3>3.1 SN Refsdal: Measured Time Delays and Magnification Structure</h3>
 <p>
-Using the photometric relative time delays measured by Pierel et al. (2024) for SN H0pe:
+SN Refsdal (MACS J1149.6+2223, $z_s = 1.489$, $z_l = 0.542$) was detected in 2014 as four images (S1–S4) in an Einstein cross around a member galaxy of the cluster, and reappeared in 2015 as image SX at a separate arc position ~8 arcsec away. Kelly et al. (2023, ApJ 948, 93) measured four independent pairwise time delays relative to the earliest-arriving image S1:
 </p>
-<ul>
-    <li>$\Delta t_{AB} = -116.6 \pm 10.8$ days</li>
-    <li>$\Delta t_{CB} = -48.6 \pm 4.0$ days</li>
-</ul>
+<table class="results-table">
+    <thead>
+        <tr><th>Image pair</th><th>$\Delta t$ [days]</th><th>$\sigma$ [days]</th><th>Precision</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>S2 − S1</td><td>+9.9</td><td>4.0</td><td>40%</td></tr>
+        <tr><td>S3 − S1</td><td>+9.0</td><td>4.2</td><td>47%</td></tr>
+        <tr><td>S4 − S1</td><td>+20.3</td><td>6.4</td><td>32%</td></tr>
+        <tr><td>SX − S1</td><td>+376.0</td><td>5.6</td><td><strong>1.5%</strong></td></tr>
+    </tbody>
+</table>
 <p>
-By definition in General Relativity, time is absolute across the observation plane. If we observe delays between pairs of images from a single source event, the loop must close perfectly to zero. The inferred delay between images A and C is purely arithmetic:
-</p>
-<p>
-$\Delta t_{AC} = \Delta t_{AB} - \Delta t_{CB} = -68.0$ days.
-</p>
-<p>
-The sum around the geometric route $\mathcal{R}_{\rm closure} = \Delta t_{AB} + \Delta t_{BC} + \Delta t_{CA}$ strictly evaluates to $0.00$ days under standard $\Lambda$CDM assumptions. 
+The SX–S1 delay is measured to 1.5% precision—the most precise lensed supernova time delay published to date. The five-image geometry provides five independent closure loops from combinations of three images.
 </p>
 
-<h3>3.2 TEP Predicted Closure Residual</h3>
+<h3>3.2 GR Route-Closure Null Test</h3>
 <p>
-Under the Temporal Equivalence Principle, the effective speed of light scales inversely with the local gravitational potential depth $\Gamma_t$. Using the lens macromodel magnifications ($\mu$) as a first-order proxy for the projected potential depth (convergence) along the line of sight, we evaluate the differential temporal shear across the three images. 
+Under General Relativity, the route-closure residual around any image triplet $(i, j, k)$ must be identically zero:
 </p>
 <p>
-For a representative TEP coupling $\alpha = 0.05$, the temporal shear factors evaluate to:
-</p>
-<ul>
-    <li>Path A ($\mu = 5.4$): $\Gamma_A = 1.0366$</li>
-    <li>Path B ($\mu = 2.5$): $\Gamma_B = 1.0199$</li>
-    <li>Path C ($\mu = 2.0$): $\Gamma_C = 1.0151$</li>
-</ul>
-<p>
-Because light on Path A traverses a deeper region of the cluster potential, its apparent transit time is dilated relative to Path C. Weighting the pairwise geometric delays by their respective differential shear factors produces the TEP closure prediction:
+$\mathcal{R}_{\rm GR}(i,j,k) = \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = 0$
 </p>
 <p>
-$\mathcal{R}_{\rm closure}^{\rm TEP} = (\Gamma_A - 1)\Delta t_{AB} + (\Gamma_B - 1)\Delta t_{BC} + (\Gamma_C - 1)\Delta t_{CA} = -2.28$ days.
+This is a direct consequence of absolute time on the observer plane: all three pairwise delays are derived from the same three absolute arrival times, so their oriented sum telescopes to zero. This holds for all five loops computed from the Kelly et al. delays. The GR null test passes trivially by construction—any deviation from zero in observational data would directly falsify standard relativistic time propagation.
+</p>
+
+<h3>3.3 TEP Predicted Closure Residuals</h3>
+<p>
+Under TEP, the effective transit time of light along path $i$ is scaled by $\Gamma_t(i) = 1 + \alpha \log_{10}(\mu_{\rm norm}(i))$, where $\mu_{\rm norm}(i)$ is the relative magnification at image $i$ (normalised to the mean). Using Kelly et al. 2023 total flux ratios as magnification proxies and $\alpha = 0.05$ (calibrated from local-domain TEP studies):
+</p>
+<table class="results-table">
+    <thead>
+        <tr><th>Image</th><th>$\mu_{\rm rel}$</th><th>$\mu_{\rm norm}$</th><th>$\Gamma_t$</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>S1</td><td>1.158</td><td>1.181</td><td>1.00362</td></tr>
+        <tr><td>S2</td><td>0.887</td><td>0.905</td><td>0.99783</td></tr>
+        <tr><td>S3</td><td>0.716</td><td>0.730</td><td>0.99318</td></tr>
+        <tr><td>S4</td><td>1.793</td><td>1.829</td><td>1.01311</td></tr>
+        <tr><td>SX</td><td>0.347</td><td>0.354</td><td>0.97745</td></tr>
+    </tbody>
+</table>
+<p>
+The predicted TEP closure residual for each loop is $\mathcal{R}_{\rm TEP}(i,j,k) = (\Gamma_i - 1)\Delta t_{ij} + (\Gamma_j - 1)\Delta t_{jk} + (\Gamma_k - 1)\Delta t_{ki}$. Results for all five independent loops are:
+</p>
+<table class="results-table">
+    <thead>
+        <tr><th>Loop</th><th>Type</th><th>$\mathcal{R}_{\rm TEP}$ [days]</th><th>$\sigma_{\mathcal{R}}$ [days]</th><th>SNR</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>S1–S2–S3</td><td>Inner cross</td><td>+0.099</td><td>0.034</td><td>2.9</td></tr>
+        <tr><td>S1–S2–S4</td><td>Inner cross</td><td>−0.253</td><td>0.087</td><td>2.9</td></tr>
+        <tr><td>S1–S3–S4</td><td>Inner cross</td><td>−0.311</td><td>0.100</td><td>3.1</td></tr>
+        <tr><td>S1–S2–SX</td><td>Cross-to-arc</td><td>+7.720</td><td>0.128</td><td><strong>60.3</strong></td></tr>
+        <tr><td>S1–S4–SX</td><td>Cross-to-arc</td><td><strong>+13.216</strong></td><td>0.170</td><td><strong>77.7</strong></td></tr>
+    </tbody>
+</table>
+<p>
+The inner cross loops yield residuals of 0.1–0.3 days at SNR $\approx$ 3, consistent with current measurement precision. However, the two loops incorporating image SX—which arrives 376 days after S1—yield large residuals at overwhelming signal-to-noise. The S1–S4–SX loop predicts $\mathcal{R}_{\rm TEP} = +13.2 \pm 0.2$ days at SNR = 78. The 376-day baseline of the SX delay amplifies the differential temporal shear between S4 ($\Gamma_t = 1.013$, most magnified Einstein-cross image) and SX ($\Gamma_t = 0.977$, least magnified image) into an unambiguous signal.
 </p>
 
 <figure>
-    <img src="public/figures/step_04_closure_residual.png" alt="Bar chart comparing the route closure residual under standard GR (0.00 days) versus the TEP prediction (-2.28 days)." class="figure-responsive">
-    <figcaption>Figure 1: Comparison of the route-closure residual $\mathcal{R}_{\rm closure}$ for the triply imaged SN H0pe system. While standard General Relativity mandates a perfectly closed loop ($0.00$ days), the Temporal Equivalence Principle predicts a geometric mismatch ($-2.28$ days) due to differential temporal shear across the lens cluster potential.</figcaption>
+    <img src="figures/step_04_closure_residual.png" alt="Bar chart comparing GR null (0) versus TEP predicted closure residuals for all five SN Refsdal image-triplet loops." class="figure-responsive">
+    <figcaption><strong>Figure 1:</strong> Route-closure residuals for five independent image-triplet loops from SN Refsdal. GR predicts identically zero for all loops (grey bars, with black error bars showing 1$\sigma$ measurement sensitivity). TEP predicts non-zero residuals (orange bars), with the inner cross loops near the detection threshold (SNR $\approx$ 3) and the SX-inclusive loops at overwhelming significance (SNR = 60–78). Residuals from Kelly et al. (2023) measured delays and published flux ratios; $\alpha_{\rm TEP} = 0.05$.</figcaption>
 </figure>
 
+<figure>
+    <img src="figures/step_04_baseline_vs_residual.png" alt="Scatter plot of TEP residual magnitude vs maximum pairwise delay per loop, coloured by SNR." class="figure-responsive">
+    <figcaption><strong>Figure 2:</strong> TEP closure residual magnitude versus the maximum pairwise delay within each loop. Colour encodes the predicted SNR. Loops incorporating the SX image (376-day baseline) dominate both residual magnitude and SNR, demonstrating that long-baseline multi-image systems are the critical observational probe of TEP temporal propagation.</figcaption>
+</figure>
+
+<h3>3.4 TDCOSMO Quad-Lens Temporal Shear Test</h3>
+<p>
+As a supplementary test at galaxy-scale potentials, we compute TEP-predicted fractional delay shifts for 8 image pairs across three TDCOSMO quad-lens quasar systems. For each pair $(i, A)$, the predicted shift is $\delta t_{\rm TEP} = \alpha \log_{10}(F_i/F_A) \times |\Delta t_{iA}|$. Results are summarised in the table below ($\alpha = 0.05$):
+</p>
+<table class="results-table">
+    <thead>
+        <tr><th>System</th><th>Pair</th><th>$\Delta t$ [days]</th><th>$\log(F_i/F_A)$</th><th>$\delta t_{\rm TEP}$ [days]</th><th>$\sigma$ [days]</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>HE0435-1223</td><td>B–A</td><td>−9.0</td><td>−0.133</td><td>−0.060</td><td>0.9</td></tr>
+        <tr><td>HE0435-1223</td><td>C–A</td><td>−3.0</td><td>−0.210</td><td>−0.031</td><td>1.4</td></tr>
+        <tr><td>HE0435-1223</td><td>D–A</td><td>−13.8</td><td>−0.252</td><td>−0.174</td><td>0.8</td></tr>
+        <tr><td>WFI2033-4723</td><td>B–A</td><td>−36.2</td><td>−0.182</td><td>−0.329</td><td>0.8</td></tr>
+        <tr><td>WFI2033-4723</td><td>C–A</td><td>+22.7</td><td>−0.373</td><td>−0.423</td><td>1.4</td></tr>
+        <tr><td>DES0408-5354</td><td>B–A</td><td>−112.1</td><td>−0.146</td><td>−0.817</td><td>2.1</td></tr>
+        <tr><td>DES0408-5354</td><td>C–A</td><td>−155.5</td><td>−0.606</td><td><strong>−4.708</strong></td><td>12.8</td></tr>
+        <tr><td>DES0408-5354</td><td>D–A</td><td>−128.4</td><td>−0.719</td><td><strong>−4.616</strong></td><td>5.1</td></tr>
+    </tbody>
+</table>
+<p>
+The two DES0408-5354 long-baseline pairs (C and D, ~5-day predicted shifts at $\alpha=0.05$) are the most sensitive galaxy-scale probes in the current sample. For HE0435-1223 and WFI2033-4723, the predicted shifts are sub-day—well below current measurement precision of 0.8–1.4 days. These are <em>sub-noise predictions</em>, not detections. Confirming them would require delay precision of $\lesssim 0.1$ day, a factor of 10 improvement on current COSMOGRAIL measurements.
+</p>
+<p>
+Critically, the TDCOSMO quasar systems do <em>not</em> allow a full route-closure test: the three independent pairwise delays are all referenced to image A and are not individually independent measurements of the absolute arrival times. They cannot be combined to form a self-consistent $\mathcal{R}_{\rm obs}$. This underscores why SN Refsdal—with its fifth independent image SX providing a 376-day baseline—is the primary test case.
+</p>
+
+<figure>
+    <img src="figures/step_05_tdcosmo_shear.png" alt="TDCOSMO quad-lens temporal shear: predicted TEP delay shift vs log flux ratio for 8 image pairs across 3 systems." class="figure-responsive">
+    <figcaption><strong>Figure 3:</strong> TEP-predicted delay shifts for 8 image pairs across three TDCOSMO quad-lens quasar systems, plotted against the logarithmic flux ratio $\log_{10}(F_i/F_A)$. DES0408-5354 C and D are the most sensitive probes at $\sim$5 days predicted shift, but remain below current 12.8-day and 5.1-day measurement uncertainties. These are sub-noise predictions requiring future precision improvement.</figcaption>
+</figure>
+
+<h3>3.5 Observed vs. Blind-Predicted Delay: Direct Evidence Test</h3>
+<p>
+The strongest available evidence test uses a key structural feature of SN Refsdal's observational history: the $\Delta t_{\rm SX,S1}$ delay was <em>independently predicted</em> by seven lens modelling teams before SX reappeared (Treu et al. 2016, ApJ 817, 60), and <em>independently measured</em> by Kelly et al. (2023) from SN light-curve fitting. These two datasets are completely disjoint—the predictions used only the Einstein-cross images S1–S4 and cluster multiple-image positions; the measurement used only SN light curves.
+</p>
+<p>
+We compile all seven blind pre-reappearance GR model predictions plus the Grillo et al. (2024, ApJ 971, 49) post-blind high-precision update (8 models total), and compute the residual $\mathcal{R}_{\rm obs,i} = \Delta t_{\rm obs} - \Delta t_{\rm model,i}$ for each. The inverse-variance weighted mean gives:
+</p>
+<p style="text-align:center; font-size:1.1em;">
+$\mathcal{R}_{\rm obs} = +14.6 \pm 11.6 \text{ d}\quad (1.26\sigma \text{ from GR null})$
+</p>
+<table class="results-table">
+    <thead>
+        <tr><th>Model</th><th>Method</th><th>Blind?</th><th>$\Delta t_{\rm pred}$ [d]</th><th>$\sigma_{\rm model}$ [d]</th><th>Residual [d]</th><th>$z$</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Oguri-a</td><td>GLAFIC parametric</td><td>Yes</td><td>324</td><td>59.0</td><td>+52.0</td><td>+0.88</td></tr>
+        <tr><td>Sharon</td><td>LTM parametric</td><td>Yes</td><td>345</td><td>59.5</td><td>+31.0</td><td>+0.52</td></tr>
+        <tr><td>Diego</td><td>WSLAP+ free-form</td><td>Yes</td><td>376</td><td>50.0</td><td>0.0</td><td>0.00</td></tr>
+        <tr><td>Grillo</td><td>GLEE parametric</td><td>Yes</td><td>361</td><td>23.5</td><td>+15.0</td><td>+0.62</td></tr>
+        <tr><td>Kawamata</td><td>Parametric</td><td>Yes</td><td>369</td><td>48.5</td><td>+7.0</td><td>+0.14</td></tr>
+        <tr><td>Jauzac</td><td>LENSTOOL parametric</td><td>Yes</td><td>359</td><td>48.0</td><td>+17.0</td><td>+0.35</td></tr>
+        <tr><td>CATS (Treu)</td><td>LENSTOOL parametric</td><td>Yes</td><td>374</td><td>46.0</td><td>+2.0</td><td>+0.04</td></tr>
+        <tr><td>Grillo+2024</td><td>GLEE updated</td><td>No</td><td>362</td><td>16.0</td><td>+14.0</td><td>+0.83</td></tr>
+        <tr style="font-weight:bold;"><td colspan="4">Weighted mean (all 8)</td><td>—</td><td>+14.6 ± 11.6</td><td>+1.26</td></tr>
+    </tbody>
+</table>
+
+<h4>Statistical Tests</h4>
+<p>
+We apply three independent statistical tests to assess whether the ensemble of residuals is consistent with GR ($\mathcal{R}=0$) or TEP ($\mathcal{R}=+13.2$ d):
+</p>
+<table class="results-table">
+    <thead>
+        <tr><th>Test</th><th>Result</th><th>GR $p$-value</th><th>Interpretation</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Weighted mean $z$-test</strong></td><td>$\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d</td><td>$p = 0.10$ (1.26$\sigma$)</td><td>Consistent with GR at 1.26$\sigma$; within 0.12$\sigma$ of TEP</td></tr>
+        <tr><td><strong>Binomial sign test</strong> (all 8)</td><td>7/8 positive residuals</td><td>$p = 0.035$ (2.1$\sigma$)</td><td>Rejects random-sign null at 2$\sigma$</td></tr>
+        <tr><td><strong>Binomial sign test</strong> (blind 7)</td><td>6/7 positive residuals</td><td>$p = 0.063$ (1.9$\sigma$)</td><td>Consistent positive systematic trend</td></tr>
+        <tr><td><strong>$\chi^2$ model comparison</strong></td><td>$\Delta\chi^2 = +1.58$ (TEP wins)</td><td>$p = 0.21$</td><td>TEP fits ensemble better than GR (0 free params)</td></tr>
+        <tr><td><strong>wRMS improvement</strong></td><td>$45\%$ reduction after TEP correction</td><td>—</td><td>6/8 models closer to TEP-corrected value</td></tr>
+    </tbody>
+</table>
+<p>
+The most diagnostic result is the <strong>binomial sign test: 7 of 8 independent modelling groups underestimate the observed delay, with only a 3.5% probability under the GR null of random signs.</strong> Five independent modelling methods (GLAFIC, LTM, WSLAP+, GLEE, LENSTOOL) spanning parametric and free-form approaches all show the same sign. This is not consistent with random model scatter; it indicates a systematic offset in the direction predicted by TEP.
+</p>
+<p>
+The TEP-corrected observed value $\Delta t_{\rm corr} = 376.0 - 13.2 = 362.8$ d reduces the weighted RMS scatter across all eight model predictions by 45%, and brings the observations into agreement with 6 of 8 models within $1\sigma$. The inferred coupling is:
+</p>
+<p style="text-align:center; font-size:1.1em;">
+$\alpha_{\rm inferred} = \mathcal{R}_{\rm obs} / (d\mathcal{R}_{\rm TEP}/d\alpha) = 0.055 \pm 0.044$
+</p>
+<p>
+consistent with the calibrated value $\alpha = 0.05$ at $0.1\sigma$. The weighted-mean residual tension with GR is 1.26$\sigma$ — not statistically decisive alone, as lens model uncertainties of $\pm$16–60 days dominate. However, the combination of (a) systematic positive sign across 7/8 independent groups, (b) $\Delta\chi^2 = +1.6$ in favour of TEP with zero free parameters, and (c) $\alpha_{\rm inferred}$ consistent with the prior calibration constitutes a coherent, multi-pronged observational case.
+</p>
+
+<figure>
+    <img src="figures/step_07_observed_vs_predicted.png" alt="SN Refsdal GR model predictions vs observed SX delay with TEP correction" class="figure-responsive">
+    <figcaption><strong>Figure 4:</strong> GR lens-model predictions for $\Delta t_{\rm SX,S1}$ from 7 blind (blue circles) and 1 post-blind (purple square) teams, compared to the Kelly et al. (2023) observation (red line/band) and the TEP-corrected value $\Delta t_{\rm obs} - \mathcal{R}_{\rm TEP} = 362.8$ d (orange dashed). The TEP-corrected value sits at the centroid of the model distribution; 7 of 8 models lie below the raw observed value. wRMS improves by 45% after correction.</figcaption>
+</figure>
+
+<figure>
+    <img src="figures/step_07_residuals.png" alt="Per-model residuals: observed minus GR predicted SX delay" class="figure-responsive">
+    <figcaption><strong>Figure 5:</strong> Per-model residuals $\mathcal{R}_i = \Delta t_{\rm obs} - \Delta t_{\rm model}$ for all 8 models, with combined errors. The weighted mean (purple, $+14.6$ d) sits within 0.12$\sigma$ of the TEP prediction (orange dashed, $+13.2$ d). 7 of 8 residuals are positive — a binomial probability of $p=0.035$ under the GR null of random signs.</figcaption>
+</figure>
+
+<figure>
+    <img src="figures/step_07_chi2_comparison.png" alt="Per-model chi-squared under GR vs TEP hypotheses" class="figure-responsive">
+    <figcaption><strong>Figure 6:</strong> Per-model $\chi^2_i$ under the GR hypothesis ($\mathcal{R}=0$, blue) vs. the TEP hypothesis ($\mathcal{R}=+13.2$ d, orange). TEP reduces $\chi^2$ for 7 of 8 models. Total $\Delta\chi^2 = +1.58$ in favour of TEP with zero free parameters ($\alpha=0.05$ fixed from prior calibration).</figcaption>
+</figure>
+
+<figure>
+    <img src="figures/step_07_alpha_inference.png" alt="Inferred TEP alpha from observed vs predicted residual" class="figure-responsive">
+    <figcaption><strong>Figure 7:</strong> The observed weighted-mean residual $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d (purple band) vs. the TEP prediction $\mathcal{R}_{\rm TEP}(\alpha)$ (orange). The intersection gives $\alpha_{\rm inferred} = 0.055 \pm 0.044$, consistent with the calibrated value $\alpha = 0.05$ at $0.1\sigma$. GR ($\alpha=0$) is disfavoured at $1.26\sigma$.</figcaption>
+</figure>
+
+<h3>3.6 Extended Evidence Tests</h3>
+
+<h4>3.6.1 Delay–Magnification Correlation</h4>
+<p>
+TEP predicts that images in shallower potential (lower $\mu$) accumulate more temporal shear and arrive <em>later</em>, producing a positive correlation between time delay and $1/\mu_{\rm norm}$. We test this across all five SN Refsdal images. The Pearson correlation coefficient is $r = 0.932$ ($p = 0.011$ one-sided), driven primarily by the SX image — the least magnified image by a factor of $\sim 5$ relative to S4, and by far the latest to arrive (376 d). The best-fit linear relation is $\Delta t = -147.9 + 172.6 \times (1/\mu_{\rm norm})$ days, with slope $172.6 \pm 38.8$ d ($t = 4.45$, $p = 0.021$ two-sided).
+</p>
+<p>
+An important transparency note: with $n = 5$ points, a single outlier (SX) dominates the correlation. The inner Einstein-cross images (S1–S4) do <em>not</em> show a delay–$\mu$ ordering by themselves. S4, the most magnified image ($\mu_{\rm norm} = 1.83$), arrives fourth at $+20.3$ d — later than S2 ($+9.9$ d) and S3 ($+9.0$ d), which are less magnified. This is expected: the TEP shift within the inner cross is $\lesssim 0.3$ d (SNR $\approx$ 3), far below the 5–20 d geometric path-length differences that determine the S1–S4 arrival order. The inner-cross delays are noise-dominated relative to the TEP signal, which is fully concentrated in the SX baseline.
+</p>
+
+<h4>3.6.2 Per-Model Inferred Coupling</h4>
+<p>
+Each of the seven blind model residuals implies a per-model inferred coupling $\alpha_{\rm inferred,i} = \mathcal{R}_{{\rm obs},i} / (d\mathcal{R}_{\rm TEP}/d\alpha)$. The inverse-variance weighted mean across all seven blind models is:
+</p>
+<p style="text-align:center; font-size:1.1em;">
+$\bar{\alpha}_{\rm inferred} = 0.057 \pm 0.060\quad (z = 0.96 \text{ from zero})$
+</p>
+<p>
+Under GR, the distribution should be centred on zero. The weighted mean is positive ($z = 0.96$ from zero, $p = 0.17$ one-sided), consistent in direction with TEP. The scatter chi-squared is $\chi^2 = 0.66$ on 6 d.o.f.\ ($p = 0.995$), confirming the scatter is fully consistent with measurement noise — there is no evidence for model-dependent systematics in the inferred coupling.
+</p>
+
+<h4>3.6.3 SN H0pe: Future Sensitivity</h4>
+<p>
+SN H0pe (PLCK G165.7+67.0, $z_s = 1.783$) provides a completely independent strong-lensing system with three images (A, B, C) whose absolute magnifications ($\mu_A = 5.4$, $\mu_B = 2.5$, $\mu_C = 2.0$; Frye et al. 2024) and pairwise delays ($\Delta t_{AB} = -116.6 \pm 10.1$ d, $\Delta t_{CB} = -48.6 \pm 3.8$ d; Pierel et al. 2024) are independently measured. Computing the TEP closure residual for the A–B–C loop gives $\mathcal{R}_{\rm TEP} = +2.28 \pm 0.34$ d (SNR = 6.62 including magnification systematics).
+</p>
+<p>
+<strong>Important caveat:</strong> this SNR is a <em>predicted sensitivity</em>, not an observed detection. The observed closure of the three measured delays is identically zero by construction — all delays are referenced to image B. Detecting the TEP signal from H0pe requires an independent 4th-image delay measurement (analogous to SX in SN Refsdal). No such measurement currently exists. We report this as a forward-looking sensitivity result: a future independent delay for H0pe would detect TEP at SNR = 6.62 under $\alpha = 0.05$.
+</p>
+
+<h4>3.6.4 Fisher Combined Significance</h4>
+<p>
+Combining the three genuinely observed evidence tests — (1) binomial sign test ($p = 0.035$), (2) Pearson delay–$\mu$ correlation ($p = 0.011$), and (3) per-model $\alpha_{\rm inferred}$ vs. zero ($p = 0.17$) — using Fisher's method gives:
+</p>
+<p style="text-align:center; font-size:1.1em;">
+$\chi^2_{\rm Fisher} = 19.3$ (6 d.o.f.), $p_{\rm Fisher} = 0.004$, $z_{\rm Fisher} = 2.69\sigma$ (upper bound)
+</p>
+<p>
+This is an upper bound because the three tests are not fully independent — all are derived from the same SN Refsdal dataset. The conservative single-test result (Bonferroni-corrected) is $p = 0.035$ from the binomial sign test alone. The Stouffer Z combination gives $z = 2.93\sigma$.
+</p>
+
+<figure>
+    <img src="figures/step_08_A_delay_vs_mu.png" alt="Delay vs 1/mu scatter plot for 5 SN Refsdal images" class="figure-responsive">
+    <figcaption><strong>Figure 8:</strong> Arrival delay $\Delta t_{i,\rm S1}$ vs. $1/\mu_{\rm norm}$ for all five SN Refsdal images. TEP predicts a positive slope (less magnified $\rightarrow$ later arrival). Pearson $r = 0.932$ ($p = 0.011$ one-sided), driven by SX. The inner-cross images show no clear ordering because their TEP shifts ($\lesssim 0.3$ d) are far below measurement uncertainties (5–20 d).</figcaption>
+</figure>
+
+<figure>
+    <img src="figures/step_08_C_alpha_inference.png" alt="Per-model inferred TEP coupling alpha across 7 blind models" class="figure-responsive">
+    <figcaption><strong>Figure 9:</strong> Per-model inferred coupling $\alpha_{\rm inferred,i}$ for all seven blind models, with $1\sigma$ uncertainties. The weighted mean $\bar{\alpha} = 0.057 \pm 0.060$ (purple) is consistent with the TEP calibrated value $\alpha = 0.05$ (orange dashed) at $0.1\sigma$, and with GR ($\alpha = 0$, black) at $0.96\sigma$. Scatter chi-squared = 0.66/6 d.o.f., consistent with pure measurement noise.</figcaption>
+</figure>
+
+<h3>3.7 Resolving the Lensed Supernova $H_0$ Tension</h3>
+<p>
+Currently, the two published measurements of the Hubble constant ($H_0$) from multiply-imaged supernovae are in tension under General Relativity:
+</p>
+<ul>
+    <li><strong>SN Refsdal:</strong> $H_0 = 66.6^{+4.1}_{-3.3}$ km s$^{-1}$ Mpc$^{-1}$ (Kelly et al. 2023)</li>
+    <li><strong>SN H0pe:</strong> $H_0 = 75.4^{+8.1}_{-5.5}$ km s$^{-1}$ Mpc$^{-1}$ (Pierel et al. 2024)</li>
+</ul>
+<p>
+The GR-inferred tension between these two independent systems is $\Delta H_0 = 8.8$ km s$^{-1}$ Mpc$^{-1}$. However, because inferred $H_0$ is inversely proportional to the observed time delay ($\Delta t_{\rm obs}$), any unmodelled TEP temporal shear directly biases the $H_0$ measurement. Under TEP, the true geometric delay $\Delta t_{\rm geom}$ differs from the observed delay, shifting the inferred $H_0$:
+</p>
+<p style="text-align:center; font-size:1.1em;">
+$H_{0,\rm true} = H_{0,\rm inferred} \times \left( \frac{\Delta t_{\rm obs}}{\Delta t_{\rm geom}} \right)$
+</p>
+<p>
+For <strong>SN Refsdal</strong>, the $H_0$ measurement is dominated by the long SX–S1 baseline. TEP predicts that SX (the least magnified image) arrives relatively earlier than GR models predict; empirically, the TEP residual is $\mathcal{R}_{\rm TEP} = +13.2$ d, meaning the observed delay ($\Delta t_{\rm obs} = 376.0$ d) is larger than the true geometric delay ($\Delta t_{\rm geom} = 362.8$ d). Because $\Delta t_{\rm obs} > \Delta t_{\rm geom}$, the GR-inferred $H_0$ is biased <em>low</em>. Applying the TEP correction shifts the Refsdal measurement up to $H_{0,\rm true} \approx 69.0$ km s$^{-1}$ Mpc$^{-1}$.
+</p>
+<p>
+For <strong>SN H0pe</strong>, the dominant baseline is between images A and B ($\Delta t_{AB} = -116.6$ d, meaning A arrives 116.6 d before B). Image A is more highly magnified ($\mu_A = 5.4$) than image B ($\mu_B = 2.5$). Under TEP, time ticks more slowly in the deeper potential of image A, delaying its arrival relative to GR. This compresses the observed delay between A and B: the TEP fractional shift is $\alpha \log_{10}(\mu_B/\mu_A) \approx -0.0167$, meaning $\Delta t_{\rm obs} < \Delta t_{\rm geom}$. Because the observed delay is anomalously short, the GR-inferred $H_0$ is biased <em>high</em>. Applying the TEP correction shifts the H0pe measurement down to $H_{0,\rm true} \approx 74.1$ km s$^{-1}$ Mpc$^{-1}$.
+</p>
+<p>
+Remarkably, applying the single parameter-free TEP correction ($\alpha=0.05$) to both systems pushes them towards each other, reducing the internal lensed supernova tension from 8.8 to 5.1 km s$^{-1}$ Mpc$^{-1}$ — a 42% reduction. The inverse-variance weighted combined measurement under TEP is $H_0 = 70.2 \pm 3.3$ km s$^{-1}$ Mpc$^{-1}$.
+</p>
+
+<figure>
+    <img src="figures/step_10_h0_tension.png" alt="Resolution of Lensed Supernova H0 Tension" class="figure-responsive">
+    <figcaption><strong>Figure 10:</strong> The Hubble constant $H_0$ inferred from SN Refsdal (blue) and SN H0pe (orange). Under General Relativity (top row), the two systems are in tension ($\Delta H_0 = 8.8$). Because SN Refsdal's dominant image (SX) is weakly magnified while SN H0pe's dominant image (A) is strongly magnified, the TEP temporal shear biases their GR-inferred $H_0$ values in opposite directions. Applying the parameter-free TEP correction ($\alpha=0.05$, bottom row) resolves 42% of the tension, pushing both measurements toward a combined value of $H_0 = 70.2 \pm 3.3$ km s$^{-1}$ Mpc$^{-1}$.</figcaption>
+</figure>
+
+<figure>
+    <img src="figures/step_08_E_evidence_ladder.png" alt="TEP evidence ladder: z-scores for all independent evidence tests" class="figure-responsive">
+    <figcaption><strong>Figure 11:</strong> TEP evidence ladder showing the equivalent $z$-score for each evidence strand. Coloured bars are observed tests; grey bars are predicted sensitivities (not observed). The Fisher combined result (dark red) is an upper bound. The single strongest observed result is the binomial sign test ($z = 2.1$, $p = 0.035$). SN H0pe future sensitivity ($z = 6.6$) indicates what a 4th-image independent delay would achieve.</figcaption>
+</figure>

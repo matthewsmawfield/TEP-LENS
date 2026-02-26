@@ -1,27 +1,70 @@
 <h2>2. Methodology</h2>
-<h3>2.1 Lensing Time Delays</h3>
+
+<h3>2.1 Standard GR Time Delay</h3>
 <p>
-In standard General Relativity (GR), the time delay between two images $i$ and $j$ of a lensed source is given by the difference in the arrival time surface $t(\boldsymbol{\theta})$:
+In General Relativity, the observed time delay between images $i$ and $j$ of a lensed source is given by the Fermat potential difference:
 </p>
 <p>
-$\Delta t_{i,j} = \frac{D_{\Delta t}}{c} \left[ \frac{1}{2} (\boldsymbol{\theta}_i - \boldsymbol{\beta})^2 - \frac{1}{2} (\boldsymbol{\theta}_j - \boldsymbol{\beta})^2 - (\psi(\boldsymbol{\theta}_i) - \psi(\boldsymbol{\theta}_j)) \right]$
+$\Delta t_{ij} = \frac{D_{\Delta t}}{c}\left[\frac{1}{2}(\boldsymbol{\theta}_i - \boldsymbol{\beta})^2 - \psi(\boldsymbol{\theta}_i) - \frac{1}{2}(\boldsymbol{\theta}_j - \boldsymbol{\beta})^2 + \psi(\boldsymbol{\theta}_j)\right]$
 </p>
 <p>
-where $D_{\Delta t}$ is the time-delay distance, $\boldsymbol{\beta}$ is the source position, $\boldsymbol{\theta}_i$ and $\boldsymbol{\theta}_j$ are the image positions, and $\psi(\boldsymbol{\theta})$ is the deflection potential.
+where $D_{\Delta t} = (1+z_l)D_l D_s / D_{ls}$ is the time-delay distance, $\boldsymbol{\beta}$ is the unlensed source position, $\boldsymbol{\theta}_i$ are the image positions, and $\psi(\boldsymbol{\theta})$ is the projected lens potential. Each image has a unique absolute arrival time $t_i$; any pairwise delay is just $\Delta t_{ij} = t_j - t_i$.
 </p>
-<h3>2.2 The Route-Closure Test</h3>
+
+<h3>2.2 The GR Route-Closure Identity</h3>
 <p>
-For a source producing three images (A, B, C), the sum of pairwise relative time delays around the closed loop must vanish identically:
-</p>
-<p>
-$\Delta t_{AB} + \Delta t_{BC} + \Delta t_{CA} = 0$
+For any three images $(i, j, k)$ from the same source, the oriented sum of pairwise delays must vanish identically:
 </p>
 <p>
-Under TEP, the effective speed of light (and temporal propagation) differs along the paths through the varying depth of the cluster's gravitational potential. This introduces a potential-dependent scaling factor $\Gamma_t$ along each path length, resulting in a non-zero closure residual:
+$\mathcal{R}_{\rm GR}(i,j,k) \equiv \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = (t_j - t_i) + (t_k - t_j) + (t_i - t_k) = 0$
 </p>
 <p>
-$\mathcal{R}_{\rm closure} = (\Gamma_{t,A} - 1)\Delta t_{AB} + (\Gamma_{t,B} - 1)\Delta t_{BC} + (\Gamma_{t,C} - 1)\Delta t_{CA} \neq 0$
+This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for <em>any</em> combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which we analyse the five most physically informative.
+</p>
+
+<h3>2.3 TEP Temporal Shear</h3>
+<p>
+Under TEP, the effective transit time of light along path $i$ is modified by a temporal shear factor $\Gamma_t(i)$ that scales with the projected gravitational potential depth at the image position:
 </p>
 <p>
-By isolating this residual, we can construct a test of the TEP framework that is explicitly independent of the Mass Sheet Degeneracy (MSD) and absolute lens macromodel normalization, as $\lambda$ rescales all delays symmetrically.
+\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t(i), \quad \Gamma_t(i) = 1 + \alpha\log_{10}(\mu_{\rm norm}(i))
+</p>
+<p>
+where $\Delta t_i$ is the lens-induced excess time delay (relative to the unlensed cosmological transit time), $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\alpha$ is the TEP coupling parameter (calibrated to $\alpha = 0.05$ from local-domain analyses, Papers I–XIII). The modified pairwise delay between images $i$ and $j$ becomes $\Delta t_{ij}^{\rm obs} = \Delta t_j^{\rm obs} - \Delta t_i^{\rm obs} = \Gamma_t(j)\,\Delta t_j^{\rm GR} - \Gamma_t(i)\,\Delta t_i^{\rm GR}$.
+</p>
+<p>
+The resulting TEP route-closure residual for loop $(i,j,k)$ is:
+</p>
+<p>
+$\mathcal{R}_{\rm TEP}(i,j,k) = (\Gamma_i - 1)\Delta t_{ij} + (\Gamma_j - 1)\Delta t_{jk} + (\Gamma_k - 1)\Delta t_{ki}$
+</p>
+<p>
+This is non-zero whenever $\Gamma_t$ differs between images, i.e.\ whenever the images sample different potential depths. The residual is immune to the Mass Sheet Degeneracy: a uniform convergence sheet scales all delays by $(1-\kappa)$ symmetrically, so $\mathcal{R}_{\rm GR}(1-\kappa) = 0$ still. The TEP residual is purely differential.
+</p>
+
+<h3>2.4 Magnification Proxies</h3>
+<p>
+The TEP temporal shear couples to the projected gravitational convergence $\kappa(\boldsymbol{\theta})$ at each image position, not directly to the total magnification $\mu$. As a first-order proxy, we use the published total flux ratios $F_i/F_{\rm ref}$ from photometric monitoring (Kelly et al. 2023 for SN Refsdal; HST imaging for TDCOSMO systems). The flux ratio approximates $\mu_i/\mu_{\rm ref}$ under the assumption that macro-magnification dominates over microlensing variability. For the SN Refsdal system, the large contrast between SX ($F_{\rm SX}/F_{\rm S1} \approx 0.30$) and S4 ($F_{\rm S4}/F_{\rm S1} \approx 1.55$) makes the inferred $\Delta\Gamma$ robust to moderate microlensing corrections.
+</p>
+
+<h3>2.5 Error Propagation</h3>
+<p>
+The measurement uncertainty on $\mathcal{R}_{\rm TEP}$ is dominated by the uncertainty on the measured time delays. For loop $(i,j,k)$:
+</p>
+<p>
+$\sigma_{\mathcal{R}} = \sqrt{|\Gamma_i-1|^2\sigma_{ij}^2 + |\Gamma_j-1|^2\sigma_{jk}^2 + |\Gamma_k-1|^2\sigma_{ki}^2}$
+</p>
+<p>
+where $\sigma_{ij} = \sqrt{\sigma_i^2 + \sigma_j^2}$ is the quadrature sum of the individual delay measurement errors. For the S1–S4–SX loop of SN Refsdal, $\sigma_{\mathcal{R}} = 0.17$ days, giving SNR = 78 against the predicted $+13.2$ day residual.
+</p>
+
+<h3>2.6 TDCOSMO Fractional Shear Test</h3>
+<p>
+For the three TDCOSMO quad-lens quasar systems (HE0435-1223, WFI2033-4723, DES0408-5354), each pair of images $(i, A)$ yields a TEP-predicted fractional delay shift:
+</p>
+<p>
+$\delta_{\rm TEP}^{iA} = \alpha \log_{10}(F_i/F_A)$
+</p>
+<p>
+and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. We test whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compare the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal closure test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
 </p>

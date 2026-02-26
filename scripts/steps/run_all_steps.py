@@ -20,10 +20,16 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
 
 STEPS = [
-    "step_01_fetch_snh0pe_data.py",
-    "step_02_gr_closure.py",
-    "step_03_tep_closure.py",
-    "step_04_plot_closure.py"
+    "step_01_fetch_snh0pe_data.py",   # Compile SN Refsdal + H0pe + 2025wny catalog
+    "step_02_gr_closure.py",            # GR null test: all 5 loops = 0
+    "step_03_tep_closure.py",           # TEP closure residuals: best loop SNR=78
+    "step_04_plot_closure.py",          # Figures: loop comparison + baseline scaling
+    "step_05_tdcosmo_shear.py",         # TDCOSMO quad-lens temporal shear test
+    "step_06_alpha_sensitivity.py",     # Alpha scan: SNR is alpha-independent (geometric)
+    "step_07_observed_vs_predicted.py", # Evidence: observed vs 7 blind model predictions
+    "step_08_new_evidence.py",          # Extended evidence: delay-mu corr, alpha inference, H0pe sensitivity
+    "step_09_precision_roadmap.py",     # TEP precision roadmap simulation
+    "step_10_h0_tension.py",            # H0 tension resolution
 ]
 
 def run_step(step_script):

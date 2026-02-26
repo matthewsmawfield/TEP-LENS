@@ -1,17 +1,38 @@
 <h2>1. Introduction</h2>
 <p>
-The standard framework of cosmology, $\Lambda$CDM, relies on the assumption that General Relativity governs all scales of cosmic structure formation and that clocks in different regions of the Universe tick synchronously when corrected for peculiar velocity and scale factor evolution. The Temporal Equivalence Principle (TEP) challenges this foundation by positing that proper time effectively scales with the depth of the local gravitational potential, parameterized by a coupling constant $\alpha_0 \approx 0.58$ derived from local Cepheid variables. 
+The Temporal Equivalence Principle (TEP) posits that the effective rate of temporal propagation scales with the depth of the local gravitational potential (Smawfield 2023–2025, Papers I–XIII). Where prior papers established the TEP framework through stellar evolution anomalies, Cepheid period-luminosity residuals, and galaxy-scale redshift correlations, the strong gravitational lensing regime provides a qualitatively different and entirely independent test. Here, a single photon traverses multiple geometric paths through a cluster or galaxy potential, accumulating a potential-dependent temporal shear along each sightline. The resulting pairwise time delays between images carry a direct imprint of the differential shear—independently of any cosmological model.
 </p>
 
-<h3>1.1 Strong Lensing as a Geometric Probe</h3>
+<h3>1.1 The Route-Closure Test</h3>
 <p>
-Under standard physics, light traveling from a distant source through a gravitational lens along multiple paths experiences a relative time delay. This delay is strictly determined by the geometric path difference and the Shapiro time delay of the potential.
+For a source producing three or more resolved images, the pairwise time delays obey a strict geometric closure identity under General Relativity: any three delays in a closed loop sum to identically zero. TEP breaks this identity. Light along path $i$ through a region of projected convergence $\kappa_i$ acquires a temporal shear $\Gamma_t(i) = 1 + \alpha\log_{10}(\mu_i)$, where $\mu_i$ is the magnification at image $i$ and $\alpha$ is the TEP coupling. The closure residual,
 </p>
 <p>
-Under TEP, because the effective speed of temporal propagation is modified within deep potentials, the time delays should exhibit an additional, scale-dependent signature. By measuring the arrival times of a single transient event (like a supernova) or stochastic quasar variability along three or more distinct paths, we can construct a "route-closure" test.
+$\mathcal{R}_{\rm closure}(i,j,k) = (\Gamma_i-1)\Delta t_{ij} + (\Gamma_j-1)\Delta t_{jk} + (\Gamma_k-1)\Delta t_{ki}$,
+</p>
+<p>
+is non-zero if and only if the images traverse regions of different potential depth. Crucially, this quantity is <em>immune to the Mass Sheet Degeneracy</em>: a uniform convergence sheet rescales all delays by the same factor, leaving the loop residual unchanged at zero. The route-closure test is therefore a clean, lens-model-independent probe of potential-dependent temporal propagation.
 </p>
 
-<h3>1.2 SN H0pe</h3>
+<h3>1.2 SN Refsdal: The Ideal System</h3>
 <p>
-The recent discovery of SN H0pe (PLCK G165.7+67.0), a triply-imaged Type Ia supernova, provides a unique and nearly ideal geometric laboratory. Unlike stochastic quasar variations, a supernova provides a single, well-defined explosion seen along three distinct light paths, allowing us to directly compare relative time delays and construct the closure residual.
+SN Refsdal (MACS J1149.6+2223, Kelly et al. 2015) is the only known multiply-imaged supernova with <em>five</em> resolved images and precision-measured relative time delays. The first four images (S1–S4) form an Einstein cross around a cluster member galaxy; the fifth image SX appeared ~8 arcsec away at a separate arc position approximately 376 days after S1, predicted by cluster lens models before it was observed. Kelly et al. (2023, ApJ 948, 93) published the definitive time delay measurements from the combined light curve analysis, including the SX–S1 delay measured to 1.5% precision—the most precise lensed supernova delay to date.
+</p>
+<p>
+The geometry of SN Refsdal is ideal for the route-closure test. The four Einstein-cross images (S1–S4) sample the deep potential of the cluster member galaxy halo, while SX samples the outer cluster arc at much lower magnification. This contrast in potential depth—combined with the long 376-day SX baseline—amplifies the expected TEP closure residual by a factor of ~18 relative to the inner cross loops alone.
+</p>
+
+<h3>1.3 TDCOSMO Quad Lenses: Sub-Noise Supplementary Check</h3>
+<p>
+As a supplementary structural check, TEP-predicted delay shifts are computed for three quad-lens quasar systems from TDCOSMO/H0LiCOW: HE0435-1223, WFI2033-4723, and DES0408-5354. These systems have shorter delay baselines ($\lesssim 160$ days) and moderate magnification contrasts, yielding predicted TEP shifts of 0.03–4.7 days at $\alpha=0.05$—well below the 0.8–12.8-day measurement uncertainties of current COSMOGRAIL campaigns. These predictions are <em>sub-noise</em> in the current data and cannot be verified with existing observations. They are presented as predictions for future high-precision ($\lesssim 0.1$ day) monitoring programs, and to illustrate the systematic trend of TEP shift magnitude with delay baseline and magnification contrast. Critically, these systems do not permit a route-closure test because all three pairwise delays are referenced to the same image A, making any closure sum arithmetically zero by construction.
+</p>
+
+<h3>1.4 The Core Evidence Approach: Observed vs. Blind-Predicted</h3>
+<p>
+The strongest observational lever available with current data is a feature of SN Refsdal's discovery history that has not previously been exploited as a TEP test: seven independent GR lens modelling teams published blind predictions for the $\Delta t_{\rm SX,S1}$ delay before SX reappeared in December 2015 (compiled in Treu et al. 2016, ApJ 817, 60). Kelly et al. (2023) then independently measured the delay from SN light-curve fitting—using completely disjoint data. The comparison of these two independent determinations constitutes a genuine non-trivial closure test: the residual $\mathcal{R}_{\rm obs} = \Delta t_{\rm obs} - \langle\Delta t_{\rm model}\rangle$ is not constrained to be zero. It is demonstrated that this residual is positive across all seven independent modelling groups, with a magnitude and sign consistent with the TEP prediction. This is the primary evidence result of this paper.
+</p>
+
+<h3>1.5 SN 2025wny: Forward Prediction</h3>
+<p>
+The discovery of SN 2025wny ($z_s = 2.011$, Johansson et al. 2025, ApJ 995, L17)—the first resolved quadruply-imaged superluminous supernova—provides a near-term prediction target. With magnifications estimated at $\mu \sim 20$–50 and four images in an Einstein cross geometry, the system is expected to exhibit TEP closure residuals of order 1–15 days once time delays are measured. This is presented as a falsifiable forward prediction to be tested by upcoming JWST or Keck follow-up.
 </p>

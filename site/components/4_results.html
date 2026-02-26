@@ -77,7 +77,7 @@ The inner cross loops yield residuals of 0.1–0.3 days at SNR $\approx$ 3, cons
 
 <h3>3.4 TDCOSMO Quad-Lens Temporal Shear Test</h3>
 <p>
-As a supplementary test at galaxy-scale potentials, we compute TEP-predicted fractional delay shifts for 8 image pairs across three TDCOSMO quad-lens quasar systems. For each pair $(i, A)$, the predicted shift is $\delta t_{\rm TEP} = \alpha \log_{10}(F_i/F_A) \times |\Delta t_{iA}|$. Results are summarised in the table below ($\alpha = 0.05$):
+As a supplementary test at galaxy-scale potentials, TEP-predicted fractional delay shifts for 8 image pairs across three TDCOSMO quad-lens quasar systems. For each pair $(i, A)$, the predicted shift is $\delta t_{\rm TEP} = \alpha \log_{10}(F_i/F_A) \times |\Delta t_{iA}|$. Results are summarised in the table below ($\alpha = 0.05$):
 </p>
 <table class="results-table">
     <thead>
@@ -111,7 +111,7 @@ Critically, the TDCOSMO quasar systems do <em>not</em> allow a full route-closur
 The strongest available evidence test uses a key structural feature of SN Refsdal's observational history: the $\Delta t_{\rm SX,S1}$ delay was <em>independently predicted</em> by seven lens modelling teams before SX reappeared (Treu et al. 2016, ApJ 817, 60), and <em>independently measured</em> by Kelly et al. (2023) from SN light-curve fitting. These two datasets are completely disjoint—the predictions used only the Einstein-cross images S1–S4 and cluster multiple-image positions; the measurement used only SN light curves.
 </p>
 <p>
-We compile all seven blind pre-reappearance GR model predictions plus the Grillo et al. (2024, ApJ 971, 49) post-blind high-precision update (8 models total), and compute the residual $\mathcal{R}_{\rm obs,i} = \Delta t_{\rm obs} - \Delta t_{\rm model,i}$ for each. The inverse-variance weighted mean gives:
+All seven blind pre-reappearance GR model predictions plus the Grillo et al. (2024, ApJ 971, 49) post-blind high-precision update (8 models total), are compiled, and the residual $\mathcal{R}_{\rm obs,i} = \Delta t_{\rm obs} - \Delta t_{\rm model,i}$ for each. The inverse-variance weighted mean gives:
 </p>
 <p style="text-align:center; font-size:1.1em;">
 $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6 \text{ d}\quad (1.26\sigma \text{ from GR null})$
@@ -135,7 +135,7 @@ $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6 \text{ d}\quad (1.26\sigma \text{ from G
 
 <h4>Statistical Tests</h4>
 <p>
-We apply three independent statistical tests to assess whether the ensemble of residuals is consistent with GR ($\mathcal{R}=0$) or TEP ($\mathcal{R}=+13.2$ d):
+Three independent statistical tests are applied to assess whether the ensemble of residuals is consistent with GR ($\mathcal{R}=0$) or TEP ($\mathcal{R}=+13.2$ d):
 </p>
 <table class="results-table">
     <thead>
@@ -186,7 +186,7 @@ consistent with the calibrated value $\alpha = 0.05$ at $0.1\sigma$. The weighte
 
 <h4>3.6.1 Delay–Magnification Correlation</h4>
 <p>
-TEP predicts that images in shallower potential (lower $\mu$) accumulate more temporal shear and arrive <em>later</em>, producing a positive correlation between time delay and $1/\mu_{\rm norm}$. We test this across all five SN Refsdal images. The Pearson correlation coefficient is $r = 0.932$ ($p = 0.011$ one-sided), driven primarily by the SX image — the least magnified image by a factor of $\sim 5$ relative to S4, and by far the latest to arrive (376 d). The best-fit linear relation is $\Delta t = -147.9 + 172.6 \times (1/\mu_{\rm norm})$ days, with slope $172.6 \pm 38.8$ d ($t = 4.45$, $p = 0.021$ two-sided).
+TEP predicts that images in shallower potential (lower $\mu$) accumulate more temporal shear and arrive <em>later</em>, producing a positive correlation between time delay and $1/\mu_{\rm norm}$. This is tested across all five SN Refsdal images. The Pearson correlation coefficient is $r = 0.932$ ($p = 0.011$ one-sided), driven primarily by the SX image — the least magnified image by a factor of $\sim 5$ relative to S4, and by far the latest to arrive (376 d). The best-fit linear relation is $\Delta t = -147.9 + 172.6 \times (1/\mu_{\rm norm})$ days, with slope $172.6 \pm 38.8$ d ($t = 4.45$, $p = 0.021$ two-sided).
 </p>
 <p>
 An important transparency note: with $n = 5$ points, a single outlier (SX) dominates the correlation. The inner Einstein-cross images (S1–S4) do <em>not</em> show a delay–$\mu$ ordering by themselves. S4, the most magnified image ($\mu_{\rm norm} = 1.83$), arrives fourth at $+20.3$ d — later than S2 ($+9.9$ d) and S3 ($+9.0$ d), which are less magnified. This is expected: the TEP shift within the inner cross is $\lesssim 0.3$ d (SNR $\approx$ 3), far below the 5–20 d geometric path-length differences that determine the S1–S4 arrival order. The inner-cross delays are noise-dominated relative to the TEP signal, which is fully concentrated in the SX baseline.
@@ -208,7 +208,7 @@ Under GR, the distribution should be centred on zero. The weighted mean is posit
 SN H0pe (PLCK G165.7+67.0, $z_s = 1.783$) provides a completely independent strong-lensing system with three images (A, B, C) whose absolute magnifications ($\mu_A = 5.4$, $\mu_B = 2.5$, $\mu_C = 2.0$; Frye et al. 2024) and pairwise delays ($\Delta t_{AB} = -116.6 \pm 10.1$ d, $\Delta t_{CB} = -48.6 \pm 3.8$ d; Pierel et al. 2024) are independently measured. Computing the TEP closure residual for the A–B–C loop gives $\mathcal{R}_{\rm TEP} = +2.28 \pm 0.34$ d (SNR = 6.62 including magnification systematics).
 </p>
 <p>
-<strong>Important caveat:</strong> this SNR is a <em>predicted sensitivity</em>, not an observed detection. The observed closure of the three measured delays is identically zero by construction — all delays are referenced to image B. Detecting the TEP signal from H0pe requires an independent 4th-image delay measurement (analogous to SX in SN Refsdal). No such measurement currently exists. We report this as a forward-looking sensitivity result: a future independent delay for H0pe would detect TEP at SNR = 6.62 under $\alpha = 0.05$.
+<strong>Important caveat:</strong> this SNR is a <em>predicted sensitivity</em>, not an observed detection. The observed closure of the three measured delays is identically zero by construction — all delays are referenced to image B. Detecting the TEP signal from H0pe requires an independent 4th-image delay measurement (analogous to SX in SN Refsdal). No such measurement currently exists. This is reported as a forward-looking sensitivity result: a future independent delay for H0pe would detect TEP at SNR = 6.62 under $\alpha = 0.05$.
 </p>
 
 <h4>3.6.4 Fisher Combined Significance</h4>

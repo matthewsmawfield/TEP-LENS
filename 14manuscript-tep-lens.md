@@ -9,7 +9,7 @@
 
 ---
 
-**Abstract.** The Temporal Equivalence Principle (TEP) predicts that light rays traversing regions of different gravitational potential depth experience differential temporal scaling, producing a non-zero route-closure residual in multiply imaged transients that is immune to the Mass Sheet Degeneracy. We present a five-strand observational test of TEP temporal propagation using SN Refsdal (MACS J1149.6+2223, $z_s = 1.489$) — the only lensed supernova with precision-measured time delays across five independent images. The $\Delta t_{\rm SX,S1}$ delay was independently predicted by seven GR lens-modelling teams before SX reappeared (Treu et al. 2016; Grillo et al. 2024), and independently measured by Kelly et al. (2023, ApJ 948, 93) from SN light-curve fitting using completely disjoint data. Five independent observed tests all point in the direction predicted by TEP with zero free parameters: (1) **binomial sign test** — 7 of 8 independent modelling groups underestimate the observed delay ($p = 0.035$, $2.1\sigma$); (2) **weighted mean residual** $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d, within $0.12\sigma$ of the TEP prediction $\mathcal{R}_{\rm TEP} = +13.2$ d ($\alpha = 0.05$, zero free parameters); (3) **delay–magnification correlation** — Pearson $r = 0.932$ ($p = 0.011$ one-sided) between arrival delay and $1/\mu_{\rm norm}$ across all five images; (4) **per-model coupling inference** — weighted mean $\bar{\alpha}_{\rm inferred} = 0.057 \pm 0.060$, consistent with the calibrated value at $0.1\sigma$ and with zero scatter beyond measurement noise; and (5) **TEP correction** reduces the weighted RMS scatter across all 8 model predictions by 45%, improving 6 of 8 models ($\Delta\chi^2 = +1.6$ in favour of TEP). Fisher combination of the three strongest observed tests gives $z = 2.7\sigma$ ($p = 0.004$, upper bound — all from SN Refsdal data). As a critical cross-system test, we show that the parameter-free TEP correction resolves 42% of the $8.8$ km s$^{-1}$ Mpc$^{-1}$ Hubble tension between the two published lensed supernovae (SN Refsdal and SN H0pe), pushing both towards a combined $H_0 = 70.2 \pm 3.3$ km s$^{-1}$ Mpc$^{-1}$. No individual test reaches $3\sigma$, as lens model uncertainties of $\pm$16–60 d dominate. However, the exact parameter-free consistency of the sign, magnitude, method-independence, and H0 tension resolution constitutes the strongest available multi-strand observational case for TEP temporal propagation.
+**Abstract.** The Temporal Equivalence Principle (TEP) predicts that light rays traversing regions of different gravitational potential depth experience differential temporal scaling, producing a non-zero route-closure residual in multiply imaged transients that is immune to the Mass Sheet Degeneracy. This work presents a five-strand observational test of TEP temporal propagation using SN Refsdal (MACS J1149.6+2223, $z_s = 1.489$) — the only lensed supernova with precision-measured time delays across five independent images. The $\Delta t_{\rm SX,S1}$ delay was independently predicted by seven GR lens-modelling teams before SX reappeared (Treu et al. 2016; Grillo et al. 2024), and independently measured by Kelly et al. (2023, ApJ 948, 93) from SN light-curve fitting using completely disjoint data. Five independent observed tests all point in the direction predicted by TEP with zero free parameters: (1) **binomial sign test** — 7 of 8 independent modelling groups underestimate the observed delay ($p = 0.035$, $2.1\sigma$); (2) **weighted mean residual** $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d, within $0.12\sigma$ of the TEP prediction $\mathcal{R}_{\rm TEP} = +13.2$ d ($\alpha = 0.05$, zero free parameters); (3) **delay–magnification correlation** — Pearson $r = 0.932$ ($p = 0.011$ one-sided) between arrival delay and $1/\mu_{\rm norm}$ across all five images; (4) **per-model coupling inference** — weighted mean $\bar{\alpha}_{\rm inferred} = 0.057 \pm 0.060$, consistent with the calibrated value at $0.1\sigma$ and with zero scatter beyond measurement noise; and (5) **TEP correction** reduces the weighted RMS scatter across all 8 model predictions by 45%, improving 6 of 8 models ($\Delta\chi^2 = +1.6$ in favour of TEP). Fisher combination of the three strongest observed tests gives $z = 2.7\sigma$ ($p = 0.004$, upper bound — all from SN Refsdal data). As a critical cross-system test, the parameter-free TEP correction resolves 42% of the $8.8$ km s$^{-1}$ Mpc$^{-1}$ Hubble tension between the two published lensed supernovae (SN Refsdal and SN H0pe), pushing both towards a combined $H_0 = 70.2 \pm 3.3$ km s$^{-1}$ Mpc$^{-1}$. No individual test reaches $3\sigma$, as lens model uncertainties of $\pm$16–60 d dominate. However, the exact parameter-free consistency of the sign, magnitude, method-independence, and H0 tension resolution constitutes the strongest available multi-strand observational case for TEP temporal propagation.
 
     **Keywords:** gravitational lensing — time delays — Temporal Equivalence Principle — SN Refsdal — SN H0pe — Hubble tension — binomial sign test
 
@@ -37,15 +37,15 @@ The geometry of SN Refsdal is ideal for the route-closure test. The four Einstei
 
 ### 1.3 TDCOSMO Quad Lenses: Sub-Noise Supplementary Check
 
-As a supplementary structural check, we compute TEP-predicted delay shifts for three quad-lens quasar systems from TDCOSMO/H0LiCOW: HE0435-1223, WFI2033-4723, and DES0408-5354. These systems have shorter delay baselines ($\lesssim 160$ days) and moderate magnification contrasts, yielding predicted TEP shifts of 0.03–4.7 days at $\alpha=0.05$—well below the 0.8–12.8-day measurement uncertainties of current COSMOGRAIL campaigns. These predictions are *sub-noise* in the current data and cannot be verified with existing observations. They are presented as predictions for future high-precision ($\lesssim 0.1$ day) monitoring programs, and to illustrate the systematic trend of TEP shift magnitude with delay baseline and magnification contrast. Critically, these systems do not permit a route-closure test because all three pairwise delays are referenced to the same image A, making any closure sum arithmetically zero by construction.
+As a supplementary structural check, TEP-predicted delay shifts are computed for three quad-lens quasar systems from TDCOSMO/H0LiCOW: HE0435-1223, WFI2033-4723, and DES0408-5354. These systems have shorter delay baselines ($\lesssim 160$ days) and moderate magnification contrasts, yielding predicted TEP shifts of 0.03–4.7 days at $\alpha=0.05$—well below the 0.8–12.8-day measurement uncertainties of current COSMOGRAIL campaigns. These predictions are *sub-noise* in the current data and cannot be verified with existing observations. They are presented as predictions for future high-precision ($\lesssim 0.1$ day) monitoring programs, and to illustrate the systematic trend of TEP shift magnitude with delay baseline and magnification contrast. Critically, these systems do not permit a route-closure test because all three pairwise delays are referenced to the same image A, making any closure sum arithmetically zero by construction.
 
 ### 1.4 The Core Evidence Approach: Observed vs. Blind-Predicted
 
-The strongest observational lever available with current data is a feature of SN Refsdal's discovery history that has not previously been exploited as a TEP test: seven independent GR lens modelling teams published blind predictions for the $\Delta t_{\rm SX,S1}$ delay before SX reappeared in December 2015 (compiled in Treu et al. 2016, ApJ 817, 60). Kelly et al. (2023) then independently measured the delay from SN light-curve fitting—using completely disjoint data. The comparison of these two independent determinations constitutes a genuine non-trivial closure test: the residual $\mathcal{R}_{\rm obs} = \Delta t_{\rm obs} - \langle\Delta t_{\rm model}\rangle$ is not constrained to be zero. We demonstrate that this residual is positive across all seven independent modelling groups, with a magnitude and sign consistent with the TEP prediction. This is the primary evidence result of this paper.
+The strongest observational lever available with current data is a feature of SN Refsdal's discovery history that has not previously been exploited as a TEP test: seven independent GR lens modelling teams published blind predictions for the $\Delta t_{\rm SX,S1}$ delay before SX reappeared in December 2015 (compiled in Treu et al. 2016, ApJ 817, 60). Kelly et al. (2023) then independently measured the delay from SN light-curve fitting—using completely disjoint data. The comparison of these two independent determinations constitutes a genuine non-trivial closure test: the residual $\mathcal{R}_{\rm obs} = \Delta t_{\rm obs} - \langle\Delta t_{\rm model}\rangle$ is not constrained to be zero. It is demonstrated that this residual is positive across all seven independent modelling groups, with a magnitude and sign consistent with the TEP prediction. This is the primary evidence result of this paper.
 
 ### 1.5 SN 2025wny: Forward Prediction
 
-The discovery of SN 2025wny ($z_s = 2.011$, Johansson et al. 2025, ApJ 995, L17)—the first resolved quadruply-imaged superluminous supernova—provides a near-term prediction target. With magnifications estimated at $\mu \sim 20$–50 and four images in an Einstein cross geometry, the system is expected to exhibit TEP closure residuals of order 1–15 days once time delays are measured. We present this as a falsifiable forward prediction to be tested by upcoming JWST or Keck follow-up.
+The discovery of SN 2025wny ($z_s = 2.011$, Johansson et al. 2025, ApJ 995, L17)—the first resolved quadruply-imaged superluminous supernova—provides a near-term prediction target. With magnifications estimated at $\mu \sim 20$–50 and four images in an Einstein cross geometry, the system is expected to exhibit TEP closure residuals of order 1–15 days once time delays are measured. This is presented as a falsifiable forward prediction to be tested by upcoming JWST or Keck follow-up.
 
                 
                 
@@ -67,7 +67,7 @@ For any three images $(i, j, k)$ from the same source, the oriented sum of pairw
 
 $\mathcal{R}_{\rm GR}(i,j,k) \equiv \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = (t_j - t_i) + (t_k - t_j) + (t_i - t_k) = 0$
 
-This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for *any* combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which we analyse the five most physically informative.
+This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for *any* combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which the five most physically informative.
 
 ### 2.3 TEP Temporal Shear
 
@@ -85,7 +85,7 @@ This is non-zero whenever $\Gamma_t$ differs between images, i.e.\ whenever the 
 
 ### 2.4 Magnification Proxies
 
-The TEP temporal shear couples to the projected gravitational convergence $\kappa(\boldsymbol{\theta})$ at each image position, not directly to the total magnification $\mu$. As a first-order proxy, we use the published total flux ratios $F_i/F_{\rm ref}$ from photometric monitoring (Kelly et al. 2023 for SN Refsdal; HST imaging for TDCOSMO systems). The flux ratio approximates $\mu_i/\mu_{\rm ref}$ under the assumption that macro-magnification dominates over microlensing variability. For the SN Refsdal system, the large contrast between SX ($F_{\rm SX}/F_{\rm S1} \approx 0.30$) and S4 ($F_{\rm S4}/F_{\rm S1} \approx 1.55$) makes the inferred $\Delta\Gamma$ robust to moderate microlensing corrections.
+The TEP temporal shear couples to the projected gravitational convergence $\kappa(\boldsymbol{\theta})$ at each image position, not directly to the total magnification $\mu$. As a first-order proxy, this analysis uses the published total flux ratios $F_i/F_{\rm ref}$ from photometric monitoring (Kelly et al. 2023 for SN Refsdal; HST imaging for TDCOSMO systems). The flux ratio approximates $\mu_i/\mu_{\rm ref}$ under the assumption that macro-magnification dominates over microlensing variability. For the SN Refsdal system, the large contrast between SX ($F_{\rm SX}/F_{\rm S1} \approx 0.30$) and S4 ($F_{\rm S4}/F_{\rm S1} \approx 1.55$) makes the inferred $\Delta\Gamma$ robust to moderate microlensing corrections.
 
 ### 2.5 Error Propagation
 
@@ -101,7 +101,7 @@ For the three TDCOSMO quad-lens quasar systems (HE0435-1223, WFI2033-4723, DES04
 
 $\delta_{\rm TEP}^{iA} = \alpha \log_{10}(F_i/F_A)$
 
-and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. We test whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compare the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal closure test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
+and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. The analysis tests whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compare the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal closure test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
 
                 
                 
@@ -162,7 +162,7 @@ The inner cross loops yield residuals of 0.1–0.3 days at SNR $\approx$ 3, cons
 
 ### 3.4 TDCOSMO Quad-Lens Temporal Shear Test
 
-As a supplementary test at galaxy-scale potentials, we compute TEP-predicted fractional delay shifts for 8 image pairs across three TDCOSMO quad-lens quasar systems. For each pair $(i, A)$, the predicted shift is $\delta t_{\rm TEP} = \alpha \log_{10}(F_i/F_A) \times |\Delta t_{iA}|$. Results are summarised in the table below ($\alpha = 0.05$):
+As a supplementary test at galaxy-scale potentials, TEP-predicted fractional delay shifts for 8 image pairs across three TDCOSMO quad-lens quasar systems. For each pair $(i, A)$, the predicted shift is $\delta t_{\rm TEP} = \alpha \log_{10}(F_i/F_A) \times |\Delta t_{iA}|$. Results are summarised in the table below ($\alpha = 0.05$):
 
 | System | Pair | $\Delta t$ [days] | $\log(F_i/F_A)$ | $\delta t_{\rm TEP}$ [days] | $\sigma$ [days] |
 | --- | --- | --- | --- | --- | --- |
@@ -186,7 +186,7 @@ Critically, the TDCOSMO quasar systems do *not* allow a full route-closure test:
 
 The strongest available evidence test uses a key structural feature of SN Refsdal's observational history: the $\Delta t_{\rm SX,S1}$ delay was *independently predicted* by seven lens modelling teams before SX reappeared (Treu et al. 2016, ApJ 817, 60), and *independently measured* by Kelly et al. (2023) from SN light-curve fitting. These two datasets are completely disjoint—the predictions used only the Einstein-cross images S1–S4 and cluster multiple-image positions; the measurement used only SN light curves.
 
-We compile all seven blind pre-reappearance GR model predictions plus the Grillo et al. (2024, ApJ 971, 49) post-blind high-precision update (8 models total), and compute the residual $\mathcal{R}_{\rm obs,i} = \Delta t_{\rm obs} - \Delta t_{\rm model,i}$ for each. The inverse-variance weighted mean gives:
+All seven blind pre-reappearance GR model predictions plus the Grillo et al. (2024, ApJ 971, 49) post-blind high-precision update (8 models total), are compiled, and the residual $\mathcal{R}_{\rm obs,i} = \Delta t_{\rm obs} - \Delta t_{\rm model,i}$ for each. The inverse-variance weighted mean gives:
 
 $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6 \text{ d}\quad (1.26\sigma \text{ from GR null})$
 
@@ -204,7 +204,7 @@ $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6 \text{ d}\quad (1.26\sigma \text{ from G
 
 #### Statistical Tests
 
-We apply three independent statistical tests to assess whether the ensemble of residuals is consistent with GR ($\mathcal{R}=0$) or TEP ($\mathcal{R}=+13.2$ d):
+Three independent statistical tests are applied to assess whether the ensemble of residuals is consistent with GR ($\mathcal{R}=0$) or TEP ($\mathcal{R}=+13.2$ d):
 
 | Test | Result | GR $p$-value | Interpretation |
 | --- | --- | --- | --- |
@@ -238,7 +238,7 @@ consistent with the calibrated value $\alpha = 0.05$ at $0.1\sigma$. The weighte
 
 #### 3.6.1 Delay–Magnification Correlation
 
-TEP predicts that images in shallower potential (lower $\mu$) accumulate more temporal shear and arrive *later*, producing a positive correlation between time delay and $1/\mu_{\rm norm}$. We test this across all five SN Refsdal images. The Pearson correlation coefficient is $r = 0.932$ ($p = 0.011$ one-sided), driven primarily by the SX image — the least magnified image by a factor of $\sim 5$ relative to S4, and by far the latest to arrive (376 d). The best-fit linear relation is $\Delta t = -147.9 + 172.6 \times (1/\mu_{\rm norm})$ days, with slope $172.6 \pm 38.8$ d ($t = 4.45$, $p = 0.021$ two-sided).
+TEP predicts that images in shallower potential (lower $\mu$) accumulate more temporal shear and arrive *later*, producing a positive correlation between time delay and $1/\mu_{\rm norm}$. This is tested across all five SN Refsdal images. The Pearson correlation coefficient is $r = 0.932$ ($p = 0.011$ one-sided), driven primarily by the SX image — the least magnified image by a factor of $\sim 5$ relative to S4, and by far the latest to arrive (376 d). The best-fit linear relation is $\Delta t = -147.9 + 172.6 \times (1/\mu_{\rm norm})$ days, with slope $172.6 \pm 38.8$ d ($t = 4.45$, $p = 0.021$ two-sided).
 
 An important transparency note: with $n = 5$ points, a single outlier (SX) dominates the correlation. The inner Einstein-cross images (S1–S4) do *not* show a delay–$\mu$ ordering by themselves. S4, the most magnified image ($\mu_{\rm norm} = 1.83$), arrives fourth at $+20.3$ d — later than S2 ($+9.9$ d) and S3 ($+9.0$ d), which are less magnified. This is expected: the TEP shift within the inner cross is $\lesssim 0.3$ d (SNR $\approx$ 3), far below the 5–20 d geometric path-length differences that determine the S1–S4 arrival order. The inner-cross delays are noise-dominated relative to the TEP signal, which is fully concentrated in the SX baseline.
 
@@ -254,7 +254,7 @@ Under GR, the distribution should be centred on zero. The weighted mean is posit
 
 SN H0pe (PLCK G165.7+67.0, $z_s = 1.783$) provides a completely independent strong-lensing system with three images (A, B, C) whose absolute magnifications ($\mu_A = 5.4$, $\mu_B = 2.5$, $\mu_C = 2.0$; Frye et al. 2024) and pairwise delays ($\Delta t_{AB} = -116.6 \pm 10.1$ d, $\Delta t_{CB} = -48.6 \pm 3.8$ d; Pierel et al. 2024) are independently measured. Computing the TEP closure residual for the A–B–C loop gives $\mathcal{R}_{\rm TEP} = +2.28 \pm 0.34$ d (SNR = 6.62 including magnification systematics).
 
-**Important caveat:** this SNR is a *predicted sensitivity*, not an observed detection. The observed closure of the three measured delays is identically zero by construction — all delays are referenced to image B. Detecting the TEP signal from H0pe requires an independent 4th-image delay measurement (analogous to SX in SN Refsdal). No such measurement currently exists. We report this as a forward-looking sensitivity result: a future independent delay for H0pe would detect TEP at SNR = 6.62 under $\alpha = 0.05$.
+**Important caveat:** this SNR is a *predicted sensitivity*, not an observed detection. The observed closure of the three measured delays is identically zero by construction — all delays are referenced to image B. Detecting the TEP signal from H0pe requires an independent 4th-image delay measurement (analogous to SX in SN Refsdal). No such measurement currently exists. This is reported as a forward-looking sensitivity result: a future independent delay for H0pe would detect TEP at SNR = 6.62 under $\alpha = 0.05$.
 
 #### 3.6.4 Fisher Combined Significance
 
@@ -379,19 +379,19 @@ The key probative point is that the direction and magnitude of the SX residual a
 
 **What this paper claims:** a coherent, multi-pronged observational pattern — five independent evidence tests all pointing in the direction predicted by TEP with zero free parameters — at a combined significance between $2\sigma$ and $2.7\sigma$. The evidence is suggestive but not conclusive. This is the honest characterisation of the current evidence state.
 
-**What this paper does not claim:** a detection of TEP. The lens model uncertainties of $\pm$16–60 d prevent a $>3\sigma$ conclusion from the current data. The correct framing is that existing data are *compatible with* TEP at the calibrated coupling, and that near-future precision models (Grillo et al. 2026 targeting $\sigma < 5$ d) will push this test to $>5\sigma$.
+**What this paper does not claim:** a detection of TEP. The lens model uncertainties of $\pm$16–60 d prevent a $>3\sigma$ conclusion from the current data. The existing data are *compatible with* TEP at the calibrated coupling, and that future precision models targeting $\sigma < 5$ d will push this test to $>5\sigma$.
 
 ### 4.5 SN 2025wny: The Next Target
 
 SN 2025wny ($z_s = 2.011$, $z_l = 0.375$, Johansson et al. 2025 ApJ 995, L17) is the first resolved, multiply-imaged superluminous supernova (SLSN-I), with four images (A–D) in an Einstein cross pattern separated by ~1.7 arcsec. With a magnification factor estimated at $\mu \sim 20$–50 for the brightest image, the system has a large potential contrast between images—precisely the regime where TEP closure residuals are largest.
 
-Unlike SN Refsdal, SN 2025wny does not yet have measured time delays. The discovery paper reports no time-resolved multi-image light curves as of late 2025. However, as a SLSN-I, its multi-month light curve evolution provides a natural clock for delay measurement from ground-based monitoring. We predict that the S–A closure loop (analogous to the S1–SX loop in SN Refsdal) will yield a TEP closure residual of order 1–10 days for $\alpha = 0.05$, detectable with precision photometry once delays are measured to $\lesssim 1$ day precision.
+Unlike SN Refsdal, SN 2025wny does not yet have measured time delays. The discovery paper reports no time-resolved multi-image light curves . However, as a SLSN-I, its multi-month light curve evolution provides a natural clock for delay measurement from ground-based monitoring. The S–A closure loop (analogous to the S1–SX loop in SN Refsdal) will yield a TEP closure residual of order 1–10 days for $\alpha = 0.05$, detectable with precision photometry once delays are measured to $\lesssim 1$ day precision.
 
 ### 4.6 The Precision Roadmap to $5\sigma$
 
 The current ensemble of tests yields a combined significance of $\lesssim 2.7\sigma$. The limiting factor is not the size of the TEP signal — the 13.2-day predicted shift for SN Refsdal is easily detectable — but rather the large uncertainties in current GR lens models ($\sigma_{\rm model} \approx 16$–$60$ d). Because the route-closure test compares the observed delay to the model-predicted geometric delay, the significance of any measured residual scales directly with model precision.
 
-Near-future models will overcome this limitation. With the advent of JWST imaging and deep MUSE spectroscopy, lens modellers expect to reach $\sigma_{\rm model} < 5$ d for cluster lenses. To quantify what this means for the TEP test, we simulated the ensemble significance for $N=8$ independent models as a function of the average per-model uncertainty $\sigma_{\rm model}$, assuming the true TEP signal is $\mathcal{R}_{\rm TEP} = 13.2$ d.
+Near-future models will overcome this limitation. With the advent of JWST imaging and deep MUSE spectroscopy, lens modellers expect to reach $\sigma_{\rm model} < 5$ d for cluster lenses. To quantify what this means for the TEP test, the ensemble significance was simulated for $N=8$ independent models as a function of the average per-model uncertainty $\sigma_{\rm model}$, assuming the true TEP signal is $\mathcal{R}_{\rm TEP} = 13.2$ d.
 
 The roadmap shows that a clear detection threshold exists: if the community average uncertainty drops below $\sigma_{\rm model} = 12.4$ d, the same 13.2-day mean residual will cross the $3\sigma$ "evidence" threshold. If models reach $\sigma_{\rm model} = 7.5$ d, the exact same residual will constitute a $5\sigma$ "discovery" of potential-dependent temporal shear. At this precision, the binomial sign test will also become overwhelmingly decisive, as nearly all independent model predictions will fall strictly below the observed delay.
 
@@ -404,7 +404,7 @@ The roadmap shows that a clear detection threshold exists: if the community aver
                     
 ## 5. Conclusion
 
-We have applied a purely geometric route-closure test for the Temporal Equivalence Principle (TEP) to SN Refsdal (MACS J1149.6+2223), the only lensed supernova with five resolved images and precision-measured relative time delays. The key results are:
+A purely geometric route-closure test for the Temporal Equivalence Principle (TEP) to SN Refsdal (MACS J1149.6+2223), the only lensed supernova with five resolved images and precision-measured relative time delays. The key results are:
 
     - **GR null test:** Under General Relativity, the route-closure residual is identically zero for all five independent image-triplet loops by construction. Any measured non-zero value would directly falsify standard GR time propagation.
 
@@ -416,7 +416,7 @@ We have applied a purely geometric route-closure test for the Temporal Equivalen
 
     - **Falsification threshold:** If independent delay measurements yield $|\mathcal{R}_{\rm obs}(\mathrm{S1, S4, SX})| < 1$ day, TEP is falsified in the strong-lensing domain at $>10\sigma$. Conversely, a residual consistent with $+13.2$ days would constitute the first direct geometric evidence for potential-dependent temporal propagation.
 
-    - **SN 2025wny prediction:** The newly discovered quadruply-imaged SLSN-I SN 2025wny ($z_s = 2.011$, Johansson et al. 2025) will provide an analogous test once time delays are measured. Given its magnification factor $\mu \sim 20$–50, we predict closure residuals of order 1–15 days for $\alpha = 0.05$, testable with a JWST or Keck monitoring campaign.
+    - **SN 2025wny prediction:** The newly discovered quadruply-imaged SLSN-I SN 2025wny ($z_s = 2.011$, Johansson et al. 2025) will provide an analogous test once time delays are measured. Given its magnification factor $\mu \sim 20$–50, closure residuals are predicted to be of order 1–15 days for $\alpha = 0.05$, testable with a JWST or Keck monitoring campaign.
 
 The route-closure test established here represents the most direct and model-independent geometric probe of TEP temporal propagation yet proposed. The full scientific potential of this test will be realised with upcoming JWST and Roman Space Telescope observations of the growing sample of multiply-imaged supernovae.
 

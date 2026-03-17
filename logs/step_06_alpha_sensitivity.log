@@ -1,0 +1,30 @@
+
+[16:06:57] [INFO] ======================================================================
+[16:06:57] [INFO] STEP 06: Alpha Sensitivity Scan — SN Refsdal
+[16:06:57] [INFO] ======================================================================
+[16:06:57] [INFO] Scanning 150 alpha values from 0.001 to 0.150...
+[16:06:57] [INFO] SNR is alpha-independent for all loops (R and R_err both ∝ alpha):
+[16:06:57] [INFO] Detection thresholds per loop:
+[16:06:57] [INFO]   S1–S2–S3: 3σ → holds at all alpha (SNR=3.27 is constant)
+[16:06:57] [INFO]   S1–S2–S3: 5σ → never reached (SNR=3.27 < 5, constant)
+[16:06:57] [INFO]   S1–S2–S4: 3σ → never reached (SNR=2.52 < 3, constant)
+[16:06:57] [INFO]   S1–S2–S4: 5σ → never reached (SNR=2.52 < 5, constant)
+[16:06:57] [INFO]   S1–S3–S4: 3σ → never reached (SNR=2.30 < 3, constant)
+[16:06:57] [INFO]   S1–S3–S4: 5σ → never reached (SNR=2.30 < 5, constant)
+[16:06:57] [INFO]   S1–S2–SX: 3σ → holds at all alpha (SNR=66.29 is constant)
+[16:06:57] [INFO]   S1–S2–SX: 5σ → holds at all alpha (SNR=66.29 is constant)
+[16:06:57] [INFO]   S1–S4–SX: 3σ → holds at all alpha (SNR=63.31 is constant)
+[16:06:57] [INFO]   S1–S4–SX: 5σ → holds at all alpha (SNR=63.31 is constant)
+[16:06:57] [INFO] 
+At reference alpha = 0.05:
+[16:06:57] [INFO]   S1–S2–S3: R_TEP = +0.099 d, SNR = 3.3
+[16:06:57] [INFO]   S1–S2–S4: R_TEP = -0.253 d, SNR = 2.5
+[16:06:57] [INFO]   S1–S3–S4: R_TEP = -0.311 d, SNR = 2.3
+[16:06:57] [INFO]   S1–S2–SX: R_TEP = +7.720 d, SNR = 66.3
+[16:06:57] [INFO]   S1–S4–SX: R_TEP = +13.216 d, SNR = 63.3
+[16:06:57] [INFO] Figure 1 saved: /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_06_rtep_vs_alpha.png
+[16:06:57] [INFO] Figure 2 saved: /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_06_snr_vs_alpha.png
+[16:06:57] [INFO] Figure 3 saved: /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_06_loop_snr_intrinsic.png
+[16:06:57] [INFO] Figure 4 saved: /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_06_rtep_loglog.png
+[16:06:57] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_06_alpha_sensitivity.json
+[16:06:57] [INFO] Step 06 complete.

@@ -1,0 +1,10 @@
+
+[16:07:19] [INFO] ======================================================================
+[16:07:19] [INFO] STEP 17: Directional Odds Expansion
+[16:07:19] [INFO] ======================================================================
+[16:07:19] [INFO] All-model nonzero sign set: k=7/7, p=0.0078, BF10=31.88
+[16:07:19] [INFO] Blind-only nonzero sign set: k=6/6, p=0.0156, BF10=18.14
+[16:07:19] [INFO] Method-family collapsed sign set: k=5/5, p=0.0312, BF10=10.50
+[16:07:19] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_17_directional_odds.png
+[16:07:19] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_17_directional_odds.json
+[16:07:19] [INFO] Step 17 complete.

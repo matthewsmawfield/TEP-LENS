@@ -1,0 +1,14 @@
+/Users/matthewsmawfield/www/TEP-LENS/scripts/steps/step_09_precision_roadmap.py:112: SyntaxWarning: invalid escape sequence '\s'
+  ax1.text(60, 3.2, "3$\sigma$ Evidence", va="bottom", ha="right", fontsize=10)
+/Users/matthewsmawfield/www/TEP-LENS/scripts/steps/step_09_precision_roadmap.py:113: SyntaxWarning: invalid escape sequence '\s'
+  ax1.text(60, 5.2, "5$\sigma$ Discovery", va="bottom", ha="right", fontsize=10)
+
+[16:07:00] [INFO] ======================================================================
+[16:07:00] [INFO] STEP 09: Precision Roadmap Simulation
+[16:07:00] [INFO] ======================================================================
+[16:07:00] [INFO] Thresholds for N=8 independent models:
+[16:07:00] [INFO]   3-sigma evidence requires per-model err < 12.4 d
+[16:07:00] [INFO]   5-sigma discovery requires per-model err < 7.5 d
+[16:07:00] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_09_precision_roadmap.png
+[16:07:00] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_09_precision_roadmap.json
+[16:07:00] [INFO] Step 09 complete.

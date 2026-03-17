@@ -1,0 +1,8 @@
+
+[16:07:20] [INFO] ======================================================================
+[16:07:20] [INFO] STEP 20: External Completeness Synthesis
+[16:07:20] [INFO] ======================================================================
+[16:07:20] [INFO] Lens coverage: 7/7 (1.00)
+[16:07:20] [INFO] Recommended Reporting Track: single_robust_test_benchmark (z=2.418)
+[16:07:20] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_20_external_completeness_synthesis.json
+[16:07:20] [INFO] Step 20 complete.

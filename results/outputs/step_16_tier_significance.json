@@ -1,0 +1,29 @@
+{
+  "step": "16",
+  "status": "success",
+  "methodology_note": "Fisher/Stouffer combination removed due to invalid double-dipping on correlated data.",
+  "headline_significance": {
+    "test": "Wilcoxon signed-rank",
+    "z_score": 2.417559016236505,
+    "p_value": 0.0078125
+  },
+  "individual_tests": {
+    "wilcoxon": {
+      "z": 2.417559016236505,
+      "p": 0.0078125
+    },
+    "pearson": {
+      "z": 2.305013663729567,
+      "p": 0.01058290409089799
+    },
+    "external_mean": {
+      "z": 1.2543378547038597,
+      "p": 0.10485961513562109
+    },
+    "alpha_inference": {
+      "z": 0.955562840168199,
+      "p": 0.1696465714798966
+    }
+  },
+  "figure": "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_16_tier_significance.png"
+}

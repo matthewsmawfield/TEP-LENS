@@ -1,0 +1,11 @@
+
+[16:07:00] [INFO] ======================================================================
+[16:07:00] [INFO] STEP 10: H0 Tension Resolution
+[16:07:00] [INFO] ======================================================================
+[16:07:00] [INFO] Refsdal GR: 66.6 -> TEP: 69.02 (shift: +2.42)
+[16:07:00] [INFO] H0pe    GR: 75.4 -> TEP: 74.15 (Gamma_A=1.01069, shift: -1.25)
+[16:07:00] [INFO] NOTE: Refsdal shifts UPWARD, H0pe shifts DOWNWARD. Tension significantly reduced.
+[16:07:00] [INFO] Tension GR:  8.8 km/s/Mpc
+[16:07:00] [INFO] Tension TEP: 5.1 km/s/Mpc (reduced by 42%)
+[16:07:00] [INFO] Combined H0 (TEP): 70.2 +/- 3.3 km/s/Mpc
+[16:07:00] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_10_h0_tension.png

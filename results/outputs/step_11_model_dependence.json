@@ -1,0 +1,223 @@
+{
+  "step": "11",
+  "status": "success",
+  "baseline": {
+    "weighted_mean_days": 14.605519391230912,
+    "weighted_sigma_days": 11.57281297405183,
+    "z_from_gr": 1.2620543876392813,
+    "n_positive": 7,
+    "n_total": 8,
+    "p_binomial_independent": 0.03515625,
+    "p_weighted_mean_signflip_exact": 0.0078125,
+    "p_wilcoxon_signed_rank": 0.0078125
+  },
+  "effective_sample_size": {
+    "n_total": 8,
+    "method_family_counts": {
+      "GLAFIC": 1,
+      "LTM": 1,
+      "WSLAP+": 1,
+      "GLEE": 2,
+      "OTHER": 1,
+      "LENSTOOL": 2
+    },
+    "n_eff_family_kish": 7.2
+  },
+  "dependence_sensitivity_curve": [
+    {
+      "rho": 0.0,
+      "n_eff": 8.0,
+      "p_beta_binom_tail": 0.03515625,
+      "z_equiv": 1.8098922384806087
+    },
+    {
+      "rho": 0.05,
+      "n_eff": 5.925925925925926,
+      "p_beta_binom_tail": 0.06388780287095727,
+      "z_equiv": 1.5229324521183671
+    },
+    {
+      "rho": 0.1,
+      "n_eff": 4.705882352941176,
+      "p_beta_binom_tail": 0.09364318847656253,
+      "z_equiv": 1.3186493205612906
+    },
+    {
+      "rho": 0.15000000000000002,
+      "n_eff": 3.9024390243902434,
+      "p_beta_binom_tail": 0.12303121466385723,
+      "z_equiv": 1.1599665400900294
+    },
+    {
+      "rho": 0.2,
+      "n_eff": 3.333333333333333,
+      "p_beta_binom_tail": 0.15151515151515157,
+      "z_equiv": 1.0299567622253678
+    },
+    {
+      "rho": 0.25,
+      "n_eff": 2.909090909090909,
+      "p_beta_binom_tail": 0.17892456054687494,
+      "z_equiv": 0.9194712798419058
+    },
+    {
+      "rho": 0.30000000000000004,
+      "n_eff": 2.580645161290322,
+      "p_beta_binom_tail": 0.20524874600497187,
+      "z_equiv": 0.8230184667817736
+    },
+    {
+      "rho": 0.35000000000000003,
+      "n_eff": 2.318840579710145,
+      "p_beta_binom_tail": 0.23054492812907648,
+      "z_equiv": 0.7370534327330165
+    },
+    {
+      "rho": 0.4,
+      "n_eff": 2.1052631578947367,
+      "p_beta_binom_tail": 0.2548960690045249,
+      "z_equiv": 0.6591613890933152
+    },
+    {
+      "rho": 0.45,
+      "n_eff": 1.9277108433734937,
+      "p_beta_binom_tail": 0.2783912886596509,
+      "z_equiv": 0.5876271590175463
+    },
+    {
+      "rho": 0.5,
+      "n_eff": 1.7777777777777777,
+      "p_beta_binom_tail": 0.30111694335937494,
+      "z_equiv": 0.5211907651356136
+    },
+    {
+      "rho": 0.55,
+      "n_eff": 1.6494845360824741,
+      "p_beta_binom_tail": 0.32315285261287274,
+      "z_equiv": 0.4589003809099666
+    },
+    {
+      "rho": 0.6000000000000001,
+      "n_eff": 1.538461538461538,
+      "p_beta_binom_tail": 0.34457102999302447,
+      "z_equiv": 0.40001962805081565
+    },
+    {
+      "rho": 0.65,
+      "n_eff": 1.4414414414414416,
+      "p_beta_binom_tail": 0.365435614102128,
+      "z_equiv": 0.3439668344631982
+    },
+    {
+      "rho": 0.7000000000000001,
+      "n_eff": 1.3559322033898304,
+      "p_beta_binom_tail": 0.3858033462091981,
+      "z_equiv": 0.290273915721545
+    },
+    {
+      "rho": 0.75,
+      "n_eff": 1.28,
+      "p_beta_binom_tail": 0.40572426535866485,
+      "z_equiv": 0.2385577489092795
+    },
+    {
+      "rho": 0.8,
+      "n_eff": 1.212121212121212,
+      "p_beta_binom_tail": 0.42524245689655166,
+      "z_equiv": 0.18849974704217198
+    }
+  ],
+  "leave_one_out": [
+    {
+      "left_out": "Oguri-a",
+      "weighted_mean_days": 13.123102175814562,
+      "weighted_sigma_days": 11.79997218245534,
+      "z_from_gr": 1.112129924791391,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.2367704610878194
+    },
+    {
+      "left_out": "Sharon",
+      "weighted_mean_days": 13.966800025208672,
+      "weighted_sigma_days": 11.796094036815276,
+      "z_from_gr": 1.1840190474591574,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.3978542797559705
+    },
+    {
+      "left_out": "Diego",
+      "weighted_mean_days": 15.421441947513717,
+      "weighted_sigma_days": 11.89167204469083,
+      "z_from_gr": 1.2968270474965538,
+      "n_positive": 7,
+      "n_total": 7,
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 1.647376926772238
+    },
+    {
+      "left_out": "Grillo",
+      "weighted_mean_days": 14.4880296474126,
+      "weighted_sigma_days": 13.184039968540727,
+      "z_from_gr": 1.0989066842927817,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.1982928084073547
+    },
+    {
+      "left_out": "Kawamata",
+      "weighted_mean_days": 15.05829810337412,
+      "weighted_sigma_days": 11.912314761009714,
+      "z_from_gr": 1.2640950483160123,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.5740284150301012
+    },
+    {
+      "left_out": "Jauzac",
+      "weighted_mean_days": 14.45984463061226,
+      "weighted_sigma_days": 11.91964752361972,
+      "z_from_gr": 1.213110085844312,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.4607535669456562
+    },
+    {
+      "left_out": "CATS",
+      "weighted_mean_days": 15.444017483465212,
+      "weighted_sigma_days": 11.951518732342223,
+      "z_from_gr": 1.2922221710343702,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.6350975810799555
+    },
+    {
+      "left_out": "Grillo+2024",
+      "weighted_mean_days": 15.134081029878427,
+      "weighted_sigma_days": 15.837876415226484,
+      "z_from_gr": 0.9555625156494194,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 0.8984388130044211
+    }
+  ],
+  "leave_one_out_summary": {
+    "p_sign_min": 0.0078125,
+    "p_sign_max": 0.0625,
+    "z_min": 0.9555625156494194,
+    "z_max": 1.2968270474965538,
+    "delta_chi2_min": 0.8984388130044211,
+    "delta_chi2_max": 1.647376926772238,
+    "n_cases_tep_better": 8,
+    "n_cases_total": 8
+  },
+  "figure": "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_11_model_dependence.png"
+}

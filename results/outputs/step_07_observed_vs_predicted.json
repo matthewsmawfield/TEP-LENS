@@ -1,0 +1,190 @@
+{
+  "step": "07",
+  "status": "success",
+  "system": "SN Refsdal (MACS J1149.6+2223)",
+  "analysis": "Observed vs. blind-predicted Delta_t(SX, S1)",
+  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +14.61 +/- 11.57 d (z = +1.26 sigma from GR null, z = +0.12 sigma from TEP). Binomial sign test: 7/8 positive, p=0.0352 (blind only: 6/7, p=0.0625). Chi-squared: GR chi2=2.3, TEP chi2=0.7, Delta chi2=+1.6 in favour of TEP (p=0.2090). TEP correction (13.2 d) reduces wRMS by 45%, improving 6/8 models. Inferred alpha = -0.0553 +/- -0.0438.",
+  "observed": {
+    "dt_SX_S1_days": 376.0,
+    "err_days": 5.6,
+    "ref": "Kelly et al. 2023, ApJ 948, 93, Table 15"
+  },
+  "tep_prediction": {
+    "R_tep_prediction_days": 13.21639551157724,
+    "alpha_ref": -0.05,
+    "R_tep_unit_days_per_alpha": -264.32791023154476,
+    "loop": "S1-S4-SX (Residual Prediction = -Closure)",
+    "ref": "This work, step_03"
+  },
+  "weighted_mean_residual": {
+    "R_obs_days": 14.605519391230912,
+    "sigma_days": 11.57281297405183,
+    "z_from_gr_null": 1.2620543876392813,
+    "z_from_tep_prediction": 0.12003338192437041,
+    "alpha_inferred": -0.055255305345685346,
+    "alpha_inferred_err": 0.04378203181008895,
+    "n_models": 8,
+    "n_positive_residual": 7
+  },
+  "binomial_sign_test": {
+    "n_positive": 7,
+    "n_total": 8,
+    "p_value_one_sided": 0.03515625,
+    "z_approx": 2.1213203435596424,
+    "p_wilcoxon_signed_rank": 0.0078125,
+    "wilcoxon_note": "All 7 non-zero residuals positive; max statistic; p=1/2^7",
+    "blind_only": {
+      "n_positive": 6,
+      "n_total": 7,
+      "p_value": 0.0625
+    }
+  },
+  "chi2_model_comparison": {
+    "chi2_gr": 2.252691247219737,
+    "chi2_tep": 0.6743179826363779,
+    "delta_chi2": 1.5783732645833592,
+    "p_value": 0.20899516727247042,
+    "n_dof": 8,
+    "note": "TEP has 0 free parameters (alpha=-0.05 fixed from prior calibration)"
+  },
+  "tep_corrected_consistency": {
+    "dt_corr_days": 362.7836044884228,
+    "wrms_raw_days": 17.36959812541315,
+    "wrms_corrected_days": 9.50323142429763,
+    "improvement_pct": 45.288133002952904,
+    "n_models_improved": 6,
+    "n_total": 8
+  },
+  "unweighted_statistics": {
+    "mean_days": 17.25,
+    "std_days": 15.998046755776157
+  },
+  "per_model_results": [
+    {
+      "name": "Oguri-a",
+      "team": "Oguri",
+      "ref": "Oguri 2015 (MNRAS 449, L86)",
+      "method": "GLAFIC parametric",
+      "blind": true,
+      "dt_pred_days": 324.0,
+      "err_plus": 66.0,
+      "err_minus": 52.0,
+      "sigma_model_days": 59.0,
+      "delta_obs_minus_pred_days": 52.0,
+      "sigma_total_days": 59.265166835165495,
+      "z_score": 0.8774125304435211,
+      "alpha_inferred": -0.19672534752175536
+    },
+    {
+      "name": "Sharon",
+      "team": "Sharon & Johnson",
+      "ref": "Sharon & Johnson 2015 (ApJ 800, L26)",
+      "method": "LTM parametric",
+      "blind": true,
+      "dt_pred_days": 345.0,
+      "err_plus": 68.0,
+      "err_minus": 51.0,
+      "sigma_model_days": 59.5,
+      "delta_obs_minus_pred_days": 31.0,
+      "sigma_total_days": 59.762948387776184,
+      "z_score": 0.5187160412310028,
+      "alpha_inferred": -0.11727857256104647
+    },
+    {
+      "name": "Diego",
+      "team": "Diego et al.",
+      "ref": "Diego et al. 2016 (MNRAS 456, 356)",
+      "method": "WSLAP+ free-form",
+      "blind": true,
+      "dt_pred_days": 376.0,
+      "err_plus": 40.0,
+      "err_minus": 60.0,
+      "sigma_model_days": 50.0,
+      "delta_obs_minus_pred_days": 0.0,
+      "sigma_total_days": 50.31262267065791,
+      "z_score": 0.0,
+      "alpha_inferred": -0.0
+    },
+    {
+      "name": "Grillo",
+      "team": "Grillo et al.",
+      "ref": "Grillo et al. 2016 (ApJ 822, 78)",
+      "method": "GLEE parametric",
+      "blind": true,
+      "dt_pred_days": 361.0,
+      "err_plus": 20.0,
+      "err_minus": 27.0,
+      "sigma_model_days": 23.5,
+      "delta_obs_minus_pred_days": 15.0,
+      "sigma_total_days": 24.15802144216285,
+      "z_score": 0.6209117760703942,
+      "alpha_inferred": -0.05674769640050636
+    },
+    {
+      "name": "Kawamata",
+      "team": "Kawamata et al.",
+      "ref": "Kawamata et al. 2016 (ApJ 819, 114)",
+      "method": "Parametric",
+      "blind": true,
+      "dt_pred_days": 369.0,
+      "err_plus": 53.0,
+      "err_minus": 44.0,
+      "sigma_model_days": 48.5,
+      "delta_obs_minus_pred_days": 7.0,
+      "sigma_total_days": 48.8222285439737,
+      "z_score": 0.1433773141612159,
+      "alpha_inferred": -0.0264822583202363
+    },
+    {
+      "name": "Jauzac",
+      "team": "Jauzac et al.",
+      "ref": "Jauzac et al. 2016 (MNRAS 457, 2029) [corrected in Kelly+2023]",
+      "method": "LENSTOOL parametric",
+      "blind": true,
+      "dt_pred_days": 359.0,
+      "err_plus": 40.0,
+      "err_minus": 56.0,
+      "sigma_model_days": 48.0,
+      "delta_obs_minus_pred_days": 17.0,
+      "sigma_total_days": 48.32556259372466,
+      "z_score": 0.3517806950933985,
+      "alpha_inferred": -0.06431405592057388
+    },
+    {
+      "name": "CATS",
+      "team": "Treu et al. (CATS)",
+      "ref": "Treu et al. 2016 (ApJ 817, 60)",
+      "method": "LENSTOOL parametric",
+      "blind": true,
+      "dt_pred_days": 374.0,
+      "err_plus": 51.0,
+      "err_minus": 41.0,
+      "sigma_model_days": 46.0,
+      "delta_obs_minus_pred_days": 2.0,
+      "sigma_total_days": 46.33961588101481,
+      "z_score": 0.04315961541708406,
+      "alpha_inferred": -0.007566359520067514
+    },
+    {
+      "name": "Grillo+2024",
+      "team": "Grillo et al.",
+      "ref": "Grillo et al. 2024 (ApJ 971, 49) \u2014 post-blind precision update",
+      "method": "GLEE parametric (updated)",
+      "blind": false,
+      "dt_pred_days": 362.0,
+      "err_plus": 16.0,
+      "err_minus": 16.0,
+      "sigma_model_days": 16.0,
+      "delta_obs_minus_pred_days": 14.0,
+      "sigma_total_days": 16.951696080333672,
+      "z_score": 0.8258760618202653,
+      "alpha_inferred": -0.0529645166404726
+    }
+  ],
+  "figures": [
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_07_observed_vs_predicted.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_07_residuals.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_07_chi2_comparison.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_07_alpha_inference.png"
+  ]
+}

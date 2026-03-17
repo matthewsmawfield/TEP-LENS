@@ -1,0 +1,70 @@
+{
+  "step": "17",
+  "status": "success",
+  "description": "Directional Bayes-factor expansion for sign-based evidence. H0: p(sign+)=0.5; H1: p(sign+)~Uniform(0.5,1).",
+  "scenarios": {
+    "all_models_nonzero": {
+      "k_positive": 7,
+      "n_total": 7,
+      "binomial_p_one_sided": 0.0078125,
+      "likelihood_h0": 0.0078125,
+      "likelihood_h1": 0.2490234375,
+      "bf10_directional": 31.875,
+      "posterior_h1_equal_prior": 0.9695817490494296,
+      "n_zero_excluded": 1
+    },
+    "blind_models_nonzero": {
+      "k_positive": 6,
+      "n_total": 6,
+      "binomial_p_one_sided": 0.015625,
+      "likelihood_h0": 0.015625,
+      "likelihood_h1": 0.28348214285714285,
+      "bf10_directional": 18.142857142857142,
+      "posterior_h1_equal_prior": 0.9477611940298507,
+      "n_zero_excluded": 1
+    },
+    "method_family_collapsed": {
+      "k_positive": 5,
+      "n_total": 5,
+      "binomial_p_one_sided": 0.03125,
+      "likelihood_h0": 0.03125,
+      "likelihood_h1": 0.32812500000000006,
+      "bf10_directional": 10.500000000000002,
+      "posterior_h1_equal_prior": 0.9130434782608696,
+      "n_zero_excluded": 1
+    }
+  },
+  "method_family_details": [
+    {
+      "family": "GLAFIC",
+      "n_models": 1,
+      "weighted_mean_residual_days": 52.0
+    },
+    {
+      "family": "GLEE",
+      "n_models": 2,
+      "weighted_mean_residual_days": 14.329930996475195
+    },
+    {
+      "family": "LENSTOOL",
+      "n_models": 2,
+      "weighted_mean_residual_days": 9.185458828568366
+    },
+    {
+      "family": "LTM",
+      "n_models": 1,
+      "weighted_mean_residual_days": 31.0
+    },
+    {
+      "family": "OTHER",
+      "n_models": 1,
+      "weighted_mean_residual_days": 7.000000000000001
+    },
+    {
+      "family": "WSLAP+",
+      "n_models": 1,
+      "weighted_mean_residual_days": 0.0
+    }
+  ],
+  "figure": "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_17_directional_odds.png"
+}

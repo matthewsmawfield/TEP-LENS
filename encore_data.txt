@@ -1,0 +1,45 @@
+Parsing main.tex...
+L348: \noindent Multiply-imaged supernovae (SNe) provide a novel means of constraining the Hubble constant ($H_0$). Such measurements require a combination 
+M376: SNe\,Ia are of particular value when strongly lensed, as their standardizable absolute brightness can provide additional leverage for lens modeling by
+M412: Program ID&Obs. Type&Telescope&Instrument&MJD&\multicolumn{1}{c}{Filter/Grating}&\multicolumn{1}{c}{Exp. Time (s)}\\
+M518: Note that for reasons similar to the failure of this method for \textit{JWST} long-wavelength ($>2\mu$m) images, we do not attempt to measure \textit{
+M535: Once a PSF model is obtained for each epoch, we run STARRED on the F150W band first to obtain the most accurate estimate of the astrometric position o
+L563: While the most precise time-delay measurements come from lensed SNe observed before peak brightness \citep{pierel_turning_2019}, a lensed SN\,Ia obser
+M580: %&&\multicolumn{2}{c}{BayeSN Shared Model Parameters}&&&&\\
+M581: Photometry (Section)&Method (Section)&$\theta$&$E(B-V)_{\rm host}$&$t_{pk,1a}$&$\mu_{1b}/\mu_{1a}$&$\Delta t_{1b,1a}$\\
+M589: \tablecomments{Columns are: The photometry used from Section \ref{sec:phot}, the fitting method from Section \ref{sec:fitting}, the best-fit BayeSN mo
+M594: We first estimate the time delay of image 1b relative to image 1a using the GausSN Light curve Inference of Magnifications and Phase Shifts, Extended 
+L596: The underlying SED for the \textsc{Glimpse} fit is the above described \textsc{BayeSN} 85 day model as implemented in \texttt{sncosmo}. This implement
+M596: The underlying SED for the \textsc{Glimpse} fit is the above described \textsc{BayeSN} 85 day model as implemented in \texttt{sncosmo}. This implement
+L598: As in \citet{Hayes_2024}, we sample the posterior using a nested sampling algorithm \citep{Neal_2003, Skilling_2004, Skilling_2006, Handley_2015a, Han
+M598: As in \citet{Hayes_2024}, we sample the posterior using a nested sampling algorithm \citep{Neal_2003, Skilling_2004, Skilling_2006, Handley_2015a, Han
+L600: We find a time delay of $\Delta t_{\rm 1b,1a} = -37.3_{-12.5}^{+13.1}$ days. The relative magnification is found to be $\beta_{\rm 1b,1a} = 2.0_{-0.4}
+M600: We find a time delay of $\Delta t_{\rm 1b,1a} = -37.3_{-12.5}^{+13.1}$ days. The relative magnification is found to be $\beta_{\rm 1b,1a} = 2.0_{-0.4}
+L605: %The first underlying SED used for the \textsc{Glimpse} fit is the SALT-EXT model (Section \ref{sub:fitting_model_salt}), and therefore an additional 
+M605: %The first underlying SED used for the \textsc{Glimpse} fit is the SALT-EXT model (Section \ref{sub:fitting_model_salt}), and therefore an additional 
+L624: We also measure the time delay using the SN Time Delays (\sntd) software package \citep{pierel_turning_2019}. Previously, the \sntd ``Color'' fitting 
+M624: We also measure the time delay using the SN Time Delays (\sntd) software package \citep{pierel_turning_2019}. Previously, the \sntd ``Color'' fitting 
+M658: \subsubsection{Magnifications}
+M659: \label{sub:sntd_fitting_magnifications}
+M660: We follow the method outlined in \citet{pierel_jwst_2024} to measure absolute magnifications for \lensedsn. The process is to take the sample of high-
+M670: Systematic (Section)&$\delta(\Delta t_{1b,1a})$&$\delta(\mu_{1a})$&$\delta(\mu_{1b})$\\
+M682: Microlensing from small perturbers such as stars in the lens plane is well known to potentially impact time-delay measurements \citep[e.g.,][]{dobler_
+M689: \caption{\label{tab:micro_params}Parameters used to create microlensing magnification maps for each SN image, from the \citet{ertl_cosmology_2025} \te
+M703: We produced a magnification map for each SN image and convolved the SN\,Ia light profiles from four theoretical models \citep{suyu_holismokes_2020,hub
+L706: Table \ref{tab:micro_params} shows the $\kappa$ and $\gamma$ values used for each SN image. We selected $1000$ random chromatic microlensing curves an
+M706: Table \ref{tab:micro_params} shows the $\kappa$ and $\gamma$ values used for each SN image. We selected $1000$ random chromatic microlensing curves an
+M711: In addition to the effects of microlensing, we may also consider perturbations to the smooth lens model magnifications due to the presence of dark mat
+M713: After outlier removal, we find that the additional uncertainty for the median case ($f_{\rm sub} = 5\%$), is around $29\%$ for images 1a \& 1b. This u
+M715: Although these additional uncertainties do not affect the time-delay measurements, as millilensing is an achromatic and time-independent effect, they 
+M722: \caption{\label{tab:final_delay_mag} Final time delays and magnifications, with systematic uncertainties, measured in Section \ref{sec:fitting} and Se
+M726: $\Delta t_{1b,1a}$&$\mu_{1a}$&$\mu_{1b}$\\
+L737: We now obtain a measurement of $H_0$ by combining the final result on the time delay, $\Delta t_{1b,1a}$, with the seven mass models produced in S25. 
+M745: We performed this analysis fully blinded to the results of the mass modeling in S25, to eliminate the impact of human bias. The blinding protocols wit
+M778: % &&&\multicolumn{2}{c}{Max Likelihood Weighting}\\
+M798: % Previous measurements of $H_0$ using lensed SNe have weighted the models based on their ability to reproduce observables of the lensed SN, including
+M826: Previous measurements of $H_0$ using lensed SNe have weighted the models based on their ability to reproduce observables of the lensed SN, including m
+L836: where $L_{\rm impos}^*$ is the maximum likelihood of $L_{\rm impos}$, $N_{\rm P}$ is the number of freely-varying parameters in the model, and $N_{\rm
+L850: Here we present a joint measurement of $H_0$ with S25, using the multiply-imaged \lensedsn, which is lensed by the MACS J0138.0$-$2155 cluster and hos
+M850: Here we present a joint measurement of $H_0$ with S25, using the multiply-imaged \lensedsn, which is lensed by the MACS J0138.0$-$2155 cluster and hos
+M852: The uncertainty on $H_0$ is dominated by the time-delay uncertainty, for which the major contributors are the photometry and microlensing. The agreeme
+M1023: \bibitem[{Dhawan {et~al.}(2019)Dhawan, Johansson, Goobar, Amanullah, Mörtsell, Cenko, Cooray, Fox, Goldstein, Kalender, Kasliwal, Kulkarni, Lee, Nayye

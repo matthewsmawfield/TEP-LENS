@@ -1,0 +1,32 @@
+{
+  "step": "20",
+  "status": "success",
+  "description": "External completeness synthesis from step_16 + step_19",
+  "inputs": {
+    "step_16": "results/outputs/step_16_tier_significance.json",
+    "step_19": "results/outputs/step_19_tdcosmo2025_ingestion.json"
+  },
+  "external_data_completeness": {
+    "n_lenses_total": 7,
+    "n_lenses_covered": 7,
+    "lens_coverage_fraction": 1.0,
+    "n_files_local": 60,
+    "n_posterior_like": 22,
+    "posterior_density": 0.36666666666666664
+  },
+  "recommended_reporting_track": {
+    "name": "single_robust_test_benchmark",
+    "result": {
+      "test": "Wilcoxon signed-rank",
+      "z_score": 2.417559016236505,
+      "p_value": 0.0078125
+    }
+  },
+  "interpretation": {
+    "external_readiness": "complete",
+    "lens_coverage_fraction": 1.0,
+    "posterior_like_count": 22,
+    "posterior_density": 0.36666666666666664,
+    "note": "Step 19 provides full lens-name coverage for the target TDCOSMO set. However, combining external-informed tests with core sign tests is statistically invalid due to underlying data correlation. The recommended reporting track remains the single most robust non-parametric test (Wilcoxon signed-rank), supported by external consistency."
+  }
+}

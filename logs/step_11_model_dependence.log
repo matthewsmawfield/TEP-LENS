@@ -1,0 +1,16 @@
+
+[16:07:01] [INFO] ======================================================================
+[16:07:01] [INFO] STEP 11: Model Dependence Robustness
+[16:07:01] [INFO] ======================================================================
+[16:07:01] [INFO] Baseline weighted mean residual: +14.61 ± 11.57 d (z=1.26)
+[16:07:01] [INFO] Baseline sign test: 7/8 positive, p=0.0352
+[16:07:01] [INFO] Exact sign-flip weighted-mean p(one-sided): 0.0078
+[16:07:01] [INFO] Wilcoxon signed-rank p(one-sided): 0.0078
+[16:07:01] [INFO] Method-family effective sample size (Kish proxy): N_eff=7.20 from N=8
+[16:07:01] [INFO] LOO robustness summary:
+[16:07:01] [INFO]   Sign-test p range: 0.0078 to 0.0625
+[16:07:01] [INFO]   Weighted-mean z range: 0.96 to 1.30
+[16:07:01] [INFO]   Δχ² (GR-TEP) range: +0.90 to +1.65
+[16:07:01] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_11_model_dependence.png
+[16:07:01] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_11_model_dependence.json
+[16:07:01] [INFO] Step 11 complete.

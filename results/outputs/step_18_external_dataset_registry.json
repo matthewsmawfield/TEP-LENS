@@ -1,0 +1,101 @@
+{
+  "step": "18",
+  "status": "success",
+  "description": "External dataset shortlist and local ingestion readiness for TEP-LENS",
+  "datasets": [
+    {
+      "name": "H0LiCOW public distance chains",
+      "priority": 1,
+      "measurement_type": [
+        "strong_lensing_time_delay",
+        "distance_chains"
+      ],
+      "independence_role": "External lensing-chain prior stress test (already used in step_14/15).",
+      "public_source": "https://github.com/shsuyu/H0LiCOW-public/tree/master/h0licow_distance_chains",
+      "local_path": "data/interim/external/h0licow_distance_chains",
+      "local_status": {
+        "exists": true,
+        "is_dir": true,
+        "n_files": 4,
+        "total_size_bytes": 39161793,
+        "example_files": [
+          "HE0435_Ddt_AO+HST.dat",
+          "J1206_final.csv",
+          "RXJ1131_AO+HST_Dd_Ddt.dat",
+          "wfi2033_dt_bic.dat"
+        ]
+      },
+      "integration_steps": [
+        "step_14_external_chain_ingestion.py",
+        "step_15_external_informed_inflation.py"
+      ]
+    },
+    {
+      "name": "TDCOSMO 2025 public likelihood package",
+      "priority": 2,
+      "measurement_type": [
+        "strong_lensing_time_delay",
+        "hierarchical_likelihoods",
+        "H0_posteriors"
+      ],
+      "independence_role": "Independent multi-lens cosmography update for external validation.",
+      "public_source": "https://github.com/TDCOSMO/TDCOSMO2025_public",
+      "paper": "https://www.aanda.org/articles/aa/full_html/2025/12/aa55801-25/aa55801-25.html",
+      "local_path": "data/interim/external/tdcosmo2025_public",
+      "local_status": {
+        "exists": true,
+        "is_dir": true,
+        "n_files": 60,
+        "total_size_bytes": 106412966,
+        "example_files": [
+          "Chain_release_README.md",
+          "ExternalLenses/SL2S/kappa_ext/LoSData.csv",
+          "ExternalLenses/SL2S/kappa_ext/readme.md",
+          "ExternalLenses/SL2S/kappa_ext/sl2s_los_gev.csv",
+          "ExternalLenses/SL2S/readme.md",
+          "ExternalLenses/SL2S/sl2s_all_params.csv",
+          "ExternalLenses/SL2S/sl2s_all_params_ws.csv",
+          "ExternalLenses/SL2S/sl2s_sample_kinematics_pritom.csv"
+        ]
+      },
+      "integration_steps": [
+        "planned: step_19_tdcosmo2025_ingestion.py"
+      ]
+    },
+    {
+      "name": "SN H0pe updates",
+      "priority": 3,
+      "measurement_type": [
+        "SN_Refsdal_time_delays",
+        "H0_inference_cross_check"
+      ],
+      "independence_role": "Observed-delay and prediction updates supporting primary SN-Refsdal evidence.",
+      "public_source": "manuscript-linked SN H0pe references (curated local files)",
+      "local_path": "data/raw/snh0pe",
+      "local_status": {
+        "exists": true,
+        "is_dir": true,
+        "n_files": 1,
+        "total_size_bytes": 808,
+        "example_files": [
+          "snh0pe_literature_data.json"
+        ]
+      },
+      "integration_steps": [
+        "step_01_fetch_snh0pe_data.py",
+        "step_07_observed_vs_predicted.py"
+      ]
+    }
+  ],
+  "summary": {
+    "n_datasets": 3,
+    "n_ready_local": 3,
+    "ready_now": [
+      "H0LiCOW public distance chains",
+      "TDCOSMO 2025 public likelihood package",
+      "SN H0pe updates"
+    ],
+    "missing_local": [],
+    "next_action": "If TDCOSMO2025 is staged under data/interim/external/tdcosmo2025_public, implement step_19_tdcosmo2025_ingestion.py to compute lens-level coverage and posterior summaries."
+  }
+}

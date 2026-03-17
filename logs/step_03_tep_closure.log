@@ -1,0 +1,20 @@
+
+[16:06:55] [INFO] ======================================================================
+[16:06:55] [INFO] STEP 03: TEP Route-Closure Prediction — SN Refsdal
+[16:06:55] [INFO] ======================================================================
+[16:06:55] [INFO] TEP coupling alpha = 0.05
+[16:06:55] [INFO] Temporal shear factors Gamma_t per image:
+[16:06:55] [INFO]   S1: mu_rel=1.158, mu_norm=1.181, Gamma=1.00362
+[16:06:55] [INFO]   S2: mu_rel=0.887, mu_norm=0.905, Gamma=0.99783
+[16:06:55] [INFO]   S3: mu_rel=0.716, mu_norm=0.730, Gamma=0.99318
+[16:06:55] [INFO]   S4: mu_rel=1.793, mu_norm=1.829, Gamma=1.01311
+[16:06:55] [INFO]   SX: mu_rel=0.347, mu_norm=0.354, Gamma=0.97745
+[16:06:55] [INFO] Computing TEP predicted closure residuals...
+[16:06:55] [INFO]   Loop S1-S2-S3: R_TEP = +0.099 ± 0.030 days (SNR = 3.27)
+[16:06:55] [INFO]   Loop S1-S2-S4: R_TEP = -0.253 ± 0.101 days (SNR = 2.52)
+[16:06:55] [INFO]   Loop S1-S3-S4: R_TEP = -0.311 ± 0.135 days (SNR = 2.30)
+[16:06:55] [INFO]   Loop S1-S2-SX: R_TEP = +7.720 ± 0.116 days (SNR = 66.29)
+[16:06:55] [INFO]   Loop S1-S4-SX: R_TEP = +13.216 ± 0.209 days (SNR = 63.31)
+[16:06:55] [INFO] Best loop by SNR: S1_S2_SX (SNR=66.29)
+[16:06:55] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_03_tep_closure.json
+[16:06:55] [INFO] Step 03 complete.

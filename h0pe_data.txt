@@ -1,0 +1,66 @@
+Parsing mnras_template.tex...
+M39: \newcommand{\mures}{$\mu_{\rm res}$}
+L87: We present BayeSN-TD, an enhanced implementation of the probabilistic type Ia supernova (SN Ia) BayeSN SED model, designed for fitting multiply-imaged
+M87: We present BayeSN-TD, an enhanced implementation of the probabilistic type Ia supernova (SN Ia) BayeSN SED model, designed for fitting multiply-imaged
+M107: Strong gravitational lensing is a phenomenon whereby a massive system, such as a galaxy or galaxy cluster, lies along the line-of-sight between an obs
+M111: For the special case of a gravitationally-lensed type Ia supernova (glSN Ia), we can additionally use the standardisable nature of these events to con
+L113: However, some of the advantages to using glSNe to constrain $H_0$ also lead to inherent challenges. The fact that these events fade on relatively fast
+L115: The first glSN Ia with time delays long enough to enable a competitive $H_0$ analysis was SN H0pe, discovered in March 2023 \citep{Frye23} by the `Pri
+M115: The first glSN Ia with time delays long enough to enable a competitive $H_0$ analysis was SN H0pe, discovered in March 2023 \citep{Frye23} by the `Pri
+L123: In this work, we present BayeSN-TD, a method for fitting glSNe Ia which combines the probabilistic SN Ia SED model BayeSN with a GP treatment of micro
+M123: In this work, we present BayeSN-TD, a method for fitting glSNe Ia which combines the probabilistic SN Ia SED model BayeSN with a GP treatment of micro
+M125: The structure of this paper is as follows. In Section \ref{sec:method} we detail the BayeSN-TD model and its implementation, as well as the phase-exte
+M153: The rest-frame, host galaxy dust-extinguished SED model $S_s(t, \lambda_r)$ is then scaled based on distance modulus $\mu^s$, redshifted and corrected
+L158: As discussed in \citet{Pierel24}, one challenge faced by analysis of SN H0pe and other strongly lensed SNe discovered by JWST is a lack of coverage of
+M168: When applying a trained BayeSN model to fit a single SN Ia light curve, a number of different latent SN parameters are inferred: the `shape' parameter
+M180: \item Distance modulus $\mu^{si}$ is treated separately for each image to allow for  differences in magnification.
+M190: The multiple images of a lensed source result from different paths taken by the light from each image through the lens system; light for each image th
+M208: The parameters $\bm{\Lambda} = \{A, \lambda, p, \tau_{\rm ML}, \eta\}$ are tuning parameters, which are not directly physically interpretable but woul
+M228: \caption{Priors on BayeSN-TD parameters when fitting light curves of glSNe Ia. \newline $^* TN(\mu, \sigma^2, a, b)$ denotes a Truncated normal distri
+L256: The prior window of 10 rest-frame days either side of $T_\text{max}^\text{fid}$ is imposed to prevent the model linearly extrapolating far beyond the 
+M274: \bm{\Phi}_s = \{ \bm{\Phi}_{s1}, \bm{\Phi}_{s2}, ..., \bm{\Phi}_{sI} \}, \quad \text{where} \quad \bm{\Phi}_{si} = \{ T_{\text{max}}^{si}, \mu^{si}, \
+M278: Here, $T_{\text{max}}^{si}$ is the observer-frame time of B-band maximum, $\mu^{si}$ is the apparent distance modulus (capturing both cosmological dis
+M291: where $\hat{f}_{ij}$ and $\sigma_{ij}$ are the observed flux and its uncertainty for the $j$-th observation of image $i$, $T_{ij}$ is the time of this
+M294: F_{si}(t, \lambda_r) = S_s(t, \lambda_r) \times 10 ^{- 0.4[\mu_{si} + \delta\beta_{si}(t)]}
+M296: where $S_s(t, \lambda_r)$ is the BayeSN model from equation \ref{bayesn_equation} and $\delta\beta_{si}(t)$ is the microlensing curve for image $i$ of
+L328: The results of time-delay recovery with BayeSN-TD are summarised in Table \ref{sim_results}. Despite the difference between the model used to simulate
+M337: An example of a BayeSN-TD fit to one of the simulated Roman light curves is shown in Fig. \ref{Roman_example_good}. The left panels show the simulated
+L376: The results of time-delay recovery with BayeSN-TD for these LSST simulations are summarised in Table \ref{sim_results}. Compared with the Roman simula
+L392: \caption{As Fig. \ref{LSST_example} but for a particularly extreme example of microlensing. In this case, BayeSN-TD is able to identify that the peak 
+M399: Having established that our model is able to robustly infer time delays for SNe Ia which are impacted by microlensing in Section \ref{sec:sims}, we no
+M417: \caption{Summary of parameter estimates inferred for SN H0pe when fit with BayeSN-TD, including time delays $\Delta T_{ij}$ and flux space magnificati
+M449: Given that BayeSN-TD incorporates a GP-based treatment of microlensing, we can also examine our posteriors on microlensing magnification to see if the
+M454: \caption{Posterior mean and standard deviation of microlensing magnification, shown for each image against MJD.}
+M472: \subsection{Magnification}
+M474: As mentioned previously, one of the key advantages of using strongly-lensed SNe Ia for $H_0$ inference is our ability to standardise them and probe ab
+M476: To do this, we fit all 39 SNe Ia with a redshift $z>1$ in the Pantheon+ \citep{Brout22} sample with the BayeSN model we present in this work to estima
+M478: With this established, we estimate the absolute magnification of each image by computing the posterior distribution of $\beta_i = 10^{-0.4(\mu^\text{H
+M481: \beta_{ni} =10^{-0.4(\mu^\text{H0pe}_{ni} - N_n(45.51,0.12^2))}
+M483: for each step $n$ along our MCMC chains, where $i$ denotes each image.  Let $\mu^\text{H0pe}_{ni}$ denote the posterior sample of the photometric dist
+M485: Note that as all of the photometric distance moduli in Eq. \ref{mag_eqn} were inferred using the same model, the reference $H_0$ value used within Bay
+M487: As discussed in Section \ref{h0pe_sims}, there are a few additional sources of systematic uncertainty impacting our estimates of magnification. We mod
+L494: We create a new set of simulations of SN H0pe using the method and framework outlined in Section 5 of \citet{Pierel24}. The only difference in our cas
+M494: We create a new set of simulations of SN H0pe using the method and framework outlined in Section 5 of \citet{Pierel24}. The only difference in our cas
+M496: We produce 1000 simulations of SN H0pe-like glSNe including the impact of chromatic microlensing, residual intrinsic chromatic scatter and photometric
+M498: One difference between this work and the analysis presented in \citet{Pierel24} is that \citet{Pierel24} adapts the BayeSN model by incorporating it w
+M500: The recovery of true simulated time-delays and magnifications for these 1000 simulations are shown in Table \ref{h0pe_sim_coverage}. While BayeSN-TD p
+M502: Overall, these results show that our analysis is not significantly impacted by chromatic microlensing - including this effect in our simulations does 
+M504: There are, however, a few additional sources of systematic uncertainty which impact constraints on magnification that are not included in these simula
+M510: \caption{Recovery of simulated time-delays and magnifications across 1000 simulated SN H0pe-like glSNe simulated with BayeSN, showing the median offse
+M526: Having inferred time delays and magnifications for SN H0pe, we next apply these to estimate $H_0$ by combining these constraints with the lens modelli
+M547: For the analysis presented in \citet{Pascale25}, seven different teams constructed models for the cluster lensing system to predict the lensing potent
+M553: We now present the constraints on $H_0$ we obtain when combining the lens models presented in \citet{Pascale25} with the time delay and magnification 
+M555: \subsubsection{Constraints from Time Delays and Magnifications}
+M557: We first consider constraints on $H_0$ which incorporate our inferred time delays and magnifications, the `weighted phot-only' case. In this case, the
+M564: \caption{\textbf{Top}: Posterior on $H_0$ when combining our constraints on time-delays and magnifications with each lens model from \citet{Pascale25}
+M571: We next consider constraints on $H_0$ derived purely from the time delays, not factoring in constraints on magnification. In this case, the seven lens
+M576: \caption{\textbf{Top}: Posterior on $H_0$ when combining our constraints on time-delays alone with each lens model from \citet{Pascale25}, along with 
+M580: In this `TD-only' case, we infer $H_0=60.9^{+5.1}_{-4.6}$ \kmsmpc, though we emphasise that we would caution against drawing any conclusions relating 
+M585: In this work, we have applied BayeSN-TD to the photometry of SN H0pe presented in \citet{Pierel24} to estimate time delays and magnifications of SN H0
+M587: Throughout this work, we have demonstrated the ability of BayeSN-TD to obtain robust constraints on time delays for glSNe Ia while marginalising over,
+M594: We present BayeSN-TD, a modified version of the probabilistic SN Ia SED model BayeSN designed for application to multiply-imaged, gravitationally lens
+M601: \item We also apply BayeSN-TD to simulations of SN H0pe. While these simulations are based on BayeSN, they also include the impact of chromatic microl
+L602: \item Having established the ability of BayeSN-TD to obtain robust constraints on properties of lensed glSNe Ia, we then apply it to photometric data 
+M602: \item Having established the ability of BayeSN-TD to obtain robust constraints on properties of lensed glSNe Ia, we then apply it to photometric data 
+M603: \item We combine our constraints on time-delays and magnifications of SN H0pe with the lens modelling presented in \citet{Pascale25} to obtain constra
+L636: Fig. \ref{new_model_lcplots} demonstrates the behaviour of this new BayeSN model; this figure shows example light curves evaluated for $\theta_1=-1,0,

@@ -1,4 +1,94 @@
 <h2>Appendix A: Theoretical Framework for Lensing Closures</h2>
+
+<h3>A.1 Temporal Shear and the Lensing Potential</h3>
 <p>
-[Detailed derivation of the scale-dependent temporal shear $\Gamma$ and the formal expression for the TEP closure residual will be documented here.]
+The Temporal Equivalence Principle (TEP) postulates that the rate of proper time flow for a photon traversing a gravitational potential $\Phi$ is scaled relative to the cosmological background rate by a factor $\Gamma_t$:
+</p>
+<p>
+$\Gamma_t(\Phi) = 1 + \alpha \frac{|\Phi|}{c^2}$
+</p>
+<p>
+where $\alpha$ is a dimensionless coupling constant (here $\alpha = -0.05$). In the strong lensing regime, the relevant potential is the projected gravitational potential $\psi(\boldsymbol{\theta})$ integrated along the line of sight. For singular isothermal sphere (SIS) or NFW profiles typical of cluster lenses, the projected potential depth scales logarithmically with the surface mass density $\Sigma$, which is directly related to the magnification $\mu$.
+</p>
+<p>
+Specifically, for an isothermal profile, the convergence $\kappa$, potential $\psi$, and magnification $\mu$ satisfy scaling relations such that regions of high magnification (near critical curves) correspond to deep potential wells, while regions of low magnification (outer arcs) correspond to shallower potentials. The phenomenological scaling relation derived in Paper V (Smawfield 2025e) is adopted:
+</p>
+<p>
+$\Gamma_t(i) \approx 1 + \alpha \log_{10}\left(\frac{\mu_i}{\bar{\mu}}\right)$
+</p>
+<p>
+where $\mu_i$ is the absolute magnification of image $i$, and $\bar{\mu}$ is the mean magnification of the image system. This logarithmic scaling captures the essential feature that temporal shear is differential: it depends on the <em>ratio</em> of potential depths probed by different images.
+</p>
+
+<h3>A.2 Derivation of the Closure Residual</h3>
+<p>
+Let $t_i^{\rm GR}$ be the arrival time of image $i$ predicted by General Relativity. Under TEP, the observed arrival time $t_i^{\rm obs}$ is scaled by the path-specific shear $\Gamma_i$:
+</p>
+<p>
+$t_i^{\rm obs} = t_0 + \Gamma_i (t_i^{\rm GR} - t_0)$
+</p>
+<p>
+where $t_0$ is the unlensed arrival time. The observed pairwise delay between images $i$ and $j$ is:
+</p>
+<p>
+$\Delta t_{ij}^{\rm obs} = t_j^{\rm obs} - t_i^{\rm obs} = \Gamma_j \Delta t_j^{\rm GR} - \Gamma_i \Delta t_i^{\rm GR} + (\Gamma_j - \Gamma_i)(t_0^{\rm GR} - t_0)$
+</p>
+<p>
+Since the cosmological transit time $(t_0^{\rm GR} - t_0)$ is common to all images, and the shear differences $(\Gamma_j - \Gamma_i)$ are small ($\sim 10^{-2}$), the last term is a second-order cosmological correction which is absorbed into the effective shear definition. To first order in $\Gamma$, the modified pairwise delay is:
+</p>
+<p>
+$\Delta t_{ij}^{\rm obs} \approx \Gamma_j \Delta t_j^{\rm GR} - \Gamma_i \Delta t_i^{\rm GR}$
+</p>
+<p>
+For a closed loop of three images $(i, j, k)$, the GR delays satisfy the closure identity $\Delta t_{ij}^{\rm GR} + \Delta t_{jk}^{\rm GR} + \Delta t_{ki}^{\rm GR} = 0$. The TEP closure residual $\mathcal{R}_{\rm TEP}$ is defined as the sum of the <em>observed</em> delays around the loop:
+</p>
+<p>
+$\mathcal{R}_{\rm TEP} = \Delta t_{ij}^{\rm obs} + \Delta t_{jk}^{\rm obs} + \Delta t_{ki}^{\rm obs}$
+</p>
+<p>
+Substituting the shear-modified expressions:
+</p>
+<p>
+$\mathcal{R}_{\rm TEP} = (\Gamma_j \Delta t_j^{\rm GR} - \Gamma_i \Delta t_i^{\rm GR}) + (\Gamma_k \Delta t_k^{\rm GR} - \Gamma_j \Delta t_j^{\rm GR}) + (\Gamma_i \Delta t_i^{\rm GR} - \Gamma_k \Delta t_k^{\rm GR})$
+</p>
+<p>
+Rearranging terms by grouping coefficients of the absolute GR delays:
+</p>
+<p>
+$\mathcal{R}_{\rm TEP} = \Delta t_i^{\rm GR}(\Gamma_k - \Gamma_j) + \Delta t_j^{\rm GR}(\Gamma_i - \Gamma_k) + \Delta t_k^{\rm GR}(\Gamma_j - \Gamma_i)$
+</p>
+<p>
+Using the fact that $\Delta t_{ij}^{\rm GR} = \Delta t_j^{\rm GR} - \Delta t_i^{\rm GR}$, this can be rewritten in terms of pairwise delays. A more intuitive form used in the text is derived by expanding $\Gamma = 1 + \delta\Gamma$:
+</p>
+<p>
+$\mathcal{R}_{\rm TEP} = \sum_{\rm loop} (1 + \delta\Gamma) \Delta t^{\rm GR} = \sum \Delta t^{\rm GR} + \sum \delta\Gamma \Delta t^{\rm GR} = 0 + \sum \delta\Gamma \Delta t^{\rm GR}$
+</p>
+<p>
+Explicitly for the triplet $(i, j, k)$:
+</p>
+<p>
+$\mathcal{R}_{\rm TEP} = (\Gamma_i-1)\Delta t_{ij} + (\Gamma_j-1)\Delta t_{jk} + (\Gamma_k-1)\Delta t_{ki}$
+</p>
+<p>
+This equation demonstrates that the residual is generated purely by the <em>differences</em> in $\Gamma$ around the loop. If the potential depth is constant ($\Gamma_i = \Gamma_j = \Gamma_k$), the residual vanishes.
+</p>
+
+<h3>A.3 Immunity to Mass Sheet Degeneracy</h3>
+<p>
+The Mass Sheet Degeneracy (MSD) corresponds to a transformation of the convergence $\kappa \to \lambda \kappa + (1-\lambda)$, which rescales time delays by a factor $\lambda$:
+</p>
+<p>
+$\Delta t_{ij}' = \lambda \Delta t_{ij}$
+</p>
+<p>
+Substituting this into the closure residual definition:
+</p>
+<p>
+$\mathcal{R}' = \Delta t_{ij}' + \Delta t_{jk}' + \Delta t_{ki}' = \lambda(\Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki})$
+</p>
+<p>
+Since $\Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = 0$ in GR, then $\mathcal{R}' = \lambda \cdot 0 = 0$.
+</p>
+<p>
+Thus, the MSD cannot produce a non-zero closure residual. A measured non-zero residual $\mathcal{R}_{\rm obs} \neq 0$ is therefore a robust signature of non-GR physics (specifically, potential-dependent temporal shear) that cannot be mimicked by standard lensing degeneracies.
 </p>

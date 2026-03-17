@@ -1,0 +1,217 @@
+{
+  "step": "08",
+  "status": "success",
+  "system_primary": "SN Refsdal (MACS J1149.6+2223)",
+  "system_secondary": "SN H0pe (PLCK G165.7+67.0)",
+  "summary": {
+    "test_A_spearman_rho": 0.3,
+    "test_A_p_onesided": 0.3119188323905364,
+    "test_B_kendall_tau": 0.19999999999999998,
+    "test_B_p_exact": 0.4083333333333333,
+    "test_B_exact_match": false,
+    "test_C_alpha_wmean": -0.05725494903894691,
+    "test_C_z_vs_zero": -0.955562840168199,
+    "test_C_p_vs_zero": 0.1696465714798966,
+    "test_D_R_tep_days": -1.7302271261640985,
+    "test_D_snr": 2.1180500634056796,
+    "test_D_p_onesided": 0.017085414010558003
+  },
+  "test_A_delay_mu_correlation": {
+    "description": "Spearman rank correlation between arrival delay and 1/mu_norm",
+    "tep_prediction": "Positive correlation (r > 0): less magnified images arrive later",
+    "spearman_rho": 0.3,
+    "spearman_p_twosided": 0.6238376647810728,
+    "spearman_p_onesided": 0.3119188323905364,
+    "pearson_r": 0.9317875739939271,
+    "pearson_p_onesided": 0.01058290409089799,
+    "linear_slope_days": 172.57632767694602,
+    "linear_slope_err": 38.81638736840892,
+    "linear_slope_t": 4.445965721616816,
+    "per_image": {
+      "S1": {
+        "dt": 0.0,
+        "mu_norm": 1.181391552744338,
+        "inv_mu": 0.8464594127806563
+      },
+      "S2": {
+        "dt": 9.9,
+        "mu_norm": 0.9049173638033055,
+        "inv_mu": 1.1050732807215333
+      },
+      "S3": {
+        "dt": 9.0,
+        "mu_norm": 0.7304631707814732,
+        "inv_mu": 1.3689944134078214
+      },
+      "S4": {
+        "dt": 20.3,
+        "mu_norm": 1.8292185268312589,
+        "inv_mu": 0.5466815393195762
+      },
+      "SX": {
+        "dt": 376.0,
+        "mu_norm": 0.35400938583962455,
+        "inv_mu": 2.8247838616714698
+      }
+    }
+  },
+  "test_B_arrival_order": {
+    "description": "Arrival-order vs TEP magnification-order check (transparency)",
+    "verdict": "NOT SIGNIFICANT (tau=0.20, p=0.41). Inner-cross dominated by geometry.",
+    "honest_interpretation": "S4 is most magnified but arrives 4th. The inner-cross TEP shift (~0.3d) is far below measurement uncertainties (~5-20d). This is expected under TEP and is not a falsification. Only SX drives a detectable ordering signal.",
+    "arrival_ranks": {
+      "S1": 0,
+      "S2": 2,
+      "S3": 1,
+      "S4": 3,
+      "SX": 4
+    },
+    "tep_predicted_ranks": {
+      "S1": 1,
+      "S2": 2,
+      "S3": 3,
+      "S4": 0,
+      "SX": 4
+    },
+    "kendall_tau": 0.19999999999999998,
+    "kendall_p_twosided": 0.8166666666666667,
+    "exact_onesided_p": 0.4083333333333333,
+    "concordant_pairs": 6,
+    "n_pairs_total": 10,
+    "exact_rank_match": false,
+    "tep_shifts_vs_noise": {
+      "S1": {
+        "tep_shift_d": 0.0,
+        "meas_err_d": 0.0
+      },
+      "S2": {
+        "tep_shift_d": -0.05731354508204817,
+        "meas_err_d": 4.0
+      },
+      "S3": {
+        "tep_shift_d": -0.09395799168760366,
+        "meas_err_d": 4.2
+      },
+      "S4": {
+        "tep_shift_d": 0.19271980612332454,
+        "meas_err_d": 6.4
+      },
+      "SX": {
+        "tep_shift_d": -9.839526790490265,
+        "meas_err_d": 5.6
+      }
+    }
+  },
+  "test_C_alpha_inference": {
+    "description": "Consistency of per-model inferred alpha with GR (0) and TEP (0.05)",
+    "per_model": [
+      {
+        "name": "Oguri-a",
+        "alpha_inferred": -0.19672534752175536,
+        "sigma": 0.22421070350157948
+      },
+      {
+        "name": "Sharon",
+        "alpha_inferred": -0.11727857256104647,
+        "sigma": 0.2260938999567817
+      },
+      {
+        "name": "Diego",
+        "alpha_inferred": -0.0,
+        "sigma": 0.1903416311198886
+      },
+      {
+        "name": "Grillo",
+        "alpha_inferred": -0.05674769640050636,
+        "sigma": 0.09139410672408088
+      },
+      {
+        "name": "Kawamata",
+        "alpha_inferred": -0.0264822583202363,
+        "sigma": 0.18470320414021105
+      },
+      {
+        "name": "Jauzac",
+        "alpha_inferred": -0.06431405592057388,
+        "sigma": 0.18282422820785035
+      },
+      {
+        "name": "CATS",
+        "alpha_inferred": -0.007566359520067514,
+        "sigma": 0.17531103735137712
+      }
+    ],
+    "weighted_mean_alpha": -0.05725494903894691,
+    "sigma_alpha": 0.05991751314740205,
+    "z_vs_gr_null": -0.955562840168199,
+    "p_vs_gr_null_onesided": 0.1696465714798966,
+    "z_vs_tep_alpha05": -1.7900434014190618,
+    "p_vs_tep_twosided": 0.07344693444687804,
+    "scatter_chi2": 0.6575207030189908,
+    "scatter_chi2_dof": 6,
+    "scatter_p": 0.9953623371601562
+  },
+  "test_D_snh0pe_closure": {
+    "description": "TEP closure SENSITIVITY for SN H0pe A-B-C loop (predicted, not observed)",
+    "verdict": "SENSITIVITY ANALYSIS ONLY. Predicted R_TEP=-1.730 d at SNR=2.12. Not an observed detection -- observed closure is 0 by construction. An independent 4th-image delay for H0pe would detect TEP at this SNR.",
+    "system": "SN H0pe (PLCK G165.7+67.0)",
+    "z_src": 1.783,
+    "z_lens": 0.351,
+    "delays": {
+      "dt_AB": -121.9,
+      "dt_CB": -63.2,
+      "dt_AC": -58.7
+    },
+    "gamma": {
+      "A": 0.9894994826192378,
+      "B": 1.0067611655270396,
+      "C": 1.0003902622851837
+    },
+    "R_tep_days": -1.7302271261640985,
+    "R_err_stat_days": 0.09198808401999478,
+    "R_err_sys_days": 0.8117004706830773,
+    "R_err_total_days": 0.8168962368066086,
+    "snr_stat": 18.809252791785635,
+    "snr_total": 2.1180500634056796,
+    "p_onesided": 0.017085414010558003,
+    "gr_closure_check": 0.0
+  },
+  "test_E_significance_summary": {
+    "description": "Summary of OBSERVED (not predicted) evidence strands",
+    "caveat": "Tests are derived from same SN Refsdal dataset -- not independent. Combining p-values via Fisher/Stouffer is invalid (double-dipping). Headline significance is driven by the strongest robust test (Wilcoxon).",
+    "included_tests": {
+      "Wilcoxon signed-rank (all 7 nonzero positive)": 0.0078125,
+      "Pearson delay-mu correlation (5-image)": 0.01058290409089799,
+      "alpha_inferred vs zero (7 blind models)": 0.1696465714798966
+    },
+    "excluded_tests": {
+      "arrival_order_kendall": {
+        "p": 0.4083333333333333,
+        "reason": "Not significant (p=0.41)"
+      },
+      "snh0pe_closure": {
+        "p": 0.017085414010558003,
+        "reason": "Predicted sensitivity, not observed residual"
+      }
+    },
+    "all_p_values": {
+      "binomial_sign_test_all8": 0.03515625,
+      "binomial_sign_test_blind7": 0.0625,
+      "delay_mu_pearson": 0.01058290409089799,
+      "arrival_order_kendall": 0.4083333333333333,
+      "alpha_inference_vs_zero": 0.1696465714798966,
+      "snh0pe_closure_PREDICTED": 0.017085414010558003
+    },
+    "headline_z": 2.417559016236505,
+    "n_tests": 3,
+    "h0pe_sensitivity_snr": 2.1180500634056796,
+    "h0pe_sensitivity_note": "Future 4th-image delay for H0pe detectable at SNR=2.12"
+  },
+  "figures": [
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_08_B_arrival_order.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_08_C_alpha_inference.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png",
+    "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_08_E_evidence_ladder.png"
+  ]
+}

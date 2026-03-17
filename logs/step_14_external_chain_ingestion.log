@@ -1,0 +1,14 @@
+
+[16:07:07] [INFO] ======================================================================
+[16:07:07] [INFO] STEP 14: External Chain Ingestion
+[16:07:07] [INFO] ======================================================================
+[16:07:17] [INFO] API files discovered: 5
+[16:07:17] [INFO] Files ingested (<= 30 MB): 4
+[16:07:17] [INFO] Direct chain coverage for HE0435/WFI2033/DES0408: 2/3
+[16:07:17] [INFO]   HE0435: YES
+[16:07:17] [INFO]   WFI2033: YES
+[16:07:17] [INFO]   DES0408: NO
+[16:07:17] [INFO] Coverage with DES0408 equivalent literature bridge: 3/3
+[16:07:17] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_14_external_coverage.png
+[16:07:17] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_14_external_chain_ingestion.json
+[16:07:17] [INFO] Step 14 complete.

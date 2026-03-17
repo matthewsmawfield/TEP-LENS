@@ -1,0 +1,18 @@
+
+[16:06:55] [INFO] ======================================================================
+[16:06:55] [INFO] STEP 02: GR Route-Closure Null Test — SN Refsdal
+[16:06:55] [INFO] ======================================================================
+[16:06:55] [INFO] Extracting SN Refsdal time delays (Kelly et al. 2023, ApJ 948, 93)...
+[16:06:55] [INFO]   dt_S2_S1 = +9.9 ± 4.0 days
+[16:06:55] [INFO]   dt_S3_S1 = +9.0 ± 4.2 days
+[16:06:55] [INFO]   dt_S4_S1 = +20.3 ± 6.4 days
+[16:06:55] [INFO]   dt_SX_S1 = +376.0 ± 5.6 days
+[16:06:55] [INFO] Computing GR closure residuals for all loops...
+[16:06:55] [INFO]   Loop S1-S2-S3: R_GR = +0.0000 days (identically zero by arithmetic)
+[16:06:55] [INFO]   Loop S1-S2-S4: R_GR = +0.0000 days (identically zero by arithmetic)
+[16:06:55] [INFO]   Loop S1-S3-S4: R_GR = +0.0000 days (identically zero by arithmetic)
+[16:06:55] [INFO]   Loop S1-S2-SX: R_GR = +0.0000 days (identically zero by arithmetic)
+[16:06:55] [INFO]   Loop S1-S4-SX: R_GR = +0.0000 days (identically zero by arithmetic)
+[16:06:55] [INFO] GR null test: all loops confirm R_GR = 0.000 days (exact).
+[16:06:55] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_02_gr_closure.json
+[16:06:55] [INFO] Step 02 complete.

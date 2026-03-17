@@ -1,0 +1,21 @@
+
+[16:07:03] [INFO] ======================================================================
+[16:07:03] [INFO] STEP 13: Bayesian GR vs TEP Comparison
+[16:07:03] [INFO] ======================================================================
+[16:07:05] [INFO] [baseline] logZ(GR)        = -39.22
+[16:07:05] [INFO] [baseline] logZ(TEP fixed) = -39.16
+[16:07:05] [INFO] [baseline] logZ(TEP free)  = -39.21
+[16:07:05] [INFO] [baseline] log BF fixed/GR = +0.06 (BF=1.06)
+[16:07:05] [INFO] [baseline] log BF free/GR  = +0.01 (BF=1.01)
+[16:07:05] [INFO] [baseline] Posterior tau   = 10.09 [2.28, 17.79] d
+[16:07:05] [INFO] [baseline] Posterior alpha = 0.0505 [0.0028, 0.0975]
+[16:07:07] [INFO] [h0pe2025_informed] logZ(GR)        = -39.51
+[16:07:07] [INFO] [h0pe2025_informed] logZ(TEP fixed) = -39.51
+[16:07:07] [INFO] [h0pe2025_informed] logZ(TEP free)  = -39.59
+[16:07:07] [INFO] [h0pe2025_informed] log BF fixed/GR = +0.00 (BF=1)
+[16:07:07] [INFO] [h0pe2025_informed] log BF free/GR  = -0.08 (BF=0.922)
+[16:07:07] [INFO] [h0pe2025_informed] Posterior tau   = 11.16 [2.51, 19.72] d
+[16:07:07] [INFO] [h0pe2025_informed] Posterior alpha = 0.0476 [-0.0163, 0.1107]
+[16:07:07] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_13_bayes_comparison.png
+[16:07:07] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_13_bayes_model_comparison.json
+[16:07:07] [INFO] Step 13 complete.

@@ -96,20 +96,20 @@ class HTMLToMarkdownConverter {
             if (!mainMatch) throw new Error('Could not find manuscript content.');
             
             const today = new Date().toISOString().split('T')[0];
-            const header = `# TEP-LENS: Resolving the Hubble Tension
+            const header = `# The Temporal Equivalence Principle: A Geometric Route-Closure Test in Multiply-Imaged Supernovae
 
 **Author:** Matthew Lukin Smawfield  
-**Version:** v0.2 (Kingston upon Hull)  
-**Date:** First published: 11 January 2026  
-**DOI:** 10.5281/zenodo.18209703  
+**Version:** v0.1 (Lisboa)  
+**Date:** First published: 02 March 2026  
+**DOI:** 10.5281/zenodo.18216583  
 **Generated:** ${today}  
-**Paper Series:** TEP Series: Paper 12 (Cosmological Observations)
+**Paper Series:** TEP Series: Paper 14 (Strong Lensing)
 
 ---
 
 `;
             const markdown = header + this.htmlToMarkdown(mainMatch[1]);
-            const outputPath = path.join(__dirname, '..', '14manuscript-tep-lens.md');
+            const outputPath = path.join(__dirname, '..', 'manuscripts', '14manuscript-tep-lens.md');
             fs.writeFileSync(outputPath, markdown, 'utf8');
             console.log(`✅ Markdown saved to: ${outputPath}`);
         } catch (error) {

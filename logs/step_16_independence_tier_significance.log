@@ -1,0 +1,16 @@
+
+[16:07:18] [INFO] ======================================================================
+[16:07:18] [INFO] STEP 16: Independence-Tier Significance
+[16:07:18] [INFO] ======================================================================
+[16:07:18] [INFO] Individual Correlated Tests (SN Refsdal SX):
+[16:07:18] [INFO]   Wilcoxon signed-rank: z=2.42, p=0.0078 (Headline)
+[16:07:18] [INFO]   Pearson delay-mu:     z=2.31, p=0.0106
+[16:07:18] [INFO]   Ext-informed w-mean:  z=1.25, p=0.1049
+[16:07:18] [INFO]   Alpha vs zero:        z=0.96, p=0.1696
+[16:07:18] [INFO] 
+NOTE: These tests are fundamentally correlated. Combining them
+[16:07:18] [INFO] via Fisher/Stouffer is invalid. The conservative significance
+[16:07:18] [INFO] is the strongest robust single test: z=2.42 (Wilcoxon).
+[16:07:18] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_16_tier_significance.png
+[16:07:18] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_16_tier_significance.json
+[16:07:18] [INFO] Step 16 complete.

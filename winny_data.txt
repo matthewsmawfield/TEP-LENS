@@ -1,0 +1,7 @@
+Parsing 2025wny.tex...
+L257: SN~2025wny thus represents the first confirmed galaxy-scale strongly lensed supernova with time delays likely in the range of days to weeks, as judged
+L270: Given the rarity of strongly lensed SNe, the time-delay method has been demonstrated through lensed quasars, which are more abundant \citep[e.g.][]{Su
+L328: After identifying SN~2025wny as a promising lensed-SN candidate, we triggered follow-up imaging on September 29, 2025, at the Lulin Observatory (see S
+M396: Not only the redshift of the strongly lensed SN, but also that of the second deflector galaxy G2 (the perturber) was previously unknown. Until now, on
+L449: We have presented the first characterisation of SN~2025wny, the first confirmed galaxy-scale strongly lensed supernova with expected time delays of da
+M451: We have also presented key information on the G1\,+\,G2 system: measuring a spectroscopic redshift for G2 ($z_\mathrm{p} = 0.375 \pm 0.001$) helps to 

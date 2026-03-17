@@ -95,10 +95,10 @@ def main():
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt
-        from scripts.utils.plot_style import set_pub_style, COLORS
+        from scripts.utils.plot_style import set_pub_style, COLORS, FIG_SIZE
         
         set_pub_style()
-        fig, ax1 = plt.subplots(figsize=(8, 5))
+        fig, ax1 = plt.subplots(figsize=FIG_SIZE)
         
         ax1.plot([r["sigma_model_days"] for r in results_list], 
                  [r["expected_z_score"] for r in results_list], 
@@ -109,8 +109,8 @@ def main():
         ax1.axvline(exact_sigma_3sigma, color="gray", ls="--", alpha=0.5)
         ax1.axvline(exact_sigma_5sigma, color="gray", ls=":", alpha=0.5)
         
-        ax1.text(60, 3.2, "3$\sigma$ Evidence", va="bottom", ha="right", fontsize=10)
-        ax1.text(60, 5.2, "5$\sigma$ Discovery", va="bottom", ha="right", fontsize=10)
+        ax1.text(60, 3.2, "3$\sigma$ Evidence", va="bottom", ha="right", )
+        ax1.text(60, 5.2, "5$\sigma$ Discovery", va="bottom", ha="right", )
         
         ax1.set_xlabel(r"Per-Model Uncertainty $\sigma_{\rm model}$ [days]")
         ax1.set_ylabel(r"Expected Ensemble Significance ($z$-score)")
@@ -118,12 +118,12 @@ def main():
         ax1.set_ylim(0, 10)
         
         ax1.set_title(f"TEP Precision Roadmap (SN Refsdal, 8 Models)")
-        fig.tight_layout()
+        # fig.tight_layout()
         
         out_dir = PROJECT_ROOT / "results" / "figures"
         out_dir.mkdir(exist_ok=True, parents=True)
         out_fig = out_dir / f"step_{STEP_NUM}_precision_roadmap.png"
-        fig.savefig(out_fig, dpi=150)
+        fig.savefig(out_fig)
         plt.close(fig)
         print_status(f"Figure saved to {out_fig}")
         

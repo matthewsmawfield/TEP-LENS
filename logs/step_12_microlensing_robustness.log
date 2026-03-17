@@ -1,0 +1,10 @@
+
+[16:07:02] [INFO] ======================================================================
+[16:07:02] [INFO] STEP 12: Microlensing Robustness Monte Carlo
+[16:07:02] [INFO] ======================================================================
+[16:07:02] [INFO] frac=0.10: R_TEP=13.21 [12.03, 14.43] d; P(Δχ²>0)=1.000
+[16:07:02] [INFO] frac=0.20: R_TEP=13.24 [10.91, 15.59] d; P(Δχ²>0)=1.000
+[16:07:02] [INFO] frac=0.30: R_TEP=13.15 [9.76, 16.73] d; P(Δχ²>0)=0.995
+[16:07:03] [INFO] Figure saved to /Users/matthewsmawfield/www/TEP-LENS/results/figures/step_12_microlensing_robustness.png
+[16:07:03] [INFO] Results saved to /Users/matthewsmawfield/www/TEP-LENS/results/outputs/step_12_microlensing_robustness.json
+[16:07:03] [INFO] Step 12 complete.

@@ -19,7 +19,7 @@ For any three images $(i, j, k)$ from the same source, the oriented sum of pairw
 $\mathcal{R}_{\rm GR}(i,j,k) \equiv \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = (t_j - t_i) + (t_k - t_j) + (t_i - t_k) = 0$
 </p>
 <p>
-This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for <em>any</em> combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which the five most physically informative.
+This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for <em>any</em> combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which five are physically informative and used in this analysis.
 </p>
 
 <h3>2.3 TEP Temporal Shear</h3>
@@ -27,10 +27,10 @@ This is a purely algebraic identity, independent of the lens model, cosmology, o
 Under TEP, the effective transit time of light along path $i$ is modified by a temporal shear factor $\Gamma_t(i)$ that scales with the projected gravitational potential depth at the image position:
 </p>
 <p>
-\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t(i), \quad \Gamma_t(i) = 1 + \alpha\log_{10}(\mu_{\rm norm}(i))
+$\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t(i), \quad \Gamma_t(i) = 1 + \alpha\log_{10}(\mu_{\rm norm}(i))$
 </p>
 <p>
-where $\Delta t_i$ is the lens-induced excess time delay (relative to the unlensed cosmological transit time), $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\alpha$ is the TEP coupling parameter (calibrated to $\alpha = 0.05$ from local-domain analyses, Papers I–XIII). The modified pairwise delay between images $i$ and $j$ becomes $\Delta t_{ij}^{\rm obs} = \Delta t_j^{\rm obs} - \Delta t_i^{\rm obs} = \Gamma_t(j)\,\Delta t_j^{\rm GR} - \Gamma_t(i)\,\Delta t_i^{\rm GR}$.
+where $\Delta t_i$ is the lens-induced excess time delay (relative to the unlensed cosmological transit time), $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\alpha$ is the TEP coupling parameter. This work adopts the expansion-mode coupling $\alpha = -0.05$, a value calibrated from local-domain phenomenology (Smawfield 2025e). This calibration is not adjusted to fit the strong-lensing data. Because $\alpha < 0$, images with below-average magnification ($\mu_{\rm norm} < 1$, $\log_{10}(\mu_{\rm norm}) < 0$) experience a temporal expansion ($\Gamma_t > 1$) and arrive *later* than GR predicts, while highly magnified images ($\mu_{\rm norm} > 1$) arrive *earlier* ($\Gamma_t < 1$).
 </p>
 <p>
 The resulting TEP route-closure residual for loop $(i,j,k)$ is:
@@ -47,24 +47,35 @@ This is non-zero whenever $\Gamma_t$ differs between images, i.e.\ whenever the 
 The TEP temporal shear couples to the projected gravitational convergence $\kappa(\boldsymbol{\theta})$ at each image position, not directly to the total magnification $\mu$. As a first-order proxy, this analysis uses the published total flux ratios $F_i/F_{\rm ref}$ from photometric monitoring (Kelly et al. 2023 for SN Refsdal; HST imaging for TDCOSMO systems). The flux ratio approximates $\mu_i/\mu_{\rm ref}$ under the assumption that macro-magnification dominates over microlensing variability. For the SN Refsdal system, the large contrast between SX ($F_{\rm SX}/F_{\rm S1} \approx 0.30$) and S4 ($F_{\rm S4}/F_{\rm S1} \approx 1.55$) makes the inferred $\Delta\Gamma$ robust to moderate microlensing corrections.
 </p>
 
+<h4>2.4.1 Microlensing Caveat and Robustness</h4>
+<p>
+Microlensing can perturb observed fluxes and therefore bias flux-ratio-based magnification proxies. This is most important for fine-grained comparisons among the inner Einstein-cross images (S1-S4), where the expected TEP shifts are small ($\lesssim 0.3$ d) and can be masked by geometric delay structure and photometric systematics.
+</p>
+<p>
+The central SX-driven test is more robust because it is controlled by a large rank-order contrast (SX is much less magnified than S4 and arrives much later). Moderate microlensing-level perturbations at the tens-of-percent level can shift the inferred amplitude of $\Delta\Gamma$, but do not naturally invert the ordering $\mu_{\rm SX} < \mu_{\rm S4}$ that sets the sign of the predicted SX residual. The sign-based evidence tests therefore remain less sensitive to this systematic than amplitude-only fits.
+</p>
+<p>
+Accordingly, the manuscript treats flux-ratio-based inference as a first-order approximation, reports sign and magnitude evidence separately, and frames convergence-based modelling at the image positions as the key next systematic refinement.
+</p>
+
 <h3>2.5 Error Propagation</h3>
 <p>
 The measurement uncertainty on $\mathcal{R}_{\rm TEP}$ is dominated by the uncertainty on the measured time delays. For loop $(i,j,k)$:
 </p>
 <p>
-$\sigma_{\mathcal{R}} = \sqrt{|\Gamma_i-1|^2\sigma_{ij}^2 + |\Gamma_j-1|^2\sigma_{jk}^2 + |\Gamma_k-1|^2\sigma_{ki}^2}$
+$\sigma_{\mathcal{R}} = \sqrt{(\Gamma_i-\Gamma_j)^2\sigma_j^2 + (\Gamma_j-\Gamma_k)^2\sigma_k^2}$
 </p>
 <p>
-where $\sigma_{ij} = \sqrt{\sigma_i^2 + \sigma_j^2}$ is the quadrature sum of the individual delay measurement errors. For the S1–S4–SX loop of SN Refsdal, $\sigma_{\mathcal{R}} = 0.17$ days, giving SNR = 78 against the predicted $+13.2$ day residual.
+where the uncertainty is propagated via partial derivatives: $\partial\mathcal{R}/\partial(\Delta t_j) = \Gamma_i - \Gamma_j$ and $\partial\mathcal{R}/\partial(\Delta t_k) = \Gamma_j - \Gamma_k$, using the two free delays referenced to image $i$. For the S1–S4–SX loop of SN Refsdal, $\sigma_{\mathcal{R}} = 0.21$ days, giving SNR = 63 against the predicted $+13.2$ day residual.
 </p>
 
 <h3>2.6 TDCOSMO Fractional Shear Test</h3>
 <p>
-For the three TDCOSMO quad-lens quasar systems (HE0435-1223, WFI2033-4723, DES0408-5354), each pair of images $(i, A)$ yields a TEP-predicted fractional delay shift:
+For the eight TDCOSMO quad-lens quasar systems and SN Encore, each pair of images $(i, A)$ yields a TEP-predicted fractional delay shift:
 </p>
 <p>
 $\delta_{\rm TEP}^{iA} = \alpha \log_{10}(F_i/F_A)$
 </p>
 <p>
-and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. The analysis tests whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compare the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal closure test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
+and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. The analysis tests whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compares the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal closure test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
 </p>

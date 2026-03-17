@@ -1,0 +1,252 @@
+{
+  "step": "19",
+  "status": "success",
+  "description": "Standalone TDCOSMO2025 public ingestion (local-first, API fallback)",
+  "source": {
+    "repository": "TDCOSMO/TDCOSMO2025_public",
+    "api_root": "https://api.github.com/repos/TDCOSMO/TDCOSMO2025_public/contents",
+    "source_mode": "local_cache",
+    "remote_error": null,
+    "max_file_mb": 20.0,
+    "max_download_files": 60
+  },
+  "downloaded_files": [],
+  "downloaded_count": 0,
+  "remote_manifest_count": 0,
+  "remote_manifest_sample": [],
+  "local_summary": {
+    "exists": true,
+    "n_files": 60,
+    "total_size_bytes": 106412966,
+    "extension_counts": {
+      ".md": 7,
+      ".csv": 38,
+      ".txt": 9,
+      ".dat": 5,
+      ".yaml": 1
+    },
+    "posterior_like_files": [
+      "Chain_release_README.md",
+      "ExternalLenses/SL2S/sl2s_sample_kinematics_pritom.csv",
+      "TDCOSMO_sample/README.md",
+      "TDCOSMO_sample/TDCOSMO_data/B1608+656/B1608_kext.txt",
+      "TDCOSMO_sample/TDCOSMO_data/B1608+656/README.md",
+      "TDCOSMO_sample/TDCOSMO_data/DES0408-5354/kext_sampled.txt",
+      "TDCOSMO_sample/TDCOSMO_data/DES0408-5354/power_law_dist_post_no_kext.txt",
+      "TDCOSMO_sample/TDCOSMO_data/HE0435-1223/he_powerlaw_Ddt.dat",
+      "TDCOSMO_sample/TDCOSMO_data/HE0435-1223/kappa_powerlaw_he.dat",
+      "TDCOSMO_sample/TDCOSMO_data/PG1115+080/kappa_powerlaw_pg.dat",
+      "TDCOSMO_sample/TDCOSMO_data/PG1115+080/pg_powerlaw_Ddt.dat",
+      "TDCOSMO_sample/TDCOSMO_data/RXJ1131-1231/glee_lens_model_posterior_README.md",
+      "TDCOSMO_sample/TDCOSMO_data/RXJ1131-1231/rxj1131_glee_power_law_lens_model_posterior.txt",
+      "TDCOSMO_sample/TDCOSMO_data/RXJ1131-1231/rxj1131_kinematics_README.md",
+      "TDCOSMO_sample/TDCOSMO_data/SDSS1206+4332/angular_diameter_final_composite.txt",
+      "TDCOSMO_sample/TDCOSMO_data/SDSS1206+4332/angular_diameter_final_power_law.txt",
+      "TDCOSMO_sample/TDCOSMO_data/SDSS1206+4332/angular_diameter_pre_LOS.txt",
+      "TDCOSMO_sample/TDCOSMO_data/SDSS1206+4332/angular_diameter_pre_LOS_composite.txt",
+      "TDCOSMO_sample/TDCOSMO_data/SDSS1206+4332/angular_diameter_pre_LOS_power_law.txt",
+      "TDCOSMO_sample/TDCOSMO_data/SDSS1206+4332/final.csv",
+      "TDCOSMO_sample/TDCOSMO_data/WFI2033-4723/wfi2033_pl_dt_nokext.dat",
+      "TDCOSMO_sample/tdcosmo_sample.yaml"
+    ],
+    "posterior_like_count": 22,
+    "lens_coverage": {
+      "HE0435": true,
+      "WFI2033": true,
+      "RXJ1131": true,
+      "PG1115": true,
+      "B1608": true,
+      "DES0408": true,
+      "J1206": true
+    },
+    "lens_coverage_count": 7,
+    "example_files": [
+      "Chain_release_README.md",
+      "ExternalLenses/SL2S/kappa_ext/LoSData.csv",
+      "ExternalLenses/SL2S/kappa_ext/readme.md",
+      "ExternalLenses/SL2S/kappa_ext/sl2s_los_gev.csv",
+      "ExternalLenses/SL2S/readme.md",
+      "ExternalLenses/SL2S/sl2s_all_params.csv",
+      "ExternalLenses/SL2S/sl2s_all_params_ws.csv",
+      "ExternalLenses/SL2S/sl2s_sample_kinematics_pritom.csv",
+      "ExternalLenses/SLACS/.ipynb_checkpoints/slacs_all_params-checkpoint.csv",
+      "ExternalLenses/SLACS/LineOfSightData.csv",
+      "ExternalLenses/SLACS/slacs_all_params.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0029-0055/SDSSJ0029-0055_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0029-0055/SDSSJ0029-0055_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0037-0942/SDSSJ0037-0942_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0037-0942/SDSSJ0037-0942_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0330-0020/SDSSJ0330-0020_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0330-0020/SDSSJ0330-0020_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1112+0826/SDSSJ1112+0826_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1112+0826/SDSSJ1112+0826_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1204+0358/SDSSJ1204+0358_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1204+0358/SDSSJ1204+0358_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1250+0523/SDSSJ1250+0523_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1250+0523/SDSSJ1250+0523_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1306+0600/SDSSJ1306+0600_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1306+0600/SDSSJ1306+0600_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1402+6321/SDSSJ1402+6321_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1402+6321/SDSSJ1402+6321_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1531-0105/SDSSJ1531-0105_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1531-0105/SDSSJ1531-0105_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1538+5817/SDSSJ1538+5817_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1538+5817/SDSSJ1538+5817_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1621+3931/SDSSJ1621+3931_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1621+3931/SDSSJ1621+3931_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1627-0053/SDSSJ1627-0053_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1627-0053/SDSSJ1627-0053_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1630+4520/SDSSJ1630+4520_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1630+4520/SDSSJ1630+4520_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ2303+1422/SDSSJ2303+1422_kinmap.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ2303+1422/SDSSJ2303+1422_kinmap_cov.csv",
+      "ExternalLenses/SLACS/slacs_kcwi_kinematics_table.csv"
+    ],
+    "numeric_file_summaries": [
+      {
+        "file": "ExternalLenses/SL2S/sl2s_all_params_ws.csv",
+        "summary": {
+          "n_rows_used": 22,
+          "n_cols": 54,
+          "col0_median": 11.5,
+          "col0_p16": 4.359999999999999,
+          "col0_p84": 18.64,
+          "col0_std": 6.34428877022476
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0029-0055/SDSSJ0029-0055_kinmap.csv",
+        "summary": {
+          "n_rows_used": 6,
+          "n_cols": 3,
+          "col0_median": 0.5499197011971874,
+          "col0_p16": 0.17597430438309997,
+          "col0_p84": 1.2098233426338123,
+          "col0_std": 0.5550890904573839
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0029-0055/SDSSJ0029-0055_kinmap_cov.csv",
+        "summary": {
+          "n_rows_used": 6,
+          "n_cols": 6,
+          "col0_median": 1.2857275597776527,
+          "col0_p16": 0.9253125829014653,
+          "col0_p84": 2.8909137618128566,
+          "col0_std": 2.2884373891378784
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0037-0942/SDSSJ0037-0942_kinmap.csv",
+        "summary": {
+          "n_rows_used": 6,
+          "n_cols": 3,
+          "col0_median": 0.5369868523943151,
+          "col0_p16": 0.17183579276618086,
+          "col0_p84": 1.1813710752674933,
+          "col0_std": 0.5420346694875938
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0037-0942/SDSSJ0037-0942_kinmap_cov.csv",
+        "summary": {
+          "n_rows_used": 6,
+          "n_cols": 6,
+          "col0_median": 1.428278380764871,
+          "col0_p16": 1.2088133025435581,
+          "col0_p84": 3.4076578728874276,
+          "col0_std": 2.6684296097956515
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0330-0020/SDSSJ0330-0020_kinmap.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 3,
+          "col0_median": 0.4008277034644309,
+          "col0_p16": 0.12826486510861787,
+          "col0_p84": 1.0154301821098917,
+          "col0_std": 0.4494580993662812
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ0330-0020/SDSSJ0330-0020_kinmap_cov.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 7,
+          "col0_median": 6.219189089790965,
+          "col0_p16": 2.746013368498117,
+          "col0_p84": 18.764411170516503,
+          "col0_std": 19.5303275808877
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1112+0826/SDSSJ1112+0826_kinmap.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 3,
+          "col0_median": 0.41152705762513336,
+          "col0_p16": 0.13168865844004266,
+          "col0_p84": 1.0425352126503378,
+          "col0_std": 0.46145555199730376
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1112+0826/SDSSJ1112+0826_kinmap_cov.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 7,
+          "col0_median": 1.7598392618306924,
+          "col0_p16": 0.8285315778043513,
+          "col0_p84": 2.8807116601283083,
+          "col0_std": 3.2745655466422057
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1204+0358/SDSSJ1204+0358_kinmap.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 3,
+          "col0_median": 0.33671162725518583,
+          "col0_p16": 0.10774772072165947,
+          "col0_p84": 0.8530027890464708,
+          "col0_std": 0.3775631442452758
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1204+0358/SDSSJ1204+0358_kinmap_cov.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 7,
+          "col0_median": 1.4656691191663884,
+          "col0_p16": 1.1359494984521483,
+          "col0_p84": 2.0001584151790004,
+          "col0_std": 2.9888916401333248
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1250+0523/SDSSJ1250+0523_kinmap.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 3,
+          "col0_median": 0.3698451266258092,
+          "col0_p16": 0.11835044052025895,
+          "col0_p84": 0.9369409874520501,
+          "col0_std": 0.4147165633422066
+        }
+      },
+      {
+        "file": "ExternalLenses/SLACS/slacs_kcwi_data/SDSSJ1250+0523/SDSSJ1250+0523_kinmap_cov.csv",
+        "summary": {
+          "n_rows_used": 7,
+          "n_cols": 7,
+          "col0_median": 1.4353632487683425,
+          "col0_p16": 1.1851319460845635,
+          "col0_p84": 2.392057666045514,
+          "col0_std": 4.237746892882647
+        }
+      }
+    ]
+  },
+  "next_action": "If lens/posterior coverage is incomplete, stage full TDCOSMO2025_public repo under data/interim/external/tdcosmo2025_public and rerun step_19."
+}

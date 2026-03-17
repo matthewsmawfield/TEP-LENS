@@ -1,0 +1,59 @@
+{
+  "step": "13",
+  "status": "success",
+  "priors": {
+    "baseline": {
+      "mu_bias": "Normal(0, 40 d)",
+      "tau": "HalfNormal(20 d)",
+      "alpha": "Normal(0.05, 0.05) [TEP-free model]"
+    },
+    "h0pe2025_informed": {
+      "mu_bias": "Normal(+8, 50 d)",
+      "tau": "HalfNormal(25 d)",
+      "alpha": "Normal(0.05, 0.07) [TEP-free model]"
+    }
+  },
+  "scenarios": {
+    "baseline": {
+      "note": "Original weakly informative priors (alpha centered on -0.05).",
+      "evidence": {
+        "logZ_gr": -39.21865613815221,
+        "logZ_tep_fixed": -39.15800600263789,
+        "logZ_tep_free": -39.2066202544869,
+        "log_bf_tep_fixed_over_gr": 0.0606501355143223,
+        "log_bf_tep_free_over_gr": 0.012035883665312497,
+        "bf_tep_fixed_over_gr": 1.062527108649825,
+        "bf_tep_free_over_gr": 1.0121086063809623
+      },
+      "posterior": {
+        "tau_mean_days": 10.08738919512939,
+        "tau_p16_days": 2.282162457564008,
+        "tau_p84_days": 17.789823474689285,
+        "alpha_mean": -0.050506130648000976,
+        "alpha_p16": -0.0982146608047526,
+        "alpha_p84": -0.003554705023169393
+      }
+    },
+    "h0pe2025_informed": {
+      "note": "Sensitivity prior set informed by reported H0pe lens-model bias direction (2510.07637): allows broader/positive residual-bias nuisance without forcing it.",
+      "evidence": {
+        "logZ_gr": -39.51117968332026,
+        "logZ_tep_fixed": -39.51044060506631,
+        "logZ_tep_free": -39.59264850254259,
+        "log_bf_tep_fixed_over_gr": 0.0007390782539502538,
+        "log_bf_tep_free_over_gr": -0.08146881922233007,
+        "bf_tep_fixed_over_gr": 1.0007393514395806,
+        "bf_tep_free_over_gr": 0.9217614506446621
+      },
+      "posterior": {
+        "tau_mean_days": 11.161250438107082,
+        "tau_p16_days": 2.509581871566215,
+        "tau_p84_days": 19.7162220802687,
+        "alpha_mean": -0.047614406694065796,
+        "alpha_p16": -0.11142631536686237,
+        "alpha_p84": 0.015559205864776174
+      }
+    }
+  },
+  "figure": "/Users/matthewsmawfield/www/TEP-LENS/results/figures/step_13_bayes_comparison.png"
+}

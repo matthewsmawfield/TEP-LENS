@@ -1,6 +1,8 @@
 {
   "version": "0.1.0",
+  "codename": "Lisboa",
   "project": "TEP-LENS",
-  "title": "TEP-LENS: Strong Lensing Time Delay Closure Tests",
-  "status": "in-development"
+  "title": "The Temporal Equivalence Principle: A Geometric Route-Closure Test in Multiply-Imaged Supernovae",
+  "date-published": "2026-03-02",
+  "status": "published"
 }

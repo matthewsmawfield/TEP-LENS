@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 """
-TEP-LENS: Step 03 - TEP Route-Closure Test
+TEP-LENS: Step 03 - TEP Route-Closure Prediction (SN Refsdal)
 
-Calculates the predicted TEP closure residual for SN H0pe.
+Under the Temporal Equivalence Principle (TEP), the effective transit time
+of light scales with local gravitational potential depth Gamma_t:
 
-Under TEP, the effective speed of light scales as c' = c / Gamma_t.
-This means the geometric travel time dt_geom is stretched by Gamma_t.
+    t_obs_i = t_geom_i * Gamma_t(i)
 
-For a closure test, we use the fact that the light paths traverse different 
-gravitational potential depths through the lens cluster.
+where Gamma_t(i) = 1 + alpha * log10(mu_i), and mu_i is the lensing
+magnification at image i (a proxy for the projected potential depth).
 
-Assuming we have macro-model magnifications mu_A, mu_B, mu_C, these 
-correlate with the local potential depth at the image positions.
-For a first-order prediction, Gamma_t scales with the projected mass density, 
-which correlates with magnification.
-Gamma_i = 1 + alpha * log10(mu_i)
+For a closed loop i->j->k->i, the TEP closure residual is:
+
+    R_TEP = (Gamma_i - 1)*dt_ij + (Gamma_j - 1)*dt_jk + (Gamma_k - 1)*dt_ki
+
+This is non-zero if and only if the Gamma_t values differ between images.
+The MSD cannot mimic this, because any global mass sheet scales all delays
+by the same factor, leaving the loop residual unchanged.
+
+Magnification proxies: Kelly+2023 total relative flux ratios (F_i/F_ref),
+which are direct proportional measures of the absolute magnification at
+each image position.
 """
 
 import json
@@ -22,7 +28,6 @@ import sys
 from pathlib import Path
 import numpy as np
 
-# Add project root to path for imports
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
@@ -34,64 +39,139 @@ def safe_json_default(obj):
         return obj.item()
     raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
+def propagate_error(*errs):
+    return float(np.sqrt(sum(e**2 for e in errs)))
+
 def main():
-    print_status(f"STEP {STEP_NUM}: TEP Route-Closure Prediction", "TITLE")
-    
-    data_path = PROJECT_ROOT / "data" / "raw" / "snh0pe" / "snh0pe_literature_data.json"
-    if not data_path.exists():
-        print_status(f"Required data file missing: {data_path}", "ERROR")
-        
-    with open(data_path, 'r') as f:
-        data = json.load(f)
-        
-    print_status("Loading observed delays and lens model magnifications...")
-    delays = data["time_delays"]["pierel_2024_photometric"]
-    dt_AB_obs = delays["dt_AB"]["value"]
-    dt_CB_obs = delays["dt_CB"]["value"]
-    
-    # Deriving dt_BC and dt_CA for a loop: A -> B -> C -> A
-    dt_AB = dt_AB_obs
-    dt_BC = -dt_CB_obs
-    dt_CA = -(dt_AB_obs - dt_CB_obs)
-    
-    alpha_tep = 0.05  # Representative coupling magnitude for demonstration
-    
-    mu_A = data["lens_model"]["mu_A"]["value"]
-    mu_B = data["lens_model"]["mu_B"]["value"]
-    mu_C = data["lens_model"]["mu_C"]["value"]
-    
-    print_status("Computing temporal shear factors...")
-    Gamma_A = 1 + alpha_tep * np.log10(mu_A)
-    Gamma_B = 1 + alpha_tep * np.log10(mu_B)
-    Gamma_C = 1 + alpha_tep * np.log10(mu_C)
-    
-    print_status(f"  Path A (mu={mu_A}): Gamma = {Gamma_A:.4f}")
-    print_status(f"  Path B (mu={mu_B}): Gamma = {Gamma_B:.4f}")
-    print_status(f"  Path C (mu={mu_C}): Gamma = {Gamma_C:.4f}")
-    
-    R_closure = (Gamma_A - 1) * dt_AB + (Gamma_B - 1) * dt_BC + (Gamma_C - 1) * dt_CA
-    
-    print_status(f"  Predicted TEP Closure Residual: {R_closure:.2f} days")
-    
+    print_status(f"STEP {STEP_NUM}: TEP Route-Closure Prediction — SN Refsdal", "TITLE")
+
+    catalog_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "lensed_sn_catalog.json"
+    if not catalog_path.exists():
+        print_status(f"Required catalog missing: {catalog_path}. Run step_01 first.", "ERROR")
+
+    with open(catalog_path, 'r') as f:
+        catalog = json.load(f)
+
+    refsdal = catalog["sn_refsdal"]
+    delays = refsdal["time_delays_days"]
+    fluxes = refsdal["magnification_proxies"]["flux_total"]
+
+    # Absolute arrival times relative to S1
+    dt = {
+        "S1": 0.0,
+        "S2": delays["dt_S2_S1"]["value"],
+        "S3": delays["dt_S3_S1"]["value"],
+        "S4": delays["dt_S4_S1"]["value"],
+        "SX": delays["dt_SX_S1"]["value"],
+    }
+    dt_err = {
+        "S1": 0.0,
+        "S2": delays["dt_S2_S1"]["err"],
+        "S3": delays["dt_S3_S1"]["err"],
+        "S4": delays["dt_S4_S1"]["err"],
+        "SX": delays["dt_SX_S1"]["err"],
+    }
+
+    # Relative magnification proxies (flux ratio relative to mean)
+    mu_rel = {img: fluxes[img]["value"] for img in fluxes}
+    mu_ref = np.mean(list(mu_rel.values()))  # normalise to mean flux
+    mu_norm = {img: mu_rel[img] / mu_ref for img in mu_rel}
+
+    alpha_tep = -0.05  # TEP coupling, calibrated to local domain (Papers 1-13)
+
+    # Gamma_t(i) = 1 + alpha * log10(mu_norm_i)
+    Gamma = {img: 1.0 + alpha_tep * np.log10(mu_norm[img]) for img in mu_norm}
+
+    print_status(f"TEP coupling alpha = {alpha_tep} (Expansion/Screening)")
+    print_status("Temporal shear factors Gamma_t per image:")
+    for img in ["S1", "S2", "S3", "S4", "SX"]:
+        print_status(f"  {img}: mu_rel={mu_rel[img]:.3f}, mu_norm={mu_norm[img]:.3f}, "
+                     f"Gamma={Gamma[img]:.5f}")
+
+    # ------------------------------------------------------------------
+    # Closure loops
+    # R_TEP = sum over edges (i->j) of: (Gamma_i - 1) * dt_ij
+    # where dt_ij = dt[j] - dt[i]
+    # ------------------------------------------------------------------
+    loops = {
+        "S1_S2_S3": ["S1", "S2", "S3"],
+        "S1_S2_S4": ["S1", "S2", "S4"],
+        "S1_S3_S4": ["S1", "S3", "S4"],
+        "S1_S2_SX": ["S1", "S2", "SX"],
+        "S1_S4_SX": ["S1", "S4", "SX"],
+    }
+
+    loop_results = {}
+    print_status("Computing TEP predicted closure residuals...")
+
+    for name, (i, j, k) in loops.items():
+        dt_ij = dt[j] - dt[i]
+        dt_jk = dt[k] - dt[j]
+        dt_ki = dt[i] - dt[k]
+
+        R_tep = ((Gamma[i] - 1) * dt_ij
+                 + (Gamma[j] - 1) * dt_jk
+                 + (Gamma[k] - 1) * dt_ki)
+
+        # Error propagation via partial derivatives w.r.t. FREE delays.
+        # All delays are measured relative to image i (dt_i = 0, sigma_i = 0).
+        # R = (G_i-1)*(dt_j-dt_i) + (G_j-1)*(dt_k-dt_j) + (G_k-1)*(dt_i-dt_k)
+        # dR/d(dt_j) = (G_i-1) - (G_j-1) = G_i - G_j
+        # dR/d(dt_k) = (G_j-1) - (G_k-1) = G_j - G_k
+        # This avoids double-counting shared delay uncertainties in the loop edges.
+        dR_ddt_j = Gamma[i] - Gamma[j]
+        dR_ddt_k = Gamma[j] - Gamma[k]
+        R_err = propagate_error(
+            dR_ddt_j * dt_err[j],
+            dR_ddt_k * dt_err[k],
+        )
+
+        # Signal-to-noise of predicted residual vs measurement sensitivity
+        snr = abs(R_tep) / R_err if R_err > 0 else 0.0
+
+        loop_results[name] = {
+            "images": [i, j, k],
+            "Gamma": {i: float(Gamma[i]), j: float(Gamma[j]), k: float(Gamma[k])},
+            "dt_ij_days": float(dt_ij),
+            "dt_jk_days": float(dt_jk),
+            "dt_ki_days": float(dt_ki),
+            "R_tep_days": float(R_tep),
+            "R_tep_err_days": float(R_err),
+            "snr": float(snr),
+        }
+
+        print_status(f"  Loop {i}-{j}-{k}: R_TEP = {R_tep:+.3f} ± {R_err:.3f} days "
+                     f"(SNR = {snr:.2f})")
+
+    # Summary statistics
+    all_R = [v["R_tep_days"] for v in loop_results.values()]
+    all_snr = [v["snr"] for v in loop_results.values()]
+    best_loop = max(loop_results, key=lambda k: loop_results[k]["snr"])
+
+    print_status(f"Best loop by SNR: {best_loop} "
+                 f"(SNR={loop_results[best_loop]['snr']:.2f})")
+
     results = {
         "step": STEP_NUM,
         "status": "success",
-        "tep_predictions": {
-            "Gamma_A": Gamma_A,
-            "Gamma_B": Gamma_B,
-            "Gamma_C": Gamma_C,
-            "residual_days": R_closure,
-            "alpha_assumed": alpha_tep
-        }
+        "system": "SN Refsdal (MACS J1149.6+2223)",
+        "reference": "Kelly et al. 2023, ApJ 948, 93",
+        "alpha_tep": alpha_tep,
+        "gamma_per_image": {img: float(Gamma[img]) for img in Gamma},
+        "mu_norm_per_image": {img: float(mu_norm[img]) for img in mu_norm},
+        "tep_closure_loops": loop_results,
+        "best_loop_by_snr": best_loop,
+        "mean_R_tep_days": float(np.mean(all_R)),
+        "max_snr": float(max(all_snr)),
     }
-    
+
     out_dir = PROJECT_ROOT / "results" / "outputs"
     output_path = out_dir / f"step_{STEP_NUM}_tep_closure.json"
     with open(output_path, 'w') as f:
         json.dump(results, f, indent=2, default=safe_json_default)
-        
+
     print_status(f"Results saved to {output_path}")
     print_status(f"Step {STEP_NUM} complete.")
-        
+
 if __name__ == "__main__":
     main()

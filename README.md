@@ -53,8 +53,10 @@ TEP-LENS/
 │   └── utils/               # Shared utilities
 ├── site/
 │   └── components/          # HTML source of truth for manuscript
+├── tests/                  # Pytest regression tests
 ├── README.md
 ├── CITATION.cff
+├── Makefile
 ├── VERSION.json
 ├── version.txt
 ├── zenodo.txt
@@ -72,8 +74,11 @@ pip install -r requirements.txt
 ## Reproduction Pipeline
 
 ```bash
-# Full pipeline (steps 00–20, 21 total)
+# Full pipeline (29 step files across steps 00–20 and 30–36; 26 run by default)
 python scripts/steps/run_all_steps.py
+
+# Regression tests
+python -m pytest tests/ -v
 
 # Build manuscript from HTML components (static site + markdown)
 cd site && npm ci && npm run build

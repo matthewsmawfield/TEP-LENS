@@ -2,8 +2,11 @@
 """
 TEP-LENS: Run All Analysis Steps
 
-This script runs the complete reproducible analysis pipeline for the 
-TEP Lensing Time Delay Closure Test.
+Runs the complete reproducible analysis pipeline for the TEP Lensing
+Time-Delay Closure Test. The pipeline comprises 29 step files
+(numbered 00-20 and 30-36); this runner executes 26 of them in order.
+Steps 32b (temporal_shear_figure) and 36 (falsification) are run
+separately as needed.
 
 Usage:
     python scripts/steps/run_all_steps.py

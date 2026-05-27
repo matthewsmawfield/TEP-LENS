@@ -20,15 +20,11 @@ from scipy import stats
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
-from scripts.utils.logger import print_status
+from scripts.utils.logger import print_status, safe_json_default
 
 STEP_NUM = "11"
 
 
-def safe_json_default(obj):
-    if hasattr(obj, "item"):
-        return obj.item()
-    raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
 
 def method_family(method_str: str) -> str:

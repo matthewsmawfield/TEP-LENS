@@ -20,7 +20,7 @@ import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
-from scripts.utils.logger import print_status
+from scripts.utils.logger import print_status, safe_json_default
 
 STEP_NUM = "14"
 API_URL = "https://api.github.com/repos/shsuyu/H0LiCOW-public/contents/h0licow_distance_chains"
@@ -30,10 +30,6 @@ MAX_FILE_MB = 30.0
 MAX_ROWS_PARSE = 250000
 
 
-def safe_json_default(obj):
-    if hasattr(obj, "item"):
-        return obj.item()
-    raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
 
 def fetch_json(url: str):

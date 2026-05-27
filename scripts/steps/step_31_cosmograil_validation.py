@@ -936,7 +936,7 @@ def run_scrambled_residuals_test(data_dir: Path, target_system: str = 'DESJ0408'
     print("=" * 70)
     
     if not STEP_30_AVAILABLE:
-        print("Skipping: step_3_0 module not available.")
+        print("Skipping: step_30 module not available.")
         return {'status': 'SKIPPED'}
     
     # Find file
@@ -1495,7 +1495,7 @@ def main():
     print("=" * 70)
     
     parser = argparse.ArgumentParser()
-    parser.add_argument('--results-path', type=str, default='', help='Path to step_3_0 results JSON to validate')
+    parser.add_argument('--results-path', type=str, default='', help='Path to step_30 results JSON to validate')
     parser.add_argument('--data-dir', type=str, default='', help='Path to COSMOGRAIL data directory')
     parser.add_argument('--output-path', type=str, default='', help='Path to write validation JSON')
     parser.add_argument('--only-empirical-null', action='store_true', help='Skip the full suite and run only the empirical within-season shuffle null calibration')

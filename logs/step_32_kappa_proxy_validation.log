@@ -1,0 +1,40 @@
+
+[00:17:43] [INFO] ======================================================================
+[00:17:43] [INFO] STEP 32: Kappa Proxy Validation
+[00:17:43] [INFO] ======================================================================
+[00:17:43] [INFO] Running SN Refsdal shear-degeneracy sensitivity envelope (20,000 draws)...
+[00:17:47] [INFO] SN Refsdal kappa inference (median, p16-p84):
+[00:17:47] [INFO]   S1: kappa = 0.093 [0.000, 0.267]
+[00:17:47] [INFO]   S2: kappa = 0.029 [0.000, 0.206]
+[00:17:47] [INFO]   S3: kappa = 0.010 [0.000, 0.151]
+[00:17:47] [INFO]   S4: kappa = 0.181 [0.001, 0.348]
+[00:17:47] [INFO]   SX: kappa = 0.010 [0.010, 0.057]
+[00:17:47] [INFO] Closure residual (mu proxy, nominal): -14.538 d
+[00:17:47] [INFO] Closure residual (kappa inferred): -17.628 [-29.496, 22.700] d
+[00:17:47] [INFO] Equivalent alpha (to match same observed residual): -0.0320 [-0.0678, 0.0090]
+[00:17:47] [INFO] Rank-order agreement P(mu_rank == kappa_rank) = 0.034
+[00:17:47] [INFO] S4-SX contrast sign agreement P = 0.797
+[00:17:47] [INFO] Running TDCOSMO theoretical mu-kappa comparison (spherical)...
+[00:17:47] [INFO]   RXJ1131-1231: mu diverges (kappa >= 0.5 at Einstein radius)
+[00:17:47] [INFO]   HE0435-1223: mu diverges (kappa >= 0.5 at Einstein radius)
+[00:17:47] [INFO]   PG1115+080: delta_log_mu=-0.287, delta_log_kappa=-0.093, ratio=3.10
+[00:17:47] [INFO]   DES0408-5354: mu diverges (kappa >= 0.5 at Einstein radius)
+[00:17:47] [INFO]   SDSS1206+4332: mu diverges (kappa >= 0.5 at Einstein radius)
+[00:17:47] [INFO]   WFI2033-4723: mu diverges (kappa >= 0.5 at Einstein radius)
+[00:17:47] [INFO] Running TDCOSMO elliptical SIE + external shear comparison...
+[00:17:47] [INFO]   RXJ1131-1231: mu diverges in elliptical model
+[00:17:47] [INFO]   HE0435-1223: mu diverges in elliptical model
+[00:17:47] [INFO]   PG1115+080: elliptical ratio=3.15, spherical ratio=3.10, amplification factor=1.02
+[00:17:47] [INFO]   DES0408-5354: mu diverges in elliptical model
+[00:17:47] [INFO]   SDSS1206+4332: mu diverges in elliptical model
+[00:17:47] [INFO]   WFI2033-4723: mu diverges in elliptical model
+[00:17:49] [INFO] Figure saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32_kappa_mu_comparison.png
+[00:17:49] [INFO] 
+Proxy systematic budget:
+[00:17:49] [INFO]   Measurement:     5.6 d  (17%)
+[00:17:49] [INFO]   Lens-model:      18.4 d  (57%)
+[00:17:49] [INFO]   Proxy (mu->kappa): 26.1 d  (80%)
+[00:17:49] [INFO]   Microlensing:    2.2 d  (7%)
+[00:17:49] [INFO]   Total:           32.5 d
+[00:17:49] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_32_kappa_proxy_validation.json
+[00:17:49] [INFO] Step 32 complete.

@@ -1,0 +1,46 @@
+{
+  "step": "33",
+  "status": "success",
+  "inner_cross_only": {
+    "predicted_residuals_days": {
+      "S1_S2_S3": -0.10908514536456809,
+      "S1_S2_S4": 0.27822077216380114,
+      "S1_S3_S4": 0.34175821303309245
+    },
+    "geometric_noise_days": {
+      "S1_S2_S3": 0.0333238990041745,
+      "S1_S2_S4": 0.11056542335191483,
+      "S1_S3_S4": 0.14838820333217587
+    },
+    "snr_per_loop": {
+      "S1_S2_S3": 3.2734808538131435,
+      "S1_S2_S4": 2.5163451984284633,
+      "S1_S3_S4": 2.3031359997536076
+    },
+    "spearman_rank_delay_vs_inv_mu": {
+      "rho": -0.39999999999999997,
+      "pvalue_permutation_onesided": 0.7941
+    },
+    "pearson_r": -0.40352482843902615,
+    "pearson_p_onesided": 0.29823758578048687,
+    "signal_vs_noise_per_image": {
+      "S2": {
+        "predicted_shift_days": 0.06304489959025134,
+        "measurement_noise_days": 4.0,
+        "signal_to_noise": 0.015761224897562834
+      },
+      "S3": {
+        "predicted_shift_days": 0.10335379085636343,
+        "measurement_noise_days": 4.2,
+        "signal_to_noise": 0.02460804544199129
+      },
+      "S4": {
+        "predicted_shift_days": -0.21199178673565836,
+        "measurement_noise_days": 6.4,
+        "signal_to_noise": 0.03312371667744662
+      }
+    },
+    "conclusion": "The proxy model is non-predictive in the Einstein cross. Inner-cross predicted residuals (0.1-0.3 d) are 15-50x smaller than geometric noise (4-6 d). The Spearman rank correlation for S1-S4 alone is not significant. All probative content comes from the S4-SX contrast."
+  },
+  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_33_einstein_cross_null.png"
+}

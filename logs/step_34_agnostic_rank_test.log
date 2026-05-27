@@ -1,0 +1,14 @@
+
+[00:18:13] [INFO] ======================================================================
+[00:18:13] [INFO] STEP 34: Agnostic Rank Test
+[00:18:13] [INFO] ======================================================================
+[00:18:25] [INFO] Delay vs inferred kappa:
+[00:18:25] [INFO]   Spearman rho = -0.154
+[00:18:25] [INFO]   Permutation p (one-sided, n=20000) = 0.6348
+[00:18:43] [INFO] Delay vs flux-proxy mu:
+[00:18:43] [INFO]   Spearman rho = -0.300
+[00:18:43] [INFO]   Permutation p (one-sided, n=20000) = 0.7430
+[00:19:09] [INFO] Inner cross only (S1-S4) delay vs kappa:
+[00:19:09] [INFO]   Spearman rho = 0.400, p = 0.3745
+[00:19:09] [INFO] Inner cross only (S1-S4) delay vs mu:
+[00:19:09] [INFO]   Spearman rho = 0.400, p = 0.3745

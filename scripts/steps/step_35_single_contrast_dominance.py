@@ -211,7 +211,7 @@ def main():
         },
         "per_loop_contribution": loop_contrib,
         "headline": (
-            f"SN Refsdal's predicted TEP signal is {energy_drop_fraction:.0%} concentrated "
+            f"SN Refsdal's predicted TEP signal is {energy_drop_fraction:.1%} concentrated "
             f"in the S4-SX contrast (effective DOF = {eff_dof:.1f}), confirming this is a "
             f"single-contrast, single-system measurement."
         ),

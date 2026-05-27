@@ -46,6 +46,7 @@ STEPS = [
     "step_33_einstein_cross_null.py",             # Einstein-cross null test (single-lever fragility)
     "step_34_agnostic_rank_test.py",              # Ansatz-free rank test
     "step_35_single_contrast_dominance.py",       # Signal-energy concentration and effective degrees of freedom
+    "step_36_falsification_forward_prediction.py", # Forward-prediction falsification thresholds for SN 2025wny
     "step_20_external_completeness_synthesis.py", # Completeness-aware Tier-A significance synthesis from steps 16+19
 ]
 

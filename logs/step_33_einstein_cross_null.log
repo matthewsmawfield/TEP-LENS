@@ -1,0 +1,18 @@
+
+[00:17:57] [INFO] ======================================================================
+[00:17:57] [INFO] STEP 33: Einstein-Cross Null Test
+[00:17:57] [INFO] ======================================================================
+[00:17:57] [INFO]   Loop S1-S2-S3: predicted = -0.109 d, noise = 0.0 d, SNR = 3.273
+[00:17:57] [INFO]   Loop S1-S2-S4: predicted = +0.278 d, noise = 0.1 d, SNR = 2.516
+[00:17:57] [INFO]   Loop S1-S3-S4: predicted = +0.342 d, noise = 0.1 d, SNR = 2.303
+[00:18:05] [INFO] 
+  Inner-cross-only (S1-S4) correlation tests:
+[00:18:05] [INFO]     Spearman rho = -0.400, p (one-sided) = 0.794 (permutation)
+[00:18:05] [INFO]     Pearson  r   = -0.404, p (one-sided) = 0.298
+[00:18:05] [INFO]     Verdict: No correlation. Inner cross is noise-dominated.
+[00:18:05] [INFO]     S2: predicted shift = +0.063 d, noise = 4.0 d, S/N = 0.0158
+[00:18:05] [INFO]     S3: predicted shift = +0.103 d, noise = 4.2 d, S/N = 0.0246
+[00:18:05] [INFO]     S4: predicted shift = -0.212 d, noise = 6.4 d, S/N = 0.0331
+[00:18:06] [INFO] Figure saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_33_einstein_cross_null.png
+[00:18:06] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_33_einstein_cross_null.json
+[00:18:06] [INFO] Step 33 complete.

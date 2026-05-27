@@ -1,0 +1,58 @@
+{
+  "step": "35",
+  "status": "success",
+  "system": "SN Refsdal (MACS J1149.6+2223)",
+  "alpha_tep": -0.055,
+  "energy_metrics": {
+    "total_energy_sum_R2_d2": 283.67619199141274,
+    "total_abs_sum_R_d": 23.759191012331538,
+    "effective_degrees_of_freedom": 1.9899419602246489,
+    "interpretation_dof": "The predicted TEP signal is concentrated in approximately 2.0 effective independent contrast(s). A value near 1.0 indicates a single-contrast system; a value near 5.0 would indicate all loops contribute equally."
+  },
+  "contrast_knockout": {
+    "description": "Set Gamma_S4 = Gamma_SX = mean, recompute all loop residuals",
+    "energy_after_knockout_d2": 1.3119977860314835,
+    "energy_drop_fraction": 0.9953750162224709,
+    "interpretation_knockout": "Removing the S4-SX Gamma contrast eliminates 99.5% of the total predicted TEP signal energy."
+  },
+  "contrast_isolation": {
+    "description": "Zero all inner-cross Gamma differences, keep only S4-SX contrast",
+    "energy_after_isolation_d2": 205.11368592068402,
+    "energy_retained_fraction": 0.723055694172929,
+    "interpretation_isolation": "The S4-SX contrast alone retains 72.3% of the total predicted TEP signal energy."
+  },
+  "loop_type_split": {
+    "sx_loop_energy_d2": 283.47008694823455,
+    "inner_loop_energy_d2": 0.20610504317820327,
+    "sx_loop_energy_fraction": 0.9992734496267335,
+    "inner_loop_energy_fraction": 0.0007265503732665812
+  },
+  "per_loop_contribution": {
+    "S1_S2_S3": {
+      "R_tep_days": -0.10908514536456809,
+      "energy_fraction": 4.194771812069857e-05,
+      "loop_type": "null_region"
+    },
+    "S1_S2_S4": {
+      "R_tep_days": 0.27822077216380114,
+      "energy_fraction": 0.00027287026634143814,
+      "loop_type": "null_region"
+    },
+    "S1_S3_S4": {
+      "R_tep_days": 0.34175821303309245,
+      "energy_fraction": 0.0004117323888044445,
+      "loop_type": "null_region"
+    },
+    "S1_S2_SX": {
+      "R_tep_days": -8.492091819035092,
+      "energy_fraction": 0.2542181032418321,
+      "loop_type": "probative_contrast"
+    },
+    "S1_S4_SX": {
+      "R_tep_days": -14.538035062734984,
+      "energy_fraction": 0.7450553463849013,
+      "loop_type": "probative_contrast"
+    }
+  },
+  "headline": "SN Refsdal's predicted TEP signal is 100% concentrated in the S4-SX contrast (effective DOF = 2.0), confirming this is a single-contrast, single-system measurement."
+}

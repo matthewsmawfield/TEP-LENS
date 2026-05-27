@@ -1,0 +1,299 @@
+{
+  "step": "32",
+  "status": "success",
+  "sn_refsdal_sensitivity": {
+    "n_draws": 20000,
+    "kappa_summary_per_image": {
+      "S1": {
+        "median": 0.09323842575643015,
+        "mean": 0.12387829238864467,
+        "std": 0.12417271795789726,
+        "p2": 5.000001249699793e-07,
+        "p16": 5.000001249699793e-07,
+        "p50": 0.09323842575643015,
+        "p84": 0.26682242596609346,
+        "p98": 0.3962141267344273
+      },
+      "S2": {
+        "median": 0.028986516115255767,
+        "mean": 0.08593299779907144,
+        "std": 0.10325438392140787,
+        "p2": 5.000001249699793e-07,
+        "p16": 5.000001249699793e-07,
+        "p50": 0.028986516115255767,
+        "p84": 0.20569294369165886,
+        "p98": 0.332905437587288
+      },
+      "S3": {
+        "median": 0.01,
+        "mean": 0.05854195833597585,
+        "std": 0.08296842552829753,
+        "p2": 5.000001249699793e-07,
+        "p16": 5.000001249699793e-07,
+        "p50": 0.01,
+        "p84": 0.15069464976991434,
+        "p98": 0.27883287557592157
+      },
+      "S4": {
+        "median": 0.1810690971975985,
+        "mean": 0.18791986166477137,
+        "std": 0.14677423528556338,
+        "p2": 5.000001249699793e-07,
+        "p16": 0.0014742106243842996,
+        "p50": 0.1810690971975985,
+        "p84": 0.3480013189788227,
+        "p98": 0.4844028656567891
+      },
+      "SX": {
+        "median": 0.01,
+        "mean": 0.02577573274139702,
+        "std": 0.03388546411225645,
+        "p2": 5.000001249699793e-07,
+        "p16": 0.01,
+        "p50": 0.01,
+        "p84": 0.05722397534877934,
+        "p98": 0.12624665776365293
+      }
+    },
+    "mu_proxy_per_image": {
+      "S1": 1.158,
+      "S2": 0.887,
+      "S3": 0.716,
+      "S4": 1.793,
+      "SX": 0.347
+    },
+    "mu_norm_per_image": {
+      "S1": 1.181391552744338,
+      "S2": 0.9049173638033055,
+      "S3": 0.7304631707814732,
+      "S4": 1.8292185268312589,
+      "SX": 0.35400938583962455
+    },
+    "closure_residual_kappa": {
+      "median": -17.627804973108553,
+      "mean": -6.113975410711406,
+      "std": 44.92157691249189,
+      "p2": -115.7938010389135,
+      "p16": -29.49564386641119,
+      "p50": -17.627804973108553,
+      "p84": 22.69993519234109,
+      "p98": 88.94529806556821
+    },
+    "closure_residual_mu_nominal": -14.538035062734984,
+    "alpha_equiv_to_match_obs": {
+      "median": -0.03196405528641873,
+      "mean": -0.03993225879521538,
+      "std": 0.6631653180233222,
+      "p2": -0.20567364036248753,
+      "p16": -0.06778889832219714,
+      "p50": -0.03196405528641873,
+      "p84": 0.00898970429961329,
+      "p98": 0.06485214983493268
+    },
+    "C_prior_summary": {
+      "median": 2.243547509351057,
+      "mean": 2.242968738169181,
+      "std": 1.0085010777212713,
+      "p2": 0.5858984564173526,
+      "p16": 1.0641817316884297,
+      "p50": 2.243547509351057,
+      "p84": 3.4320410454108035,
+      "p98": 3.916985471520184
+    },
+    "P_rank_agreement_mu_vs_kappa": 0.03415,
+    "P_contrast_sign_agreement_S4_SX": 0.79745,
+    "gamma_priors": {
+      "S1": {
+        "mean": 0.6,
+        "std": 0.18,
+        "low": 0.05,
+        "high": 0.92
+      },
+      "S2": {
+        "mean": 0.6,
+        "std": 0.18,
+        "low": 0.05,
+        "high": 0.92
+      },
+      "S3": {
+        "mean": 0.6,
+        "std": 0.18,
+        "low": 0.05,
+        "high": 0.92
+      },
+      "S4": {
+        "mean": 0.6,
+        "std": 0.18,
+        "low": 0.05,
+        "high": 0.92
+      },
+      "SX": {
+        "mean": 0.18,
+        "std": 0.12,
+        "low": 0.02,
+        "high": 0.7
+      }
+    }
+  },
+  "tdcosmo_theoretical": {
+    "RXJ1131-1231": {
+      "gamma_pl": 1.95,
+      "kappa_at_theta_E": 0.525,
+      "mu_at_theta_E": null,
+      "kappa_at_1p2_theta_E": 0.44150651817458075,
+      "mu_at_1p2_theta_E": 8.547960976101738,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "note": "Spherical power-law approximation. Real lenses have ellipticity and external shear, which modify the mu-kappa relationship. This illustrates the generic non-linearity of the proxy."
+    },
+    "HE0435-1223": {
+      "gamma_pl": 1.93,
+      "kappa_at_theta_E": 0.535,
+      "mu_at_theta_E": null,
+      "kappa_at_1p2_theta_E": 0.4515597492417043,
+      "mu_at_1p2_theta_E": 10.321994460657733,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "note": "Spherical power-law approximation. Real lenses have ellipticity and external shear, which modify the mu-kappa relationship. This illustrates the generic non-linearity of the proxy."
+    },
+    "PG1115+080": {
+      "gamma_pl": 2.17,
+      "kappa_at_theta_E": 0.415,
+      "mu_at_theta_E": 5.882352941176469,
+      "kappa_at_1p2_theta_E": 0.3352787578452072,
+      "mu_at_1p2_theta_E": 3.035431213723711,
+      "delta_log_mu": -0.2873306829013775,
+      "delta_log_kappa": -0.092642057875721,
+      "log_mu_over_log_kappa_ratio": 3.1015144685886686,
+      "note": "Spherical power-law approximation. Real lenses have ellipticity and external shear, which modify the mu-kappa relationship. This illustrates the generic non-linearity of the proxy."
+    },
+    "DES0408-5354": {
+      "gamma_pl": 1.9,
+      "kappa_at_theta_E": 0.55,
+      "mu_at_theta_E": null,
+      "kappa_at_1p2_theta_E": 0.4667663807340528,
+      "mu_at_1p2_theta_E": 15.045005962150038,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "note": "Spherical power-law approximation. Real lenses have ellipticity and external shear, which modify the mu-kappa relationship. This illustrates the generic non-linearity of the proxy."
+    },
+    "SDSS1206+4332": {
+      "gamma_pl": 1.95,
+      "kappa_at_theta_E": 0.525,
+      "mu_at_theta_E": null,
+      "kappa_at_1p2_theta_E": 0.44150651817458075,
+      "mu_at_1p2_theta_E": 8.547960976101738,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "note": "Spherical power-law approximation. Real lenses have ellipticity and external shear, which modify the mu-kappa relationship. This illustrates the generic non-linearity of the proxy."
+    },
+    "WFI2033-4723": {
+      "gamma_pl": 1.95,
+      "kappa_at_theta_E": 0.525,
+      "mu_at_theta_E": null,
+      "kappa_at_1p2_theta_E": 0.44150651817458075,
+      "mu_at_1p2_theta_E": 8.547960976101738,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "note": "Spherical power-law approximation. Real lenses have ellipticity and external shear, which modify the mu-kappa relationship. This illustrates the generic non-linearity of the proxy."
+    }
+  },
+  "tdcosmo_elliptical_shear": {
+    "RXJ1131-1231": {
+      "gamma_pl": 1.95,
+      "kappa_at_theta_E": 0.525,
+      "gamma_ext": 0.08,
+      "mu_at_theta_E": -17.7304964539007,
+      "mu_at_1p2_theta_E": 9.042657172117936,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "spherical_ratio": null,
+      "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
+    },
+    "HE0435-1223": {
+      "gamma_pl": 1.93,
+      "kappa_at_theta_E": 0.535,
+      "gamma_ext": 0.1,
+      "mu_at_theta_E": -12.499999999999993,
+      "mu_at_1p2_theta_E": 11.510062471370889,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "spherical_ratio": null,
+      "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
+    },
+    "PG1115+080": {
+      "gamma_pl": 2.17,
+      "kappa_at_theta_E": 0.415,
+      "gamma_ext": 0.06,
+      "mu_at_theta_E": 6.009615384615386,
+      "mu_at_1p2_theta_E": 3.068967516985575,
+      "delta_log_mu": -0.2918543863122595,
+      "delta_log_kappa": -0.092642057875721,
+      "log_mu_over_log_kappa_ratio": 3.150344379264342,
+      "spherical_ratio": 3.1015144685886686,
+      "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
+    },
+    "DES0408-5354": {
+      "gamma_pl": 1.9,
+      "kappa_at_theta_E": 0.55,
+      "gamma_ext": 0.12,
+      "mu_at_theta_E": -8.741258741258733,
+      "mu_at_1p2_theta_E": 19.205935021643928,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "spherical_ratio": null,
+      "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
+    },
+    "SDSS1206+4332": {
+      "gamma_pl": 1.95,
+      "kappa_at_theta_E": 0.525,
+      "gamma_ext": 0.08,
+      "mu_at_theta_E": -17.7304964539007,
+      "mu_at_1p2_theta_E": 9.042657172117936,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "spherical_ratio": null,
+      "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
+    },
+    "WFI2033-4723": {
+      "gamma_pl": 1.95,
+      "kappa_at_theta_E": 0.525,
+      "gamma_ext": 0.09,
+      "mu_at_theta_E": -17.211703958691906,
+      "mu_at_1p2_theta_E": 9.18383584656325,
+      "delta_log_mu": null,
+      "delta_log_kappa": null,
+      "log_mu_over_log_kappa_ratio": null,
+      "spherical_ratio": null,
+      "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
+    }
+  },
+  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32_kappa_mu_comparison.png",
+  "proxy_systematic_budget": {
+    "measurement_uncertainty_days": 5.6,
+    "measurement_fraction": 0.17229152914467474,
+    "lens_model_uncertainty_days": 18.418417283743338,
+    "lens_model_fraction": 0.5666673711144369,
+    "proxy_systematic_days": 26.09778952937614,
+    "proxy_systematic_fraction": 0.8029335830914459,
+    "microlensing_uncertainty_days": 2.1807052594102476,
+    "microlensing_fraction": 0.06709232924243325,
+    "sign_robustness_probability": 0.79745,
+    "amplitude_uncertainty_fraction": 1.201014732546046,
+    "total_uncertainty_days": 32.50304891831118,
+    "interpretation": "The evidence is suggestive rather than decisive because the proxy-systematic contribution to the total uncertainty budget is 80%, comparable to the lens-model contribution (57%)."
+  },
+  "key_findings": {
+    "sn_refsdal": "SN Refsdal: The flux-proxy mu and inferred kappa give different S1-S4-SX closure residuals: mu-proxy = -14.54 d, kappa-inferred = -17.63 [-29.50, 22.70] d. Equivalent alpha shifts to -0.0320 [-0.0678, 0.0090]. Crucially, the S4-SX contrast sign is stable: P(same sign) = 79.7%.",
+    "tdcosmo": "TDCOSMO spherical power-law ratios reach up to 3.1, but elliptical lenses with external shear amplify this to 3.2. The spherical comparison is a lower bound on the proxy discrepancy; real lenses exhibit larger misestimation."
+  }
+}

@@ -1,24 +1,30 @@
 #!/usr/bin/env python3
 """Unified PDF Processing Script
-Compresses PDF and embeds comprehensive metadata in one operation.
+Compresses PDF and embeds project-specific metadata from CITATION.cff.
 
-This script processes the TEP-LENS manuscript PDF (Paper 12: "Lensing Time Delay Closure Tests: Resolving
-the Hubble Tension") by compressing it for web distribution and embedding complete
-academic metadata for proper indexing and citation.
+This script processes TEP manuscript PDFs by compressing them for web distribution
+and embedding complete academic metadata for proper indexing and citation.
+Metadata is auto-detected from the project's CITATION.cff file.
 
 Usage:
     python process_pdf.py <input_pdf> [--quality ebook|printer|prepress|default]
     
 Example:
-    python process_pdf.py site/public/docs/Smawfield_2026_TEP-LENS_v0.2_KingstonUponHull.pdf --quality ebook
+    python process_pdf.py site/public/docs/Smawfield_2026_TEP-J0437_v0.1_Sintra.pdf --quality ebook
 """
 
 import subprocess
 import sys
 import os
+import re
 from pathlib import Path
 import argparse
 import tempfile
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 
 def compress_pdf(input_path, output_path, quality='ebook'):
@@ -66,6 +72,146 @@ def compress_pdf(input_path, output_path, quality='ebook'):
         raise RuntimeError(f"Ghostscript compression failed: {e.stderr.decode()}")
 
 
+def load_citation_metadata(pdf_path):
+    """Load metadata from CITATION.cff in the same project as the PDF."""
+    pdf_path = Path(pdf_path).resolve()
+    
+    # Find project root (look for CITATION.cff)
+    project_dir = pdf_path.parent
+    while project_dir != project_dir.parent:
+        citation_file = project_dir / 'CITATION.cff'
+        if citation_file.exists():
+            break
+        project_dir = project_dir.parent
+    else:
+        # Fallback: assume 3 levels up from docs folder
+        project_dir = pdf_path.parent.parent.parent.parent
+        citation_file = project_dir / 'CITATION.cff'
+    
+    if not citation_file.exists():
+        print(f"⚠️  CITATION.cff not found, using minimal defaults")
+        return {
+            'title': 'TEP Manuscript',
+            'author': 'Matthew Lukin Smawfield',
+            'version': 'v0.1',
+            'codename': 'Unknown',
+            'doi': '',
+            'abstract': '',
+            'keywords': [],
+            'date': '2026-01-01',
+            'url': '',
+            'project_short': 'TEP'
+        }
+    
+    try:
+        if yaml:
+            with open(citation_file, 'r') as f:
+                data = yaml.safe_load(f)
+        else:
+            # Manual parsing fallback
+            with open(citation_file, 'r') as f:
+                content = f.read()
+            data = {}
+            # Extract key fields with regex
+            title_match = re.search(r'title:\s*"([^"]+)"', content)
+            data['title'] = title_match.group(1) if title_match else 'TEP Manuscript'
+            
+            version_match = re.search(r'version:\s*"?([^"\n]+)"?', content)
+            data['version'] = version_match.group(1).strip() if version_match else 'v0.1'
+            
+            doi_match = re.search(r'doi:\s*"?([^"\n]+)"?', content)
+            data['doi'] = doi_match.group(1).strip() if doi_match else ''
+            
+            abstract_match = re.search(r'abstract:\s*>?\s*"?([^"\n]+(?:\n[^"]+)*)"?', content, re.DOTALL)
+            data['abstract'] = abstract_match.group(1).strip() if abstract_match else ''
+            
+            url_match = re.search(r'url:\s*"([^"]+)"', content)
+            data['url'] = url_match.group(1) if url_match else ''
+            
+            date_match = re.search(r'date-released:\s*"?([^"\n]+)"?', content)
+            data['date-released'] = date_match.group(1).strip() if date_match else '2026-01-01'
+            
+            # Parse authors
+            author_matches = re.findall(r'family-names:\s*"([^"]+)"\s*\n\s*given-names:\s*"([^"]+)"', content)
+            if author_matches:
+                data['authors'] = [{'family-names': fam, 'given-names': giv} for fam, giv in author_matches]
+            else:
+                data['authors'] = [{'family-names': 'Smawfield', 'given-names': 'Matthew Lukin'}]
+            
+            # Parse keywords
+            kw_section = re.search(r'keywords:\s*\n((?:\s+-\s*[^\n]+\n?)+)', content)
+            if kw_section:
+                keywords = re.findall(r'-\s*([^\n]+)', kw_section.group(1))
+                data['keywords'] = [k.strip() for k in keywords]
+            else:
+                data['keywords'] = []
+        
+        # Extract version and codename
+        version_str = data.get('version', 'v0.1')
+        pattern = r'^(v?[\d.]+)(?:\s*\(([^)]+)\))?$'
+        match = re.match(pattern, version_str.strip())
+        
+        if match:
+            version = match.group(1).lstrip('v')
+            codename = match.group(2) or 'Unknown'
+        else:
+            version = version_str.lstrip('v')
+            codename = 'Unknown'
+        
+        # Get author
+        authors = data.get('authors', [])
+        author_name = "Matthew Lukin Smawfield"  # default
+        if authors:
+            first_author = authors[0]
+            family = first_author.get('family-names', '')
+            given = first_author.get('given-names', '')
+            author_name = f"{given} {family}".strip()
+        
+        # Get date
+        date = data.get('date-released', '2026-01-01')
+        if hasattr(date, 'strftime'):
+            date = date.strftime('%Y-%m-%d')
+        else:
+            date = str(date)
+        
+        # Get project short name from directory
+        project_short = project_dir.name.replace('TEP-', '') if project_dir.name.startswith('TEP-') else 'TEP'
+        
+        # Get URL from data or construct from project name
+        url = data.get('url', '')
+        if not url and 'repository-code' in data:
+            url = data['repository-code']
+        
+        return {
+            'title': data.get('title', 'TEP Manuscript'),
+            'author': author_name,
+            'version': version,
+            'codename': codename,
+            'doi': data.get('doi', ''),
+            'abstract': data.get('abstract', ''),
+            'keywords': data.get('keywords', []),
+            'date': date,
+            'url': url,
+            'project_short': project_short,
+            'project_dir': project_dir
+        }
+        
+    except Exception as e:
+        print(f"⚠️  Error parsing CITATION.cff: {e}, using defaults")
+        return {
+            'title': 'TEP Manuscript',
+            'author': 'Matthew Lukin Smawfield',
+            'version': 'v0.1',
+            'codename': 'Unknown',
+            'doi': '',
+            'abstract': '',
+            'keywords': [],
+            'date': '2026-01-01',
+            'url': '',
+            'project_short': 'TEP'
+        }
+
+
 def embed_metadata(pdf_path, metadata):
     """Embed metadata into PDF using exiftool."""
     cmd = ['exiftool']
@@ -82,6 +228,78 @@ def embed_metadata(pdf_path, metadata):
         return True
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Exiftool metadata embedding failed: {e.stderr.decode()}")
+
+
+def build_metadata_dict(meta):
+    """Build complete metadata dict from CITATION.cff data."""
+    
+    # Format keywords as semicolon-separated string
+    keywords_str = '; '.join(meta['keywords']) if meta['keywords'] else 'TEP; Temporal Equivalence Principle'
+    
+    # Format creation date for PDF
+    date_parts = meta['date'].split('-')
+    creation_date = f"{date_parts[0]}:{date_parts[1]}:{date_parts[2]} 00:00:00" if len(date_parts) == 3 else meta['date']
+    
+    # Build subject/abstract
+    subject = meta['abstract'][:2000] if meta['abstract'] else f"TEP manuscript: {meta['title']}"
+    
+    # Project identifier
+    project_id = f"TEP-{meta['project_short']} v{meta['version']} ({meta['codename']})"
+    
+    # DOI with prefix
+    doi_full = f"doi:{meta['doi']}" if meta['doi'] else ''
+    
+    metadata = {
+        # Core identification
+        'Title': meta['title'],
+        'Author': meta['author'],
+        'Creator': meta['author'],
+        
+        # Abstract/Subject
+        'Subject': subject,
+        
+        # Keywords
+        'Keywords': keywords_str,
+        
+        # Production metadata
+        'Producer': project_id,
+        
+        # Rights
+        'Copyright': 'Creative Commons Attribution 4.0 International License (CC BY 4.0)',
+        
+        # Dates
+        'CreationDate': creation_date,
+        'ModifyDate': creation_date,
+    }
+    
+    # XMP Dublin Core
+    metadata['XMP-dc:Creator'] = meta['author']
+    metadata['XMP-dc:Title'] = meta['title']
+    metadata['XMP-dc:Description'] = meta['abstract'][:500] if meta['abstract'] else meta['title']
+    metadata['XMP-dc:Rights'] = 'CC BY 4.0'
+    if doi_full:
+        metadata['XMP-dc:Identifier'] = doi_full
+    if meta['url']:
+        metadata['XMP-dc:Source'] = meta['url']
+    metadata['XMP-dc:Publisher'] = 'Zenodo'
+    metadata['XMP-dc:Date'] = meta['date']
+    metadata['XMP-dc:Type'] = 'Preprint'
+    metadata['XMP-dc:Format'] = 'application/pdf'
+    metadata['XMP-dc:Language'] = 'en'
+    
+    # PRISM metadata
+    if meta['doi']:
+        metadata['XMP-prism:DOI'] = meta['doi']
+    if meta['url']:
+        metadata['XMP-prism:URL'] = meta['url']
+    metadata['XMP-prism:VersionIdentifier'] = meta['version']
+    metadata['XMP-prism:PublicationName'] = 'TEP Research Series'
+    
+    # PDF/A
+    metadata['XMP-pdfaid:Part'] = '1'
+    metadata['XMP-pdfaid:Conformance'] = 'B'
+    
+    return metadata
 
 
 def verify_metadata(pdf_path, expected_fields):
@@ -106,12 +324,6 @@ def main():
         default='ebook',
         help='Compression quality (default: ebook)'
     )
-    parser.add_argument(
-        '--doi',
-        default='10.5281/zenodo.18209703',
-        help='DOI to embed in metadata'
-    )
-    
     args = parser.parse_args()
     
     input_path = Path(args.input_pdf).resolve()
@@ -147,77 +359,19 @@ def main():
         sys.exit(1)
     
     # Step 2: Embed metadata
-    print("Step 2: Embedding metadata...")
+    print("Step 2: Loading metadata from CITATION.cff...")
     
-    # Paper metadata - must match manuscript, CITATION.cff, and zenodo.txt
-    metadata = {
-        # Core identification
-        'Title': 'Lensing Time Delay Closure Tests: Resolving the Hubble Tension',
-        'Author': 'Matthew Lukin Smawfield',
-        'Creator': 'Matthew Lukin Smawfield',
-        
-        # Scientific abstract with key results
-        'Subject': (
-            'The Hubble Tension—the persistent 5σ discrepancy between local distance-ladder measurements '
-            '(H0 ≈ 73 km/s/Mpc) and early-universe CMB inference (H0 = 67.4 ± 0.5 km/s/Mpc)—represents '
-            'a significant challenge in precision cosmology. This study proposes that the tension arises '
-            'from a systematic, environment-dependent bias in Cepheid-based distances, as predicted by '
-            'the Temporal Equivalence Principle (TEP). '
-            'Analysis of the SH0ES Cepheid sample (N=29), stratified by host galaxy velocity dispersion, '
-            'reveals a statistically significant correlation (Spearman ρ = 0.434, p = 0.019) between host '
-            'potential depth and derived H0. A median split yields H0 = 67.82 ± 1.62 km/s/Mpc (low-σ) '
-            'versus 72.45 ± 2.32 km/s/Mpc (high-σ), implying ΔH0 = 4.63 km/s/Mpc. '
-            'Application of the TEP conformal correction with optimal coupling α = 0.58 ± 0.16 and '
-            'effective calibrator reference σ_ref = 75.25 km/s yields a unified local Hubble constant '
-            'of H0 = 68.66 ± 1.51 km/s/Mpc, corresponding to a Planck tension of 0.79σ. '
-            'The anchor-host dichotomy (α_anchor ≈ 0 vs α_host ≈ 0.58) is resolved by group halo screening: '
-            'anchors reside in galaxy groups where ambient potential triggers chameleon-type screening, '
-            'while SN Ia hosts are biased toward isolated field galaxies. '
-            'Keywords: Hubble tension, Cepheid variables, distance ladder, velocity dispersion, '
-            'temporal equivalence principle, gravitational time dilation, chameleon screening.'
-        ),
-        
-        # Keywords for indexing
-        'Keywords': (
-            'Hubble Tension; Hubble Constant; H0; Cepheid Variables; Period-Luminosity Relation; '
-            'Distance Ladder; Type Ia Supernovae; SH0ES; Planck; CMB; Velocity Dispersion; '
-            'Gravitational Potential; Temporal Equivalence Principle; TEP; Time Dilation; '
-            'Environmental Bias; Chameleon Screening; Group Halo Screening; Modified Gravity; Cosmology'
-        ),
-        
-        # Production metadata
-        'Producer': 'TEP-LENS Research Project (Paper 12) - Version 0.3 (Kingston upon Hull)',
-        
-        # Rights and identifiers
-        'Copyright': 'Creative Commons Attribution 4.0 International License (CC BY 4.0)',
-        
-        # Dates
-        'CreationDate': '2026:01:12 00:00:00',
-        'ModifyDate': '2026:01:12 00:00:00',
-        
-        # XMP Dublin Core metadata (exiftool uses these prefixes)
-        'XMP-dc:Creator': 'Matthew Lukin Smawfield',
-        'XMP-dc:Title': 'Lensing Time Delay Closure Tests: Resolving the Hubble Tension',
-        'XMP-dc:Description': 'Resolving the Hubble Tension via environment-dependent Cepheid calibration',
-        'XMP-dc:Rights': 'CC BY 4.0',
-        'XMP-dc:Identifier': f'doi:{args.doi}',
-        'XMP-dc:Source': 'https://matthewsmawfield.github.io/TEP-LENS/',
-        'XMP-dc:Publisher': 'Zenodo',
-        'XMP-dc:Date': '2026-01-12',
-        'XMP-dc:Type': 'Preprint',
-        'XMP-dc:Format': 'application/pdf',
-        'XMP-dc:Language': 'en',
-        
-        # PRISM (Publishing Requirements for Industry Standard Metadata)
-        'XMP-prism:DOI': args.doi,
-        'XMP-prism:URL': 'https://matthewsmawfield.github.io/TEP-LENS/',
-        'XMP-prism:VersionIdentifier': '0.3',
-        'XMP-prism:PublicationName': 'TEP Research Series',
-        
-        # PDF/A metadata
-        'XMP-pdfaid:Part': '1',
-        'XMP-pdfaid:Conformance': 'B'
-    }
+    # Load project-specific metadata from CITATION.cff
+    citation_meta = load_citation_metadata(str(input_path))
+    print(f"  Project: TEP-{citation_meta['project_short']}")
+    print(f"  Title: {citation_meta['title'][:50]}...")
+    print(f"  Version: v{citation_meta['version']} ({citation_meta['codename']})")
+    print()
+    
+    print("Step 3: Embedding metadata...")
+    
+    # Build complete metadata dict
+    metadata = build_metadata_dict(citation_meta)
     
     try:
         embed_metadata(str(input_path), metadata)
@@ -228,8 +382,8 @@ def main():
         print(f"Error during metadata embedding: {e}")
         sys.exit(1)
     
-    # Step 3: Verify
-    print("Step 3: Verifying metadata...")
+    # Step 4: Verify
+    print("Step 4: Verifying metadata...")
     verification = verify_metadata(
         str(input_path),
         ['Title', 'Author', 'Subject', 'Keywords', 'Creator', 'Copyright']

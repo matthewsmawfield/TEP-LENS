@@ -1,0 +1,27 @@
+
+[23:40:45] [INFO] ======================================================================
+[23:40:45] [INFO] STEP 11: Model Dependence Robustness
+[23:40:45] [INFO] ======================================================================
+[23:40:45] [INFO] Baseline weighted mean residual: +14.61 ± 11.57 d (z=1.26)
+[23:40:45] [INFO] Baseline sign test: 7/8 positive, p=0.0352
+[23:40:45] [INFO] Wilcoxon signed-rank p(one-sided): 0.0078
+[23:40:45] [INFO] [DEPRECATED] Exact sign-flip p=0.0078 — assumes independent residuals; invalid under correlation
+[23:40:45] [INFO] Blind sign test: 6/7 positive, p=0.0625
+[23:40:45] [INFO] Blind Wilcoxon signed-rank p(one-sided): 0.0156
+[23:40:45] [INFO] Method-family effective sample size (Kish proxy): N_eff=7.20 from N=8
+[23:40:50] [INFO] Break-even ICC (all 8 binomial 7/8): rho = 0.026
+[23:40:50] [INFO] Break-even ICC (blind 7 binomial 6/7): rho = 0.000
+[23:42:08] [INFO] Permutation Wilcoxon (all 8, family-aware): p = 0.0310
+[23:42:08] [INFO] Permutation Wilcoxon (blind 7, family-aware): p = 0.0310
+[23:42:56] [INFO] Block-bootstrap Wilcoxon (all 8, family-aware): p_median=0.0068, p_16-84=[0.0037, 0.0154], P(p<=0.05)=99.65%
+[23:42:56] [INFO] Block-bootstrap Wilcoxon (blind 7, family-aware): p_median=0.0109, p_16-84=[0.0067, 0.0173], P(p<=0.05)=99.43%
+[23:42:56] [INFO] [CAVEAT] Wilcoxon break-even ICC (all 8): rho ≈ 0.103 — approximate, not a closed-form correction; use block-bootstrap instead.
+[23:42:56] [INFO] [CAVEAT] Wilcoxon break-even ICC (blind): rho ≈ 0.078 — approximate, not a closed-form correction; use block-bootstrap instead.
+[23:42:56] [INFO] Interpretation: if inter-model correlation exceeds these values, p > 0.05.
+[23:42:56] [INFO] LOO robustness summary:
+[23:42:56] [INFO]   Sign-test p range: 0.0078 to 0.0625
+[23:42:56] [INFO]   Weighted-mean z range: 0.96 to 1.30
+[23:42:56] [INFO]   Δχ² (GR-TEP) range: +0.91 to +1.68
+[23:42:57] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_11_model_dependence.png
+[23:42:57] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_11_model_dependence.json
+[23:42:57] [INFO] Step 11 complete.

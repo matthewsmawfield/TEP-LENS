@@ -1,0 +1,125 @@
+{
+  "step": "14",
+  "status": "success",
+  "source": {
+    "api": "https://api.github.com/repos/shsuyu/H0LiCOW-public/contents/h0licow_distance_chains",
+    "max_file_mb": 30.0,
+    "max_rows_parse": 250000
+  },
+  "files_discovered": 5,
+  "files_ingested": 4,
+  "ingested_names": [
+    "HE0435_Ddt_AO+HST.dat",
+    "J1206_final.csv",
+    "RXJ1131_AO+HST_Dd_Ddt.dat",
+    "wfi2033_dt_bic.dat"
+  ],
+  "coverage_tdcosmo_triplet": {
+    "HE0435": true,
+    "WFI2033": true,
+    "DES0408": false
+  },
+  "coverage_count": 2,
+  "des0408_equivalent_bridge": {
+    "source": "step_05_tdcosmo_shear.json (published DES0408 literature values)",
+    "type": "external_equivalent_literature_product",
+    "metadata": {
+      "type": "quasar",
+      "z_lens": 0.597,
+      "z_src": 2.375,
+      "ref_delays": "Courbin et al. 2018 / Wong et al. 2020, MNRAS 498, 1420",
+      "ref_fluxes": "Shajib et al. 2020",
+      "images": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "reference_image": "A"
+    },
+    "n_pairs": 3,
+    "median_abs_shift_days": 5.077342360496549,
+    "pair_keys": [
+      "dt_BA",
+      "dt_CA",
+      "dt_DA"
+    ]
+  },
+  "coverage_with_bridge": {
+    "HE0435": true,
+    "WFI2033": true,
+    "DES0408": true
+  },
+  "coverage_with_bridge_count": 3,
+  "manifest": [
+    {
+      "name": "HE0435_Ddt_AO+HST.dat",
+      "size_mb": 3.6,
+      "download_url": "https://raw.githubusercontent.com/shsuyu/H0LiCOW-public/master/h0licow_distance_chains/HE0435_Ddt_AO+HST.dat",
+      "downloaded": true,
+      "skipped_reason": null,
+      "summary": {
+        "n_rows_used": 250000,
+        "n_cols": 1,
+        "col0_median": 2706.703118,
+        "col0_p16": 2538.518581,
+        "col0_p84": 2887.929157,
+        "col0_std": 181.3332080256523
+      }
+    },
+    {
+      "name": "J1206_final.csv",
+      "size_mb": 3.378507,
+      "download_url": "https://raw.githubusercontent.com/shsuyu/H0LiCOW-public/master/h0licow_distance_chains/J1206_final.csv",
+      "downloaded": true,
+      "skipped_reason": null,
+      "summary": {
+        "n_rows_used": 67570,
+        "n_cols": 2,
+        "col0_median": 5769.264294384286,
+        "col0_p16": 5299.885893291764,
+        "col0_p84": 6354.962021138552,
+        "col0_std": 601.793424201743
+      }
+    },
+    {
+      "name": "PG1115_AO+HST_Dd_Ddt.dat",
+      "size_mb": 83.637978,
+      "download_url": "https://raw.githubusercontent.com/shsuyu/H0LiCOW-public/master/h0licow_distance_chains/PG1115_AO+HST_Dd_Ddt.dat",
+      "downloaded": false,
+      "skipped_reason": "file_too_large_gt_30MB",
+      "summary": null
+    },
+    {
+      "name": "RXJ1131_AO+HST_Dd_Ddt.dat",
+      "size_mb": 11.545946,
+      "download_url": "https://raw.githubusercontent.com/shsuyu/H0LiCOW-public/master/h0licow_distance_chains/RXJ1131_AO+HST_Dd_Ddt.dat",
+      "downloaded": true,
+      "skipped_reason": null,
+      "summary": {
+        "n_rows_used": 250000,
+        "n_cols": 2,
+        "col0_median": 805.189693,
+        "col0_p16": 693.731449,
+        "col0_p84": 944.72928928,
+        "col0_std": 128.82017221725727
+      }
+    },
+    {
+      "name": "wfi2033_dt_bic.dat",
+      "size_mb": 20.63734,
+      "download_url": "https://raw.githubusercontent.com/shsuyu/H0LiCOW-public/master/h0licow_distance_chains/wfi2033_dt_bic.dat",
+      "downloaded": true,
+      "skipped_reason": null,
+      "summary": {
+        "n_rows_used": 250000,
+        "n_cols": 2,
+        "col0_median": 4777.478,
+        "col0_p16": 4564.31484,
+        "col0_p84": 5106.50548,
+        "col0_std": 563.1464661171442
+      }
+    }
+  ],
+  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_14_external_coverage.png"
+}

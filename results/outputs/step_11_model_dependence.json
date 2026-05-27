@@ -1,0 +1,400 @@
+{
+  "step": "11",
+  "status": "success",
+  "baseline": {
+    "weighted_mean_days": 14.605519391230912,
+    "weighted_sigma_days": 11.57281297405183,
+    "z_from_gr": 1.2620543876392813,
+    "n_positive": 7,
+    "n_total": 8,
+    "p_binomial_independent": 0.03515625,
+    "p_wilcoxon_signed_rank": 0.0078125
+  },
+  "blind_baseline": {
+    "n_positive": 6,
+    "n_total": 7,
+    "p_binomial_independent": 0.0625,
+    "p_wilcoxon_signed_rank": 0.015625,
+    "n_nonzero": 6
+  },
+  "effective_sample_size": {
+    "n_total": 8,
+    "method_family_counts": {
+      "GLAFIC": 1,
+      "LTM": 1,
+      "WSLAP+": 1,
+      "GLEE": 2,
+      "OTHER": 1,
+      "LENSTOOL": 2
+    },
+    "n_eff_family_kish": 7.2
+  },
+  "dependence_sensitivity_curve": [
+    {
+      "rho": 0.0,
+      "n_eff": 8.0,
+      "p_beta_binom_tail": 0.03515625,
+      "z_equiv": 1.8098922384806087
+    },
+    {
+      "rho": 0.05,
+      "n_eff": 5.925925925925926,
+      "p_beta_binom_tail": 0.06388780287095727,
+      "z_equiv": 1.5229324521183671
+    },
+    {
+      "rho": 0.1,
+      "n_eff": 4.705882352941176,
+      "p_beta_binom_tail": 0.09364318847656253,
+      "z_equiv": 1.3186493205612906
+    },
+    {
+      "rho": 0.15000000000000002,
+      "n_eff": 3.9024390243902434,
+      "p_beta_binom_tail": 0.12303121466385723,
+      "z_equiv": 1.1599665400900294
+    },
+    {
+      "rho": 0.2,
+      "n_eff": 3.333333333333333,
+      "p_beta_binom_tail": 0.15151515151515157,
+      "z_equiv": 1.0299567622253678
+    },
+    {
+      "rho": 0.25,
+      "n_eff": 2.909090909090909,
+      "p_beta_binom_tail": 0.17892456054687494,
+      "z_equiv": 0.9194712798419058
+    },
+    {
+      "rho": 0.30000000000000004,
+      "n_eff": 2.580645161290322,
+      "p_beta_binom_tail": 0.20524874600497187,
+      "z_equiv": 0.8230184667817736
+    },
+    {
+      "rho": 0.35000000000000003,
+      "n_eff": 2.318840579710145,
+      "p_beta_binom_tail": 0.23054492812907648,
+      "z_equiv": 0.7370534327330165
+    },
+    {
+      "rho": 0.4,
+      "n_eff": 2.1052631578947367,
+      "p_beta_binom_tail": 0.2548960690045249,
+      "z_equiv": 0.6591613890933152
+    },
+    {
+      "rho": 0.45,
+      "n_eff": 1.9277108433734937,
+      "p_beta_binom_tail": 0.2783912886596509,
+      "z_equiv": 0.5876271590175463
+    },
+    {
+      "rho": 0.5,
+      "n_eff": 1.7777777777777777,
+      "p_beta_binom_tail": 0.30111694335937494,
+      "z_equiv": 0.5211907651356136
+    },
+    {
+      "rho": 0.55,
+      "n_eff": 1.6494845360824741,
+      "p_beta_binom_tail": 0.32315285261287274,
+      "z_equiv": 0.4589003809099666
+    },
+    {
+      "rho": 0.6000000000000001,
+      "n_eff": 1.538461538461538,
+      "p_beta_binom_tail": 0.34457102999302447,
+      "z_equiv": 0.40001962805081565
+    },
+    {
+      "rho": 0.65,
+      "n_eff": 1.4414414414414416,
+      "p_beta_binom_tail": 0.365435614102128,
+      "z_equiv": 0.3439668344631982
+    },
+    {
+      "rho": 0.7000000000000001,
+      "n_eff": 1.3559322033898304,
+      "p_beta_binom_tail": 0.3858033462091981,
+      "z_equiv": 0.290273915721545
+    },
+    {
+      "rho": 0.75,
+      "n_eff": 1.28,
+      "p_beta_binom_tail": 0.40572426535866485,
+      "z_equiv": 0.2385577489092795
+    },
+    {
+      "rho": 0.8,
+      "n_eff": 1.212121212121212,
+      "p_beta_binom_tail": 0.42524245689655166,
+      "z_equiv": 0.18849974704217198
+    }
+  ],
+  "dependence_sensitivity_curve_blind": [
+    {
+      "rho": 0.0,
+      "n_eff": 7.0,
+      "p_beta_binom_tail": 0.0625,
+      "z_equiv": 1.5341205443525463
+    },
+    {
+      "rho": 0.05,
+      "n_eff": 5.384615384615384,
+      "p_beta_binom_tail": 0.09500177556818201,
+      "z_equiv": 1.3105686070673443
+    },
+    {
+      "rho": 0.1,
+      "n_eff": 4.375,
+      "p_beta_binom_tail": 0.12617187500000013,
+      "z_equiv": 1.1446751477366828
+    },
+    {
+      "rho": 0.15000000000000002,
+      "n_eff": 3.6842105263157894,
+      "p_beta_binom_tail": 0.1556133563701928,
+      "z_equiv": 1.012651371903563
+    },
+    {
+      "rho": 0.2,
+      "n_eff": 3.1818181818181817,
+      "p_beta_binom_tail": 0.18333333333333338,
+      "z_equiv": 0.9027347916438648
+    },
+    {
+      "rho": 0.25,
+      "n_eff": 2.8,
+      "p_beta_binom_tail": 0.20947265625000006,
+      "z_equiv": 0.8082523752172851
+    },
+    {
+      "rho": 0.30000000000000004,
+      "n_eff": 2.4999999999999996,
+      "p_beta_binom_tail": 0.23420632102272776,
+      "z_equiv": 0.7250642060841712
+    },
+    {
+      "rho": 0.35000000000000003,
+      "n_eff": 2.258064516129032,
+      "p_beta_binom_tail": 0.2577062270220588,
+      "z_equiv": 0.6504331747841842
+    },
+    {
+      "rho": 0.4,
+      "n_eff": 2.0588235294117645,
+      "p_beta_binom_tail": 0.2801282051282053,
+      "z_equiv": 0.5824606932072999
+    },
+    {
+      "rho": 0.45,
+      "n_eff": 1.8918918918918919,
+      "p_beta_binom_tail": 0.30160875822368455,
+      "z_equiv": 0.5197791451615724
+    },
+    {
+      "rho": 0.5,
+      "n_eff": 1.75,
+      "p_beta_binom_tail": 0.3222656250000001,
+      "z_equiv": 0.4613726782785129
+    },
+    {
+      "rho": 0.55,
+      "n_eff": 1.6279069767441858,
+      "p_beta_binom_tail": 0.34219970703124997,
+      "z_equiv": 0.4064671160878423
+    },
+    {
+      "rho": 0.6000000000000001,
+      "n_eff": 1.5217391304347825,
+      "p_beta_binom_tail": 0.36149732620320874,
+      "z_equiv": 0.35445936410015055
+    },
+    {
+      "rho": 0.65,
+      "n_eff": 1.4285714285714284,
+      "p_beta_binom_tail": 0.38023239356884087,
+      "z_equiv": 0.30487049643247605
+    },
+    {
+      "rho": 0.7000000000000001,
+      "n_eff": 1.346153846153846,
+      "p_beta_binom_tail": 0.39846833881578936,
+      "z_equiv": 0.2573136219251642
+    },
+    {
+      "rho": 0.75,
+      "n_eff": 1.2727272727272727,
+      "p_beta_binom_tail": 0.41625976562499956,
+      "z_equiv": 0.2114712920959635
+    },
+    {
+      "rho": 0.8,
+      "n_eff": 1.2068965517241377,
+      "p_beta_binom_tail": 0.43365384615384633,
+      "z_equiv": 0.1670792503845801
+    }
+  ],
+  "dependence_aware_test_hierarchy": {
+    "bridge_statement": "Because the Wilcoxon statistic lacks a closed-form variance under exchangeable intra-class correlation, the block-bootstrap (Step 11) resamples method-family clusters to bypass the missing analytical correction; this is the operational execution used in lieu of a closed-form dependence correction.",
+    "primary_under_independence": "wilcoxon_signed_rank_blind",
+    "primary_correlation_aware_sign_test": "beta_binomial_blind",
+    "operational_rank_test_under_dependence": "block_bootstrap_wilcoxon"
+  },
+  "permutation_test_wilcoxon": {
+    "description": "Exact permutation test: random sign flips within method families. Exact under sharp null; no superpopulation assumption. More rigorous than bootstrap for tiny samples.",
+    "all_8": {
+      "p_value_one_sided": 0.03104,
+      "n_permutations": 50000,
+      "observed_statistic": 35.0,
+      "description": "Exact permutation test: random sign flips within method families. Exact under sharp null; no superpopulation assumption."
+    },
+    "blind_7": {
+      "p_value_one_sided": 0.03104,
+      "n_permutations": 50000,
+      "observed_statistic": 27.0,
+      "description": "Exact permutation test: random sign flips within method families. Exact under sharp null; no superpopulation assumption."
+    }
+  },
+  "block_bootstrap_wilcoxon": {
+    "description": "Family-aware block-bootstrap respecting method-family clusters. Operational dependence-aware test.",
+    "all_8": {
+      "p_median": 0.006838343449413565,
+      "p_16": 0.0037104806439332487,
+      "p_84": 0.015399071388087928,
+      "fraction_le_0_05": 0.9965,
+      "n_bootstrap": 20000
+    },
+    "blind_7": {
+      "p_median": 0.010888353875535496,
+      "p_16": 0.006721999650374133,
+      "p_84": 0.017254828541375593,
+      "fraction_le_0_05": 0.9943,
+      "n_bootstrap": 20000
+    }
+  },
+  "break_even_icc": {
+    "description": "Inter-model correlation (ICC) at which one-sided p-value reaches 0.05 under beta-binomial or Wilcoxon-approx dependence model. Wilcoxon break-even is approximate; block-bootstrap is primary.",
+    "binomial_all_8": {
+      "n_positive": 7,
+      "n_total": 8,
+      "rho_break_even": 0.02629978120719422
+    },
+    "binomial_blind_7": {
+      "n_positive": 6,
+      "n_total": 7,
+      "rho_break_even": 0.0
+    },
+    "wilcoxon_all_8_approx": {
+      "n_nonzero": 7,
+      "rho_break_even": 0.10327458201971902,
+      "caveat": "Mathematically unfounded approximation. Use block_bootstrap_wilcoxon instead."
+    },
+    "wilcoxon_blind_approx": {
+      "n_nonzero": 6,
+      "rho_break_even": 0.07765385579171098,
+      "caveat": "Mathematically unfounded approximation. Use block_bootstrap_wilcoxon instead."
+    }
+  },
+  "deprecated_tests": {
+    "exact_sign_flip_pvalue": {
+      "value": 0.0078125,
+      "caveat": "Assumes independent, symmetric residuals. Invalid under correlated lens-model systematics. Not reported in headline results."
+    }
+  },
+  "leave_one_out": [
+    {
+      "left_out": "Oguri-a",
+      "weighted_mean_days": 13.123102175814562,
+      "weighted_sigma_days": 11.79997218245534,
+      "z_from_gr": 1.112129924791391,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.2224545976415442
+    },
+    {
+      "left_out": "Sharon",
+      "weighted_mean_days": 13.966800025208672,
+      "weighted_sigma_days": 11.796094036815276,
+      "z_from_gr": 1.1840190474591574,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.3995560487183725
+    },
+    {
+      "left_out": "Diego",
+      "weighted_mean_days": 15.421441947513717,
+      "weighted_sigma_days": 11.89167204469083,
+      "z_from_gr": 1.2968270474965538,
+      "n_positive": 7,
+      "n_total": 7,
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 1.676241704765888
+    },
+    {
+      "left_out": "Grillo",
+      "weighted_mean_days": 14.4880296474126,
+      "weighted_sigma_days": 13.184039968540727,
+      "z_from_gr": 1.0989066842927817,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.207581514882747
+    },
+    {
+      "left_out": "Kawamata",
+      "weighted_mean_days": 15.05829810337412,
+      "weighted_sigma_days": 11.912314761009714,
+      "z_from_gr": 1.2640950483160123,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.5960288391287585
+    },
+    {
+      "left_out": "Jauzac",
+      "weighted_mean_days": 14.45984463061226,
+      "weighted_sigma_days": 11.91964752361972,
+      "z_from_gr": 1.213110085844312,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.4715930494800755
+    },
+    {
+      "left_out": "CATS",
+      "weighted_mean_days": 15.444017483465212,
+      "weighted_sigma_days": 11.951518732342223,
+      "z_from_gr": 1.2922221710343702,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 1.664091772452955
+    },
+    {
+      "left_out": "Grillo+2024",
+      "weighted_mean_days": 15.134081029878427,
+      "weighted_sigma_days": 15.837876415226484,
+      "z_from_gr": 0.9555625156494194,
+      "n_positive": 6,
+      "n_total": 7,
+      "p_sign": 0.0625,
+      "delta_chi2_gr_minus_tep": 0.9116833875510731
+    }
+  ],
+  "leave_one_out_summary": {
+    "p_sign_min": 0.0078125,
+    "p_sign_max": 0.0625,
+    "z_min": 0.9555625156494194,
+    "z_max": 1.2968270474965538,
+    "delta_chi2_min": 0.9116833875510731,
+    "delta_chi2_max": 1.676241704765888,
+    "n_cases_tep_better": 8,
+    "n_cases_total": 8
+  },
+  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_11_model_dependence.png"
+}

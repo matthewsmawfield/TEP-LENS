@@ -1,30 +1,31 @@
 {
   "name": "tep-lens-site",
-  "version": "0.2.0",
-  "description": "TEP-LENS: Resolving the Hubble Tension",
+  "version": "0.1.0",
+  "description": "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae",
   "main": "index.html",
   "scripts": {
     "dev": "node dev-server.js",
-    "dev:journal": "node dev-server.js --journal",
-    "build:journal": "node build.js --journal",
     "start": "python3 -m http.server 8000",
     "build": "node build.js",
     "build:dev": "npm run build && cd dist && python3 -m http.server 8350",
-    "build:markdown": "npm run build && node html-to-markdown.js",
+    "build:markdown": "node build.js && node html-to-markdown.js",
     "markdown": "node html-to-markdown.js",
     "serve": "python3 -m http.server",
     "serve:dist": "cd dist && python3 -m http.server 8351"
   },
   "keywords": [
     "TEP-LENS",
-    "Hubble Tension",
-    "Cepheids",
-    "Cosmology"
+    "gravitational lensing",
+    "time delays",
+    "multiply-imaged supernovae",
+    "SN Refsdal",
+    "Temporal Equivalence Principle"
   ],
   "author": "Matthew Lukin Smawfield",
   "license": "CC-BY-4.0",
   "devDependencies": {
     "chokidar": "^4.0.3",
+    "js-yaml": "^4.1.1",
     "live-server": "^1.2.2"
   },
   "engines": {

@@ -1,0 +1,336 @@
+{
+  "step": "05",
+  "status": "success",
+  "alpha_tep": -0.055,
+  "systems": {
+    "HE0435-1223": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.454,
+        "z_src": 1.693,
+        "ref_delays": "Bonvin et al. 2017, MNRAS 465, 4914",
+        "ref_fluxes": "Bonvin et al. 2017 / Chen et al. 2016",
+        "images": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "reference_image": "A"
+      },
+      "pair_results": {
+        "dt_BA": {
+          "image": "B",
+          "dt_obs_days": -9.0,
+          "dt_err_days": 0.9,
+          "flux_ratio_i_A": 0.736,
+          "log10_flux_ratio": -0.13312218566250114,
+          "tep_fractional_residual": 0.007321720211437563,
+          "tep_predicted_shift_days": 0.06589548190293806,
+          "tep_shift_err_days": 0.0065895481902938065
+        },
+        "dt_CA": {
+          "image": "C",
+          "dt_obs_days": -3.0,
+          "dt_err_days": 1.4,
+          "flux_ratio_i_A": 0.617,
+          "log10_flux_ratio": -0.20971483596675833,
+          "tep_fractional_residual": 0.011534315978171708,
+          "tep_predicted_shift_days": 0.03460294793451513,
+          "tep_shift_err_days": 0.01614804236944039
+        },
+        "dt_DA": {
+          "image": "D",
+          "dt_obs_days": -13.8,
+          "dt_err_days": 0.8,
+          "flux_ratio_i_A": 0.56,
+          "log10_flux_ratio": -0.25181197299379954,
+          "tep_fractional_residual": 0.013849658514658974,
+          "tep_predicted_shift_days": 0.19112528750229385,
+          "tep_shift_err_days": 0.01107972681172718
+        }
+      }
+    },
+    "WFI2033-4723": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.6575,
+        "z_src": 1.662,
+        "ref_delays": "Bonvin et al. 2019, A&A 629, A97",
+        "ref_fluxes": "Vuissoz et al. 2008 / Bonvin et al. 2019",
+        "images": [
+          "A",
+          "B",
+          "C"
+        ],
+        "reference_image": "A"
+      },
+      "pair_results": {
+        "dt_BA": {
+          "image": "B",
+          "dt_obs_days": -36.2,
+          "dt_err_days": 0.8,
+          "flux_ratio_i_A": 0.658,
+          "log10_flux_ratio": -0.1817741063860445,
+          "tep_fractional_residual": 0.009997575851232447,
+          "tep_predicted_shift_days": 0.3619122458146146,
+          "tep_shift_err_days": 0.007998060680985958
+        },
+        "dt_CA": {
+          "image": "C",
+          "dt_obs_days": 22.7,
+          "dt_err_days": 1.4,
+          "flux_ratio_i_A": 0.424,
+          "log10_flux_ratio": -0.37263414340726736,
+          "tep_fractional_residual": 0.020494877887399704,
+          "tep_predicted_shift_days": 0.4652337280439733,
+          "tep_shift_err_days": 0.028692829042359584
+        }
+      }
+    },
+    "DES0408-5354": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.597,
+        "z_src": 2.375,
+        "ref_delays": "Courbin et al. 2018 / Wong et al. 2020, MNRAS 498, 1420",
+        "ref_fluxes": "Shajib et al. 2020",
+        "images": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "reference_image": "A"
+      },
+      "pair_results": {
+        "dt_BA": {
+          "image": "B",
+          "dt_obs_days": -112.1,
+          "dt_err_days": 2.1,
+          "flux_ratio_i_A": 0.715,
+          "log10_flux_ratio": -0.1456939581989194,
+          "tep_fractional_residual": 0.008013167700940566,
+          "tep_predicted_shift_days": 0.8982760992754374,
+          "tep_shift_err_days": 0.01682765217197519
+        },
+        "dt_CA": {
+          "image": "C",
+          "dt_obs_days": -155.5,
+          "dt_err_days": 12.8,
+          "flux_ratio_i_A": 0.248,
+          "log10_flux_ratio": -0.6055483191737837,
+          "tep_fractional_residual": 0.0333051575545581,
+          "tep_predicted_shift_days": 5.178951999733785,
+          "tep_shift_err_days": 0.4263060166983437
+        },
+        "dt_DA": {
+          "image": "D",
+          "dt_obs_days": -128.4,
+          "dt_err_days": 5.1,
+          "flux_ratio_i_A": 0.191,
+          "log10_flux_ratio": -0.7189666327522725,
+          "tep_fractional_residual": 0.039543164801374986,
+          "tep_predicted_shift_days": 5.077342360496549,
+          "tep_shift_err_days": 0.2016701404870124
+        }
+      }
+    },
+    "RXJ1131-1231": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.295,
+        "z_src": 0.654,
+        "ref_delays": "Tewes et al. 2013",
+        "ref_fluxes": "Claeskens et al. 2006",
+        "images": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "reference_image": "A"
+      },
+      "pair_results": {
+        "dt_BA": {
+          "image": "B",
+          "dt_obs_days": 0.7,
+          "dt_err_days": 1.4,
+          "flux_ratio_i_A": 0.95,
+          "log10_flux_ratio": -0.022276394711152253,
+          "tep_fractional_residual": 0.001225201709113374,
+          "tep_predicted_shift_days": 0.0008576411963793617,
+          "tep_shift_err_days": 0.0017152823927587234
+        },
+        "dt_CA": {
+          "image": "C",
+          "dt_obs_days": -0.4,
+          "dt_err_days": 2.0,
+          "flux_ratio_i_A": 0.53,
+          "log10_flux_ratio": -0.27572413039921095,
+          "tep_fractional_residual": 0.015164827171956602,
+          "tep_predicted_shift_days": 0.006065930868782641,
+          "tep_shift_err_days": 0.030329654343913205
+        },
+        "dt_DA": {
+          "image": "D",
+          "dt_obs_days": 91.4,
+          "dt_err_days": 1.5,
+          "flux_ratio_i_A": 0.11,
+          "log10_flux_ratio": -0.958607314841775,
+          "tep_fractional_residual": 0.05272340231629762,
+          "tep_predicted_shift_days": 4.818918971709603,
+          "tep_shift_err_days": 0.07908510347444643
+        }
+      }
+    },
+    "PG1115+080": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.311,
+        "z_src": 1.722,
+        "ref_delays": "Bonvin et al. 2018",
+        "ref_fluxes": "Weymann et al. 1997 / Chiba et al. 2005",
+        "images": [
+          "A1",
+          "A2",
+          "B",
+          "C"
+        ],
+        "reference_image": "A1"
+      },
+      "pair_results": {
+        "dt_A2A1": {
+          "image": "A2",
+          "dt_obs_days": -14.3,
+          "dt_err_days": 3.4,
+          "flux_ratio_i_A": 0.16,
+          "log10_flux_ratio": -0.7958800173440752,
+          "tep_fractional_residual": 0.04377340095392414,
+          "tep_predicted_shift_days": 0.6259596336411152,
+          "tep_shift_err_days": 0.14882956324334207
+        },
+        "dt_CA1": {
+          "image": "C",
+          "dt_obs_days": 9.4,
+          "dt_err_days": 3.4,
+          "flux_ratio_i_A": 0.17,
+          "log10_flux_ratio": -0.769551078621726,
+          "tep_fractional_residual": 0.04232530932419493,
+          "tep_predicted_shift_days": 0.3978579076474324,
+          "tep_shift_err_days": 0.14390605170226278
+        }
+      }
+    },
+    "B1608+656": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.63,
+        "z_src": 1.394,
+        "ref_delays": "Fassnacht et al. 2002",
+        "ref_fluxes": "Surpi et al. 2003",
+        "images": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "reference_image": "A"
+      },
+      "pair_results": {
+        "dt_BA": {
+          "image": "B",
+          "dt_obs_days": 31.5,
+          "dt_err_days": 1.5,
+          "flux_ratio_i_A": 0.5,
+          "log10_flux_ratio": -0.3010299956639812,
+          "tep_fractional_residual": 0.016556649761518966,
+          "tep_predicted_shift_days": 0.5215344674878474,
+          "tep_shift_err_days": 0.02483497464227845
+        },
+        "dt_CA": {
+          "image": "C",
+          "dt_obs_days": 36.0,
+          "dt_err_days": 1.5,
+          "flux_ratio_i_A": 0.53,
+          "log10_flux_ratio": -0.27572413039921095,
+          "tep_fractional_residual": 0.015164827171956602,
+          "tep_predicted_shift_days": 0.5459337781904376,
+          "tep_shift_err_days": 0.022747240757934904
+        },
+        "dt_DA": {
+          "image": "D",
+          "dt_obs_days": 77.0,
+          "dt_err_days": 1.5,
+          "flux_ratio_i_A": 0.16,
+          "log10_flux_ratio": -0.7958800173440752,
+          "tep_fractional_residual": 0.04377340095392414,
+          "tep_predicted_shift_days": 3.3705518734521585,
+          "tep_shift_err_days": 0.06566010143088621
+        }
+      }
+    },
+    "J1206+4332": {
+      "metadata": {
+        "type": "quasar",
+        "z_lens": 0.745,
+        "z_src": 1.789,
+        "ref_delays": "Eulaers et al. 2013",
+        "ref_fluxes": "Agnello et al. 2016",
+        "images": [
+          "A",
+          "B"
+        ],
+        "reference_image": "A"
+      },
+      "pair_results": {
+        "dt_BA": {
+          "image": "B",
+          "dt_obs_days": 111.3,
+          "dt_err_days": 3.0,
+          "flux_ratio_i_A": 0.47,
+          "log10_flux_ratio": -0.3279021420642826,
+          "tep_fractional_residual": 0.018034617813535544,
+          "tep_predicted_shift_days": 2.007252962646506,
+          "tep_shift_err_days": 0.05410385344060663
+        }
+      }
+    },
+    "SN Encore": {
+      "metadata": {
+        "type": "supernova",
+        "z_lens": 0.338,
+        "z_src": 1.95,
+        "ref_delays": "Pierel et al. 2025",
+        "ref_fluxes": "Pierel et al. 2025",
+        "images": [
+          "1a",
+          "1b"
+        ],
+        "reference_image": "1a"
+      },
+      "pair_results": {
+        "dt_1b1a": {
+          "image": "1b",
+          "dt_obs_days": -37.3,
+          "dt_err_days": 13.1,
+          "flux_ratio_i_A": 2.0,
+          "log10_flux_ratio": 0.3010299956639812,
+          "tep_fractional_residual": -0.016556649761518966,
+          "tep_predicted_shift_days": -0.6175630361046573,
+          "tep_shift_err_days": 0.21689211187589844
+        }
+      }
+    }
+  },
+  "summary": {
+    "n_systems": 8,
+    "n_pairs_total": 18,
+    "n_detectable_pairs": 16,
+    "spearman_rho": -0.7334714657637699,
+    "spearman_pval": 0.0005322591726799869,
+    "test_type": "predicted_sensitivity_check",
+    "interpretation": "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. These are PREDICTED shifts at the empirically measured coupling alpha_lens=-0.055; they are NOT observed detections of TEP in these systems. The physically meaningful quantity is the predicted shift magnitude versus published delay measurement uncertainties. The Spearman correlation between log(flux_ratio) and predicted shift is tautological (sign set by alpha_lens < 0; computed rho=-0.733) and therefore not independent evidence.",
+    "caveat": "These systems do not permit a full geometric blind-prediction residual test because all independent pairwise delays are referenced to the same image. Any closure sum is arithmetically zero by construction. The analysis here is a structural consistency check: it asks whether the predicted TEP shift pattern is compatible with the data, not whether TEP is detected."
+  }
+}

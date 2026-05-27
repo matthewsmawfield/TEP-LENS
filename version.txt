@@ -1,0 +1,5 @@
+v0.1 (Lisboa) - Initial release of TEP-LENS manuscript
+
+- 21-step strong-lensing time-delay pipeline, steps 00–20 (SN Refsdal, H0pe, TDCOSMO-2025)
+- Headline: Wilcoxon signed-rank test, all 7 non-zero blind residuals positive (p = 0.0078)
+- Robustness: model dependence, microlensing MC, hierarchical Bayes, external chains

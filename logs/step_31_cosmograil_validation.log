@@ -1,0 +1,191 @@
+======================================================================
+COSMOGRAIL TEMPORAL SHEAR VALIDATION SUITE
+======================================================================
+
+Loaded 48 image pairs from 18 systems
+
+======================================================================
+1. MULTI-BAND ANALYSIS (Achromaticity Test)
+======================================================================
+
+LIMITATION (PRIMARY SYSTEMS): The highest-significance detection systems in this work
+(DESJ0408, PG1115, J1206) are currently supported by single-band monitoring in the
+public COSMOGRAIL releases.
+
+WHAT ACHROMATICITY WOULD TEST:
+- TEP-GL predicts Γ should be ACHROMATIC (same in all optical bands)
+- Microlensing would produce CHROMATIC effects (different Γ per band)
+
+AVAILABLE PARTIAL TEST:
+We can test the estimator on public multi-band, image-resolved monitoring in other
+lensed quasars, and measure ΔΓ between bands for matched image pairs.
+
+
+Result: PARTIAL
+Primary systems: Single-band monitoring only (COSMOGRAIL public releases)
+Multi-band auxiliary ΔΓ summaries not found (expected JSON outputs missing).
+
+======================================================================
+2. GEOMETRIC CORRELATION ANALYSIS
+======================================================================
+
+Correlation of |Γ| with geometric parameters:
+------------------------------------------------------------
+Parameter                   r      p-value Interpretation      
+------------------------------------------------------------
+Einstein Radius        -0.468       0.0374 SIGNIFICANT         
+Image Separation       -0.490       0.0283 SIGNIFICANT         
+Lens Ellipticity       -0.153       0.5189 NULL                
+Lens Redshift           0.604       0.0048 SIGNIFICANT         
+Source Redshift         0.665       0.0014 SIGNIFICANT         
+
+------------------------------------------------------------
+Comparison: Systems with detections vs null systems
+------------------------------------------------------------
+einstein_radius_arcsec   : Sig=1.11, Null=1.23, p=0.585 → SIMILAR
+image_separation_arcsec  : Sig=2.24, Null=2.55, p=0.516 → SIMILAR
+lens_ellipticity         : Sig=0.16, Null=0.15, p=0.919 → SIMILAR
+z_lens                   : Sig=0.55, Null=0.42, p=0.358 → SIMILAR
+z_source                 : Sig=1.96, Null=1.38, p=0.135 → SIMILAR
+
+======================================================================
+3. INJECTION-RECOVERY ANALYSIS
+======================================================================
+
+Running 30 trials for each of 5 true delays...
+
+------------------------------------------------------------
+  True Delay    Recovered       Bias    Scatter      N
+------------------------------------------------------------
+        -100       -101.4       -1.4        2.1     30
+         -50        -50.4       -0.4        0.8     30
+           0          0.0        0.0        0.0     30
+          50         50.3        0.3        1.1     30
+         100        103.0        3.0        3.7     30
+------------------------------------------------------------
+     AVERAGE            -        0.3        1.5
+
+------------------------------------------------------------
+INTERPRETATION:
+  Bias: 0.3 days → UNBIASED (|bias| < 5 days)
+  Scatter: 1.5 days → PRECISE (σ < 20 days)
+
+======================================================================
+4. ROBUSTNESS AND SUMMARY STATISTICS
+======================================================================
+
+4.1 Detection Statistics
+----------------------------------------
+Total pairs: 48
+Significant (>3σ): 0 (0.0%)
+Null (<1σ): 44 (91.7%)
+
+4.2 Sign Consistency Within Systems
+----------------------------------------
+
+4.3 Fit Quality (R²)
+----------------------------------------
+Significant detections: No significant pairs (R² = N/A)
+Null detections: R² = -17.86 ± 73.51
+
+4.4 Combined Significance
+----------------------------------------
+
+  Conservative Fisher (Independent systems only):
+
+4.5 Bootstrap Stability
+----------------------------------------
+
+======================================================================
+5. SCRAMBLED RESIDUALS TEST (Time-Reversal)
+======================================================================
+Loading data from DESJ0408_Courbin2017.rdb...
+System DESJ0408: 3 images
+[23:58:11] [PROCESS]   Analyzing pair A-B
+[23:58:12] [PROCESS]   Analyzing pair A-D
+[23:58:13] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[23:59:08] [PROCESS]   Analyzing pair A-B
+[23:59:09] [PROCESS]   Analyzing pair A-D
+[23:59:09] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[00:00:05] [PROCESS]   Analyzing pair A-B
+[00:00:06] [PROCESS]   Analyzing pair A-D
+[00:00:07] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+Best pair: A-B
+Original Gamma: -29.9 (σ=18.6, z=1.61, n_boot=200)
+
+Analyzing TIME-REVERSED data (A-B)...
+[00:01:04] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+Time-reversed Gamma: 17.1 (σ=10.6, z=1.62, n_boot=200)
+
+Signal Reduction (z): -0.6%
+Test Status: PASSED
+  Gamma sign flipped: -29.9 → +17.1
+  Interpretation: Signal is time-directional (consistent with TEP prediction).
+[00:01:19] [PROCESS]   Analyzing pair A-B
+[00:01:19] [PROCESS]   Analyzing pair A-D
+[00:01:20] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[00:02:08] [PROCESS]   Analyzing pair A-B
+[00:02:09] [PROCESS]   Analyzing pair A-D
+[00:02:10] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[00:03:04] [PROCESS]   Analyzing pair A-B
+[00:03:05] [PROCESS]   Analyzing pair A-D
+[00:03:05] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[00:03:57] [PROCESS]   Analyzing pair A-B
+[00:03:58] [PROCESS]   Analyzing pair A-D
+[00:03:58] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[00:04:40] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+
+Season Shuffle Test:
+  Original: γ = -29.94, z = 1.61σ
+  Shuffled: γ = -42.57, z = 2.35σ
+  Status: EXPLORATORY
+  Interpretation: Single-shuffle draw strengthened the signal, but one draw is not inferential; use the empirical null distribution before claiming suppression.
+
+======================================================================
+6. EMPIRICAL SEASON SHUFFLE NULL
+======================================================================
+[00:04:53] [PROCESS]   Analyzing pair A-B
+[00:04:53] [PROCESS]   Analyzing pair A-D
+[00:04:54] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[00:05:42] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:05:56] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:06:06] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:06:19] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:06:33] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:06:53] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:07:10] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:07:28] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:07:41] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:07:59] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:08:19] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:08:35] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:08:49] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:09:05] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:09:22] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[00:09:38] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...

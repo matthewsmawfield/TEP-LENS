@@ -1,0 +1,194 @@
+<section id="galaxy-kinematics" class="section">
+  <h2>3.5 Galaxy Age Gradients: Spatially-Resolved TEP Test (ARCHIVED)</h2>
+  
+  <p><strong>Status:</strong> This section has been archived. The analysis is retained for reference but is not presented as primary evidence due to the fossil probe insensitivity issue (see Section 1.2).</p>
+  
+  <p>
+    A complementary time-domain test utilizes MaNGA (Mapping Nearby Galaxies at Apache Point Observatory) 
+    IFU spectroscopy to measure stellar population gradients within ~8,600 galaxies. Under TEP, galaxy centers 
+    (deeper gravitational potentials) should exhibit time-dilation-induced age signatures distinct from outskirts.
+  </p>
+  
+  <h3>Methodology</h3>
+  
+  <p>
+    The analysis employs Pipe3D stellar population fits from the MaNGA survey:
+  </p>
+  <ul>
+    <li>Sample: 8,642 galaxies with high-quality stellar population fits</li>
+    <li>Key observables: Light-weighted age gradients (α<sub>Age</sub>), central velocity dispersion (σ)</li>
+    <li>Data source: mangaPipe3D catalog (SDSS Data Release 18)</li>
+    <li>Script: <code>scripts/steps/step_6_5_manga_spatially_resolved.py</code></li>
+  </ul>
+  
+  <h3>Results</h3>
+  
+  <p>
+    The MaNGA analysis reveals statistically significant correlations between stellar population properties 
+    and gravitational potential depth:
+  </p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Observable</th>
+        <th>Correlation with σ</th>
+        <th>r</th>
+        <th>p-value</th>
+        <th>N</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Age gradient (α<sub>Age</sub>)</td>
+        <td>Steeper in deeper potentials</td>
+        <td>−0.092</td>
+        <td>1.1 × 10⁻¹⁷</td>
+        <td>8,642</td>
+      </tr>
+      <tr>
+        <td>Central age (Age<sub>Re</sub>)</td>
+        <td>Younger in deeper potentials</td>
+        <td>−0.603</td>
+        <td>≈ 0</td>
+        <td>8,642</td>
+      </tr>
+      <tr>
+        <td>Metallicity gradient (α<sub>[Z/H]</sub>)</td>
+        <td>Independent of potential</td>
+        <td>+0.069</td>
+        <td>1.8 × 10⁻¹⁰</td>
+        <td>8,642</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Binned Analysis by Velocity Dispersion</h3>
+  
+  <p>
+    Galaxies binned by central velocity dispersion show systematic trends in age structure:
+  </p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>σ Bin</th>
+        <th>Mean σ (km/s)</th>
+        <th>N</th>
+        <th>α<sub>Age</sub></th>
+        <th>Age<sub>Re</sub> (Gyr)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Low</td>
+        <td>130</td>
+        <td>1,729</td>
+        <td>−0.064</td>
+        <td>9.63</td>
+      </tr>
+      <tr>
+        <td>Med-Low</td>
+        <td>175</td>
+        <td>1,728</td>
+        <td>−0.090</td>
+        <td>9.46</td>
+      </tr>
+      <tr>
+        <td>Medium</td>
+        <td>221</td>
+        <td>1,728</td>
+        <td>−0.122</td>
+        <td>9.32</td>
+      </tr>
+      <tr>
+        <td>Med-High</td>
+        <td>270</td>
+        <td>1,728</td>
+        <td>−0.134</td>
+        <td>9.11</td>
+      </tr>
+      <tr>
+        <td>High</td>
+        <td>343</td>
+        <td>1,729</td>
+        <td>−0.115</td>
+        <td>8.96</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Complementary Test: Light-Weighted vs Mass-Weighted Age Discrepancy</h3>
+  
+  <p>
+    An independent test utilizes the Firefly stellar population synthesis code, which provides both 
+    light-weighted (LW) and mass-weighted (MW) stellar ages for MaNGA galaxies. These age measures 
+    probe different stellar populations—LW ages are dominated by young, luminous stars, while MW ages 
+    reflect the integrated star formation history. Under TEP, the discrepancy between these age measures 
+    should correlate with gravitational potential depth:
+  </p>
+  
+  <p>Definition: ΔAge = log(Age<sub>LW</sub>) − log(Age<sub>MW</sub>)</p>
+  
+  <p>TEP Prediction: r(ΔAge, σ) ≠ 0 (Systematic divergence tracking potential)</p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Correlation</th>
+        <th>r</th>
+        <th>p-value</th>
+        <th>N</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Raw ΔAge vs σ</td>
+        <td>+0.48</td>
+        <td>≈ 0</td>
+        <td>10,000</td>
+        <td>Highly significant</td>
+      </tr>
+      <tr>
+        <td>Controlled (metallicity-corrected)</td>
+        <td>+0.098</td>
+        <td>7.3 × 10⁻²³</td>
+        <td>10,000</td>
+        <td>Significant after controls</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Critical Limitation: Fossil Probe Insensitivity</h3>
+  
+  <div class="critical-analysis">
+    <h4>Why This Test Cannot Confirm TEP</h4>
+    <p>
+      As detailed in Section 1.2, TEP modifies the instantaneous rate of proper time (dτ/dt), 
+      creating two classes of observables:
+    </p>
+    <ul>
+      <li><strong>Time-Domain (Rates):</strong> HIGH sensitivity — measures present-tense clock rate</li>
+      <li><strong>Fossil (Archaeology):</strong> LOW sensitivity — integrates over ~Gyr formation history</li>
+    </ul>
+    <p>
+      The expected TEP differential (~10 kyr over cosmic time) is O(10⁻⁶) of the formation timescale 
+      spread (~Gyr) for stellar populations. The observed correlations (r = −0.09 for age gradients, 
+      r = −0.60 for central age) are overwhelmingly dominated by standard galaxy formation physics 
+      (downsizing, inside-out formation, light-weighting bias) rather than TEP time dilation.
+    </p>
+    <p>
+      While the correlation directions are consistent with TEP predictions, fossil probes cannot 
+      independently distinguish TEP from standard astrophysical processes at the observed precision. 
+      This test is therefore retained as a cross-check but not presented as primary evidence.
+    </p>
+  </div>
+
+  <p>
+    <strong>Verdict:</strong> NOT-DISTINGUISHABLE — The observed correlations are directionally consistent 
+    with TEP but match standard galaxy formation physics. As fossil probes integrating over Gyr timescales, 
+    stellar age gradients cannot separate the O(10⁻⁶) TEP differential from astrophysical systematics. 
+    This analysis is retained for reference but archived as non-primary evidence.
+  </p>
+</section>

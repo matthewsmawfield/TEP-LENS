@@ -1,0 +1,31 @@
+
+[23:40:42] [INFO] ======================================================================
+[23:40:42] [INFO] STEP 10: H0 Tension Resolution (measured coupling)
+[23:40:42] [INFO] ======================================================================
+[23:40:42] [INFO] 
+SN Refsdal:
+[23:40:42] [INFO]   GR H0 = 66.6 +/- 4.1/3.3
+[23:40:42] [INFO]   TEP shift factor = 1.0402 +/- 0.0006
+[23:40:42] [INFO]   TEP H0 = 69.3 +/- 0.0 (shift: +2.7)
+[23:40:42] [INFO]   dt_obs = 376.0 d, dt_geom = 361.5 d
+[23:40:42] [INFO] 
+SN H0pe:
+[23:40:42] [INFO]   GR H0 = 60.9 +/- 5.1/4.6
+[23:40:42] [INFO]   TEP shift factor = 1.0011 +/- 0.0054
+[23:40:42] [INFO]   TEP H0 = 61.0 +/- 0.3 (shift: +0.1)
+[23:40:42] [INFO]   Per-delay: A-B f=1.0116, C-B f=0.9996
+[23:40:42] [INFO]   Predicted closure residual = 1.90 d
+[23:40:42] [INFO] 
+SN Encore:
+[23:40:42] [INFO]   GR H0 = 60.9 +/- 5.1/4.6
+[23:40:42] [INFO]   TEP shift factor = 1.0014 +/- 0.0033
+[23:40:42] [INFO]   TEP H0 = 61.0 +/- 0.2 (shift: +0.1)
+[23:40:42] [INFO]   Reference-dependent range: 0.9931 to 1.0097
+[23:40:42] [INFO] 
+Combined Low-H0 cluster (Ref+H0pe+Enc):
+[23:40:42] [INFO]   GR:  63.5
+[23:40:42] [INFO]   TEP: 64.8 (shift: +1.3)
+[23:40:42] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_10_h0_tension.json
+[23:40:43] [INFO] Saved plot to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_10_h0_tension.png
+[23:40:43] [INFO] Step 10 complete.

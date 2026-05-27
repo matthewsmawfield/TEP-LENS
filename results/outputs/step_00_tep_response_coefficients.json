@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "note": "Observable response coefficients from the TEP series. These are empirical, probe-specific couplings distinct from the fundamental scalar coupling beta. They are determined from data, not predicted from first principles.",
+    "source_papers": [
+      "10-TEP-COS-v0.6-Caracas.md (pulsar spin-down)",
+      "11-TEP-H0-v0.6-KingstonUponHull.md (Cepheid bias)",
+      "13-TEP-WB-v0.3-Kilifi.md (wide binaries)",
+      "15-TEP-EFA-v0.1-Yogyakarta.md (Earth flyby)",
+      "17-TEP-LLR-v0.1-Lucknow.md (lunar laser ranging)"
+    ]
+  },
+  "coefficients": {
+    "kappa_MSP": {
+      "value": 1000000.0,
+      "value_range": [
+        1000000.0,
+        10000000.0
+      ],
+      "probe": "millisecond pulsar spin-down (globular clusters)",
+      "paper": "TEP-COS (Paper 10)",
+      "note": "absorbs stellar physics and environmental activation"
+    },
+    "kappa_Cep": {
+      "value": 1050000.0,
+      "err_plus": 430000.0,
+      "err_minus": 430000.0,
+      "probe": "Cepheid period-luminosity",
+      "paper": "TEP-H0 (Paper 11)",
+      "note": "observable response coefficient, not microscopic coupling"
+    },
+    "alpha_sat": {
+      "value": 0.366,
+      "err": 0.012,
+      "probe": "wide binary velocity-profile saturation",
+      "paper": "TEP-WB (Paper 13)",
+      "note": "saturation amplitude, not bare scalar coupling"
+    },
+    "beta_eff": {
+      "value": 0.000565,
+      "err": 2.79e-05,
+      "probe": "Earth flyby anomalous acceleration",
+      "paper": "TEP-EFA (Paper 15)",
+      "note": "effective coupling with geometric screening"
+    },
+    "eta_LLR": {
+      "value": -0.0004,
+      "probe": "lunar laser ranging (Nordtvedt effect)",
+      "paper": "TEP-LLR (Paper 17)",
+      "note": "eta itself is the observable response coefficient"
+    },
+    "alpha_lens": {
+      "value": -0.055,
+      "err": 0.044,
+      "probe": "strong-lensing time-delay closure residual",
+      "paper": "TEP-LENS (Paper 19)",
+      "note": "lensing-sector effective coupling, this work"
+    }
+  },
+  "cross_probe_comparison": {
+    "note": "All TEP probes report probe-specific empirical couplings. None claim a first-principles prediction. The lensing-sector coupling alpha_lens is the direct geometric analogue: it probes the conformal clock-rate sector without stellar-physics mediation."
+  }
+}

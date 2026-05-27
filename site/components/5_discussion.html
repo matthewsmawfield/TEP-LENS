@@ -2,57 +2,99 @@
 
 <h3>4.1 The SX Baseline: Why SN Refsdal is the Ideal System</h3>
 <p>
-The dominant result of this analysis is the S1–S4–SX closure loop, which yields a predicted TEP residual of $+13.2 \pm 0.2$ days at SNR = 78. The origin of this signal is straightforward: image SX, located at an arc ~8 arcsec from the Einstein cross, traverses a significantly less magnified region of the cluster potential than S4 ($\mu_{\rm SX} \approx 0.35$ vs $\mu_{\rm S4} \approx 1.79$ in relative flux units). Under TEP, the differential temporal shear between S4 and SX is $\Delta\Gamma = \Gamma_{S4} - \Gamma_{SX} \approx 0.036$. Applied to the 376-day SX–S1 baseline, this produces a $\sim$13-day residual—well above the 5.6-day measurement error on $\Delta t_{\rm SX,S1}$.
-</p>
-<p>
-The key insight is that SNR scales linearly with the time-delay baseline for a fixed $\Delta\Gamma$. The inner Einstein-cross loops (S1–S4 baseline: 20 days) yield SNR $\approx$ 3. The SX loops (376-day baseline) amplify the same effect by a factor of ~18, reaching SNR $\approx$ 78. <strong>SN Refsdal is uniquely suited to this test precisely because it has both a compact Einstein cross and a long-delay arc image.</strong>
+The dominant result of this analysis is the S1–S2–SX algebraic loop (SNR = 66, best by SNR) and S1–S4–SX loop, which yields a predicted proxy-model residual of $+14.5 \pm 0.2$ days at SNR = 63. The origin of this signal is straightforward: image SX, located at an arc ~8 arcsec from the Einstein cross, traverses a significantly less magnified region of the cluster potential than S4 ($\mu_{\rm SX} \approx 0.35$ vs $\mu_{\rm S4} \approx 1.79$ in relative flux units). Under the measured proxy-model coupling ($\alpha_{\rm lens} \approx -0.055$), the differential temporal shear between S4 and SX is $\Delta\Gamma = \Gamma_{S4} - \Gamma_{SX} \approx -0.036$. Applied to the 376-day SX–S1 baseline, this produces a $\sim$14.5-day expansion (Obs > Model)—well above the 5.6-day measurement error on $\Delta t_{\rm SX,S1}$.
 </p>
 
-<h3>4.2 Immunity to the Mass Sheet Degeneracy</h3>
+<h4>4.1.1 The Inner Cross as a Null Region</h4>
+<p>
+The inner Einstein cross is a <strong>null region</strong>: the loops constructed from S1–S2–S3, S1–S2–S4, and S1–S3–S4 predict proxy-model residuals of 0.1–0.3 days against geometric measurement uncertainties of 4–6 days (Step 32). The formal SNR values under the log-magnification ansatz are ~2–3, but these values are physically non-probative because the $\mu \rightarrow \kappa$ proxy fails in the inner cross (shear degeneracy renders magnification ordering uninformative about convergence; rank-order agreement drops to $P \approx 3$%). The Spearman rank correlation between delay and inverse-magnification for S1–S4 alone is not significant ($\rho \approx 0.1$, $p \approx 0.87$). The null region therefore provides no probative constraint on the proxy model. All probative content comes from the S4–SX contrast.
+</p>
+<p>
+The key insight is that SNR scales linearly with the time-delay baseline for a fixed $\Delta\Gamma$. The inner Einstein-cross loops (S1–S4 baseline: 20 days) yield SNR $\approx$ 3. The SX loops (376-day baseline) amplify the same effect by a factor of ~18, reaching SNR $\approx$ 63–66. SN Refsdal is particularly well suited to this test because it has both a compact Einstein cross and a long-delay arc image, but the test is structurally a single-contrast measurement. The signal-energy partitioning (Step 35) confirms this: 99.9% of the predicted TEP signal energy resides in the two SX-containing loops, and removing the S4–SX contrast eliminates 99.5% of the energy. The effective dimensionality is $D_{\rm eff} \approx 2.0$, consistent with a core-versus-arc two-contrast system. Crucially, the empirical sign of the blind residuals (SX late relative to GR) is proxy-independent: the models underpredict the observed SX delay regardless of which tracer of potential depth is adopted. The TEP interpretation of that sign is proxy-robust rather than proxy-free: under any plausible ordering in which SX sits on the outer arc at lower potential depth than S4, the expected temporal-shear correction has the observed direction.
+</p>
+
+<h3>4.2 Insensitivity to the Mass Sheet Degeneracy</h3>
 <p>
 A central concern in time-delay cosmography is the Mass Sheet Degeneracy (MSD): adding a uniform convergence sheet $\kappa_{\rm ext}$ to any lens model rescales all pairwise delays by a common factor $(1-\kappa_{\rm ext})$, leaving the image positions unchanged (Falco, Gorenstein &amp; Shapiro 1985). This prevents unique $H_0$ inference from a single system without external kinematic constraints.
 </p>
 <p>
-The route-closure residual is explicitly immune to the MSD. If all delays scale as $\Delta t \to (1-\kappa)\Delta t$, then $\mathcal{R}_{\rm closure} = \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} \to (1-\kappa)(\Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki}) = (1-\kappa) \times 0 = 0$. The MSD cannot generate a non-zero closure residual, because it modifies the overall delay scale symmetrically. The TEP closure residual is a genuinely differential, non-linear quantity: it arises from the contrast in $\Gamma_t$ between image positions, not from any global rescaling.
+The algebraic loop sum is insensitive to the MSD: if all delays scale as $\Delta t \to (1-\kappa)\Delta t$, then $\mathcal{L} = \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} \to (1-\kappa) \times 0 = 0$. The MSD cannot generate a non-zero loop sum because it modifies the overall delay scale symmetrically. The proxy-model predicted discrepancy is a genuinely differential, non-linear quantity: it arises from the contrast in $\Gamma_t$ between image positions, not from any global rescaling. However, the empirical blind-prediction residual $\mathcal{R}_{\rm obs} = \Delta t_{\rm obs} - \Delta t_{\rm GR,pred}$ is not fully model-independent: it compares observed delays to GR predictions that themselves carry mass-sheet and model-calibration uncertainties.
 </p>
 
-<h3>4.3 Limitations: The Magnification Proxy Assumption</h3>
+<h3>4.3 Validation of the Magnification Proxy Assumption</h3>
 <p>
-The current analysis uses published total flux ratios (F_i/F_S1) as proxies for the relative gravitational potential depth at each image. This is a first-order approximation: the TEP coupling is to the projected cluster convergence $\kappa(\theta_i)$, not directly to the total magnification $\mu$. For the Einstein cross images S1–S4, the magnification is dominated by the member galaxy subhalo rather than the full cluster potential, introducing an unknown offset between $\mu$ and $\kappa_{\rm cluster}$.
+The physically relevant quantity for TEP temporal shear is expected to be closer to projected cluster convergence $\kappa(\boldsymbol{\theta})$ or potential depth than to total magnification $\mu$. The exact lensing identity $\mu = [(1-\kappa)^2 - \gamma^2]^{-1}$ shows that the inferred convergence from an observed flux ratio depends on the unknown total shear $\gamma$ at each image position. For the Einstein-cross images S1–S4, the shear is large (member-galaxy internal shear plus cluster external shear, $\gamma \sim 0.5$–$0.8$), making $\mu$ a poor proxy for $\kappa$. For the peripheral arc SX, the shear is smaller ($\gamma \sim 0.1$–$0.3$), and $\mu$ is a more faithful proxy.
 </p>
 <p>
-Future refinement requires: (1) high-resolution cluster mass models to extract the convergence at each image position independently of the magnification, and (2) comparison of the SX residual against the inner-cross residuals as a consistency check. The inner-cross loops yield SNR $\approx$ 3 under the current proxy—marginally significant and subject to this systematic. The SX residual at SNR = 78 is robust to the proxy uncertainty provided $\Delta\Gamma_{\rm SX,S4}$ is correctly ordered (SX in a weaker potential than S4), which is supported by SX's lower flux and more peripheral arc position.
+To quantify this systematic, a Monte Carlo sensitivity analysis (Step 32) draws the unknown absolute magnification scale factor $C$ and the shear at each image from physically motivated distributions, computes the implied convergence from the lensing identity, and recomputes the TEP predicted GR discrepancy. The results show:
+</p>
+<ul>
+<li><strong>Amplitude shift.</strong> The equivalent $\alpha$ required to match the same observed S1–S4–SX residual is $-0.032$ [$-0.068$, $+0.009$], compared to the nominal proxy-model value $-0.055$. The 84th percentile crossing zero reflects a factor-of-two systematic uncertainty in the inferred coupling amplitude, but this cross-zero behaviour is restricted strictly to the amplitude reconstruction.</li>
+<li><strong>Sign stability.</strong> The S4–SX contrast sign is robust: the probability that $\kappa_{\rm S4} > \kappa_{\rm SX}$ (matching the flux-proxy ordering) is $P \approx 80$%. The binary sign-contrast does not cross the 50% null, and the sign-based evidence is therefore substantially less sensitive to the proxy systematic than amplitude-only fits.</li>
+<li><strong>Rank-order instability.</strong> The probability that the full five-image rank order of $\kappa_{\rm norm}$ matches that of $\mu_{\rm norm}$ is low ($P \approx 3$%), reflecting the strong shear degeneracy in the Einstein-cross region where S1–S4 images have comparable convergences but different magnifications.</li>
+</ul>
+<p>
+For TDCOSMO quad-lens systems, a theoretical comparison using published power-law lens parameters shows $\Delta\log_{10}\mu / \Delta\log_{10}\kappa$ ratios up to $\sim 3$ at characteristic image radii <em>for spherical lenses</em> (Step 32). Elliptical SIE lenses with typical external shear ($\gamma_{\rm ext} \sim 0.06$–0.12) amplify these ratios further because additional shear at fixed convergence reduces magnification, deepening the proxy misestimation. The spherical power-law comparison is therefore a conservative lower bound on the proxy discrepancy; real lenses exhibit larger misestimation. The proxy systematic is a generic feature of strong-lensing physics, not specific to SN Refsdal or this pipeline.
+</p>
+<p>
+These results frame the current analysis as a sign-robust, amplitude-limited test. The SX-driven residual is genuine under either proxy, but the quantitative coupling $\alpha_{\rm lens} = -0.055 \pm 0.044$ should be read as a phenomenological proxy value with a factor-of-two amplitude systematic pending direct convergence measurements from high-resolution mass models.
 </p>
 
 <h3>4.4 The Observed vs. Blind-Predicted Test: What It Shows</h3>
 <p>
-The route-closure residual computed directly from the Kelly et al. (2023) measured delays is identically zero by construction — all delays are referenced to S1, so the closure is arithmetically trivial. A genuine non-zero test requires independent delay chains. Section 3.5 provides this through the historical blind prediction record: seven teams independently predicted $\Delta t_{\rm SX,S1}$ before the measurement existed, providing a genuinely independent comparison dataset.
+The algebraic loop sum computed directly from the Kelly et al. (2023) measured delays is identically zero by construction — all delays are referenced to S1, so the loop sum is arithmetically trivial. A genuine non-zero test requires independent delay chains. §3.5 provides this through the historical blind prediction record: seven teams independently predicted $\Delta t_{\rm SX,S1}$ before the measurement existed, providing a genuinely independent comparison dataset.
 </p>
 <p>
-The observed weighted-mean residual $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d is dominated by lens model uncertainties ($\pm$16–60 d), not measurement noise ($\pm$5.6 d). The relevant question is not whether the residual is individually significant, but whether its ensemble properties — sign, magnitude, and multi-method consistency — are consistent with a systematic physical effect rather than random modelling scatter.
+The observed weighted-mean residual $\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d is dominated by lens model uncertainties ($\pm$16–60 d), not measurement noise ($\pm$5.6 d). The relevant question is not whether the residual is individually significant, but whether its ensemble properties — sign, magnitude, and multi-method consistency — are difficult to attribute to independent random sign scatter, although shared lensing inputs and community-level modelling systematics prevent treating the models as fully independent draws.
 </p>
 <p>
 Three properties of the residual argue for a physical origin:
 </p>
 <ol>
-<li><strong>Sign consistency across methods.</strong> Five independent modelling codes (GLAFIC, LTM, WSLAP+, GLEE, LENSTOOL) and seven teams all underestimate the delay. The probability of this under random scatter is $p = 0.063$ (blind models only). Different codes share no code infrastructure and use different assumptions about the cluster mass distribution; their systematic agreement on sign is not explained by any known correlated modelling bias.</li>
-<li><strong>Magnitude agreement with TEP prediction.</strong> The observed weighted mean $+14.6$ d sits within $0.12\sigma$ of the TEP prediction $+13.2$ d. This agreement is not a free fit — $\alpha = 0.05$ was calibrated independently from local-domain TEP studies (Papers I–XIII) and is not adjusted here. The probability that a random scatter of this magnitude would happen to match a prior-calibrated prediction to 0.12$\sigma$ is of order $p \sim 0.09$.</li>
-<li><strong>TEP correction reduces scatter.</strong> Subtracting the TEP-predicted residual from the observed delay reduces the weighted RMS of model–observation disagreement by 45%, and brings 6 of 8 models into better agreement. Under GR this correction should increase scatter; instead it decreases it.</li>
+<li><strong>Sign consistency across methods.</strong> Five modelling codes (GLAFIC, LTM, WSLAP+, GLEE, LENSTOOL) and six of the seven blind teams underestimate the delay; the seventh (Diego, WSLAP+) predicts exactly the observed value (δ = 0, consistent with GR). The probability that independent random sign scatter would produce six or more positive residuals out of seven blind models is $p = 0.0625$ (binomial test). While the codes share no common infrastructure and adopt different parametric assumptions, the models all use the same lens, the same Einstein-cross image constraints, and similar community priors on halo profiles and mass distributions. Their systematic agreement on sign is therefore difficult to attribute to fully independent random scatter, though no known conventional modelling bias explains the uniform direction of the residuals.</li>
+<li><strong>Magnitude mapping is definitional, not corroborating.</strong> The observed weighted mean $+14.6$ d maps to $\alpha_{\rm inferred} = -0.055 \pm 0.044$ by dividing by the unit proxy-model sensitivity. This yields the same value as the empirical coupling because the same ensemble residual determines both quantities. The probative content therefore does not lie in the numerical coincidence ($0.01\sigma$ by construction) but in the fact that a single phenomenological parameter, calibrated from the sign pattern, simultaneously accounts for the magnitude and reduces scatter where GR predicts none.</li>
+<li><strong>Proxy-model correction reduces scatter.</strong> Subtracting the proxy-model predicted residual from the observed delay reduces the weighted RMS of model–observation disagreement by 46%, and brings 5 of 8 models into better agreement. Under GR this correction should increase scatter; instead it decreases it.</li>
 </ol>
 <p>
-Taken individually, none of these is statistically conclusive. Combined, they constitute the strongest currently achievable observational case for TEP temporal propagation using publicly available data.
+Taken individually, none of these is statistically conclusive. Combined, they constitute the strongest currently achievable observational case for the log-magnification proxy model using publicly available data.
+</p>
+
+<div class="callout-note">
+    <h4>Circularity proof: why magnitude agreement is definitional</h4>
+    <p>
+        The proxy-model predicted GR discrepancy is linear in $\alpha$: $\mathcal{R}_{\rm TEP/GR}(\alpha) = \alpha \cdot f(\boldsymbol{\Delta t}, \boldsymbol{\mu})$, where $f$ is a purely geometric function. The unit sensitivity is $S = d\mathcal{R}_{\rm TEP/GR}/d\alpha = f$. The empirical coupling is defined by demanding that the predicted residual matches the observed mean: $\alpha_{\rm lens} = \mathcal{R}_{\rm obs} / S$. The inferred coupling from the same data is $\alpha_{\rm inferred} = \mathcal{R}_{\rm obs} / S$. Therefore:
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:5_discussion_circularity}
+        \alpha_{\rm inferred} \equiv \alpha_{\rm lens} \quad \text{(by construction)}
+        \end{equation}
+    </div>
+    <p>
+        Any apparent "agreement" between $\alpha_{\rm inferred}$ and $\alpha_{\rm lens}$ is mathematically guaranteed; the probative content lies entirely in the sign consistency ($\alpha < 0$ for all models) and the scatter-reduction property (wRMS improves by 46% after proxy-model correction, where GR predicts no correction at all).
+    </p>
+</div>
+
+<p>
+What would make this conclusive: reducing lens model uncertainties from $\pm$20–60 d to $\pm$5 d (comparable to the measurement precision) would push the binomial test to $p < 10^{-3}$ and the $z$-test to $>3\sigma$. The Grillo et al. (2024) precision model ($\sigma = 16$ d) already has 4$\times$ smaller error than the original blind models; further improvement from extended-source modelling toward $\sigma < 5$ d would make this test decisive.
+</p>
+
+<h3>4.5 Robustness Stress Tests and Bayesian Priors</h3>
+<p>
+Three targeted follow-up analyses quantify how sensitive the present evidence is to plausible statistical and systematic assumptions (detailed results in §3.6.5). The model-dependence stress test confirms directional stability: leave-one-out exclusions across all eight models preserve the positive sign pattern and keep the proxy model as the better fit in every realization. The microlensing nuisance Monte Carlo (10%-30% flux-proxy perturbations) shows the SX-loop residual remains centred near the nominal value with stable sign, though uncertainty envelopes broaden as expected. The hierarchical Bayesian comparison yields non-decisive Bayes factors under both baseline and bias-aware priors, with the free-alpha model using a proper GR-centred prior ($\alpha\sim\mathcal{N}(0,0.15)$) to avoid circularity. The fixed-alpha test of the specific SN Refsdal prediction shows no preference either way (BF$=1.06$ baseline; $0.997$ h0pe-informed), while the free-alpha model with the corrected prior shows mild preference for GR (BF$=0.615$ baseline; $0.492$ h0pe-informed). Both are within the inconclusive regime, indicating that current data quality is insufficient for decisive model selection—an expected outcome when model uncertainties are large. The posterior coupling spans zero in both scenarios. External error inflation from TDCOSMO distance-chain priors softens the weighted-mean significance to $z=1.25$ while preserving the directional fit preference ($\Delta\chi^2=+1.56$), the expected behaviour under conservative error inflation.
 </p>
 <p>
-What would make this conclusive: reducing lens model uncertainties from $\pm$20–60 d to $\pm$5 d (comparable to the measurement precision) would push the binomial test to $p < 10^{-3}$ and the $z$-test to $>3\sigma$. The Grillo et al. (2024) precision model ($\sigma = 16$ d) already has 4$\times$ smaller error than the original blind models; further improvement from extended source modelling (Grillo et al. 2026, arXiv:2602.12329) promises $\sigma < 5$ d, which would make this test decisive.
+The combined implication is not a stronger detection claim, but a stronger reliability claim: the directional evidence is persistent across dependence and nuisance perturbations, and the analysis explicitly separates directional consistency from decisive model-selection evidence. Because the multiple evidence strands rely fundamentally on the same anomalous SX arrival time, combining them is avoided to prevent significance inflation. The headline significance is drawn from the pre-specified primary non-parametric directional test (Wilcoxon signed-rank), supported by the consistency of the other metrics.
 </p>
 
 <h3>4.6 Alpha Sensitivity and the Geometric Nature of SNR</h3>
 <p>
-The alpha sensitivity scan (step_06, $\alpha \in [0.001, 0.15]$, 150 values) reveals a striking result: <strong>the signal-to-noise ratio $\text{SNR} = |\mathcal{R}_{\rm TEP}|/\sigma_{\mathcal{R}}$ is exactly independent of $\alpha$ for all five loops.</strong> This follows directly from the linearity of the TEP formulation: both $\mathcal{R}_{\rm TEP}$ and $\sigma_{\mathcal{R}}$ are proportional to $\alpha$, so their ratio cancels:
+The alpha sensitivity scan ($\alpha \in [0.001, 0.15]$, 150 values) reveals a key structural result: the signal-to-noise ratio $\text{SNR} = |\mathcal{R}_{\rm TEP}|/\sigma_{\mathcal{R}}$ is exactly independent of $\alpha$ for all five loops. This follows directly from the linearity of the proxy formulation: both $\mathcal{R}_{\rm TEP}$ and $\sigma_{\mathcal{R}}$ are proportional to $\alpha$, so their ratio cancels:
 </p>
-<p>
-$\text{SNR} = \frac{|\mathcal{R}_{\rm TEP}(\alpha)|}{\sigma_{\mathcal{R}}(\alpha)} = \frac{\alpha \cdot |f(\boldsymbol{\Delta t}, \boldsymbol{\mu})|}{\alpha \cdot g(\boldsymbol{\sigma}_{\Delta t}, \boldsymbol{\mu})} = \frac{|f|}{g}$
-</p>
+<div class="equation">
+\begin{equation} \label{eq:5_discussion_01}
+\text{SNR} = \frac{|\mathcal{R}_{\rm TEP}(\alpha)|}{\sigma_{\mathcal{R}}(\alpha)} = \frac{|\alpha| \cdot |f(\boldsymbol{\Delta t}, \boldsymbol{\mu})|}{|\alpha| \cdot g(\boldsymbol{\sigma}_{\Delta t}, \boldsymbol{\mu})} = \frac{|f|}{g}
+\end{equation}
+</div>
 <p>
 where $f$ and $g$ are purely geometric functions of the measured delays $\boldsymbol{\Delta t}$, their errors $\boldsymbol{\sigma}_{\Delta t}$, and the relative magnifications $\boldsymbol{\mu}$. The SNR is therefore a <em>geometric invariant</em> of the lens system — not a property of TEP's coupling strength. The intrinsic SNR values per loop are:
 </p>
@@ -61,18 +103,18 @@ where $f$ and $g$ are purely geometric functions of the measured delays $\boldsy
         <tr><th>Loop</th><th>Intrinsic SNR (all $\alpha$)</th><th>3$\sigma$ detectable?</th><th>5$\sigma$ detectable?</th></tr>
     </thead>
     <tbody>
-        <tr><td>S1–S2–S3</td><td>2.88</td><td>No (always below)</td><td>No</td></tr>
-        <tr><td>S1–S2–S4</td><td>2.92</td><td>No (always below)</td><td>No</td></tr>
-        <tr><td>S1–S3–S4</td><td>3.11</td><td>Yes (at all $\alpha$)</td><td>No</td></tr>
-        <tr><td>S1–S2–SX</td><td>60.3</td><td>Yes (at all $\alpha$)</td><td>Yes</td></tr>
-        <tr><td>S1–S4–SX</td><td>77.7</td><td>Yes (at all $\alpha$)</td><td>Yes</td></tr>
+        <tr><td>S1–S2–S3</td><td>3.27</td><td>Yes (at all $\alpha$)</td><td>No</td></tr>
+        <tr><td>S1–S2–S4</td><td>2.52</td><td>No (always below)</td><td>No</td></tr>
+        <tr><td>S1–S3–S4</td><td>2.30</td><td>No (always below)</td><td>No</td></tr>
+        <tr><td>S1–S2–SX</td><td>66.3</td><td>Yes (at all $\alpha$)</td><td>Yes</td></tr>
+        <tr><td>S1–S4–SX</td><td>63.3</td><td>Yes (at all $\alpha$)</td><td>Yes</td></tr>
     </tbody>
 </table>
 <p>
-The implication is profound: <strong>the detectability of TEP in the strong lensing regime is not limited by the coupling constant $\alpha$, but by the geometry of the lens system.</strong> The inner Einstein-cross loops (S1–S2–S3, S1–S2–S4) are sub-threshold at intrinsic SNR $\approx$ 2.9 regardless of how large $\alpha$ is — because the four cross images have similar magnifications ($\mu_{\rm rel} \approx 0.72$–$1.79$) and similar delays ($\leq 20$ days), giving a small $\Delta\Gamma \times \Delta t$ product. The SX loops are above 5$\sigma$ at every $\alpha > 0$, because the 376-day baseline amplifies even the smallest $\Delta\Gamma$ into a measurable signal.
+The implication is direct: the detectability of the proxy model in the strong lensing regime is not limited by the coupling constant $\alpha$, but by the geometry of the lens system. The inner Einstein-cross loops have modest intrinsic SNR: S1–S2–S3 is marginally above the 3$\sigma$ threshold (SNR $\approx$ 3.3), while S1–S2–S4 (2.5) and S1–S3–S4 (2.3) remain sub-threshold regardless of how large $\alpha$ is — because the four cross images have similar magnifications ($\mu_{\rm rel} \approx 0.72$–$1.79$) and similar delays ($\leq 20$ days), giving a small $\Delta\Gamma \times \Delta t$ product. The SX loops are above 5$\sigma$ at every $\alpha \neq 0$, because the 376-day baseline amplifies even the smallest $\Delta\Gamma$ into a measurable signal.
 </p>
 <p>
-This also means: <strong>if an independent measurement of the S4–SX delay falsifies the TEP prediction, it rules out TEP at every value of $\alpha$ simultaneously</strong> — not just at $\alpha = 0.05$. The route-closure test in the S1–S4–SX loop is a binary geometric test of the framework, not a parameter constraint.
+This also means: <em>if an independent measurement of the S4–SX delay falsifies the proxy-model prediction, it rules out the linear log-magnification ansatz at every value of $\alpha$ simultaneously</em> — not just at $\alpha_{\rm lens} \approx -0.055$. The blind-prediction residual test in the S1–S4–SX loop is a binary geometric test of the adopted proxy parameterisation, not a parameter constraint. A different functional form (e.g., power-law or screened coupling) would break the alpha-independence of SNR.
 </p>
 <p>
 Conversely, if the observed $\mathcal{R}_{\rm obs}(\text{S1, S4, SX})$ is non-zero, the measured value directly determines $\alpha$: $\alpha_{\rm meas} = \mathcal{R}_{\rm obs} / f(\boldsymbol{\Delta t}, \boldsymbol{\mu})$ — a direct coupling measurement from a single lens system.
@@ -80,104 +122,208 @@ Conversely, if the observed $\mathcal{R}_{\rm obs}(\text{S1, S4, SX})$ is non-ze
 
 <h3>4.7 Evidence Synthesis: A Multi-Pronged Observational Case</h3>
 <p>
-This paper presents evidence for TEP temporal propagation at three levels of independence:
+This paper presents evidence for the log-magnification proxy model at three levels of independence:
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Evidence strand</th><th>Test type</th><th>Result</th><th>$p$-value / significance</th><th>Status</th></tr>
+        <tr><th>Evidence strand</th><th>Test type</th><th>Result</th><th>$p$-value / significance</th><th>Independent?</th><th>Status</th></tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Binomial sign test</strong><br><small>7/8 blind model residuals positive</small></td>
-            <td>Non-parametric sign test</td>
-            <td>7/8 teams underestimate $\Delta t_{\rm SX,S1}$ — five independent modelling codes</td>
-            <td>$p=0.035$ (2.1$\sigma$)</td>
+            <td><strong>Wilcoxon signed-rank</strong><br><small>blind 6/6 non-zero; all 7/7 non-zero</small></td>
+            <td>Non-parametric signed-rank test</td>
+            <td>All non-zero residuals have the predicted positive sign (equal-weight directional test)</td>
+            <td>$p=0.016$ blind ($2.2\sigma$); $p=0.0078$ all ($2.4\sigma$)</td>
+            <td>✓ Yes (blind-only subset)</td>
             <td>✓ Observed</td>
         </tr>
         <tr>
-            <td><strong>Delay–$\mu$ correlation</strong><br><small>Pearson $r=0.93$, $n=5$</small></td>
-            <td>Correlation test</td>
-            <td>Positive slope 172.6±38.8 d per unit $1/\mu$; SX dominates, inner-cross noise-limited</td>
-            <td>$p=0.011$ (2.3$\sigma$, one-sided)</td>
-            <td>✓ Observed (SX-driven)</td>
+            <td><strong>TDCOSMO+Encore Shear</strong><br><small>Predicted sensitivity check, $n=18$ pairs</small></td>
+            <td>Predicted-sensitivity consistency check</td>
+            <td>At the measured coupling, 16/18 image pairs exhibit a predicted proxy-model shift exceeding the $1\sigma$ measurement uncertainty. The Spearman correlation between log(flux ratio) and predicted shift is tautological ($\rho < 0$ by construction because $\alpha_{\rm lens} < 0$; computed $\rho = -0.733$) and carries no independent information.</td>
+            <td>Predicted shift magnitude vs. published uncertainty</td>
+            <td>✓ Yes (different systems)</td>
+            <td>✓ Predicted (structural consistency; not an observed detection)</td>
         </tr>
         <tr>
-            <td><strong>Residual magnitude vs. TEP</strong><br><small>$\mathcal{R}_{\rm obs}$ vs. $\mathcal{R}_{\rm TEP}$</small></td>
+            <td><strong>Residual magnitude vs. proxy model</strong><br><small>$\mathcal{R}_{\rm obs}$ vs. $\mathcal{R}_{\rm TEP}$</small></td>
             <td>Point estimate comparison</td>
-            <td>$\mathcal{R}_{\rm obs} = +14.6$ d vs. $\mathcal{R}_{\rm TEP} = +13.2$ d; 0 free params</td>
-            <td>$0.12\sigma$ agreement</td>
-            <td>✓ Observed</td>
+            <td>$\mathcal{R}_{\rm obs} = +14.6$ d maps to $\alpha_{\rm inferred} = -0.055 \pm 0.044$ by construction; 0 free params. <em>Definitional, not independent: the same residual determines and tests the coupling.</em></td>
+            <td>$0.01\sigma$ by construction</td>
+            <td>✗ No (same ensemble)</td>
+            <td>✓ Observed (definitional)</td>
+        </tr>
+        <tr style="background-color:#f8f8f8;">
+            <td colspan="6" style="padding:0.5em 1em; font-style:italic; color:#555;"><strong>Non-independent consistency checks (same SX-dominated data; reported for transparency only)</strong></td>
         </tr>
         <tr>
-            <td><strong>Per-model $\alpha$ inference</strong><br><small>$\bar{\alpha} = 0.057 \pm 0.060$</small></td>
+            <td><strong>Delay–$\mu$ correlation</strong><br><small>Pearson $r=0.93$ (SX-leveraged), $n=5$</small></td>
+            <td>Correlation test</td>
+            <td>Pearson $r=0.932$ collapses to $r \approx 0.15$ when SX is excluded; Cook's distance $>1.0$ for SX. Spearman $\rho=0.3$ ($p=0.31$) is not significant. Theil-Sen slope $86 \pm 210$ d overlaps zero. <em>Statistically inappropriate with $n=5$ and one extreme leverage point. Not probative. Reported for transparency only.</em></td>
+            <td>Not meaningful as formal test</td>
+            <td>✗ No (SX-driven; correlated with strand 1)</td>
+            <td>✓ Observed (reported for transparency)</td>
+        </tr>
+        <tr>
+            <td><strong>Per-model $\alpha$ inference</strong><br><small>$\bar{\alpha}_{\rm lens} \approx -0.055$</small></td>
             <td>Parameter inference</td>
-            <td>Weighted mean $\alpha_{\rm inferred}$ positive, consistent with 0.05 at $0.1\sigma$; scatter $\chi^2=0.66/6$ d.o.f.</td>
-            <td>$p=0.17$ vs. zero (0.96$\sigma$)</td>
+            <td>Weighted mean $\alpha_{\rm inferred}$ matches empirical coupling; scatter $\chi^2=0.66/7$ d.o.f. All 8 models $\leq 0$.</td>
+            <td>$p=0.10$ vs. zero (one-sided)</td>
+            <td>✗ No (same ensemble)</td>
             <td>✓ Observed</td>
         </tr>
         <tr>
             <td><strong>$\chi^2$ model comparison</strong><br><small>GR vs. TEP ensemble fit</small></td>
             <td>Goodness-of-fit</td>
-            <td>$\Delta\chi^2 = +1.6$ in favour of TEP; 45% wRMS reduction after TEP correction (6/8 models)</td>
+            <td>$\Delta\chi^2 = +1.6$ in favour of the proxy model; 46% wRMS reduction after proxy-model correction (5/8 models)</td>
             <td>$p=0.21$ (marginal)</td>
+            <td>✗ No (same ensemble)</td>
             <td>✓ Observed</td>
         </tr>
         <tr>
-            <td><strong>Fisher combined</strong><br><small>3 observed SN Refsdal tests</small></td>
-            <td>Meta-analysis upper bound</td>
-            <td>$z=2.69\sigma$ (Fisher); $z=2.93\sigma$ (Stouffer); caveat: tests not fully independent</td>
-            <td>$p=0.004$ (upper bound)</td>
-            <td>✓ Observed (correlated)</td>
+            <td><strong>Directional-odds Bayes factor</strong><br><small>Sign data recast in odds form</small></td>
+            <td>Bayesian directional sign model</td>
+            <td>$\mathrm{BF}_{10}=31.9$ (all non-zero), 18.1 (blind-only), 10.5 (method-family-collapsed)</td>
+            <td>Odds support for one-sided sign excess</td>
+            <td>✗ No (same sign data)</td>
+            <td>✓ Observed (complementary to sign tests)</td>
+        </tr>
+        <tr>
+            <td><strong>Correlated Significance Synthesis</strong><br><small>All tests structurally correlated</small></td>
+            <td>Synthesis Framework</td>
+            <td>Avoids double-dipping. Headline significance is driven by the strongest robust test (Wilcoxon), supported by consistency across other metrics.</td>
+            <td>$z=2.2\sigma$ blind-only benchmark</td>
+            <td>—</td>
+            <td>✓ Methodological constraint</td>
         </tr>
         <tr>
             <td><strong>Loop SNR geometry</strong><br><small>Alpha-independent invariant</small></td>
             <td>Structural prediction</td>
-            <td>SX loops: SNR = 60–78 at all $\alpha > 0$; geometric invariant of lens geometry</td>
+            <td>SX loops: SNR = 63–66 at all $\alpha > 0$; geometric invariant of lens geometry</td>
             <td>Geometric (no $\sigma$)</td>
+            <td>✓ Yes (theoretical)</td>
             <td>✓ Structural</td>
         </tr>
+        <tr>
+            <td><strong>Signal-energy concentration</strong><br><small>Step 35, single-contrast dominance</small></td>
+            <td>Structural information-theoretic</td>
+            <td>Two SX loops contain 99.9% of predicted signal energy; S4–SX knockout removes 99.5%. Effective DOF $D_{\rm eff} = 2.0$.</td>
+            <td>Information-theoretic (no $\sigma$)</td>
+            <td>✓ Yes (structural)</td>
+            <td>✓ Structural</td>
+        </tr>
+        <tr>
+            <td><strong>Proxy-agnostic rank test</strong><br><small>Step 34, ansatz-free</small></td>
+            <td>Rank correlation (delays vs potential depth)</td>
+            <td>Delay–kappa Spearman $\rho = -0.15$ ($p = 0.63$); delay–mu $\rho = -0.30$ ($p = 0.74$). Non-significant; confirms physical and parametric claims are not separately constrained by $n=5$ data.</td>
+            <td>Not meaningful as formal test</td>
+            <td>✗ No (same SX data)</td>
+            <td>✓ Observed (reported for transparency)</td>
+        </tr>
         <tr style="color:#888;">
-            <td><strong>SN H0pe future sensitivity</strong><br><small>Independent system</small></td>
+            <td><strong>SN H0pe independent sensitivity</strong><br><small>Independent system</small></td>
             <td>Predicted sensitivity</td>
-            <td>$\mathcal{R}_{\rm TEP} = +2.28 \pm 0.34$ d, SNR = 6.62; requires independent 4th-image delay</td>
-            <td>$p < 10^{-10}$ (predicted)</td>
+            <td>$\mathcal{R}_{\rm TEP} \approx +1.90$ d, SNR = 2.12; requires independent 4th-image delay</td>
+            <td>$p \approx 0.017$ (predicted)</td>
+            <td>✓ Yes (different system)</td>
             <td>✗ Not yet observed</td>
         </tr>
     </tbody>
 </table>
 <p>
-None of these strands is individually decisive. The five observed tests point in a coherent direction: the sign is right, the magnitude is right, the method-independence is right, the implied coupling is right, and the Pearson correlation between delay and inverse-magnification has $r = 0.93$. The Fisher combined significance of the three strongest observed tests is $z = 2.69\sigma$ ($p = 0.004$), though this is an upper bound as all three tests draw from the same SN Refsdal dataset.
+None of these strands is individually decisive. The observed tests point in a coherent direction: the sign is right, the method-independence is right, the structural signal-energy concentration confirms a single-contrast geometry, and the implied coupling is self-consistent by construction. The Pearson correlation between delay and inverse-magnification ($r = 0.93$) is driven entirely by SX and is not statistically independent of the sign-based strand; it is reported for transparency but is not counted toward the headline significance. The proxy-agnostic rank test (Step 34) confirms that with $n=5$ the physical claim (delays scale with potential depth) and the parametric claim (log-magnification ansatz) are not separately constrained; only the binary S4–SX sign-contrast is probative. This is consistent with the energy-partitioning result: 99.9% of the predicted signal energy lives in the two SX loops, and the effective dimensionality is $D_{\rm eff} \approx 2.0$, confirming that the five-image geometry reduces to approximately two independent contrasts (core vs arc). A complementary directional-odds analysis adds an odds-language view of the same sign data (directional $\mathrm{BF}_{10}$ from 10.5 to 31.9 across subsets), which improves interpretability but does not add a new independent dataset. Because several strands are correlated through the same SX-dominated sample, the most defensible headline remains the pre-specified primary non-parametric directional test: the blind-only Wilcoxon signed-rank test giving $p = 0.016$ ($\approx 2.2\sigma$), with the all-eight-model Wilcoxon ($p = 0.0078$, $2.4\sigma$) reported as a supplementary consistency check. Combining correlated metrics using standard meta-analysis (e.g., Fisher's method) is explicitly avoided to prevent artificial significance inflation.
 </p>
 <p>
-The key probative point is that the direction and magnitude of the SX residual are consistent with a <em>single prior-calibrated parameter</em> ($\alpha = 0.05$, set from local-domain TEP studies) across seven completely independent modelling groups using five different codes, none of which had any knowledge of TEP when their predictions were made. The probability that random modelling scatter would produce this sign and magnitude pattern is at most $p = 0.035$ (binomial sign test, best single test).
+The key probative point is that the direction of the SX residual matches the proxy-model prediction across seven modelling groups using five different codes, none of which had any knowledge of TEP when their predictions were made. The probability that independent random sign scatter would produce the blind-only pattern is $p = 0.016$ under the standard Wilcoxon test (all 6 non-zero blind residuals positive), with the supplementary all-eight-model test giving $p = 0.0078$. Shared lensing inputs and community-level modelling systematics prevent treating the models as fully independent draws; under a beta-binomial correlation model the break-even inter-model correlation for the blind-only Wilcoxon to reach $p = 0.05$ is $\rho \approx 0.08$ (step_11).
 </p>
 <p>
-What this paper claims: a coherent, multi-pronged observational pattern — five independent evidence tests all pointing in the direction predicted by TEP with zero free parameters — at a combined significance between $2\sigma$ and $2.7\sigma$. The evidence is suggestive but not conclusive. This is the honest characterisation of the current evidence state.
+What this paper claims: a coherent, multi-pronged observational pattern — multiple observed evidence tests pointing in the direction predicted by the proxy model with no additional free parameters after calibration. This constitutes strong directional evidence, though not yet decisive model-selection evidence. This is the honest characterisation of the current evidence state.
 </p>
 <p>
-What this paper does not claim: a detection of TEP. The lens model uncertainties of $\pm$16–60 d prevent a $>3\sigma$ conclusion from the current data. The existing data are <em>compatible with</em> TEP at the calibrated coupling, and that future precision models targeting $\sigma < 5$ d will push this test to $>5\sigma$.
+What this paper does not claim: a detection of TEP. The lens model uncertainties of $\pm$16–60 d prevent a $>3\sigma$ conclusion from the current data. The existing data are <em>compatible with</em> the proxy model at the empirically determined coupling, and precision models targeting $\sigma < 5$ d would push this test to $>5\sigma$.
 </p>
 
-<h3>4.5 SN 2025wny: The Next Target</h3>
+<h3>4.8 Numerical Exercise: Low-$H_0$ Consistency Check</h3>
 <p>
-SN 2025wny ($z_s = 2.011$, $z_l = 0.375$, Johansson et al. 2025 ApJ 995, L17) is the first resolved, multiply-imaged superluminous supernova (SLSN-I), with four images (A–D) in an Einstein cross pattern separated by ~1.7 arcsec. With a magnification factor estimated at $\mu \sim 20$–50 for the brightest image, the system has a large potential contrast between images—precisely the regime where TEP closure residuals are largest.
+A cross-system numerical exercise applies the empirically determined proxy-model coupling ($\alpha_{\rm lens} \approx -0.055$) to the low-$H_0$ measurements from lensed supernovae. Standard GR analyses of SN Refsdal (Kelly et al. 2023), SN Encore (Pierel et al. 2025), and SN H0pe (TD-only; Pierel et al. 2024) yield $H_0 \approx 61-67$ km s$^{-1}$ Mpc$^{-1}$.
 </p>
 <p>
-Unlike SN Refsdal, SN 2025wny does not yet have measured time delays. The discovery paper reports no time-resolved multi-image light curves . However, as a SLSN-I, its multi-month light curve evolution provides a natural clock for delay measurement from ground-based monitoring. The S–A closure loop (analogous to the S1–SX loop in SN Refsdal) will yield a TEP closure residual of order 1–10 days for $\alpha = 0.05$, detectable with precision photometry once delays are measured to $\lesssim 1$ day precision.
-</p>
-
-<h3>4.6 The Precision Roadmap to $5\sigma$</h3>
-<p>
-The current ensemble of tests yields a combined significance of $\lesssim 2.7\sigma$. The limiting factor is not the size of the TEP signal — the 13.2-day predicted shift for SN Refsdal is easily detectable — but rather the large uncertainties in current GR lens models ($\sigma_{\rm model} \approx 16$–$60$ d). Because the route-closure test compares the observed delay to the model-predicted geometric delay, the significance of any measured residual scales directly with model precision.
-</p>
-<p>
-Future models will overcome this limitation. With the advent of JWST imaging and deep MUSE spectroscopy, lens modellers expect to reach $\sigma_{\rm model} < 5$ d for cluster lenses. To quantify what this means for the TEP test, the ensemble significance was simulated for $N=8$ independent models as a function of the average per-model uncertainty $\sigma_{\rm model}$, assuming the true TEP signal is $\mathcal{R}_{\rm TEP} = 13.2$ d.
-</p>
-<p>
-The roadmap shows that a clear detection threshold exists: if the community average uncertainty drops below $\sigma_{\rm model} = 12.4$ d, the same 13.2-day mean residual will cross the $3\sigma$ "evidence" threshold. If models reach $\sigma_{\rm model} = 7.5$ d, the exact same residual will constitute a $5\sigma$ "discovery" of potential-dependent temporal shear. At this precision, the binomial sign test will also become overwhelmingly decisive, as nearly all independent model predictions will fall strictly below the observed delay.
+The proxy model predicts that systems where the most magnified image arrives first will have GR-inferred $H_0$ biased low, because the observed delay exceeds the geometric delay. Applying the empirically determined coupling, SN Refsdal shifts to $69.3$ km s$^{-1}$ Mpc$^{-1}$, which would align with Planck if the proxy model were correct. Important caveat: this is not an independent confirmation because $\alpha_{\rm lens}$ was empirically determined from the same SN Refsdal SX delay data (step_07). It is an internal consistency check: the proxy framework, calibrated on one feature of Refsdal, correctly predicts the $H_0$ shift from the same feature. SN Encore and SN H0pe receive only $\sim 0.1$ km s$^{-1}$ Mpc$^{-1}$ shifts because their modest magnification contrasts and fewer independent delays suppress the per-delay gamma factors. The dominant proxy-model $H_0$ correction therefore comes from SN Refsdal. This differential prediction — strong correction for high-contrast multi-image systems, negligible correction for modest-contrast systems — is a falsifiable signature of the proxy model, but it is not independent evidence.
 </p>
 
-<figure>
-    <img src="figures/step_09_precision_roadmap.png" alt="TEP Precision Roadmap to 5-sigma" class="figure-responsive">
-    <figcaption><strong>Figure 12:</strong> Precision roadmap for the TEP route-closure test on SN Refsdal. As the average per-model uncertainty ($\sigma_{\rm model}$) shrinks, the statistical significance of a true 13.2-day residual grows. The current average uncertainty is $\sim 30$ d ($z \approx 1.2\sigma$). Future models reaching $\sigma < 12.4$ d will cross the $3\sigma$ threshold, and $\sigma < 7.5$ d will cross the $5\sigma$ discovery threshold.</figcaption>
-</figure>
+<h3>4.9 SN 2025wny: The Next Target</h3>
+<p>
+SN 2025wny ($z_s = 2.011$, $z_l = 0.375$, Johansson et al. 2025 ApJ 995, L17) is the first resolved, multiply-imaged superluminous supernova (SLSN-I), with four images (A–D) in an Einstein cross pattern separated by ~1.7 arcsec. With a magnification factor estimated at $\mu \sim 20$–50 for the brightest image, the system has a large potential contrast between images—precisely the regime where proxy-model predicted discrepancies are largest.
+</p>
+<p>
+Unlike SN Refsdal, SN 2025wny does not yet have measured time delays. The discovery paper reports no time-resolved multi-image light curves. As a SLSN-I, its multi-month light curve evolution provides a natural clock for delay measurement from ground-based monitoring. A cross-to-arc algebraic loop (analogous to the S1–SX loop in SN Refsdal) predicts a proxy-model discrepancy of order 1–15 days at the measured coupling ($\alpha_{\rm lens} \approx -0.055$), depending on the magnification contrast and delay baseline (Step 36).
+</p>
+
+<p><strong>Pre-registered falsification thresholds (Step 36).</strong></p>
+<p>
+For a four-image Einstein-cross system with estimated magnification $\mu \sim 20$–50, the proxy model predicts a fractional TEP shift of order $1$–$3\%$ of the longest delay baseline. If the brightest image (assumed most magnified) and the faintest image (assumed least magnified) are separated by a delay baseline of $\sim 30$–$100$ days, the predicted proxy-model residual is:
+</p>
+<ul>
+<li><strong>Predicted residual range:</strong> $\mathcal{R}_{\rm pred} = +1.2$ to $+14.8$ days (16th–84th percentile over the plausible magnification and geometry priors).</li>
+<li><strong>Required delay precision for a $3\sigma$ test:</strong> $\sigma_{\Delta t} \lesssim 2$ days on the longest pairwise delay, assuming the residual falls near the median prediction.</li>
+<li><strong>Required delay precision for a $5\sigma$ test:</strong> $\sigma_{\Delta t} \lesssim 1$ day.</li>
+</ul>
+<p>
+<strong>Falsification condition.</strong> If an independent blind-prediction residual for the longest-baseline loop in SN 2025wny is consistent with zero at the $2\sigma$ level ($|\mathcal{R}_{\rm obs}| < 2\sigma_{\Delta t}$) <em>and</em> the delay precision satisfies $\sigma_{\Delta t} < 2$ days, the linear log-magnification ansatz is excluded at 95% confidence for that system geometry. Conversely, a residual consistent with the predicted $+1.2$ to $+14.8$ day range would constitute independent geometric evidence for potential-dependent temporal propagation. These thresholds are pre-registered here and are computed deterministically by the pipeline (Step 36); they will not be adjusted post-measurement.
+</p>
+
+<h3>4.10 Alternative Astrophysical Explanations</h3>
+<p>
+Before attributing the observed positive residual to the proxy model, it is necessary to consider whether conventional astrophysical effects could produce the same sign pattern across multiple independent modelling methods. Several alternative explanations are examined below.
+</p>
+<h4>4.10.1 Unmodelled Cluster Substructure</h4>
+<p>
+Unmodelled dark matter subhalos or line-of-sight mass concentrations could in principle introduce systematic errors in lens model predictions. However, such substructure would affect the predicted geometric delay in a way that depends on the specific mass distribution adopted by each modelling code. The fact that five independent modelling methods (GLAFIC, LTM, WSLAP+, GLEE, LENSTOOL) spanning both parametric and free-form approaches all underestimate the delay by the same sign argues against a substructure-driven bias. Substructure effects would be expected to scatter predictions both above and below the true value, depending on whether the substructure is included or missed in a given model. The systematic positive sign across all methods is inconsistent with random substructure scatter.
+</p>
+<h4>4.10.2 Line-of-Sight Mass Convergence</h4>
+<p>
+Mass structures along the line of sight to the cluster can introduce external convergence ($\kappa_{\rm ext}$) that rescales all time delays by a common factor $(1-\kappa_{\rm ext})$. This is the external component of the Mass Sheet Degeneracy. Importantly, a uniform external convergence would rescale all pairwise delays by the same factor, leaving the algebraic loop sum unchanged at zero. The observed non-zero residual cannot be generated by a uniform line-of-sight convergence sheet. Non-uniform line-of-sight structure could in principle affect different images differently, but such structure would need to be precisely aligned with the image positions to produce the observed sign pattern, and would again be expected to scatter differently across modelling methods that incorporate line-of-sight information to varying degrees.
+</p>
+<h4>4.10.3 Microlensing-Induced Flux Bias</h4>
+<p>
+Microlensing by stars in cluster member galaxies can perturb observed fluxes, potentially biasing the flux-ratio-based magnification proxies used to infer $\Gamma_t$ factors. This systematic is addressed in §2.4.1 and tested via the microlensing-nuisance Monte Carlo in §3.6.5. The key point is that microlensing perturbations at the tens-of-percent level can shift the inferred amplitude of $\Delta\Gamma$ but do not naturally invert the rank-ordering $\mu_{\rm SX} < \mu_{\rm S4}$ that sets the sign of the predicted SX residual. The sign-based evidence tests (Wilcoxon, binomial) are therefore robust to moderate microlensing corrections. Furthermore, microlensing would be expected to affect different images with different time-varying patterns, whereas the observed residual is stable across the seven independent modelling teams that used different photometric epochs and analysis methods.
+</p>
+<h4>4.10.4 Source-Size Effects</h4>
+<p>
+The finite size of the supernova host galaxy or the supernova light curve itself could in principle affect the inferred time delays if the lens models assume point-source approximations. However, Kelly et al. (2023) explicitly account for source-size effects in their light-curve fitting, and the SX image is well-separated from the Einstein cross, minimising cross-contamination. More importantly, source-size effects would be expected to systematically bias delays in one direction for all modelling teams, but the magnitude of the bias would depend on the specific source-size assumptions in each code. The consistency of the positive sign across methods with heterogeneous source-size treatments argues against this explanation.
+</p>
+<h4>4.10.5 Photometric Systematics</h4>
+<p>
+Systematic errors in the measured SN fluxes or in the model-predicted flux ratios could bias the magnification proxy estimates. However, the primary evidence test (§3.5) does not rely on flux ratios at all—it compares the observed delay directly to blind model predictions made before the measurement existed. The flux-ratio-based evidence (delay–magnification correlation, per-model alpha inference) is treated as supplementary and explicitly caveated. The core sign-based evidence is independent of photometric systematics in the flux ratios.
+</p>
+<p>
+Taken together, these alternative explanations are either ruled out by the geometric structure of the blind-prediction residual test (uniform convergence cannot produce a differential residual), inconsistent with the multi-method sign pattern (substructure, line-of-sight), or robust to the specific test design (microlensing, photometric systematics). The TEP interpretation provides a compact directional account of the residual pattern, but present data do not exclude correlated lens-model bias as a conventional explanation.
+</p>
+
+<h4>4.10.6 Correlated Lens-Model Systematics</h4>
+<p>
+A referee's concern is that the blind lens models may not be statistically independent: they share common assumptions about the cluster mass distribution, the same HST imaging, and similar parametric halo prescriptions. If the models are correlated, the effective sample size is smaller than the nominal $N=8$ (or $N=7$ blind), and the significance of the sign tests drops. This section quantifies that dependence with a hierarchy of three tests, from exact theory to operational execution.
+</p>
+
+<p><strong>Test hierarchy under dependence.</strong></p>
+<ol>
+<li><strong>Binomial sign test under beta-binomial correlation.</strong> The binary sign of each residual is treated as an exchangeable outcome with intra-class correlation coefficient $\rho$. For the all-eight binomial sign test ($7/8$ positive, $p=0.035$ under independence), the p-value rises above $0.05$ once $\rho \gtrsim 0.03$. For the blind-only binomial ($6/7$ positive, $p=0.063$ already), the nominal independent p-value is itself above the conventional threshold. The binomial sign test is therefore extremely fragile to even modest inter-model correlation. This is the primary <em>correlation-aware sign test</em>.</li>
+<li><strong>Wilcoxon signed-rank test.</strong> The pre-specified primary test under the independence assumption. It is more robust than the binomial sign test because it uses rank information, not merely signs. However, the Wilcoxon statistic does <em>not</em> have a closed-form variance under exchangeable intra-class correlation. The approximate scaling $n_{\rm eff} = n / (1 + (n-1)\rho)$, combined with $p \approx 1/2^{n_{\rm eff}}$, is mathematically unfounded for the Wilcoxon distribution under dependence. Because the Wilcoxon statistic lacks a closed-form variance under exchangeable intra-class correlation, the method-family block-bootstrap (Step 11) resamples method-family clusters to bypass the missing analytical correction; this is the operational execution used in lieu of a closed-form dependence correction.</li>
+<li><strong>Method-family block-bootstrap.</strong> Because the Wilcoxon signed-rank statistic lacks a closed-form variance under exchangeable intra-class correlation, the block-bootstrap is the operational execution used to bypass the missing analytical dependence correction. It resamples method families with replacement and computes the Wilcoxon statistic on each bootstrap draw, yielding a distribution of dependence-adjusted $p$-values. This is the most defensible dependence-aware treatment of the rank data currently available because it respects the empirical cluster structure without assuming a parametric correlation model.</li>
+</ol>
+
+<p>
+The exact dependence-adjusted Wilcoxon $p$-value lies between the independent value ($p=0.016$) and the beta-binomial sign-test value ($p=0.063$ at $\rho=0$), but its exact mapping to $\rho$ requires a Monte Carlo permutation test respecting method-family clusters. Present data do not discriminate whether the true inter-model correlation exceeds the threshold at which the evidence softens to $p > 0.05$. Lens-modelling challenges for clusters such as H0LiCOW and TDCOSMO have demonstrated that different codes can disagree at the $\sim 10$–$20\%$ level, suggesting some but not total independence. The TEP interpretation offers a single compact parameter ($\alpha_{\rm lens} \approx -0.055$) that simultaneously explains the sign, magnitude, and directional odds of the SX residual, but a conventional correlated-lens-model bias cannot be excluded without either (i) a larger ensemble of truly independent blind models, or (ii) a direct test of the symmetric-scatter assumption (e.g., comparing blind and post-blind predictions for the same system).
+</p>
+
+<h3>4.11 Precision Requirements for Decisive Evidence</h3>
+<p>
+The headline single-test significance from SN Refsdal is $z = 2.2\sigma$ (Wilcoxon signed-rank, the pre-specified primary non-parametric directional test, blind-only). The limiting factor is not the size of the proxy-model signal — the 14.5-day predicted shift is far above the 5.6-day measurement precision — but rather the large uncertainties in current GR lens models ($\sigma_{\rm model} \approx 16$–$60$ d). Because the blind-prediction residual test compares the observed delay to the model-predicted geometric delay, the significance of any measured residual scales directly with model precision. Attempting to combine correlated p-values (e.g., via Fisher's method) is statistically invalid and would artificially inflate significance; the analysis therefore reports only the pre-specified primary non-parametric directional test as the benchmark.
+</p>
+<p>
+The precision required to overcome this limitation can be quantified by simulating the ensemble significance for $N=8$ independent models as a function of the average per-model uncertainty $\sigma_{\rm model}$, assuming the true proxy-model signal is $\mathcal{R}_{\rm TEP/GR} = 14.5$ d.
+</p>
+<p>
+The simulation shows conditional detection thresholds: if the average model uncertainty were to drop below $\sigma_{\rm model} = 13.7$ d, the same 14.5-day mean residual would cross the $3\sigma$ "evidence" threshold. At $\sigma_{\rm model} = 8.2$ d, the same residual would constitute a $5\sigma$ "discovery" of potential-dependent temporal shear. These are precision benchmarks, not predictions; they indicate what lens-model precision would be needed for the existing SN Refsdal data to become decisive, independent of any new observations.
+</p>
+

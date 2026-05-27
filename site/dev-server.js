@@ -4,9 +4,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const net = require('net');
-const { buildStaticSite, buildJournalSite } = require('./build.js');
-const { HTMLToMarkdownConverter } = require('./html-to-markdown.js');
-
+const { buildStaticSite } = require('./build.js');
 class DevServer {
     constructor() {
         this.isBuilding = false;
@@ -31,11 +29,7 @@ class DevServer {
         console.log('\n🔄 Rebuilding site...');
         try {
             await buildStaticSite();
-            await buildJournalSite();
-            console.log('📝 Generating markdown...');
-            const converter = new HTMLToMarkdownConverter();
-            await converter.convertSiteToMarkdown();
-            console.log('✅ Build & Markdown complete!');
+            console.log('✅ Build complete (includes markdown generation)');
             if (this.buildQueue) {
                 this.buildQueue = false;
                 setTimeout(() => { this.isBuilding = false; this.build(); }, 100);
@@ -57,7 +51,6 @@ class DevServer {
             path.join(__dirname, 'index.html'),
             path.join(__dirname, 'journal.html'),
             path.join(__dirname, 'manifest.json'),
-            path.join(__dirname, 'manifest-journal.json'),
             path.join(__dirname, 'styles'),
             path.join(__dirname, 'figures')
         ], { ignored: ['dist/**'], persistent: true, ignoreInitial: true });

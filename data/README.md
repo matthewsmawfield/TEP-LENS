@@ -1,13 +1,21 @@
 # TEP-LENS Data
 
-This directory stores input data for the Cepheid analysis (Paper 12).
-
-## Required Data
-
-1. **SH0ES Cepheid Catalog:** Public release (Riess et al. 2022).
-2. **HyperLEDA/SDSS:** Host galaxy properties (velocity dispersion, sigma).
+Input data for the strong-lensing blind-prediction residual analysis (Paper 19).
 
 ## Structure
 
-- `shoes/`: Raw SH0ES data tables (e.g., `Table4.txt`).
-- `hosts/`: Galaxy property catalogs.
+- `raw/` — SN Refsdal, SN H0pe, TDCOSMO/H0LiCOW catalogs, lens models
+- `interim/` — Pipeline intermediate JSON/CSV
+- `cosmograil/` — CosmoGRAIL temporal-shear inputs (when used)
+
+## Provenance
+
+See `DATA_PROVENANCE.md` for source papers, URLs, and ingestion steps.
+
+## Reproduction
+
+```bash
+python scripts/steps/run_all_steps.py
+```
+
+Individual fetch steps (e.g. `step_01_fetch_snh0pe_data.py`) download public data where network access is available.

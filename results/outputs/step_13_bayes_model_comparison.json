@@ -1,0 +1,59 @@
+{
+  "step": "13",
+  "status": "success",
+  "priors": {
+    "baseline": {
+      "mu_bias": "Normal(0, 40 d)",
+      "tau": "HalfNormal(20 d)",
+      "alpha": "Normal(0, 0.15) [TEP-free model; GR-centered null prior]"
+    },
+    "h0pe2025_informed": {
+      "mu_bias": "Normal(+8, 50 d)",
+      "tau": "HalfNormal(25 d)",
+      "alpha": "Normal(0, 0.20) [TEP-free model; GR-centered null prior]"
+    }
+  },
+  "scenarios": {
+    "baseline": {
+      "note": "Proper GR-null prior for free-alpha model (alpha ~ N(0, 0.15)); fixed-alpha model tests alpha=-0.055 directly.",
+      "evidence": {
+        "logZ_gr": -39.21865613815221,
+        "logZ_tep_fixed": -39.15736794793194,
+        "logZ_tep_free": -39.70413117657338,
+        "log_bf_tep_fixed_over_gr": 0.06128819022027443,
+        "log_bf_tep_free_over_gr": -0.48547503842116413,
+        "bf_tep_fixed_over_gr": 1.063205275402437,
+        "bf_tep_free_over_gr": 0.6154047863985971
+      },
+      "posterior": {
+        "tau_mean_days": 10.100507420162302,
+        "tau_p16_days": 2.2854443112839946,
+        "tau_p84_days": 17.813084823227495,
+        "alpha_mean": -0.03843011387548659,
+        "alpha_p16": -0.1237342901670884,
+        "alpha_p84": 0.04548033937176393
+      }
+    },
+    "h0pe2025_informed": {
+      "note": "Sensitivity prior set informed by reported H0pe lens-model bias direction (2510.07637): allows broader/positive residual-bias nuisance without forcing it. Free-alpha prior remains GR-centered to avoid circularity.",
+      "evidence": {
+        "logZ_gr": -39.51117968332026,
+        "logZ_tep_fixed": -39.51395514022423,
+        "logZ_tep_free": -40.2195932311105,
+        "log_bf_tep_fixed_over_gr": -0.002775456903975737,
+        "log_bf_tep_free_over_gr": -0.7084135477902436,
+        "bf_tep_fixed_over_gr": 0.9972283911157097,
+        "bf_tep_free_over_gr": 0.4924247865043298
+      },
+      "posterior": {
+        "tau_mean_days": 11.164233593089477,
+        "tau_p16_days": 2.5103773068473205,
+        "tau_p84_days": 19.721527102977262,
+        "alpha_mean": -0.03789034609882954,
+        "alpha_p16": -0.1299555156358506,
+        "alpha_p84": 0.051636091969205516
+      }
+    }
+  },
+  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_13_bayes_comparison.png"
+}

@@ -1,0 +1,10 @@
+
+[23:44:25] [INFO] ======================================================================
+[23:44:25] [INFO] STEP 17: Directional Odds Expansion
+[23:44:25] [INFO] ======================================================================
+[23:44:25] [INFO] All-model nonzero sign set: k=7/7, p=0.0078, BF10=31.88
+[23:44:25] [INFO] Blind-only nonzero sign set: k=6/6, p=0.0156, BF10=18.14
+[23:44:25] [INFO] Method-family collapsed sign set: k=5/5, p=0.0312, BF10=10.50
+[23:44:27] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_17_directional_odds.png
+[23:44:27] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_17_directional_odds.json
+[23:44:27] [INFO] Step 17 complete.

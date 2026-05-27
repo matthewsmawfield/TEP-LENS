@@ -1,6 +1,8 @@
 {
-  "version": "0.1.0",
-  "project": "TEP-LENS",
-  "title": "TEP-LENS: Strong Lensing Time Delay Closure Tests",
-  "status": "in-development"
+  "version": "0.1",
+  "codename": "Lisboa",
+  "date": "2026-03-02",
+  "author": "Matthew Lukin Smawfield",
+  "description": "Blind-prediction residual test in multiply-imaged supernovae",
+  "status": "Preprint"
 }

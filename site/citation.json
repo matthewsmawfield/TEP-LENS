@@ -1,7 +1,7 @@
 {
-  "id": "smawfield2026h0",
+  "id": "smawfield2026lens",
   "type": "article",
-  "title": "TEP-LENS: Resolving the Hubble Tension",
+  "title": "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae",
   "author": [
     {
       "family": "Smawfield",
@@ -9,10 +9,9 @@
     }
   ],
   "issued": {
-    "date-parts": [[2026, 1, 12]]
+    "date-parts": [[2026, 3, 2]]
   },
-  "doi": "10.5281/zenodo.18216583",
-  "URL": "https://matthewsmawfield.github.io/TEP-LENS/",
+  "URL": "https://github.com/matthewsmawfield/TEP-LENS",
   "publisher": "Zenodo",
-  "note": "Preprint, Version 0.3 (Kingston upon Hull)"
+  "note": "Preprint v0.1 (Lisboa)"
 }

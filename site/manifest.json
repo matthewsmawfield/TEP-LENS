@@ -1,5 +1,25 @@
 {
-  "title": "TEP-LENS: Resolving the Hubble Tension",
+  "name": "TEP-LENS",
+  "short_name": "TEP-LENS",
+  "version": "v0.1 (Lisboa)",
+  "last_updated": "02 March 2026",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1C2E4A",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "public/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "public/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "title": "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae",
   "sections": [
     {
       "id": "section-abstract",
@@ -48,6 +68,12 @@
       "title": "Appendix",
       "file": "8_appendix.html",
       "order": 8
+    },
+    {
+      "id": "section-data-availability",
+      "title": "Data Availability & Reproducibility",
+      "file": "9_data_availability.html",
+      "order": 9
     }
   ]
 }

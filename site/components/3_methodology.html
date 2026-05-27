@@ -4,67 +4,138 @@
 <p>
 In General Relativity, the observed time delay between images $i$ and $j$ of a lensed source is given by the Fermat potential difference:
 </p>
-<p>
-$\Delta t_{ij} = \frac{D_{\Delta t}}{c}\left[\frac{1}{2}(\boldsymbol{\theta}_i - \boldsymbol{\beta})^2 - \psi(\boldsymbol{\theta}_i) - \frac{1}{2}(\boldsymbol{\theta}_j - \boldsymbol{\beta})^2 + \psi(\boldsymbol{\theta}_j)\right]$
-</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_01}
+\Delta t_{ij} = \frac{D_{\Delta t}}{c}\left[\frac{1}{2}(\boldsymbol{\theta}_i - \boldsymbol{\beta})^2 - \psi(\boldsymbol{\theta}_i) - \frac{1}{2}(\boldsymbol{\theta}_j - \boldsymbol{\beta})^2 + \psi(\boldsymbol{\theta}_j)\right]
+\end{equation}
+</div>
 <p>
 where $D_{\Delta t} = (1+z_l)D_l D_s / D_{ls}$ is the time-delay distance, $\boldsymbol{\beta}$ is the unlensed source position, $\boldsymbol{\theta}_i$ are the image positions, and $\psi(\boldsymbol{\theta})$ is the projected lens potential. Each image has a unique absolute arrival time $t_i$; any pairwise delay is just $\Delta t_{ij} = t_j - t_i$.
 </p>
 
-<h3>2.2 The GR Route-Closure Identity</h3>
+<h3>2.2 The GR Algebraic Loop Identity</h3>
 <p>
-For any three images $(i, j, k)$ from the same source, the oriented sum of pairwise delays must vanish identically:
+For any three images $(i, j, k)$ from the same source, the oriented sum of pairwise delays must vanish identically under any theory that assigns a single, globally well-defined arrival time to each image:
 </p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_02}
+\mathcal{L}(i,j,k) \equiv \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = (t_j - t_i) + (t_k - t_j) + (t_i - t_k) = 0
+\end{equation}
+</div>
 <p>
-$\mathcal{R}_{\rm GR}(i,j,k) \equiv \Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = (t_j - t_i) + (t_k - t_j) + (t_i - t_k) = 0$
-</p>
-<p>
-This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for <em>any</em> combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which the five most physically informative.
+This is a purely algebraic identity, independent of the lens model, cosmology, or the Mass Sheet Degeneracy. It holds for GR and for the TEP ansatz alike, because TEP modifies the transit time along each path but does not introduce path-dependent holonomy that would break global time assignment. It holds for <em>any</em> combination of three images from five, giving $\binom{5}{3} = 10$ possible loops for SN Refsdal, of which five are physically informative and used in this analysis.
 </p>
 
-<h3>2.3 TEP Temporal Shear</h3>
+<h3>2.3 TEP Temporal Shear: The Log-Magnification Phenomenological Proxy Model</h3>
 <p>
-Under TEP, the effective transit time of light along path $i$ is modified by a temporal shear factor $\Gamma_t(i)$ that scales with the projected gravitational potential depth at the image position:
+In the absence of a solved TEP lensing transfer function for $\kappa(\boldsymbol{\theta})$ or $\psi(\boldsymbol{\theta})$, a first-order log-magnification phenomenological proxy model is adopted. The physically relevant quantity is expected to be closer to projected convergence or potential depth than to total magnification, though the exact TEP lensing transfer function remains unsolved. The effective transit time of light along path $i$ under a convergence-proxy model is:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_03a}
+\Gamma_t^{(\kappa)}(i) = 1 + \alpha_\kappa\log_{10}(\kappa_{\rm norm}(i))
+\end{equation}
+</div>
+<p>
+where $\kappa_{\rm norm}(i) = \kappa(i)/\bar{\kappa}$. Because direct convergence values from high-resolution mass models are not yet available for every image, the operational analysis uses the published total flux ratios $F_i/F_{\rm ref}$ as a proxy for magnification. This introduces the proxy model:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_03}
+\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t^{\rm proxy}(i), \quad \Gamma_t^{\rm proxy}(i) = 1 + \alpha\log_{10}(\mu_{\rm norm}(i))
+\end{equation}
+</div>
+<p>
+where $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\alpha$ is the proxy-model temporal-shear coupling parameter. The lensing-sector effective coupling is determined empirically from the SN Refsdal data: $\alpha_{\rm lens} = -0.055 \pm 0.044$ (§3.5). Because $\alpha < 0$, images with below-average magnification ($\mu_{\rm norm} < 1$, $\log_{10}(\mu_{\rm norm}) < 0$) experience a temporal expansion ($\Gamma_t > 1$) and arrive *later* than GR predicts, while highly magnified images ($\mu_{\rm norm} > 1$) arrive *earlier* ($\Gamma_t < 1$).
 </p>
 <p>
-\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t(i), \quad \Gamma_t(i) = 1 + \alpha\log_{10}(\mu_{\rm norm}(i))
+The systematic error introduced by the proxy is the difference between the convergence-proxy and flux-proxy temporal shear factors:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_03b}
+\delta\Gamma_t(i) \equiv \Gamma_t^{\rm proxy}(i) - \Gamma_t^{(\kappa)}(i) = \alpha\left[\log_{10}(\mu_{\rm norm}(i)) - \log_{10}(\kappa_{\rm norm}(i))\right]
+\end{equation}
+</div>
+<p>
+This systematic vanishes only when $\mu_{\rm norm}(i) = \kappa_{\rm norm}(i)$ for all images, which requires the shear $\gamma$ to be negligible or identical across images. In cluster lenses, neither condition holds (see §2.4.2). Because the five-image rank-order agreement between $\mu_{\rm norm}$ and $\kappa_{\rm norm}$ is only $P \approx 3\%$ (Step 32), the proxy model makes no reliable prediction for the inner-cross images. The operational test is therefore the S4–SX contrast alone.
 </p>
 <p>
-where $\Delta t_i$ is the lens-induced excess time delay (relative to the unlensed cosmological transit time), $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\alpha$ is the TEP coupling parameter (calibrated to $\alpha = 0.05$ from local-domain analyses, Papers I–XIII). The modified pairwise delay between images $i$ and $j$ becomes $\Delta t_{ij}^{\rm obs} = \Delta t_j^{\rm obs} - \Delta t_i^{\rm obs} = \Gamma_t(j)\,\Delta t_j^{\rm GR} - \Gamma_t(i)\,\Delta t_i^{\rm GR}$.
+<strong>Relation to the TEP response-coefficient framework.</strong> Other papers in the TEP series (Papers 10–12) report observable response coefficients $\kappa$ (e.g., $\kappa_{\rm MSP}$ for pulsar spin-down, $\kappa_{\rm Cep}$ for Cepheid period–luminosity, $\kappa_{\rm gal}$ for galaxy stellar populations). These $\kappa$ coefficients absorb stellar-physics and environmental-activation factors, following the PPN strategy of treating the observable response separately from the microscopic coupling. In strong-lensing time delays, the proxy coupling $\alpha$ enters as a phenomenological temporal-shear parameter: $\Gamma_t = 1 + \alpha \log_{10}(\mu_{\rm norm})$. No stellar-physics translation is required because the test compares arrival times of the same photon along different paths. The empirically determined $\alpha$ — denoted $\alpha_{\rm lens}$ — is the lensing-sector analogue of the $\kappa$ coefficients: an empirical, probe-specific response coefficient that is determined from the data rather than predicted from first principles. A quantitative mapping between $\alpha_{\rm lens}$ and the microscopic TEP coupling $\beta$ would require a solved transfer function from the scalar-field boundary-value problem through the cluster potential; such a mapping is not assumed here. The test should therefore be read as a falsifiable phenomenological screen, not a fundamental coupling measurement.
 </p>
 <p>
-The resulting TEP route-closure residual for loop $(i,j,k)$ is:
+The resulting TEP predicted GR discrepancy for loop $(i,j,k)$ is:
 </p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_04}
+\mathcal{R}_{\rm TEP/GR}(i,j,k) = (\Gamma_i - 1)\Delta t_{ij} + (\Gamma_j - 1)\Delta t_{jk} + (\Gamma_k - 1)\Delta t_{ki}
+\end{equation}
+</div>
 <p>
-$\mathcal{R}_{\rm TEP}(i,j,k) = (\Gamma_i - 1)\Delta t_{ij} + (\Gamma_j - 1)\Delta t_{jk} + (\Gamma_k - 1)\Delta t_{ki}$
-</p>
-<p>
-This is non-zero whenever $\Gamma_t$ differs between images, i.e.\ whenever the images sample different potential depths. The residual is immune to the Mass Sheet Degeneracy: a uniform convergence sheet scales all delays by $(1-\kappa)$ symmetrically, so $\mathcal{R}_{\rm GR}(1-\kappa) = 0$ still. The TEP residual is purely differential.
+This is non-zero whenever $\Gamma_t$ differs between images, i.e.\ whenever the images sample different potential depths. The predicted discrepancy is insensitive to the Mass Sheet Degeneracy: a uniform convergence sheet scales all delays by $(1-\kappa)$ symmetrically, so the algebraic loop sum remains zero under both GR and TEP. The proxy-model discrepancy is purely differential.
 </p>
 
 <h3>2.4 Magnification Proxies</h3>
 <p>
-The TEP temporal shear couples to the projected gravitational convergence $\kappa(\boldsymbol{\theta})$ at each image position, not directly to the total magnification $\mu$. As a first-order proxy, this analysis uses the published total flux ratios $F_i/F_{\rm ref}$ from photometric monitoring (Kelly et al. 2023 for SN Refsdal; HST imaging for TDCOSMO systems). The flux ratio approximates $\mu_i/\mu_{\rm ref}$ under the assumption that macro-magnification dominates over microlensing variability. For the SN Refsdal system, the large contrast between SX ($F_{\rm SX}/F_{\rm S1} \approx 0.30$) and S4 ($F_{\rm S4}/F_{\rm S1} \approx 1.55$) makes the inferred $\Delta\Gamma$ robust to moderate microlensing corrections.
+The physically relevant quantity for TEP temporal shear is expected to be closer to projected gravitational convergence $\kappa(\boldsymbol{\theta})$ or potential depth than to total magnification $\mu$. As a phenomenological proxy, this analysis uses the published total flux ratios $F_i/F_{\rm ref}$ from photometric monitoring (Kelly et al. 2023 for SN Refsdal; HST imaging for TDCOSMO systems). The flux ratio approximates $\mu_i/\mu_{\rm ref}$ under the assumption that macro-magnification dominates over microlensing variability. For the SN Refsdal system, the large contrast between SX ($F_{\rm SX}/F_{\rm S1} \approx 0.30$) and S4 ($F_{\rm S4}/F_{\rm S1} \approx 1.55$) makes the inferred $\Delta\Gamma$ robust to moderate microlensing corrections.
+</p>
+
+<h4>2.4.1 Microlensing Caveat and Robustness</h4>
+<p>
+Microlensing can perturb observed fluxes and therefore bias flux-ratio-based magnification proxies. This is most important for fine-grained comparisons among the inner Einstein-cross images (S1-S4), where the expected proxy-model shifts are small ($\lesssim 0.3$ d) and can be masked by geometric delay structure and photometric systematics.
+</p>
+<p>
+The central SX-driven test is more robust because it is controlled by a large rank-order contrast (SX is much less magnified than S4 and arrives much later). Moderate microlensing-level perturbations at the tens-of-percent level can shift the inferred amplitude of $\Delta\Gamma$, but do not naturally invert the ordering $\mu_{\rm SX} < \mu_{\rm S4}$ that sets the sign of the predicted SX residual. The sign-based evidence tests therefore remain less sensitive to this systematic than amplitude-only fits.
+</p>
+<p>
+Accordingly, the manuscript treats flux-ratio-based inference as a phenomenological approximation, reports sign and magnitude evidence separately, and frames convergence-based modelling at the image positions as the key next step toward a fundamental TEP observable.
+</p>
+
+<h4>2.4.2 The Mu-Kappa-Gamma Systematic</h4>
+<p>
+The exact lensing identity relates magnification, convergence, and shear:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_04b}
+\mu = \frac{1}{(1-\kappa)^2 - \gamma^2}
+\end{equation}
+</div>
+<p>
+Solving for convergence at fixed magnification gives:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_04c}
+\kappa = 1 - \sqrt{\mu^{-1} + \gamma^2}
+\end{equation}
+</div>
+<p>
+The inferred convergence depends on the unknown total shear $\gamma$ (the sum of internal shear from the primary lens and external shear from the cluster potential). For images near a tangential critical curve, $\gamma \approx 1-\kappa$ and small changes in shear produce large changes in $\mu$ at fixed $\kappa$, making $\mu$ a poor proxy. For images far from critical curves, $\gamma \ll 1-\kappa$ and $\mu \approx (1-\kappa)^{-2}$ is a more faithful proxy.</p>
+<p>
+Because observed flux ratios constrain $|\mu|$ rather than signed magnification, the inversion is branch-dependent near critical curves where image parity matters. The Monte Carlo should therefore be read as a proxy-systematic exploration, not a unique reconstruction of $\kappa$.
+</p>
+<p>
+Because the flux ratios are proportional to absolute magnification with an unknown overall scale factor $C$ (where $\mu_i = C \cdot F_i$), the inferred $\kappa$ depends on both the unknown shear and the unknown scale. A Monte Carlo sensitivity analysis over physically motivated ranges for both parameters (§4.3) shows that the S4–SX contrast sign is stable ($P \approx 80$%), but the inferred amplitude shifts significantly: the equivalent $\alpha$ required to match the same observed residual is $-0.032$ [$-0.068$, $+0.009$], compared to the nominal proxy-model value $-0.055$. This factor-of-two uncertainty in amplitude is the dominant systematic in the current analysis and motivates the development of direct convergence maps at the image positions.
 </p>
 
 <h3>2.5 Error Propagation</h3>
 <p>
 The measurement uncertainty on $\mathcal{R}_{\rm TEP}$ is dominated by the uncertainty on the measured time delays. For loop $(i,j,k)$:
 </p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_05}
+\sigma_{\mathcal{R}} = \sqrt{(\Gamma_i-\Gamma_j)^2\sigma_j^2 + (\Gamma_j-\Gamma_k)^2\sigma_k^2}
+\end{equation}
+</div>
 <p>
-$\sigma_{\mathcal{R}} = \sqrt{|\Gamma_i-1|^2\sigma_{ij}^2 + |\Gamma_j-1|^2\sigma_{jk}^2 + |\Gamma_k-1|^2\sigma_{ki}^2}$
-</p>
-<p>
-where $\sigma_{ij} = \sqrt{\sigma_i^2 + \sigma_j^2}$ is the quadrature sum of the individual delay measurement errors. For the S1–S4–SX loop of SN Refsdal, $\sigma_{\mathcal{R}} = 0.17$ days, giving SNR = 78 against the predicted $+13.2$ day residual.
+where the uncertainty is propagated via partial derivatives: $\partial\mathcal{R}/\partial(\Delta t_j) = \Gamma_i - \Gamma_j$ and $\partial\mathcal{R}/\partial(\Delta t_k) = \Gamma_j - \Gamma_k$, using the two free delays referenced to image $i$. For the S1–S4–SX loop of SN Refsdal, $\sigma_{\mathcal{R}} = 0.23$ days, giving SNR = 63 against the predicted $+14.5$ day residual.
 </p>
 
 <h3>2.6 TDCOSMO Fractional Shear Test</h3>
 <p>
-For the three TDCOSMO quad-lens quasar systems (HE0435-1223, WFI2033-4723, DES0408-5354), each pair of images $(i, A)$ yields a TEP-predicted fractional delay shift:
+For the eight TDCOSMO quad-lens quasar systems and SN Encore, each pair of images $(i, A)$ yields a TEP-predicted fractional delay shift:
 </p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_06}
+\delta_{\rm TEP}^{iA} = \alpha \log_{10}(F_i/F_A)
+\end{equation}
+</div>
 <p>
-$\delta_{\rm TEP}^{iA} = \alpha \log_{10}(F_i/F_A)$
-</p>
-<p>
-and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. The analysis tests whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compare the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal closure test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
+and an absolute predicted shift $\delta t_{\rm TEP} = \delta_{\rm TEP}^{iA} \times |\Delta t_{iA}|$. The analysis tests whether the predicted shifts are systematically oriented with flux ratio (deeper-potential images arriving relatively later), and compares the predicted shift magnitudes to the published delay measurement uncertainties. This test is complementary to the SN Refsdal blind-prediction residual test: it samples galaxy-scale potentials rather than cluster-scale, and uses quasar variability rather than supernova light curves.
 </p>

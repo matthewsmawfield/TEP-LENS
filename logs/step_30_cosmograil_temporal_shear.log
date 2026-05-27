@@ -1,0 +1,281 @@
+[23:44:29] [PROCESS] Checking COSMOGRAIL data availability...
+[23:44:29] [SUCCESS] ✓ All required COSMOGRAIL data present (8 RDB files)
+[23:44:29] [PROCESS] Found 8 RDB + 13 multi-band CSV light curve files
+[23:44:29] [PROCESS] Processing DESJ0408_Courbin2017.rdb
+[23:44:29] [PROCESS]   System DESJ0408: 3 images, [('A', 'B'), ('A', 'D'), ('B', 'D')] pairs
+[23:44:29] [PROCESS]   Analyzing pair A-B
+[23:44:30] [PROCESS]   Analyzing pair A-D
+[23:44:30] [PROCESS]   Analyzing pair B-D
+[23:44:31] [PROCESS]   Running 100 bootstrap iterations...
+  Running 100 bootstrap iterations using 14 cores...
+[23:44:47] [PROCESS] Processing HE0435_Bonvin2016.rdb
+[23:44:47] [PROCESS]   System HE0435: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:44:47] [PROCESS]   Analyzing pair A-B
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:44:48] [PROCESS]   Analyzing pair A-C
+[23:44:49] [PROCESS]   Analyzing pair A-D
+[23:44:51] [PROCESS]   Analyzing pair B-C
+[23:44:52] [PROCESS]   Analyzing pair B-D
+[23:44:53] [PROCESS]   Analyzing pair C-D
+[23:44:54] [PROCESS]   Running 100 bootstrap iterations...
+  Running 13 jackknife iterations using 13 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+  Running 100 bootstrap iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:46:13] [PROCESS] Processing HS2209_Eulaers2013.rdb
+[23:46:13] [PROCESS]   System HS2209: 2 images, [('A', 'B')] pairs
+[23:46:13] [PROCESS]   Analyzing pair A-B
+[23:46:13] [PROCESS]   Running 100 bootstrap iterations...
+  Running 19 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:46:22] [PROCESS] Processing J1001_Rathnakumar2013.rdb
+[23:46:22] [PROCESS]   System J1001: 2 images, [('A', 'B')] pairs
+[23:46:22] [PROCESS]   Analyzing pair A-B
+[23:46:22] [PROCESS]   Running 100 bootstrap iterations...
+  Running 9 jackknife iterations using 9 cores...
+  Running 100 bootstrap iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:46:31] [PROCESS] Processing J1206_Eulaers2013.rdb
+[23:46:31] [PROCESS]   System J1206: 2 images, [('A', 'B')] pairs
+[23:46:31] [PROCESS]   Analyzing pair A-B
+[23:46:32] [PROCESS]   Running 100 bootstrap iterations...
+  Running 10 jackknife iterations using 10 cores...
+  Running 100 bootstrap iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:46:41] [PROCESS] Processing PG1115_Bonvin2018.rdb
+[23:46:41] [PROCESS]   System PG1115: 3 images, [('A', 'B'), ('A', 'C'), ('B', 'C')] pairs
+[23:46:41] [PROCESS]   Analyzing pair A-B
+[23:46:41] [PROCESS]   Analyzing pair A-C
+[23:46:41] [PROCESS]   Analyzing pair B-C
+[23:46:42] [PROCESS]   Running 100 bootstrap iterations...
+  Running 100 bootstrap iterations using 14 cores...
+[23:46:52] [PROCESS] Processing RXJ1131_Tewes2013.rdb
+[23:46:52] [PROCESS]   System RXJ1131: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:46:52] [PROCESS]   Analyzing pair A-B
+[23:46:52] [PROCESS]   Analyzing pair A-C
+[23:46:53] [PROCESS]   Analyzing pair A-D
+[23:46:54] [PROCESS]   Analyzing pair B-C
+[23:46:55] [PROCESS]   Analyzing pair B-D
+[23:46:56] [PROCESS]   Analyzing pair C-D
+[23:46:56] [PROCESS]   Running 100 bootstrap iterations...
+  Running 9 jackknife iterations using 9 cores...
+  Running 100 bootstrap iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:47:55] [PROCESS] Processing WFI2033_Bonvin2019.rdb
+[23:47:55] [PROCESS]   System WFI2033: 3 images, [('A', 'B'), ('A', 'C'), ('B', 'C')] pairs
+[23:47:55] [PROCESS]   Analyzing pair A-B
+[23:47:55] [PROCESS]   Analyzing pair A-C
+[23:47:56] [PROCESS]   Analyzing pair B-C
+[23:47:57] [PROCESS]   Running 100 bootstrap iterations...
+  Running 16 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:48:32] [PROCESS] Processing he0435_JAA703A250_R.csv
+[23:48:32] [PROCESS]   System HE0435_R: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:48:32] [PROCESS]   Analyzing pair A-B
+[23:48:33] [PROCESS]   Analyzing pair A-C
+[23:48:33] [PROCESS]   Analyzing pair A-D
+[23:48:34] [PROCESS]   Analyzing pair B-C
+[23:48:35] [PROCESS]   Analyzing pair B-D
+[23:48:35] [PROCESS]   Analyzing pair C-D
+[23:48:36] [PROCESS]   Running 100 bootstrap iterations...
+  Running 20 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:49:16] [PROCESS] Processing he0435_JAA703A250_V.csv
+[23:49:16] [PROCESS]   System HE0435_V: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:49:16] [PROCESS]   Analyzing pair A-B
+[23:49:17] [PROCESS]   Analyzing pair A-C
+[23:49:17] [PROCESS]   Analyzing pair A-D
+[23:49:18] [PROCESS]   Analyzing pair B-C
+[23:49:18] [PROCESS]   Analyzing pair B-D
+[23:49:19] [PROCESS]   Analyzing pair C-D
+[23:49:20] [PROCESS]   Running 100 bootstrap iterations...
+  Running 24 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:50:09] [PROCESS] Processing he1104_JApJ798_95_B.csv
+[23:50:09] [PROCESS]   System HE1104_B: 2 images, [('A', 'B')] pairs
+[23:50:09] [PROCESS]   Analyzing pair A-B
+[23:50:09] [PROCESS]   Running 100 bootstrap iterations...
+  Running 20 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:50:16] [PROCESS] Processing he1104_JApJ798_95_I.csv
+[23:50:16] [PROCESS]   System HE1104_I: 2 images, [('A', 'B')] pairs
+[23:50:16] [PROCESS]   Analyzing pair A-B
+[23:50:16] [PROCESS]   Running 100 bootstrap iterations...
+  Running 13 jackknife iterations using 13 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:50:23] [PROCESS] Processing he1104_JApJ798_95_J.csv
+[23:50:23] [PROCESS]   System HE1104_J: 2 images, [('A', 'B')] pairs
+[23:50:23] [PROCESS]   Analyzing pair A-B
+[23:50:23] [PROCESS]   Running 100 bootstrap iterations...
+  Running 15 jackknife iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+  Running 100 bootstrap iterations using 14 cores...
+[23:50:31] [PROCESS] Processing he1104_JApJ798_95_R.csv
+[23:50:31] [PROCESS]   System HE1104_R: 2 images, [('A', 'B')] pairs
+[23:50:31] [PROCESS]   Analyzing pair A-B
+[23:50:32] [PROCESS]   Running 100 bootstrap iterations...
+  Running 11 jackknife iterations using 11 cores...
+  Running 100 bootstrap iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:50:42] [PROCESS] Processing q2237_JAA637A89_I.csv
+[23:50:42] [PROCESS]   System Q2237_I: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:50:42] [PROCESS]   Analyzing pair A-B
+[23:50:42] [PROCESS]   Analyzing pair A-C
+[23:50:43] [PROCESS]   Analyzing pair A-D
+[23:50:44] [PROCESS]   Analyzing pair B-C
+[23:50:45] [PROCESS]   Analyzing pair B-D
+[23:50:45] [PROCESS]   Analyzing pair C-D
+[23:50:46] [PROCESS]   Running 100 bootstrap iterations...
+  Running 18 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:51:41] [PROCESS] Processing q2237_JAA637A89_V.csv
+[23:51:41] [PROCESS]   System Q2237_V: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:51:41] [PROCESS]   Analyzing pair A-B
+[23:51:42] [PROCESS]   Analyzing pair A-C
+[23:51:43] [PROCESS]   Analyzing pair A-D
+[23:51:43] [PROCESS]   Analyzing pair B-C
+[23:51:44] [PROCESS]   Analyzing pair B-D
+[23:51:44] [PROCESS]   Analyzing pair C-D
+[23:51:45] [PROCESS]   Running 100 bootstrap iterations...
+  Running 17 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:52:42] [PROCESS] Processing q2237_JAA637A89_g.csv
+[23:52:42] [PROCESS]   System Q2237_G: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:52:42] [PROCESS]   Analyzing pair A-B
+[23:52:43] [PROCESS]   Analyzing pair A-C
+[23:52:44] [PROCESS]   Analyzing pair A-D
+[23:52:46] [PROCESS]   Analyzing pair B-C
+[23:52:47] [PROCESS]   Analyzing pair B-D
+[23:52:48] [PROCESS]   Analyzing pair C-D
+[23:52:49] [PROCESS]   Running 100 bootstrap iterations...
+  Running 12 jackknife iterations using 12 cores...
+  Running 100 bootstrap iterations using 14 cores...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/_lib/array_api_compat/common/_aliases.py:587: RuntimeWarning: overflow encountered in matmul
+  res = xp.conj(x1_[..., None, :]) @ x2_[..., None]
+[23:54:11] [PROCESS] Processing q2237_JAA637A89_r.csv
+[23:54:11] [PROCESS]   System Q2237_R: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:54:11] [PROCESS]   Analyzing pair A-B
+[23:54:11] [PROCESS]   Analyzing pair A-C
+[23:54:12] [PROCESS]   Analyzing pair A-D
+[23:54:13] [PROCESS]   Analyzing pair B-C
+[23:54:14] [PROCESS]   Analyzing pair B-D
+[23:54:15] [PROCESS]   Analyzing pair C-D
+[23:54:16] [PROCESS]   Running 100 bootstrap iterations...
+  Running 15 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:55:46] [PROCESS] Processing q2237_vakulik_JAA420_447_I.csv
+[23:55:46] [PROCESS]   System Q2237_I: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:55:46] [PROCESS]   Analyzing pair A-B
+[23:55:46] [PROCESS]   Analyzing pair A-C
+[23:55:47] [PROCESS]   Analyzing pair A-D
+[23:55:47] [PROCESS]   Analyzing pair B-C
+[23:55:48] [PROCESS]   Analyzing pair B-D
+[23:55:48] [PROCESS]   Analyzing pair C-D
+[23:55:48] [PROCESS]   Running 100 bootstrap iterations...
+  Running 6 jackknife iterations using 6 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:56:15] [PROCESS] Processing q2237_vakulik_JAA420_447_R.csv
+[23:56:15] [PROCESS]   System Q2237_R: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:56:15] [PROCESS]   Analyzing pair A-B
+[23:56:16] [PROCESS]   Analyzing pair A-C
+[23:56:16] [PROCESS]   Analyzing pair A-D
+[23:56:16] [PROCESS]   Analyzing pair B-C
+[23:56:17] [PROCESS]   Analyzing pair B-D
+[23:56:17] [PROCESS]   Analyzing pair C-D
+[23:56:17] [PROCESS]   Running 100 bootstrap iterations...
+  Running 6 jackknife iterations using 6 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:56:44] [PROCESS] Processing q2237_vakulik_JAA420_447_V.csv
+[23:56:44] [PROCESS]   System Q2237_V: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[23:56:44] [PROCESS]   Analyzing pair A-B
+[23:56:44] [PROCESS]   Analyzing pair A-C
+[23:56:45] [PROCESS]   Analyzing pair A-D
+[23:56:45] [PROCESS]   Analyzing pair B-C
+[23:56:45] [PROCESS]   Analyzing pair B-D
+[23:56:46] [PROCESS]   Analyzing pair C-D
+[23:56:46] [PROCESS]   Running 100 bootstrap iterations...
+  Running 6 jackknife iterations using 6 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[23:57:09] [SUCCESS] Saved results: results/outputs/step_30_cosmograil_temporal_shear.json
+
+============================================================
+COSMOGRAIL TEMPORAL SHEAR ANALYSIS SUMMARY
+============================================================
+Systems analyzed: 18
+Image pairs analyzed: 82
+Valid Γ measurements: 55
+
+Γ (temporal shear slope) statistics:
+  Mean:   -3.766 days/decade
+  Median: 0.000 days/decade
+  Std:    36.920 days/decade
+
+Significance:
+  >2σ (raw): 0 pairs
+  >3σ (raw): 0 pairs
+  >2σ (practical cuts): 0 pairs
+  >3σ (practical cuts): 0 pairs
+
+Interpretation: NULL: No significant temporal shear detected. Consistent with GR (single constant delay).
+============================================================
+[23:57:09] [SUCCESS] Step 30 complete

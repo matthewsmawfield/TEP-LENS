@@ -1,4 +1,121 @@
 <h2>Appendix A: Theoretical Framework for Lensing Closures</h2>
+
+<h3>A.1 Temporal Shear and the Lensing Potential</h3>
 <p>
-[Detailed derivation of the scale-dependent temporal shear $\Gamma$ and the formal expression for the TEP closure residual will be documented here.]
+The Temporal Equivalence Principle (TEP) postulates that the rate of proper time flow for a photon traversing a gravitational potential $\Phi$ is scaled relative to the cosmological background rate by a factor $\Gamma_t$:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_01}
+\Gamma_t(\Phi) = 1 + \alpha \frac{|\Phi|}{c^2}
+\end{equation}
+</div>
+<p>
+where $\alpha$ is the lensing-sector effective coupling. The coupling is determined empirically from the SN Refsdal data: $\alpha_{\rm lens} = -0.055 \pm 0.044$. In the strong lensing regime, the relevant potential is the projected gravitational potential $\psi(\boldsymbol{\theta})$ integrated along the line of sight. For singular isothermal sphere (SIS) or NFW profiles typical of cluster lenses, the projected potential depth scales logarithmically with the surface mass density $\Sigma$, which is directly related to the magnification $\mu$.
+</p>
+<p>
+No first-principles derivation of the log-magnification ansatz from the TEP scalar-field action through the lensing potential $\psi(\boldsymbol{\theta})$ currently exists. The mapping from projected convergence $\kappa$ to observed magnification $\mu$ involves the full boundary-value problem of the scalar-field equation in a non-trivial cluster potential, including ellipticity, external shear, and substructure. Solving this transfer function is beyond the scope of the present work.
+</p>
+<p>
+The following phenomenological scaling relation is therefore adopted as a strong-lensing-specific ansatz, analogous to the PPN strategy of treating the observable response separately from the microscopic coupling:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_02}
+\Gamma_t(i) \approx 1 + \alpha \log_{10}\left(\frac{\mu_i}{\bar{\mu}}\right)
+\end{equation}
+</div>
+<p>
+where $\mu_i$ is the absolute magnification of image $i$, and $\bar{\mu}$ is the mean magnification of the image system. This logarithmic scaling captures the essential feature that temporal shear is differential: it depends on the <em>ratio</em> of potential depths probed by different images. The test is a screen of this ansatz, not a measurement of the fundamental coupling.
+</p>
+
+<h3>A.2 Derivation of the Predicted GR Discrepancy</h3>
+<p>
+Let $t_i^{\rm GR}$ be the arrival time of image $i$ predicted by General Relativity and $t_0$ the unlensed arrival time. Define the GR absolute delay $u_i = t_i^{\rm GR} - t_0$ and the GR pairwise delay $\Delta t_{ij}^{\rm GR} = t_j^{\rm GR} - t_i^{\rm GR} = u_j - u_i$. Under TEP, the observed arrival time is scaled by the path-specific shear $\Gamma_i$:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_03}
+t_i^{\rm obs} = t_0 + \Gamma_i (t_i^{\rm GR} - t_0) = t_0 + \Gamma_i u_i
+\end{equation}
+</div>
+<p>
+The observed pairwise delay between images $i$ and $j$ is therefore:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_04}
+\Delta t_{ij}^{\rm obs} = t_j^{\rm obs} - t_i^{\rm obs} = \Gamma_j u_j - \Gamma_i u_i
+\end{equation}
+</div>
+<p>
+Because observed arrival times are physical clock readings, the sum of observed pairwise delays around any closed loop is identically zero:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_05}
+\Delta t_{ij}^{\rm obs} + \Delta t_{jk}^{\rm obs} + \Delta t_{ki}^{\rm obs} = (\Gamma_j u_j - \Gamma_i u_i) + (\Gamma_k u_k - \Gamma_j u_j) + (\Gamma_i u_i - \Gamma_k u_k) = 0
+\end{equation}
+</div>
+<p>
+The TEP signature is therefore not a failure of the observed delays to close, but a discrepancy between the observed delays and the delays predicted by GR lens models. The TEP predicted GR discrepancy is defined as the weighted sum of GR pairwise delays with coefficients $(\Gamma_m - 1)$:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_06}
+\mathcal{R}_{\rm TEP}(i,j,k) \equiv (\Gamma_i - 1)\,\Delta t_{ij}^{\rm GR} + (\Gamma_j - 1)\,\Delta t_{jk}^{\rm GR} + (\Gamma_k - 1)\,\Delta t_{ki}^{\rm GR}
+\end{equation}
+</div>
+<p>
+Substituting $\Delta t_{ij}^{\rm GR} = u_j - u_i$ and expanding:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_07}
+\mathcal{R}_{\rm TEP} = (\Gamma_i - 1)(u_j - u_i) + (\Gamma_j - 1)(u_k - u_j) + (\Gamma_k - 1)(u_i - u_k)
+\end{equation}
+</div>
+<p>
+Grouping terms by absolute delay:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_08}
+\mathcal{R}_{\rm TEP} = u_i(\Gamma_k - \Gamma_i) + u_j(\Gamma_i - \Gamma_j) + u_k(\Gamma_j - \Gamma_k)
+\end{equation}
+</div>
+<p>
+This can also be written in the pairwise-delay form used in the main text by expanding $\Gamma = 1 + \delta\Gamma$ and using $\sum_{\rm loop}\Delta t^{\rm GR} = 0$:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_09}
+\mathcal{R}_{\rm TEP} = \sum_{\rm loop} (1 + \delta\Gamma)\,\Delta t^{\rm GR} = \sum \Delta t^{\rm GR} + \sum \delta\Gamma\,\Delta t^{\rm GR} = \sum_{\rm loop} (\Gamma_m - 1)\,\Delta t_{mn}^{\rm GR}
+\end{equation}
+</div>
+<p>
+Explicitly for the triplet $(i, j, k)$:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_10}
+\mathcal{R}_{\rm TEP} = (\Gamma_i-1)\Delta t_{ij} + (\Gamma_j-1)\Delta t_{jk} + (\Gamma_k-1)\Delta t_{ki}
+\end{equation}
+</div>
+<p>
+where $\Delta t_{ij} \equiv \Delta t_{ij}^{\rm GR}$. This equation demonstrates that the residual is generated purely by the <em>differences</em> in $\Gamma$ around the loop. If the potential depth is constant ($\Gamma_i = \Gamma_j = \Gamma_k$), the residual vanishes. For the S1–S4–SX loop of SN Refsdal, where the other two delays are well-constrained by the Einstein-cross images, this weighted sum approximately equals the TEP-induced discrepancy in the SX–S1 delay.
+</p>
+
+<h3>A.3 Immunity to Mass Sheet Degeneracy</h3>
+<p>
+The Mass Sheet Degeneracy (MSD) corresponds to a transformation of the convergence $\kappa \to \lambda \kappa + (1-\lambda)$, which rescales time delays by a factor $\lambda$:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_11}
+\Delta t_{ij}' = \lambda \Delta t_{ij}
+\end{equation}
+</div>
+<p>
+Substituting this into the predicted GR discrepancy definition:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_12}
+\mathcal{R}' = \Delta t_{ij}' + \Delta t_{jk}' + \Delta t_{ki}' = \lambda(\Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki})
+\end{equation}
+</div>
+<p>
+Since $\Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = 0$ in GR, then $\mathcal{R}' = \lambda \cdot 0 = 0$.
+</p>
+<p>
+Thus, the MSD cannot produce a non-zero loop sum. A measured non-zero blind-prediction residual $\mathcal{R}_{\rm obs} \neq 0$ is therefore a robust signature of non-GR physics (specifically, potential-dependent temporal shear) that cannot be mimicked by standard lensing degeneracies.
 </p>

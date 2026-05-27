@@ -1,122 +1,238 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
+
+const PAPER_ID = '19';
+const PROJECT_CODE = 'TEP-LENS';
+const DEFAULT_CODENAME = 'Lisboa';
+
+function manuscriptBasename(versionStr) {
+    const pattern = /^(v?[\d.]+)(?:\s*\(([^)]+)\))?$/;
+    const match = String(versionStr || '').trim().match(pattern);
+    const ver = match ? match[1].replace(/^v/, '') : '0.1';
+    const codename = match && match[2] ? match[2] : DEFAULT_CODENAME;
+    return `${PAPER_ID}-${PROJECT_CODE}-v${ver}-${codename}`;
+}
 
 class HTMLToMarkdownConverter {
     constructor() { this.output = ''; }
 
-    htmlToMarkdown(html) {
-        const stripTags = (s) => {
-            if (s == null) return '';
-            return String(s)
-                .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-                .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
-                // Only strip actual tags like <p>, </div>, <img ...>. Do NOT treat
-                // literal '<' in math/text (e.g. '$R < 5$') as an HTML tag.
-                .replace(/<\/?[A-Za-z][^>]*>/g, '')
-                .replace(/\s+/g, ' ')
-                .trim();
-        };
+    decodeEntities(text) {
+        return text
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&nbsp;/g, ' ')
+            .replace(/&mdash;/g, '—')
+            .replace(/&ndash;/g, '–')
+            .replace(/&#10004;/g, '✔')
+            .replace(/&#10008;/g, '✘');
+    }
 
-        const escapePipes = (s) => String(s).replace(/\|/g, '\\|');
+    cleanInlineHtml(html) {
+        return this.decodeEntities(
+            html
+                .replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**')
+                .replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*')
+                .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
+                .replace(/<br\s*\/?>/gi, ' ')
+                .replace(/<\/?[a-zA-Z][^>]*>/g, '')
+        )
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
 
-        const tableToMarkdown = (tableHtml) => {
-            const rows = [];
-            const trRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
-            let tr;
-            while ((tr = trRe.exec(tableHtml)) !== null) {
-                const rowHtml = tr[1];
-                const cells = [];
-                const cellRe = /<(th|td)[^>]*>([\s\S]*?)<\/(th|td)>/gi;
-                let cell;
-                while ((cell = cellRe.exec(rowHtml)) !== null) {
-                    const raw = stripTags(cell[2]);
-                    cells.push(escapePipes(raw));
-                }
-                if (cells.length) rows.push(cells);
+    tableToMarkdown(tableHtml) {
+        const captionMatch = tableHtml.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i);
+        const caption = captionMatch ? this.cleanInlineHtml(captionMatch[1]) : '';
+        const rows = [];
+        const rowRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
+        let rowMatch;
+
+        while ((rowMatch = rowRegex.exec(tableHtml)) !== null) {
+            const cells = [];
+            const cellRegex = /<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi;
+            let cellMatch;
+
+            while ((cellMatch = cellRegex.exec(rowMatch[1])) !== null) {
+                cells.push(this.cleanInlineHtml(cellMatch[1]).replace(/\|/g, '\\|'));
             }
 
-            if (!rows.length) return stripTags(tableHtml);
+            if (cells.length) rows.push(cells);
+        }
 
-            const header = rows[0];
-            const colCount = header.length;
-            const padRow = (r) => {
-                const rr = r.slice(0, colCount);
-                while (rr.length < colCount) rr.push('');
-                return rr;
-            };
+        if (!rows.length) return '';
 
-            const headerRow = `| ${padRow(header).join(' | ')} |`;
-            const sepRow = `| ${Array(colCount).fill('---').join(' | ')} |`;
-            const bodyRows = rows.slice(1).map((r) => `| ${padRow(r).join(' | ')} |`);
+        const header = rows[0];
+        const normalizeRow = (row) => `| ${header.map((_, index) => row[index] || '').join(' | ')} |`;
 
-            return `\n\n${[headerRow, sepRow, ...bodyRows].join('\n')}\n\n`;
-        };
+        let markdown = '';
+        if (caption) markdown += `\n\n${caption}\n\n`;
+        markdown += `${normalizeRow(header)}\n`;
+        markdown += `| ${header.map(() => '---').join(' | ')} |\n`;
+        for (const row of rows.slice(1)) markdown += `${normalizeRow(row)}\n`;
+        return `\n\n${markdown}\n`;
+    }
 
-        html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-        html = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+    htmlToMarkdown(html) {
+        const mathBlocks = [];
+        html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, content) => {
+            mathBlocks.push(`$$${content}$$`);
+            return `___MATH_BLOCK_${mathBlocks.length - 1}___`;
+        });
+        html = html.replace(/\$([^$\n]+?)\$/g, (match, content) => {
+            mathBlocks.push(`$${content}$`);
+            return `___MATH_INLINE_${mathBlocks.length - 1}___`;
+        });
+
+        html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gis, '');
+        html = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gis, '');
         html = html.replace(/<!--[\s\S]*?-->/g, '');
+        html = html.replace(/<nav\b[\s\S]*?<\/nav>/gi, '');
+        html = html.replace(/<section[^>]*class=["']manuscript-section[^"']*["'][^>]*>/gi, '\n\n');
+        html = html.replace(/<div[^>]*class=["']manuscript-section[^"']*["'][^>]*>/gi, '\n\n');
+        html = html.replace(/<div[^>]*class=["']abstract[^"']*["'][^>]*>/gi, '\n\n');
+        html = html.replace(/<\/div>/gi, '\n\n');
 
-        // Tables (convert before other tag stripping)
-        html = html.replace(/<table[^>]*>[\s\S]*?<\/table>/gi, (m) => tableToMarkdown(m));
+        html = html.replace(/<pre[^>]*>\s*<code(?: class=["']language-([^"']+)["'])?[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/gi, (match, lang, code) => {
+            const language = (lang || '').trim();
+            const decodedCode = this.decodeEntities(code).replace(/\n+$/g, '');
+            return `\n\n@@@CODEBLOCK_START:${language}@@@\n${decodedCode}\n@@@CODEBLOCK_END@@@\n\n`;
+        });
 
-        // Images
-        html = html.replace(/<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>/gi, '![$2]($1)');
-        html = html.replace(/<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>/gi, '![$1]($2)');
-        html = html.replace(/<img[^>]*src=["']([^"']+)["'][^>]*>/gi, '![]($1)');
+        html = html.replace(/<pre[^>]*>([\s\S]*?)<\/pre>/gi, (match, content) => {
+            const decoded = this.decodeEntities(content).replace(/\n+$/g, '');
+            return `\n\n@@@CODEBLOCK_START:@@@\n${decoded}\n@@@CODEBLOCK_END@@@\n\n`;
+        });
 
-        // Section boundaries (static build uses <section>, older versions used <div>)
-        // Do not emit headings here: components already contain their own <h2>/<h3>
-        // and emitting wrappers causes duplicated headings in the generated Markdown.
-        html = html.replace(/<section[^>]*class=["']manuscript-section[^"']*["'][^>]*data-section=["']([^"']*)["'][^>]*>/gi, '\n\n');
-        html = html.replace(/<div[^>]*class=["']manuscript-section[^"']*["'][^>]*data-section=["']([^"']*)["'][^>]*>/gi, '\n\n');
+        html = html.replace(/<table[^>]*>[\s\S]*?<\/table>/gi, (match) => this.tableToMarkdown(match));
 
-        html = html.replace(/<div[^>]*id=["']code-availability["'][^>]*>/gi, '\n> ');
-        html = html.replace(/<div[^>]*class=["']key-finding[^"']*["'][^>]*>/gi, '\n> ');
-        html = html.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '\n# $1\n\n');
-        html = html.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '\n## $1\n\n');
-        html = html.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '\n### $1\n\n');
-        html = html.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '\n#### $1\n\n');
-        html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, '$1\n\n');
-        html = html.replace(/<a[^>]*href=["']([^"']*)["'][^>]*>(.*?)<\/a>/gi, '[$2]($1)');
-        html = html.replace(/<(strong|b)[^>]*>(.*?)<\/(strong|b)>/gi, '**$2**');
-        html = html.replace(/<(em|i)[^>]*>(.*?)<\/(em|i)>/gi, '*$2*');
-        html = html.replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n');
-        html = html.replace(/<\/?[A-Za-z][^>]*>/g, '');
+        html = html.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, '\n# $1\n\n');
+        html = html.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, '\n## $1\n\n');
+        html = html.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, '\n### $1\n\n');
+        html = html.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, '\n#### $1\n\n');
+        html = html.replace(/<h5[^>]*>([\s\S]*?)<\/h5>/gi, '\n##### $1\n\n');
+        html = html.replace(/<h6[^>]*>([\s\S]*?)<\/h6>/gi, '\n###### $1\n\n');
+
+        html = html.replace(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/gi, '\n\n    $1\n');
+        html = html.replace(/<figure[^>]*>([\s\S]*?)<\/figure>/gi, '\n\n$1\n\n');
+
+        html = html.replace(/<img[^>]+>/gi, (tag) => {
+            const srcMatch = tag.match(/src=["']([^"']+)["']/i);
+            const altMatch = tag.match(/alt=["']([^"']*)["']/i);
+            const src = srcMatch ? srcMatch[1] : '';
+            const alt = altMatch ? altMatch[1] : '';
+            return src ? `\n![${alt}](${src})\n` : '';
+        });
+
+        html = html.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '\n> $1\n\n');
+        html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (match, content) => {
+            const stripped = content.split('\n').map(line => line.trim()).join(' ').trim();
+            return `${stripped}\n\n`;
+        });
+
+        html = html.replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**');
+        html = html.replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*');
+        html = html.replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`');
+
+        html = html.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, '- $1\n');
+        html = html.replace(/<br\s*\/?>/gi, '\n');
+        html = html.replace(/<hr\s*\/?>/gi, '\n---\n');
+
+        html = html.replace(/<\/?[a-zA-Z][^>]*>/g, '');
+        html = this.decodeEntities(html);
+
+        html = html.replace(/___MATH_BLOCK_(\d+)___/g, (match, index) => mathBlocks[parseInt(index)]);
+        html = html.replace(/___MATH_INLINE_(\d+)___/g, (match, index) => mathBlocks[parseInt(index)]);
+
+        html = html.replace(/@@@CODEBLOCK_START:([^@]*)@@@[\r\n]+([\s\S]*?)[\r\n]+@@@CODEBLOCK_END@@@/g, (match, lang, code) => {
+            const language = lang.trim();
+            return `\n\n\`\`\`${language}\n${code}\n\`\`\`\n\n`;
+        });
+
+        html = html.split('\n').map(line => line.replace(/^\s+/, '')).join('\n');
         return html.replace(/\n{3,}/g, '\n\n').trim();
     }
 
     async convertSiteToMarkdown() {
         console.log('🔄 Converting HTML site to markdown (TEP-LENS)...');
         try {
-            const htmlPath = path.join(__dirname, 'dist', 'index.html');
-            if (!fs.existsSync(htmlPath)) throw new Error('Built HTML file not found.');
-            const html = fs.readFileSync(htmlPath, 'utf8');
-            const mainMatch = html.match(/<div[^>]*id=["']manuscript-content["'][^>]*>([\s\S]*?)<\/main>/i);
-            if (!mainMatch) throw new Error('Could not find manuscript content.');
-            
-            const today = new Date().toISOString().split('T')[0];
-            const header = `# TEP-LENS: Resolving the Hubble Tension
+            const manifestPath = path.join(__dirname, 'manifest.json');
+            if (!fs.existsSync(manifestPath)) throw new Error('manifest.json not found.');
+            const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+            const sections = manifest.sections.sort((a, b) => a.order - b.order);
 
-**Author:** Matthew Lukin Smawfield  
-**Version:** v0.2 (Kingston upon Hull)  
-**Date:** First published: 11 January 2026  
-**DOI:** 10.5281/zenodo.18209703  
-**Generated:** ${today}  
-**Paper Series:** TEP Series: Paper 12 (Cosmological Observations)
+            const citationPath = path.join(__dirname, '..', 'CITATION.cff');
+            let author = 'Matthew Lukin Smawfield';
+            let version = 'v0.1 (Lisboa)';
+            let dateReleased = '2026-03-02';
+            let doi = '';
+
+            if (fs.existsSync(citationPath)) {
+                const citationData = yaml.load(fs.readFileSync(citationPath, 'utf8'));
+                if (citationData.authors && citationData.authors[0]) {
+                    const firstAuthor = citationData.authors[0];
+                    author = `${firstAuthor['given-names']} ${firstAuthor['family-names']}`;
+                }
+                version = citationData.version || version;
+                const rawDate = citationData['date-released'] || dateReleased;
+                const dateObj = new Date(rawDate);
+                dateReleased = dateObj.toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                });
+                doi = citationData.doi || '';
+            }
+
+            let allHtml = '';
+            for (const section of sections) {
+                const componentPath = path.join(__dirname, 'components', section.file);
+                if (fs.existsSync(componentPath)) {
+                    const html = fs.readFileSync(componentPath, 'utf8');
+                    allHtml += `\n<!-- SECTION: ${section.title} -->\n${html}\n`;
+                    console.log(`  ✓ ${section.file} (${(html.length / 1024).toFixed(1)} KB)`);
+                } else {
+                    console.warn(`  ⚠ Missing: ${section.file}`);
+                }
+            }
+
+            console.log(`  Total HTML: ${(allHtml.length / 1024).toFixed(1)} KB`);
+            const markdown = this.htmlToMarkdown(allHtml);
+
+            const title = manifest.title || 'Untitled';
+            const header = `# ${title}
+**${author}**
+Version: ${version}
+First published: ${dateReleased}${doi ? `\nDOI: ${doi}` : ''}
 
 ---
 
 `;
-            const markdown = header + this.htmlToMarkdown(mainMatch[1]);
-            const outputPath = path.join(__dirname, '..', '14manuscript-tep-lens.md');
-            fs.writeFileSync(outputPath, markdown, 'utf8');
-            console.log(`✅ Markdown saved to: ${outputPath}`);
+            const finalMarkdown = header + markdown;
+            const basename = manuscriptBasename(version);
+
+            const rootPath = path.join(__dirname, '..', `${basename}.md`);
+            fs.writeFileSync(rootPath, finalMarkdown, 'utf8');
+            console.log(`✅ Markdown saved to: ${rootPath} (${(finalMarkdown.length / 1024).toFixed(1)} KB)`);
+
+            const manuscriptsDir = path.join(__dirname, '..', 'manuscripts');
+            if (!fs.existsSync(manuscriptsDir)) {
+                fs.mkdirSync(manuscriptsDir, { recursive: true });
+            }
+            const manuscriptsPath = path.join(manuscriptsDir, `${basename}.md`);
+            fs.writeFileSync(manuscriptsPath, finalMarkdown, 'utf8');
+            console.log(`✅ Markdown copied to: ${manuscriptsPath}`);
         } catch (error) {
             console.error('❌ Markdown conversion failed:', error.message);
+            process.exitCode = 1;
         }
     }
 }
 
-if (require.main === module) { const c = new HTMLToMarkdownConverter(); c.convertSiteToMarkdown(); }
-module.exports = { HTMLToMarkdownConverter };
+if (require.main === module) {
+    const c = new HTMLToMarkdownConverter();
+    c.convertSiteToMarkdown();
+}
+module.exports = { HTMLToMarkdownConverter, manuscriptBasename };

@@ -1,52 +1,61 @@
 cff-version: 1.2.0
-title: "The Cepheid Bias: Resolving the Hubble Tension"
-message: "If you use this software, please cite it as below."
+message: "If you use this work, please cite it as below."
 type: article
 authors:
   - family-names: "Smawfield"
     given-names: "Matthew Lukin"
     orcid: "https://orcid.org/0009-0003-8219-3159"
+title: "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae"
 abstract: |
-      The Hubble Tension—the persistent 5σ discrepancy between local distance-ladder measurements ($H_0 \approx 73$ km/s/Mpc) and early-universe CMB inference ($H_0 = 67.4 \pm 0.5$ km/s/Mpc)—represents a significant challenge in precision cosmology. This study proposes that the tension arises from a systematic, environment-dependent bias in Cepheid-based distances, as predicted by the Temporal Equivalence Principle (TEP).
-
-      TEP posits that proper time accumulation depends on the local gravitational potential. Cepheid variable stars, acting as "standard clocks" via their period-luminosity relation, experience differential time flow governed by their host galaxy environment. Consistent with the anomalous spin-down rates observed in globular cluster pulsars (Paper 11), Cepheids in deep gravitational potentials (high velocity dispersion $\sigma$) experience period contraction relative to calibration environments. When interpreted through a universal P-L relation, this period deficit masquerades as diminished luminosity, causing systematic underestimation of distances to SN Ia host galaxies and consequent overestimation of $H_0$.
-
-      Analysis of the SH0ES Cepheid sample ($N=29$), stratified by host galaxy velocity dispersion (a TEP-independent kinematic observable), reveals a statistically significant correlation between host potential depth and derived $H_0$ (Spearman $\rho = 0.434$, $p = 0.019$; Pearson $r = 0.428$, $p = 0.021$). A median-split stratification at $\sigma_{\rm med} \approx 90$ km/s yields $H_0 = 67.82 \pm 1.62$ km/s/Mpc (low-$\sigma$; $N=15$) versus $72.45 \pm 2.32$ km/s/Mpc (high-$\sigma$; $N=14$), implying $\Delta H_0 = 4.63$ km/s/Mpc. Because published $\sigma$ values are heterogeneous (direct stellar absorption and calibrated HI/rotation proxies), measurement methodology is treated as a first-class provenance variable and covariance-aware significance tests are reported using the full SH0ES GLS distance-modulus covariance.
-
-      Application of the TEP conformal correction with an optimized coupling $\alpha = 0.58 \pm 0.16$ and effective calibrator reference $\sigma_{\rm ref} = 75.25$ km/s yields a unified local Hubble constant of $H_0 = 68.66 \pm 1.51$ km/s/Mpc, corresponding to a Planck tension of $0.79\sigma$. Out-of-sample validation (train/test splits and LOOCV) shows that the optimized coupling is stable and removes the residual environmental trend in held-out hosts. A differential analysis within M31 yields an "Inner Fainter" signal in HST photometry. This result, initially counter-intuitive, is resolved by the theory's density-dependent screening mechanism: the high-density M31 bulge ($\rho > \rho_{\rm trans}$) is screened (restoring standard physics), while the lower-density SN Ia host disks remain unscreened. The M31 signal thus marks the empirical crossing of the screening threshold.
-
-      The anchor–host mismatch (geometric anchors show near-zero coupling, $\alpha_{\rm anchor} \approx 0$, in tension with the host-level $\alpha \approx 0.58$) finds a natural resolution in group halo screening: all three anchors (LMC, NGC 4258, M31) are members of galaxy groups, embedding them in deep ambient potentials that trigger chameleon-type screening regardless of internal disk densities. The SN Ia hosts, selected for smooth Hubble flow, are biased toward isolated field galaxies that lack this external screening. This framework generates a falsifiable prediction: the TEP distance-ladder bias should be unique to isolated field galaxies and suppressed in group/cluster environments.
-
-      *Keywords:* Hubble tension – Cepheid variables – distance ladder – velocity dispersion – temporal equivalence principle – gravitational time dilation
-license: CC-BY-4.0
-version: 0.3
-date-released: 2026-01-12
-keywords:
-  - Hubble Tension
-  - Cepheids
-  - TEP
-  - Time Dilation
-  - Cosmology
-  - Screening
-  - Period-Luminosity Relation
-  - SH0ES
+    The Temporal Equivalence Principle (TEP) predicts that light rays traversing
+    different gravitational potential depths experience differential temporal scaling
+    ($\alpha \neq 0$). This work applies a blind-prediction residual test to SN Refsdal,
+    the only multiply-imaged supernova with five resolved images and precision-measured
+    time delays. The key observational lever is a comparison of seven blind
+    pre-reappearance GR predictions of $\Delta t_{\rm SX,S1}$ against the later Kelly
+    et al. (2023) measurement — two completely disjoint datasets. The pre-specified
+    primary non-parametric directional test is a Wilcoxon signed-rank test on the six
+    non-zero residuals among the seven blind models, all of which are positive
+    ($p = 0.016$, approximately $2.2\sigma$), matching the TEP prediction for a negative
+    temporal-shear coupling. The supplementary all-eight-model Wilcoxon (including one
+    post-blind precision update) gives $p = 0.0078$ ($2.4\sigma$). Additional strands
+    are directionally consistent: a 46% reduction in weighted RMS after TEP correction,
+    and a binomial sign test of 6/7 positive among blind models ($p = 0.0625$).
+    Hierarchical Bayesian model comparison remains inconclusive (BF = 1.06
+    fixed-$\alpha$ baseline / 0.997 h0pe-informed, BF = 0.615 free-$\alpha$ baseline /
+    0.492 h0pe-informed with a GR-centred prior), indicating that
+    present lens-model uncertainties dominate formal model-selection metrics. The
+    measured coupling $\alpha_{\rm lens} = -0.055 \pm 0.044$ is calibrated from the same
+    SN Refsdal data, so the magnitude agreement with the TEP prediction is definitional
+    rather than an independent confirmation; the probative content lies in the sign
+    consistency across independent modelling groups. Applying this coupling shifts SN
+    Refsdal's inferred $H_0$ from $66.6$ to $69.3$ km s$^{-1}$ Mpc$^{-1}$ as an internal
+    consistency check; corrections to SN Encore and SN H0pe are negligible
+    ($\sim 0.1$ km s$^{-1}$ Mpc$^{-1}$) due to their smaller magnification contrasts.
+version: "v0.1 (Lisboa)"
+date-released: 2026-03-02
+url: "https://github.com/matthewsmawfield/TEP-LENS"
 repository-code: "https://github.com/matthewsmawfield/TEP-LENS"
-url: "https://matthewsmawfield.github.io/TEP-LENS/"
-doi: 10.5281/zenodo.18216583
+license: CC-BY-4.0
+keywords:
+  - gravitational lensing
+  - time delays
+  - multiply-imaged supernovae
+  - SN Refsdal
+  - SN H0pe
+  - Temporal Equivalence Principle
+  - blind-prediction residual
+  - Wilcoxon signed-rank test
+  - strong lensing cosmology
 
 preferred-citation:
   type: article
-  title: "The Cepheid Bias: Resolving the Hubble Tension (Kingston upon Hull v0.3)"
+  title: "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae"
   authors:
     - family-names: Smawfield
       given-names: Matthew Lukin
       orcid: "https://orcid.org/0009-0003-8219-3159"
   year: 2026
   journal: Zenodo
-  doi: 10.5281/zenodo.18216583
-  identifiers:
-  - type: doi
-    value: 10.5281/zenodo.18216583
-    description: Pre-print DOI
-  url: "https://doi.org/10.5281/zenodo.18216583"
-  notes: "Preprint v0.3 (Kingston upon Hull)"
+  url: "https://github.com/matthewsmawfield/TEP-LENS"
+  notes: "Preprint v0.1 (Lisboa)"

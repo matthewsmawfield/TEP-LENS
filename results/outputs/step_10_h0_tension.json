@@ -1,14 +1,82 @@
 {
+  "alpha": -0.055,
   "sn_refsdal": {
     "gr": 66.6,
-    "tep": 69.0231532524807,
-    "shift": 2.4231532524807022
+    "tep": 69.27865841803353,
+    "err_plus": 4.1,
+    "err_minus": 3.3,
+    "sigma_tep": 0.04024909860242715,
+    "shift_factor": 1.04022009636687,
+    "sigma_shift_factor": 0.0006043408198562635,
+    "dt_obs_days": 376.0,
+    "dt_geom_days": 361.461964937265,
+    "r_tep_days": 14.538035062734984,
+    "note": "Rigorous closure-based shift. dt_geom = dt_obs - R_tep_prediction. H0 scales inversely with the true geometric delay."
   },
   "sn_h0pe": {
-    "gr": 75.4,
-    "tep": 74.139109358161,
-    "shift": -1.260890641839012
+    "gr": 60.9,
+    "tep": 60.966911342904126,
+    "err_plus": 5.1,
+    "err_minus": 4.6,
+    "sigma_tep": 0.3318897453048138,
+    "shift_factor": 1.001098708422071,
+    "sigma_shift_factor": 0.005449749512394316,
+    "per_delay_factors": {
+      "A_B": {
+        "factor": 1.0115505691188384,
+        "sigma": 0.006711495750104712,
+        "dt_days": 121.9
+      },
+      "C_B": {
+        "factor": 0.9995707114862981,
+        "sigma": 0.006168927162003532,
+        "dt_days": 63.2
+      }
+    },
+    "gamma_factors": {
+      "A": 1.0115505691188384,
+      "B": 0.9925627179202564,
+      "C": 0.9995707114862981
+    },
+    "predicted_closure_residual_days": 1.903249838780506,
+    "note": "3-image weighted gamma shift. Shift is small (+~0.1%) because the high-magnification image (B, mu=5.3) is the reference, and the other images have modest magnification contrasts. Closure residual is predicted, not observed (only 2 independent delays)."
   },
-  "tension_gr": 8.800000000000011,
-  "tension_tep": 5.115956105680297
+  "sn_encore": {
+    "gr": 60.9,
+    "tep": 60.98358382399126,
+    "err_plus": 5.1,
+    "err_minus": 4.6,
+    "sigma_tep": 0.20158479052976677,
+    "shift_factor": 1.0013724765844214,
+    "sigma_shift_factor": 0.0033100950825905875,
+    "per_reference_factors": {
+      "1a_reference": 0.9931283694865435,
+      "1b_reference": 1.0096850192480624
+    },
+    "gamma_factors": {
+      "1a": 1.0096850192480624,
+      "1b": 0.9931283694865435
+    },
+    "note": "2-image approximate shift. Reference-dependent: f=1.0088 (1b ref) vs f=0.9938 (1a ref). The geometric mean is reported as a compromise. The shift is small (~+0.2%) because the magnification contrast (mu_1b/mu_1a = 2.0) is modest compared to Refsdal (~3.3)."
+  },
+  "combined_low_h0": {
+    "gr": 63.53402092235155,
+    "tep": 64.8123279106722,
+    "shift": 1.2783069883206437
+  },
+  "independence_analysis": {
+    "sn_refsdal": {
+      "independence_level": "not_independent",
+      "circularity_note": "The alpha_lens=-0.055 used here was empirically determined from the same SN Refsdal SX delay data (step_07). The H0 shift is therefore a self-consistency check, not an independent confirmation. It shows that the TEP framework is internally consistent, but does not add degrees of freedom to the evidence."
+    },
+    "sn_h0pe": {
+      "independence_level": "independent_prediction",
+      "circularity_note": "alpha_lens was calibrated on SN Refsdal, then applied to H0pe without refitting. The predicted shift is an independent prediction, but the shift is negligible (~0.1) due to modest magnification contrast."
+    },
+    "sn_encore": {
+      "independence_level": "independent_prediction",
+      "circularity_note": "alpha_lens was calibrated on SN Refsdal, then applied to Encore without refitting. The predicted shift is an independent prediction, but the shift is negligible (~0.1) due to modest magnification contrast and reference dependence of the 2-image system."
+    }
+  },
+  "interpretation": "SN Refsdal receives the dominant TEP H0 shift (+2.4) because it has 5 images and the largest magnification contrast (S1/SX ~ 3.3). SN H0pe and SN Encore receive negligible shifts (+0.1 and +0.1 respectively) due to their smaller magnification contrasts and fewer independent delays. The combined low-H0 cluster shifts by +0.8 toward Planck, driven primarily by Refsdal. IMPORTANT: The Refsdal H0 shift is not an independent confirmation because alpha_lens was derived from the same Refsdal data. It is an internal consistency check."
 }

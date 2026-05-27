@@ -1,0 +1,255 @@
+{
+  "step": "08",
+  "status": "success",
+  "system_primary": "SN Refsdal (MACS J1149.6+2223)",
+  "system_secondary": "SN H0pe (PLCK G165.7+67.0)",
+  "summary": {
+    "test_A_spearman_rho": 0.3,
+    "test_A_p_onesided": 0.3119188323905364,
+    "test_B_kendall_tau": 0.19999999999999998,
+    "test_B_p_exact": 0.4083333333333333,
+    "test_B_exact_match": false,
+    "test_C_alpha_wmean": -0.05725494903894681,
+    "test_C_z_vs_zero": -0.9555625156494191,
+    "test_C_p_vs_zero": 0.16964665349101754,
+    "test_D_R_tep_days": 1.903249838780506,
+    "test_D_snr": 2.1180500634056765,
+    "test_D_p_onesided": 0.017085414010558134
+  },
+  "test_A_delay_mu_correlation": {
+    "description": "Spearman rank correlation between arrival delay and 1/mu_norm",
+    "tep_prediction": "Positive correlation (r > 0): less magnified images arrive later",
+    "spearman_rho": 0.3,
+    "spearman_p_twosided": 0.6238376647810728,
+    "spearman_p_onesided": 0.3119188323905364,
+    "pearson_r": 0.9317875739939271,
+    "pearson_p_onesided": 0.01058290409089799,
+    "linear_slope_days": 172.57632767694602,
+    "linear_slope_err": 38.81638736840892,
+    "linear_slope_t": 4.445965721616816,
+    "per_image": {
+      "S1": {
+        "dt": 0.0,
+        "mu_norm": 1.181391552744338,
+        "inv_mu": 0.8464594127806563
+      },
+      "S2": {
+        "dt": 9.9,
+        "mu_norm": 0.9049173638033055,
+        "inv_mu": 1.1050732807215333
+      },
+      "S3": {
+        "dt": 9.0,
+        "mu_norm": 0.7304631707814732,
+        "inv_mu": 1.3689944134078214
+      },
+      "S4": {
+        "dt": 20.3,
+        "mu_norm": 1.8292185268312589,
+        "inv_mu": 0.5466815393195762
+      },
+      "SX": {
+        "dt": 376.0,
+        "mu_norm": 0.35400938583962455,
+        "inv_mu": 2.8247838616714698
+      }
+    },
+    "robustness": {
+      "loo_pearson_r": {
+        "S1": 0.925628598759675,
+        "S2": 0.9344438194026892,
+        "S3": 0.9682114817794235,
+        "S4": 0.9750038758367294,
+        "SX": -0.40352482843902615
+      },
+      "cooks_distance": {
+        "S1": 0.0002334734338085414,
+        "S2": 0.05297854088831366,
+        "S3": 0.27814472536066104,
+        "S4": 0.6425618842388847,
+        "SX": 2.234982173753013
+      },
+      "std_residuals": {
+        "S1": 0.041040570512446216,
+        "S2": -0.6981707531072158,
+        "S3": -1.6665229722728556,
+        "S4": 1.792353828380544,
+        "SX": 2.2223509631027083
+      },
+      "theilsen_slope": 27.75236818457291,
+      "theilsen_slope_95ci": [
+        -67.71680566556401,
+        252.09689521910525
+      ],
+      "theilsen_intercept": -20.768400557517886,
+      "bootstrap_pearson_r_95ci": [
+        -1.0,
+        1.0
+      ],
+      "bootstrap_frac_r_above_0_8": 0.7191945501903426,
+      "verdict": "Pearson r=0.932 is entirely driven by SX leverage. Excluding SX: r collapses to -0.404. Spearman rho=0.3 (p=0.31) is not significant. Theil-Sen slope=27.8 d overlaps zero at 95% CI. Correlation test is INAPPROPRIATE for n=5 with one extreme leverage point; reported for transparency only, not as probative evidence."
+    }
+  },
+  "test_B_arrival_order": {
+    "description": "Arrival-order vs TEP magnification-order check (transparency)",
+    "verdict": "NOT SIGNIFICANT (tau=0.20, p=0.41). Inner-cross dominated by geometry.",
+    "honest_interpretation": "S4 is most magnified but arrives 4th. The inner-cross TEP shift (~0.3d) is far below measurement uncertainties (~5-20d). This is expected under TEP and is not a falsification. Only SX drives a detectable ordering signal.",
+    "arrival_ranks": {
+      "S1": 0,
+      "S2": 2,
+      "S3": 1,
+      "S4": 3,
+      "SX": 4
+    },
+    "tep_predicted_ranks": {
+      "S1": 1,
+      "S2": 2,
+      "S3": 3,
+      "S4": 0,
+      "SX": 4
+    },
+    "kendall_tau": 0.19999999999999998,
+    "kendall_p_twosided": 0.8166666666666667,
+    "exact_onesided_p": 0.4083333333333333,
+    "concordant_pairs": 6,
+    "n_pairs_total": 10,
+    "exact_rank_match": false,
+    "tep_shifts_vs_noise": {
+      "S1": {
+        "tep_shift_d": 0.0,
+        "meas_err_d": 0.0
+      },
+      "S2": {
+        "tep_shift_d": 0.06304489959025134,
+        "meas_err_d": 4.0
+      },
+      "S3": {
+        "tep_shift_d": 0.10335379085636343,
+        "meas_err_d": 4.2
+      },
+      "S4": {
+        "tep_shift_d": -0.21199178673565836,
+        "meas_err_d": 6.4
+      },
+      "SX": {
+        "tep_shift_d": 10.823479469539237,
+        "meas_err_d": 5.6
+      }
+    }
+  },
+  "test_C_alpha_inference": {
+    "description": "Consistency of per-model inferred alpha with GR (0) and TEP (-0.055)",
+    "per_model": [
+      {
+        "name": "Oguri-a",
+        "alpha_inferred": -0.19672534752175508,
+        "sigma": 0.22421077964582165
+      },
+      {
+        "name": "Sharon",
+        "alpha_inferred": -0.11727857256104629,
+        "sigma": 0.22609397674057657
+      },
+      {
+        "name": "Diego",
+        "alpha_inferred": -0.0,
+        "sigma": 0.19034169576184826
+      },
+      {
+        "name": "Grillo",
+        "alpha_inferred": -0.056747696400506274,
+        "sigma": 0.09139413776245187
+      },
+      {
+        "name": "Kawamata",
+        "alpha_inferred": -0.02648225832023626,
+        "sigma": 0.1847032668673034
+      },
+      {
+        "name": "Jauzac",
+        "alpha_inferred": -0.06431405592057378,
+        "sigma": 0.1828242902968233
+      },
+      {
+        "name": "CATS",
+        "alpha_inferred": -0.007566359520067503,
+        "sigma": 0.17531109688879382
+      }
+    ],
+    "weighted_mean_alpha": -0.05725494903894681,
+    "sigma_alpha": 0.05991753349600075,
+    "z_vs_gr_null": -0.9555625156494191,
+    "p_vs_gr_null_onesided": 0.16964665349101754,
+    "z_vs_tep_alpha_lens": -0.03763421001128691,
+    "p_vs_tep_twosided": 0.969979331588912,
+    "scatter_chi2": 0.6575202564177397,
+    "scatter_chi2_dof": 6,
+    "scatter_p": 0.995362345846555
+  },
+  "test_D_snh0pe_closure": {
+    "description": "TEP closure SENSITIVITY for SN H0pe A-B-C loop (predicted, not observed)",
+    "verdict": "SENSITIVITY ANALYSIS ONLY. Predicted R_TEP=+1.903 d at SNR=2.12. Not an observed detection -- observed closure is 0 by construction. An independent 4th-image delay for H0pe would detect TEP at this SNR.",
+    "system": "SN H0pe (PLCK G165.7+67.0)",
+    "z_src": 1.783,
+    "z_lens": 0.351,
+    "delays": {
+      "dt_AB": -121.9,
+      "dt_CB": -63.2,
+      "dt_AC": -58.7
+    },
+    "gamma": {
+      "A": 1.0115505691188384,
+      "B": 0.9925627179202564,
+      "C": 0.9995707114862981
+    },
+    "R_tep_days": 1.903249838780506,
+    "R_err_stat_days": 0.10118689242199456,
+    "R_err_sys_days": 0.892870517751385,
+    "R_err_total_days": 0.8985858604872696,
+    "snr_stat": 18.809252791785557,
+    "snr_total": 2.1180500634056765,
+    "p_onesided": 0.017085414010558134,
+    "gr_closure_check": 0.0
+  },
+  "test_E_significance_summary": {
+    "description": "Summary of OBSERVED (not predicted) evidence strands",
+    "caveat": "Tests are derived from same SN Refsdal dataset -- not independent. Combining p-values via Fisher/Stouffer is invalid (double-dipping). Headline significance is driven by the strongest robust test (Wilcoxon).",
+    "included_tests": {
+      "Wilcoxon signed-rank (all 7 nonzero positive)": 0.0078125,
+      "alpha_inferred vs zero (7 blind models)": 0.16964665349101754
+    },
+    "excluded_tests": {
+      "delay_mu_pearson": {
+        "p": 0.01058290409089799,
+        "reason": "n=5 with extreme SX leverage; Cook's distance > 1.0. Correlation test statistically inappropriate. Reported for transparency only."
+      },
+      "arrival_order_kendall": {
+        "p": 0.4083333333333333,
+        "reason": "Not significant (p=0.41)"
+      },
+      "snh0pe_closure": {
+        "p": 0.017085414010558134,
+        "reason": "Predicted sensitivity, not observed residual"
+      }
+    },
+    "all_p_values": {
+      "binomial_sign_test_all8": 0.03515625,
+      "binomial_sign_test_blind7": 0.0625,
+      "delay_mu_pearson": 0.01058290409089799,
+      "arrival_order_kendall": 0.4083333333333333,
+      "alpha_inference_vs_zero": 0.16964665349101754,
+      "snh0pe_closure_PREDICTED": 0.017085414010558134
+    },
+    "headline_z": 2.417559016236505,
+    "n_tests": 2,
+    "h0pe_sensitivity_snr": 2.1180500634056765,
+    "h0pe_sensitivity_note": "Future 4th-image delay for H0pe detectable at SNR=2.12"
+  },
+  "figures": [
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_B_arrival_order.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_C_alpha_inference.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_E_evidence_ladder.png"
+  ]
+}

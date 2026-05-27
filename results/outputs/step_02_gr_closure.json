@@ -1,11 +1,74 @@
 {
   "step": "02",
   "status": "success",
-  "gr_predictions": {
-    "dt_AB": -116.6,
-    "dt_BC": 48.6,
-    "dt_CA": 68.0,
-    "closure_sum": 0.0,
-    "closure_sum_description": "Under standard General Relativity, the route closure residual must be exactly 0."
-  }
+  "system": "SN Refsdal (MACS J1149.6+2223)",
+  "reference": "Kelly et al. 2023, ApJ 948, 93",
+  "gr_algebraic_loop_loops": {
+    "S1_S2_S3": {
+      "images": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "dt_ij": 9.9,
+      "dt_jk": -0.9000000000000004,
+      "dt_ki": -9.0,
+      "loop_sum_gr": 0.0,
+      "loop_sum_err": 8.202438661763951,
+      "gr_null_description": "Identically 0 under GR by construction."
+    },
+    "S1_S2_S4": {
+      "images": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "dt_ij": 9.9,
+      "dt_jk": 10.4,
+      "dt_ki": -20.3,
+      "loop_sum_gr": 0.0,
+      "loop_sum_err": 10.673331251301068,
+      "gr_null_description": "Identically 0 under GR by construction."
+    },
+    "S1_S3_S4": {
+      "images": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "dt_ij": 9.0,
+      "dt_jk": 11.3,
+      "dt_ki": -20.3,
+      "loop_sum_gr": 0.0,
+      "loop_sum_err": 10.825894882179487,
+      "gr_null_description": "Identically 0 under GR by construction."
+    },
+    "S1_S2_SX": {
+      "images": [
+        "S1",
+        "S2",
+        "SX"
+      ],
+      "dt_ij": 9.9,
+      "dt_jk": 366.1,
+      "dt_ki": -376.0,
+      "loop_sum_gr": 0.0,
+      "loop_sum_err": 9.73242004847715,
+      "gr_null_description": "Identically 0 under GR by construction."
+    },
+    "S1_S4_SX": {
+      "images": [
+        "S1",
+        "S4",
+        "SX"
+      ],
+      "dt_ij": 20.3,
+      "dt_jk": 355.7,
+      "dt_ki": -376.0,
+      "loop_sum_gr": 0.0,
+      "loop_sum_err": 12.026637102698327,
+      "gr_null_description": "Identically 0 under GR by construction."
+    }
+  },
+  "summary": "Under any theory with globally assignable arrival times, the algebraic loop sum is identically zero for any combination of measured delays. Five independent loops are computed from the four Kelly+2023 measured delays. The measured delay errors propagate to give the observational sensitivity for each loop."
 }

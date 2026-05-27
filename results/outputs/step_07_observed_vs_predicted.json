@@ -1,0 +1,316 @@
+{
+  "step": "07",
+  "status": "success",
+  "system": "SN Refsdal (MACS J1149.6+2223)",
+  "analysis": "Observed vs. blind-predicted Delta_t(SX, S1)",
+  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +14.61 +/- 11.57 d (z = +1.26 sigma from GR null, z = +0.01 sigma from TEP). Binomial sign test: 7/8 positive, p=0.0352 (blind only: 6/7, p=0.0625). Chi-squared: GR chi2=2.3, TEP chi2=0.7, Delta chi2=+1.6 in favour of TEP (p=0.2069). TEP correction (14.5 d) reduces wRMS by 46%, improving 5/8 models. Inferred alpha = -0.0553 +/- 0.0438.",
+  "observed": {
+    "dt_SX_S1_days": 376.0,
+    "err_days": 5.6,
+    "ref": "Kelly et al. 2023, ApJ 948, 93, Table 15"
+  },
+  "tep_prediction": {
+    "R_tep_prediction_days": 14.538035062734984,
+    "alpha_ref": -0.055,
+    "R_tep_unit_days_per_alpha": -264.32791023154516,
+    "loop": "S1-S4-SX (Residual Prediction = -Closure)",
+    "ref": "This work, step_03"
+  },
+  "weighted_mean_residual": {
+    "R_obs_days": 14.605519391230912,
+    "sigma_days": 11.57281297405183,
+    "z_from_gr_null": 1.2620543876392813,
+    "z_from_tep_prediction": 0.005831281352877537,
+    "alpha_inferred": -0.05525530534568526,
+    "alpha_inferred_err": 0.04378203181008889,
+    "n_models": 8,
+    "n_positive_residual": 7
+  },
+  "bootstrap_alpha_inference": {
+    "n_bootstrap": 10000,
+    "random_seed": 42,
+    "method": "Resample models with replacement, compute weighted-mean residual, convert to alpha",
+    "alpha_mean": -0.055988671582071256,
+    "alpha_std": 0.010753157889521704,
+    "alpha_median": -0.05501585033109692,
+    "alpha_p16": -0.06419733207763173,
+    "alpha_p84": -0.04754336931809137,
+    "sigma_alpha_analytical": 0.04378203181008889,
+    "P_alpha_lt_0": 1.0,
+    "P_alpha_consistent_with_ref": 0.995
+  },
+  "binomial_sign_test": {
+    "n_positive": 7,
+    "n_total": 8,
+    "p_value_one_sided": 0.03515625,
+    "z_approx": 2.1213203435596424,
+    "p_wilcoxon_signed_rank_all": 0.0078125,
+    "p_wilcoxon_signed_rank_blind": 0.015625,
+    "wilcoxon_note": "All 6 non-zero blind residuals positive (p=1/64=0.0156); all 7 non-zero total residuals positive (p=1/128=0.0078)",
+    "blind_only": {
+      "n_positive": 6,
+      "n_total": 7,
+      "p_value": 0.0625,
+      "p_wilcoxon_signed_rank_blind": 0.015625
+    }
+  },
+  "chi2_model_comparison": {
+    "chi2_gr": 2.252691247219737,
+    "chi2_tep": 0.6599439737023928,
+    "delta_chi2": 1.5927472735173445,
+    "p_value": 0.20693406382260188,
+    "n_dof": 8,
+    "note": "TEP has 0 free parameters (alpha_lens=-0.055 from empirical SN Refsdal measurement)"
+  },
+  "tep_corrected_consistency": {
+    "dt_corr_days": 361.461964937265,
+    "wrms_raw_days": 17.36959812541315,
+    "wrms_corrected_days": 9.401398645165855,
+    "improvement_pct": 45.874403211374045,
+    "n_models_improved": 5,
+    "n_total": 8
+  },
+  "unweighted_statistics": {
+    "mean_days": 17.25,
+    "std_days": 15.998046755776157
+  },
+  "per_model_results": [
+    {
+      "name": "Oguri-a",
+      "team": "Oguri",
+      "ref": "Oguri 2015 (MNRAS 449, L86)",
+      "method": "GLAFIC parametric",
+      "blind": true,
+      "dt_pred_days": 324.0,
+      "err_plus": 66.0,
+      "err_minus": 52.0,
+      "sigma_model_days": 59.0,
+      "delta_obs_minus_pred_days": 52.0,
+      "sigma_total_days": 59.265166835165495,
+      "z_score": 0.8774125304435211,
+      "alpha_inferred": -0.19672534752175508
+    },
+    {
+      "name": "Sharon",
+      "team": "Sharon & Johnson",
+      "ref": "Sharon & Johnson 2015 (ApJ 800, L26)",
+      "method": "LTM parametric",
+      "blind": true,
+      "dt_pred_days": 345.0,
+      "err_plus": 68.0,
+      "err_minus": 51.0,
+      "sigma_model_days": 59.5,
+      "delta_obs_minus_pred_days": 31.0,
+      "sigma_total_days": 59.762948387776184,
+      "z_score": 0.5187160412310028,
+      "alpha_inferred": -0.11727857256104629
+    },
+    {
+      "name": "Diego",
+      "team": "Diego et al.",
+      "ref": "Diego et al. 2016 (MNRAS 456, 356)",
+      "method": "WSLAP+ free-form",
+      "blind": true,
+      "dt_pred_days": 376.0,
+      "err_plus": 40.0,
+      "err_minus": 60.0,
+      "sigma_model_days": 50.0,
+      "delta_obs_minus_pred_days": 0.0,
+      "sigma_total_days": 50.31262267065791,
+      "z_score": 0.0,
+      "alpha_inferred": -0.0
+    },
+    {
+      "name": "Grillo",
+      "team": "Grillo et al.",
+      "ref": "Grillo et al. 2016 (ApJ 822, 78)",
+      "method": "GLEE parametric",
+      "blind": true,
+      "dt_pred_days": 361.0,
+      "err_plus": 20.0,
+      "err_minus": 27.0,
+      "sigma_model_days": 23.5,
+      "delta_obs_minus_pred_days": 15.0,
+      "sigma_total_days": 24.15802144216285,
+      "z_score": 0.6209117760703942,
+      "alpha_inferred": -0.056747696400506274
+    },
+    {
+      "name": "Kawamata",
+      "team": "Kawamata et al.",
+      "ref": "Kawamata et al. 2016 (ApJ 819, 114)",
+      "method": "Parametric",
+      "blind": true,
+      "dt_pred_days": 369.0,
+      "err_plus": 53.0,
+      "err_minus": 44.0,
+      "sigma_model_days": 48.5,
+      "delta_obs_minus_pred_days": 7.0,
+      "sigma_total_days": 48.8222285439737,
+      "z_score": 0.1433773141612159,
+      "alpha_inferred": -0.02648225832023626
+    },
+    {
+      "name": "Jauzac",
+      "team": "Jauzac et al.",
+      "ref": "Jauzac et al. 2016 (MNRAS 457, 2029) [corrected in Kelly+2023]",
+      "method": "LENSTOOL parametric",
+      "blind": true,
+      "dt_pred_days": 359.0,
+      "err_plus": 40.0,
+      "err_minus": 56.0,
+      "sigma_model_days": 48.0,
+      "delta_obs_minus_pred_days": 17.0,
+      "sigma_total_days": 48.32556259372466,
+      "z_score": 0.3517806950933985,
+      "alpha_inferred": -0.06431405592057378
+    },
+    {
+      "name": "CATS",
+      "team": "Treu et al. (CATS)",
+      "ref": "Treu et al. 2016 (ApJ 817, 60)",
+      "method": "LENSTOOL parametric",
+      "blind": true,
+      "dt_pred_days": 374.0,
+      "err_plus": 51.0,
+      "err_minus": 41.0,
+      "sigma_model_days": 46.0,
+      "delta_obs_minus_pred_days": 2.0,
+      "sigma_total_days": 46.33961588101481,
+      "z_score": 0.04315961541708406,
+      "alpha_inferred": -0.007566359520067503
+    },
+    {
+      "name": "Grillo+2024",
+      "team": "Grillo et al.",
+      "ref": "Grillo et al. 2024 (ApJ 971, 49) \u2014 post-blind precision update",
+      "method": "GLEE parametric (updated)",
+      "blind": false,
+      "dt_pred_days": 362.0,
+      "err_plus": 16.0,
+      "err_minus": 16.0,
+      "sigma_model_days": 16.0,
+      "delta_obs_minus_pred_days": 14.0,
+      "sigma_total_days": 16.951696080333672,
+      "z_score": 0.8258760618202653,
+      "alpha_inferred": -0.05296451664047252
+    }
+  ],
+  "evidence_tier": {
+    "description": "Separation of genuinely independent directional evidence from definitional amplitude evidence",
+    "tier_1_directional_sign_consistency": {
+      "description": "Tests that are independent of the amplitude calibration of alpha_lens",
+      "tests": {
+        "wilcoxon_signed_rank_blind": {
+          "p_value": 0.015625,
+          "z_equiv": 2.1538746940614564,
+          "note": "All 6 non-zero blind residuals positive. Independent of R_tep_unit amplitude calibration."
+        },
+        "wilcoxon_signed_rank_all": {
+          "p_value": 0.0078125,
+          "z_equiv": 2.417559016236505,
+          "note": "All 7 non-zero residuals positive. Supplementary."
+        },
+        "binomial_sign_test_blind_7": {
+          "p_value": 0.0625,
+          "z_equiv": 1.889822365046136,
+          "note": "6/7 positive. Corroborating check."
+        },
+        "binomial_sign_test_all_8": {
+          "p_value": 0.03515625,
+          "z_equiv": 2.1213203435596424,
+          "note": "7/8 positive. Includes post-blind update."
+        }
+      },
+      "interpretation": "These tests require only that the residuals have a consistent sign, not that their amplitude matches a pre-calibrated value. They are the most robust evidence strand because they are independent of alpha_lens calibration and of the proxy-model amplitude."
+    },
+    "tier_2_amplitude_consistency": {
+      "description": "Tests that compare observed residual amplitude against proxy-model prediction",
+      "tests": {
+        "weighted_mean_z_test": {
+          "R_obs_days": 14.605519391230912,
+          "sigma_days": 11.57281297405183,
+          "z_from_gr_null": 1.2620543876392813,
+          "p_value": 0.10346460827225168,
+          "note": "Definitional: alpha_lens was calibrated from this same weighted mean residual via R_obs / R_tep_unit."
+        },
+        "chi2_model_comparison": {
+          "delta_chi2": 1.5927472735173445,
+          "p_value": 0.20693406382260188,
+          "note": "TEP has 0 free parameters because alpha_lens is empirically determined from the same data."
+        },
+        "tep_corrected_wrms": {
+          "improvement_pct": 45.874403211374045,
+          "note": "R_tep_prediction used for correction is derived from alpha_lens, so this is a self-consistency check."
+        }
+      },
+      "interpretation": "These tests compare the observed residual amplitude to the proxy-model prediction at the empirically calibrated alpha_lens. Because alpha_lens was derived from the same SN Refsdal data (R_obs / R_tep_unit), the amplitude agreement is definitional, not an independent confirmation. The probative content lies in the directional sign consistency (Tier 1), not in the amplitude match."
+    }
+  },
+  "test_registry": {
+    "primary_test": "wilcoxon_signed_rank_blind",
+    "primary_test_justification": "Selected a priori as the most robust non-parametric directional test: it equal-weights independent modelling groups, eliminating inverse-variance downweighting from heterogeneous model uncertainties. It is more powerful than the binomial sign test (which discards rank information) and more robust than the parametric z-test (which is biased by outlier uncertainties).",
+    "all_tests": {
+      "weighted_mean_z_test": {
+        "description": "Inverse-variance weighted mean residual against GR null",
+        "R_obs_days": 14.605519391230912,
+        "sigma_days": 11.57281297405183,
+        "z_from_gr_null": 1.2620543876392813,
+        "p_value_one_sided": 0.10346460827225168,
+        "is_primary": false
+      },
+      "binomial_sign_test_all_8": {
+        "description": "Binomial test on sign of all 8 model residuals",
+        "n_positive": 7,
+        "n_total": 8,
+        "p_value_one_sided": 0.03515625,
+        "z_approx": 2.1213203435596424,
+        "is_primary": false
+      },
+      "binomial_sign_test_blind_7": {
+        "description": "Binomial test on sign of 7 blind model residuals only",
+        "n_positive": 6,
+        "n_total": 7,
+        "p_value_one_sided": 0.0625,
+        "is_primary": false
+      },
+      "wilcoxon_signed_rank_all": {
+        "description": "Non-parametric signed-rank test on all non-zero residuals (equal weight per model)",
+        "n_nonzero": 7,
+        "p_value_one_sided": 0.0078125,
+        "note": "All 7 non-zero residuals positive; max statistic; p=1/2^7",
+        "is_primary": false
+      },
+      "wilcoxon_signed_rank_blind": {
+        "description": "Non-parametric signed-rank test on blind-only non-zero residuals (excludes post-blind update)",
+        "n_nonzero": 6,
+        "p_value_one_sided": 0.015625,
+        "note": "All 6 non-zero blind residuals positive; max statistic; p=1/2^6",
+        "is_primary": true
+      },
+      "chi2_model_comparison": {
+        "description": "Chi-squared ensemble fit: GR (R=0) vs TEP (R=R_pred)",
+        "chi2_gr": 2.252691247219737,
+        "chi2_tep": 0.6599439737023928,
+        "delta_chi2": 1.5927472735173445,
+        "p_value": 0.20693406382260188,
+        "note": "TEP has 0 free parameters (alpha_lens empirically determined)",
+        "is_primary": false
+      },
+      "tep_corrected_wrms": {
+        "description": "Weighted RMS reduction after subtracting TEP-predicted residual",
+        "wrms_raw_days": 17.36959812541315,
+        "wrms_corrected_days": 9.401398645165855,
+        "improvement_pct": 45.874403211374045,
+        "n_models_improved": 5,
+        "is_primary": false
+      }
+    }
+  },
+  "figures": [
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_observed_vs_predicted.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_residuals.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_chi2_comparison.png",
+    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_alpha_inference.png"
+  ]
+}

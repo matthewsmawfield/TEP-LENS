@@ -1,0 +1,89 @@
+{
+  "step": "12",
+  "status": "success",
+  "nominal": {
+    "R_obs_weighted_days": 14.605519391230912,
+    "R_tep_alpha_nominal_days": 14.538035062734984
+  },
+  "design": {
+    "draws_per_level": 20000,
+    "microlensing_fraction_levels": [
+      0.1,
+      0.2,
+      0.3
+    ],
+    "note": "Flux perturbations combine quoted photometric errors and fractional nuisance terms."
+  },
+  "summaries": [
+    {
+      "microlensing_fraction": 0.1,
+      "n_draws": 20000,
+      "R_tep_median_days": -14.526754230548423,
+      "R_tep_p16_days": -15.843660319116408,
+      "R_tep_p84_days": -13.234807343573024,
+      "R_tep_p025_days": -17.21400595956059,
+      "R_tep_p975_days": -11.97626221356213,
+      "P_R_tep_positive": 0.0,
+      "alpha_inferred_median": -0.05529821416191137,
+      "alpha_inferred_p16": -0.060696279565904974,
+      "alpha_inferred_p84": -0.05070189276965666,
+      "P_alpha_inferred_positive": 0.0,
+      "delta_chi2_median": 1.5869076412963483,
+      "delta_chi2_p16": 1.5665764667139386,
+      "delta_chi2_p84": 1.59224720885632,
+      "P_delta_chi2_gt_0": 1.0
+    },
+    {
+      "microlensing_fraction": 0.2,
+      "n_draws": 20000,
+      "R_tep_median_days": -14.49704825054511,
+      "R_tep_p16_days": -17.125549902567972,
+      "R_tep_p84_days": -11.99558492748072,
+      "R_tep_p025_days": -20.029747175009458,
+      "R_tep_p975_days": -9.358582524538896,
+      "P_R_tep_positive": 0.0,
+      "alpha_inferred_median": -0.05541152603423531,
+      "alpha_inferred_p16": -0.06696660241058147,
+      "alpha_inferred_p84": -0.04690673123427841,
+      "P_alpha_inferred_positive": 0.0,
+      "delta_chi2_median": 1.5708907808151629,
+      "delta_chi2_p16": 1.490510866419853,
+      "delta_chi2_p84": 1.5908090464956819,
+      "P_delta_chi2_gt_0": 0.9999
+    },
+    {
+      "microlensing_fraction": 0.3,
+      "n_draws": 20000,
+      "R_tep_median_days": -14.527290544845565,
+      "R_tep_p16_days": -18.324848027066047,
+      "R_tep_p84_days": -10.638738460820038,
+      "R_tep_p025_days": -23.295265747471657,
+      "R_tep_p975_days": -5.8579043726274325,
+      "P_R_tep_positive": 0.0039,
+      "alpha_inferred_median": -0.05517227754762063,
+      "alpha_inferred_p16": -0.07501925408782859,
+      "alpha_inferred_p84": -0.04365885707938221,
+      "P_alpha_inferred_positive": 0.0039,
+      "delta_chi2_median": 1.5426948386896737,
+      "delta_chi2_p16": 1.3524614609915158,
+      "delta_chi2_p84": 1.5884671126626575,
+      "P_delta_chi2_gt_0": 0.99195
+    }
+  ],
+  "proxy_mapping_summary": {
+    "n_draws": 20000,
+    "R_tep_median_days": -18.903189266651943,
+    "R_tep_p16_days": -29.67254914324502,
+    "R_tep_p84_days": 0.8957916041081954,
+    "P_R_tep_positive": 0.1764,
+    "alpha_inferred_median": -0.03136123119920055,
+    "alpha_inferred_p16": -0.06854680994302755,
+    "alpha_inferred_p84": 0.06286582241453896,
+    "P_alpha_inferred_positive": 0.17935943060498222,
+    "delta_chi2_median": 0.520222054376589,
+    "delta_chi2_p16": -1.0451902688877956,
+    "delta_chi2_p84": 1.482827594875024,
+    "P_delta_chi2_gt_0": 0.62905
+  },
+  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_12_microlensing_robustness.png"
+}

@@ -95,6 +95,14 @@
     margin: 15px 0;
 }
 
+.callout-note {
+    background-color: rgba(28, 46, 74, 0.04);
+    border-left: 3px solid #5D6D7E;
+    padding: 12px 15px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
 /* ============================================
    TABLES
    ============================================ */
@@ -322,17 +330,33 @@
 }
 
 /* ============================================
+   ABSTRACT KEYWORDS
+   ============================================ */
+
+.keywords {
+    font-size: 0.9em;
+    color: #566573;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* ============================================
    EQUATIONS & FORMULAS
    ============================================ */
 
-.equation-block {
-    background: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: 15px;
-    margin: 20px 0;
-    overflow: hidden;
+.equation,
+.equation-block,
+.equation-box,
+pre.equation {
     text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    overflow-x: visible;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(28, 46, 74, 0.03);
+    border-radius: 4px;
+    border: none;
 }
 
 .equation-number {
@@ -380,8 +404,10 @@
 
 .figure-responsive {
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* ============================================

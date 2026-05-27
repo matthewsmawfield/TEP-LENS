@@ -68,105 +68,20 @@ def main():
     print_status(f"STEP {STEP_NUM}: Observed vs. Blind-Predicted Delay — SN Refsdal SX", "TITLE")
 
     # ------------------------------------------------------------------
-    # Observed delay (Kelly+2023, ApJ 948 93, Table 15, 'Combined' method)
-    # This is the measurement AFTER SX appeared, using full 5-image light curves.
+    # Load observed delay and blind model predictions from authoritative
+    # data file (data/raw/sn_lensing/blind_model_predictions.json).
     # ------------------------------------------------------------------
-    obs_value = 376.0   # days
-    obs_err   = 5.6     # days (1-sigma)
+    predictions_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "blind_model_predictions.json"
+    with open(predictions_path, 'r') as f:
+        pred_data = json.load(f)
+
+    obs_value = pred_data["metadata"]["observed_delay"]["value"]
+    obs_err   = pred_data["metadata"]["observed_delay"]["err"]
 
     print_status(f"Observed Delta_t(SX, S1) = {obs_value} +/- {obs_err} d "
                  f"(Kelly+2023, independent photometric light-curve fit)")
 
-    # ------------------------------------------------------------------
-    # Blind model predictions (all published BEFORE SX reappeared Dec 2015)
-    # Source: Treu+2016 ApJ 817 60 Table 2, and Kelly+2023 Science Table S4.
-    # Values are median (or central) predictions with 1-sigma uncertainties.
-    # The Jauzac and Sharon models required post-publication corrections
-    # (noted in Kelly+2023) -- the corrected values from Kelly+2023 S4 are used.
-    # Models marked blind=True were published fully blind to SX position/time.
-    # ------------------------------------------------------------------
-    models = [
-        {
-            "name": "Oguri-a",
-            "team": "Oguri",
-            "ref": "Oguri 2015 (MNRAS 449, L86)",
-            "dt_pred": 324.0,
-            "err_plus": 66.0,
-            "err_minus": 52.0,
-            "method": "GLAFIC parametric",
-            "blind": True,
-        },
-        {
-            "name": "Sharon",
-            "team": "Sharon & Johnson",
-            "ref": "Sharon & Johnson 2015 (ApJ 800, L26)",
-            "dt_pred": 345.0,
-            "err_plus": 68.0,
-            "err_minus": 51.0,
-            "method": "LTM parametric",
-            "blind": True,
-        },
-        {
-            "name": "Diego",
-            "team": "Diego et al.",
-            "ref": "Diego et al. 2016 (MNRAS 456, 356)",
-            "dt_pred": 376.0,
-            "err_plus": 40.0,
-            "err_minus": 60.0,
-            "method": "WSLAP+ free-form",
-            "blind": True,
-        },
-        {
-            "name": "Grillo",
-            "team": "Grillo et al.",
-            "ref": "Grillo et al. 2016 (ApJ 822, 78)",
-            "dt_pred": 361.0,
-            "err_plus": 20.0,
-            "err_minus": 27.0,
-            "method": "GLEE parametric",
-            "blind": True,
-        },
-        {
-            "name": "Kawamata",
-            "team": "Kawamata et al.",
-            "ref": "Kawamata et al. 2016 (ApJ 819, 114)",
-            "dt_pred": 369.0,
-            "err_plus": 53.0,
-            "err_minus": 44.0,
-            "method": "Parametric",
-            "blind": True,
-        },
-        {
-            "name": "Jauzac",
-            "team": "Jauzac et al.",
-            "ref": "Jauzac et al. 2016 (MNRAS 457, 2029) [corrected in Kelly+2023]",
-            "dt_pred": 359.0,
-            "err_plus": 40.0,
-            "err_minus": 56.0,
-            "method": "LENSTOOL parametric",
-            "blind": True,
-        },
-        {
-            "name": "CATS",
-            "team": "Treu et al. (CATS)",
-            "ref": "Treu et al. 2016 (ApJ 817, 60)",
-            "dt_pred": 374.0,
-            "err_plus": 51.0,
-            "err_minus": 41.0,
-            "method": "LENSTOOL parametric",
-            "blind": True,
-        },
-        {
-            "name": "Grillo+2024",
-            "team": "Grillo et al.",
-            "ref": "Grillo et al. 2024 (ApJ 971, 49) — post-blind precision update",
-            "dt_pred": 362.0,
-            "err_plus": 16.0,
-            "err_minus": 16.0,
-            "method": "GLEE parametric (updated)",
-            "blind": False,
-        },
-    ]
+    models = pred_data["models"]
 
     n_blind   = sum(1 for m in models if m["blind"])
     n_total   = len(models)

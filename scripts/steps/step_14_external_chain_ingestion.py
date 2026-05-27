@@ -128,7 +128,7 @@ def main():
     try:
         entries = fetch_json(API_URL)
     except Exception as e:
-        print_status(f"Failed to query GitHub API: {e}", "ERROR")
+        print_status(f"GitHub API unavailable ({e}); continuing with local data only", "WARNING")
         entries = []
 
     files = [e for e in entries if isinstance(e, dict) and e.get("type") == "file"]
@@ -228,7 +228,7 @@ def main():
         save_fig(fig, out_fig)
         print_status(f"Figure saved to {out_fig}")
     except Exception as e:
-        print_status(f"Plotting failed: {e}", "ERROR")
+        print_status(f"Plotting skipped: {e}", "WARNING")
 
     out = {
         "step": STEP_NUM,

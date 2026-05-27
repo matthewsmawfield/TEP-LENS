@@ -545,13 +545,13 @@ Unlike SN Refsdal, SN 2025wny does not yet have measured time delays. The discov
 
 For a four-image Einstein-cross system with estimated magnification $\mu \sim 20$–50, the proxy model predicts a fractional TEP shift of order $1$–$3\%$ of the longest delay baseline. If the brightest image (assumed most magnified) and the faintest image (assumed least magnified) are separated by a delay baseline of $\sim 30$–$100$ days, the predicted proxy-model residual is:
 
-- **Predicted residual range:** $\mathcal{R}_{\rm pred} = +1.2$ to $+14.8$ days (16th–84th percentile over the plausible magnification and geometry priors).
+- **Predicted residual range:** $\mathcal{R}_{\rm pred} = +0.5$ to $+5.4$ days (16th–84th percentile over the plausible magnification and geometry priors; median $+1.9$ days).
 
-- **Required delay precision for a $3\sigma$ test:** $\sigma_{\Delta t} \lesssim 2$ days on the longest pairwise delay, assuming the residual falls near the median prediction.
+- **Required delay precision for a $3\sigma$ test:** $\sigma_{\Delta t} \lesssim 0.6$ days on the longest pairwise delay, assuming the residual falls near the median prediction.
 
-- **Required delay precision for a $5\sigma$ test:** $\sigma_{\Delta t} \lesssim 1$ day.
+- **Required delay precision for a $5\sigma$ test:** $\sigma_{\Delta t} \lesssim 0.4$ day.
 
-**Falsification condition.** If an independent blind-prediction residual for the longest-baseline loop in SN 2025wny is consistent with zero at the $2\sigma$ level ($|\mathcal{R}_{\rm obs}| < 2\sigma_{\Delta t}$) *and* the delay precision satisfies $\sigma_{\Delta t} < 2$ days, the linear log-magnification ansatz is excluded at 95% confidence for that system geometry. Conversely, a residual consistent with the predicted $+1.2$ to $+14.8$ day range would constitute independent geometric evidence for potential-dependent temporal propagation. These thresholds are pre-registered here and are computed deterministically by the pipeline (Step 36); they will not be adjusted post-measurement.
+**Falsification condition.** If an independent blind-prediction residual for the longest-baseline loop in SN 2025wny is consistent with zero at the $2\sigma$ level ($|\mathcal{R}_{\rm obs}| < 2\sigma_{\Delta t}$) *and* the delay precision satisfies $\sigma_{\Delta t} < 2$ days, the linear log-magnification ansatz is excluded at 95% confidence for that system geometry. Conversely, a residual consistent with the predicted $+0.5$ to $+5.4$ day range would constitute independent geometric evidence for potential-dependent temporal propagation. These thresholds are pre-registered here and are computed deterministically by the pipeline (Step 36); they will not be adjusted post-measurement.
 
 ### 4.10 Alternative Astrophysical Explanations
 
@@ -619,7 +619,7 @@ A geometric blind-prediction residual test for the Temporal Equivalence Principl
 
 - If independent delay measurements yield $|\mathcal{R}_{\rm obs}(\mathrm{S1, S4, SX})| < 1$ day, the linear log-magnification TEP ansatz is falsified in the strong-lensing domain. Conversely, a residual consistent with $-14.5$ days would constitute direct geometric evidence for potential-dependent temporal propagation once lens-model uncertainties are reduced sufficiently for decisive significance.
 
-- The newly discovered quadruply-imaged SLSN-I SN 2025wny ($z_s = 2.011$, Johansson et al. 2025) provides an analogous test target once time delays are measured. Given its magnification factor $\mu \sim 20$–50, predicted GR discrepancies are of order 1–15 days at the measured coupling ($\alpha_{\rm lens} \approx -0.055$).
+- The newly discovered quadruply-imaged SLSN-I SN 2025wny ($z_s = 2.011$, Johansson et al. 2025) provides an analogous test target once time delays are measured. Given its magnification factor $\mu \sim 20$–50, the pipeline predicts a median proxy-model residual of $+1.9$ days (16th–84th percentile $+0.5$ to $+5.4$ days) at the measured coupling ($\alpha_{\rm lens} \approx -0.055$).
 
 The blind-prediction residual test established here is a direct geometric probe of potential-dependent temporal propagation via the proxy model, with a clear falsification structure. Quantitative analysis confirms this is a single-system, single-contrast dominated measurement: removing the S4–SX Gamma contrast eliminates 99.5% of the predicted TEP signal energy, the two SX-containing loops carry 99.9% of the total signal energy, and the effective degrees of freedom is approximately 2.0 (participation ratio across all five loops), indicating that the probative content is concentrated in one long-baseline contrast rather than distributed across the full five-image system. The current evidence is suggestive but not yet decisive: directional consistency is strong, with the most robust single test yielding approximately $2.2\sigma$ significance ($p=0.016$) from the blind-only Wilcoxon signed-rank test, while formal model selection is limited by lens-model uncertainty and the proxy-systematic budget (Step 32 shows the mu-to-kappa systematic contributes comparably to lens-model scatter). Statistical power scales with both model precision and time-delay baseline; additional independent long-baseline multiply-imaged supernovae would be needed for a decisive test.
 

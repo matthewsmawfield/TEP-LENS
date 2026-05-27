@@ -279,7 +279,7 @@ def main():
         save_fig(fig, out_fig)
         print_status(f"Figure saved to {out_fig}")
     except Exception as e:
-        print_status(f"Plotting failed: {e}", "ERROR")
+        print_status(f"Plotting skipped: {e}", "WARNING")
         out_fig = None
 
     out = {

@@ -188,11 +188,11 @@ class TestStep35SingleContrast:
     """Verify single-contrast dominance metrics."""
 
     def test_sx_energy_fraction_above_99(self, step35):
-        frac = step35.get("sx_energy_fraction", 0)
+        frac = step35.get("loop_type_split", {}).get("sx_loop_energy_fraction", 0)
         assert frac > 0.99, f"SX energy fraction {frac} < 0.99"
 
     def test_effective_dof_near_two(self, step35):
-        d_eff = step35.get("effective_dof_participation_ratio", 0)
+        d_eff = step35.get("energy_metrics", {}).get("effective_degrees_of_freedom", 0)
         assert pytest.approx(d_eff, abs=0.5) == 2.0
 
 

@@ -196,7 +196,7 @@ def main():
         plt.close(fig)
         print_status(f"Figure saved: {out_fig}")
     except Exception as e:
-        print_status(f"Plotting failed: {e}", "ERROR")
+        print_status(f"Plotting skipped: {e}", "WARNING")
         out_fig = None
 
     # ------------------------------------------------------------------

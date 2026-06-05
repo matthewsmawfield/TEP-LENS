@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae
 **Matthew Lukin Smawfield**
 Version: v0.1 (Lisboa)
-First published: 29 May 2026
+First published: 7 June 2026
 
 ---
 
@@ -244,7 +244,7 @@ For $n$ loops of equal amplitude, $D_{\rm eff} = n$; for a single dominant contr
 
 1 While five images permit $\binom{5}{3} = 10$ distinct algebraic loops, only five are linearly independent because all pairwise delays are referenced to S1. The five tracked loops are the maximal independent set; the remaining five are linear combinations and carry no additional information.
 
-![Comparison of magnification-based and convergence-based TEP proxies for SN Refsdal and TDCOSMO lenses](results/figures/step_32_kappa_mu_comparison.png)
+![Comparison of magnification-based and convergence-based TEP proxies for SN Refsdal and TDCOSMO lenses](../results/figures/step_32_kappa_mu_comparison.png)
 
 **Figure 1:** Left panel: inferred convergence $\kappa$ versus flux-proxy magnification $\mu$ for each SN Refsdal image (median and 16th–84th percentile envelope from the shear-degeneracy Monte Carlo). The grey line marks $\mu = \kappa$; departures quantify the proxy systematic. Right panel: theoretical $\Delta\log_{10}\mu/\Delta\log_{10}\kappa$ ratio for six TDCOSMO lenses. Blue circles show the spherical power-law approximation (lower bound on the proxy discrepancy). Red squares show elliptical SIE lenses with external shear ($\gamma_{\rm ext} \sim 0.06$–0.12), which amplify the misestimation because additional shear at fixed convergence reduces magnification further. The spherical comparison is therefore a conservative lower bound; real lenses exhibit larger proxy discrepancies.
 
@@ -326,7 +326,7 @@ The proxy-corrected observed value $\Delta t_{\rm corr} = 376.0 - 14.5 = 361.5$ 
 
 Because $\alpha_{\rm inferred}$ is derived by dividing the observed weighted-mean residual by the unit proxy-model sensitivity, the agreement with the empirical coupling $\alpha_{\rm proxy} \approx -0.055$ is definitional rather than an independent confirmation: the same ensemble residual both determines and tests the coupling. The non-circular evidence lies in the sign consistency and the fact that a one-parameter correction reduces scatter where GR predicts none. A bootstrap resampling of the eight models (10,000 draws with replacement) confirms the negative-sign inference is stable to model resampling: 100% of draws produce $\alpha < 0$, with a resampled-mean 68% interval of $[-0.064, -0.048]$. This interval reflects scatter in the ensemble mean only and is narrower than the measurement-error-propagated $\pm 0.044$, which remains the headline uncertainty on $\alpha_{\rm proxy}$. The weighted-mean residual $z = 1.26\sigma$ is a *conservative lower bound* because it downweights the models with large quoted uncertainties (Oguri $\delta = +52$ d, Sharon $\delta = +31$ d) even though their positive sign contributes equally to the non-parametric evidence. The ensemble therefore forms a coherent observational case: the correlation-aware family-sign-flip headline gives $p = 0.031$, the independence-assuming blind Wilcoxon benchmark gives $p = 0.016$, the supplementary all-8 Wilcoxon gives $p = 0.0078$, all non-zero signs are positive, and $\Delta\chi^2 = +1.59$ favours the proxy model with no additional free parameters after calibration.
 
-![SN Refsdal GR model predictions vs observed SX delay with TEP correction](results/figures/step_07_observed_vs_predicted.png)
+![SN Refsdal GR model predictions vs observed SX delay with TEP correction](../results/figures/step_07_observed_vs_predicted.png)
 
 **Figure 2:** GR lens-model predictions for $\Delta t_{\rm SX,S1}$ from 7 blind (blue circles) and 1 post-blind (purple square) teams, compared to the Kelly et al. (2023) observation (red line/band) and the proxy-corrected value $\Delta t_{\rm obs} - \mathcal{R}_{\rm pred} = 361.5$ d (orange dashed). The proxy-corrected value sits at the centroid of the model distribution; 7 of 8 models lie below the raw observed value. wRMS improves by 46% after proxy-model correction.
 
@@ -444,7 +444,7 @@ H_{0,\rm true} = H_{0,\rm inferred} \times \left( \frac{\Delta t_{\rm obs}}{\Del
 
 For SN Refsdal the shift is $+2.7$ km s$^{-1}$ Mpc$^{-1}$ ($66.6 \to 69.3$); for SN Encore and SN H0pe the shifts are $\sim 0.1$ km s$^{-1}$ Mpc$^{-1}$, negligible compared to their uncertainties. Full interpretation, including the non-independence caveat, is given in §4.8.
 
-![Low-$H_0$ Consistency Check](results/figures/step_10_h0_tension.png)
+![Low-$H_0$ Consistency Check](../results/figures/step_10_h0_tension.png)
 
 **Figure 3:** The Hubble constant $H_0$ inferred from SN Refsdal, SN Encore, and SN H0pe. Under GR (blue), Refsdal and Encore lie at the low end of the Planck range. Under the proxy model with the empirically determined coupling (orange), the SN Refsdal value shifts upward by approximately $2.7$ km s$^{-1}$ Mpc$^{-1}$. *This is a definitional internal consistency check, not independent cosmological evidence:* $\alpha_{\rm proxy}$ was calibrated on the same SN Refsdal SX delay used here, so the resulting shift is mathematically prescribed by the calibration and cannot be read as a resolution of the $H_0$ tension. SN Encore and SN H0pe shifts are sub-percent and not probative.
 

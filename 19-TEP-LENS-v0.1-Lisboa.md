@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae
 **Matthew Lukin Smawfield**
 Version: v0.1 (Lisboa)
-First published: 29 May 2026
+First published: 7 June 2026
 
 ---
 

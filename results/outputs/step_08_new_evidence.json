@@ -12,9 +12,9 @@
     "test_C_alpha_wmean": -0.05725494903894681,
     "test_C_z_vs_zero": -0.9555625156494191,
     "test_C_p_vs_zero": 0.16964665349101754,
-    "test_D_R_tep_days": 1.903249838780506,
-    "test_D_snr": 2.1180500634056765,
-    "test_D_p_onesided": 0.017085414010558134
+    "test_D_R_tep_days": 1.2912814776975223,
+    "test_D_snr": 3.4166670875328036,
+    "test_D_p_onesided": 0.0003169637449590173
   },
   "test_A_delay_mu_correlation": {
     "description": "Spearman rank correlation between arrival delay and 1/mu_norm",
@@ -56,10 +56,10 @@
     },
     "robustness": {
       "loo_pearson_r": {
-        "S1": 0.925628598759675,
+        "S1": 0.9256285987596748,
         "S2": 0.9344438194026892,
         "S3": 0.9682114817794235,
-        "S4": 0.9750038758367294,
+        "S4": 0.9750038758367295,
         "SX": -0.40352482843902615
       },
       "cooks_distance": {
@@ -180,7 +180,7 @@
     "sigma_alpha": 0.05991753349600075,
     "z_vs_gr_null": -0.9555625156494191,
     "p_vs_gr_null_onesided": 0.16964665349101754,
-    "z_vs_tep_alpha_lens": -0.03763421001128691,
+    "z_vs_tep_alpha_proxy": -0.03763421001128691,
     "p_vs_tep_twosided": 0.969979331588912,
     "scatter_chi2": 0.6575202564177397,
     "scatter_chi2_dof": 6,
@@ -188,34 +188,34 @@
   },
   "test_D_snh0pe_closure": {
     "description": "TEP closure SENSITIVITY for SN H0pe A-B-C loop (predicted, not observed)",
-    "verdict": "SENSITIVITY ANALYSIS ONLY. Predicted R_TEP=+1.903 d at SNR=2.12. Not an observed detection -- observed closure is 0 by construction. An independent 4th-image delay for H0pe would detect TEP at this SNR.",
+    "verdict": "SENSITIVITY ANALYSIS ONLY. Predicted R_TEP=+1.291 d at SNR=3.42. Not an observed detection -- observed closure is 0 by construction. An independent 4th-image delay for H0pe would detect TEP at this SNR.",
     "system": "SN H0pe (PLCK G165.7+67.0)",
     "z_src": 1.783,
     "z_lens": 0.351,
     "delays": {
-      "dt_AB": -121.9,
-      "dt_CB": -63.2,
-      "dt_AC": -58.7
+      "dt_AB": -116.6,
+      "dt_CB": -48.6,
+      "dt_AC": -68.0
     },
     "gamma": {
-      "A": 1.0115505691188384,
-      "B": 0.9925627179202564,
-      "C": 0.9995707114862981
+      "A": 1.0083609189102218,
+      "B": 0.9942431745679337,
+      "C": 0.9994615203416584
     },
-    "R_tep_days": 1.903249838780506,
-    "R_err_stat_days": 0.10118689242199456,
-    "R_err_sys_days": 0.892870517751385,
-    "R_err_total_days": 0.8985858604872696,
-    "snr_stat": 18.809252791785557,
-    "snr_total": 2.1180500634056765,
-    "p_onesided": 0.017085414010558134,
+    "R_tep_days": 1.2912814776975223,
+    "R_err_stat_days": 0.0870207250059302,
+    "R_err_sys_days": 0.36778119889979904,
+    "R_err_total_days": 0.37793599569865166,
+    "snr_stat": 14.838780964069484,
+    "snr_total": 3.4166670875328036,
+    "p_onesided": 0.0003169637449590173,
     "gr_closure_check": 0.0
   },
   "test_E_significance_summary": {
     "description": "Summary of OBSERVED (not predicted) evidence strands",
-    "caveat": "Tests are derived from same SN Refsdal dataset -- not independent. Combining p-values via Fisher/Stouffer is invalid (double-dipping). Headline significance is driven by the strongest robust test (Wilcoxon).",
+    "caveat": "Tests are derived from same SN Refsdal dataset -- not independent. Combining p-values via Fisher/Stouffer is invalid (double-dipping). Independence-primary significance is driven by the Wilcoxon blind test.",
     "included_tests": {
-      "Wilcoxon signed-rank (all 7 nonzero positive)": 0.0078125,
+      "Wilcoxon signed-rank (blind 6 nonzero positive)": 0.015625,
       "alpha_inferred vs zero (7 blind models)": 0.16964665349101754
     },
     "excluded_tests": {
@@ -228,7 +228,7 @@
         "reason": "Not significant (p=0.41)"
       },
       "snh0pe_closure": {
-        "p": 0.017085414010558134,
+        "p": 0.0003169637449590173,
         "reason": "Predicted sensitivity, not observed residual"
       }
     },
@@ -238,12 +238,12 @@
       "delay_mu_pearson": 0.01058290409089799,
       "arrival_order_kendall": 0.4083333333333333,
       "alpha_inference_vs_zero": 0.16964665349101754,
-      "snh0pe_closure_PREDICTED": 0.017085414010558134
+      "snh0pe_closure_PREDICTED": 0.0003169637449590173
     },
-    "headline_z": 2.417559016236505,
+    "headline_z": 2.1538746940614564,
     "n_tests": 2,
-    "h0pe_sensitivity_snr": 2.1180500634056765,
-    "h0pe_sensitivity_note": "Future 4th-image delay for H0pe detectable at SNR=2.12"
+    "h0pe_sensitivity_snr": 3.4166670875328036,
+    "h0pe_sensitivity_note": "Future 4th-image delay for H0pe detectable at SNR=3.42"
   },
   "figures": [
     "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png",

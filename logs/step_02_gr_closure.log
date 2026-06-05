@@ -1,18 +1,18 @@
 
-[23:40:04] [INFO] ======================================================================
-[23:40:04] [INFO] STEP 02: GR Algebraic Loop Sum — SN Refsdal
-[23:40:04] [INFO] ======================================================================
-[23:40:04] [INFO] Extracting SN Refsdal time delays (Kelly et al. 2023, ApJ 948, 93)...
-[23:40:04] [INFO]   dt_S2_S1 = +9.9 ± 4.0 days
-[23:40:04] [INFO]   dt_S3_S1 = +9.0 ± 4.2 days
-[23:40:04] [INFO]   dt_S4_S1 = +20.3 ± 6.4 days
-[23:40:04] [INFO]   dt_SX_S1 = +376.0 ± 5.6 days
-[23:40:04] [INFO] Computing GR algebraic loop sums for all loops...
-[23:40:04] [INFO]   Loop S1-S2-S3: L_GR = +0.0000 days (identically zero by arithmetic)
-[23:40:04] [INFO]   Loop S1-S2-S4: L_GR = +0.0000 days (identically zero by arithmetic)
-[23:40:04] [INFO]   Loop S1-S3-S4: L_GR = +0.0000 days (identically zero by arithmetic)
-[23:40:04] [INFO]   Loop S1-S2-SX: L_GR = +0.0000 days (identically zero by arithmetic)
-[23:40:04] [INFO]   Loop S1-S4-SX: L_GR = +0.0000 days (identically zero by arithmetic)
-[23:40:04] [INFO] GR null test: all loops confirm L_GR = 0.000 days (exact).
-[23:40:04] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_02_gr_closure.json
-[23:40:04] [INFO] Step 02 complete.
+[18:49:33] [INFO] ======================================================================
+[18:49:33] [INFO] STEP 02: GR Algebraic Loop Sum — SN Refsdal
+[18:49:33] [INFO] ======================================================================
+[18:49:33] [INFO] Extracting SN Refsdal time delays (Kelly et al. 2023, ApJ 948, 93)...
+[18:49:33] [INFO]   dt_S2_S1 = +9.9 ± 4.0 days
+[18:49:33] [INFO]   dt_S3_S1 = +9.0 ± 4.2 days
+[18:49:33] [INFO]   dt_S4_S1 = +20.3 ± 6.4 days
+[18:49:33] [INFO]   dt_SX_S1 = +376.0 ± 5.6 days
+[18:49:33] [INFO] Computing GR algebraic loop sums for all loops...
+[18:49:33] [INFO]   Loop S1-S2-S3: L_GR = +0.0000 days (identically zero by arithmetic)
+[18:49:33] [INFO]   Loop S1-S2-S4: L_GR = +0.0000 days (identically zero by arithmetic)
+[18:49:33] [INFO]   Loop S1-S3-S4: L_GR = +0.0000 days (identically zero by arithmetic)
+[18:49:33] [INFO]   Loop S1-S2-SX: L_GR = +0.0000 days (identically zero by arithmetic)
+[18:49:33] [INFO]   Loop S1-S4-SX: L_GR = +0.0000 days (identically zero by arithmetic)
+[18:49:33] [INFO] GR null test: all loops confirm L_GR = 0.000 days (exact).
+[18:49:33] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_02_gr_closure.json
+[18:49:33] [INFO] Step 02 complete.

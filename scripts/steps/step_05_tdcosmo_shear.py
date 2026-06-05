@@ -34,6 +34,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 
 STEP_NUM = "05"
 
@@ -189,21 +190,21 @@ TDCOSMO_QUADS = {
         "type": "supernova",
         "z_lens": 0.338,
         "z_src": 1.95,
-        "ref_delays": "Pierel et al. 2025",
-        "ref_fluxes": "Pierel et al. 2025",
+        "ref_delays": "Pierel et al. 2026",
+        "ref_fluxes": "Pierel et al. 2026",
         "images": ["1a", "1b"],
         "reference_image": "1a",
         "delays": {
-            "dt_1b1a": {"value": -37.3, "err": 13.1},
+            "dt_1b1a": {"value": -39.8, "err": 3.6},  # Pierel+2026, -39.8 +3.9/-3.3
         },
         "flux_ratios": {
             "1a": 1.000,
-            "1b": 2.000, # beta_1b_1a = 2.0
+            "1b": 1.486,  # mu_1b/mu_1a = 32.4/21.8 (Pierel+2026), matches step_38
         },
     }
 }
 
-def tep_predicted_delay_ratio(dt_obs, flux_i, flux_A, alpha=-0.055):
+def tep_predicted_delay_ratio(dt_obs, flux_i, flux_A, alpha=ALPHA_PROXY):
     """
     Under TEP, the observed delay dt_iA = dt_geom * (Gamma_i / Gamma_A).
     For a reference pair, this introduces a fractional correction:
@@ -225,7 +226,7 @@ def tep_predicted_delay_ratio(dt_obs, flux_i, flux_A, alpha=-0.055):
 def main():
     print_status(f"STEP {STEP_NUM}: TDCOSMO Quad-Lens Temporal Shear Test", "TITLE")
 
-    alpha_tep = -0.055
+    alpha_tep = ALPHA_PROXY
     print_status(f"TEP coupling alpha = {alpha_tep} (empirical lensing-sector coupling)")
 
     out_dir = PROJECT_ROOT / "results" / "outputs"
@@ -303,8 +304,8 @@ def main():
     rho, pval = spearmanr(log_fr, tep_r)
 
     print_status(f"Spearman rho(log_flux_ratio, TEP_shift) = {rho:.3f}, p = {pval:.4f}")
-    print_status("Note: by construction sign(rho) = sign(alpha_lens) since TEP_shift = alpha_lens*log(F)*|dt|")
-    print_status("With alpha_lens=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).")
+    print_status("Note: by construction sign(rho) = sign(alpha_proxy) since TEP_shift = alpha_proxy*log(F)*|dt|")
+    print_status("With alpha_proxy=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).")
     print_status("The physically meaningful test is the magnitude of predicted shifts vs measurement errors.")
 
     # Fraction of pairs where predicted TEP shift > 1-sigma measurement error
@@ -399,11 +400,11 @@ def main():
             "interpretation": (
                 "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. "
                 "These are PREDICTED shifts at the empirically measured coupling "
-                "alpha_lens=-0.055; they are NOT observed detections of TEP in these "
+                "alpha_proxy=-0.055; they are NOT observed detections of TEP in these "
                 "systems. The physically meaningful quantity is the predicted shift "
                 "magnitude versus published delay measurement uncertainties. "
                 "The Spearman correlation between log(flux_ratio) and predicted shift "
-                "is tautological (sign set by alpha_lens < 0; computed rho=-0.733) and therefore not independent evidence."
+                "is tautological (sign set by alpha_proxy < 0; computed rho=-0.733) and therefore not independent evidence."
             ),
             "caveat": (
                 "These systems do not permit a full geometric blind-prediction residual test "

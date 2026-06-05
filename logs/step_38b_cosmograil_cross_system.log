@@ -1,0 +1,28 @@
+
+[11:31:01] [INFO] ======================================================================
+[11:31:01] [INFO] STEP 38b: CosmoGRAIL Cross-System Directional Consistency Check
+[11:31:01] [INFO] ======================================================================
+[11:31:01] [INFO] 
+Processed 10 CosmoGRAIL systems
+[11:31:01] [INFO]   Total valid pairs: 36
+[11:31:01] [INFO]   Agree with TEP: 26
+[11:31:01] [INFO]   Disagree with TEP: 10
+[11:31:01] [INFO]   Skipped: 8
+[11:31:01] [INFO] 
+Cross-system directional agreement (all pairs):
+[11:31:01] [INFO]   26/36 pairs show brighter image arriving earlier
+[11:31:01] [INFO]   Agreement fraction: 72.2%
+[11:31:01] [INFO]   Approximate binomial (p=0.5 null): p = 0.0057, z = +2.67
+[11:31:01] [INFO]   [CAVEAT] p=0.5 is approximate; lens geometry can bias the true null.
+[11:31:01] [INFO] 
+Stouffer combination (10 systems):
+[11:31:01] [INFO]   z = +2.31, p = 0.0105
+[11:31:01] [INFO] 
+Mean Kendall tau (delay vs magnification, reference-dependent):
+[11:31:01] [INFO]   tau = +0.429
+[11:31:01] [INFO]   [NOTE] Tau sign depends on choice of reference image.
+[11:31:01] [INFO]   [NOTE] Lens geometry dominates; no valid null hypothesis without lens models.
+[11:31:01] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_38b_cosmograil_cross_system.json
+[11:31:02] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_38b_cross_system.png
+[11:31:02] [INFO] Step 38b complete.

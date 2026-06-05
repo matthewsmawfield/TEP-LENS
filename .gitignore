@@ -55,6 +55,8 @@ data/raw/external/Cepheid-Distance-Ladder-Data/
 
 # Private research notes (should never be committed)
 research
-.windsurf
+.windsurf/
 # IDE files
 *.code-workspace
+
+.devin

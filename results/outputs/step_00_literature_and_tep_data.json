@@ -3,7 +3,7 @@
   "status": "success",
   "data_sources": {
     "arxiv": {
-      "n_entries": 50,
+      "n_entries": 0,
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/data/interim/external/arxiv_lensed_sn_registry.json"
     },
     "tep_coefficients": {
@@ -13,7 +13,7 @@
   },
   "recommendations_for_enhanced_analysis": [
     "Monitor arXiv entries for updated SN H0pe / SN Encore delay measurements",
-    "Compare alpha_lens with kappa_MSP, kappa_Cep via shared scalar-field transfer function",
+    "Compare alpha_proxy with kappa_MSP, kappa_Cep via shared scalar-field transfer function",
     "Add SN 2025wny when time-delay measurements become available (predicted 2026-2027)"
   ]
 }

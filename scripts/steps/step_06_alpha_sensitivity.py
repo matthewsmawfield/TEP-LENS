@@ -22,6 +22,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 
 STEP_NUM = "06"
 
@@ -109,12 +110,15 @@ def main():
     }
 
     # ------------------------------------------------------------------
-    # Alpha scan grid: logarithmically spaced 0.001 to 0.15
+    # Alpha scan grid: symmetric around zero to include the empirical
+    # ALPHA_PROXY = -0.055. SNR is |alpha|-independent, so negative and
+    # positive alpha give the same SNR, but R_TEP changes sign.
     # ------------------------------------------------------------------
-    alpha_grid = np.concatenate([
+    pos_grid = np.concatenate([
         np.linspace(0.001, 0.009, 9),
         np.linspace(0.010, 0.150, 141),
     ])
+    alpha_grid = np.concatenate([-pos_grid[::-1], pos_grid])
 
     print_status(f"Scanning {len(alpha_grid)} alpha values from "
                  f"{alpha_grid[0]:.3f} to {alpha_grid[-1]:.3f}...")
@@ -153,19 +157,19 @@ def main():
         detect_alphas[name] = {}
 
         for snr_thresh, label in SNR_THRESHOLDS.items():
-            # If asymptotic SNR >= threshold, it holds at ALL alpha values
+            # If asymptotic SNR >= threshold, it holds at ALL |alpha| > 0
             # If not, it is never reached
             if asym_snr >= snr_thresh:
-                alpha_detect = float(alpha_grid[0])  # holds from alpha=0.001
-                status = f"holds at all alpha (SNR={asym_snr:.2f} is constant)"
+                alpha_detect = float(pos_grid[0])  # holds from smallest |alpha|
+                status = f"holds at all |alpha| > 0 (SNR={asym_snr:.2f} is constant)"
             else:
                 alpha_detect = None
                 status = f"never reached (SNR={asym_snr:.2f} < {snr_thresh}, constant)"
             detect_alphas[name][f"snr_{snr_thresh}"] = alpha_detect
             print_status(f"  {LOOP_LABELS[name]}: {snr_thresh}σ → {status}")
 
-    # alpha at reference value 0.055 (empirical magnitude)
-    alpha_ref = 0.055
+    # alpha at empirical reference value (negative coupling)
+    alpha_ref = ALPHA_PROXY
     alpha_ref_idx = np.argmin(np.abs(alpha_grid - alpha_ref))
     print_status(f"\nAt reference alpha = {alpha_ref}:")
     for name in loops:
@@ -215,8 +219,8 @@ def main():
                  label=LOOP_LABELS[name])
 
     ax1.axhline(0, color="black", lw=0.8, ls="--", zorder=1)
-    ax1.axvline(-0.055, color="grey", lw=1.0, ls=":", zorder=1,
-                label=r"$\alpha_{\rm lens} = -0.055$ (empirical)")
+    ax1.axvline(ALPHA_PROXY, color="grey", lw=1.0, ls=":", zorder=1,
+                label=f"$\\alpha_{{\\rm lens}} = {ALPHA_PROXY}$ (empirical)")
 
     # Shade +/- 1-day falsification band
     ax1.axhspan(-1, 1, alpha=0.08, color="green",
@@ -302,27 +306,29 @@ def main():
     plt.close(fig3)
     print_status(f"Figure 3 saved: {out3}")
 
-    # ---- Figure 4: R_TEP vs alpha, log-log, showing linear scaling ----
+    # ---- Figure 4: R_TEP vs alpha, log-log, POSITIVE alpha only ----
+    # Log axes cannot display negative alpha; filter to positive side.
+    pos_mask = alpha_grid > 0
     fig4, ax4 = plt.subplots(figsize=(9, 5))
 
     for name in loops:
         R_arr = np.abs(np.array(scan_results[name]["R_tep"]))
+        R_arr_pos = R_arr[pos_mask]
         # Avoid log(0)
-        R_arr = np.where(R_arr > 0, R_arr, 1e-10)
-        ax4.loglog(alpha_grid, R_arr,
+        R_arr_pos = np.where(R_arr_pos > 0, R_arr_pos, 1e-10)
+        ax4.loglog(alpha_grid[pos_mask], R_arr_pos,
                    color=loop_colors[name], lw=loop_lw[name],
                    label=LOOP_LABELS[name])
 
-    ax4.axvline(-0.055, color="grey", lw=1.0, ls=":", label=r"$\alpha_{\rm lens}=-0.055$")
     ax4.axhline(1.0,  color="green", lw=1.2, ls="--",
                 label=r"$|\mathcal{R}| = 1$ d (falsification limit)")
     ax4.axhline(5.6,  color="purple", lw=1.0, ls=":",
                 label=r"$\sigma_{\rm SX}=5.6$ d (measurement noise)")
 
-    ax4.set_xlabel(r"TEP coupling $\alpha$", )
+    ax4.set_xlabel(r"TEP coupling $\alpha$ (positive branch)", )
     ax4.set_ylabel(r"$|\mathcal{R}_{\rm TEP}|$ [days]", )
     ax4.set_title(
-        r"SN Refsdal: $|\mathcal{R}_{\rm TEP}|$ vs $\alpha$ (log–log, confirms linearity)",
+        r"SN Refsdal: $|\mathcal{R}_{\rm TEP}|$ vs $\alpha$ (log–log, positive $\alpha$ only)",
         pad=10
     )
     ax4.legend(loc="upper left")
@@ -331,6 +337,36 @@ def main():
     fig4.savefig(out4)
     plt.close(fig4)
     print_status(f"Figure 4 saved: {out4}")
+
+    # ---- Figure 5: |R_TEP| vs alpha, LINEAR symmetric axis ----
+    # Shows the full alpha range including the empirical negative coupling.
+    fig5, ax5 = plt.subplots(figsize=(9, 5))
+
+    for name in loops:
+        R_arr = np.abs(np.array(scan_results[name]["R_tep"]))
+        ax5.plot(alpha_grid, R_arr,
+                 color=loop_colors[name], lw=loop_lw[name],
+                 label=LOOP_LABELS[name])
+
+    ax5.axvline(ALPHA_PROXY, color="grey", lw=1.0, ls=":",
+                label=rf"$\alpha_{{\rm lens}} = {ALPHA_PROXY}$ (empirical)")
+    ax5.axhline(1.0, color="green", lw=1.2, ls="--",
+                label=r"$|\mathcal{R}| = 1$ d (falsification limit)")
+    ax5.axhline(5.6, color="purple", lw=1.0, ls=":",
+                label=r"$\sigma_{\rm SX}=5.6$ d (measurement noise)")
+
+    ax5.set_xlabel(r"TEP coupling $\alpha$", )
+    ax5.set_ylabel(r"$|\mathcal{R}_{\rm TEP}|$ [days]", )
+    ax5.set_title(
+        r"SN Refsdal: $|\mathcal{R}_{\rm TEP}|$ vs $\alpha$ (linear, symmetric)",
+        pad=10
+    )
+    ax5.legend(loc="upper center")
+    # fig.tight_layout()
+    out5 = fig_dir / f"step_{STEP_NUM}_rtep_symmetric.png"
+    fig5.savefig(out5)
+    plt.close(fig5)
+    print_status(f"Figure 5 saved: {out5}")
 
     # ------------------------------------------------------------------
     # Save JSON output

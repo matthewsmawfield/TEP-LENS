@@ -30,7 +30,7 @@ STEPS = [
     "step_07_observed_vs_predicted.py", # Evidence: observed vs 7 blind model predictions
     "step_08_new_evidence.py",          # Extended evidence: delay-mu corr, alpha inference, H0pe sensitivity
     "step_09_precision_roadmap.py",     # TEP precision roadmap simulation
-    "step_10_h0_tension.py",            # H0 tension resolution
+    "step_10_h0_tension.py",            # H0 internal-consistency check, not tension resolution
     "step_11_model_dependence.py",      # Model dependence robustness (N_eff, LOO, exact sign-flip)
     "step_12_microlensing_robustness.py", # Microlensing nuisance Monte Carlo robustness
     "step_13_bayes_model_comparison.py", # Bayesian GR vs TEP comparison with hierarchical nuisance
@@ -43,10 +43,20 @@ STEPS = [
     "step_30_cosmograil_temporal_shear.py",       # COSMOGRAIL temporal shear analysis
     "step_31_cosmograil_validation.py",           # COSMOGRAIL validation
     "step_32_kappa_proxy_validation.py",          # Kappa proxy validation with elliptical+shear comparison
+    "step_32b_temporal_shear_figure.py",          # COSMOGRAIL temporal-shear diagnostic figures
     "step_33_einstein_cross_null.py",             # Einstein-cross null test (single-lever fragility)
     "step_34_agnostic_rank_test.py",              # Ansatz-free rank test
     "step_35_single_contrast_dominance.py",       # Signal-energy concentration and effective degrees of freedom
     "step_36_falsification_forward_prediction.py", # Forward-prediction falsification thresholds for SN 2025wny
+    "step_37_multi_system_evidence.py",           # Multi-system evidence accumulation projection
+    "step_38_cosmograil_cross_system.py",         # COSMOGRAIL cross-system directional consistency diagnostic
+    "step_38_sn_encore_residuals.py",             # SN Encore blind-prediction residual test
+    "step_39_sn_h0pe_residuals.py",             # SN H0pe blind-prediction residual test
+    "step_40_cross_system_trio.py",             # Cross-system trio evidence synthesis
+    "step_41_null_channel_discriminator.py",    # TEP-vs-generic-bias discriminator (amplitude vs sign)
+    "step_42_precision_persistence.py",         # Does the SX residual vanish as lens-model precision improves?
+    "step_43_kappa_precision_forecast.py",      # Forecast: convergence precision needed to de-systematize the mu->kappa amplitude
+    "step_44_direct_kappa_residual.py",         # Loop residual using GLAFIC v3 model kappa (Kelly+2023) vs flux proxy — sign test
     "step_20_external_completeness_synthesis.py", # Completeness-aware Tier-A significance synthesis from steps 16+19
 ]
 

@@ -15,24 +15,28 @@
     </p>
 
     <p>
-        The pre-specified primary non-parametric directional test is a Wilcoxon signed-rank test
+        The independence-assuming non-parametric directional benchmark is a Wilcoxon signed-rank test
         on the six non-zero residuals among the seven blind models, all of which are positive
-        ($p = 0.016$, approximately $2.2\sigma$), matching the log-magnification proxy prediction
-        for a negative temporal-shear coupling. The supplementary all-eight-model Wilcoxon (including
-        one post-blind precision update) gives $p = 0.0078$ ($2.4\sigma$). Additional strands are
-        directionally consistent: a 46% reduction in weighted RMS after proxy-model correction, and a
-        binomial sign test of 6/7 positive among blind models ($p = 0.0625$). Hierarchical Bayesian
-        model comparison remains inconclusive (BF $= 1.06$ fixed-$\alpha$ baseline / $0.997$ h0pe-informed,
-        BF $= 0.615$ free-$\alpha$ baseline / $0.492$ h0pe-informed with a GR-centred prior),
-        indicating that present lens-model uncertainties dominate formal
-        model-selection metrics. The measured coupling $\alpha_{\rm lens} = -0.055 \pm 0.044$
+        ($p = 0.016$, approximately $2.2\sigma$ under between-model independence), matching the
+        log-magnification proxy prediction for a negative temporal-shear coupling. The
+        independence assumption is not strictly justified: an exact family-sign-flip test
+        enumerating all method-family sign assignments gives $p = 0.031$ (one-sided),
+        which is the correlation-aware headline and the most rigorous dependence-aware rank bound. A method-family block-bootstrap
+        (Step 11) yields $p_{\rm median} = 0.016$ [0.008, 0.031] blind-only, reported as a
+        sensitivity exploration. The supplementary all-eight-model Wilcoxon gives
+        $p = 0.0078$ ($2.4\sigma$). Hierarchical Bayesian model comparison remains
+        inconclusive (BF $\sim 1$), indicating that present lens-model uncertainties dominate
+        formal model-selection metrics. The measured coupling $\alpha_{\rm proxy} = -0.055 \pm 0.044$
         is calibrated from the same SN Refsdal data, so the magnitude agreement with the proxy-model
         prediction is definitional rather than an independent confirmation; the probative content
         lies in the sign consistency across modelling groups that use independent codes but share
-        the same lens and image constraints. In the absence of a solved
-        TEP lensing transfer function for $\kappa(\boldsymbol{\theta})$ or $\psi(\boldsymbol{\theta})$,
-        this test should be read as a falsifiable phenomenological screen, not a fundamental coupling
-        measurement. Internal consistency checks, including a numerical $H_0$ exercise confined to SN Refsdal, are discussed in §4.8.
+        the same lens and image constraints. Blind-prediction residual tests for two additional
+        multiply-imaged supernovae (SN Encore, SN H0pe) are directionally consistent with the proxy
+        model (all three systems show the predicted primary residual sign; 3/3 binomial $p = 0.125$)
+        but serve as consistency checks rather than high-precision evidence strands, as their predicted
+        TEP shifts are sub-day to $\sim$2 d and swamped by per-model scatter. In the absence of a solved TEP
+        lensing transfer function, this test should be read as a falsifiable phenomenological
+        screen, not a fundamental coupling measurement.
     </p>
 
     <p class="keywords">

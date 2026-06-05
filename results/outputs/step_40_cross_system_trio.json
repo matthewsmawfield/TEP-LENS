@@ -1,0 +1,134 @@
+{
+  "step": "40",
+  "status": "success",
+  "description": "Cross-system evidence synthesis for three multiply-imaged SNe with blind lens-model predictions. Stouffer combination of directional z-scores and sign-consistency check.",
+  "systems": [
+    {
+      "name": "SN Refsdal",
+      "n_models": 7,
+      "n_delay_pairs": 1,
+      "R_obs_days": 14.605519391230912,
+      "sigma_R_days": 11.57281297405183,
+      "R_tep_pred_days": 14.538035062734984,
+      "predicted_sign": "positive",
+      "observed_sign": "positive",
+      "z_directional": 1.8627318674216515,
+      "p_directional": 0.03125,
+      "directional_test": "Exact family-sign-flip test blind",
+      "independence_primary": {
+        "test": "Wilcoxon signed-rank blind",
+        "z_score": 2.1538746940614564,
+        "p_value": 0.015625
+      },
+      "snr_description": "high"
+    },
+    {
+      "name": "SN Encore",
+      "n_models": 8,
+      "n_delay_pairs": 1,
+      "R_obs_days": -3.329462659636591,
+      "sigma_R_days": 2.1326268917956055,
+      "R_tep_pred_days": -0.4935532560666476,
+      "predicted_sign": "negative",
+      "observed_sign": "negative",
+      "z_directional": 0.0,
+      "p_directional": 0.63671875,
+      "directional_sign_test": {
+        "n_matching": 4,
+        "n_total": 8,
+        "p_value": 0.63671875,
+        "z_approx": 0.0
+      },
+      "snr_description": "very_low"
+    },
+    {
+      "name": "SN H0pe",
+      "n_models": 7,
+      "n_delay_pairs": 2,
+      "R_obs_days": -5.195041139504747,
+      "sigma_R_days": 5.134875721841973,
+      "R_tep_pred_days": -0.9170869515388842,
+      "primary_directional_pair": "AB",
+      "predicted_sign": "negative",
+      "observed_sign": "negative",
+      "z_directional": 1.1338934190276817,
+      "p_directional": 0.2265625,
+      "directional_sign_test": {
+        "predicted_sign": "negative",
+        "n_matching": 5,
+        "n_total": 7,
+        "p_value_one_sided": 0.2265625,
+        "z_approx": 1.1338934190276817
+      },
+      "snr_description": "low",
+      "pair_details": {
+        "AB": {
+          "R_obs": -10.157034430488352,
+          "R_tep_pred": -1.5769153341627233,
+          "predicted_sign": "negative",
+          "observed_sign": "negative",
+          "z_directional": 1.1338934190276817,
+          "p_directional": 0.2265625,
+          "directional_sign_test": {
+            "predicted_sign": "negative",
+            "n_matching": 5,
+            "n_total": 7,
+            "p_value_one_sided": 0.2265625,
+            "z_approx": 1.1338934190276817
+          }
+        },
+        "CB": {
+          "R_obs": -0.2330478485211418,
+          "R_tep_pred": -0.25725856891504517,
+          "predicted_sign": "negative",
+          "observed_sign": "negative",
+          "z_directional": -0.3779644730092272,
+          "p_directional": 0.7734375,
+          "directional_sign_test": {
+            "predicted_sign": "negative",
+            "n_matching": 3,
+            "n_total": 7,
+            "p_value_one_sided": 0.7734375,
+            "z_approx": -0.3779644730092272
+          }
+        }
+      }
+    }
+  ],
+  "sign_consistency": {
+    "n_match": 3,
+    "n_total": 3,
+    "p_value": 0.125,
+    "z_approx_diagnostic_only": 1.7320508075688774,
+    "z_approx_caveat": "Normal approximation is INVALID for n=3. Exact p=0.125; z=1.73 implies p\u22480.042. Do NOT quote z_sign as a formal metric."
+  },
+  "stouffer_combination": {
+    "z_total": 1.7301024157919622,
+    "p_total": 0.04180598935269363,
+    "n_systems": 3
+  },
+  "precision_weighted_mean": {
+    "R_combined_days": -3.091366157125694,
+    "sigma_R_combined_days": 1.9416011163984228
+  },
+  "evidence_comparison": {
+    "refsdal_z": 1.8627318674216515,
+    "trio_z": 1.7301024157919622,
+    "delta_z": -0.1326294516296893
+  },
+  "key_findings": [
+    "SN Refsdal is the only system with a high-SNR TEP predicted residual (~14.5 d).",
+    "SN Encore predicted TEP shift is ~-0.5 d, far below model scatter; serves as consistency check.",
+    "SN H0pe predicted TEP shifts are sub-day to ~2 d and below model scatter; primary directional check uses the larger-sensitivity AB pair.",
+    "All 3/3 systems show primary residual signs consistent with TEP predictions.",
+    "Stouffer combination is dominated by Refsdal; additional systems add minimal precision.",
+    "Future high-contrast, long-baseline systems (like Refsdal) are needed for decisive multi-system evidence."
+  ],
+  "limitations": [
+    "Encore and H0pe have only single delay pairs; no loop-closure geometric test possible.",
+    "TEP predicted shifts for Encore/H0pe are sub-day, swamped by per-model scatter of 5-50 d.",
+    "H0pe delay pairs share image B; they are correlated, not independent.",
+    "Per-system geometric sensitivity (R_tep_unit) varies by ~100x between Refsdal and Encore/H0pe.",
+    "Alpha was calibrated on Refsdal; applying it to other systems is an extrapolation."
+  ]
+}

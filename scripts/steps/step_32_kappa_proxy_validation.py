@@ -43,6 +43,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 from scripts.utils.plot_style import set_pub_style, COLORS, FIG_SIZE
 
 STEP_NUM = "32"
@@ -149,7 +150,7 @@ def sn_refsdal_sensitivity_envelope(n_draws=20000, seed=42):
         "SX": {"mean": 0.18, "std": 0.12, "low": 0.02, "high": 0.70},
     }
 
-    alpha_nominal = -0.055
+    alpha_nominal = ALPHA_PROXY
     mu_values = fluxes  # proxy assumption: F_i proportional to mu_i
 
     draws_R = []

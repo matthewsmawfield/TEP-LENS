@@ -1,0 +1,30 @@
+
+[12:28:30] [INFO] ======================================================================
+[12:28:30] [INFO] STEP 40: Cross-System Trio Evidence Synthesis
+[12:28:30] [INFO] ======================================================================
+[12:28:30] [INFO] SN Refsdal: R_obs=+14.61 d, R_tep=+14.54 d, z=+2.15, p=0.0156
+[12:28:30] [INFO] SN Encore:  R_obs=-3.33 d, R_tep=-0.49 d, z=+0.00, p=0.6367 (predicted negative)
+[12:28:30] [INFO] SN H0pe:    R_obs(AB)=-10.16 d, R_obs(CB)=-0.23 d, R_tep(AB)=-1.58 d, R_tep(CB)=-0.26 d
+[12:28:30] [INFO]   Directional z(AB)=+1.13, z(CB)=-0.38; primary=AB
+[12:28:30] [INFO] 
+Sign consistency check:
+[12:28:30] [INFO]   Systems with observed sign matching TEP prediction: 3/3
+[12:28:30] [INFO]   Exact binomial p (H0: random signs): p = 0.1250
+[12:28:30] [INFO]   [DIAGNOSTIC ONLY] Normal z-approx (INVALID for n=3): z = +1.73
+[12:28:30] [INFO]   WARNING: z-approx implies p≈0.042, contradicting exact p=0.125.
+[12:28:30] [INFO]   Report ONLY the exact p-value in the manuscript.
+[12:28:30] [INFO] 
+Stouffer combination (3 systems):
+[12:28:30] [INFO]   Individual z-scores: ['+2.15', '+0.00', '+1.13']
+[12:28:30] [INFO]   Combined z = +1.898, p = 0.0288
+[12:28:30] [INFO] 
+Precision-weighted mean residual (all systems):
+[12:28:30] [INFO]   R_combined = -3.09 +/- 1.94 d
+[12:28:30] [INFO] 
+Evidence comparison:
+[12:28:30] [INFO]   Refsdal alone: z = +2.15
+[12:28:30] [INFO]   Trio combined: z = +1.90
+[12:28:30] [INFO]   Encore + H0pe contribution: -0.26 (minimal because predicted TEP shifts are low-SNR)
+[12:28:30] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_40_cross_system_trio.json
+[12:28:30] [INFO] Step 40 complete.

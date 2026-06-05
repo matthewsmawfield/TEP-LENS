@@ -32,11 +32,11 @@
     ],
     "delay_vs_kappa": {
       "spearman_rho": -0.15389675281277312,
-      "permutation_p_onesided": 0.6348
+      "permutation_p_onesided": 0.6333333333333333
     },
     "delay_vs_mu": {
       "spearman_rho": -0.3,
-      "permutation_p_onesided": 0.743
+      "permutation_p_onesided": 0.7416666666666667
     },
     "kappa_uncertainty_bootstrap": {
       "rho_95ci": [
@@ -44,7 +44,7 @@
         0.6
       ]
     },
-    "interpretation": "With n=5, the ansatz-free rank test is underpowered. The delay-kappa correlation (rho=-0.154, p=0.635) points in the same direction as the proxy model (SX shallow, SX late), but is not significant. The physical claim (delays scale with potential depth) and the parametric claim (log-magnification ansatz) are therefore not separately constrained by present data. Only the sign of the S4-SX contrast is probative."
+    "interpretation": "With n=5, the ansatz-free rank test is underpowered. The delay-kappa correlation (rho=-0.154, p=0.633) points in the same direction as the proxy model (SX shallow, SX late), but is not significant. The physical claim (delays scale with potential depth) and the parametric claim (log-magnification ansatz) are therefore not separately constrained by present data. Only the sign of the S4-SX contrast is probative."
   },
   "inner_cross_only": {
     "images": [
@@ -55,11 +55,11 @@
     ],
     "delay_vs_kappa": {
       "spearman_rho": 0.39999999999999997,
-      "permutation_p_onesided": 0.3745
+      "permutation_p_onesided": 0.375
     },
     "delay_vs_mu": {
       "spearman_rho": 0.39999999999999997,
-      "permutation_p_onesided": 0.3745
+      "permutation_p_onesided": 0.375
     },
     "interpretation": "The inner cross alone shows no rank correlation with either kappa or mu. This confirms the proxy model is non-predictive without SX."
   }

@@ -1,16 +1,16 @@
 
-[23:42:59] [INFO] ======================================================================
-[23:42:59] [INFO] STEP 12: Microlensing Robustness Monte Carlo
-[23:42:59] [INFO] ======================================================================
-[23:42:59] [INFO] Using 8 cores for parallel Monte Carlo
-[23:42:59] [INFO] Running 20000 draws for frac=0.10...
-[23:43:00] [INFO] frac=0.10: R_TEP=-14.53 [-15.84, -13.23] d; P(Δχ²>0)=1.000
-[23:43:00] [INFO] Running 20000 draws for frac=0.20...
-[23:43:00] [INFO] frac=0.20: R_TEP=-14.50 [-17.13, -12.00] d; P(Δχ²>0)=1.000
-[23:43:00] [INFO] Running 20000 draws for frac=0.30...
-[23:43:01] [INFO] frac=0.30: R_TEP=-14.53 [-18.32, -10.64] d; P(Δχ²>0)=0.992
-[23:43:01] [INFO] Running 20000 proxy-mapping draws (shear-degeneracy envelope)...
-[23:43:01] [INFO] Proxy-mapping: R_TEP=-18.90 [-29.67, 0.90] d; P(Δχ²>0)=0.629
-[23:43:02] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_12_microlensing_robustness.png
-[23:43:02] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_12_microlensing_robustness.json
-[23:43:02] [INFO] Step 12 complete.
+[18:50:10] [INFO] ======================================================================
+[18:50:10] [INFO] STEP 12: Microlensing Robustness Monte Carlo
+[18:50:10] [INFO] ======================================================================
+[18:50:10] [INFO] Using 8 cores for parallel Monte Carlo
+[18:50:10] [INFO] Running 20000 draws for frac=0.10...
+[18:50:11] [INFO] frac=0.10: R_TEP=-14.53 [-15.84, -13.23] d; P(Δχ²>0)=1.000
+[18:50:11] [INFO] Running 20000 draws for frac=0.20...
+[18:50:12] [INFO] frac=0.20: R_TEP=-14.50 [-17.13, -12.00] d; P(Δχ²>0)=1.000
+[18:50:12] [INFO] Running 20000 draws for frac=0.30...
+[18:50:13] [INFO] frac=0.30: R_TEP=-14.53 [-18.32, -10.64] d; P(Δχ²>0)=0.992
+[18:50:13] [INFO] Running 20000 proxy-mapping draws (shear-degeneracy envelope)...
+[18:50:14] [INFO] Proxy-mapping: R_TEP=-18.90 [-29.67, 0.90] d; P(Δχ²>0)=0.629
+[18:50:15] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_12_microlensing_robustness.png
+[18:50:15] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_12_microlensing_robustness.json
+[18:50:15] [INFO] Step 12 complete.

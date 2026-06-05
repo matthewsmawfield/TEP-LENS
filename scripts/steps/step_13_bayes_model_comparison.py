@@ -19,7 +19,7 @@ Where:
 Priors (transparent and weakly informative):
   mu_bias ~ Normal(0, 40 d)
   tau ~ HalfNormal(20 d)
-  alpha ~ Normal(-0.055, 0.05)  [proxy-model free-alpha model only; centered on empirical SN Refsdal measurement]
+  alpha ~ Normal(0, 0.15)  [proxy-model free-alpha model only; GR-centred null prior to avoid circularity; broadened to N(0, 0.20) in h0pe2025_informed scenario]
 
 Outputs:
   - Marginal log-evidence per model (numerical quadrature / grid integration)

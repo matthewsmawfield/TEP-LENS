@@ -8,7 +8,7 @@ This step enhances the analysis by downloading:
 3. COSMOGRAIL official light-curve registry metadata
 
 These data sources reduce hardcoded assumptions and enable cross-sector
-consistency checks that strengthen the alpha_lens interpretation.
+consistency checks that strengthen the alpha_proxy interpretation.
 """
 
 import json
@@ -20,6 +20,10 @@ import time
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
+
+# Import central TEP constants so this script also sources from the single
+# source of truth (scripts/utils/tep_config.py).
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 from scripts.utils.logger import print_status
 
 STEP_NUM = "00"
@@ -40,6 +44,8 @@ COSMOGRAIL_BASE = "https://www.cosmograil.org/data.shtml"
 
 # TEP companion paper response coefficients (from manuscript review)
 TEP_RESPONSE_COEFFICIENTS = {
+    "step": STEP_NUM,
+    "status": "success",
     "metadata": {
         "note": (
             "Observable response coefficients from the TEP series. "
@@ -91,9 +97,9 @@ TEP_RESPONSE_COEFFICIENTS = {
             "paper": "TEP-LLR (Paper 17)",
             "note": "eta itself is the observable response coefficient"
         },
-        "alpha_lens": {
-            "value": -0.055,
-            "err": 0.044,
+        "alpha_proxy": {
+            "value": ALPHA_PROXY,
+            "err": SIGMA_ALPHA_PROXY,
             "probe": "strong-lensing time-delay closure residual",
             "paper": "TEP-LENS (Paper 19)",
             "note": "lensing-sector effective coupling, this work"
@@ -103,7 +109,7 @@ TEP_RESPONSE_COEFFICIENTS = {
         "note": (
             "All TEP probes report probe-specific empirical couplings. "
             "None claim a first-principles prediction. The lensing-sector "
-            "coupling alpha_lens is the direct geometric analogue: it probes "
+            "coupling alpha_proxy is the direct geometric analogue: it probes "
             "the conformal clock-rate sector without stellar-physics mediation."
         )
     }
@@ -187,7 +193,7 @@ def main():
         },
         "recommendations_for_enhanced_analysis": [
             "Monitor arXiv entries for updated SN H0pe / SN Encore delay measurements",
-            "Compare alpha_lens with kappa_MSP, kappa_Cep via shared scalar-field transfer function",
+            "Compare alpha_proxy with kappa_MSP, kappa_Cep via shared scalar-field transfer function",
             "Add SN 2025wny when time-delay measurements become available (predicted 2026-2027)"
         ]
     }

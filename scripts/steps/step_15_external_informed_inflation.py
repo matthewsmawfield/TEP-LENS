@@ -91,7 +91,10 @@ def main():
         cvs.append(abs(std / med))
 
     if len(cvs) == 0:
-        cvs = [0.10]  # safe fallback
+        raise FileNotFoundError(
+            f"No valid external-chain CV data found in {step14_path}.\n"
+            "Run step_14_external_chain_ingestion.py first."
+        )
 
     cvs = np.array(cvs, dtype=float)
     k16, k50, k84 = np.percentile(cvs, [16, 50, 84])

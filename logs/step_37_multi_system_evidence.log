@@ -1,0 +1,24 @@
+
+[12:28:26] [INFO] ======================================================================
+[12:28:26] [INFO] STEP 37: Multi-System Evidence Accumulation Projection
+[12:28:26] [INFO] ======================================================================
+[12:28:26] [INFO] Template system (SN Refsdal SX):
+[12:28:26] [INFO]   alpha_inferred = -0.0553 +/- 0.0438
+[12:28:26] [INFO]   R_tep = 14.538 d
+[12:28:26] [INFO]   Exact permutation test blind: z = 1.87, p = 0.0310
+[12:28:26] [INFO] 
+Stouffer projection (identical Refsdal-precision systems):
+[12:28:26] [INFO]   3-sigma evidence:  N = 3 systems
+[12:28:26] [INFO]   5-sigma discovery: N = 8 systems
+[12:28:26] [INFO] 
+Alpha-inference projection (identical systems):
+[12:28:26] [INFO]   Combined sigma_alpha = 0.0438 / sqrt(N)
+[12:28:26] [INFO]   3-sigma exclusion of alpha=0: N = 6
+[12:28:26] [INFO]   5-sigma exclusion of alpha=0: N = 16
+[12:28:26] [INFO] 
+Pre-registered thresholds:
+[12:28:26] [INFO]   These thresholds assume each new system provides an independent blind-prediction residual test with precision equivalent to SN Refsdal (blind model uncertainty sigma_model ~ 16-60 d, 7 blind models, R_tep ~ 14.5 d). Degraded precision in new systems increases the required N proportionally. These thresholds are pre-registered and will not be adjusted post-measurement.
+[12:28:26] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_37_multi_system_evidence.json
+[12:28:27] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_37_multi_system_evidence.png
+[12:28:27] [INFO] Step 37 complete.

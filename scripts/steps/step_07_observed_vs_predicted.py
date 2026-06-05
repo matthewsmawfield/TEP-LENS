@@ -38,12 +38,13 @@ from scipy import stats as scipy_stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 from scripts.utils.plot_style import set_pub_style, COLORS, FIG_SIZE
 
 STEP_NUM = "07"
 
 # ------------------------------------------------------------------
-# Pre-registered primary test selection
+# Designated primary test selection
 # ------------------------------------------------------------------
 # The primary evidence test is declared here BEFORE any computation.
 # Justification: The Wilcoxon signed-rank test treats each independent
@@ -51,16 +52,23 @@ STEP_NUM = "07"
 # quoted model uncertainties. This avoids the inverse-variance downweighting
 # bias that suppresses the weighted-mean z-test when some models have
 # very large error bars (e.g., Oguri ±59 d). The Wilcoxon is therefore the
-# most robust non-parametric directional test available for this ensemble.
+# independence-assuming benchmark for this ensemble. Step 16 supersedes this
+# as the paper headline with the exact family-sign-flip test, which accounts
+# for method-family dependence.
 # It is selected for its statistical properties, not its p-value.
+# Note: No formal external preregistration (e.g., OSF, AsPredicted) was
+# performed for this analysis. The primary test was designated in the
+# analysis protocol before computation of supplementary tests.
 # ------------------------------------------------------------------
 PRIMARY_TEST = "wilcoxon_signed_rank_blind"
 PRIMARY_TEST_JUSTIFICATION = (
-    "Selected a priori as the most robust non-parametric directional test: "
+    "Selected as the independence-assuming non-parametric directional benchmark: "
     "it equal-weights independent modelling groups, eliminating inverse-variance "
     "downweighting from heterogeneous model uncertainties. It is more powerful than "
     "the binomial sign test (which discards rank information) and more robust than "
-    "the parametric z-test (which is biased by outlier uncertainties)."
+    "the parametric z-test (which is biased by outlier uncertainties). Step 16 "
+    "supersedes this as the correlation-aware headline with an exact "
+    "family-sign-flip test."
 )
 
 def safe_json_default(obj):
@@ -68,15 +76,37 @@ def safe_json_default(obj):
         return obj.item()
     raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
+
+def exact_nonzero_wilcoxon_greater(values):
+    """One-sided exact Wilcoxon p-value after dropping exact-zero residuals."""
+    nonzero = np.asarray(values, dtype=float)
+    nonzero = nonzero[nonzero != 0]
+    if nonzero.size == 0:
+        return float("nan")
+    return float(
+        scipy_stats.wilcoxon(
+            nonzero,
+            alternative="greater",
+            zero_method="wilcox",
+            mode="exact",
+        ).pvalue
+    )
+
+
 def main():
     print_status(f"STEP {STEP_NUM}: Observed vs. Blind-Predicted Delay — SN Refsdal SX", "TITLE")
 
     # ------------------------------------------------------------------
     # Observed delay (Kelly+2023, ApJ 948 93, Table 15, 'Combined' method)
     # This is the measurement AFTER SX appeared, using full 5-image light curves.
+    # Load from canonical catalog to ensure consistency with other steps.
     # ------------------------------------------------------------------
-    obs_value = 376.0   # days
-    obs_err   = 5.6     # days (1-sigma)
+    catalog_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "lensed_sn_catalog.json"
+    with open(catalog_path) as f:
+        catalog = json.load(f)
+    refsdal = catalog["sn_refsdal"]
+    obs_value = float(refsdal["time_delays_days"]["dt_SX_S1"]["value"])  # 376.0 days
+    obs_err   = float(refsdal["time_delays_days"]["dt_SX_S1"]["err"])   # 5.6 days
 
     print_status(f"Observed Delta_t(SX, S1) = {obs_value} +/- {obs_err} d "
                  f"(Kelly+2023, independent photometric light-curve fit)")
@@ -186,16 +216,15 @@ def main():
     # So R_predicted_residual = -d_TEP_GR.
     # ------------------------------------------------------------------
     step03_path = PROJECT_ROOT / "results" / "outputs" / "step_03_tep_closure.json"
-    if step03_path.exists():
-        with open(step03_path) as f:
-            s3 = json.load(f)
-        d_tep_gr_days = s3["tep_predicted_discrepancies"]["S1_S4_SX"]["tep_gr_discrepancy_days"]
-        alpha_ref      = s3["alpha_tep"]
-    else:
-        # Fallback for empirical alpha_lens=-0.055
-        d_tep_gr_days = -14.538
-        alpha_ref      = -0.055
-        print_status("step_03 output not found, using hardcoded d_TEP_GR=-14.538 d (alpha=-0.055)", "WARN")
+    if not step03_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {step03_path}\n"
+            "Run step_03_tep_closure.py first."
+        )
+    with open(step03_path) as f:
+        s3 = json.load(f)
+    d_tep_gr_days = s3["tep_predicted_discrepancies"]["S1_S4_SX"]["tep_gr_discrepancy_days"]
+    alpha_ref      = s3["alpha_tep"]
 
     # Flip sign to get Residual Prediction
     R_tep_prediction = -d_tep_gr_days
@@ -272,7 +301,7 @@ def main():
 
     # ------------------------------------------------------------------
     # TEP consistency test
-    # Is R_obs consistent with R_TEP(alpha_lens=-0.055) = +14.54 d?
+    # Is R_obs consistent with R_TEP(alpha_proxy=-0.055) = +14.54 d?
     # Sigma for this comparison: sigma_TEP_comparison = sigma_R_obs
     # (model errors dominate; TEP prediction is analytical, no free params)
     # ------------------------------------------------------------------
@@ -297,10 +326,12 @@ def main():
     print_status(f"  Tension with GR (R=0): {z_gr:+.2f} sigma")
 
     # ------------------------------------------------------------------
-    # Bootstrap confidence interval for alpha inference
-    # Resample models with replacement to account for model-to-model scatter.
-    # This is more robust than the analytical sigma_R_obs / R_tep_unit because
-    # it captures non-Gaussianity from the small sample and asymmetric errors.
+    # Bootstrap confidence interval for alpha inference (sign-stability check).
+    # Resample models with replacement to characterise model-to-model scatter.
+    # NOTE: this interval reflects scatter in the ensemble MEAN only; it ignores
+    # per-model measurement errors and is therefore NARROWER than the analytical
+    # sigma_R_obs / R_tep_unit (the headline uncertainty). Reported for sign
+    # stability (P(alpha<0)), not as a tighter uncertainty.
     # ------------------------------------------------------------------
     rng = np.random.default_rng(42)
     n_boot = 10000
@@ -336,10 +367,12 @@ def main():
     print_status(f"  P(|alpha - alpha_ref| < {sigma_alpha_analytical:.3f}) = {boot_frac_consistent:.3f}")
 
     # ------------------------------------------------------------------
-    # Binomial sign test
+    # Binomial sign tests
     # Under GR (no systematic shift), each residual is equally likely
-    # to be positive or negative. P(>= n_positive | N, p=0.5) via binomial CDF.
-    # Use all models (including post-blind) for maximum statistical power.
+    # to be positive or negative. Exact zero residuals carry no directional
+    # information, so the non-zero sign tests are the reportable directional
+    # tests. The legacy all-model count is retained only as a conservative
+    # diagnostic that treats zero as not positive.
     # ------------------------------------------------------------------
     n_models_total = len(models)
     n_pos = int(np.sum(deltas > 0))
@@ -348,10 +381,19 @@ def main():
                                           alternative='greater').pvalue)
     z_binom_approx = float((n_pos - n_models_total * 0.5) /
                            np.sqrt(n_models_total * 0.5 * 0.5))
-    print_status(f"\nBinomial sign test (all {n_models_total} models):")
+    print_status(f"\nBinomial sign test (legacy diagnostic: all {n_models_total} models, zero counted as non-positive):")
     print_status(f"  Models with positive residual: {n_pos}/{n_models_total}")
     print_status(f"  One-sided p-value (H0: p=0.5): p = {p_binom:.4f}")
     print_status(f"  Equivalent z (normal approx):  z = {z_binom_approx:+.2f}")
+
+    nonzero_mask = deltas != 0
+    n_nonzero_all = int(np.sum(nonzero_mask))
+    n_nonzero_pos = int(np.sum(deltas[nonzero_mask] > 0))
+    p_binom_nonzero = float(scipy_stats.binomtest(
+        n_nonzero_pos, n_nonzero_all, 0.5, alternative="greater"
+    ).pvalue)
+    print_status(f"  Reportable non-zero sign test: {n_nonzero_pos}/{n_nonzero_all} positive, "
+                 f"p = {p_binom_nonzero:.4f}")
 
     # Blind models only
     blind_deltas = np.array([r["delta_obs_minus_pred_days"]
@@ -360,24 +402,31 @@ def main():
     n_blind_total = len(blind_deltas)
     p_binom_blind = float(scipy_stats.binomtest(n_blind_pos, n_blind_total, 0.5,
                                                  alternative='greater').pvalue)
-    print_status(f"  Blind models only: {n_blind_pos}/{n_blind_total} positive, "
+    print_status(f"  Blind models only (legacy diagnostic, zero counted as non-positive): {n_blind_pos}/{n_blind_total} positive, "
                  f"p = {p_binom_blind:.4f}")
 
-    # Wilcoxon signed-rank test (non-parametric; all 8 models equal weight)
+    blind_nonzero_mask = blind_deltas != 0
+    n_blind_nonzero = int(np.sum(blind_nonzero_mask))
+    n_blind_nonzero_pos = int(np.sum(blind_deltas[blind_nonzero_mask] > 0))
+    p_binom_blind_nonzero = float(scipy_stats.binomtest(
+        n_blind_nonzero_pos, n_blind_nonzero, 0.5, alternative="greater"
+    ).pvalue)
+    print_status(f"  Blind non-zero sign test: {n_blind_nonzero_pos}/{n_blind_nonzero} positive, "
+                 f"p = {p_binom_blind_nonzero:.4f}")
+
+    # Wilcoxon signed-rank test (non-parametric; all models equal weight)
     # Tests whether residuals are systematically positive.
-    # Excludes ties (zero residuals) by scipy default.
-    wilcoxon_result = scipy_stats.wilcoxon(deltas, alternative='greater')
-    p_wilcoxon = float(wilcoxon_result.pvalue)
-    n_nonzero_all = int(np.sum(deltas != 0))
+    # Drop exact zero residuals before ranking; this matches the stated
+    # non-zero-residual test and avoids SciPy's small-sample approximation path.
+    p_wilcoxon = exact_nonzero_wilcoxon_greater(deltas)
     print_status(f"  Wilcoxon signed-rank (all {n_models_total}, ties excluded): p = {p_wilcoxon:.6f}")
     print_status(f"  All {n_nonzero_all} non-zero residuals positive: max Wilcoxon statistic (p=1/2^{n_nonzero_all}=0.0078)")
 
     # Blind-only Wilcoxon signed-rank test
     # Excludes post-blind Grillo+2024 and drops zero residuals.
-    # This is the most faithful to the pre-registered intent of equal-weighting
+    # This is the most faithful to the designated intent of equal-weighting
     # independent modelling groups.
-    wilcoxon_blind_result = scipy_stats.wilcoxon(blind_deltas, alternative='greater')
-    p_wilcoxon_blind = float(wilcoxon_blind_result.pvalue)
+    p_wilcoxon_blind = exact_nonzero_wilcoxon_greater(blind_deltas)
     n_nonzero_blind = int(np.sum(blind_deltas != 0))
     print_status(f"  Wilcoxon signed-rank (blind {n_blind_total} only, ties excluded): p = {p_wilcoxon_blind:.6f}")
     print_status(f"  All {n_nonzero_blind} non-zero blind residuals positive: max Wilcoxon statistic (p=1/2^{n_nonzero_blind}=0.0156)")
@@ -615,11 +664,18 @@ def main():
     print_status(f"Figure 3 saved: {out3}")
 
     # ------------------------------------------------------------------
-    # Test registry: all computed tests reported with equal prominence
-    # The pre-registered PRIMARY_TEST is highlighted for headline reporting.
+    # Test registry: all computed tests reported with equal prominence.
+    # PRIMARY_TEST is the Step 07 independence benchmark; Step 16 supplies the
+    # correlation-aware paper headline after reading Step 11.
     # ------------------------------------------------------------------
     test_registry = {
         "primary_test": PRIMARY_TEST,
+        "primary_scope": "independence_assuming_benchmark",
+        "headline_superseded_by": {
+            "step": "16",
+            "test": "Exact family-sign-flip test blind",
+            "reason": "Accounts for method-family dependence among lens-model predictions.",
+        },
         "primary_test_justification": PRIMARY_TEST_JUSTIFICATION,
         "all_tests": {
             "weighted_mean_z_test": {
@@ -631,19 +687,37 @@ def main():
                 "is_primary": PRIMARY_TEST == "weighted_mean_z_test",
             },
             "binomial_sign_test_all_8": {
-                "description": "Binomial test on sign of all 8 model residuals",
+                "description": "Legacy diagnostic binomial test on sign of all 8 model residuals; exact zero is counted as not positive.",
                 "n_positive": n_pos,
                 "n_total": n_models_total,
                 "p_value_one_sided": float(p_binom),
                 "z_approx": float(z_binom_approx),
+                "reporting_caveat": "Do not use as headline; zero residuals carry no directional information.",
                 "is_primary": PRIMARY_TEST == "binomial_sign_test_all_8",
             },
+            "binomial_sign_test_nonzero_all": {
+                "description": "Reportable binomial test on non-zero residual signs only",
+                "n_positive": n_nonzero_pos,
+                "n_total": n_nonzero_all,
+                "p_value_one_sided": float(p_binom_nonzero),
+                "note": "Exact zero residual excluded because it carries no directional information.",
+                "is_primary": False,
+            },
             "binomial_sign_test_blind_7": {
-                "description": "Binomial test on sign of 7 blind model residuals only",
+                "description": "Legacy diagnostic binomial test on sign of 7 blind model residuals only; exact zero is counted as not positive.",
                 "n_positive": n_blind_pos,
                 "n_total": n_blind_total,
                 "p_value_one_sided": float(p_binom_blind),
+                "reporting_caveat": "Conservative diagnostic only; use binomial_sign_test_nonzero_blind for sign-only reporting.",
                 "is_primary": PRIMARY_TEST == "binomial_sign_test_blind_7",
+            },
+            "binomial_sign_test_nonzero_blind": {
+                "description": "Reportable binomial test on non-zero blind residual signs only",
+                "n_positive": n_blind_nonzero_pos,
+                "n_total": n_blind_nonzero,
+                "p_value_one_sided": float(p_binom_blind_nonzero),
+                "note": "Exact zero residual excluded because it carries no directional information.",
+                "is_primary": False,
             },
             "wilcoxon_signed_rank_all": {
                 "description": "Non-parametric signed-rank test on all non-zero residuals (equal weight per model)",
@@ -665,7 +739,7 @@ def main():
                 "chi2_tep": float(chi2_tep),
                 "delta_chi2": float(delta_chi2),
                 "p_value": float(p_delta_chi2),
-                "note": "TEP has 0 free parameters (alpha_lens empirically determined)",
+                "note": "TEP has 0 free parameters (alpha_proxy empirically determined)",
                 "is_primary": PRIMARY_TEST == "chi2_model_comparison",
             },
             "tep_corrected_wrms": {
@@ -692,8 +766,10 @@ def main():
             f"({n_blind} blind + 1 post-blind) gives a residual "
             f"R_obs = {R_obs_weighted:+.2f} +/- {sigma_R_obs:.2f} d "
             f"(z = {z_gr:+.2f} sigma from GR null, z = {z_tep:+.2f} sigma from TEP). "
-            f"Binomial sign test: {n_pos}/{n_models_total} positive, p={p_binom:.4f} "
-            f"(blind only: {n_blind_pos}/{n_blind_total}, p={p_binom_blind:.4f}). "
+            f"Reportable non-zero binomial sign test: {n_nonzero_pos}/{n_nonzero_all} positive, "
+            f"p={p_binom_nonzero:.4f} (blind non-zero: {n_blind_nonzero_pos}/{n_blind_nonzero}, "
+            f"p={p_binom_blind_nonzero:.4f}). Legacy diagnostic counting zero as non-positive: "
+            f"{n_pos}/{n_models_total} positive, p={p_binom:.4f}. "
             f"Chi-squared: GR chi2={chi2_gr:.1f}, TEP chi2={chi2_tep:.1f}, "
             f"Delta chi2={delta_chi2:+.1f} in favour of TEP (p={p_delta_chi2:.4f}). "
             f"TEP correction ({R_tep_prediction:.1f} d) reduces wRMS by {wrms_improvement_pct:.0f}%, "
@@ -741,6 +817,15 @@ def main():
             "n_total": n_models_total,
             "p_value_one_sided": float(p_binom),
             "z_approx": float(z_binom_approx),
+            "reporting_caveat": (
+                "Legacy diagnostic: exact zero residual counted as not positive. "
+                "Use nonzero_all/nonzero_blind for reportable sign tests."
+            ),
+            "nonzero_all": {
+                "n_positive": n_nonzero_pos,
+                "n_total": n_nonzero_all,
+                "p_value": float(p_binom_nonzero),
+            },
             "p_wilcoxon_signed_rank_all": float(p_wilcoxon),
             "p_wilcoxon_signed_rank_blind": float(p_wilcoxon_blind),
             "wilcoxon_note": "All 6 non-zero blind residuals positive (p=1/64=0.0156); all 7 non-zero total residuals positive (p=1/128=0.0078)",
@@ -748,6 +833,12 @@ def main():
                 "n_positive": n_blind_pos,
                 "n_total": n_blind_total,
                 "p_value": float(p_binom_blind),
+                "legacy_reporting_caveat": "Exact zero residual counted as not positive.",
+                "nonzero": {
+                    "n_positive": n_blind_nonzero_pos,
+                    "n_total": n_blind_nonzero,
+                    "p_value": float(p_binom_blind_nonzero),
+                },
                 "p_wilcoxon_signed_rank_blind": float(p_wilcoxon_blind),
             }
         },
@@ -757,7 +848,7 @@ def main():
             "delta_chi2": float(delta_chi2),
             "p_value": float(p_delta_chi2),
             "n_dof": n_total,
-            "note": "TEP has 0 free parameters (alpha_lens=-0.055 from empirical SN Refsdal measurement)"
+            "note": "TEP has 0 free parameters (alpha_proxy=-0.055 from empirical SN Refsdal measurement)"
         },
         "tep_corrected_consistency": {
             "dt_corr_days": float(dt_corr),
@@ -775,7 +866,7 @@ def main():
         "evidence_tier": {
             "description": "Separation of genuinely independent directional evidence from definitional amplitude evidence",
             "tier_1_directional_sign_consistency": {
-                "description": "Tests that are independent of the amplitude calibration of alpha_lens",
+                "description": "Tests that are independent of the amplitude calibration of alpha_proxy",
                 "tests": {
                     "wilcoxon_signed_rank_blind": {
                         "p_value": float(p_wilcoxon_blind),
@@ -790,19 +881,29 @@ def main():
                     "binomial_sign_test_blind_7": {
                         "p_value": float(p_binom_blind),
                         "z_equiv": float((n_blind_pos - n_blind_total*0.5) / np.sqrt(n_blind_total*0.25)),
-                        "note": "6/7 positive. Corroborating check.",
+                        "note": "6/7 positive, counting exact zero as non-positive. Conservative diagnostic.",
+                    },
+                    "binomial_sign_test_nonzero_blind": {
+                        "p_value": float(p_binom_blind_nonzero),
+                        "z_equiv": float(scipy_stats.norm.isf(p_binom_blind_nonzero)),
+                        "note": "6/6 non-zero blind residuals positive. Reportable sign-only check.",
                     },
                     "binomial_sign_test_all_8": {
                         "p_value": float(p_binom),
                         "z_equiv": float(z_binom_approx),
-                        "note": "7/8 positive. Includes post-blind update.",
+                        "note": "7/8 positive, counting exact zero as non-positive. Legacy diagnostic including post-blind update.",
+                    },
+                    "binomial_sign_test_nonzero_all": {
+                        "p_value": float(p_binom_nonzero),
+                        "z_equiv": float(scipy_stats.norm.isf(p_binom_nonzero)),
+                        "note": "7/7 non-zero residuals positive. Reportable supplementary sign-only check.",
                     },
                 },
                 "interpretation": (
                     "These tests require only that the residuals have a consistent sign, "
                     "not that their amplitude matches a pre-calibrated value. They are "
                     "the most robust evidence strand because they are independent of "
-                    "alpha_lens calibration and of the proxy-model amplitude."
+                    "alpha_proxy calibration and of the proxy-model amplitude."
                 ),
             },
             "tier_2_amplitude_consistency": {
@@ -813,21 +914,21 @@ def main():
                         "sigma_days": float(sigma_R_obs),
                         "z_from_gr_null": float(z_weighted),
                         "p_value": float(1 - scipy_stats.norm.cdf(z_weighted)),
-                        "note": "Definitional: alpha_lens was calibrated from this same weighted mean residual via R_obs / R_tep_unit.",
+                        "note": "Definitional: alpha_proxy was calibrated from this same weighted mean residual via R_obs / R_tep_unit.",
                     },
                     "chi2_model_comparison": {
                         "delta_chi2": float(delta_chi2),
                         "p_value": float(p_delta_chi2),
-                        "note": "TEP has 0 free parameters because alpha_lens is empirically determined from the same data.",
+                        "note": "TEP has 0 free parameters because alpha_proxy is empirically determined from the same data.",
                     },
                     "tep_corrected_wrms": {
                         "improvement_pct": float(wrms_improvement_pct),
-                        "note": "R_tep_prediction used for correction is derived from alpha_lens, so this is a self-consistency check.",
+                        "note": "R_tep_prediction used for correction is derived from alpha_proxy, so this is a self-consistency check.",
                     },
                 },
                 "interpretation": (
                     "These tests compare the observed residual amplitude to the proxy-model "
-                    "prediction at the empirically calibrated alpha_lens. Because alpha_lens "
+                    "prediction at the empirically calibrated alpha_proxy. Because alpha_proxy "
                     "was derived from the same SN Refsdal data (R_obs / R_tep_unit), the "
                     "amplitude agreement is definitional, not an independent confirmation. "
                     "The probative content lies in the directional sign consistency (Tier 1), "

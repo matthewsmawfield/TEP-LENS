@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Step 30: COSMOGRAIL Temporal Shear Analysis
+"""Step 30: COSMOGRAIL Temporal Shear Analysis
 ============================================
 
 This script tests the TEP-LENS prediction that time delays in strongly lensed quasars
@@ -44,6 +43,28 @@ KEY METHODOLOGICAL IMPROVEMENTS (v2.0)
 - OLS uncertainty: Uses residual-based standard errors instead of overly
   conservative FWHM-based delay uncertainties
 
+STATISTICAL RIGOR AND MULTIPLE-TESTING CORRECTION
+-------------------------------------------------
+Each lens system contributes one independent measurement of Γ per image pair.
+The p_value for each pair is computed from the OLS t-statistic on the slope:
+  p = 2 * (1 - Φ(|Γ| / σ_Γ))
+
+These are EXPLORATORY tests because the sample of well-monitored lensed
+quasars is small and heterogeneous; no single system provides a decisive
+replication on its own. The manuscript reports Γ values across systems
+without applying a family-wise correction, treating each system as an
+independent probe rather than a joint hypothesis test. The cross-system
+consistency (achromaticity, sign stability) is the primary evidence,
+not the individual p-values.
+
+NOTE: This test was NOT formally pre-registered (no pre-registration
+document exists for TEP-LENS). The gamma-slope observable was motivated
+by the TEP framework, but the specific methodology (mode-locking,
+variance filtering, OLS uncertainty) was refined through exploratory
+development. The TEP-LENS blind-analysis protocol (step_08) includes
+a designated component for residual-based tests, but the COSMOGRAIL
+temporal-shear analysis itself is exploratory.
+
 Author: TEP Collaboration
 """
 
@@ -74,6 +95,62 @@ log = logging.getLogger(__name__)
 def print_status(msg: str, level: str = "PROCESS") -> None:
     """Print formatted status message."""
     print(f"[{datetime.now().strftime('%H:%M:%S')}] [{level}] {msg}")
+
+
+def _safe_standardize(values: np.ndarray, eps: float = 1e-10) -> np.ndarray:
+    """Standardize finite values; return NaNs when variance is unusable."""
+    arr = np.asarray(values, dtype=float)
+    out = np.full_like(arr, np.nan, dtype=float)
+    valid = np.isfinite(arr)
+    if int(np.sum(valid)) < 2:
+        return out
+
+    mean = float(np.mean(arr[valid]))
+    std = float(np.std(arr[valid]))
+    if not np.isfinite(std) or std <= eps:
+        return out
+
+    out[valid] = (arr[valid] - mean) / std
+    return out
+
+
+def _safe_pearson(x: np.ndarray, y: np.ndarray, eps: float = 1e-10) -> float:
+    """Pearson r with finite, variance, and overflow guards."""
+    x = np.asarray(x, dtype=float)
+    y = np.asarray(y, dtype=float)
+    valid = np.isfinite(x) & np.isfinite(y)
+    if int(np.sum(valid)) < 2:
+        return np.nan
+
+    x = x[valid]
+    y = y[valid]
+    x = x - np.mean(x)
+    y = y - np.mean(y)
+    sx = float(np.sqrt(np.mean(x * x)))
+    sy = float(np.sqrt(np.mean(y * y)))
+    if not np.isfinite(sx) or not np.isfinite(sy) or sx <= eps or sy <= eps:
+        return np.nan
+
+    r = float(np.mean((x / sx) * (y / sy)))
+    return float(np.clip(r, -1.0, 1.0)) if np.isfinite(r) else np.nan
+
+
+def _json_sanitize(obj):
+    """Convert NumPy scalars and non-finite floats into strict JSON values."""
+    if isinstance(obj, dict):
+        return {str(key): _json_sanitize(value) for key, value in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_json_sanitize(value) for value in obj]
+    if isinstance(obj, np.ndarray):
+        return _json_sanitize(obj.tolist())
+    if isinstance(obj, (np.floating, float)):
+        value = float(obj)
+        return value if np.isfinite(value) else None
+    if isinstance(obj, (np.integer,)):
+        return int(obj)
+    if isinstance(obj, (np.bool_,)):
+        return bool(obj)
+    return obj
 
 
 def _compute_season_intervals(times: np.ndarray, gap_days: float = 30.0) -> List[Tuple[float, float]]:
@@ -596,8 +673,10 @@ def estimate_delay_correlation(
     y2 = _mask_large_gaps(lc2.t, f2(t_grid))
     
     # Normalize (using only valid data)
-    y1 = (y1 - np.nanmean(y1)) / np.nanstd(y1)
-    y2 = (y2 - np.nanmean(y2)) / np.nanstd(y2)
+    y1 = _safe_standardize(y1)
+    y2 = _safe_standardize(y2)
+    if not np.any(np.isfinite(y1)) or not np.any(np.isfinite(y2)):
+        return np.nan, np.nan, np.nan
     
     def _interp_no_bridge(t: np.ndarray, y: np.ndarray, x: np.ndarray, gap_threshold: float = 30.0) -> np.ndarray:
         t = np.asarray(t, dtype=float)
@@ -658,14 +737,10 @@ def estimate_delay_correlation(
             correlations.append(np.nan)
             continue
         
-        # Check for constant input to avoid ConstantInputWarning
-        y1_valid = y1[valid]
-        y2_valid = y2_shifted[valid]
-        if np.std(y1_valid) < 1e-10 or np.std(y2_valid) < 1e-10:
+        r = _safe_pearson(y1[valid], y2_shifted[valid])
+        if not np.isfinite(r):
             correlations.append(np.nan)
             continue
-        
-        r, _ = stats.pearsonr(y1_valid, y2_valid)
         correlations.append(r)
     
     correlations = np.array(correlations)
@@ -697,7 +772,7 @@ def estimate_delay_correlation(
         fwhm = np.sum(above_half) * lag_step
         delay_err = fwhm / 2.35482  # FWHM to sigma (precise: 2*sqrt(2*ln(2)))
     else:
-        delay_err = 10.0  # Default fallback
+        delay_err = np.nan  # Uncertainty could not be estimated from peak width
     
     return float(best_lag), float(best_corr), float(delay_err)
 
@@ -824,8 +899,10 @@ def estimate_delay_iccf(
     t1, y1 = t1[o1], y1[o1]
     t2, y2 = t2[o2], y2[o2]
 
-    y1 = (y1 - np.mean(y1)) / (np.std(y1) + 1e-12)
-    y2 = (y2 - np.mean(y2)) / (np.std(y2) + 1e-12)
+    y1 = _safe_standardize(y1)
+    y2 = _safe_standardize(y2)
+    if not np.any(np.isfinite(y1)) or not np.any(np.isfinite(y2)):
+        return np.nan, np.nan, np.nan
 
     lags = np.arange(lag_range[0], lag_range[1] + lag_step, lag_step)
     corrs = np.full_like(lags, np.nan, dtype=float)
@@ -839,14 +916,12 @@ def estimate_delay_iccf(
 
         rvals = []
         if int(np.sum(m12)) >= min_overlap:
-            # Check for variance before correlation
-            if np.std(y1[m12]) > 1e-10 and np.std(y2_on_1[m12]) > 1e-10:
-                r, _ = stats.pearsonr(y1[m12], y2_on_1[m12])
+            r = _safe_pearson(y1[m12], y2_on_1[m12])
+            if np.isfinite(r):
                 rvals.append(r)
         if int(np.sum(m21)) >= min_overlap:
-            # Check for variance before correlation
-            if np.std(y2[m21]) > 1e-10 and np.std(y1_on_2[m21]) > 1e-10:
-                r, _ = stats.pearsonr(y2[m21], y1_on_2[m21])
+            r = _safe_pearson(y2[m21], y1_on_2[m21])
+            if np.isfinite(r):
                 rvals.append(r)
 
         if rvals:
@@ -1689,8 +1764,10 @@ def historical_interp_estimator(lc1: LightCurve, lc2: LightCurve,
     t2, y2 = np.asarray(lc2.t), np.asarray(lc2.mag)
     
     # Standardize
-    y1 = (y1 - np.nanmean(y1)) / np.nanstd(y1)
-    y2 = (y2 - np.nanmean(y2)) / np.nanstd(y2)
+    y1 = _safe_standardize(y1)
+    y2 = _safe_standardize(y2)
+    if not np.any(np.isfinite(y1)) or not np.any(np.isfinite(y2)):
+        return np.nan, np.nan, np.nan
     
     lags = np.arange(lag_range[0], lag_range[1] + lag_step, lag_step)
     corrs = np.full(lags.shape, np.nan)
@@ -1710,7 +1787,7 @@ def historical_interp_estimator(lc1: LightCurve, lc2: LightCurve,
         # Compute correlation
         mask = np.isfinite(y1) & np.isfinite(interp_y2)
         if np.sum(mask) > 20:  # Min 20 points
-            corrs[i] = np.corrcoef(y1[mask], interp_y2[mask])[0, 1]
+            corrs[i] = _safe_pearson(y1[mask], interp_y2[mask])
     
     # Centroid lag selection above 80% max correlation
     max_corr = np.nanmax(corrs)
@@ -1947,6 +2024,8 @@ def main():
     tau_values = [float(x) for x in args.tau_values.split(",") if x.strip()]
     
     all_results = {
+        "step": "30",
+        "status": "success",
         "analysis_date": datetime.now().isoformat(),
         "detrend_window_days": args.detrend_window,
         "tau_values": tau_values,
@@ -2187,7 +2266,7 @@ def main():
     # Save results
     output_file = output_dir / f"step_30_cosmograil_temporal_shear{tag}.json"
     with open(output_file, "w") as f:
-        json.dump(all_results, f, indent=2, default=lambda x: None if not np.isfinite(x) else x)
+        json.dump(_json_sanitize(all_results), f, indent=2, allow_nan=False)
     print_status(f"Saved results: {output_file}", "SUCCESS")
     
     # Print summary

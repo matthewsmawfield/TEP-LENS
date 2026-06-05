@@ -1,0 +1,124 @@
+{
+  "step": "41",
+  "status": "success",
+  "description": "Cross-system discriminator separating the TEP magnification proxy from generic lens-model bias models (null, constant offset, uniform fractional H0/MSD-like). Amplitude vs sign decomposition.",
+  "alpha_proxy_ref": -0.055,
+  "contrasts": [
+    {
+      "label": "Refsdal",
+      "R_obs": 14.605519391230912,
+      "sigma": 11.57281297405183,
+      "R_tep_pred": 14.538035062734984,
+      "baseline": 376.0,
+      "r_aligned": 14.605519391230912,
+      "pred_aligned": 14.538035062734984,
+      "sign_match": true
+    },
+    {
+      "label": "Encore",
+      "R_obs": -3.329462659636591,
+      "sigma": 2.1326268917956055,
+      "R_tep_pred": -0.4935532560666476,
+      "baseline": 39.8,
+      "r_aligned": 3.329462659636591,
+      "pred_aligned": 0.4935532560666476,
+      "sign_match": true
+    },
+    {
+      "label": "H0pe-AB",
+      "R_obs": -10.157034430488352,
+      "sigma": 5.13,
+      "R_tep_pred": -1.5769153341627233,
+      "baseline": 116.6,
+      "r_aligned": 10.157034430488352,
+      "pred_aligned": 1.5769153341627233,
+      "sign_match": true
+    },
+    {
+      "label": "H0pe-CB",
+      "R_obs": -0.2330478485211418,
+      "sigma": 2.67,
+      "R_tep_pred": -0.25725856891504517,
+      "baseline": 48.6,
+      "r_aligned": 0.2330478485211418,
+      "pred_aligned": 0.25725856891504517,
+      "sign_match": true
+    }
+  ],
+  "model_comparison": {
+    "null_GR": {
+      "params": 0,
+      "chi2": 7.957871131717124,
+      "aic": 7.957871131717124,
+      "best_fit": {},
+      "delta_aic": 4.051132206044343
+    },
+    "constant_offset": {
+      "params": 1,
+      "chi2": 4.0453245030367375,
+      "aic": 6.0453245030367375,
+      "best_fit": {
+        "k_days": 3.1058092171108576
+      },
+      "delta_aic": 2.138585577363956
+    },
+    "uniform_fractional": {
+      "params": 1,
+      "chi2": 1.9067389256727814,
+      "aic": 3.9067389256727814,
+      "best_fit": {
+        "c_fractional": 0.05183845921045715,
+        "note": "r_i = c*|dt|_i; H0/mass-sheet-like rescaling, no potential-depth info"
+      },
+      "delta_aic": 0.0
+    },
+    "tep_proxy": {
+      "params": 1,
+      "chi2": 4.170434507125892,
+      "aic": 6.170434507125892,
+      "best_fit": {
+        "alpha_fit": 0.08125160568687695,
+        "alpha_proxy_ref": -0.055
+      },
+      "delta_aic": 2.2636955814531103
+    }
+  },
+  "aic_preferred_model": "uniform_fractional",
+  "amplitude_excess": [
+    {
+      "label": "Refsdal",
+      "r_obs_aligned": 14.605519391230912,
+      "r_tep_pred_aligned": 14.538035062734984,
+      "obs_over_pred": 1.0046419153760957
+    },
+    {
+      "label": "Encore",
+      "r_obs_aligned": 3.329462659636591,
+      "r_tep_pred_aligned": 0.4935532560666476,
+      "obs_over_pred": 6.745903544777734
+    },
+    {
+      "label": "H0pe-AB",
+      "r_obs_aligned": 10.157034430488352,
+      "r_tep_pred_aligned": 1.5769153341627233,
+      "obs_over_pred": 6.441077850182309
+    },
+    {
+      "label": "H0pe-CB",
+      "r_obs_aligned": 0.2330478485211418,
+      "r_tep_pred_aligned": 0.25725856891504517,
+      "obs_over_pred": 0.905889547251977
+    }
+  ],
+  "sign_channel": {
+    "n_match": 4,
+    "n_total": 4,
+    "p_one_sided": 0.0625
+  },
+  "interpretation": [
+    "AMPLITUDE NOT TEP-PROBATIVE: a uniform fractional (H0/mass-sheet-like) offset fits the cross-system residual magnitudes at least as well as the TEP magnification proxy. The TEP proxy under-predicts the Encore/H0pe residual magnitudes (they are several-day, while TEP predicts sub-2 d), so amplitude cannot distinguish TEP from a generic baseline-scaling bias.",
+    "Sign channel: 4/4 contrasts match the TEP-predicted direction (one-sided binomial p = 0.062). Under a uniform fractional or constant offset, the per-contrast SIGN is not predicted by potential-depth ordering, so the directional match \u2014 not the amplitude \u2014 remains the carrier of TEP evidence.",
+    "With only 4 contrasts this discriminator is weak; it sharpens as additional independent long-baseline systems are added (the same N that drives the Stouffer projection in Step 37)."
+  ],
+  "headline": "Cross-system discriminator (n=4): AIC-preferred amplitude model = 'uniform_fractional'. TEP proxy dAIC = 2.26, uniform-fractional dAIC = 0.00. Sign match 4/4 (p=0.062). Amplitude does not favour TEP over a generic baseline-scaling bias; the sign pattern is the residual evidence."
+}

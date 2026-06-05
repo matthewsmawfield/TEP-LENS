@@ -1,0 +1,504 @@
+{
+  "step": "39",
+  "system": "SN H0pe",
+  "status": "success",
+  "description": "Blind-prediction residual test for SN H0pe (PLCK G165.7+67.0). Seven independent lens models from Pascale+2025 compared against Pierel+2024 observed delays for two image pairs (AB, CB).",
+  "alpha_prior": {
+    "mean": -0.055988671582071256,
+    "sigma": 0.010753157889521704
+  },
+  "observed": {
+    "dt_AB_days": -116.6,
+    "dt_AB_err_plus": 10.8,
+    "dt_AB_err_minus": 9.3,
+    "dt_CB_days": -48.6,
+    "dt_CB_err_plus": 3.6,
+    "dt_CB_err_minus": 4.0,
+    "mu_A": 4.43,
+    "mu_B": 8.0,
+    "mu_C": 6.43,
+    "reference": "Pierel et al. 2024, ApJ 967, 50"
+  },
+  "delay_pair_AB": {
+    "pair": "AB",
+    "observed": {
+      "value_days": -116.6,
+      "err_plus": 10.8,
+      "err_minus": 9.3
+    },
+    "n_models": 7,
+    "per_model": [
+      {
+        "name": "GLAFIC",
+        "dt_pred_days": -105.18,
+        "err_plus": 5.16,
+        "err_minus": 7.89,
+        "sigma_model_days": 6.525,
+        "delta_obs_minus_pred_days": -11.419999999999987,
+        "sigma_total_days": 11.982408981502843,
+        "z_score": -0.9530637802155608
+      },
+      {
+        "name": "Zitrin-analytic",
+        "dt_pred_days": -105.52,
+        "err_plus": 5.09,
+        "err_minus": 6.32,
+        "sigma_model_days": 5.705,
+        "delta_obs_minus_pred_days": -11.079999999999998,
+        "sigma_total_days": 11.556362965916223,
+        "z_score": -0.9587791619801846
+      },
+      {
+        "name": "LENSTOOL",
+        "dt_pred_days": -102.68,
+        "err_plus": 6.47,
+        "err_minus": 6.8,
+        "sigma_model_days": 6.635,
+        "delta_obs_minus_pred_days": -13.919999999999987,
+        "sigma_total_days": 12.042662703903984,
+        "z_score": -1.1558905486481332
+      },
+      {
+        "name": "MARS",
+        "dt_pred_days": -136.27,
+        "err_plus": 20.23,
+        "err_minus": 20.32,
+        "sigma_model_days": 20.275,
+        "delta_obs_minus_pred_days": 19.670000000000016,
+        "sigma_total_days": 22.6291432670351,
+        "z_score": 0.8692330844294135
+      },
+      {
+        "name": "Chen-2020",
+        "dt_pred_days": -112.25,
+        "err_plus": 6.43,
+        "err_minus": 6.57,
+        "sigma_model_days": 6.5,
+        "delta_obs_minus_pred_days": -4.349999999999994,
+        "sigma_total_days": 11.968813642128445,
+        "z_score": -0.3634445426310792
+      },
+      {
+        "name": "WSLAP+",
+        "dt_pred_days": -273.35,
+        "err_plus": 95.3,
+        "err_minus": 95.3,
+        "sigma_model_days": 95.3,
+        "delta_obs_minus_pred_days": 156.75000000000003,
+        "sigma_total_days": 95.8284534989478,
+        "z_score": 1.6357354655809109
+      },
+      {
+        "name": "Zitrin-LTM",
+        "dt_pred_days": -96.45,
+        "err_plus": 5.41,
+        "err_minus": 5.85,
+        "sigma_model_days": 5.63,
+        "delta_obs_minus_pred_days": -20.14999999999999,
+        "sigma_total_days": 11.51952255955081,
+        "z_score": -1.7492044393188564
+      }
+    ],
+    "weighted_mean_residual": {
+      "R_obs_days": -10.157034430488352,
+      "sigma_R_obs_days": 5.134875721841973,
+      "z_score": -1.9780487358795977
+    },
+    "unweighted": {
+      "mean_days": 16.500000000000014,
+      "std_days": 58.46075069162704,
+      "n_positive": 2
+    },
+    "binomial": {
+      "n_positive": 2,
+      "n_total": 7,
+      "p_value": 0.9375,
+      "z_approx": -1.1338934190276817
+    },
+    "wilcoxon": {
+      "p_value_two_sided": 0.8125,
+      "n_nonzero": 7
+    },
+    "chi2_gr_null": 9.786675785587263
+  },
+  "delay_pair_CB": {
+    "pair": "CB",
+    "observed": {
+      "value_days": -48.6,
+      "err_plus": 3.6,
+      "err_minus": 4.0
+    },
+    "n_models": 7,
+    "per_model": [
+      {
+        "name": "GLAFIC",
+        "dt_pred_days": -50.71,
+        "err_plus": 3.37,
+        "err_minus": 5.09,
+        "sigma_model_days": 4.23,
+        "delta_obs_minus_pred_days": 2.1099999999999994,
+        "sigma_total_days": 5.686202599274845,
+        "z_score": 0.37107365823881927
+      },
+      {
+        "name": "Zitrin-analytic",
+        "dt_pred_days": -41.06,
+        "err_plus": 14.27,
+        "err_minus": 13.19,
+        "sigma_model_days": 13.73,
+        "delta_obs_minus_pred_days": -7.539999999999999,
+        "sigma_total_days": 14.246153866921416,
+        "z_score": -0.5292656579757543
+      },
+      {
+        "name": "LENSTOOL",
+        "dt_pred_days": -54.09,
+        "err_plus": 3.18,
+        "err_minus": 3.76,
+        "sigma_model_days": 3.4699999999999998,
+        "delta_obs_minus_pred_days": 5.490000000000002,
+        "sigma_total_days": 5.145959580097768,
+        "z_score": 1.0668564170680286
+      },
+      {
+        "name": "MARS",
+        "dt_pred_days": -63.72,
+        "err_plus": 29.24,
+        "err_minus": 28.46,
+        "sigma_model_days": 28.85,
+        "delta_obs_minus_pred_days": 15.119999999999997,
+        "sigma_total_days": 29.099183837351866,
+        "z_score": 0.5196022020587356
+      },
+      {
+        "name": "Chen-2020",
+        "dt_pred_days": -53.35,
+        "err_plus": 2.71,
+        "err_minus": 2.99,
+        "sigma_model_days": 2.85,
+        "delta_obs_minus_pred_days": 4.75,
+        "sigma_total_days": 4.75,
+        "z_score": 1.0
+      },
+      {
+        "name": "WSLAP+",
+        "dt_pred_days": 342.75,
+        "err_plus": 92.54,
+        "err_minus": 92.54,
+        "sigma_model_days": 92.54,
+        "delta_obs_minus_pred_days": -391.35,
+        "sigma_total_days": 92.61798745384182,
+        "z_score": -4.2254211169837586
+      },
+      {
+        "name": "Zitrin-LTM",
+        "dt_pred_days": -27.64,
+        "err_plus": 6.52,
+        "err_minus": 4.8,
+        "sigma_model_days": 5.66,
+        "delta_obs_minus_pred_days": -20.96,
+        "sigma_total_days": 6.817301518929613,
+        "z_score": -3.074530287651255
+      }
+    ],
+    "weighted_mean_residual": {
+      "R_obs_days": -0.2330478485211418,
+      "sigma_R_obs_days": 2.6654433615273554,
+      "z_score": -0.08743305218370892
+    },
+    "unweighted": {
+      "mean_days": -56.05428571428571,
+      "std_days": 137.2912358931233,
+      "n_positive": 4
+    },
+    "binomial": {
+      "n_positive": 4,
+      "n_total": 7,
+      "p_value": 0.5,
+      "z_approx": 0.3779644730092272
+    },
+    "wilcoxon": {
+      "p_value_two_sided": 0.6875,
+      "n_nonzero": 7
+    },
+    "chi2_gr_null": 30.13290696511195
+  },
+  "wslap_plus_leave_out": {
+    "description": "WSLAP+ is an extreme outlier for both H0pe delays (predicted -273 d and +343 d versus observed -116 d and -49 d) and was given zero weight in the official H0pe H0 inference. This subset analysis recomputes all directional and weighted-mean statistics with WSLAP+ removed, to test whether the published directional consistency claim survives removal of the dominant outlier.",
+    "delay_pair_AB_no_WSLAP": {
+      "pair": "AB_no_WSLAP",
+      "observed": {
+        "value_days": -116.6,
+        "err_plus": 10.8,
+        "err_minus": 9.3
+      },
+      "n_models": 6,
+      "per_model": [
+        {
+          "name": "GLAFIC",
+          "dt_pred_days": -105.18,
+          "err_plus": 5.16,
+          "err_minus": 7.89,
+          "sigma_model_days": 6.525,
+          "delta_obs_minus_pred_days": -11.419999999999987,
+          "sigma_total_days": 11.982408981502843,
+          "z_score": -0.9530637802155608
+        },
+        {
+          "name": "Zitrin-analytic",
+          "dt_pred_days": -105.52,
+          "err_plus": 5.09,
+          "err_minus": 6.32,
+          "sigma_model_days": 5.705,
+          "delta_obs_minus_pred_days": -11.079999999999998,
+          "sigma_total_days": 11.556362965916223,
+          "z_score": -0.9587791619801846
+        },
+        {
+          "name": "LENSTOOL",
+          "dt_pred_days": -102.68,
+          "err_plus": 6.47,
+          "err_minus": 6.8,
+          "sigma_model_days": 6.635,
+          "delta_obs_minus_pred_days": -13.919999999999987,
+          "sigma_total_days": 12.042662703903984,
+          "z_score": -1.1558905486481332
+        },
+        {
+          "name": "MARS",
+          "dt_pred_days": -136.27,
+          "err_plus": 20.23,
+          "err_minus": 20.32,
+          "sigma_model_days": 20.275,
+          "delta_obs_minus_pred_days": 19.670000000000016,
+          "sigma_total_days": 22.6291432670351,
+          "z_score": 0.8692330844294135
+        },
+        {
+          "name": "Chen-2020",
+          "dt_pred_days": -112.25,
+          "err_plus": 6.43,
+          "err_minus": 6.57,
+          "sigma_model_days": 6.5,
+          "delta_obs_minus_pred_days": -4.349999999999994,
+          "sigma_total_days": 11.968813642128445,
+          "z_score": -0.3634445426310792
+        },
+        {
+          "name": "Zitrin-LTM",
+          "dt_pred_days": -96.45,
+          "err_plus": 5.41,
+          "err_minus": 5.85,
+          "sigma_model_days": 5.63,
+          "delta_obs_minus_pred_days": -20.14999999999999,
+          "sigma_total_days": 11.51952255955081,
+          "z_score": -1.7492044393188564
+        }
+      ],
+      "weighted_mean_residual": {
+        "R_obs_days": -10.637646106167335,
+        "sigma_R_obs_days": 5.142263388905059,
+        "z_score": -2.068670019726937
+      },
+      "unweighted": {
+        "mean_days": -6.87499999999999,
+        "std_days": 12.74891727428909,
+        "n_positive": 1
+      },
+      "binomial": {
+        "n_positive": 1,
+        "n_total": 6,
+        "p_value": 0.984375,
+        "z_approx": -1.6329931618554523
+      },
+      "wilcoxon": {
+        "p_value_two_sided": 0.3125,
+        "n_nonzero": 6
+      },
+      "chi2_gr_null": 7.111045272228064
+    },
+    "delay_pair_CB_no_WSLAP": {
+      "pair": "CB_no_WSLAP",
+      "observed": {
+        "value_days": -48.6,
+        "err_plus": 3.6,
+        "err_minus": 4.0
+      },
+      "n_models": 6,
+      "per_model": [
+        {
+          "name": "GLAFIC",
+          "dt_pred_days": -50.71,
+          "err_plus": 3.37,
+          "err_minus": 5.09,
+          "sigma_model_days": 4.23,
+          "delta_obs_minus_pred_days": 2.1099999999999994,
+          "sigma_total_days": 5.686202599274845,
+          "z_score": 0.37107365823881927
+        },
+        {
+          "name": "Zitrin-analytic",
+          "dt_pred_days": -41.06,
+          "err_plus": 14.27,
+          "err_minus": 13.19,
+          "sigma_model_days": 13.73,
+          "delta_obs_minus_pred_days": -7.539999999999999,
+          "sigma_total_days": 14.246153866921416,
+          "z_score": -0.5292656579757543
+        },
+        {
+          "name": "LENSTOOL",
+          "dt_pred_days": -54.09,
+          "err_plus": 3.18,
+          "err_minus": 3.76,
+          "sigma_model_days": 3.4699999999999998,
+          "delta_obs_minus_pred_days": 5.490000000000002,
+          "sigma_total_days": 5.145959580097768,
+          "z_score": 1.0668564170680286
+        },
+        {
+          "name": "MARS",
+          "dt_pred_days": -63.72,
+          "err_plus": 29.24,
+          "err_minus": 28.46,
+          "sigma_model_days": 28.85,
+          "delta_obs_minus_pred_days": 15.119999999999997,
+          "sigma_total_days": 29.099183837351866,
+          "z_score": 0.5196022020587356
+        },
+        {
+          "name": "Chen-2020",
+          "dt_pred_days": -53.35,
+          "err_plus": 2.71,
+          "err_minus": 2.99,
+          "sigma_model_days": 2.85,
+          "delta_obs_minus_pred_days": 4.75,
+          "sigma_total_days": 4.75,
+          "z_score": 1.0
+        },
+        {
+          "name": "Zitrin-LTM",
+          "dt_pred_days": -27.64,
+          "err_plus": 6.52,
+          "err_minus": 4.8,
+          "sigma_model_days": 5.66,
+          "delta_obs_minus_pred_days": -20.96,
+          "sigma_total_days": 6.817301518929613,
+          "z_score": -3.074530287651255
+        }
+      ],
+      "weighted_mean_residual": {
+        "R_obs_days": 0.09115342767754664,
+        "sigma_R_obs_days": 2.66654784080776,
+        "z_score": 0.034184058610376974
+      },
+      "unweighted": {
+        "mean_days": -0.17166666666666686,
+        "std_days": 11.41465055191013,
+        "n_positive": 4
+      },
+      "binomial": {
+        "n_positive": 4,
+        "n_total": 6,
+        "p_value": 0.34375,
+        "z_approx": 0.8164965809277261
+      },
+      "wilcoxon": {
+        "p_value_two_sided": 1.0,
+        "n_nonzero": 6
+      },
+      "chi2_gr_null": 12.278723349259675
+    },
+    "directional_sign_tests": {
+      "AB_no_WSLAP": {
+        "predicted_sign": "negative",
+        "n_matching": 5,
+        "n_total": 6,
+        "p_value_one_sided": 0.109375,
+        "z_approx": 1.6329931618554523
+      },
+      "CB_no_WSLAP": {
+        "predicted_sign": "negative",
+        "n_matching": 2,
+        "n_total": 6,
+        "p_value_one_sided": 0.890625,
+        "z_approx": -0.8164965809277261
+      }
+    }
+  },
+  "tep_prediction": {
+    "R_tep_AB_days": -1.5769153341627233,
+    "R_tep_CB_days": -0.25725856891504517,
+    "alpha_used": -0.055988671582071256,
+    "log10_mu_ratio_AB": -0.2566862607688741,
+    "log10_mu_ratio_CB": -0.09487901406772153,
+    "dt_mean_pred_AB": -109.72500000000001,
+    "dt_mean_pred_CB": -48.428333333333335,
+    "central_prediction_AB": {
+      "mean_days": -109.72500000000001,
+      "median_days": -105.35,
+      "n_models": 6,
+      "excluded_model_names": [
+        "WSLAP+"
+      ],
+      "method": "mean excluding explicitly zero-weighted extreme outliers"
+    },
+    "central_prediction_CB": {
+      "mean_days": -48.428333333333335,
+      "median_days": -52.03,
+      "n_models": 6,
+      "excluded_model_names": [
+        "WSLAP+"
+      ],
+      "method": "mean excluding explicitly zero-weighted extreme outliers"
+    },
+    "all_model_mean_diagnostic": {
+      "R_tep_AB_days": -1.912849678533228,
+      "R_tep_CB_days": 0.03959828354904514,
+      "central_prediction_AB": {
+        "mean_days": -133.1,
+        "median_days": -105.52,
+        "n_models": 7,
+        "excluded_model_names": [],
+        "method": "mean over all models"
+      },
+      "central_prediction_CB": {
+        "mean_days": 7.454285714285713,
+        "median_days": -50.71,
+        "n_models": 7,
+        "excluded_model_names": [],
+        "method": "mean over all models"
+      },
+      "note": "All-model mean is retained as a diagnostic only because WSLAP+ is an explicitly documented extreme outlier for H0pe and was zero-weighted in the official H0 inference."
+    },
+    "directional_sign_tests": {
+      "AB": {
+        "predicted_sign": "negative",
+        "n_matching": 5,
+        "n_total": 7,
+        "p_value_one_sided": 0.2265625,
+        "z_approx": 1.1338934190276817
+      },
+      "CB": {
+        "predicted_sign": "negative",
+        "n_matching": 3,
+        "n_total": 7,
+        "p_value_one_sided": 0.7734375,
+        "z_approx": -0.3779644730092272
+      }
+    },
+    "note": "Single-pair TEP residuals are sub-day to ~2 d, smaller than per-model scatter (~5-50 d). Primary central predictions exclude WSLAP+, which is an explicitly documented extreme outlier and was zero-weighted in the official H0 inference. No loop-closure test is performed because geometric delays from lens models are not published."
+  },
+  "system_summary": {
+    "mean_residual_across_pairs_days": -5.195041139504747,
+    "n_delay_pairs": 2,
+    "n_models_per_pair": 7
+  },
+  "limitations": [
+    "Two delay pairs share image B; they are not statistically independent.",
+    "TEP predicted residuals are ~1-2 d, far below per-model scatter.",
+    "WSLAP+ model is an extreme outlier for both delays (given zero weight in H0 inference).",
+    "Some models had post-unblinding corrections to sampling; values used are final corrected.",
+    "No loop-closure geometric delays published; single-pair proxy test only."
+  ]
+}

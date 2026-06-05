@@ -29,8 +29,8 @@ B. INNER-CROSS ARRIVAL-ORDER CONSISTENCY CHECK
 C. ALPHA INFERENCE CONSISTENCY TEST (cross-model)
    Each blind model's per-model residual implies an alpha_inferred_i.
    Under GR, these should scatter around 0.
-   Under the proxy model, they should cluster around alpha_lens ≈ -0.055.
-   Test: z-test of weighted mean alpha_inferred against 0 and alpha_lens ≈ -0.055.
+   Under the proxy model, they should cluster around alpha_proxy ≈ -0.055.
+   Test: z-test of weighted mean alpha_inferred against 0 and alpha_proxy ≈ -0.055.
    Scatter test: chi^2 of residuals about the mean.
 
 D. SN H0PE CLOSURE SENSITIVITY ANALYSIS
@@ -38,7 +38,7 @@ D. SN H0PE CLOSURE SENSITIVITY ANALYSIS
    independently measured delays (Pierel+2024) and absolute magnifications
    (Frye+2024). This is a COMPLETELY INDEPENDENT system from SN Refsdal.
    IMPORTANT: The proxy-model closure residual computed here is the PREDICTED residual
-   from the measured delays and magnifications under alpha_lens ≈ -0.055. The OBSERVED
+   from the measured delays and magnifications under alpha_proxy ≈ -0.055. The OBSERVED
    closure of the measured delays is identically 0 by construction (same issue
    as SN Refsdal inner cross). This analysis demonstrates the SENSITIVITY of
    H0pe to the proxy model: if an independent SX-like image existed, what SNR would result?
@@ -345,22 +345,18 @@ def main():
 
     print_status(f"\n  Weighted mean alpha_inferred = {alpha_inf_wmean:.4f} ± {sigma_alpha_wmean:.4f}")
 
-    # t-test against GR null (alpha = 0)
-    t_vs_zero = alpha_inf_wmean / sigma_alpha_wmean
-    # p-value: if alpha < 0, H1 is alpha < 0.
-    # GR null is alpha=0.
-    p_vs_zero = float(scipy_stats.norm.sf(abs(t_vs_zero)))  # one-sided consistency with 0?
-    # The question is whether the value is significantly non-zero in the predicted direction.
+    # One-sided z-test against GR null (alpha = 0)
     # Predicted direction is alpha < 0 (in the measured direction).
-    # t_vs_zero will be negative.
-    p_vs_zero = float(scipy_stats.norm.cdf(t_vs_zero)) # P(T < t_obs)
-    
+    # t_vs_zero will be negative; cdf(t_obs) gives left-tail p-value.
+    t_vs_zero = alpha_inf_wmean / sigma_alpha_wmean
+    p_vs_zero = float(scipy_stats.norm.cdf(t_vs_zero))  # P(T < t_obs | alpha=0)
+
     print_status(f"  z vs GR null (alpha=0):   z = {t_vs_zero:.3f}, p = {p_vs_zero:.4f}")
 
-    # t-test vs TEP (alpha_lens ≈ -0.055)
+    # t-test vs TEP (alpha_proxy ≈ -0.055)
     t_vs_tep = (alpha_inf_wmean - alpha_ref) / sigma_alpha_wmean
     p_vs_tep = float(2 * scipy_stats.norm.sf(abs(t_vs_tep)))  # two-sided consistency
-    print_status(f"  z vs TEP (alpha_lens≈-0.055): z = {t_vs_tep:.3f}, p = {p_vs_tep:.4f}")
+    print_status(f"  z vs TEP (alpha_proxy≈-0.055): z = {t_vs_tep:.3f}, p = {p_vs_tep:.4f}")
 
     # Variance test: is scatter consistent with measurement noise alone?
     chi2_scatter = float(np.sum(((alpha_inf_vals - alpha_inf_wmean) / alpha_inf_errs)**2))
@@ -377,7 +373,7 @@ def main():
         "sigma_alpha": float(sigma_alpha_wmean),
         "z_vs_gr_null": float(t_vs_zero),
         "p_vs_gr_null_onesided": float(p_vs_zero),
-        "z_vs_tep_alpha_lens": float(t_vs_tep),
+        "z_vs_tep_alpha_proxy": float(t_vs_tep),
         "p_vs_tep_twosided": float(p_vs_tep),
         "scatter_chi2": float(chi2_scatter),
         "scatter_chi2_dof": n_models_blind - 1,
@@ -411,9 +407,13 @@ def main():
     # Absolute magnifications (mu) from macromodel
     mu_abs = {img: h0pe["magnification_proxies"]["mu_absolute"][img]["value"]
               for img in ["A", "B", "C"]}
-    mu_abs_err = {img: (h0pe["magnification_proxies"]["mu_absolute"][img]["err_plus"] +
-                        h0pe["magnification_proxies"]["mu_absolute"][img]["err_minus"]) / 2
-                  for img in ["A", "B", "C"]}
+    def _get_mu_err(img):
+        mu_data = h0pe["magnification_proxies"]["mu_absolute"][img]
+        if "err" in mu_data:
+            return float(mu_data["err"])
+        return (float(mu_data["err_plus"]) + float(mu_data["err_minus"])) / 2
+
+    mu_abs_err = {img: _get_mu_err(img) for img in ["A", "B", "C"]}
 
     mu_ref_h0pe = np.mean(list(mu_abs.values()))
     mu_norm_h0pe = {img: mu_abs[img] / mu_ref_h0pe for img in ["A", "B", "C"]}
@@ -542,18 +542,17 @@ def main():
 
     # Fisher combination: ONLY genuinely observed data tests
     # Excluded: H0pe (predicted residual), arrival order (p=0.41, not directional)
-    # Primary: Wilcoxon signed-rank (p=0.0078) + Pearson delay-mu (p=0.011)
+    # Primary: Wilcoxon signed-rank BLIND ONLY (p=0.016) + alpha vs zero (p~0.10)
+    # Blind-only excludes the post-blind update model, preserving the designated
+    # blind-prediction test.
     # These two use DIFFERENT underlying data:
-    #   Wilcoxon: signs of (obs - model_i) residuals for 8 models
+    #   Wilcoxon: signs of (obs - model_i) residuals for 7 blind models
     #   Pearson: raw image delays vs 1/mu across 5 images
     # alpha_inferred vs zero (p3) is also included but noted as overlapping
     # with the weighted mean z (both derived from the same residuals).
-    p_wilcoxon = s07["binomial_sign_test"].get(
-        "p_wilcoxon_signed_rank",
-        0.0078125  # fallback: p=1/2^7, all 7 nonzero residuals positive
-    )
+    p_wilcoxon = float(s07["binomial_sign_test"]["p_wilcoxon_signed_rank_blind"])
     independent_p = {
-        "Wilcoxon signed-rank (all 7 nonzero positive)": p_wilcoxon,
+        "Wilcoxon signed-rank (blind 6 nonzero positive)": p_wilcoxon,
         "alpha_inferred vs zero (7 blind models)": p_vs_zero,
     }
     print_status("\n  NOTE: Pearson delay-mu, H0pe, and arrival-order excluded from summary.")
@@ -561,12 +560,12 @@ def main():
     print_status("  statistically inappropriate and not probative (see robustness diagnostics).")
     print_status(f"  H0pe SNR={snr_total:.2f} is a PREDICTION (testability), not an observation.")
     print_status("  Arrival-order: tau=0.20, p=0.41 -- not significant, excluded.")
-    print_status("  Wilcoxon (p=0.0078) replaces binomial (p=0.035) as primary sign test:")
-    print_status("  all 7 non-zero residuals are positive, giving max Wilcoxon statistic.")
+    print_status("  Wilcoxon BLIND-ONLY (p=0.016) is the primary rank test:")
+    print_status("  all 6 non-zero blind residuals are positive, giving max Wilcoxon statistic.")
 
     print_status(f"\n  NOTE: These tests are fundamentally correlated. Combining them")
     print_status(f"  via Fisher/Stouffer is statistically invalid. The conservative")
-    print_status(f"  significance is the strongest robust single test: z=2.4 (Wilcoxon).")
+    print_status(f"  independence-primary significance is z=2.15 (Wilcoxon blind).")
 
     # Add H0pe sensitivity as a separate forward-looking result
     print_status(f"\n  SN H0pe sensitivity:")
@@ -578,7 +577,7 @@ def main():
         "caveat": (
             "Tests are derived from same SN Refsdal dataset -- not independent. "
             "Combining p-values via Fisher/Stouffer is invalid (double-dipping). "
-            "Headline significance is driven by the strongest robust test (Wilcoxon)."
+            "Independence-primary significance is driven by the Wilcoxon blind test."
         ),
         "included_tests": {k: float(v) for k, v in independent_p.items()},
         "excluded_tests": {
@@ -635,7 +634,7 @@ def main():
               label=f"Theil-Sen robust: slope={theil_slope:.1f} d")
 
     # TEP theoretical curve: dt ~ (1/Gamma_t - 1) ≈ alpha * log10(mu) shift
-    # Illustrative: show what alpha_lens≈-0.055 scaling looks like relative to S1
+    # Illustrative: show what alpha_proxy≈-0.055 scaling looks like relative to S1
     ax_a.set_xlabel(r"$1/\mu_{\rm norm}$  (less magnified $\rightarrow$)", )
     ax_a.set_ylabel(r"$\Delta t_{i,S1}$ [days]", )
     ax_a.set_title(
@@ -771,9 +770,9 @@ def main():
     fig_e, ax_e = plt.subplots(figsize=FIG_SIZE)
 
     all_tests = [
-        ("Wilcoxon signed-rank\n7/7 nonzero positive \u2713 OBSERVED",
+        ("Wilcoxon signed-rank\n6/6 blind nonzero positive (observed)",
          p_wilcoxon, True),
-        (r"$\alpha_{\rm inferred}$ vs. zero" + "\n7 blind models \u2713 OBSERVED",
+        (r"$\alpha_{\rm inferred}$ vs. zero" + "\n7 blind models (observed)",
          p_vs_zero, True),
         ("Pearson delay–$\\mu$\n5 images (SX-leveraged; not probative)",
          p_pearson_onesided, False),
@@ -870,7 +869,7 @@ def main():
                  f" z_vs_0={t_vs_zero:.2f}, p={p_vs_zero:.4f} [OBSERVED]")
     print_status(f"  D. SN H0pe sensitivity:       SNR={snr_total:.2f} PREDICTED (not observed)")
     print_status(f"  E. Headline Signif:           z={float(scipy_stats.norm.isf(p_wilcoxon)):.2f}σ (Wilcoxon), p={p_wilcoxon:.5f}")
-    print_status(f"  Best single result:           Wilcoxon sign test p={p_wilcoxon:.4f} (2.4σ) [OBSERVED]")
+    print_status(f"  Best single result:           Wilcoxon sign test p={p_wilcoxon:.4f} (2.15σ) [OBSERVED]")
     print_status(f"\nResults saved to {output_path}")
     print_status(f"Step {STEP_NUM} complete.")
 

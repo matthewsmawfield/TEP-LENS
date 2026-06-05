@@ -3,14 +3,41 @@
   "status": "success",
   "methodology_note": "Fisher/Stouffer combination removed due to invalid double-dipping on correlated data.",
   "headline_significance": {
-    "test": "Wilcoxon signed-rank",
-    "z_score": 2.417559016236505,
-    "p_value": 0.0078125
+    "test": "Exact family-sign-flip test blind",
+    "z_score": 1.8627318674216515,
+    "p_value": 0.03125,
+    "note": "Correlation-aware primary result; kept for downstream compatibility."
+  },
+  "test_hierarchy": {
+    "tier_1a_primary_independence": {
+      "test": "Wilcoxon signed-rank blind",
+      "z_score": 2.1538746940614564,
+      "p_value": 0.015625
+    },
+    "tier_1b_primary_correlation_aware": {
+      "test": "Exact family-sign-flip test blind",
+      "z_score": 1.8627318674216515,
+      "p_value": 0.03125
+    },
+    "tier_2_sensitivity_exploration": {
+      "test": "Block-bootstrap Wilcoxon blind",
+      "z_score": 2.1538746940614564,
+      "p_value": 0.015625,
+      "caveat": "Demoted from operational primary; retained for sensitivity exploration."
+    }
   },
   "individual_tests": {
+    "exact_permutation": {
+      "z": 1.8627318674216515,
+      "p": 0.03125
+    },
     "wilcoxon": {
-      "z": 2.417559016236505,
-      "p": 0.0078125
+      "z": 2.1538746940614564,
+      "p": 0.015625
+    },
+    "block_bootstrap": {
+      "z": 2.1538746940614564,
+      "p": 0.015625
     },
     "pearson": {
       "z": 2.305013663729567,

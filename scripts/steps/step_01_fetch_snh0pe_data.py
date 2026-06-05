@@ -88,9 +88,13 @@ def main():
     }
 
     # ------------------------------------------------------------------
-    # SECONDARY: SN H0pe (Grayling et al. 2025, arXiv:2510.11719)
+    # SECONDARY: SN H0pe (Pierel et al. 2024, ApJ 967, 50)
+    # Canonical photometric delays and magnifications used in the
+    # blind-prediction residual test (Step 39) and manuscript.
+    # Grayling et al. 2025 (BayeSN-TD) values are preserved in
+    # data/raw/snh0pe/snh0pe_literature_data.json for reference.
     # ------------------------------------------------------------------
-    print_status("Loading SN H0pe data (Grayling et al. 2025)...")
+    print_status("Loading SN H0pe data (Pierel et al. 2024)...")
 
     sn_h0pe = {
         "metadata": {
@@ -100,28 +104,31 @@ def main():
             "z_src": 1.783,
             "images": ["A", "B", "C"],
             "reference_image": "B",
-            "notes": "Grayling et al. 2025 (arXiv:2510.11719) using BayeSN-TD."
+            "notes": (
+                "Pierel et al. 2024 (ApJ 967, 50). Photometric time delays and "
+                "magnifications from JWST light-curve analysis."
+            )
         },
         "time_delays_days": {
-            "dt_AB": {"value": -121.9, "err_plus": 9.5, "err_minus": 7.5,
-                      "ref": "Grayling+2025"},
-            "dt_CB": {"value":  -63.2, "err_plus": 3.2, "err_minus": 3.3,
-                      "ref": "Grayling+2025"}
+            "dt_AB": {"value": -116.6, "err_plus": 10.8, "err_minus": 9.3,
+                      "ref": "Pierel+2024"},
+            "dt_CB": {"value":  -48.6, "err_plus": 3.6, "err_minus": 4.0,
+                      "ref": "Pierel+2024"}
         },
         "magnification_proxies": {
-            "note": "Absolute magnifications from BayeSN-TD fit.",
+            "note": "Absolute magnifications from Pierel+2024 photometry.",
             "mu_absolute": {
-                "A": {"value": 2.38, "err_plus": 0.72, "err_minus": 0.54},
-                "B": {"value": 5.27, "err_plus": 1.25, "err_minus": 1.02},
-                "C": {"value": 3.93, "err_plus": 1.00, "err_minus": 0.75}
+                "A": {"value": 4.43, "err": 0.5},
+                "B": {"value": 8.00, "err": 0.8},
+                "C": {"value": 6.43, "err": 0.6}
             }
         }
     }
 
     # ------------------------------------------------------------------
-    # SECONDARY: SN Encore (Pierel et al. 2025, arXiv:2509.12301)
+    # SECONDARY: SN Encore (Pierel et al. 2026, ApJ, arXiv:2509.12301)
     # ------------------------------------------------------------------
-    print_status("Loading SN Encore data (Pierel et al. 2025)...")
+    print_status("Loading SN Encore data (Pierel et al. 2026)...")
 
     sn_encore = {
         "metadata": {
@@ -131,16 +138,20 @@ def main():
             "z_src": 1.95,
             "images": ["1a", "1b", "1c"],
             "reference_image": "1a",
-            "notes": "Pierel et al. 2025 (arXiv:2509.12301). First standard candle multiple-imaged SN with measured delay."
+            "notes": "Pierel et al. 2026 (ApJ, arXiv:2509.12301). Table 5 final systematic-corrected delay."
         },
         "time_delays_days": {
-            "dt_1b_1a": {"value": -37.3, "err_plus": 13.1, "err_minus": 12.5,
-                      "ref": "Pierel+2025"}
+            "dt_1b_1a": {"value": -39.8, "err_plus": 3.9, "err_minus": 3.3,
+                      "ref": "Pierel+2026 Table 5"}
         },
         "magnification_proxies": {
-            "note": "Relative magnification beta_1b_1a = 2.0 -0.4 +something (assuming sym error for now).",
+            "note": "Absolute magnifications from Pierel+2026 photometry (Table 5).",
+            "mu_absolute": {
+                "1a": {"value": 21.8, "err": 2.0},
+                "1b": {"value": 32.4, "err": 3.0}
+            },
             "mu_relative": {
-                "1b_1a": {"value": 2.0, "err": 0.4}
+                "1b_1a": {"value": 1.49, "err": 0.15}
             }
         }
     }
@@ -159,17 +170,67 @@ def main():
             "images": ["A", "B", "C", "D"],
             "image_separation_arcsec": 1.7,
             "notes": (
-                "Johansson et al. 2025, ApJ 995, L17. First lensed SLSN-I. "
-                "Four images in Einstein cross pattern. Time delays not yet measured. "
-                "Magnification of brightest image (A) estimated mu~20-50."
+                "Johansson et al. 2025, ApJ 995, L17; Taubenberger et al. 2025 (HOLISMOKES XIX). "
+                "First lensed SLSN-I. Four images in Einstein cross pattern. "
+                "Host galaxy PS1J0716+3821 known quadruple since Cañameras et al. 2020. "
+                "Time delays not yet measured. HST (PID 17611) and JWST (PID 5564) "
+                "follow-up ongoing (PI: Goobar). High magnification contrast makes this "
+                "the most promising future TEP test after Refsdal."
             )
         },
         "time_delays_days": {
-            "note": "Not yet measured. Awaiting JWST follow-up."
+            "note": "Not yet measured. Ongoing photometric monitoring by Maidanak, Lulin, COLIBRI, Wendelstein. HST/JWST follow-up scheduled.",
+            "post_hoc_predictions": {
+                "reference": "Witt-Wynne model, Wynne & Schechter 2018, as applied in arXiv:2605.11090. NOTE: post-hoc, not blind.",
+                "dt_CA_days": {"value": -20, "note": "A trails C by ~20 d"},
+                "dt_BA_days": {"value": -30, "note": "A trails B by ~30 d"},
+                "dt_DA_days": {"value": -175, "note": "A trails D by ~175 d"}
+            }
         },
         "magnification_proxies": {
             "mu_A_estimate": {"value_min": 20, "value_max": 50,
-                              "ref": "Johansson+2025 from light curve comparison"}
+                              "ref": "Johansson+2025 from light curve comparison"},
+            "note": "Very high magnification contrast expected. If mu_A ~ 20-50 and other images are mu ~ 1-5, contrast ratio could exceed 10x, comparable to Refsdal S4-SX."
+        },
+        "monitoring_status": {
+            "time_delays_measured": False,
+            "blind_lens_models_available": False,
+            "hst_program": "PID 17611 (PI: Goobar)",
+            "jwst_program": "PID 5564 (PI: Goobar)",
+            "priority_for_tep": "HIGH — 4 images, high magnification contrast, long baseline (~175 d predicted)"
+        }
+    }
+
+    # ------------------------------------------------------------------
+    # VENUS DISCOVERY: SN Eos (Coulter et al. 2026)
+    # ------------------------------------------------------------------
+    print_status("Loading SN Eos discovery data (Coulter et al. 2026)...")
+
+    sn_eos = {
+        "metadata": {
+            "name": "SN Eos",
+            "host_cluster": "MACS J1931.8-2635",
+            "z_lens": 0.35,
+            "z_src": 5.133,
+            "images": ["1", "2"],
+            "notes": (
+                "Coulter et al. 2026 (arXiv). Multiply-imaged Type II SN at z=5.13, "
+                "discovered by VENUS in JWST/NIRCam imaging. Two confirmed images. "
+                "Farthest spectroscopically confirmed SN ever discovered. "
+                "Not viable for loop-closure TEP test (only 2 images). "
+                "VENUS lens model (arXiv:2602.14074) available but no blind time-delay predictions."
+            )
+        },
+        "time_delays_days": {
+            "note": "Not yet measured. Only two images confirmed; no delay measurement possible yet."
+        },
+        "magnification_proxies": {
+            "note": "Magnification not yet measured from light curves."
+        },
+        "monitoring_status": {
+            "time_delays_measured": False,
+            "blind_lens_models_available": False,
+            "priority_for_tep": "LOW — only 2 images, no loop closure possible"
         }
     }
 
@@ -177,7 +238,8 @@ def main():
         "sn_refsdal": sn_refsdal,
         "sn_h0pe": sn_h0pe,
         "sn_encore": sn_encore,
-        "sn_2025wny": sn_2025wny
+        "sn_2025wny": sn_2025wny,
+        "sn_eos": sn_eos
     }
 
     raw_path = data_dir / "lensed_sn_catalog.json"

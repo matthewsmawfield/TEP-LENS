@@ -1,16 +1,18 @@
 
-[23:44:24] [INFO] ======================================================================
-[23:44:24] [INFO] STEP 16: Independence-Tier Significance
-[23:44:24] [INFO] ======================================================================
-[23:44:24] [INFO] Individual Correlated Tests (SN Refsdal SX):
-[23:44:24] [INFO]   Wilcoxon signed-rank: z=2.42, p=0.0078 (Headline)
-[23:44:24] [INFO]   Pearson delay-mu:     z=2.31, p=0.0106
-[23:44:24] [INFO]   Ext-informed w-mean:  z=1.25, p=0.1049
-[23:44:24] [INFO]   Alpha vs zero:        z=0.96, p=0.1696
-[23:44:24] [INFO] 
+[18:50:47] [INFO] ======================================================================
+[18:50:47] [INFO] STEP 16: Independence-Tier Significance
+[18:50:47] [INFO] ======================================================================
+[18:50:47] [INFO] Individual Correlated Tests (SN Refsdal SX):
+[18:50:47] [INFO]   Wilcoxon signed-rank (blind): z=2.15, p=0.0156 (Independence primary)
+[18:50:47] [INFO]   Exact family-sign-flip (blind): z=1.86, p=0.0312 (Correlation-aware primary)
+[18:50:47] [INFO]   Block-bootstrap (blind):       z=2.15, p=0.0156 [0.0078, 0.0312] (Sensitivity)
+[18:50:47] [INFO]   Pearson delay-mu:             z=2.31, p=0.0106
+[18:50:47] [INFO]   Ext-informed w-mean:          z=1.25, p=0.1049
+[18:50:47] [INFO]   Alpha vs zero:              z=0.96, p=0.1696
+[18:50:47] [INFO] 
 NOTE: These tests are fundamentally correlated. Combining them
-[23:44:24] [INFO] via Fisher/Stouffer is invalid. The conservative significance
-[23:44:24] [INFO] is the strongest robust single test: z=2.42 (Wilcoxon).
-[23:44:24] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_16_tier_significance.png
-[23:44:24] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_16_tier_significance.json
-[23:44:24] [INFO] Step 16 complete.
+[18:50:47] [INFO] via Fisher/Stouffer is invalid. The conservative significance
+[18:50:47] [INFO] is the most robust single test: z=1.86 (Exact family-sign-flip).
+[18:50:47] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_16_tier_significance.png
+[18:50:47] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_16_tier_significance.json
+[18:50:47] [INFO] Step 16 complete.

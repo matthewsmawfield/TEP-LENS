@@ -22,6 +22,8 @@ Outputs:
 """
 
 import json
+import itertools
+import math
 import sys
 from pathlib import Path
 import numpy as np
@@ -50,13 +52,21 @@ def permutation_pvalue(delays, tracer, n_perm=20000, seed=42):
     rho_obs, _ = stats.spearmanr(delays, tracer)
 
     count = 0
-    for _ in range(n_perm):
-        perm_delays = rng.permutation(delays)
+    n = len(delays)
+    n_exact = math.factorial(n)
+    if n_exact <= n_perm:
+        iterator = itertools.permutations(delays)
+        denominator = n_exact
+    else:
+        iterator = (rng.permutation(delays) for _ in range(n_perm))
+        denominator = n_perm
+
+    for perm_delays in iterator:
         rho_perm, _ = stats.spearmanr(perm_delays, tracer)
         if rho_perm >= rho_obs:
             count += 1
 
-    return float(rho_obs), float(count / n_perm)
+    return float(rho_obs), float(count / denominator)
 
 
 def main():
@@ -80,24 +90,19 @@ def main():
         delays_data["dt_SX_S1"]["value"],
     ])
 
-    # Load step_32 kappa inference
+    # Load step_32 kappa inference (required)
     step32_path = PROJECT_ROOT / "results" / "outputs" / "step_32_kappa_proxy_validation.json"
-    kappa_medians = None
-    kappa_p16 = None
-    kappa_p84 = None
-    if step32_path.exists():
-        with open(step32_path) as f:
-            s32 = json.load(f)
-        kappa_summary = s32["sn_refsdal_sensitivity"]["kappa_summary_per_image"]
-        kappa_medians = np.array([kappa_summary[img]["median"] for img in images])
-        kappa_p16 = np.array([kappa_summary[img]["p16"] for img in images])
-        kappa_p84 = np.array([kappa_summary[img]["p84"] for img in images])
-    else:
-        print_status("Step 32 output not found; using hardcoded kappa medians", "WARN")
-        # Fallback values from step_32 median output
-        kappa_medians = np.array([0.093, 0.029, 0.010, 0.181, 0.010])
-        kappa_p16 = np.array([0.000, 0.000, 0.000, 0.001, 0.010])
-        kappa_p84 = np.array([0.267, 0.206, 0.151, 0.348, 0.057])
+    if not step32_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {step32_path}\n"
+            "Run step_32_kappa_proxy_validation.py first."
+        )
+    with open(step32_path) as f:
+        s32 = json.load(f)
+    kappa_summary = s32["sn_refsdal_sensitivity"]["kappa_summary_per_image"]
+    kappa_medians = np.array([kappa_summary[img]["median"] for img in images])
+    kappa_p16 = np.array([kappa_summary[img]["p16"] for img in images])
+    kappa_p84 = np.array([kappa_summary[img]["p84"] for img in images])
 
     # Magnification proxies for comparison
     mu_rel = np.array([fluxes[img]["value"] for img in images])

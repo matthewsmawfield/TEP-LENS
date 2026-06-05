@@ -1,14 +1,18 @@
 
-[00:18:13] [INFO] ======================================================================
-[00:18:13] [INFO] STEP 34: Agnostic Rank Test
-[00:18:13] [INFO] ======================================================================
-[00:18:25] [INFO] Delay vs inferred kappa:
-[00:18:25] [INFO]   Spearman rho = -0.154
-[00:18:25] [INFO]   Permutation p (one-sided, n=20000) = 0.6348
-[00:18:43] [INFO] Delay vs flux-proxy mu:
-[00:18:43] [INFO]   Spearman rho = -0.300
-[00:18:43] [INFO]   Permutation p (one-sided, n=20000) = 0.7430
-[00:19:09] [INFO] Inner cross only (S1-S4) delay vs kappa:
-[00:19:09] [INFO]   Spearman rho = 0.400, p = 0.3745
-[00:19:09] [INFO] Inner cross only (S1-S4) delay vs mu:
-[00:19:09] [INFO]   Spearman rho = 0.400, p = 0.3745
+[12:27:14] [INFO] ======================================================================
+[12:27:14] [INFO] STEP 34: Agnostic Rank Test
+[12:27:14] [INFO] ======================================================================
+[12:27:14] [INFO] Delay vs inferred kappa:
+[12:27:14] [INFO]   Spearman rho = -0.154
+[12:27:14] [INFO]   Permutation p (one-sided, n=20000) = 0.6333
+[12:27:14] [INFO] Delay vs flux-proxy mu:
+[12:27:14] [INFO]   Spearman rho = -0.300
+[12:27:14] [INFO]   Permutation p (one-sided, n=20000) = 0.7417
+[12:27:14] [INFO] Inner cross only (S1-S4) delay vs kappa:
+[12:27:14] [INFO]   Spearman rho = 0.400, p = 0.3750
+[12:27:14] [INFO] Inner cross only (S1-S4) delay vs mu:
+[12:27:14] [INFO]   Spearman rho = 0.400, p = 0.3750
+[12:28:23] [INFO] Kappa-uncertainty bootstrap (n=10000):
+[12:28:23] [INFO]   Spearman rho 95% CI: [-0.900, 0.600]
+[12:28:23] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_34_agnostic_rank_test.json
+[12:28:23] [INFO] Step 34 complete.

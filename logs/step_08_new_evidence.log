@@ -1,145 +1,141 @@
 
-[23:40:25] [INFO] ======================================================================
-[23:40:25] [INFO] STEP 08: Extended Evidence Package
-[23:40:25] [INFO] ======================================================================
-[23:40:25] [INFO] 
+[18:49:39] [INFO] ======================================================================
+[18:49:39] [INFO] STEP 08: Extended Evidence Package
+[18:49:39] [INFO] ======================================================================
+[18:49:39] [INFO] 
 ============================================================
-[23:40:25] [INFO] TEST A: Delay-Magnification Anticorrelation (SN Refsdal)
-[23:40:25] [INFO] ============================================================
-[23:40:25] [INFO]   Images: ['S1', 'S2', 'S3', 'S4', 'SX']
-[23:40:25] [INFO]   Delays (d):  [  0.    9.9   9.   20.3 376. ]
-[23:40:25] [INFO]   mu_norm:     [1.181 0.905 0.73  1.829 0.354]
-[23:40:25] [INFO]   1/mu_norm:   [0.846 1.105 1.369 0.547 2.825]
-[23:40:25] [INFO]   Spearman rho = 0.3000, p (one-sided) = 0.3119
-[23:40:25] [INFO]   Pearson  r   = 0.9318,   p (one-sided) = 0.0106
-[23:40:25] [INFO]   Linear fit: dt = -147.9 + 172.6 * (1/mu_norm)
-[23:40:25] [INFO]   slope = 172.6 ± 38.8 d  (t = 4.45)
-[23:40:31] [INFO] 
+[18:49:39] [INFO] TEST A: Delay-Magnification Anticorrelation (SN Refsdal)
+[18:49:39] [INFO] ============================================================
+[18:49:39] [INFO]   Images: ['S1', 'S2', 'S3', 'S4', 'SX']
+[18:49:39] [INFO]   Delays (d):  [  0.    9.9   9.   20.3 376. ]
+[18:49:39] [INFO]   mu_norm:     [1.181 0.905 0.73  1.829 0.354]
+[18:49:39] [INFO]   1/mu_norm:   [0.846 1.105 1.369 0.547 2.825]
+[18:49:39] [INFO]   Spearman rho = 0.3000, p (one-sided) = 0.3119
+[18:49:39] [INFO]   Pearson  r   = 0.9318,   p (one-sided) = 0.0106
+[18:49:39] [INFO]   Linear fit: dt = -147.9 + 172.6 * (1/mu_norm)
+[18:49:39] [INFO]   slope = 172.6 ± 38.8 d  (t = 4.45)
+[18:49:44] [INFO] 
   --- Robustness diagnostics ---
-[23:40:31] [INFO]   Leave-one-out Pearson r:
-[23:40:31] [INFO]     Excluding S1: r = 0.926
-[23:40:31] [INFO]     Excluding S2: r = 0.934
-[23:40:31] [INFO]     Excluding S3: r = 0.968
-[23:40:31] [INFO]     Excluding S4: r = 0.975
-[23:40:31] [INFO]     Excluding SX: r = -0.404
-[23:40:31] [INFO]   Cook's distance: {'S1': 0.0, 'S2': 0.053, 'S3': 0.278, 'S4': 0.643, 'SX': 2.235}
-[23:40:31] [INFO]   Std. residual:   {'S1': 0.04, 'S2': -0.7, 'S3': -1.67, 'S4': 1.79, 'SX': 2.22}
-[23:40:31] [INFO]   Theil-Sen slope: 27.8 [-67.7, 252.1] d
-[23:40:31] [INFO]   Bootstrap Pearson r (n=10000): 95% CI = [-1.000, 1.000]
-[23:40:31] [INFO]   Fraction of bootstrap draws with r > 0.8: 0.719
-[23:40:31] [INFO] 
+[18:49:44] [INFO]   Leave-one-out Pearson r:
+[18:49:44] [INFO]     Excluding S1: r = 0.926
+[18:49:44] [INFO]     Excluding S2: r = 0.934
+[18:49:44] [INFO]     Excluding S3: r = 0.968
+[18:49:44] [INFO]     Excluding S4: r = 0.975
+[18:49:44] [INFO]     Excluding SX: r = -0.404
+[18:49:44] [INFO]   Cook's distance: {'S1': np.float64(0.0), 'S2': np.float64(0.053), 'S3': np.float64(0.278), 'S4': np.float64(0.643), 'SX': np.float64(2.235)}
+[18:49:44] [INFO]   Std. residual:   {'S1': np.float64(0.04), 'S2': np.float64(-0.7), 'S3': np.float64(-1.67), 'S4': np.float64(1.79), 'SX': np.float64(2.22)}
+[18:49:44] [INFO]   Theil-Sen slope: 27.8 [-67.7, 252.1] d
+[18:49:44] [INFO]   Bootstrap Pearson r (n=10000): 95% CI = [-1.000, 1.000]
+[18:49:44] [INFO]   Fraction of bootstrap draws with r > 0.8: 0.719
+[18:49:44] [INFO] 
 ============================================================
-[23:40:31] [INFO] TEST B: Inner-Cross Arrival-Order Transparency Check
-[23:40:31] [INFO] ============================================================
-[23:40:31] [INFO]   All-5-image: Kendall tau=0.200, exact p=0.4083
-[23:40:31] [INFO]   Concordant pairs: 6/10  -- NOT significant
-[23:40:31] [INFO]   Exact rank match: False
-[23:40:31] [INFO]   NOTE: S4 is most magnified (mu_norm=1.83) but arrives 4th (20.3d).
-[23:40:31] [INFO]   NOTE: Inner-cross delay ordering dominated by geometric path length
-[23:40:31] [INFO]          differences (~10-20d), far exceeding TEP shift (~0.3d).
-[23:40:31] [INFO]   NOTE: This is EXPECTED under TEP, not a falsification.
-[23:40:31] [INFO]   NOTE: SX dominates: TEP shift for SX (~13d) >> inner-cross TEP shift (~0.3d).
-[23:40:31] [INFO]   TEP-induced delay shifts relative to S1:
-[23:40:31] [INFO]     S1: TEP_shift=+0.000d, meas_err=0.0d, signal/noise=0.000
-[23:40:31] [INFO]     S2: TEP_shift=+0.063d, meas_err=4.0d, signal/noise=0.016
-[23:40:31] [INFO]     S3: TEP_shift=+0.103d, meas_err=4.2d, signal/noise=0.025
-[23:40:31] [INFO]     S4: TEP_shift=-0.212d, meas_err=6.4d, signal/noise=0.033
-[23:40:31] [INFO]     SX: TEP_shift=+10.823d, meas_err=5.6d, signal/noise=1.933
-[23:40:31] [INFO] 
+[18:49:44] [INFO] TEST B: Inner-Cross Arrival-Order Transparency Check
+[18:49:44] [INFO] ============================================================
+[18:49:44] [INFO]   All-5-image: Kendall tau=0.200, exact p=0.4083
+[18:49:44] [INFO]   Concordant pairs: 6/10  -- NOT significant
+[18:49:44] [INFO]   Exact rank match: False
+[18:49:44] [INFO]   NOTE: S4 is most magnified (mu_norm=1.83) but arrives 4th (20.3d).
+[18:49:44] [INFO]   NOTE: Inner-cross delay ordering dominated by geometric path length
+[18:49:44] [INFO]          differences (~10-20d), far exceeding TEP shift (~0.3d).
+[18:49:44] [INFO]   NOTE: This is EXPECTED under TEP, not a falsification.
+[18:49:44] [INFO]   NOTE: SX dominates: TEP shift for SX (~13d) >> inner-cross TEP shift (~0.3d).
+[18:49:44] [INFO]   TEP-induced delay shifts relative to S1:
+[18:49:44] [INFO]     S1: TEP_shift=+0.000d, meas_err=0.0d, signal/noise=0.000
+[18:49:44] [INFO]     S2: TEP_shift=+0.063d, meas_err=4.0d, signal/noise=0.016
+[18:49:44] [INFO]     S3: TEP_shift=+0.103d, meas_err=4.2d, signal/noise=0.025
+[18:49:44] [INFO]     S4: TEP_shift=-0.212d, meas_err=6.4d, signal/noise=0.033
+[18:49:44] [INFO]     SX: TEP_shift=+10.823d, meas_err=5.6d, signal/noise=1.933
+[18:49:44] [INFO] 
 ============================================================
-[23:40:31] [INFO] TEST C: Alpha Inference Consistency (cross-model)
-[23:40:31] [INFO] ============================================================
-[23:40:31] [INFO]   Per-model alpha_inferred:
-[23:40:31] [INFO]     Oguri-a     : alpha = -0.1967 ± 0.2242
-[23:40:31] [INFO]     Sharon      : alpha = -0.1173 ± 0.2261
-[23:40:31] [INFO]     Diego       : alpha = -0.0000 ± 0.1903
-[23:40:31] [INFO]     Grillo      : alpha = -0.0567 ± 0.0914
-[23:40:31] [INFO]     Kawamata    : alpha = -0.0265 ± 0.1847
-[23:40:31] [INFO]     Jauzac      : alpha = -0.0643 ± 0.1828
-[23:40:31] [INFO]     CATS        : alpha = -0.0076 ± 0.1753
-[23:40:31] [INFO] 
+[18:49:44] [INFO] TEST C: Alpha Inference Consistency (cross-model)
+[18:49:44] [INFO] ============================================================
+[18:49:44] [INFO]   Per-model alpha_inferred:
+[18:49:44] [INFO]     Oguri-a     : alpha = -0.1967 ± 0.2242
+[18:49:44] [INFO]     Sharon      : alpha = -0.1173 ± 0.2261
+[18:49:44] [INFO]     Diego       : alpha = -0.0000 ± 0.1903
+[18:49:44] [INFO]     Grillo      : alpha = -0.0567 ± 0.0914
+[18:49:44] [INFO]     Kawamata    : alpha = -0.0265 ± 0.1847
+[18:49:44] [INFO]     Jauzac      : alpha = -0.0643 ± 0.1828
+[18:49:44] [INFO]     CATS        : alpha = -0.0076 ± 0.1753
+[18:49:44] [INFO] 
   Weighted mean alpha_inferred = -0.0573 ± 0.0599
-[23:40:31] [INFO]   z vs GR null (alpha=0):   z = -0.956, p = 0.1696
-[23:40:31] [INFO]   z vs TEP (alpha_lens≈-0.055): z = -0.038, p = 0.9700
-[23:40:31] [INFO]   Scatter chi^2 = 0.66 / 6 dof, p = 0.9954  (expected if noise-dominated: p ~ 0.5)
-[23:40:31] [INFO] 
+[18:49:44] [INFO]   z vs GR null (alpha=0):   z = -0.956, p = 0.1696
+[18:49:44] [INFO]   z vs TEP (alpha_lens≈-0.055): z = -0.038, p = 0.9700
+[18:49:44] [INFO]   Scatter chi^2 = 0.66 / 6 dof, p = 0.9954  (expected if noise-dominated: p ~ 0.5)
+[18:49:44] [INFO] 
 ============================================================
-[23:40:31] [INFO] TEST D: SN H0pe Closure Sensitivity Analysis (prediction, not observation)
-[23:40:31] [INFO] ============================================================
-[23:40:31] [INFO]   SN H0pe: z_s=1.783, z_l=0.351
-[23:40:31] [INFO]   dt(A-B) = -121.9 ± 8.5 d
-[23:40:31] [INFO]   dt(C-B) = -63.2 ± 3.2 d
-[23:40:31] [INFO]   dt(A-C) = -58.7 ± 9.1 d  (derived)
-[23:40:31] [INFO]   A: mu=2.4, mu_norm=0.617
-[23:40:31] [INFO]   B: mu=5.3, mu_norm=1.365
-[23:40:31] [INFO]   C: mu=3.9, mu_norm=1.018
-[23:40:31] [INFO] 
+[18:49:44] [INFO] TEST D: SN H0pe Closure Sensitivity Analysis (prediction, not observation)
+[18:49:44] [INFO] ============================================================
+[18:49:44] [INFO]   SN H0pe: z_s=1.783, z_l=0.351
+[18:49:44] [INFO]   dt(A-B) = -116.6 ± 10.1 d
+[18:49:44] [INFO]   dt(C-B) = -48.6 ± 3.8 d
+[18:49:44] [INFO]   dt(A-C) = -68.0 ± 10.7 d  (derived)
+[18:49:44] [INFO]   A: mu=4.4, mu_norm=0.705
+[18:49:44] [INFO]   B: mu=8.0, mu_norm=1.273
+[18:49:44] [INFO]   C: mu=6.4, mu_norm=1.023
+[18:49:44] [INFO] 
   Gamma per image:
-[23:40:31] [INFO]     A: Gamma_t = 1.01155
-[23:40:31] [INFO]     B: Gamma_t = 0.99256
-[23:40:31] [INFO]     C: Gamma_t = 0.99957
-[23:40:31] [INFO]   TEP closure residual R_TEP(A,B,C) = +1.9032 ± 0.1012 d
-[23:40:31] [INFO]   SNR = 18.81
-[23:40:31] [INFO]   Systematic error from mu uncertainty: 0.8929 d
-[23:40:31] [INFO]   Total error (stat + sys):             0.8986 d
-[23:40:31] [INFO]   SNR (including systematics):          2.12
-[23:40:31] [INFO]   p-value (one-sided, H0: R_TEP=0): p = 0.0171
-[23:40:31] [INFO]   GR closure residual (sanity check) = 0.000000 d  (must be 0)
-[23:40:31] [INFO]   IMPORTANT: This is the PREDICTED residual under TEP, NOT an observed
-[23:40:31] [INFO]   non-zero closure. The observed closure from the Pierel+2024 delays
-[23:40:31] [INFO]   is identically 0 (all delays relative to image B). An independent
-[23:40:31] [INFO]   fourth image (like SX in Refsdal) would be needed to observe R_TEP.
-[23:40:31] [INFO]   Interpretation: H0pe is SENSITIVE to TEP at SNR=2.12 --
-[23:40:31] [INFO]   a future independent delay measurement would detect it at 2.1 sigma.
-[23:40:31] [INFO] 
+[18:49:44] [INFO]     A: Gamma_t = 1.00836
+[18:49:44] [INFO]     B: Gamma_t = 0.99424
+[18:49:44] [INFO]     C: Gamma_t = 0.99946
+[18:49:44] [INFO]   TEP closure residual R_TEP(A,B,C) = +1.2913 ± 0.0870 d
+[18:49:44] [INFO]   SNR = 14.84
+[18:49:44] [INFO]   Systematic error from mu uncertainty: 0.3678 d
+[18:49:44] [INFO]   Total error (stat + sys):             0.3779 d
+[18:49:44] [INFO]   SNR (including systematics):          3.42
+[18:49:44] [INFO]   p-value (one-sided, H0: R_TEP=0): p = 0.0003
+[18:49:44] [INFO]   GR closure residual (sanity check) = 0.000000 d  (must be 0)
+[18:49:44] [INFO]   IMPORTANT: This is the PREDICTED residual under TEP, NOT an observed
+[18:49:44] [INFO]   non-zero closure. The observed closure from the Pierel+2024 delays
+[18:49:44] [INFO]   is identically 0 (all delays relative to image B). An independent
+[18:49:44] [INFO]   fourth image (like SX in Refsdal) would be needed to observe R_TEP.
+[18:49:44] [INFO]   Interpretation: H0pe is SENSITIVE to TEP at SNR=3.42 --
+[18:49:44] [INFO]   a future independent delay measurement would detect it at 3.4 sigma.
+[18:49:44] [INFO] 
 ============================================================
-[23:40:31] [INFO] TEST E: Fisher Combined Significance
-[23:40:31] [INFO] ============================================================
-[23:40:31] [INFO] 
+[18:49:44] [INFO] TEST E: Fisher Combined Significance
+[18:49:44] [INFO] ============================================================
+[18:49:44] [INFO] 
   All p-values (including invalid):
-[23:40:31] [INFO]     binomial_sign_test_all8               : p=0.0352 z=1.81  [VALID]
-[23:40:31] [INFO]     binomial_sign_test_blind7             : p=0.0625 z=1.53  [VALID]
-[23:40:31] [INFO]     delay_mu_pearson                      : p=0.0106 z=2.31  [VALID]
-[23:40:31] [INFO]     arrival_order_kendall                 : p=0.4083 z=0.23  [VALID]
-[23:40:31] [INFO]     alpha_inference_vs_zero               : p=0.1696 z=0.96  [VALID]
-[23:40:31] [INFO]     snh0pe_closure_PREDICTED              : p=0.0171 z=2.12  [INVALID (predicted)]
-[23:40:31] [INFO] 
+[18:49:44] [INFO]     binomial_sign_test_all8               : p=0.0352 z=1.81  [VALID]
+[18:49:44] [INFO]     binomial_sign_test_blind7             : p=0.0625 z=1.53  [VALID]
+[18:49:44] [INFO]     delay_mu_pearson                      : p=0.0106 z=2.31  [VALID]
+[18:49:44] [INFO]     arrival_order_kendall                 : p=0.4083 z=0.23  [VALID]
+[18:49:44] [INFO]     alpha_inference_vs_zero               : p=0.1696 z=0.96  [VALID]
+[18:49:44] [INFO]     snh0pe_closure_PREDICTED              : p=0.0003 z=3.42  [INVALID (predicted)]
+[18:49:44] [INFO] 
   NOTE: Pearson delay-mu, H0pe, and arrival-order excluded from summary.
-[23:40:31] [INFO]   Pearson excluded: n=5 with extreme SX leverage; correlation test is
-[23:40:31] [INFO]   statistically inappropriate and not probative (see robustness diagnostics).
-[23:40:31] [INFO]   H0pe SNR=2.12 is a PREDICTION (testability), not an observation.
-[23:40:31] [INFO]   Arrival-order: tau=0.20, p=0.41 -- not significant, excluded.
-[23:40:31] [INFO]   Wilcoxon (p=0.0078) replaces binomial (p=0.035) as primary sign test:
-[23:40:31] [INFO]   all 7 non-zero residuals are positive, giving max Wilcoxon statistic.
-[23:40:31] [INFO] 
+[18:49:44] [INFO]   Pearson excluded: n=5 with extreme SX leverage; correlation test is
+[18:49:44] [INFO]   statistically inappropriate and not probative (see robustness diagnostics).
+[18:49:44] [INFO]   H0pe SNR=3.42 is a PREDICTION (testability), not an observation.
+[18:49:44] [INFO]   Arrival-order: tau=0.20, p=0.41 -- not significant, excluded.
+[18:49:44] [INFO]   Wilcoxon BLIND-ONLY (p=0.016) is the primary rank test:
+[18:49:44] [INFO]   all 6 non-zero blind residuals are positive, giving max Wilcoxon statistic.
+[18:49:44] [INFO] 
   NOTE: These tests are fundamentally correlated. Combining them
-[23:40:31] [INFO]   via Fisher/Stouffer is statistically invalid. The conservative
-[23:40:31] [INFO]   significance is the strongest robust single test: z=2.4 (Wilcoxon).
-[23:40:31] [INFO] 
+[18:49:44] [INFO]   via Fisher/Stouffer is statistically invalid. The conservative
+[18:49:44] [INFO]   independence-primary significance is z=2.15 (Wilcoxon blind).
+[18:49:44] [INFO] 
   SN H0pe sensitivity:
-[23:40:31] [INFO]   If a 4th-image independent delay were measured for H0pe,
-[23:40:31] [INFO]   TEP would be detectable at SNR=2.12 (p<2e-02).
-[23:40:33] [INFO] 
+[18:49:44] [INFO]   If a 4th-image independent delay were measured for H0pe,
+[18:49:44] [INFO]   TEP would be detectable at SNR=3.42 (p<3e-04).
+[18:49:44] [INFO] 
 Figure A saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png
-[23:40:34] [INFO] Figure B saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_B_arrival_order.png
-[23:40:35] [INFO] Figure C saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_C_alpha_inference.png
-[23:40:35] [INFO] Figure D saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/scripts/steps/step_08_new_evidence.py:826: UserWarning: Glyph 10003 (\N{CHECK MARK}) missing from font(s) Times New Roman.
-  fig_e.tight_layout()
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/scripts/steps/step_08_new_evidence.py:828: UserWarning: Glyph 10003 (\N{CHECK MARK}) missing from font(s) Times New Roman.
-  fig_e.savefig(out_e)
-[23:40:36] [INFO] Figure E saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_E_evidence_ladder.png
-[23:40:36] [INFO] 
+[18:49:44] [INFO] Figure B saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_B_arrival_order.png
+[18:49:45] [INFO] Figure C saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_C_alpha_inference.png
+[18:49:45] [INFO] Figure D saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png
+[18:49:45] [INFO] Figure E saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_E_evidence_ladder.png
+[18:49:45] [INFO] 
 ============================================================
-[23:40:36] [INFO] SUMMARY OF ALL EVIDENCE
-[23:40:36] [INFO] ============================================================
-[23:40:36] [INFO]   A. Delay-mu correlation:      Pearson r=0.932 (SX-leveraged, NOT probative)
-[23:40:36] [INFO]                                Spearman rho=0.300, p=0.312 (not significant)
-[23:40:36] [INFO]   B. Arrival-order:             tau=0.200, p=0.4083 -- NOT SIGNIFICANT (inner cross dominated by geometry)
-[23:40:36] [INFO]   C. Alpha inference:           alpha=-0.0573±0.0599, z_vs_0=-0.96, p=0.1696 [OBSERVED]
-[23:40:36] [INFO]   D. SN H0pe sensitivity:       SNR=2.12 PREDICTED (not observed)
-[23:40:36] [INFO]   E. Headline Signif:           z=2.42σ (Wilcoxon), p=0.00781
-[23:40:36] [INFO]   Best single result:           Wilcoxon sign test p=0.0078 (2.4σ) [OBSERVED]
-[23:40:36] [INFO] 
+[18:49:45] [INFO] SUMMARY OF ALL EVIDENCE
+[18:49:45] [INFO] ============================================================
+[18:49:45] [INFO]   A. Delay-mu correlation:      Pearson r=0.932 (SX-leveraged, NOT probative)
+[18:49:45] [INFO]                                Spearman rho=0.300, p=0.312 (not significant)
+[18:49:45] [INFO]   B. Arrival-order:             tau=0.200, p=0.4083 -- NOT SIGNIFICANT (inner cross dominated by geometry)
+[18:49:45] [INFO]   C. Alpha inference:           alpha=-0.0573±0.0599, z_vs_0=-0.96, p=0.1696 [OBSERVED]
+[18:49:45] [INFO]   D. SN H0pe sensitivity:       SNR=3.42 PREDICTED (not observed)
+[18:49:45] [INFO]   E. Headline Signif:           z=2.15σ (Wilcoxon), p=0.01562
+[18:49:45] [INFO]   Best single result:           Wilcoxon sign test p=0.0156 (2.15σ) [OBSERVED]
+[18:49:45] [INFO] 
 Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_08_new_evidence.json
-[23:40:36] [INFO] Step 08 complete.
+[18:49:45] [INFO] Step 08 complete.

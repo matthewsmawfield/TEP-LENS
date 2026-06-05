@@ -1,0 +1,19 @@
+{
+  "system": "SN Refsdal (MACS J1149.6+2223)",
+  "description": "Macro-model convergence (kappa), shear (gamma), magnification (mu, signed by parity) at the positions of the five SN Refsdal images, from the v3 GLAFIC cluster mass model (Kawamata et al. 2016; Oguri 2010), as tabulated by Kelly et al. 2023 (ApJ 948, 93; arXiv:2305.06377) for the microlensing/millilensing magnification analysis.",
+  "provenance": {
+    "primary_reference": "Kelly et al. 2023, ApJ 948, 93 (arXiv:2305.06377), lensing-parameters table (GLAFIC v3)",
+    "model_maps": "https://archive.stsci.edu/pub/hlsp/frontier/macs1149/models/glafic/v3/",
+    "transcription_note": "Values transcribed via automated web extraction (ar5iv HTML of arXiv:2305.06377), corroborated by (i) two independent extractions returning identical kappa, (ii) internal consistency of (kappa,gamma,mu,parity) under mu = 1/[(1-kappa)^2 - gamma^2], and (iii) the SX/S1 magnification ratio 4.2/14.6 = 0.29 matching the Kelly+2023 measured value 0.30. VERIFY against the published table / archived GLAFIC maps before use in a final publication.",
+    "verification_status": "web-extracted; pending direct confirmation against archived maps"
+  },
+  "images": {
+    "S1": {"kappa": 0.722, "gamma": 0.093, "mu_signed": 14.6, "parity": "+"},
+    "S2": {"kappa": 0.733, "gamma": 0.361, "mu_signed": -16.8, "parity": "-"},
+    "S3": {"kappa": 0.675, "gamma": 0.230, "mu_signed": 19.0, "parity": "+"},
+    "S4": {"kappa": 0.727, "gamma": 0.466, "mu_signed": -7.0, "parity": "-"},
+    "SX": {"kappa": 0.966, "gamma": 0.488, "mu_signed": -4.2, "parity": "-"}
+  },
+  "delays_days_rel_S1": {"S1": 0.0, "S2": 9.9, "S3": 9.0, "S4": 20.3, "SX": 376.0},
+  "key_physical_note": "kappa_SX = 0.966 is the HIGHEST of the five images (SX lies in a high-convergence, near-critical region), NOT the lowest. This contradicts the flux-magnification proxy assumption that SX samples the shallowest potential. The flux ratio places SX lowest (mu small); the model convergence places SX highest."
+}

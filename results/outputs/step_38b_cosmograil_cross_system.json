@@ -1,0 +1,929 @@
+{
+  "step": "38b",
+  "status": "success",
+  "description": "Cross-system directional consistency check using CosmoGRAIL quasar lens systems. Tests whether brighter images systematically arrive earlier, as predicted by the TEP proxy model with alpha_proxy < 0.",
+  "caveats": [
+    "This is a consistency check, not an independent evidence strand.",
+    "Lens geometry can confound the delay-magnification relationship; the blind-prediction residual test (Step 07) is the only pre-specified primary test because it compares observed delays to lens-model-predicted geometric delays.",
+    "The binomial p=0.5 null is approximate. Lens geometry can create systematic correlations between magnification and delay (e.g., images near the Einstein radius are both more magnified and have shorter delays). The true null is lens-model-dependent and generally unknown without blind predictions.",
+    "Quasar fluxes include microlensing and intrinsic variability; mean fluxes are imperfect magnification proxies.",
+    "Systems are quasars, not supernovae; different astrophysical systematics apply.",
+    "alpha_proxy = -0.055 was calibrated on SN Refsdal and applied here without refitting.",
+    "Kendall tau is reference-dependent and its sign depends on the choice of reference image; it is not reported as an evidence metric."
+  ],
+  "n_systems_processed": 10,
+  "n_systems_skipped": 8,
+  "skipped_systems": [
+    "HE1104_B: no RDB file",
+    "HE1104_I: no RDB file",
+    "HE1104_J: no RDB file",
+    "HE1104_R: no RDB file",
+    "Q2237_I: no RDB file",
+    "Q2237_V: no RDB file",
+    "Q2237_G: no RDB file",
+    "Q2237_R: no RDB file"
+  ],
+  "total_pairs": 36,
+  "total_agree": 26,
+  "total_disagree": 10,
+  "cross_system_binomial": {
+    "p_value": 0.005665492091793567,
+    "z_score": 2.6666666666666665,
+    "n_agree": 26,
+    "n_total": 36
+  },
+  "stouffer_combination": {
+    "z_score": 2.3061941800820214,
+    "p_value": 0.010549892319607925,
+    "n_systems": 10
+  },
+  "kendall_summary": {
+    "mean_tau": 0.4285714285714287,
+    "n_systems_with_tau": 7,
+    "note": "Tau is reference-dependent; no valid null hypothesis without lens models."
+  },
+  "per_system_results": [
+    {
+      "system": "DESJ0408",
+      "n_images": 3,
+      "n_pairs": 3,
+      "n_agree": 2,
+      "n_disagree": 1,
+      "p_binomial": 0.5,
+      "z_binomial": 0.5773502691896258,
+      "kendall_tau": 0.33333333333333337,
+      "kendall_p": 1.0,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": -114.14928064076116,
+          "dt_err_days": 90.87743436865662,
+          "mu_i": 0.8331795963035049,
+          "mu_j": 1.5991851823961252,
+          "Gamma_i": 1.0043593755706322,
+          "Gamma_j": 0.988785568360756,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "A-D",
+          "dt_ij_days": -151.89547090097932,
+          "dt_err_days": 98.94599162568689,
+          "mu_i": 0.8331795963035049,
+          "mu_j": 0.5676352213003701,
+          "Gamma_i": 1.0043593755706322,
+          "Gamma_j": 1.0135261865618959,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-D",
+          "dt_ij_days": -44.87952804653968,
+          "dt_err_days": 27.178298128944036,
+          "mu_i": 1.5991851823961252,
+          "mu_j": 0.5676352213003701,
+          "Gamma_i": 0.988785568360756,
+          "Gamma_j": 1.0135261865618959,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 40759.6533888077,
+        "B": 78233.11327854356,
+        "D": 27769.06080529389
+      },
+      "mu_norm": {
+        "A": 0.8331795963035049,
+        "B": 1.5991851823961252,
+        "D": 0.5676352213003701
+      }
+    },
+    {
+      "system": "HE0435",
+      "n_images": 4,
+      "n_pairs": 6,
+      "n_agree": 4,
+      "n_disagree": 2,
+      "p_binomial": 0.34375,
+      "z_binomial": 0.8164965809277261,
+      "kendall_tau": 0.3333333333333334,
+      "kendall_p": 0.75,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": -9.50727969323397,
+          "dt_err_days": 40.342786285151305,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 1.1591813199866818,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 0.9964716744334933,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "A-C",
+          "dt_ij_days": 1.2658456678669252,
+          "dt_err_days": 40.342786285151305,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 0.7732405567485345,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 1.0061426956328372,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "A-D",
+          "dt_ij_days": -12.516127650723066,
+          "dt_err_days": 39.91812537688655,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-C",
+          "dt_ij_days": 7.367476093922482,
+          "dt_err_days": 40.342786285151305,
+          "mu_i": 1.1591813199866818,
+          "mu_j": 0.7732405567485345,
+          "Gamma_i": 0.9964716744334933,
+          "Gamma_j": 1.0061426956328372,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "B-D",
+          "dt_ij_days": -6.563832914040454,
+          "dt_err_days": 39.068803560357054,
+          "mu_i": 1.1591813199866818,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 0.9964716744334933,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "C-D",
+          "dt_ij_days": -13.505243140296729,
+          "dt_err_days": 39.4934644686218,
+          "mu_i": 0.7732405567485345,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 1.0061426956328372,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 22022.036935270695,
+        "B": 15828.886134497534,
+        "C": 10558.776712765399,
+        "D": 6211.215380865996
+      },
+      "mu_norm": {
+        "A": 1.6127182687724149,
+        "B": 1.1591813199866818,
+        "C": 0.7732405567485345,
+        "D": 0.454859854492369
+      }
+    },
+    {
+      "system": "HS2209",
+      "n_images": 2,
+      "n_pairs": 1,
+      "n_agree": 0,
+      "n_disagree": 1,
+      "p_binomial": 1.0,
+      "z_binomial": -1.0,
+      "kendall_tau": null,
+      "kendall_p": null,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": 53.10215350688855,
+          "dt_err_days": 55.63057898268232,
+          "mu_i": 1.099292273545409,
+          "mu_j": 0.9007077264545909,
+          "Gamma_i": 0.9977387753469337,
+          "Gamma_j": 1.0024978861475489,
+          "agrees_with_tep": -1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 441093.57161612593,
+        "B": 361411.0620124219
+      },
+      "mu_norm": {
+        "A": 1.099292273545409,
+        "B": 0.9007077264545909
+      }
+    },
+    {
+      "system": "J1001",
+      "n_images": 2,
+      "n_pairs": 1,
+      "n_agree": 1,
+      "n_disagree": 0,
+      "p_binomial": 0.5,
+      "z_binomial": 1.0,
+      "kendall_tau": null,
+      "kendall_p": null,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": -79.03710605562112,
+          "dt_err_days": 81.95955529509686,
+          "mu_i": 1.1920103229152872,
+          "mu_j": 0.8079896770847129,
+          "Gamma_i": 0.9958045990952887,
+          "Gamma_j": 1.0050926803266529,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 104868.92768551632,
+        "B": 71084.12518577004
+      },
+      "mu_norm": {
+        "A": 1.1920103229152872,
+        "B": 0.8079896770847129
+      }
+    },
+    {
+      "system": "J1206",
+      "n_images": 2,
+      "n_pairs": 1,
+      "n_agree": 1,
+      "n_disagree": 0,
+      "p_binomial": 0.5,
+      "z_binomial": 1.0,
+      "kendall_tau": null,
+      "kendall_p": null,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": -103.71176939056238,
+          "dt_err_days": 57.32922261574133,
+          "mu_i": 1.136759437205551,
+          "mu_j": 0.8632405627944493,
+          "Gamma_i": 0.9969382287413299,
+          "Gamma_j": 1.0035127488434772,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 47033.72181267593,
+        "B": 35716.80617642439
+      },
+      "mu_norm": {
+        "A": 1.136759437205551,
+        "B": 0.8632405627944493
+      }
+    },
+    {
+      "system": "PG1115",
+      "n_images": 3,
+      "n_pairs": 3,
+      "n_agree": 2,
+      "n_disagree": 1,
+      "p_binomial": 0.5,
+      "z_binomial": 0.5773502691896258,
+      "kendall_tau": 0.33333333333333337,
+      "kendall_p": 1.0,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": -6.784243198362086,
+          "dt_err_days": 47.562021725652066,
+          "mu_i": 2.454655776427864,
+          "mu_j": 0.22969950042101744,
+          "Gamma_i": 0.9785505170912403,
+          "Gamma_j": 1.0351361972148818,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "A-C",
+          "dt_ij_days": 9.776125675146329,
+          "dt_err_days": 47.13736081738731,
+          "mu_i": 2.454655776427864,
+          "mu_j": 0.31564472315111863,
+          "Gamma_i": 0.9785505170912403,
+          "Gamma_j": 1.0275440806670726,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "B-C",
+          "dt_ij_days": 16.32545468274567,
+          "dt_err_days": 42.89075173473981,
+          "mu_i": 0.22969950042101744,
+          "mu_j": 0.31564472315111863,
+          "Gamma_i": 1.0351361972148818,
+          "Gamma_j": 1.0275440806670726,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 1400160.737362171,
+        "B": 131022.9421859084,
+        "C": 180046.97544797946
+      },
+      "mu_norm": {
+        "A": 2.454655776427864,
+        "B": 0.22969950042101744,
+        "C": 0.31564472315111863
+      }
+    },
+    {
+      "system": "RXJ1131",
+      "n_images": 4,
+      "n_pairs": 6,
+      "n_agree": 5,
+      "n_disagree": 1,
+      "p_binomial": 0.109375,
+      "z_binomial": 1.6329931618554523,
+      "kendall_tau": 0.6666666666666669,
+      "kendall_p": 0.3333333333333333,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": 1.7557262784648344,
+          "dt_err_days": 39.91812537688655,
+          "mu_i": 2.1149773162055445,
+          "mu_j": 1.2189199460983269,
+          "Gamma_i": 0.9821081857414602,
+          "Gamma_j": 0.9952713648915774,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "A-C",
+          "dt_ij_days": -1.1327675667034562,
+          "dt_err_days": 41.61676900994556,
+          "mu_i": 2.1149773162055445,
+          "mu_j": 0.4533069256987482,
+          "Gamma_i": 0.9821081857414602,
+          "Gamma_j": 1.0188984205116938,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "A-D",
+          "dt_ij_days": -86.97655103998306,
+          "dt_err_days": 43.31541264300456,
+          "mu_i": 2.1149773162055445,
+          "mu_j": 0.21279581199738024,
+          "Gamma_i": 0.9821081857414602,
+          "Gamma_j": 1.0369620307967773,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-C",
+          "dt_ij_days": -3.540011297332401,
+          "dt_err_days": 40.767447193416054,
+          "mu_i": 1.2189199460983269,
+          "mu_j": 0.4533069256987482,
+          "Gamma_i": 0.9952713648915774,
+          "Gamma_j": 1.0188984205116938,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-D",
+          "dt_ij_days": -87.90089029917351,
+          "dt_err_days": 37.7948208355628,
+          "mu_i": 1.2189199460983269,
+          "mu_j": 0.21279581199738024,
+          "Gamma_i": 0.9952713648915774,
+          "Gamma_j": 1.0369620307967773,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "C-D",
+          "dt_ij_days": -80.8619234484689,
+          "dt_err_days": 41.61676900994556,
+          "mu_i": 0.4533069256987482,
+          "mu_j": 0.21279581199738024,
+          "Gamma_i": 1.0188984205116938,
+          "Gamma_j": 1.0369620307967773,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 189759.21634153635,
+        "B": 109363.48677708805,
+        "C": 40671.43714671676,
+        "D": 19092.387523961243
+      },
+      "mu_norm": {
+        "A": 2.1149773162055445,
+        "B": 1.2189199460983269,
+        "C": 0.4533069256987482,
+        "D": 0.21279581199738024
+      }
+    },
+    {
+      "system": "WFI2033",
+      "n_images": 3,
+      "n_pairs": 3,
+      "n_agree": 1,
+      "n_disagree": 2,
+      "p_binomial": 0.875,
+      "z_binomial": -0.5773502691896258,
+      "kendall_tau": 0.33333333333333337,
+      "kendall_p": 1.0,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": 2.6596205766889524e-05,
+          "dt_err_days": 5.095930899177007,
+          "mu_i": 1.659808183987502,
+          "mu_j": 0.711153974214689,
+          "Gamma_i": 0.9878968154106299,
+          "Gamma_j": 1.0081419997233403,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "A-C",
+          "dt_ij_days": -0.0008808386274573667,
+          "dt_err_days": 5.095930899177007,
+          "mu_i": 1.659808183987502,
+          "mu_j": 0.6290378417978087,
+          "Gamma_i": 0.9878968154106299,
+          "Gamma_j": 1.0110727775061865,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-C",
+          "dt_ij_days": 0.0007889739599094809,
+          "dt_err_days": 6.369913623971258,
+          "mu_i": 0.711153974214689,
+          "mu_j": 0.6290378417978087,
+          "Gamma_i": 1.0081419997233403,
+          "Gamma_j": 1.0110727775061865,
+          "agrees_with_tep": -1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 75098.51229590672,
+        "B": 32176.371939883684,
+        "C": 28461.00323674454
+      },
+      "mu_norm": {
+        "A": 1.659808183987502,
+        "B": 0.711153974214689,
+        "C": 0.6290378417978087
+      }
+    },
+    {
+      "system": "HE0435_R",
+      "n_images": 4,
+      "n_pairs": 6,
+      "n_agree": 5,
+      "n_disagree": 1,
+      "p_binomial": 0.109375,
+      "z_binomial": 1.6329931618554523,
+      "kendall_tau": 0.6666666666666669,
+      "kendall_p": 0.3333333333333333,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": -7.705267280935768,
+          "dt_err_days": 32.6988899363858,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 1.1591813199866818,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 0.9964716744334933,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "A-C",
+          "dt_ij_days": -2.202690885443405,
+          "dt_err_days": 50.53464808350532,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 0.7732405567485345,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 1.0061426956328372,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "A-D",
+          "dt_ij_days": -11.318172447876272,
+          "dt_err_days": 69.64438895541909,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-C",
+          "dt_ij_days": 8.034553738357449,
+          "dt_err_days": 47.562021725652066,
+          "mu_i": 1.1591813199866818,
+          "mu_j": 0.7732405567485345,
+          "Gamma_i": 0.9964716744334933,
+          "Gamma_j": 1.0061426956328372,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "B-D",
+          "dt_ij_days": -13.151234307352293,
+          "dt_err_days": 59.87718806532983,
+          "mu_i": 1.1591813199866818,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 0.9964716744334933,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "C-D",
+          "dt_ij_days": -1.871217749388764,
+          "dt_err_days": 79.41158984550836,
+          "mu_i": 0.7732405567485345,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 1.0061426956328372,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 22022.036935270695,
+        "B": 15828.886134497534,
+        "C": 10558.776712765399,
+        "D": 6211.215380865996
+      },
+      "mu_norm": {
+        "A": 1.6127182687724149,
+        "B": 1.1591813199866818,
+        "C": 0.7732405567485345,
+        "D": 0.454859854492369
+      }
+    },
+    {
+      "system": "HE0435_V",
+      "n_images": 4,
+      "n_pairs": 6,
+      "n_agree": 5,
+      "n_disagree": 1,
+      "p_binomial": 0.109375,
+      "z_binomial": 1.6329931618554523,
+      "kendall_tau": 0.3333333333333334,
+      "kendall_p": 0.75,
+      "pairs": [
+        {
+          "pair": "A-B",
+          "dt_ij_days": 62.563092351370784,
+          "dt_err_days": 32.6988899363858,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 1.1591813199866818,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 0.9964716744334933,
+          "agrees_with_tep": -1
+        },
+        {
+          "pair": "A-C",
+          "dt_ij_days": -140.96291669987423,
+          "dt_err_days": 42.89075173473981,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 0.7732405567485345,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 1.0061426956328372,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "A-D",
+          "dt_ij_days": -7.561318890137892,
+          "dt_err_days": 35.2468553859743,
+          "mu_i": 1.6127182687724149,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 0.9885842821899046,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-C",
+          "dt_ij_days": -141.2667556055794,
+          "dt_err_days": 50.959308991770065,
+          "mu_i": 1.1591813199866818,
+          "mu_j": 0.7732405567485345,
+          "Gamma_i": 0.9964716744334933,
+          "Gamma_j": 1.0061426956328372,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "B-D",
+          "dt_ij_days": -141.25060804374695,
+          "dt_err_days": 48.41134354218156,
+          "mu_i": 1.1591813199866818,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 0.9964716744334933,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        },
+        {
+          "pair": "C-D",
+          "dt_ij_days": -0.1624082254979845,
+          "dt_err_days": 41.19210810168081,
+          "mu_i": 0.7732405567485345,
+          "mu_j": 0.454859854492369,
+          "Gamma_i": 1.0061426956328372,
+          "Gamma_j": 1.018816731554809,
+          "agrees_with_tep": 1
+        }
+      ],
+      "mean_fluxes": {
+        "A": 22022.036935270695,
+        "B": 15828.886134497534,
+        "C": 10558.776712765399,
+        "D": 6211.215380865996
+      },
+      "mu_norm": {
+        "A": 1.6127182687724149,
+        "B": 1.1591813199866818,
+        "C": 0.7732405567485345,
+        "D": 0.454859854492369
+      }
+    }
+  ],
+  "all_pair_results": [
+    {
+      "system": "DESJ0408",
+      "pair": "A-B",
+      "dt_ij_days": -114.14928064076116,
+      "mu_i": 0.8331795963035049,
+      "mu_j": 1.5991851823961252,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "DESJ0408",
+      "pair": "A-D",
+      "dt_ij_days": -151.89547090097932,
+      "mu_i": 0.8331795963035049,
+      "mu_j": 0.5676352213003701,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "DESJ0408",
+      "pair": "B-D",
+      "dt_ij_days": -44.87952804653968,
+      "mu_i": 1.5991851823961252,
+      "mu_j": 0.5676352213003701,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435",
+      "pair": "A-B",
+      "dt_ij_days": -9.50727969323397,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 1.1591813199866818,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435",
+      "pair": "A-C",
+      "dt_ij_days": 1.2658456678669252,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 0.7732405567485345,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "HE0435",
+      "pair": "A-D",
+      "dt_ij_days": -12.516127650723066,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435",
+      "pair": "B-C",
+      "dt_ij_days": 7.367476093922482,
+      "mu_i": 1.1591813199866818,
+      "mu_j": 0.7732405567485345,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "HE0435",
+      "pair": "B-D",
+      "dt_ij_days": -6.563832914040454,
+      "mu_i": 1.1591813199866818,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435",
+      "pair": "C-D",
+      "dt_ij_days": -13.505243140296729,
+      "mu_i": 0.7732405567485345,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HS2209",
+      "pair": "A-B",
+      "dt_ij_days": 53.10215350688855,
+      "mu_i": 1.099292273545409,
+      "mu_j": 0.9007077264545909,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "J1001",
+      "pair": "A-B",
+      "dt_ij_days": -79.03710605562112,
+      "mu_i": 1.1920103229152872,
+      "mu_j": 0.8079896770847129,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "J1206",
+      "pair": "A-B",
+      "dt_ij_days": -103.71176939056238,
+      "mu_i": 1.136759437205551,
+      "mu_j": 0.8632405627944493,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "PG1115",
+      "pair": "A-B",
+      "dt_ij_days": -6.784243198362086,
+      "mu_i": 2.454655776427864,
+      "mu_j": 0.22969950042101744,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "PG1115",
+      "pair": "A-C",
+      "dt_ij_days": 9.776125675146329,
+      "mu_i": 2.454655776427864,
+      "mu_j": 0.31564472315111863,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "PG1115",
+      "pair": "B-C",
+      "dt_ij_days": 16.32545468274567,
+      "mu_i": 0.22969950042101744,
+      "mu_j": 0.31564472315111863,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "RXJ1131",
+      "pair": "A-B",
+      "dt_ij_days": 1.7557262784648344,
+      "mu_i": 2.1149773162055445,
+      "mu_j": 1.2189199460983269,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "RXJ1131",
+      "pair": "A-C",
+      "dt_ij_days": -1.1327675667034562,
+      "mu_i": 2.1149773162055445,
+      "mu_j": 0.4533069256987482,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "RXJ1131",
+      "pair": "A-D",
+      "dt_ij_days": -86.97655103998306,
+      "mu_i": 2.1149773162055445,
+      "mu_j": 0.21279581199738024,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "RXJ1131",
+      "pair": "B-C",
+      "dt_ij_days": -3.540011297332401,
+      "mu_i": 1.2189199460983269,
+      "mu_j": 0.4533069256987482,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "RXJ1131",
+      "pair": "B-D",
+      "dt_ij_days": -87.90089029917351,
+      "mu_i": 1.2189199460983269,
+      "mu_j": 0.21279581199738024,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "RXJ1131",
+      "pair": "C-D",
+      "dt_ij_days": -80.8619234484689,
+      "mu_i": 0.4533069256987482,
+      "mu_j": 0.21279581199738024,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "WFI2033",
+      "pair": "A-B",
+      "dt_ij_days": 2.6596205766889524e-05,
+      "mu_i": 1.659808183987502,
+      "mu_j": 0.711153974214689,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "WFI2033",
+      "pair": "A-C",
+      "dt_ij_days": -0.0008808386274573667,
+      "mu_i": 1.659808183987502,
+      "mu_j": 0.6290378417978087,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "WFI2033",
+      "pair": "B-C",
+      "dt_ij_days": 0.0007889739599094809,
+      "mu_i": 0.711153974214689,
+      "mu_j": 0.6290378417978087,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "HE0435_R",
+      "pair": "A-B",
+      "dt_ij_days": -7.705267280935768,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 1.1591813199866818,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_R",
+      "pair": "A-C",
+      "dt_ij_days": -2.202690885443405,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 0.7732405567485345,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_R",
+      "pair": "A-D",
+      "dt_ij_days": -11.318172447876272,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_R",
+      "pair": "B-C",
+      "dt_ij_days": 8.034553738357449,
+      "mu_i": 1.1591813199866818,
+      "mu_j": 0.7732405567485345,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "HE0435_R",
+      "pair": "B-D",
+      "dt_ij_days": -13.151234307352293,
+      "mu_i": 1.1591813199866818,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_R",
+      "pair": "C-D",
+      "dt_ij_days": -1.871217749388764,
+      "mu_i": 0.7732405567485345,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_V",
+      "pair": "A-B",
+      "dt_ij_days": 62.563092351370784,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 1.1591813199866818,
+      "agrees_with_tep": -1
+    },
+    {
+      "system": "HE0435_V",
+      "pair": "A-C",
+      "dt_ij_days": -140.96291669987423,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 0.7732405567485345,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_V",
+      "pair": "A-D",
+      "dt_ij_days": -7.561318890137892,
+      "mu_i": 1.6127182687724149,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_V",
+      "pair": "B-C",
+      "dt_ij_days": -141.2667556055794,
+      "mu_i": 1.1591813199866818,
+      "mu_j": 0.7732405567485345,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_V",
+      "pair": "B-D",
+      "dt_ij_days": -141.25060804374695,
+      "mu_i": 1.1591813199866818,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    },
+    {
+      "system": "HE0435_V",
+      "pair": "C-D",
+      "dt_ij_days": -0.1624082254979845,
+      "mu_i": 0.7732405567485345,
+      "mu_j": 0.454859854492369,
+      "agrees_with_tep": 1
+    }
+  ]
+}

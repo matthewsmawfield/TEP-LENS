@@ -1,15 +1,15 @@
 
-[23:40:39] [INFO] ======================================================================
-[23:40:39] [INFO] STEP 09: Precision Roadmap Simulation
-[23:40:39] [INFO] ======================================================================
-[23:40:39] [INFO] Thresholds for N=8 independent models:
-[23:40:39] [INFO]   3-sigma evidence requires per-model err < 13.7 d
-[23:40:39] [INFO]   5-sigma discovery requires per-model err < 8.2 d
-[23:40:39] [INFO] Falsification thresholds (if GR is true, exclude TEP):
-[23:40:39] [INFO]   Same sigma thresholds apply (symmetric for single test)
-[23:40:39] [INFO]   At current precision (sigma_R=11.6 d):
-[23:40:39] [INFO]     TEP excluded at 2-sigma if |R_obs - 14.5| > 23.2 d
-[23:40:39] [INFO]     TEP excluded at 3-sigma if |R_obs - 14.5| > 34.8 d
-[23:40:41] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_09_precision_roadmap.png
-[23:40:41] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_09_precision_roadmap.json
-[23:40:41] [INFO] Step 09 complete.
+[18:49:46] [INFO] ======================================================================
+[18:49:46] [INFO] STEP 09: Precision Roadmap Simulation
+[18:49:46] [INFO] ======================================================================
+[18:49:46] [INFO] Thresholds for N=8 independent models:
+[18:49:46] [INFO]   3-sigma evidence requires per-model err < 13.7 d
+[18:49:46] [INFO]   5-sigma discovery requires per-model err < 8.2 d
+[18:49:46] [INFO] Falsification thresholds (if GR is true, exclude TEP):
+[18:49:46] [INFO]   Same sigma thresholds apply (symmetric for single test)
+[18:49:46] [INFO]   At current precision (sigma_R=11.6 d):
+[18:49:46] [INFO]     TEP excluded at 2-sigma if |R_obs - 14.5| > 23.1 d
+[18:49:46] [INFO]     TEP excluded at 3-sigma if |R_obs - 14.5| > 34.7 d
+[18:49:46] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_09_precision_roadmap.png
+[18:49:46] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_09_precision_roadmap.json
+[18:49:46] [INFO] Step 09 complete.

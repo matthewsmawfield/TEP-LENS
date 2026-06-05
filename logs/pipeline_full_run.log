@@ -1,0 +1,1529 @@
+
+[03:39:59] [INFO] ======================================================================
+[03:39:59] [INFO] TEP-LENS PIPELINE INITIATED
+[03:39:59] [INFO] ======================================================================
+
+======================================================================
+RUNNING: step_00_fetch_literature_and_cross_paper_data.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_00_fetch_literature_and_cross_paper_data.log
+======================================================================
+
+
+[03:39:59] [INFO] ======================================================================
+[03:39:59] [INFO] STEP 00: Fetch Literature & Cross-Paper TEP Data
+[03:39:59] [INFO] ======================================================================
+[03:39:59] [INFO] Querying arXiv API for latest lensed supernova papers...
+[03:40:01] [INFO] Found 50 recent arXiv entries
+[03:40:01] [INFO] Saved TEP cross-paper coefficients to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_00_tep_response_coefficients.json
+[03:40:01] [INFO] Saved arXiv registry to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/data/interim/external/arxiv_lensed_sn_registry.json
+[03:40:01] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_00_literature_and_tep_data.json
+[03:40:01] [INFO] Step 00 complete.
+
+======================================================================
+RUNNING: step_01_fetch_snh0pe_data.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_01_fetch_snh0pe_data.log
+======================================================================
+
+
+[03:40:01] [INFO] ======================================================================
+[03:40:01] [INFO] STEP 01: Compiling Lensed Supernova Literature Data
+[03:40:01] [INFO] ======================================================================
+[03:40:01] [INFO] Loading SN Refsdal data (Kelly et al. 2023)...
+[03:40:01] [INFO] Loading SN H0pe data (Pierel et al. 2024)...
+[03:40:01] [INFO] Loading SN Encore data (Pierel et al. 2026)...
+[03:40:01] [INFO] Loading SN 2025wny discovery data (Johansson et al. 2025)...
+[03:40:01] [INFO] Loading SN Eos discovery data (Coulter et al. 2026)...
+[03:40:01] [INFO] Saved raw catalog to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/data/raw/sn_lensing/lensed_sn_catalog.json
+[03:40:01] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_01_lensed_sn_catalog.json
+[03:40:01] [INFO] Step 01 complete.
+
+======================================================================
+RUNNING: step_02_gr_closure.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_02_gr_closure.log
+======================================================================
+
+
+[03:40:02] [INFO] ======================================================================
+[03:40:02] [INFO] STEP 02: GR Algebraic Loop Sum — SN Refsdal
+[03:40:02] [INFO] ======================================================================
+[03:40:02] [INFO] Extracting SN Refsdal time delays (Kelly et al. 2023, ApJ 948, 93)...
+[03:40:02] [INFO]   dt_S2_S1 = +9.9 ± 4.0 days
+[03:40:02] [INFO]   dt_S3_S1 = +9.0 ± 4.2 days
+[03:40:02] [INFO]   dt_S4_S1 = +20.3 ± 6.4 days
+[03:40:02] [INFO]   dt_SX_S1 = +376.0 ± 5.6 days
+[03:40:02] [INFO] Computing GR algebraic loop sums for all loops...
+[03:40:02] [INFO]   Loop S1-S2-S3: L_GR = +0.0000 days (identically zero by arithmetic)
+[03:40:02] [INFO]   Loop S1-S2-S4: L_GR = +0.0000 days (identically zero by arithmetic)
+[03:40:02] [INFO]   Loop S1-S3-S4: L_GR = +0.0000 days (identically zero by arithmetic)
+[03:40:02] [INFO]   Loop S1-S2-SX: L_GR = +0.0000 days (identically zero by arithmetic)
+[03:40:02] [INFO]   Loop S1-S4-SX: L_GR = +0.0000 days (identically zero by arithmetic)
+[03:40:02] [INFO] GR null test: all loops confirm L_GR = 0.000 days (exact).
+[03:40:02] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_02_gr_closure.json
+[03:40:02] [INFO] Step 02 complete.
+
+======================================================================
+RUNNING: step_03_tep_closure.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_03_tep_closure.log
+======================================================================
+
+
+[03:40:02] [INFO] ======================================================================
+[03:40:02] [INFO] STEP 03: Proxy-Model Predicted GR Discrepancy — SN Refsdal
+[03:40:02] [INFO] ======================================================================
+[03:40:02] [INFO] Proxy-model coupling alpha = -0.055 (Expansion/Screening)
+[03:40:02] [INFO] Temporal shear factors Gamma_t per image:
+[03:40:02] [INFO]   S1: mu_rel=1.158, mu_norm=1.181, Gamma=0.99602
+[03:40:02] [INFO]   S2: mu_rel=0.887, mu_norm=0.905, Gamma=1.00239
+[03:40:02] [INFO]   S3: mu_rel=0.716, mu_norm=0.730, Gamma=1.00750
+[03:40:02] [INFO]   S4: mu_rel=1.793, mu_norm=1.829, Gamma=0.98558
+[03:40:02] [INFO]   SX: mu_rel=0.347, mu_norm=0.354, Gamma=1.02480
+[03:40:02] [INFO] Computing proxy-model predicted GR discrepancies...
+[03:40:02] [INFO]   Loop S1-S2-S3: d_proxy_GR = -0.109 ± 0.033 days (SNR = 3.27)
+[03:40:02] [INFO]   Loop S1-S2-S4: d_proxy_GR = +0.278 ± 0.111 days (SNR = 2.52)
+[03:40:02] [INFO]   Loop S1-S3-S4: d_proxy_GR = +0.342 ± 0.148 days (SNR = 2.30)
+[03:40:02] [INFO]   Loop S1-S2-SX: d_proxy_GR = -8.492 ± 0.128 days (SNR = 66.29)
+[03:40:02] [INFO]   Loop S1-S4-SX: d_proxy_GR = -14.538 ± 0.230 days (SNR = 63.31)
+[03:40:02] [INFO] Best loop by SNR: S1_S2_SX (SNR=66.29)
+[03:40:02] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_03_tep_closure.json
+[03:40:02] [INFO] Step 03 complete.
+
+======================================================================
+RUNNING: step_04_plot_closure.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_04_plot_closure.log
+======================================================================
+
+
+[03:40:04] [INFO] ======================================================================
+[03:40:04] [INFO] STEP 04: Generating Predicted GR Discrepancy Figures — SN Refsdal
+[03:40:04] [INFO] ======================================================================
+[03:40:05] [INFO] Figure 1 saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_04_gr_discrepancy.png
+[03:40:05] [INFO] Figure 2 saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_04_baseline_vs_residual.png
+[03:40:05] [INFO] Step 04 complete.
+
+======================================================================
+RUNNING: step_05_tdcosmo_shear.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_05_tdcosmo_shear.log
+======================================================================
+
+
+[03:40:05] [INFO] ======================================================================
+[03:40:05] [INFO] STEP 05: TDCOSMO Quad-Lens Temporal Shear Test
+[03:40:05] [INFO] ======================================================================
+[03:40:05] [INFO] TEP coupling alpha = -0.055 (empirical lensing-sector coupling)
+[03:40:05] [INFO] Processing HE0435-1223...
+[03:40:05] [INFO]   HE0435-1223 dt_BA: dt=-9.0±0.9d, log(F_i/F_A)=-0.133, TEP_shift=+0.066d
+[03:40:05] [INFO]   HE0435-1223 dt_CA: dt=-3.0±1.4d, log(F_i/F_A)=-0.210, TEP_shift=+0.035d
+[03:40:05] [INFO]   HE0435-1223 dt_DA: dt=-13.8±0.8d, log(F_i/F_A)=-0.252, TEP_shift=+0.191d
+[03:40:05] [INFO] Processing WFI2033-4723...
+[03:40:05] [INFO]   WFI2033-4723 dt_BA: dt=-36.2±0.8d, log(F_i/F_A)=-0.182, TEP_shift=+0.362d
+[03:40:05] [INFO]   WFI2033-4723 dt_CA: dt=+22.7±1.4d, log(F_i/F_A)=-0.373, TEP_shift=+0.465d
+[03:40:05] [INFO] Processing DES0408-5354...
+[03:40:05] [INFO]   DES0408-5354 dt_BA: dt=-112.1±2.1d, log(F_i/F_A)=-0.146, TEP_shift=+0.898d
+[03:40:05] [INFO]   DES0408-5354 dt_CA: dt=-155.5±12.8d, log(F_i/F_A)=-0.606, TEP_shift=+5.179d
+[03:40:05] [INFO]   DES0408-5354 dt_DA: dt=-128.4±5.1d, log(F_i/F_A)=-0.719, TEP_shift=+5.077d
+[03:40:05] [INFO] Processing RXJ1131-1231...
+[03:40:05] [INFO]   RXJ1131-1231 dt_BA: dt=+0.7±1.4d, log(F_i/F_A)=-0.022, TEP_shift=+0.001d
+[03:40:05] [INFO]   RXJ1131-1231 dt_CA: dt=-0.4±2.0d, log(F_i/F_A)=-0.276, TEP_shift=+0.006d
+[03:40:05] [INFO]   RXJ1131-1231 dt_DA: dt=+91.4±1.5d, log(F_i/F_A)=-0.959, TEP_shift=+4.819d
+[03:40:05] [INFO] Processing PG1115+080...
+[03:40:05] [INFO]   PG1115+080 dt_A2A1: dt=-14.3±3.4d, log(F_i/F_A)=-0.796, TEP_shift=+0.626d
+[03:40:05] [INFO]   PG1115+080 dt_CA1: dt=+9.4±3.4d, log(F_i/F_A)=-0.770, TEP_shift=+0.398d
+[03:40:05] [INFO] Processing B1608+656...
+[03:40:05] [INFO]   B1608+656 dt_BA: dt=+31.5±1.5d, log(F_i/F_A)=-0.301, TEP_shift=+0.522d
+[03:40:05] [INFO]   B1608+656 dt_CA: dt=+36.0±1.5d, log(F_i/F_A)=-0.276, TEP_shift=+0.546d
+[03:40:05] [INFO]   B1608+656 dt_DA: dt=+77.0±1.5d, log(F_i/F_A)=-0.796, TEP_shift=+3.371d
+[03:40:05] [INFO] Processing J1206+4332...
+[03:40:05] [INFO]   J1206+4332 dt_BA: dt=+111.3±3.0d, log(F_i/F_A)=-0.328, TEP_shift=+2.007d
+[03:40:05] [INFO] Processing SN Encore...
+[03:40:05] [INFO]   SN Encore dt_1b1a: dt=-37.3±13.1d, log(F_i/F_A)=+0.301, TEP_shift=-0.618d
+[03:40:07] [INFO] Spearman rho(log_flux_ratio, TEP_shift) = -0.733, p = 0.0005
+[03:40:07] [INFO] Note: by construction sign(rho) = sign(alpha_lens) since TEP_shift = alpha_lens*log(F)*|dt|
+[03:40:07] [INFO] With alpha_lens=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).
+[03:40:07] [INFO] The physically meaningful test is the magnitude of predicted shifts vs measurement errors.
+[03:40:07] [INFO] Pairs with |TEP_shift| > 1σ_meas: 16/18
+[03:40:07] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_05_tdcosmo_shear.png
+[03:40:07] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_05_tdcosmo_shear.json
+[03:40:07] [INFO] Step 05 complete.
+
+======================================================================
+RUNNING: step_06_alpha_sensitivity.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_06_alpha_sensitivity.log
+======================================================================
+
+
+[03:40:08] [INFO] ======================================================================
+[03:40:08] [INFO] STEP 06: Alpha Sensitivity Scan — SN Refsdal
+[03:40:08] [INFO] ======================================================================
+[03:40:08] [INFO] Scanning 300 alpha values from -0.150 to 0.150...
+[03:40:08] [INFO] SNR is alpha-independent for all loops (R and R_err both ∝ alpha):
+[03:40:08] [INFO] Detection thresholds per loop:
+[03:40:08] [INFO]   S1–S2–S3: 3σ → holds at all |alpha| > 0 (SNR=3.27 is constant)
+[03:40:08] [INFO]   S1–S2–S3: 5σ → never reached (SNR=3.27 < 5, constant)
+[03:40:08] [INFO]   S1–S2–S4: 3σ → never reached (SNR=2.52 < 3, constant)
+[03:40:08] [INFO]   S1–S2–S4: 5σ → never reached (SNR=2.52 < 5, constant)
+[03:40:08] [INFO]   S1–S3–S4: 3σ → never reached (SNR=2.30 < 3, constant)
+[03:40:08] [INFO]   S1–S3–S4: 5σ → never reached (SNR=2.30 < 5, constant)
+[03:40:08] [INFO]   S1–S2–SX: 3σ → holds at all |alpha| > 0 (SNR=66.29 is constant)
+[03:40:08] [INFO]   S1–S2–SX: 5σ → holds at all |alpha| > 0 (SNR=66.29 is constant)
+[03:40:08] [INFO]   S1–S4–SX: 3σ → holds at all |alpha| > 0 (SNR=63.31 is constant)
+[03:40:08] [INFO]   S1–S4–SX: 5σ → holds at all |alpha| > 0 (SNR=63.31 is constant)
+[03:40:08] [INFO] 
+At reference alpha = -0.055:
+[03:40:08] [INFO]   S1–S2–S3: R_TEP = -0.109 d, SNR = 3.3
+[03:40:08] [INFO]   S1–S2–S4: R_TEP = +0.278 d, SNR = 2.5
+[03:40:08] [INFO]   S1–S3–S4: R_TEP = +0.342 d, SNR = 2.3
+[03:40:08] [INFO]   S1–S2–SX: R_TEP = -8.492 d, SNR = 66.3
+[03:40:08] [INFO]   S1–S4–SX: R_TEP = -14.538 d, SNR = 63.3
+[03:40:09] [INFO] Figure 1 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_rtep_vs_alpha.png
+[03:40:09] [INFO] Figure 2 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_snr_vs_alpha.png
+[03:40:10] [INFO] Figure 3 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_loop_snr_intrinsic.png
+[03:40:10] [INFO] Figure 4 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_rtep_loglog.png
+[03:40:10] [INFO] Figure 5 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_rtep_symmetric.png
+[03:40:10] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_06_alpha_sensitivity.json
+[03:40:10] [INFO] Step 06 complete.
+
+======================================================================
+RUNNING: step_07_observed_vs_predicted.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_07_observed_vs_predicted.log
+======================================================================
+
+
+[03:40:12] [INFO] ======================================================================
+[03:40:12] [INFO] STEP 07: Observed vs. Blind-Predicted Delay — SN Refsdal SX
+[03:40:12] [INFO] ======================================================================
+[03:40:12] [INFO] Observed Delta_t(SX, S1) = 376.0 +/- 5.6 d (Kelly+2023, independent photometric light-curve fit)
+[03:40:12] [INFO] Loaded 7 blind + 1 post-blind precision model (8 total; Treu+2016, Kelly+2023 Sci Table S4, Grillo+2024)
+[03:40:12] [INFO] TEP predicted GR discrepancy from Step 03: -14.538 d (alpha=-0.055)
+[03:40:12] [INFO] TEP Predicted Residual (Obs-Model): 14.538 d
+[03:40:12] [INFO] Sensitivity: -264.3 d per unit alpha
+[03:40:12] [INFO] 
+Per-model observed - predicted residuals:
+[03:40:12] [INFO] Model          Pred   Delta  sigma_m  sigma_tot      z
+[03:40:12] [INFO] Oguri-a       324.0    +52.0      59.0        59.3  +0.877
+[03:40:12] [INFO] Sharon        345.0    +31.0      59.5        59.8  +0.519
+[03:40:12] [INFO] Diego         376.0     +0.0      50.0        50.3  +0.000
+[03:40:12] [INFO] Grillo        361.0    +15.0      23.5        24.2  +0.621
+[03:40:12] [INFO] Kawamata      369.0     +7.0      48.5        48.8  +0.143
+[03:40:12] [INFO] Jauzac        359.0    +17.0      48.0        48.3  +0.352
+[03:40:12] [INFO] CATS          374.0     +2.0      46.0        46.3  +0.043
+[03:40:12] [INFO] Grillo+2024   362.0    +14.0      16.0        17.0  +0.826
+[03:40:12] [INFO] 
+Weighted mean residual R_obs = +14.61 +/- 11.57 d  (z = +1.26)
+[03:40:12] [INFO] Unweighted mean: +17.25 d, std = 16.00 d
+[03:40:12] [INFO] Models with positive residual: 7/8
+[03:40:12] [INFO] 
+TEP consistency test:
+[03:40:12] [INFO]   R_obs (weighted)  = +14.61 +/- 11.57 d
+[03:40:12] [INFO]   R_TEP_pred        = +14.538 d
+[03:40:12] [INFO]   Tension           = +0.01 sigma
+[03:40:12] [INFO]   Inferred alpha    = -0.0553 (if R_obs attributed entirely to TEP)
+[03:40:12] [INFO] 
+GR null test:
+[03:40:12] [INFO]   R_obs = +14.61 +/- 11.57 d
+[03:40:12] [INFO]   Tension with GR (R=0): +1.26 sigma
+[03:40:12] [INFO] 
+Bootstrap alpha inference (N=10000, resampling models with replacement):
+[03:40:12] [INFO]   Bootstrap mean alpha   = -0.0560 +/- 0.0108
+[03:40:12] [INFO]   Bootstrap median       = -0.0550
+[03:40:12] [INFO]   68% CI (16th-84th pct) = [-0.0642, -0.0475]
+[03:40:12] [INFO]   P(alpha < 0 | data)    = 1.000 (100.0%)
+[03:40:12] [INFO]   P(|alpha - alpha_ref| < 0.044) = 0.995
+[03:40:12] [INFO] 
+Binomial sign test (all 8 models):
+[03:40:12] [INFO]   Models with positive residual: 7/8
+[03:40:12] [INFO]   One-sided p-value (H0: p=0.5): p = 0.0352
+[03:40:12] [INFO]   Equivalent z (normal approx):  z = +2.12
+[03:40:12] [INFO]   Blind models only: 6/7 positive, p = 0.0625
+[03:40:12] [INFO]   Wilcoxon signed-rank (all 8, ties excluded): p = 0.007812
+[03:40:12] [INFO]   All 7 non-zero residuals positive: max Wilcoxon statistic (p=1/2^7=0.0078)
+[03:40:12] [INFO]   Wilcoxon signed-rank (blind 7 only, ties excluded): p = 0.015625
+[03:40:12] [INFO]   All 6 non-zero blind residuals positive: max Wilcoxon statistic (p=1/2^6=0.0156)
+[03:40:12] [INFO] 
+Chi-squared model comparison (8 models):
+[03:40:12] [INFO]   chi^2 under GR  (R=0):            2.253
+[03:40:12] [INFO]   chi^2 under TEP (R=14.5 d):  0.660
+[03:40:12] [INFO]   Delta chi^2 = chi^2_GR - chi^2_TEP = +1.593
+[03:40:12] [INFO]   TEP preferred over GR by Delta chi^2 = 1.59
+[03:40:12] [INFO]   p-value (chi^2, 1 dof): p = 0.2069
+[03:40:12] [INFO] 
+TEP-corrected consistency (Delta_t_corr = 361.5 d):
+[03:40:12] [INFO]   Weighted RMS before correction: 17.37 d
+[03:40:12] [INFO]   Weighted RMS after  correction: 9.40 d
+[03:40:12] [INFO]   Improvement: 45.9% reduction in wRMS
+[03:40:12] [INFO]   Models improved: 5/8
+[03:40:12] [INFO] Figure 1 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_observed_vs_predicted.png
+[03:40:12] [INFO] Figure 2 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_residuals.png
+[03:40:13] [INFO] Figure 2b saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_chi2_comparison.png
+[03:40:13] [INFO] Figure 3 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_alpha_inference.png
+[03:40:13] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_07_observed_vs_predicted.json
+[03:40:13] [INFO] Step 07 complete.
+
+======================================================================
+RUNNING: step_08_new_evidence.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_08_new_evidence.log
+======================================================================
+
+
+[03:40:15] [INFO] ======================================================================
+[03:40:15] [INFO] STEP 08: Extended Evidence Package
+[03:40:15] [INFO] ======================================================================
+[03:40:15] [INFO] 
+============================================================
+[03:40:15] [INFO] TEST A: Delay-Magnification Anticorrelation (SN Refsdal)
+[03:40:15] [INFO] ============================================================
+[03:40:15] [INFO]   Images: ['S1', 'S2', 'S3', 'S4', 'SX']
+[03:40:15] [INFO]   Delays (d):  [  0.    9.9   9.   20.3 376. ]
+[03:40:15] [INFO]   mu_norm:     [1.181 0.905 0.73  1.829 0.354]
+[03:40:15] [INFO]   1/mu_norm:   [0.846 1.105 1.369 0.547 2.825]
+[03:40:15] [INFO]   Spearman rho = 0.3000, p (one-sided) = 0.3119
+[03:40:15] [INFO]   Pearson  r   = 0.9318,   p (one-sided) = 0.0106
+[03:40:15] [INFO]   Linear fit: dt = -147.9 + 172.6 * (1/mu_norm)
+[03:40:15] [INFO]   slope = 172.6 ± 38.8 d  (t = 4.45)
+[03:40:18] [INFO] 
+  --- Robustness diagnostics ---
+[03:40:18] [INFO]   Leave-one-out Pearson r:
+[03:40:18] [INFO]     Excluding S1: r = 0.926
+[03:40:18] [INFO]     Excluding S2: r = 0.934
+[03:40:18] [INFO]     Excluding S3: r = 0.968
+[03:40:18] [INFO]     Excluding S4: r = 0.975
+[03:40:18] [INFO]     Excluding SX: r = -0.404
+[03:40:18] [INFO]   Cook's distance: {'S1': 0.0, 'S2': 0.053, 'S3': 0.278, 'S4': 0.643, 'SX': 2.235}
+[03:40:18] [INFO]   Std. residual:   {'S1': 0.04, 'S2': -0.7, 'S3': -1.67, 'S4': 1.79, 'SX': 2.22}
+[03:40:18] [INFO]   Theil-Sen slope: 27.8 [-67.7, 252.1] d
+[03:40:18] [INFO]   Bootstrap Pearson r (n=10000): 95% CI = [-1.000, 1.000]
+[03:40:18] [INFO]   Fraction of bootstrap draws with r > 0.8: 0.719
+[03:40:18] [INFO] 
+============================================================
+[03:40:18] [INFO] TEST B: Inner-Cross Arrival-Order Transparency Check
+[03:40:18] [INFO] ============================================================
+[03:40:18] [INFO]   All-5-image: Kendall tau=0.200, exact p=0.4083
+[03:40:18] [INFO]   Concordant pairs: 6/10  -- NOT significant
+[03:40:18] [INFO]   Exact rank match: False
+[03:40:18] [INFO]   NOTE: S4 is most magnified (mu_norm=1.83) but arrives 4th (20.3d).
+[03:40:18] [INFO]   NOTE: Inner-cross delay ordering dominated by geometric path length
+[03:40:18] [INFO]          differences (~10-20d), far exceeding TEP shift (~0.3d).
+[03:40:18] [INFO]   NOTE: This is EXPECTED under TEP, not a falsification.
+[03:40:18] [INFO]   NOTE: SX dominates: TEP shift for SX (~13d) >> inner-cross TEP shift (~0.3d).
+[03:40:18] [INFO]   TEP-induced delay shifts relative to S1:
+[03:40:18] [INFO]     S1: TEP_shift=+0.000d, meas_err=0.0d, signal/noise=0.000
+[03:40:18] [INFO]     S2: TEP_shift=+0.063d, meas_err=4.0d, signal/noise=0.016
+[03:40:18] [INFO]     S3: TEP_shift=+0.103d, meas_err=4.2d, signal/noise=0.025
+[03:40:18] [INFO]     S4: TEP_shift=-0.212d, meas_err=6.4d, signal/noise=0.033
+[03:40:18] [INFO]     SX: TEP_shift=+10.823d, meas_err=5.6d, signal/noise=1.933
+[03:40:18] [INFO] 
+============================================================
+[03:40:18] [INFO] TEST C: Alpha Inference Consistency (cross-model)
+[03:40:18] [INFO] ============================================================
+[03:40:18] [INFO]   Per-model alpha_inferred:
+[03:40:18] [INFO]     Oguri-a     : alpha = -0.1967 ± 0.2242
+[03:40:18] [INFO]     Sharon      : alpha = -0.1173 ± 0.2261
+[03:40:18] [INFO]     Diego       : alpha = -0.0000 ± 0.1903
+[03:40:18] [INFO]     Grillo      : alpha = -0.0567 ± 0.0914
+[03:40:18] [INFO]     Kawamata    : alpha = -0.0265 ± 0.1847
+[03:40:18] [INFO]     Jauzac      : alpha = -0.0643 ± 0.1828
+[03:40:18] [INFO]     CATS        : alpha = -0.0076 ± 0.1753
+[03:40:18] [INFO] 
+  Weighted mean alpha_inferred = -0.0573 ± 0.0599
+[03:40:18] [INFO]   z vs GR null (alpha=0):   z = -0.956, p = 0.1696
+[03:40:18] [INFO]   z vs TEP (alpha_lens≈-0.055): z = -0.038, p = 0.9700
+[03:40:18] [INFO]   Scatter chi^2 = 0.66 / 6 dof, p = 0.9954  (expected if noise-dominated: p ~ 0.5)
+[03:40:18] [INFO] 
+============================================================
+[03:40:18] [INFO] TEST D: SN H0pe Closure Sensitivity Analysis (prediction, not observation)
+[03:40:18] [INFO] ============================================================
+[03:40:18] [INFO]   SN H0pe: z_s=1.783, z_l=0.351
+[03:40:18] [INFO]   dt(A-B) = -116.6 ± 10.1 d
+[03:40:18] [INFO]   dt(C-B) = -48.6 ± 3.8 d
+[03:40:18] [INFO]   dt(A-C) = -68.0 ± 10.7 d  (derived)
+[03:40:18] [INFO]   A: mu=4.4, mu_norm=0.705
+[03:40:18] [INFO]   B: mu=8.0, mu_norm=1.273
+[03:40:18] [INFO]   C: mu=6.4, mu_norm=1.023
+[03:40:18] [INFO] 
+  Gamma per image:
+[03:40:18] [INFO]     A: Gamma_t = 1.00836
+[03:40:18] [INFO]     B: Gamma_t = 0.99424
+[03:40:18] [INFO]     C: Gamma_t = 0.99946
+[03:40:18] [INFO]   TEP closure residual R_TEP(A,B,C) = +1.2913 ± 0.0870 d
+[03:40:18] [INFO]   SNR = 14.84
+[03:40:18] [INFO]   Systematic error from mu uncertainty: 0.3678 d
+[03:40:18] [INFO]   Total error (stat + sys):             0.3779 d
+[03:40:18] [INFO]   SNR (including systematics):          3.42
+[03:40:18] [INFO]   p-value (one-sided, H0: R_TEP=0): p = 0.0003
+[03:40:18] [INFO]   GR closure residual (sanity check) = 0.000000 d  (must be 0)
+[03:40:18] [INFO]   IMPORTANT: This is the PREDICTED residual under TEP, NOT an observed
+[03:40:18] [INFO]   non-zero closure. The observed closure from the Pierel+2024 delays
+[03:40:18] [INFO]   is identically 0 (all delays relative to image B). An independent
+[03:40:18] [INFO]   fourth image (like SX in Refsdal) would be needed to observe R_TEP.
+[03:40:18] [INFO]   Interpretation: H0pe is SENSITIVE to TEP at SNR=3.42 --
+[03:40:18] [INFO]   a future independent delay measurement would detect it at 3.4 sigma.
+[03:40:18] [INFO] 
+============================================================
+[03:40:18] [INFO] TEST E: Fisher Combined Significance
+[03:40:18] [INFO] ============================================================
+[03:40:18] [INFO] 
+  All p-values (including invalid):
+[03:40:18] [INFO]     binomial_sign_test_all8               : p=0.0352 z=1.81  [VALID]
+[03:40:18] [INFO]     binomial_sign_test_blind7             : p=0.0625 z=1.53  [VALID]
+[03:40:18] [INFO]     delay_mu_pearson                      : p=0.0106 z=2.31  [VALID]
+[03:40:18] [INFO]     arrival_order_kendall                 : p=0.4083 z=0.23  [VALID]
+[03:40:18] [INFO]     alpha_inference_vs_zero               : p=0.1696 z=0.96  [VALID]
+[03:40:18] [INFO]     snh0pe_closure_PREDICTED              : p=0.0003 z=3.42  [INVALID (predicted)]
+[03:40:18] [INFO] 
+  NOTE: Pearson delay-mu, H0pe, and arrival-order excluded from summary.
+[03:40:18] [INFO]   Pearson excluded: n=5 with extreme SX leverage; correlation test is
+[03:40:18] [INFO]   statistically inappropriate and not probative (see robustness diagnostics).
+[03:40:18] [INFO]   H0pe SNR=3.42 is a PREDICTION (testability), not an observation.
+[03:40:18] [INFO]   Arrival-order: tau=0.20, p=0.41 -- not significant, excluded.
+[03:40:18] [INFO]   Wilcoxon BLIND-ONLY (p=0.016) is the primary rank test:
+[03:40:18] [INFO]   all 6 non-zero blind residuals are positive, giving max Wilcoxon statistic.
+[03:40:18] [INFO] 
+  NOTE: These tests are fundamentally correlated. Combining them
+[03:40:18] [INFO]   via Fisher/Stouffer is statistically invalid. The conservative
+[03:40:18] [INFO]   significance is the strongest robust single test: z=2.15 (Wilcoxon blind).
+[03:40:18] [INFO] 
+  SN H0pe sensitivity:
+[03:40:18] [INFO]   If a 4th-image independent delay were measured for H0pe,
+[03:40:18] [INFO]   TEP would be detectable at SNR=3.42 (p<3e-04).
+[03:40:19] [INFO] 
+Figure A saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png
+[03:40:19] [INFO] Figure B saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_B_arrival_order.png
+[03:40:20] [INFO] Figure C saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_C_alpha_inference.png
+[03:40:21] [INFO] Figure D saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png
+[03:40:21] [INFO] Figure E saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_E_evidence_ladder.png
+[03:40:21] [INFO] 
+============================================================
+[03:40:21] [INFO] SUMMARY OF ALL EVIDENCE
+[03:40:21] [INFO] ============================================================
+[03:40:21] [INFO]   A. Delay-mu correlation:      Pearson r=0.932 (SX-leveraged, NOT probative)
+[03:40:21] [INFO]                                Spearman rho=0.300, p=0.312 (not significant)
+[03:40:21] [INFO]   B. Arrival-order:             tau=0.200, p=0.4083 -- NOT SIGNIFICANT (inner cross dominated by geometry)
+[03:40:21] [INFO]   C. Alpha inference:           alpha=-0.0573±0.0599, z_vs_0=-0.96, p=0.1696 [OBSERVED]
+[03:40:21] [INFO]   D. SN H0pe sensitivity:       SNR=3.42 PREDICTED (not observed)
+[03:40:21] [INFO]   E. Headline Signif:           z=2.15σ (Wilcoxon), p=0.01562
+[03:40:21] [INFO]   Best single result:           Wilcoxon sign test p=0.0156 (2.4σ) [OBSERVED]
+[03:40:21] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_08_new_evidence.json
+[03:40:21] [INFO] Step 08 complete.
+
+======================================================================
+RUNNING: step_09_precision_roadmap.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_09_precision_roadmap.log
+======================================================================
+
+
+[03:40:22] [INFO] ======================================================================
+[03:40:22] [INFO] STEP 09: Precision Roadmap Simulation
+[03:40:22] [INFO] ======================================================================
+[03:40:22] [INFO] Thresholds for N=8 independent models:
+[03:40:22] [INFO]   3-sigma evidence requires per-model err < 13.7 d
+[03:40:22] [INFO]   5-sigma discovery requires per-model err < 8.2 d
+[03:40:22] [INFO] Falsification thresholds (if GR is true, exclude TEP):
+[03:40:22] [INFO]   Same sigma thresholds apply (symmetric for single test)
+[03:40:22] [INFO]   At current precision (sigma_R=11.6 d):
+[03:40:22] [INFO]     TEP excluded at 2-sigma if |R_obs - 14.5| > 23.1 d
+[03:40:22] [INFO]     TEP excluded at 3-sigma if |R_obs - 14.5| > 34.7 d
+[03:40:23] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_09_precision_roadmap.png
+[03:40:23] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_09_precision_roadmap.json
+[03:40:23] [INFO] Step 09 complete.
+
+======================================================================
+RUNNING: step_10_h0_tension.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_10_h0_tension.log
+======================================================================
+
+
+[03:40:25] [INFO] ======================================================================
+[03:40:25] [INFO] STEP 10: H0 Tension Resolution (measured coupling)
+[03:40:25] [INFO] ======================================================================
+[03:40:25] [INFO] 
+SN Refsdal:
+[03:40:25] [INFO]   GR H0 = 66.6 +/- 4.1/3.3
+[03:40:25] [INFO]   TEP shift factor = 1.0402 +/- 0.0006
+[03:40:25] [INFO]   TEP H0 = 69.3 +/- 0.0 (shift: +2.7)
+[03:40:25] [INFO]   dt_obs = 376.0 d, dt_geom = 361.5 d
+[03:40:25] [INFO] 
+SN H0pe:
+[03:40:25] [INFO]   GR H0 = 60.9 +/- 5.1/4.6
+[03:40:25] [INFO]   TEP shift factor = 1.0006 +/- 0.0023
+[03:40:25] [INFO]   TEP H0 = 60.9 +/- 0.1 (shift: +0.0)
+[03:40:25] [INFO]   Per-delay: A-B f=1.0084, C-B f=0.9995
+[03:40:25] [INFO]   Predicted closure residual = 1.29 d
+[03:40:25] [INFO] 
+SN Encore:
+[03:40:25] [INFO]   GR H0 = 60.9 +/- 5.1/4.6
+[03:40:25] [INFO]   TEP shift factor = 1.0005 +/- 0.0016
+[03:40:25] [INFO]   TEP H0 = 60.9 +/- 0.1 (shift: +0.0)
+[03:40:25] [INFO]   Reference-dependent range: 0.9957 to 1.0052
+[03:40:25] [INFO] 
+Combined Low-H0 cluster (Ref+H0pe+Enc):
+[03:40:25] [INFO]   GR:  63.5
+[03:40:25] [INFO]   TEP: 64.8 (shift: +1.3)
+[03:40:25] [INFO] 
+Planck tension check (FULL error budget):
+[03:40:25] [INFO]   Refsdal: |69.3 - 67.4| = 1.9 d
+[03:40:25] [INFO]     sigma_total = sqrt(3.7^2 + 0.5^2) = 3.73
+[03:40:25] [INFO]     tension = 0.50 sigma  (p = 0.307)
+[03:40:25] [INFO]   H0pe:    tension = 1.33 sigma
+[03:40:25] [INFO]   Encore:  tension = 1.33 sigma
+[03:40:25] [INFO]   NOTE: The Refsdal TEP shift does NOT resolve the H0 tension.
+[03:40:25] [INFO]         The lens-model uncertainty (~4 km/s/Mpc) dominates.
+[03:40:25] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_10_h0_tension.json
+[03:40:26] [INFO] Saved plot to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_10_h0_tension.png
+[03:40:26] [INFO] Step 10 complete.
+
+======================================================================
+RUNNING: step_11_model_dependence.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_11_model_dependence.log
+======================================================================
+
+
+[03:40:28] [INFO] ======================================================================
+[03:40:28] [INFO] STEP 11: Model Dependence Robustness
+[03:40:28] [INFO] ======================================================================
+[03:40:28] [INFO] Baseline weighted mean residual: +14.61 ± 11.57 d (z=1.26)
+[03:40:28] [INFO] Baseline sign test: 7/8 positive, p=0.0352
+[03:40:28] [INFO] Wilcoxon signed-rank p(one-sided): 0.0078
+[03:40:28] [INFO] [DEPRECATED] Exact sign-flip p=0.0078 — assumes independent residuals; invalid under correlation
+[03:40:28] [INFO] Blind sign test: 6/7 positive, p=0.0625
+[03:40:28] [INFO] Blind Wilcoxon signed-rank p(one-sided): 0.0156
+[03:40:28] [INFO] Method-family effective sample size (Kish proxy): N_eff=7.20 from N=8
+[03:40:29] [INFO] Break-even ICC (all 8 binomial 7/8): rho = 0.026
+[03:40:29] [INFO] Break-even ICC (blind 7 binomial 6/7): rho = 0.000
+[03:41:10] [INFO] Permutation Wilcoxon (all 8, family-aware): p = 0.0310
+[03:41:10] [INFO] Permutation Wilcoxon (blind 7, family-aware): p = 0.0310
+[03:41:28] [INFO] Block-bootstrap Wilcoxon (all 8, family-aware): p_median=0.0068, p_16-84=[0.0037, 0.0154], P(p<=0.05)=99.65%
+[03:41:28] [INFO] Block-bootstrap Wilcoxon (blind 7, family-aware): p_median=0.0109, p_16-84=[0.0067, 0.0173], P(p<=0.05)=99.43%
+[03:41:28] [INFO] [CAVEAT] Wilcoxon break-even ICC (all 8): rho ≈ 0.103 — approximate, not a closed-form correction; use block-bootstrap instead.
+[03:41:28] [INFO] [CAVEAT] Wilcoxon break-even ICC (blind): rho ≈ 0.078 — approximate, not a closed-form correction; use block-bootstrap instead.
+[03:41:28] [INFO] Interpretation: if inter-model correlation exceeds these values, p > 0.05.
+[03:41:28] [INFO] LOO robustness summary:
+[03:41:28] [INFO]   Sign-test p range: 0.0078 to 0.0625
+[03:41:28] [INFO]   Weighted-mean z range: 0.96 to 1.30
+[03:41:28] [INFO]   Δχ² (GR-TEP) range: +0.91 to +1.68
+[03:41:30] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_11_model_dependence.png
+[03:41:32] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_11_model_dependence.json
+[03:41:32] [INFO] Step 11 complete.
+
+======================================================================
+RUNNING: step_12_microlensing_robustness.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_12_microlensing_robustness.log
+======================================================================
+
+
+[03:41:38] [INFO] ======================================================================
+[03:41:38] [INFO] STEP 12: Microlensing Robustness Monte Carlo
+[03:41:38] [INFO] ======================================================================
+[03:41:38] [INFO] Using 8 cores for parallel Monte Carlo
+[03:41:38] [INFO] Running 20000 draws for frac=0.10...
+[03:41:40] [INFO] frac=0.10: R_TEP=-14.53 [-15.84, -13.23] d; P(Δχ²>0)=1.000
+[03:41:40] [INFO] Running 20000 draws for frac=0.20...
+[03:41:42] [INFO] frac=0.20: R_TEP=-14.50 [-17.13, -12.00] d; P(Δχ²>0)=1.000
+[03:41:42] [INFO] Running 20000 draws for frac=0.30...
+[03:41:44] [INFO] frac=0.30: R_TEP=-14.53 [-18.32, -10.64] d; P(Δχ²>0)=0.992
+[03:41:44] [INFO] Running 20000 proxy-mapping draws (shear-degeneracy envelope)...
+[03:41:47] [INFO] Proxy-mapping: R_TEP=-18.90 [-29.67, 0.90] d; P(Δχ²>0)=0.629
+[03:41:48] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_12_microlensing_robustness.png
+[03:41:48] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_12_microlensing_robustness.json
+[03:41:48] [INFO] Step 12 complete.
+
+======================================================================
+RUNNING: step_13_bayes_model_comparison.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_13_bayes_model_comparison.log
+======================================================================
+
+
+[03:41:50] [INFO] ======================================================================
+[03:41:50] [INFO] STEP 13: Bayesian GR vs TEP Comparison
+[03:41:50] [INFO] ======================================================================
+[03:41:55] [INFO] [baseline] logZ(GR)        = -39.22
+[03:41:55] [INFO] [baseline] logZ(TEP fixed) = -39.16
+[03:41:55] [INFO] [baseline] logZ(TEP free)  = -39.70
+[03:41:55] [INFO] [baseline] log BF fixed/GR = +0.06 (BF=1.06)
+[03:41:55] [INFO] [baseline] log BF free/GR  = -0.49 (BF=0.615)
+[03:41:55] [INFO] [baseline] Posterior tau   = 10.10 [2.29, 17.81] d
+[03:41:55] [INFO] [baseline] Posterior alpha = -0.0384 [-0.1237, 0.0455]
+[03:41:59] [INFO] [h0pe2025_informed] logZ(GR)        = -39.51
+[03:41:59] [INFO] [h0pe2025_informed] logZ(TEP fixed) = -39.51
+[03:41:59] [INFO] [h0pe2025_informed] logZ(TEP free)  = -40.22
+[03:41:59] [INFO] [h0pe2025_informed] log BF fixed/GR = -0.00 (BF=0.997)
+[03:41:59] [INFO] [h0pe2025_informed] log BF free/GR  = -0.71 (BF=0.492)
+[03:41:59] [INFO] [h0pe2025_informed] Posterior tau   = 11.16 [2.51, 19.72] d
+[03:41:59] [INFO] [h0pe2025_informed] Posterior alpha = -0.0379 [-0.1300, 0.0516]
+[03:42:01] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_13_bayes_comparison.png
+[03:42:01] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_13_bayes_model_comparison.json
+[03:42:01] [INFO] Step 13 complete.
+
+======================================================================
+RUNNING: step_14_external_chain_ingestion.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_14_external_chain_ingestion.log
+======================================================================
+
+
+[03:42:01] [INFO] ======================================================================
+[03:42:01] [INFO] STEP 14: External Chain Ingestion
+[03:42:01] [INFO] ======================================================================
+[03:42:23] [INFO] API files discovered: 5
+[03:42:23] [INFO] Files ingested (<= 30 MB): 4
+[03:42:23] [INFO] Direct chain coverage for HE0435/WFI2033/DES0408: 2/3
+[03:42:23] [INFO]   HE0435: YES
+[03:42:23] [INFO]   WFI2033: YES
+[03:42:23] [INFO]   DES0408: NO
+[03:42:23] [INFO] Coverage with DES0408 equivalent literature bridge: 3/3
+[03:42:24] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_14_external_coverage.png
+[03:42:24] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_14_external_chain_ingestion.json
+[03:42:24] [INFO] Step 14 complete.
+
+======================================================================
+RUNNING: step_15_external_informed_inflation.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_15_external_informed_inflation.log
+======================================================================
+
+
+[03:42:26] [INFO] ======================================================================
+[03:42:26] [INFO] STEP 15: External-Informed Inflation
+[03:42:26] [INFO] ======================================================================
+[03:42:26] [INFO] External chain CV prior (from step_14): kappa16=0.085, kappa50=0.111, kappa84=0.140
+[03:42:26] [INFO] kappa50 scenario: z=1.25, p_z=0.105, Δχ²=+1.57
+[03:42:26] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_15_external_inflation.png
+[03:42:26] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_15_external_inflation.json
+[03:42:26] [INFO] Step 15 complete.
+
+======================================================================
+RUNNING: step_16_independence_tier_significance.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_16_independence_tier_significance.log
+======================================================================
+
+
+[03:42:28] [INFO] ======================================================================
+[03:42:28] [INFO] STEP 16: Independence-Tier Significance
+[03:42:28] [INFO] ======================================================================
+[03:42:28] [INFO] Individual Correlated Tests (SN Refsdal SX):
+[03:42:28] [INFO]   Wilcoxon signed-rank (blind): z=2.15, p=0.0156 (Independence primary)
+[03:42:28] [INFO]   Exact permutation (blind):    z=1.87, p=0.0310 (Correlation-aware primary)
+[03:42:28] [INFO]   Block-bootstrap (blind):    z=2.29, p=0.0109 [0.007, 0.017] (Sensitivity)
+[03:42:28] [INFO]   Pearson delay-mu:             z=2.31, p=0.0106
+[03:42:28] [INFO]   Ext-informed w-mean:          z=1.25, p=0.1049
+[03:42:28] [INFO]   Alpha vs zero:              z=0.96, p=0.1696
+[03:42:28] [INFO] 
+NOTE: These tests are fundamentally correlated. Combining them
+[03:42:28] [INFO] via Fisher/Stouffer is invalid. The conservative significance
+[03:42:28] [INFO] is the strongest robust single test: z=1.87 (Exact permutation).
+[03:42:29] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_16_tier_significance.png
+[03:42:29] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_16_tier_significance.json
+[03:42:29] [INFO] Step 16 complete.
+
+======================================================================
+RUNNING: step_17_directional_odds.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_17_directional_odds.log
+======================================================================
+
+
+[03:42:30] [INFO] ======================================================================
+[03:42:30] [INFO] STEP 17: Directional Odds Expansion
+[03:42:30] [INFO] ======================================================================
+[03:42:30] [INFO] All-model nonzero sign set: k=7/7, p=0.0078, BF10=31.88
+[03:42:30] [INFO] Blind-only nonzero sign set: k=6/6, p=0.0156, BF10=18.14
+[03:42:30] [INFO] Method-family collapsed sign set: k=5/5, p=0.0312, BF10=10.50
+[03:42:31] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_17_directional_odds.png
+[03:42:31] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_17_directional_odds.json
+[03:42:31] [INFO] Step 17 complete.
+
+======================================================================
+RUNNING: step_18_external_dataset_registry.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_18_external_dataset_registry.log
+======================================================================
+
+
+[03:42:31] [INFO] ======================================================================
+[03:42:31] [INFO] STEP 18: External Dataset Registry
+[03:42:31] [INFO] ======================================================================
+[03:42:31] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_18_external_dataset_registry.json
+[03:42:31] [INFO] Ready local datasets: 3/3
+[03:42:31] [INFO] Step 18 complete.
+
+======================================================================
+RUNNING: step_19_tdcosmo2025_ingestion.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_19_tdcosmo2025_ingestion.log
+======================================================================
+
+
+[03:42:31] [INFO] ======================================================================
+[03:42:31] [INFO] STEP 19: TDCOSMO2025 Standalone Ingestion
+[03:42:31] [INFO] ======================================================================
+[03:42:31] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_19_tdcosmo2025_ingestion.json
+[03:42:31] [INFO] Local files: 60 | Posterior-like: 22 | Lens coverage: 7/7
+[03:42:31] [INFO] Step 19 complete.
+
+======================================================================
+RUNNING: step_30_cosmograil_temporal_shear.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_30_cosmograil_temporal_shear.log
+======================================================================
+
+[03:42:33] [PROCESS] Checking COSMOGRAIL data availability...
+[03:42:33] [SUCCESS] ✓ All required COSMOGRAIL data present (8 RDB files)
+[03:42:33] [PROCESS] Found 8 RDB + 13 multi-band CSV light curve files
+[03:42:33] [PROCESS] Processing DESJ0408_Courbin2017.rdb
+[03:42:33] [PROCESS]   System DESJ0408: 3 images, [('A', 'B'), ('A', 'D'), ('B', 'D')] pairs
+[03:42:33] [PROCESS]   Analyzing pair A-B
+[03:42:33] [PROCESS]   Analyzing pair A-D
+[03:42:33] [PROCESS]   Analyzing pair B-D
+[03:42:33] [PROCESS]   Running 100 bootstrap iterations...
+  Running 100 bootstrap iterations using 14 cores...
+[03:42:39] [PROCESS] Processing HE0435_Bonvin2016.rdb
+[03:42:39] [PROCESS]   System HE0435: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:42:39] [PROCESS]   Analyzing pair A-B
+[03:42:40] [PROCESS]   Analyzing pair A-C
+[03:42:42] [PROCESS]   Analyzing pair A-D
+[03:42:43] [PROCESS]   Analyzing pair B-C
+[03:42:43] [PROCESS]   Analyzing pair B-D
+[03:42:44] [PROCESS]   Analyzing pair C-D
+[03:42:44] [PROCESS]   Running 100 bootstrap iterations...
+  Running 13 jackknife iterations using 13 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:43:37] [PROCESS] Processing HS2209_Eulaers2013.rdb
+[03:43:37] [PROCESS]   System HS2209: 2 images, [('A', 'B')] pairs
+[03:43:37] [PROCESS]   Analyzing pair A-B
+[03:43:37] [PROCESS]   Running 100 bootstrap iterations...
+  Running 19 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:43:44] [PROCESS] Processing J1001_Rathnakumar2013.rdb
+[03:43:44] [PROCESS]   System J1001: 2 images, [('A', 'B')] pairs
+[03:43:44] [PROCESS]   Analyzing pair A-B
+[03:43:44] [PROCESS]   Running 100 bootstrap iterations...
+  Running 9 jackknife iterations using 9 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:43:51] [PROCESS] Processing J1206_Eulaers2013.rdb
+[03:43:51] [PROCESS]   System J1206: 2 images, [('A', 'B')] pairs
+[03:43:51] [PROCESS]   Analyzing pair A-B
+[03:43:51] [PROCESS]   Running 100 bootstrap iterations...
+  Running 10 jackknife iterations using 10 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:44:00] [PROCESS] Processing PG1115_Bonvin2018.rdb
+[03:44:00] [PROCESS]   System PG1115: 3 images, [('A', 'B'), ('A', 'C'), ('B', 'C')] pairs
+[03:44:00] [PROCESS]   Analyzing pair A-B
+[03:44:00] [PROCESS]   Analyzing pair A-C
+[03:44:00] [PROCESS]   Analyzing pair B-C
+[03:44:00] [PROCESS]   Running 100 bootstrap iterations...
+  Running 100 bootstrap iterations using 14 cores...
+[03:44:06] [PROCESS] Processing RXJ1131_Tewes2013.rdb
+[03:44:06] [PROCESS]   System RXJ1131: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:44:06] [PROCESS]   Analyzing pair A-B
+[03:44:06] [PROCESS]   Analyzing pair A-C
+[03:44:07] [PROCESS]   Analyzing pair A-D
+[03:44:07] [PROCESS]   Analyzing pair B-C
+[03:44:07] [PROCESS]   Analyzing pair B-D
+[03:44:07] [PROCESS]   Analyzing pair C-D
+[03:44:07] [PROCESS]   Running 100 bootstrap iterations...
+  Running 9 jackknife iterations using 9 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:44:53] [PROCESS] Processing WFI2033_Bonvin2019.rdb
+[03:44:53] [PROCESS]   System WFI2033: 3 images, [('A', 'B'), ('A', 'C'), ('B', 'C')] pairs
+[03:44:53] [PROCESS]   Analyzing pair A-B
+[03:44:53] [PROCESS]   Analyzing pair A-C
+[03:44:54] [PROCESS]   Analyzing pair B-C
+[03:44:54] [PROCESS]   Running 100 bootstrap iterations...
+  Running 16 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:45:14] [PROCESS] Processing he0435_JAA703A250_R.csv
+[03:45:14] [PROCESS]   System HE0435_R: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:45:14] [PROCESS]   Analyzing pair A-B
+[03:45:15] [PROCESS]   Analyzing pair A-C
+[03:45:15] [PROCESS]   Analyzing pair A-D
+[03:45:15] [PROCESS]   Analyzing pair B-C
+[03:45:15] [PROCESS]   Analyzing pair B-D
+[03:45:15] [PROCESS]   Analyzing pair C-D
+[03:45:16] [PROCESS]   Running 100 bootstrap iterations...
+  Running 20 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:45:42] [PROCESS] Processing he0435_JAA703A250_V.csv
+[03:45:42] [PROCESS]   System HE0435_V: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:45:42] [PROCESS]   Analyzing pair A-B
+[03:45:42] [PROCESS]   Analyzing pair A-C
+[03:45:43] [PROCESS]   Analyzing pair A-D
+[03:45:43] [PROCESS]   Analyzing pair B-C
+[03:45:43] [PROCESS]   Analyzing pair B-D
+[03:45:44] [PROCESS]   Analyzing pair C-D
+[03:45:44] [PROCESS]   Running 100 bootstrap iterations...
+  Running 24 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:46:16] [PROCESS] Processing he1104_JApJ798_95_B.csv
+[03:46:16] [PROCESS]   System HE1104_B: 2 images, [('A', 'B')] pairs
+[03:46:17] [PROCESS]   Analyzing pair A-B
+[03:46:17] [PROCESS]   Running 100 bootstrap iterations...
+  Running 20 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:46:20] [PROCESS] Processing he1104_JApJ798_95_I.csv
+[03:46:20] [PROCESS]   System HE1104_I: 2 images, [('A', 'B')] pairs
+[03:46:20] [PROCESS]   Analyzing pair A-B
+[03:46:20] [PROCESS]   Running 100 bootstrap iterations...
+  Running 13 jackknife iterations using 13 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:46:24] [PROCESS] Processing he1104_JApJ798_95_J.csv
+[03:46:24] [PROCESS]   System HE1104_J: 2 images, [('A', 'B')] pairs
+[03:46:24] [PROCESS]   Analyzing pair A-B
+[03:46:24] [PROCESS]   Running 100 bootstrap iterations...
+  Running 15 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:46:26] [PROCESS] Processing he1104_JApJ798_95_R.csv
+[03:46:26] [PROCESS]   System HE1104_R: 2 images, [('A', 'B')] pairs
+[03:46:26] [PROCESS]   Analyzing pair A-B
+[03:46:26] [PROCESS]   Running 100 bootstrap iterations...
+  Running 11 jackknife iterations using 11 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:46:29] [PROCESS] Processing q2237_JAA637A89_I.csv
+[03:46:29] [PROCESS]   System Q2237_I: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:46:29] [PROCESS]   Analyzing pair A-B
+[03:46:30] [PROCESS]   Analyzing pair A-C
+[03:46:30] [PROCESS]   Analyzing pair A-D
+[03:46:30] [PROCESS]   Analyzing pair B-C
+[03:46:30] [PROCESS]   Analyzing pair B-D
+[03:46:30] [PROCESS]   Analyzing pair C-D
+[03:46:30] [PROCESS]   Running 100 bootstrap iterations...
+  Running 18 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:46:57] [PROCESS] Processing q2237_JAA637A89_V.csv
+[03:46:57] [PROCESS]   System Q2237_V: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:46:57] [PROCESS]   Analyzing pair A-B
+[03:46:57] [PROCESS]   Analyzing pair A-C
+[03:46:57] [PROCESS]   Analyzing pair A-D
+[03:46:58] [PROCESS]   Analyzing pair B-C
+[03:46:58] [PROCESS]   Analyzing pair B-D
+[03:46:58] [PROCESS]   Analyzing pair C-D
+[03:46:58] [PROCESS]   Running 100 bootstrap iterations...
+  Running 17 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:47:46] [PROCESS] Processing q2237_JAA637A89_g.csv
+[03:47:46] [PROCESS]   System Q2237_G: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:47:46] [PROCESS]   Analyzing pair A-B
+[03:47:48] [PROCESS]   Analyzing pair A-C
+[03:47:48] [PROCESS]   Analyzing pair A-D
+[03:47:48] [PROCESS]   Analyzing pair B-C
+[03:47:49] [PROCESS]   Analyzing pair B-D
+[03:47:49] [PROCESS]   Analyzing pair C-D
+[03:47:49] [PROCESS]   Running 100 bootstrap iterations...
+  Running 12 jackknife iterations using 12 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:48:57] [PROCESS] Processing q2237_JAA637A89_r.csv
+[03:48:57] [PROCESS]   System Q2237_R: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:48:57] [PROCESS]   Analyzing pair A-B
+[03:48:57] [PROCESS]   Analyzing pair A-C
+[03:48:58] [PROCESS]   Analyzing pair A-D
+[03:48:59] [PROCESS]   Analyzing pair B-C
+[03:48:59] [PROCESS]   Analyzing pair B-D
+[03:49:00] [PROCESS]   Analyzing pair C-D
+[03:49:00] [PROCESS]   Running 100 bootstrap iterations...
+  Running 15 jackknife iterations using 14 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:50:12] [PROCESS] Processing q2237_vakulik_JAA420_447_I.csv
+[03:50:12] [PROCESS]   System Q2237_I: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:50:12] [PROCESS]   Analyzing pair A-B
+[03:50:12] [PROCESS]   Analyzing pair A-C
+[03:50:13] [PROCESS]   Analyzing pair A-D
+[03:50:13] [PROCESS]   Analyzing pair B-C
+[03:50:14] [PROCESS]   Analyzing pair B-D
+[03:50:14] [PROCESS]   Analyzing pair C-D
+[03:50:14] [PROCESS]   Running 100 bootstrap iterations...
+  Running 6 jackknife iterations using 6 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:50:38] [PROCESS] Processing q2237_vakulik_JAA420_447_R.csv
+[03:50:38] [PROCESS]   System Q2237_R: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:50:38] [PROCESS]   Analyzing pair A-B
+[03:50:38] [PROCESS]   Analyzing pair A-C
+[03:50:38] [PROCESS]   Analyzing pair A-D
+[03:50:38] [PROCESS]   Analyzing pair B-C
+[03:50:38] [PROCESS]   Analyzing pair B-D
+[03:50:38] [PROCESS]   Analyzing pair C-D
+[03:50:38] [PROCESS]   Running 100 bootstrap iterations...
+  Running 6 jackknife iterations using 6 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:50:54] [PROCESS] Processing q2237_vakulik_JAA420_447_V.csv
+[03:50:54] [PROCESS]   System Q2237_V: 4 images, [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')] pairs
+[03:50:54] [PROCESS]   Analyzing pair A-B
+[03:50:54] [PROCESS]   Analyzing pair A-C
+[03:50:55] [PROCESS]   Analyzing pair A-D
+[03:50:55] [PROCESS]   Analyzing pair B-C
+[03:50:55] [PROCESS]   Analyzing pair B-D
+[03:50:55] [PROCESS]   Analyzing pair C-D
+[03:50:55] [PROCESS]   Running 100 bootstrap iterations...
+  Running 6 jackknife iterations using 6 cores...
+  Running 100 bootstrap iterations using 14 cores...
+[03:51:08] [SUCCESS] Saved results: results/outputs/step_30_cosmograil_temporal_shear.json
+
+============================================================
+COSMOGRAIL TEMPORAL SHEAR ANALYSIS SUMMARY
+============================================================
+Systems analyzed: 18
+Image pairs analyzed: 82
+Valid Γ measurements: 55
+
+Γ (temporal shear slope) statistics:
+  Mean:   -3.766 days/decade
+  Median: 0.000 days/decade
+  Std:    36.920 days/decade
+
+Significance:
+  >2σ (raw): 0 pairs
+  >3σ (raw): 0 pairs
+  >2σ (practical cuts): 0 pairs
+  >3σ (practical cuts): 0 pairs
+
+Interpretation: NULL: No significant temporal shear detected. Consistent with GR (single constant delay).
+============================================================
+[03:51:08] [SUCCESS] Step 30 complete
+
+======================================================================
+RUNNING: step_31_cosmograil_validation.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_31_cosmograil_validation.log
+======================================================================
+
+======================================================================
+COSMOGRAIL TEMPORAL SHEAR VALIDATION SUITE
+======================================================================
+
+Loaded 48 image pairs from 18 systems
+
+======================================================================
+1. MULTI-BAND ANALYSIS (Achromaticity Test)
+======================================================================
+
+LIMITATION (PRIMARY SYSTEMS): The highest-significance detection systems in this work
+(DESJ0408, PG1115, J1206) are currently supported by single-band monitoring in the
+public COSMOGRAIL releases.
+
+WHAT ACHROMATICITY WOULD TEST:
+- TEP-GL predicts Γ should be ACHROMATIC (same in all optical bands)
+- Microlensing would produce CHROMATIC effects (different Γ per band)
+
+AVAILABLE PARTIAL TEST:
+We can test the estimator on public multi-band, image-resolved monitoring in other
+lensed quasars, and measure ΔΓ between bands for matched image pairs.
+
+
+Result: PARTIAL
+Primary systems: Single-band monitoring only (COSMOGRAIL public releases)
+Multi-band auxiliary ΔΓ summaries not found (expected JSON outputs missing).
+
+======================================================================
+2. GEOMETRIC CORRELATION ANALYSIS
+======================================================================
+
+Correlation of |Γ| with geometric parameters:
+------------------------------------------------------------
+Parameter                   r      p-value Interpretation      
+------------------------------------------------------------
+Einstein Radius        -0.468       0.0374 SIGNIFICANT         
+Image Separation       -0.490       0.0283 SIGNIFICANT         
+Lens Ellipticity       -0.153       0.5189 NULL                
+Lens Redshift           0.604       0.0048 SIGNIFICANT         
+Source Redshift         0.665       0.0014 SIGNIFICANT         
+
+------------------------------------------------------------
+Comparison: Systems with detections vs null systems
+------------------------------------------------------------
+einstein_radius_arcsec   : Sig=1.11, Null=1.23, p=0.585 → SIMILAR
+image_separation_arcsec  : Sig=2.24, Null=2.55, p=0.516 → SIMILAR
+lens_ellipticity         : Sig=0.16, Null=0.15, p=0.919 → SIMILAR
+z_lens                   : Sig=0.55, Null=0.42, p=0.358 → SIMILAR
+z_source                 : Sig=1.96, Null=1.38, p=0.135 → SIMILAR
+
+======================================================================
+3. INJECTION-RECOVERY ANALYSIS
+======================================================================
+
+Running 30 trials for each of 5 true delays...
+
+------------------------------------------------------------
+  True Delay    Recovered       Bias    Scatter      N
+------------------------------------------------------------
+        -100       -101.4       -1.4        2.1     30
+         -50        -50.4       -0.4        0.8     30
+           0          0.0        0.0        0.0     30
+          50         50.3        0.3        1.1     30
+         100        103.0        3.0        3.7     30
+------------------------------------------------------------
+     AVERAGE            -        0.3        1.5
+
+------------------------------------------------------------
+INTERPRETATION:
+  Bias: 0.3 days → UNBIASED (|bias| < 5 days)
+  Scatter: 1.5 days → PRECISE (σ < 20 days)
+
+======================================================================
+4. ROBUSTNESS AND SUMMARY STATISTICS
+======================================================================
+
+4.1 Detection Statistics
+----------------------------------------
+Total pairs: 48
+Significant (>3σ): 0 (0.0%)
+Null (<1σ): 44 (91.7%)
+
+4.2 Sign Consistency Within Systems
+----------------------------------------
+
+4.3 Fit Quality (R²)
+----------------------------------------
+Significant detections: No significant pairs (R² = N/A)
+Null detections: R² = -19.49 ± 85.31
+
+4.4 Combined Significance
+----------------------------------------
+
+  Conservative Fisher (Independent systems only):
+
+4.5 Bootstrap Stability
+----------------------------------------
+
+======================================================================
+5. SCRAMBLED RESIDUALS TEST (Time-Reversal)
+======================================================================
+Loading data from DESJ0408_Courbin2017.rdb...
+System DESJ0408: 3 images
+[03:51:21] [PROCESS]   Analyzing pair A-B
+[03:51:21] [PROCESS]   Analyzing pair A-D
+[03:51:21] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:51:35] [PROCESS]   Analyzing pair A-B
+[03:51:35] [PROCESS]   Analyzing pair A-D
+[03:51:35] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:51:50] [PROCESS]   Analyzing pair A-B
+[03:51:50] [PROCESS]   Analyzing pair A-D
+[03:51:50] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+Best pair: A-B
+Original Gamma: -29.9 (σ=18.6, z=1.61, n_boot=200)
+
+Analyzing TIME-REVERSED data (A-B)...
+[03:52:05] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+Time-reversed Gamma: 17.1 (σ=10.6, z=1.62, n_boot=200)
+
+Signal Reduction (z): -0.7%
+Test Status: PASSED
+  Gamma sign flipped: -29.9 → +17.1
+  Interpretation: Signal is time-directional (consistent with TEP prediction).
+[03:52:12] [PROCESS]   Analyzing pair A-B
+[03:52:12] [PROCESS]   Analyzing pair A-D
+[03:52:12] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:52:37] [PROCESS]   Analyzing pair A-B
+[03:52:38] [PROCESS]   Analyzing pair A-D
+[03:52:38] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:53:00] [PROCESS]   Analyzing pair A-B
+[03:53:00] [PROCESS]   Analyzing pair A-D
+[03:53:00] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:53:15] [PROCESS]   Analyzing pair A-B
+[03:53:15] [PROCESS]   Analyzing pair A-D
+[03:53:15] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:53:26] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+
+Season Shuffle Test:
+  Original: γ = -29.94, z = 1.61σ
+  Shuffled: γ = -42.57, z = 2.35σ
+  Status: EXPLORATORY
+  Interpretation: Single-shuffle draw strengthened the signal, but one draw is not inferential; use the empirical null distribution before claiming suppression.
+
+======================================================================
+6. EMPIRICAL SEASON SHUFFLE NULL
+======================================================================
+[03:53:31] [PROCESS]   Analyzing pair A-B
+[03:53:31] [PROCESS]   Analyzing pair A-D
+[03:53:31] [PROCESS]   Analyzing pair B-D
+  Running 200 bootstrap iterations using 14 cores...
+[03:53:54] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:53:59] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:03] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:07] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:11] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:15] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:19] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:25] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:29] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:32] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:35] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:38] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:40] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:44] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:48] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:50] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:53] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:54:56] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:00] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:03] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:06] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:10] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:14] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:16] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:19] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:21] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:24] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:27] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:34] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:37] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:40] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:43] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:46] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:50] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:53] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:55:57] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:00] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:06] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:11] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:16] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:22] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:29] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:35] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:41] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:56:51] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:57:00] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:57:08] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:57:15] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:57:22] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+[03:57:28] [PROCESS]   Analyzing pair A-B
+  Running 200 bootstrap iterations using 14 cores...
+
+======================================================================
+6. MICROLENSING INJECTION TEST
+======================================================================
+Creating Synthetic Null Pair from Image A...
+[03:57:34] [PROCESS]   Analyzing pair A-B
+Baseline Null Gamma: 0.0 (Should be ~0)
+
+Injecting Microlensing (Amp=0.3 mag, Period=2000d)...
+[03:57:34] [PROCESS]   Analyzing pair A-B
+Microlensed Gamma: 17.5 (σ=3.1)
+
+Comparison:
+Observed Gamma (Real Data DESJ0408 A-B): -90.7
+Simulated Microlensing Gamma: 17.5
+Test Status: PASSED (Standard ML does not reproduce large negative shear)
+
+======================================================================
+Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_31_cosmograil_validation.json
+======================================================================
+
+======================================================================
+VALIDATION SUMMARY
+======================================================================
+
+1. ACHROMATICITY: See output
+2. GEOMETRIC CORRELATIONS: See above
+3. INJECTION-RECOVERY: See above
+4. ROBUSTNESS: See above
+5. SCRAMBLED RESIDUALS: See output
+6. SEASON SHUFFLE NULL: See output (with empirical null)
+7. MICROLENSING INJECTION: See output
+
+
+======================================================================
+RUNNING: step_32_kappa_proxy_validation.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_32_kappa_proxy_validation.log
+======================================================================
+
+
+[03:57:37] [INFO] ======================================================================
+[03:57:37] [INFO] STEP 32: Kappa Proxy Validation
+[03:57:37] [INFO] ======================================================================
+[03:57:37] [INFO] Running SN Refsdal shear-degeneracy sensitivity envelope (20,000 draws)...
+[03:57:40] [INFO] SN Refsdal kappa inference (median, p16-p84):
+[03:57:40] [INFO]   S1: kappa = 0.093 [0.000, 0.267]
+[03:57:40] [INFO]   S2: kappa = 0.029 [0.000, 0.206]
+[03:57:40] [INFO]   S3: kappa = 0.010 [0.000, 0.151]
+[03:57:40] [INFO]   S4: kappa = 0.181 [0.001, 0.348]
+[03:57:40] [INFO]   SX: kappa = 0.010 [0.010, 0.057]
+[03:57:40] [INFO] Closure residual (mu proxy, nominal): -14.538 d
+[03:57:40] [INFO] Closure residual (kappa inferred): -17.628 [-29.496, 22.700] d
+[03:57:40] [INFO] Equivalent alpha (to match same observed residual): -0.0320 [-0.0678, 0.0090]
+[03:57:40] [INFO] Rank-order agreement P(mu_rank == kappa_rank) = 0.034
+[03:57:40] [INFO] S4-SX contrast sign agreement P = 0.797
+[03:57:40] [INFO] Running TDCOSMO theoretical mu-kappa comparison (spherical)...
+[03:57:40] [INFO]   RXJ1131-1231: mu diverges (kappa >= 0.5 at Einstein radius)
+[03:57:40] [INFO]   HE0435-1223: mu diverges (kappa >= 0.5 at Einstein radius)
+[03:57:40] [INFO]   PG1115+080: delta_log_mu=-0.287, delta_log_kappa=-0.093, ratio=3.10
+[03:57:40] [INFO]   DES0408-5354: mu diverges (kappa >= 0.5 at Einstein radius)
+[03:57:40] [INFO]   SDSS1206+4332: mu diverges (kappa >= 0.5 at Einstein radius)
+[03:57:40] [INFO]   WFI2033-4723: mu diverges (kappa >= 0.5 at Einstein radius)
+[03:57:40] [INFO] Running TDCOSMO elliptical SIE + external shear comparison...
+[03:57:40] [INFO]   RXJ1131-1231: mu diverges in elliptical model
+[03:57:40] [INFO]   HE0435-1223: mu diverges in elliptical model
+[03:57:40] [INFO]   PG1115+080: elliptical ratio=3.15, spherical ratio=3.10, amplification factor=1.02
+[03:57:40] [INFO]   DES0408-5354: mu diverges in elliptical model
+[03:57:40] [INFO]   SDSS1206+4332: mu diverges in elliptical model
+[03:57:40] [INFO]   WFI2033-4723: mu diverges in elliptical model
+[03:57:40] [INFO] Figure saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32_kappa_mu_comparison.png
+[03:57:40] [INFO] 
+Proxy systematic budget:
+[03:57:40] [INFO]   Measurement:     5.6 d  (17%)
+[03:57:40] [INFO]   Lens-model:      18.4 d  (57%)
+[03:57:40] [INFO]   Proxy (mu->kappa): 26.1 d  (80%)
+[03:57:40] [INFO]   Microlensing:    2.2 d  (7%)
+[03:57:40] [INFO]   Total:           32.5 d
+[03:57:40] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_32_kappa_proxy_validation.json
+[03:57:40] [INFO] Step 32 complete.
+
+======================================================================
+RUNNING: step_32b_temporal_shear_figure.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_32b_temporal_shear_figure.log
+======================================================================
+
+Loading COSMOGRAIL temporal shear results...
+Generating figures...
+Saved: cosmograil_gamma_significance.png / cosmograil_gamma_significance.pdf
+Saved: cosmograil_multiscale_delays.png / cosmograil_multiscale_delays.pdf
+Saved: cosmograil_summary_panel.png / cosmograil_summary_panel.pdf
+
+Done!
+
+======================================================================
+RUNNING: step_33_einstein_cross_null.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_33_einstein_cross_null.log
+======================================================================
+
+
+[03:57:47] [INFO] ======================================================================
+[03:57:47] [INFO] STEP 33: Einstein-Cross Null Test
+[03:57:47] [INFO] ======================================================================
+[03:57:47] [INFO]   Loop S1-S2-S3: predicted = -0.109 d, noise = 0.0 d, SNR = 3.273
+[03:57:47] [INFO]   Loop S1-S2-S4: predicted = +0.278 d, noise = 0.1 d, SNR = 2.516
+[03:57:47] [INFO]   Loop S1-S3-S4: predicted = +0.342 d, noise = 0.1 d, SNR = 2.303
+[03:57:50] [INFO] 
+  Inner-cross-only (S1-S4) correlation tests:
+[03:57:50] [INFO]     Spearman rho = -0.400, p (one-sided) = 0.794 (permutation)
+[03:57:50] [INFO]     Pearson  r   = -0.404, p (one-sided) = 0.298
+[03:57:50] [INFO]     Verdict: No correlation. Inner cross is noise-dominated.
+[03:57:50] [INFO]     S2: predicted shift = +0.063 d, noise = 4.0 d, S/N = 0.0158
+[03:57:50] [INFO]     S3: predicted shift = +0.103 d, noise = 4.2 d, S/N = 0.0246
+[03:57:50] [INFO]     S4: predicted shift = -0.212 d, noise = 6.4 d, S/N = 0.0331
+[03:57:51] [INFO] Figure saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_33_einstein_cross_null.png
+[03:57:51] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_33_einstein_cross_null.json
+[03:57:51] [INFO] Step 33 complete.
+
+======================================================================
+RUNNING: step_34_agnostic_rank_test.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_34_agnostic_rank_test.log
+======================================================================
+
+
+[03:57:52] [INFO] ======================================================================
+[03:57:52] [INFO] STEP 34: Agnostic Rank Test
+[03:57:52] [INFO] ======================================================================
+[03:57:57] [INFO] Delay vs inferred kappa:
+[03:57:57] [INFO]   Spearman rho = -0.154
+[03:57:57] [INFO]   Permutation p (one-sided, n=20000) = 0.6348
+[03:58:02] [INFO] Delay vs flux-proxy mu:
+[03:58:02] [INFO]   Spearman rho = -0.300
+[03:58:02] [INFO]   Permutation p (one-sided, n=20000) = 0.7430
+[03:58:08] [INFO] Inner cross only (S1-S4) delay vs kappa:
+[03:58:08] [INFO]   Spearman rho = 0.400, p = 0.3745
+[03:58:08] [INFO] Inner cross only (S1-S4) delay vs mu:
+[03:58:08] [INFO]   Spearman rho = 0.400, p = 0.3745
+[04:03:43] [INFO] Kappa-uncertainty bootstrap (n=10000):
+[04:03:43] [INFO]   Spearman rho 95% CI: [-0.900, 0.600]
+[04:03:43] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_34_agnostic_rank_test.json
+[04:03:43] [INFO] Step 34 complete.
+
+======================================================================
+RUNNING: step_35_single_contrast_dominance.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_35_single_contrast_dominance.log
+======================================================================
+
+
+[04:03:44] [INFO] ======================================================================
+[04:03:44] [INFO] STEP 35: Single-Contrast Dominance Quantification
+[04:03:44] [INFO] ======================================================================
+[04:03:44] [INFO] Original loop residuals:
+[04:03:44] [INFO]   S1_S2_S3: -0.109 d
+[04:03:44] [INFO]   S1_S2_S4: +0.278 d
+[04:03:44] [INFO]   S1_S3_S4: +0.342 d
+[04:03:44] [INFO]   S1_S2_SX: -8.492 d
+[04:03:44] [INFO]   S1_S4_SX: -14.538 d
+[04:03:44] [INFO] 
+S4-SX contrast knockout:
+[04:03:44] [INFO]   Total energy (sum R^2):     283.676 d^2
+[04:03:44] [INFO]   Energy after knockout:      1.312 d^2
+[04:03:44] [INFO]   Fraction DROP from S4-SX:   99.5%
+[04:03:44] [INFO] 
+Isolate S4-SX contrast (zero inner-cross differences):
+[04:03:44] [INFO]   Retained energy fraction:   72.3%
+[04:03:44] [INFO] 
+Effective degrees of freedom (participation ratio):
+[04:03:44] [INFO]   eff_dof = 1.99
+[04:03:44] [INFO]   Interpretation: the predicted TEP signal is concentrated in
+[04:03:44] [INFO]   ~2.0 effective independent contrast(s).
+[04:03:44] [INFO] 
+Loop-type energy split:
+[04:03:44] [INFO]   SX-containing loops:   283.470 d^2 (99.9%)
+[04:03:44] [INFO]   Inner-cross only loops: 0.206 d^2 (0.1%)
+[04:03:44] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_35_single_contrast_dominance.json
+[04:03:44] [INFO] Step 35 complete.
+
+======================================================================
+RUNNING: step_36_falsification_forward_prediction.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_36_falsification_forward_prediction.log
+======================================================================
+
+
+[04:03:46] [INFO] ======================================================================
+[04:03:46] [INFO] STEP 36: Forward-Prediction Falsification Thresholds — SN 2025wny
+[04:03:46] [INFO] ======================================================================
+[04:03:46] [INFO] Loaded alpha from Step 07: -0.0560 +/- 0.0108 (bootstrap std; analytical=0.044)
+[04:03:46] [INFO] Predicted residual magnitude distribution (N=100000):
+[04:03:46] [INFO]   16th percentile: 0.82 d
+[04:03:46] [INFO]   50th percentile: 2.27 d
+[04:03:46] [INFO]   84th percentile: 4.64 d
+[04:03:46] [INFO]   95th percentile: 6.57 d
+[04:03:46] [INFO]   99th percentile: 8.94 d
+[04:03:46] [INFO]   P(R > 1 d): 79.33%
+[04:03:46] [INFO]   P(R > 5 d): 13.10%
+[04:03:46] [INFO] 
+Required delay precision (longest baseline):
+[04:03:46] [INFO]   For 3-sigma test (median signal): sigma_dt < 0.76 d
+[04:03:46] [INFO]   For 5-sigma test (median signal): sigma_dt < 0.45 d
+[04:03:46] [INFO]   For 3-sigma test (conservative, 16th pct): sigma_dt < 0.27 d
+[04:03:46] [INFO]   For 5-sigma test (conservative, 16th pct): sigma_dt < 0.16 d
+[04:03:46] [INFO] 
+Pre-registered falsification condition (sigma_dt = 2.0 d):
+[04:03:46] [INFO]   If |R_obs| < 4.0 d, the proxy model is excluded at 95% CL.
+[04:03:46] [INFO]   This threshold excludes 77.4% of the prior prediction envelope.
+[04:03:46] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_36_falsification_forward_prediction.json
+[04:03:46] [INFO] Step 36 complete.
+
+======================================================================
+RUNNING: step_37_multi_system_evidence.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_37_multi_system_evidence.log
+======================================================================
+
+
+[04:03:47] [INFO] ======================================================================
+[04:03:47] [INFO] STEP 37: Multi-System Evidence Accumulation Projection
+[04:03:47] [INFO] ======================================================================
+[04:03:47] [INFO] Template system (SN Refsdal SX):
+[04:03:47] [INFO]   alpha_inferred = -0.0553 +/- 0.0438
+[04:03:47] [INFO]   R_tep = 14.538 d
+[04:03:47] [INFO]   Exact permutation test blind: z = 1.87, p = 0.0310
+[04:03:47] [INFO] 
+Stouffer projection (identical Refsdal-precision systems):
+[04:03:47] [INFO]   3-sigma evidence:  N = 3 systems
+[04:03:47] [INFO]   5-sigma discovery: N = 8 systems
+[04:03:47] [INFO] 
+Alpha-inference projection (identical systems):
+[04:03:47] [INFO]   Combined sigma_alpha = 0.0438 / sqrt(N)
+[04:03:47] [INFO]   3-sigma exclusion of alpha=0: N = 6
+[04:03:47] [INFO]   5-sigma exclusion of alpha=0: N = 16
+[04:03:47] [INFO] 
+Pre-registered thresholds:
+[04:03:47] [INFO]   These thresholds assume each new system provides an independent blind-prediction residual test with precision equivalent to SN Refsdal (blind model uncertainty sigma_model ~ 16-60 d, 7 blind models, R_tep ~ 14.5 d). Degraded precision in new systems increases the required N proportionally. These thresholds are pre-registered and will not be adjusted post-measurement.
+[04:03:47] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_37_multi_system_evidence.json
+[04:03:49] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_37_multi_system_evidence.png
+[04:03:49] [INFO] Step 37 complete.
+
+======================================================================
+RUNNING: step_38_sn_encore_residuals.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_38_sn_encore_residuals.log
+======================================================================
+
+
+[04:03:50] [INFO] ======================================================================
+[04:03:50] [INFO] STEP 38: SN Encore Blind-Prediction Residual Test
+[04:03:50] [INFO] ======================================================================
+[04:03:50] [INFO] Observed Delta_t(1b,1a) = -39.8 (+3.9/-3.3) d (Pierel et al. 2026 (ApJ, arXiv:2509.12301). Table 5 final systematic-corrected delay.)
+[04:03:50] [INFO] Loaded 8 blind models (8 total) from Suyu+2025 Table E.1
+[04:03:50] [INFO] Loaded alpha from Step 07: -0.0560 +/- 0.0108
+[04:03:50] [INFO] TEP proxy predicted residual: -0.494 d (alpha=-0.055988671582071256, log10(mu_ratio)=-0.172, dt_mean=-51.2 d)
+[04:03:50] [INFO] Sensitivity: 8.815 d per unit alpha (small because magnification contrast is modest)
+[04:03:50] [INFO] 
+Per-model observed - predicted residuals:
+[04:03:50] [INFO] Model             Pred    Delta  sigma_m  sigma_tot       z
+[04:03:50] [INFO] glafic           -32.4      -7.4       2.4         4.3    -1.72
+[04:03:50] [INFO] GLEE             -37.1      -2.7       2.7         4.5    -0.60
+[04:03:50] [INFO] GLEE-baseline    -36.9      -2.9       2.8         4.6    -0.64
+[04:03:50] [INFO] Lenstool I       -75.0     +35.2      54.5        54.6    +0.64
+[04:03:50] [INFO] Lenstool II      -35.6      -4.2       3.7         5.2    -0.81
+[04:03:50] [INFO] MrMARTIAN        -40.6      +0.8       6.4         7.3    +0.11
+[04:03:50] [INFO] WSLAP+          -112.0     +72.2      32.0        32.2    +2.24
+[04:03:50] [INFO] Zitrin-analytic   -40.2      +0.4       9.3        10.0    +0.04
+[04:03:50] [INFO] 
+Weighted mean residual R_obs = -3.33 +/- 2.13 d  (z = -1.56)
+[04:03:50] [INFO] Unweighted mean: +11.43 d, std = 26.21 d
+[04:03:50] [INFO] Positive residuals: 4/8, negative: 4/8
+[04:03:50] [INFO] 
+TEP consistency test:
+[04:03:50] [INFO]   R_obs (weighted)  = -3.33 +/- 2.13 d
+[04:03:50] [INFO]   R_TEP_pred        = -0.494 d
+[04:03:50] [INFO]   Tension           = -1.33 sigma
+[04:03:50] [INFO]   Inferred alpha    = -0.3777 (if R_obs attributed entirely to TEP; highly uncertain)
+[04:03:50] [INFO] 
+GR null test:
+[04:03:50] [INFO]   R_obs = -3.33 +/- 2.13 d
+[04:03:50] [INFO]   Tension with GR (R=0): -1.56 sigma
+[04:03:50] [INFO] 
+Binomial sign test (all 8 models):
+[04:03:50] [INFO]   Positive residuals: 4/8
+[04:03:50] [INFO]   One-sided p (H0: p=0.5): p = 0.6367
+[04:03:50] [INFO]   Equivalent z: z = +0.00
+[04:03:50] [INFO] 
+Wilcoxon signed-rank (all 8, two-sided): p = 1.000000
+[04:03:50] [INFO] 
+Chi-squared model comparison (8 models):
+[04:03:50] [INFO]   chi^2 under GR  (R=0):            9.850
+[04:03:50] [INFO]   chi^2 under TEP (R=-0.49 d):  9.181
+[04:03:50] [INFO]   Delta chi^2 = +0.669
+[04:03:50] [INFO]   p-value (chi^2, 1 dof): p = 0.4134
+[04:03:50] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_38_sn_encore_residuals.json
+[04:03:50] [INFO] Step 38 complete.
+
+======================================================================
+RUNNING: step_39_sn_h0pe_residuals.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_39_sn_h0pe_residuals.log
+======================================================================
+
+
+[04:03:51] [INFO] ======================================================================
+[04:03:51] [INFO] STEP 39: SN H0pe Blind-Prediction Residual Test
+[04:03:51] [INFO] ======================================================================
+[04:03:51] [INFO] Loaded alpha from Step 07: -0.0560 +/- 0.0108
+[04:03:51] [INFO] Observed Delta_t(A,B) = -116.6 (+10.8/-9.3) d (Pierel+2024)
+[04:03:51] [INFO] Observed Delta_t(C,B) = -48.6 (+3.6/-4.0) d (Pierel+2024)
+[04:03:51] [INFO] Observed magnifications: mu_A=4.43, mu_B=8.0, mu_C=6.43 (Pierel+2024 photometry)
+[04:03:51] [INFO] 
+[WSLAP+ leave-out] AB: n_neg=5/6, R_obs = -10.64 +/- 5.14 d
+[04:03:51] [INFO] [WSLAP+ leave-out] CB: n_neg=2/6, R_obs = +0.09 +/- 2.67 d
+[04:03:51] [INFO] 
+--- Delay pair AB ---
+[04:03:51] [INFO] Weighted mean residual = -10.16 +/- 5.13 d
+[04:03:51] [INFO] Binomial: 2/7 positive, p = 0.9375
+[04:03:51] [INFO] Wilcoxon (two-sided): p = 0.8125
+[04:03:51] [INFO] 
+--- Delay pair CB ---
+[04:03:51] [INFO] Weighted mean residual = -0.23 +/- 2.67 d
+[04:03:51] [INFO] Binomial: 4/7 positive, p = 0.5000
+[04:03:51] [INFO] Wilcoxon (two-sided): p = 0.6875
+[04:03:51] [INFO] 
+TEP proxy predicted residuals:
+[04:03:51] [INFO]   AB: -1.577 d (log10(mu_A/mu_B)=-0.257, dt_mean=-109.7 d; WSLAP+ excluded)
+[04:03:51] [INFO]   CB: -0.257 d (log10(mu_C/mu_B)=-0.095, dt_mean=-48.4 d; WSLAP+ excluded)
+[04:03:51] [INFO]   All-model mean diagnostic: AB=-1.913 d, CB=+0.040 d
+[04:03:51] [INFO]   Directional matches: AB=5/7 negative, CB=3/7 negative
+[04:03:51] [INFO] 
+System summary:
+[04:03:51] [INFO]   Mean residual across pairs: -5.20 d
+[04:03:51] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_39_sn_h0pe_residuals.json
+[04:03:51] [INFO] Step 39 complete.
+
+======================================================================
+RUNNING: step_40_cross_system_trio.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_40_cross_system_trio.log
+======================================================================
+
+
+[04:03:52] [INFO] ======================================================================
+[04:03:52] [INFO] STEP 40: Cross-System Trio Evidence Synthesis
+[04:03:52] [INFO] ======================================================================
+[04:03:52] [INFO] SN Refsdal: R_obs=+14.61 d, R_tep=+14.54 d, z=+2.15, p=0.0156
+[04:03:52] [INFO] SN Encore:  R_obs=-3.33 d, R_tep=-0.49 d, z=+0.00, p=0.6367 (predicted negative)
+[04:03:52] [INFO] SN H0pe:    R_obs(AB)=-10.16 d, R_obs(CB)=-0.23 d, R_tep(AB)=-1.58 d, R_tep(CB)=-0.26 d
+[04:03:52] [INFO]   Directional z(AB)=+1.13, z(CB)=-0.38; primary=AB
+[04:03:52] [INFO] 
+Sign consistency check:
+[04:03:52] [INFO]   Systems with observed sign matching TEP prediction: 3/3
+[04:03:52] [INFO]   Exact binomial p (H0: random signs): p = 0.1250
+[04:03:52] [INFO]   [DIAGNOSTIC ONLY] Normal z-approx (INVALID for n=3): z = +1.73
+[04:03:52] [INFO]   WARNING: z-approx implies p≈0.042, contradicting exact p=0.125.
+[04:03:52] [INFO]   Report ONLY the exact p-value in the manuscript.
+[04:03:52] [INFO] 
+Stouffer combination (3 systems):
+[04:03:52] [INFO]   Individual z-scores: ['+2.15', '+0.00', '+1.13']
+[04:03:52] [INFO]   Combined z = +1.898, p = 0.0288
+[04:03:52] [INFO] 
+Precision-weighted mean residual (all systems):
+[04:03:52] [INFO]   R_combined = -3.09 +/- 1.94 d
+[04:03:52] [INFO] 
+Evidence comparison:
+[04:03:52] [INFO]   Refsdal alone: z = +2.15
+[04:03:52] [INFO]   Trio combined: z = +1.90
+[04:03:52] [INFO]   Encore + H0pe contribution: -0.26 (minimal because predicted TEP shifts are low-SNR)
+[04:03:52] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_40_cross_system_trio.json
+[04:03:52] [INFO] Step 40 complete.
+
+======================================================================
+RUNNING: step_20_external_completeness_synthesis.py
+LOG: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/logs/step_20_external_completeness_synthesis.log
+======================================================================
+
+
+[04:03:53] [INFO] ======================================================================
+[04:03:53] [INFO] STEP 20: External Completeness Synthesis
+[04:03:53] [INFO] ======================================================================
+[04:03:53] [INFO] Lens coverage: 7/7 (1.00)
+[04:03:53] [INFO] Recommended Reporting Track: single_robust_test_benchmark (z=1.866)
+[04:03:53] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_20_external_completeness_synthesis.json
+[04:03:53] [INFO] Step 20 complete.
+
+======================================================================
+PIPELINE COMPLETE
+======================================================================
+Steps completed: 33/33
+Results saved to: results/outputs/
+Figures saved to: results/figures/

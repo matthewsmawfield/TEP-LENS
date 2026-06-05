@@ -1,14 +1,14 @@
 
-[23:43:26] [INFO] ======================================================================
-[23:43:26] [INFO] STEP 14: External Chain Ingestion
-[23:43:26] [INFO] ======================================================================
-[23:44:17] [INFO] API files discovered: 5
-[23:44:17] [INFO] Files ingested (<= 30 MB): 4
-[23:44:17] [INFO] Direct chain coverage for HE0435/WFI2033/DES0408: 2/3
-[23:44:17] [INFO]   HE0435: YES
-[23:44:17] [INFO]   WFI2033: YES
-[23:44:17] [INFO]   DES0408: NO
-[23:44:17] [INFO] Coverage with DES0408 equivalent literature bridge: 3/3
-[23:44:18] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_14_external_coverage.png
-[23:44:18] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_14_external_chain_ingestion.json
-[23:44:18] [INFO] Step 14 complete.
+[18:50:21] [INFO] ======================================================================
+[18:50:21] [INFO] STEP 14: External Chain Ingestion
+[18:50:21] [INFO] ======================================================================
+[18:50:44] [INFO] API files discovered: 5
+[18:50:44] [INFO] Files ingested (<= 30 MB): 4
+[18:50:44] [INFO] Direct chain coverage for HE0435/WFI2033/DES0408: 2/3
+[18:50:44] [INFO]   HE0435: YES
+[18:50:44] [INFO]   WFI2033: YES
+[18:50:44] [INFO]   DES0408: NO
+[18:50:44] [INFO] Coverage with DES0408 equivalent literature bridge: 3/3
+[18:50:45] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_14_external_coverage.png
+[18:50:45] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_14_external_chain_ingestion.json
+[18:50:45] [INFO] Step 14 complete.

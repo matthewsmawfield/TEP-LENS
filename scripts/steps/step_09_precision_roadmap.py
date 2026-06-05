@@ -21,6 +21,7 @@ from scipy import stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 
 STEP_NUM = "09"
 
@@ -32,8 +33,16 @@ def safe_json_default(obj):
 def main():
     print_status(f"STEP {STEP_NUM}: Precision Roadmap Simulation", "TITLE")
 
-    # Current true signal (from SN Refsdal SX, alpha_lens=-0.055)
-    R_tep_true = 14.538  # days
+    # Load true signal from step_03 (required)
+    step03_path = PROJECT_ROOT / "results" / "outputs" / "step_03_tep_closure.json"
+    if not step03_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {step03_path}\n"
+            "Run step_03_tep_closure.py first."
+        )
+    with open(step03_path) as f:
+        s03 = json.load(f)
+    R_tep_true = abs(s03["tep_predicted_discrepancies"]["S1_S4_SX"]["tep_gr_discrepancy_days"])
     
     # Range of future model uncertainties
     sigma_models = np.logspace(0.3, 1.8, 50) # From ~2 days to ~63 days
@@ -98,9 +107,19 @@ def main():
     sigma_excl_3sigma = exact_sigma_3sigma
     sigma_excl_5sigma = exact_sigma_5sigma
 
-    # More useful: given current R_obs = 14.6 +/- 11.6 d, what residual would
+    # Load current precision from step_07 weighted mean (required)
+    step07_path = PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"
+    if not step07_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {step07_path}\n"
+            "Run step_07_observed_vs_predicted.py first."
+        )
+    with open(step07_path) as f:
+        s07 = json.load(f)
+    current_sigma_R = float(s07["weighted_mean_residual"]["sigma_days"])
+
+    # Falsification thresholds: given current precision, what residual would
     # falsify TEP at N-sigma?  (Threshold for |R_obs - R_tep_true| > N * sigma_R_obs)
-    current_sigma_R = 11.6  # from step_07 weighted mean
     falsif_2sigma = 2.0 * current_sigma_R
     falsif_3sigma = 3.0 * current_sigma_R
     falsif_5sigma = 5.0 * current_sigma_R
@@ -158,6 +177,7 @@ def main():
     with open(out_json, "w") as f:
         json.dump({
             "step": STEP_NUM,
+            "status": "success",
             "R_tep_true_days": R_tep_true,
             "n_models": n_models,
             "thresholds": {

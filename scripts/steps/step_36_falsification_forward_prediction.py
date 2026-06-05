@@ -2,7 +2,7 @@
 """
 TEP-LENS: Step 36 - Forward-Prediction Falsification Thresholds for SN 2025wny
 
-Purpose: Compute pre-registered falsification thresholds for SN 2025wny,
+Purpose: Compute prospective falsification thresholds for SN 2025wny,
 the next resolved multiply-imaged supernova. The proxy model predicts a
 non-zero blind-prediction residual for any system where images sample
 different potential depths. This script quantifies:
@@ -12,8 +12,8 @@ different potential depths. This script quantifies:
 3. Explicit falsification condition: what observed residual would reject
    the linear log-magnification ansatz at 95% CL?
 
-These thresholds are pre-registered in the manuscript (§4.9) and are
-computed deterministically by this script; they will not be adjusted
+These thresholds are designated prospectively in the manuscript (§4.9) and
+are computed deterministically by this script; they should not be adjusted
 post-measurement.
 
 Assumptions (from Johansson et al. 2025, ApJ 995, L17):
@@ -21,9 +21,11 @@ Assumptions (from Johansson et al. 2025, ApJ 995, L17):
 - Brightest image magnification: mu ~ 15-80 (discovery-paper estimate 20-50,
   but we broaden to 15-80 to be conservative).
 - Faintest image magnification: mu ~ 2-15 (consistent with quad-lens flux ratios).
-- Longest pairwise delay baseline: 10-150 days (galaxy-scale lens at z_l=0.375).
-- Proxy coupling: alpha_lens = -0.055 +/- 0.044 (empirically determined from
-  SN Refsdal; propagated as a Gaussian prior).
+- Longest pairwise delay baseline: ~175 days (post-hoc Witt-Wynne geometric model,
+  arXiv:2605.11090: image A trails D by ~175 d), modelled as U(140, 210) to carry
+  a ~20% geometric-model uncertainty. The probative loop is the longest-baseline
+  A-D contrast, mirroring the S4-SX baseline that dominates SN Refsdal.
+- Proxy coupling: alpha_proxy loaded dynamically from Step 07 bootstrap inference.
 
 Algorithm:
 1. Monte Carlo over magnification priors, delay baselines, and alpha uncertainty.
@@ -44,6 +46,7 @@ from scipy import stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 
 STEP_NUM = "36"
 
@@ -78,12 +81,37 @@ def main():
     # Mean magnification across the four-image system
     mu_mean = (mu_bright + mu_mid1 + mu_mid2 + mu_faint) / 4.0
 
-    # Longest delay baseline: galaxy-scale quad lenses typically 10-150 days.
-    # SN 2025wny is at z_l = 0.375, so delays are shorter than cluster-scale Refsdal.
-    dt_baseline = rng.uniform(10.0, 150.0, size=n_mc)
+    # Longest delay baseline: post-hoc Witt-Wynne geometric model (arXiv:2605.11090)
+    # predicts image A trails D by ~175 d. Modelled as U(140, 210) to carry a ~20%
+    # geometric-model uncertainty on the longest A-D baseline (the probative loop).
+    dt_baseline = rng.uniform(140.0, 210.0, size=n_mc)
 
-    # Empirical coupling with uncertainty from SN Refsdal
-    alpha = rng.normal(loc=-0.055, scale=0.044, size=n_mc)
+    # Load empirical coupling from Step 07 (bootstrap alpha inference; required)
+    step_07_path = PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"
+    if not step_07_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {step_07_path}\n"
+            "Run step_07_observed_vs_predicted.py first."
+        )
+    with open(step_07_path) as f:
+        s07 = json.load(f)
+    bai = s07.get("bootstrap_alpha_inference", {})
+    if "alpha_mean" not in bai:
+        raise KeyError(
+            "bootstrap_alpha_inference missing alpha_mean in step_07 output."
+        )
+    alpha_mean = float(bai["alpha_mean"])
+    alpha_sigma = float(
+        bai.get("sigma_alpha_analytical", bai.get("alpha_std", SIGMA_ALPHA_PROXY))
+    )
+    alpha_scatter_model_resampling = float(bai.get("alpha_std", alpha_sigma))
+    print_status(
+        f"Loaded alpha from Step 07: {alpha_mean:+.4f} +/- {alpha_sigma:.4f} "
+        f"(headline propagated uncertainty; bootstrap model-resampling std="
+        f"{alpha_scatter_model_resampling:.4f})"
+    )
+
+    alpha = rng.normal(loc=alpha_mean, scale=alpha_sigma, size=n_mc)
 
     # ------------------------------------------------------------------
     # Compute proxy-model predicted residual for brightest-faintest loop
@@ -178,13 +206,13 @@ def main():
             ),
         })
 
-    # Pre-registered falsification condition for manuscript §4.9
+    # Prospective falsification condition for manuscript §4.9
     # Use sigma_dt = 2.0 d as the reference precision mentioned in the text.
     sigma_ref = 2.0
     threshold_ref = 2.0 * sigma_ref  # 2-sigma
     excluded_frac_ref = float(np.mean(R_mag < threshold_ref))
 
-    print_status(f"\nPre-registered falsification condition (sigma_dt = {sigma_ref} d):")
+    print_status(f"\nProspective falsification condition (sigma_dt = {sigma_ref} d):")
     print_status(f"  If |R_obs| < {threshold_ref:.1f} d, the proxy model is excluded at 95% CL.")
     print_status(f"  This threshold excludes {excluded_frac_ref:.1%} of the prior prediction envelope.")
 
@@ -198,8 +226,10 @@ def main():
         "priors": {
             "mu_bright_range": [15.0, 80.0],
             "mu_faint_range": [2.0, 15.0],
-            "dt_baseline_range_days": [10.0, 150.0],
-            "alpha_prior": {"mean": -0.055, "sigma": 0.044},
+            "dt_baseline_range_days": [140.0, 210.0],
+            "alpha_prior": {"mean": alpha_mean, "sigma": alpha_sigma,
+                           "source": "step_07_headline_propagated_uncertainty",
+                           "bootstrap_model_resampling_sigma": alpha_scatter_model_resampling},
             "loop_geometry_factor_range": [0.6, 1.0],
             "n_monte_carlo": n_mc,
             "seed": 42,
@@ -220,7 +250,7 @@ def main():
             "for_5sigma_conservative_16th_pct": sigma_req_5sigma_conservative,
         },
         "falsification_thresholds_vs_precision": falsification_thresholds,
-        "pre_registered_falsification_condition": {
+        "prospective_falsification_condition": {
             "sigma_dt_reference_days": sigma_ref,
             "exclusion_threshold_2sigma_days": threshold_ref,
             "fraction_of_prior_excluded": excluded_frac_ref,

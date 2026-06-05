@@ -18,6 +18,13 @@ function manuscriptBasename(versionStr) {
 class HTMLToMarkdownConverter {
     constructor() { this.output = ''; }
 
+    rewriteMarkdownAssetPaths(markdown, figurePrefix) {
+        return markdown.replace(
+            /(!\[[^\]]*\]\()figures\//g,
+            `$1${figurePrefix}/`
+        );
+    }
+
     decodeEntities(text) {
         return text
             .replace(/&amp;/g, '&')
@@ -52,11 +59,17 @@ class HTMLToMarkdownConverter {
 
         while ((rowMatch = rowRegex.exec(tableHtml)) !== null) {
             const cells = [];
-            const cellRegex = /<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi;
+            const cellRegex = /<t[hd]([^>]*)>([\s\S]*?)<\/t[hd]>/gi;
             let cellMatch;
 
             while ((cellMatch = cellRegex.exec(rowMatch[1])) !== null) {
-                cells.push(this.cleanInlineHtml(cellMatch[1]).replace(/\|/g, '\\|'));
+                const attrs = cellMatch[1];
+                const content = this.cleanInlineHtml(cellMatch[2]).replace(/\|/g, '\\|');
+                const colspanMatch = attrs.match(/colspan=["']?(\d+)["']?/i);
+                const colspan = colspanMatch ? parseInt(colspanMatch[1], 10) : 1;
+                for (let i = 0; i < colspan; i++) {
+                    cells.push(i === 0 ? content : '');
+                }
             }
 
             if (cells.length) rows.push(cells);
@@ -65,7 +78,8 @@ class HTMLToMarkdownConverter {
         if (!rows.length) return '';
 
         const header = rows[0];
-        const normalizeRow = (row) => `| ${header.map((_, index) => row[index] || '').join(' | ')} |`;
+        const colCount = header.length;
+        const normalizeRow = (row) => `| ${Array.from({length: colCount}, (_, index) => row[index] || '').join(' | ')} |`;
 
         let markdown = '';
         if (caption) markdown += `\n\n${caption}\n\n`;
@@ -166,7 +180,7 @@ class HTMLToMarkdownConverter {
             const citationPath = path.join(__dirname, '..', 'CITATION.cff');
             let author = 'Matthew Lukin Smawfield';
             let version = 'v0.1 (Lisboa)';
-            let dateReleased = '2026-03-02';
+            let dateReleased = '2026-05-29';
             let doi = '';
 
             if (fs.existsSync(citationPath)) {
@@ -214,15 +228,17 @@ First published: ${dateReleased}${doi ? `\nDOI: ${doi}` : ''}
             const basename = manuscriptBasename(version);
 
             const rootPath = path.join(__dirname, '..', `${basename}.md`);
-            fs.writeFileSync(rootPath, finalMarkdown, 'utf8');
-            console.log(`✅ Markdown saved to: ${rootPath} (${(finalMarkdown.length / 1024).toFixed(1)} KB)`);
+            const rootMarkdown = this.rewriteMarkdownAssetPaths(finalMarkdown, 'results/figures');
+            fs.writeFileSync(rootPath, rootMarkdown, 'utf8');
+            console.log(`✅ Markdown saved to: ${rootPath} (${(rootMarkdown.length / 1024).toFixed(1)} KB)`);
 
             const manuscriptsDir = path.join(__dirname, '..', 'manuscripts');
             if (!fs.existsSync(manuscriptsDir)) {
                 fs.mkdirSync(manuscriptsDir, { recursive: true });
             }
             const manuscriptsPath = path.join(manuscriptsDir, `${basename}.md`);
-            fs.writeFileSync(manuscriptsPath, finalMarkdown, 'utf8');
+            const manuscriptsMarkdown = this.rewriteMarkdownAssetPaths(finalMarkdown, '../results/figures');
+            fs.writeFileSync(manuscriptsPath, manuscriptsMarkdown, 'utf8');
             console.log(`✅ Markdown copied to: ${manuscriptsPath}`);
         } catch (error) {
             console.error('❌ Markdown conversion failed:', error.message);

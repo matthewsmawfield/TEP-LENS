@@ -1,0 +1,50 @@
+
+> tep-lens-site@0.1.0 build
+> node build.js
+
+🔨 Building static site...
+🧹 Cleaning dist directory...
+📄 Loading section: Abstract
+📄 Loading section: 1. Introduction
+📄 Loading section: 2. Methodology
+📄 Loading section: 3. Results
+📄 Loading section: 4. Discussion
+📄 Loading section: 5. Conclusion
+📄 Loading section: References
+📄 Loading section: Appendix
+📄 Loading section: Data Availability & Reproducibility
+📁 Copying public/
+📁 Copying figures/
+📁 Copying styles/
+📁 Copied simple-styles.css
+📁 Copying results/figures/ → dist/figures/
+📁 Copied .nojekyll to dist root
+📁 Copied 404.html to dist root
+📁 Copied robots.txt to dist root
+📁 Copied sitemap.xml to dist root
+📁 Copied 29c6507763d2303d801cc8ed89d39f88.txt to dist root
+📁 Copied CITATION.cff to dist root
+📁 Copied CITATION.bib to dist root
+📁 Copied citation.json to dist root
+📁 Copied codemeta.json to dist root
+📁 Copied .well-known/ to dist
+📝 Generating markdown version...
+🔄 Converting HTML site to markdown (TEP-LENS)...
+  ✓ 1_abstract.html (3.3 KB)
+  ✓ 2_introduction.html (9.1 KB)
+  ✓ 3_methodology.html (12.1 KB)
+  ✓ 4_results.html (49.0 KB)
+  ✓ 5_discussion.html (46.8 KB)
+  ✓ 6_conclusion.html (7.3 KB)
+  ✓ 7_references.html (5.2 KB)
+  ✓ 8_appendix.html (6.7 KB)
+  ✓ 9_data_availability.html (12.2 KB)
+  Total HTML: 152.0 KB
+✅ Markdown saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/19-TEP-LENS-v0.1-Lisboa.md (135.5 KB)
+✅ Markdown copied to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/manuscripts/19-TEP-LENS-v0.1-Lisboa.md
+✅ Static site built successfully!
+📁 Output: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/site/dist/index.html
+📊 Generated 9 sections
+🚀 Ready for deployment
+EXIT_CODE=
+---BUILD DONE---

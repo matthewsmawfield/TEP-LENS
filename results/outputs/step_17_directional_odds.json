@@ -28,9 +28,9 @@
       "n_total": 5,
       "binomial_p_one_sided": 0.03125,
       "likelihood_h0": 0.03125,
-      "likelihood_h1": 0.32812500000000006,
-      "bf10_directional": 10.500000000000002,
-      "posterior_h1_equal_prior": 0.9130434782608696,
+      "likelihood_h1": 0.328125,
+      "bf10_directional": 10.5,
+      "posterior_h1_equal_prior": 0.9130434782608695,
       "n_zero_excluded": 1
     }
   },

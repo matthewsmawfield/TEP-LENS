@@ -13,6 +13,7 @@ inference built from step_07 outputs.
 
 import json
 import sys
+from itertools import product
 from pathlib import Path
 
 import numpy as np
@@ -83,6 +84,35 @@ def exact_sign_flip_pvalue(values: np.ndarray, sigmas: np.ndarray):
     return float(p_one_sided)
 
 
+def exact_nonzero_wilcoxon_greater(values: np.ndarray) -> float:
+    """One-sided exact Wilcoxon on the manuscript's non-zero residual set."""
+    nonzero = np.asarray(values, dtype=float)
+    nonzero = nonzero[nonzero != 0]
+    if nonzero.size == 0:
+        return float("nan")
+
+    # Exact Wilcoxon with Pratt zeros is undefined in SciPy; dropping exact
+    # zeros matches the headline non-zero-residual test definition.
+    return float(
+        stats.wilcoxon(
+            nonzero,
+            alternative="greater",
+            zero_method="wilcox",
+            mode="exact",
+        ).pvalue
+    )
+
+
+def wilcoxon_positive_rank_statistic(values: np.ndarray) -> float:
+    """Wilcoxon W+ statistic on non-zero residuals, with average tied ranks."""
+    nonzero = np.asarray(values, dtype=float)
+    nonzero = nonzero[nonzero != 0]
+    if nonzero.size == 0:
+        return 0.0
+    ranks = stats.rankdata(np.abs(nonzero), method="average")
+    return float(np.sum(ranks[nonzero > 0]))
+
+
 def wilcoxon_block_bootstrap(deltas, method_families, n_bootstrap=20000, seed=42):
     """
     Bootstrap Wilcoxon p-values respecting method-family clustering.
@@ -104,12 +134,8 @@ def wilcoxon_block_bootstrap(deltas, method_families, n_bootstrap=20000, seed=42
             boot_indices.extend(boot_idx)
 
         boot_deltas = deltas[boot_indices]
-        try:
-            wsr = stats.wilcoxon(boot_deltas, alternative="greater",
-                                 zero_method="pratt", mode="approx")
-            p_values.append(float(wsr.pvalue))
-        except ValueError:
-            p_values.append(1.0)
+        p_value = exact_nonzero_wilcoxon_greater(boot_deltas)
+        p_values.append(float(p_value) if np.isfinite(p_value) else 1.0)
 
     p_vals_arr = np.array(p_values)
     return {
@@ -121,47 +147,44 @@ def wilcoxon_block_bootstrap(deltas, method_families, n_bootstrap=20000, seed=42
     }
 
 
-def wilcoxon_permutation_test(deltas, method_families, n_perm=50000, seed=42):
+def wilcoxon_permutation_test(deltas, method_families):
     """
-    Exact permutation test for the Wilcoxon statistic under method-family dependence.
+    Exact family-sign-flip test for the Wilcoxon statistic under method-family dependence.
 
-    Null: signs are exchangeable within method families. We randomly flip signs
-    of entire families (preserving intra-family correlation) and recompute the
-    Wilcoxon statistic. This is exact under the sharp null and requires no
-    superpopulation assumption, unlike the bootstrap.
+    Null: signs are exchangeable at method-family level. We enumerate every
+    possible family sign assignment (preserving intra-family correlation) and
+    recompute the Wilcoxon statistic. This is exact under the sharp null and
+    requires no superpopulation assumption, unlike the bootstrap.
     """
-    rng = np.random.default_rng(seed)
     families = np.array(method_families)
     unique_fams = np.unique(families)
 
-    # Observed Wilcoxon statistic (one-sided)
-    obs_w = float(stats.wilcoxon(deltas, alternative="greater",
-                                  zero_method="pratt", mode="approx").statistic)
+    # Observed Wilcoxon W+ statistic (one-sided), computed directly to avoid
+    # small-sample normal-approximation warnings.
+    obs_w = wilcoxon_positive_rank_statistic(deltas)
 
     n_ge = 0
-    for _ in range(n_perm):
-        # Randomly flip sign for each family
+    n_total = 0
+    for family_signs in product((-1.0, 1.0), repeat=len(unique_fams)):
         signs = np.ones(len(deltas))
-        for fam in unique_fams:
-            if rng.random() < 0.5:
-                mask = families == fam
-                signs[mask] = -1.0
+        for fam, sign in zip(unique_fams, family_signs):
+            signs[families == fam] = sign
         perm_deltas = signs * np.abs(deltas)
-        try:
-            perm_w = float(stats.wilcoxon(perm_deltas, alternative="greater",
-                                           zero_method="pratt", mode="approx").statistic)
-        except ValueError:
-            perm_w = 0.0
+        perm_w = wilcoxon_positive_rank_statistic(perm_deltas)
         if perm_w >= obs_w:
             n_ge += 1
+        n_total += 1
 
-    p_one_sided = n_ge / n_perm
+    p_one_sided = n_ge / n_total
     return {
         "p_value_one_sided": float(p_one_sided),
-        "n_permutations": n_perm,
+        "n_permutations": int(n_total),
+        "n_extreme_or_more": int(n_ge),
+        "n_method_families": int(len(unique_fams)),
+        "method_families": [str(fam) for fam in unique_fams],
         "observed_statistic": obs_w,
         "description": (
-            "Exact permutation test: random sign flips within method families. "
+            "Exact family-sign-flip test: enumerates all method-family sign assignments. "
             "Exact under sharp null; no superpopulation assumption."
         ),
     }
@@ -205,8 +228,7 @@ def main():
     z_all = mu_all / sigma_all
     p_binom_all = float(stats.binomtest(n_pos, n_total, 0.5, alternative="greater").pvalue)
     p_flip_exact = exact_sign_flip_pvalue(deltas, sigmas)
-    wsr = stats.wilcoxon(deltas, alternative="greater", zero_method="pratt", mode="exact")
-    p_wilcoxon = float(wsr.pvalue)
+    p_wilcoxon = exact_nonzero_wilcoxon_greater(deltas)
 
     print_status(f"Baseline weighted mean residual: {mu_all:+.2f} ± {sigma_all:.2f} d (z={z_all:.2f})")
     print_status(f"Baseline sign test: {n_pos}/{n_total} positive, p={p_binom_all:.4f}")
@@ -221,8 +243,7 @@ def main():
     n_nonzero_all = int(np.sum(deltas != 0))
     n_nonzero_blind = int(np.sum(blind_deltas != 0))
     p_binom_blind = float(stats.binomtest(n_blind_pos, n_blind_total, 0.5, alternative="greater").pvalue)
-    wsr_blind = stats.wilcoxon(blind_deltas, alternative="greater", zero_method="pratt", mode="exact")
-    p_wilcoxon_blind = float(wsr_blind.pvalue)
+    p_wilcoxon_blind = exact_nonzero_wilcoxon_greater(blind_deltas)
 
     print_status(f"Blind sign test: {n_blind_pos}/{n_blind_total} positive, p={p_binom_blind:.4f}")
     print_status(f"Blind Wilcoxon signed-rank p(one-sided): {p_wilcoxon_blind:.4f}")
@@ -304,13 +325,18 @@ def main():
     print_status(f"Break-even ICC (all 8 binomial {n_pos}/{n_total}): rho = {rho_break_even_all:.3f}")
     print_status(f"Break-even ICC (blind 7 binomial {n_blind_pos}/{n_blind_total}): rho = {rho_break_even_blind:.3f}")
 
-    # Permutation test (exact under sharp null, no superpopulation assumption)
-    perm_all = wilcoxon_permutation_test(deltas, fams, n_perm=50000)
+    # Family-sign-flip test (exact under sharp null, no superpopulation assumption)
+    perm_all = wilcoxon_permutation_test(deltas, fams)
     perm_blind = wilcoxon_permutation_test(blind_deltas,
-                                            [f for i, f in enumerate(fams) if blind_mask[i]],
-                                            n_perm=50000)
-    print_status(f"Permutation Wilcoxon (all 8, family-aware): p = {perm_all['p_value_one_sided']:.4f}")
-    print_status(f"Permutation Wilcoxon (blind 7, family-aware): p = {perm_blind['p_value_one_sided']:.4f}")
+                                            [f for i, f in enumerate(fams) if blind_mask[i]])
+    print_status(
+        f"Exact family-sign-flip Wilcoxon (all 8): p = {perm_all['p_value_one_sided']:.4f} "
+        f"({perm_all['n_extreme_or_more']}/{perm_all['n_permutations']})"
+    )
+    print_status(
+        f"Exact family-sign-flip Wilcoxon (blind 7): p = {perm_blind['p_value_one_sided']:.4f} "
+        f"({perm_blind['n_extreme_or_more']}/{perm_blind['n_permutations']})"
+    )
 
     # Block-bootstrap Wilcoxon (realistic method-family dependence)
     boot_all = wilcoxon_block_bootstrap(deltas, fams, n_bootstrap=20000)
@@ -466,50 +492,57 @@ def main():
         "dependence_aware_test_hierarchy": {
             "bridge_statement": (
                 "Because the Wilcoxon statistic lacks a closed-form variance under "
-                "exchangeable intra-class correlation, the block-bootstrap (Step 11) "
-                "resamples method-family clusters to bypass the missing analytical "
-                "correction; this is the operational execution used in lieu of a "
-                "closed-form dependence correction."
+                "exchangeable intra-class correlation, an exact family-sign-flip test "
+                "(enumerating all method-family sign assignments) provides the most "
+                "rigorous dependence-aware bound. The block-bootstrap is retained as "
+                "a sensitivity exploration but is demoted from operational primary."
             ),
-            "primary_under_independence": "wilcoxon_signed_rank_blind",
-            "primary_correlation_aware_sign_test": "beta_binomial_blind",
-            "operational_rank_test_under_dependence": "block_bootstrap_wilcoxon",
+            "tier_1a_primary_independence": "wilcoxon_signed_rank_blind",
+            "tier_1b_primary_correlation_aware": "permutation_test_wilcoxon_blind",
+            "tier_2_corroborating_sign_test": "beta_binomial_blind",
+            "sensitivity_exploration": "block_bootstrap_wilcoxon",
         },
         "permutation_test_wilcoxon": {
             "description": (
-                "Exact permutation test: random sign flips within method families. "
-                "Exact under sharp null; no superpopulation assumption. More rigorous "
-                "than bootstrap for tiny samples."
+                "Exact family-sign-flip test for the Wilcoxon statistic. Enumerates "
+                "all method-family sign assignments; exact under sharp null; no "
+                "superpopulation assumption. More rigorous than bootstrap for tiny samples."
             ),
             "all_8": perm_all,
             "blind_7": perm_blind,
         },
         "block_bootstrap_wilcoxon": {
-            "description": "Family-aware block-bootstrap respecting method-family clusters. Operational dependence-aware test.",
+            "description": "Family-aware block-bootstrap respecting method-family clusters. Sensitivity exploration (not operational primary).",
             "all_8": boot_all,
             "blind_7": boot_blind,
         },
         "break_even_icc": {
-            "description": "Inter-model correlation (ICC) at which one-sided p-value reaches 0.05 under beta-binomial or Wilcoxon-approx dependence model. Wilcoxon break-even is approximate; block-bootstrap is primary.",
-            "binomial_all_8": {
-                "n_positive": int(n_pos),
-                "n_total": int(n_total),
-                "rho_break_even": rho_break_even_all,
+            "description": "Inter-model correlation (ICC) at which one-sided p-value reaches 0.05. Two distinct methods are reported: (1) exact beta-binomial for sign-test p-values, and (2) an approximate n_eff scaling heuristic for Wilcoxon p-values that lacks formal justification.",
+            "beta_binomial_sign_test": {
+                "description": "Exact beta-binomial ICC break-even for binomial sign-test p-values. These are rigorous.",
+                "binomial_all_8": {
+                    "n_positive": int(n_pos),
+                    "n_total": int(n_total),
+                    "rho_break_even": rho_break_even_all,
+                },
+                "binomial_blind_7": {
+                    "n_positive": int(n_blind_pos),
+                    "n_total": int(n_blind_total),
+                    "rho_break_even": rho_break_even_blind,
+                },
             },
-            "binomial_blind_7": {
-                "n_positive": int(n_blind_pos),
-                "n_total": int(n_blind_total),
-                "rho_break_even": rho_break_even_blind,
-            },
-            "wilcoxon_all_8_approx": {
-                "n_nonzero": int(n_nonzero_all),
-                "rho_break_even": rho_break_even_wilcoxon_all,
-                "caveat": "Mathematically unfounded approximation. Use block_bootstrap_wilcoxon instead.",
-            },
-            "wilcoxon_blind_approx": {
-                "n_nonzero": int(n_nonzero_blind),
-                "rho_break_even": rho_break_even_wilcoxon_blind,
-                "caveat": "Mathematically unfounded approximation. Use block_bootstrap_wilcoxon instead.",
+            "wilcoxon_approx_heuristic": {
+                "description": "Approximate ICC break-even for Wilcoxon p-values via n_eff = n / (1 + (n-1)*rho) and p ≈ 1/2^n_eff. This is a mathematically unfounded heuristic, NOT a beta-binomial result. The exact family-sign-flip test (p=0.031) is the primary correlation-aware rank bound.",
+                "wilcoxon_all_8_approx": {
+                    "n_nonzero": int(n_nonzero_all),
+                    "rho_break_even": rho_break_even_wilcoxon_all,
+                    "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead.",
+                },
+                "wilcoxon_blind_approx": {
+                    "n_nonzero": int(n_nonzero_blind),
+                    "rho_break_even": rho_break_even_wilcoxon_blind,
+                    "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead.",
+                },
             },
         },
         "deprecated_tests": {

@@ -14,8 +14,8 @@
         <strong>GitHub Repository:</strong> <a href="https://github.com/matthewsmawfield/TEP-LENS">github.com/matthewsmawfield/TEP-LENS</a>
     </p>
     <p>
-        The repository contains a deterministic, version-controlled analysis pipeline with <strong>29 analysis steps</strong>
-        (numbered 00–20, 30–36) for geometric blind-prediction residual tests in multiply-imaged supernovae.
+        The repository contains a deterministic, version-controlled analysis pipeline with <strong>36 analysis steps</strong>
+        (numbered 00–20, 30–42, with 32b and 38b diagnostics) for geometric blind-prediction residual tests in multiply-imaged supernovae.
     </p>
 
     <h4>Repository Structure</h4>
@@ -101,7 +101,7 @@ cd TEP-LENS
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run complete pipeline (24 steps, 00–20 plus 32, 34–35)
+# 3. Run complete pipeline (36 steps, 00–20 plus 30–42)
 python scripts/steps/run_all_steps.py
 
 # 4. Build manuscript
@@ -145,7 +145,7 @@ npm run build
     </table>
 
     <h4>Detailed Pipeline Steps</h4>
-    <p>The analysis pipeline consists of <strong>29 analysis steps</strong> (numbered 00–20, 30–36). Each step produces JSON outputs and logs for full traceability:</p>
+    <p>The analysis pipeline consists of <strong>36 analysis steps</strong> (numbered 00–20, 30–42, with 32b and 38b diagnostics). Each step produces JSON outputs and logs for full traceability:</p>
 
     <h5>Data Acquisition & Closure Tests (Steps 00-04)</h5>
     <ul>
@@ -163,7 +163,7 @@ npm run build
         <li><strong>step_07_observed_vs_predicted.py</strong> — Observed vs predicted time-delay comparison; quantifies TEP predictive accuracy</li>
         <li><strong>step_08_new_evidence.py</strong> — Compile new evidence from independent lens systems</li>
         <li><strong>step_09_precision_roadmap.py</strong> — Precision requirements analysis; quantifies significance as a function of model precision and sample size</li>
-        <li><strong>step_10_h0_tension.py</strong> — H0 tension analysis in lensing context; compares TEP predictions to local vs CMB H0</li>
+        <li><strong>step_10_h0_tension.py</strong> — H0 internal-consistency check in lensing context; compares proxy-model shifts to local and CMB H0 without claiming a tension resolution</li>
     </ul>
 
     <h5>Model Dependence & Robustness (Steps 11-15)</h5>
@@ -184,16 +184,23 @@ npm run build
         <li><strong>step_20_external_completeness_synthesis.py</strong> — External completeness synthesis; combines all lensing constraints with TEP</li>
     </ul>
 
-    <h5>Proxy Validation, Null Tests & Forward Prediction (Steps 30–36)</h5>
+    <h5>Proxy Validation, Null Tests, Forward Prediction & Evidence Scaling (Steps 30–42)</h5>
     <ul>
         <li><strong>step_30_cosmograil_temporal_shear.py</strong> — CosmoGRAIL temporal-shear analysis; time-domain signal extraction from light curves</li>
         <li><strong>step_31_cosmograil_validation.py</strong> — CosmoGRAIL validation; injection-recovery tests for delay estimation</li>
         <li><strong>step_32_kappa_proxy_validation.py</strong> — Kappa proxy validation; Monte Carlo shear-degeneracy analysis quantifying mu-to-kappa systematic</li>
-        <li><strong>step_32_temporal_shear_figure.py</strong> — Temporal-shear figure generation; produces diagnostic plots for shear analysis</li>
+        <li><strong>step_32b_temporal_shear_figure.py</strong> — Temporal-shear figure generation; produces diagnostic plots for shear analysis</li>
         <li><strong>step_33_einstein_cross_null.py</strong> — Einstein cross null test; Spearman rank test on inner-cross delays vs magnification</li>
         <li><strong>step_34_agnostic_rank_test.py</strong> — Agnostic rank test; proxy-agnostic statistical verification of rank-order predictions</li>
         <li><strong>step_35_single_contrast_dominance.py</strong> — Single-contrast dominance quantification; effective degrees of freedom and signal-energy fractions</li>
-        <li><strong>step_36_falsification_forward_prediction.py</strong> — Falsification forward prediction; pre-registered thresholds for SN 2025wny</li>
+        <li><strong>step_36_falsification_forward_prediction.py</strong> — Falsification forward prediction; forward-projected thresholds for SN 2025wny</li>
+        <li><strong>step_37_multi_system_evidence.py</strong> — Multi-system evidence accumulation projection; Stouffer projection and alpha-inference scaling with N independent systems</li>
+        <li><strong>step_38_cosmograil_cross_system.py</strong> — CosmoGRAIL cross-system directional consistency diagnostic; caveated quasar check separate from the supernova residual tests</li>
+        <li><strong>step_38_sn_encore_residuals.py</strong> — SN Encore blind-prediction residual test; 8 independent lens models from Suyu+2025 vs Pierel+2026 observed delay</li>
+        <li><strong>step_39_sn_h0pe_residuals.py</strong> — SN H0pe blind-prediction residual test; 7 independent lens models from Pascale+2025 vs Pierel+2024 observed delays</li>
+        <li><strong>step_40_cross_system_trio.py</strong> — Cross-system trio evidence synthesis; Stouffer combination of directional evidence from Refsdal, Encore, and H0pe</li>
+        <li><strong>step_41_null_channel_discriminator.py</strong> — Null-channel discriminator; AIC comparison of the TEP proxy against generic bias models (null, constant offset, uniform-fractional H0/MSD-like) across cross-system contrasts, separating amplitude from sign evidence</li>
+        <li><strong>step_42_precision_persistence.py</strong> — Precision-persistence test; extrapolates the SN Refsdal SX residual to the high-precision lens-model limit to test the model-immaturity explanation</li>
     </ul>
 
     <p>
@@ -211,6 +218,9 @@ npm run build
         <li><code>results/outputs/step_32_kappa_proxy_validation.json</code> — Proxy systematic budget and mu-to-kappa Monte Carlo</li>
         <li><code>results/outputs/step_34_agnostic_rank_test.json</code> — Proxy-agnostic Spearman rank test (delays vs kappa and mu)</li>
         <li><code>results/outputs/step_35_single_contrast_dominance.json</code> — Signal-energy fractions and effective degrees of freedom</li>
+        <li><code>results/outputs/step_38_sn_encore_residuals.json</code> — SN Encore blind-prediction residuals and GR null tests</li>
+        <li><code>results/outputs/step_39_sn_h0pe_residuals.json</code> — SN H0pe blind-prediction residuals and GR null tests</li>
+        <li><code>results/outputs/step_40_cross_system_trio.json</code> — Cross-system trio Stouffer combination and sign-consistency check</li>
     </ul>
 
     <h3>Software Versions</h3>

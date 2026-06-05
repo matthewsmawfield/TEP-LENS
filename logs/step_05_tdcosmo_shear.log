@@ -1,39 +1,39 @@
 
-[23:40:07] [INFO] ======================================================================
-[23:40:07] [INFO] STEP 05: TDCOSMO Quad-Lens Temporal Shear Test
-[23:40:07] [INFO] ======================================================================
-[23:40:07] [INFO] TEP coupling alpha = -0.055 (empirical lensing-sector coupling)
-[23:40:07] [INFO] Processing HE0435-1223...
-[23:40:07] [INFO]   HE0435-1223 dt_BA: dt=-9.0±0.9d, log(F_i/F_A)=-0.133, TEP_shift=+0.066d
-[23:40:07] [INFO]   HE0435-1223 dt_CA: dt=-3.0±1.4d, log(F_i/F_A)=-0.210, TEP_shift=+0.035d
-[23:40:07] [INFO]   HE0435-1223 dt_DA: dt=-13.8±0.8d, log(F_i/F_A)=-0.252, TEP_shift=+0.191d
-[23:40:07] [INFO] Processing WFI2033-4723...
-[23:40:07] [INFO]   WFI2033-4723 dt_BA: dt=-36.2±0.8d, log(F_i/F_A)=-0.182, TEP_shift=+0.362d
-[23:40:07] [INFO]   WFI2033-4723 dt_CA: dt=+22.7±1.4d, log(F_i/F_A)=-0.373, TEP_shift=+0.465d
-[23:40:07] [INFO] Processing DES0408-5354...
-[23:40:07] [INFO]   DES0408-5354 dt_BA: dt=-112.1±2.1d, log(F_i/F_A)=-0.146, TEP_shift=+0.898d
-[23:40:07] [INFO]   DES0408-5354 dt_CA: dt=-155.5±12.8d, log(F_i/F_A)=-0.606, TEP_shift=+5.179d
-[23:40:07] [INFO]   DES0408-5354 dt_DA: dt=-128.4±5.1d, log(F_i/F_A)=-0.719, TEP_shift=+5.077d
-[23:40:07] [INFO] Processing RXJ1131-1231...
-[23:40:07] [INFO]   RXJ1131-1231 dt_BA: dt=+0.7±1.4d, log(F_i/F_A)=-0.022, TEP_shift=+0.001d
-[23:40:07] [INFO]   RXJ1131-1231 dt_CA: dt=-0.4±2.0d, log(F_i/F_A)=-0.276, TEP_shift=+0.006d
-[23:40:07] [INFO]   RXJ1131-1231 dt_DA: dt=+91.4±1.5d, log(F_i/F_A)=-0.959, TEP_shift=+4.819d
-[23:40:07] [INFO] Processing PG1115+080...
-[23:40:07] [INFO]   PG1115+080 dt_A2A1: dt=-14.3±3.4d, log(F_i/F_A)=-0.796, TEP_shift=+0.626d
-[23:40:07] [INFO]   PG1115+080 dt_CA1: dt=+9.4±3.4d, log(F_i/F_A)=-0.770, TEP_shift=+0.398d
-[23:40:07] [INFO] Processing B1608+656...
-[23:40:07] [INFO]   B1608+656 dt_BA: dt=+31.5±1.5d, log(F_i/F_A)=-0.301, TEP_shift=+0.522d
-[23:40:07] [INFO]   B1608+656 dt_CA: dt=+36.0±1.5d, log(F_i/F_A)=-0.276, TEP_shift=+0.546d
-[23:40:07] [INFO]   B1608+656 dt_DA: dt=+77.0±1.5d, log(F_i/F_A)=-0.796, TEP_shift=+3.371d
-[23:40:07] [INFO] Processing J1206+4332...
-[23:40:07] [INFO]   J1206+4332 dt_BA: dt=+111.3±3.0d, log(F_i/F_A)=-0.328, TEP_shift=+2.007d
-[23:40:07] [INFO] Processing SN Encore...
-[23:40:07] [INFO]   SN Encore dt_1b1a: dt=-37.3±13.1d, log(F_i/F_A)=+0.301, TEP_shift=-0.618d
-[23:40:08] [INFO] Spearman rho(log_flux_ratio, TEP_shift) = -0.733, p = 0.0005
-[23:40:08] [INFO] Note: by construction sign(rho) = sign(alpha_lens) since TEP_shift = alpha_lens*log(F)*|dt|
-[23:40:08] [INFO] With alpha_lens=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).
-[23:40:08] [INFO] The physically meaningful test is the magnitude of predicted shifts vs measurement errors.
-[23:40:08] [INFO] Pairs with |TEP_shift| > 1σ_meas: 16/18
-[23:40:11] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_05_tdcosmo_shear.png
-[23:40:11] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_05_tdcosmo_shear.json
-[23:40:11] [INFO] Step 05 complete.
+[18:49:34] [INFO] ======================================================================
+[18:49:34] [INFO] STEP 05: TDCOSMO Quad-Lens Temporal Shear Test
+[18:49:34] [INFO] ======================================================================
+[18:49:34] [INFO] TEP coupling alpha = -0.055 (empirical lensing-sector coupling)
+[18:49:34] [INFO] Processing HE0435-1223...
+[18:49:34] [INFO]   HE0435-1223 dt_BA: dt=-9.0±0.9d, log(F_i/F_A)=-0.133, TEP_shift=+0.066d
+[18:49:34] [INFO]   HE0435-1223 dt_CA: dt=-3.0±1.4d, log(F_i/F_A)=-0.210, TEP_shift=+0.035d
+[18:49:34] [INFO]   HE0435-1223 dt_DA: dt=-13.8±0.8d, log(F_i/F_A)=-0.252, TEP_shift=+0.191d
+[18:49:34] [INFO] Processing WFI2033-4723...
+[18:49:34] [INFO]   WFI2033-4723 dt_BA: dt=-36.2±0.8d, log(F_i/F_A)=-0.182, TEP_shift=+0.362d
+[18:49:34] [INFO]   WFI2033-4723 dt_CA: dt=+22.7±1.4d, log(F_i/F_A)=-0.373, TEP_shift=+0.465d
+[18:49:34] [INFO] Processing DES0408-5354...
+[18:49:34] [INFO]   DES0408-5354 dt_BA: dt=-112.1±2.1d, log(F_i/F_A)=-0.146, TEP_shift=+0.898d
+[18:49:34] [INFO]   DES0408-5354 dt_CA: dt=-155.5±12.8d, log(F_i/F_A)=-0.606, TEP_shift=+5.179d
+[18:49:34] [INFO]   DES0408-5354 dt_DA: dt=-128.4±5.1d, log(F_i/F_A)=-0.719, TEP_shift=+5.077d
+[18:49:34] [INFO] Processing RXJ1131-1231...
+[18:49:34] [INFO]   RXJ1131-1231 dt_BA: dt=+0.7±1.4d, log(F_i/F_A)=-0.022, TEP_shift=+0.001d
+[18:49:34] [INFO]   RXJ1131-1231 dt_CA: dt=-0.4±2.0d, log(F_i/F_A)=-0.276, TEP_shift=+0.006d
+[18:49:34] [INFO]   RXJ1131-1231 dt_DA: dt=+91.4±1.5d, log(F_i/F_A)=-0.959, TEP_shift=+4.819d
+[18:49:34] [INFO] Processing PG1115+080...
+[18:49:34] [INFO]   PG1115+080 dt_A2A1: dt=-14.3±3.4d, log(F_i/F_A)=-0.796, TEP_shift=+0.626d
+[18:49:34] [INFO]   PG1115+080 dt_CA1: dt=+9.4±3.4d, log(F_i/F_A)=-0.770, TEP_shift=+0.398d
+[18:49:34] [INFO] Processing B1608+656...
+[18:49:34] [INFO]   B1608+656 dt_BA: dt=+31.5±1.5d, log(F_i/F_A)=-0.301, TEP_shift=+0.522d
+[18:49:34] [INFO]   B1608+656 dt_CA: dt=+36.0±1.5d, log(F_i/F_A)=-0.276, TEP_shift=+0.546d
+[18:49:34] [INFO]   B1608+656 dt_DA: dt=+77.0±1.5d, log(F_i/F_A)=-0.796, TEP_shift=+3.371d
+[18:49:34] [INFO] Processing J1206+4332...
+[18:49:34] [INFO]   J1206+4332 dt_BA: dt=+111.3±3.0d, log(F_i/F_A)=-0.328, TEP_shift=+2.007d
+[18:49:34] [INFO] Processing SN Encore...
+[18:49:34] [INFO]   SN Encore dt_1b1a: dt=-39.8±3.6d, log(F_i/F_A)=+0.172, TEP_shift=-0.377d
+[18:49:35] [INFO] Spearman rho(log_flux_ratio, TEP_shift) = -0.733, p = 0.0005
+[18:49:35] [INFO] Note: by construction sign(rho) = sign(alpha_lens) since TEP_shift = alpha_lens*log(F)*|dt|
+[18:49:35] [INFO] With alpha_lens=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).
+[18:49:35] [INFO] The physically meaningful test is the magnitude of predicted shifts vs measurement errors.
+[18:49:35] [INFO] Pairs with |TEP_shift| > 1σ_meas: 16/18
+[18:49:35] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_05_tdcosmo_shear.png
+[18:49:35] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_05_tdcosmo_shear.json
+[18:49:35] [INFO] Step 05 complete.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TEP-LENS: Step 10 - H0 Tension under measured proxy-model coupling (alpha_lens ≈ -0.055)
+TEP-LENS: Step 10 - H0 Tension under measured proxy-model coupling (alpha_proxy ≈ -0.055)
 
 Computes the H0 shift for each lensed SN system from first principles using
 proxy-model gamma factors derived from the magnification data in the step_01 catalog.
@@ -30,13 +30,27 @@ import json
 import sys
 from pathlib import Path
 import numpy as np
+from scipy import stats
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import (
+    ALPHA_PROXY,
+    H0_REFSDAL_GR,
+    H0_REFSDAL_ERR_PLUS,
+    H0_REFSDAL_ERR_MINUS,
+    H0_PLANCK,
+    H0_PLANCK_ERR_PLUS,
+    H0_PLANCK_ERR_MINUS,
+    H0_H0PE_ENC_GR,
+    H0_H0PE_ENC_ERR_PLUS,
+    H0_H0PE_ENC_ERR_MINUS,
+    SIGMA_ALPHA_PROXY,
+)
 
 STEP_NUM = "10"
-ALPHA = -0.055
+ALPHA = ALPHA_PROXY
 
 
 def gamma_factor(alpha, mu, mu_mean):
@@ -60,27 +74,41 @@ def gamma_error(alpha, mu, mu_err, mu_mean, n_images):
 def compute_h0_shift_refsdal(alpha):
     """Load actual proxy-model prediction from step_07 for SN Refsdal."""
     s07_path = PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"
-    if s07_path.exists():
-        with open(s07_path) as f:
-            s07 = json.load(f)
-        r_tep = float(s07["tep_prediction"]["R_tep_prediction_days"])
-    else:
-        # Fallback: compute from known values
-        r_tep = 14.538
-        print_status("step_07 output not found, using fallback R_tep=14.538 d", "WARN")
+    if not s07_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {s07_path}\n"
+            "Run step_07_observed_vs_predicted.py first."
+        )
+    with open(s07_path) as f:
+        s07 = json.load(f)
+    r_tep = float(s07["tep_prediction"]["R_tep_prediction_days"])
 
-    dt_obs = 376.0
+    # Load observed SX delay from canonical catalog
+    catalog_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "lensed_sn_catalog.json"
+    with open(catalog_path) as f:
+        catalog = json.load(f)
+    dt_obs = float(catalog["sn_refsdal"]["time_delays_days"]["dt_SX_S1"]["value"])
     dt_geom = dt_obs - r_tep
     f_tep = dt_obs / dt_geom
 
-    h0_gr = 66.6
-    err_plus = 4.1
-    err_minus = 3.3
+    h0_gr = H0_REFSDAL_GR
+    err_plus = H0_REFSDAL_ERR_PLUS
+    err_minus = H0_REFSDAL_ERR_MINUS
     h0_tep = h0_gr * f_tep
 
     # Error propagation: sigma_h0 = h0_gr * dt_geom * sigma_r_tep / dt_geom^2
-    # where sigma_r_tep comes from step_03 error propagation (~0.2 d)
-    sigma_r_tep = 0.21  # from step_03 S1-S4-SX loop
+    # Load the actual S1-S4-SX loop uncertainty from step_03 (avoid stale hardcoded value).
+    s03_path = PROJECT_ROOT / "results" / "outputs" / "step_03_tep_closure.json"
+    if not s03_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {s03_path}\n"
+            "Run step_03_tep_closure.py first."
+        )
+    with open(s03_path) as f:
+        s03 = json.load(f)
+    sigma_r_tep = float(
+        s03["tep_predicted_discrepancies"]["S1_S4_SX"]["tep_gr_discrepancy_err_days"]
+    )
     sigma_f = dt_obs * sigma_r_tep / (dt_geom ** 2)
     sigma_h0_tep = h0_gr * sigma_f
 
@@ -114,22 +142,24 @@ def compute_h0_shift_h0pe(alpha):
         "B": h0pe["magnification_proxies"]["mu_absolute"]["B"]["value"],
         "C": h0pe["magnification_proxies"]["mu_absolute"]["C"]["value"],
     }
-    mu_err = {
-        "A": (h0pe["magnification_proxies"]["mu_absolute"]["A"]["err_plus"] +
-              h0pe["magnification_proxies"]["mu_absolute"]["A"]["err_minus"]) / 2,
-        "B": (h0pe["magnification_proxies"]["mu_absolute"]["B"]["err_plus"] +
-              h0pe["magnification_proxies"]["mu_absolute"]["B"]["err_minus"]) / 2,
-        "C": (h0pe["magnification_proxies"]["mu_absolute"]["C"]["err_plus"] +
-              h0pe["magnification_proxies"]["mu_absolute"]["C"]["err_minus"]) / 2,
-    }
+    def _get_mu_err(img):
+        mu_data = h0pe["magnification_proxies"]["mu_absolute"][img]
+        if "err" in mu_data:
+            return float(mu_data["err"])
+        return (float(mu_data["err_plus"]) + float(mu_data["err_minus"])) / 2
+
+    mu_err = {"A": _get_mu_err("A"), "B": _get_mu_err("B"), "C": _get_mu_err("C")}
 
     mu_mean = np.mean(list(mu.values()))
     gamma = {img: gamma_factor(alpha, mu[img], mu_mean) for img in mu}
     gamma_err = {img: gamma_error(alpha, mu[img], mu_err[img], mu_mean, len(mu)) for img in mu}
 
-    # Delays relative to B (reference image per catalog)
-    dt_ab = abs(h0pe["time_delays_days"]["dt_AB"]["value"])   # 121.9 d
-    dt_cb = abs(h0pe["time_delays_days"]["dt_CB"]["value"])   # 63.2 d
+    # Signed arrival times relative to B (reference image per catalog):
+    # dt_AB = t_A - t_B and dt_CB = t_C - t_B. Both are negative for H0pe.
+    dt_ab_signed = float(h0pe["time_delays_days"]["dt_AB"]["value"])
+    dt_cb_signed = float(h0pe["time_delays_days"]["dt_CB"]["value"])
+    dt_ab = abs(dt_ab_signed)
+    dt_cb = abs(dt_cb_signed)
     sigma_ab = (h0pe["time_delays_days"]["dt_AB"]["err_plus"] +
                 h0pe["time_delays_days"]["dt_AB"]["err_minus"]) / 2
     sigma_cb = (h0pe["time_delays_days"]["dt_CB"]["err_plus"] +
@@ -151,20 +181,22 @@ def compute_h0_shift_h0pe(alpha):
         (w_ab * gamma_err["A"]) ** 2 + (w_cb * gamma_err["C"]) ** 2
     ) / (w_ab + w_cb)
 
-    h0_gr = 60.9
-    err_plus = 5.1
-    err_minus = 4.6
+    h0_gr = H0_H0PE_ENC_GR
+    err_plus = H0_H0PE_ENC_ERR_PLUS
+    err_minus = H0_H0PE_ENC_ERR_MINUS
     h0_tep = h0_gr * f_mean
     sigma_h0_tep = h0_gr * sigma_f
 
     # 3-image closure residual (predicted, not observed)
     # R_TEP = (Gamma_A-1)*dt_AB + (Gamma_B-1)*dt_BC + (Gamma_C-1)*dt_CA
-    # dt_AB = t_B - t_A = 0 - (-121.9) = 121.9
-    # dt_BC = t_C - t_B = -63.2 - 0 = -63.2
-    # dt_CA = t_A - t_C = -121.9 - (-63.2) = -58.7
-    r_tep_h0pe = ((gamma["A"] - 1) * 121.9 +
-                  (gamma["B"] - 1) * (-63.2) +
-                  (gamma["C"] - 1) * (-58.7))
+    # Loop orientation is A -> B -> C -> A:
+    # dt_AB = t_B - t_A, dt_BC = t_C - t_B, dt_CA = t_A - t_C.
+    dt_loop_ab = -dt_ab_signed
+    dt_bc = dt_cb_signed
+    dt_ca = dt_ab_signed - dt_cb_signed
+    r_tep_h0pe = ((gamma["A"] - 1) * dt_loop_ab +
+                  (gamma["B"] - 1) * dt_bc +
+                  (gamma["C"] - 1) * dt_ca)
 
     return {
         "h0_gr": h0_gr,
@@ -183,7 +215,7 @@ def compute_h0_shift_h0pe(alpha):
         "predicted_closure_residual_days": float(r_tep_h0pe),
         "note": (
             "3-image weighted gamma shift. Shift is small (+~0.1%) because "
-            "the high-magnification image (B, mu=5.3) is the reference, and "
+            "the high-magnification image (B, mu=8.0) is the reference, and "
             "the other images have modest magnification contrasts. "
             "Closure residual is predicted, not observed (only 2 independent delays)."
         ),
@@ -230,9 +262,9 @@ def compute_h0_shift_encore(alpha):
     sigma_f = 0.5 * f_mean * np.sqrt((gamma_err["1a"] / gamma["1a"]) ** 2 +
                                       (gamma_err["1b"] / gamma["1b"]) ** 2)
 
-    h0_gr = 60.9
-    err_plus = 5.1
-    err_minus = 4.6
+    h0_gr = H0_H0PE_ENC_GR
+    err_plus = H0_H0PE_ENC_ERR_PLUS
+    err_minus = H0_H0PE_ENC_ERR_MINUS
     h0_tep = h0_gr * f_mean
     sigma_h0_tep = h0_gr * sigma_f
 
@@ -326,9 +358,46 @@ def main():
     print_status(f"  TEP: {h0_low_tep:.1f} (shift: {h0_low_tep - h0_low_gr:+.1f})")
 
     # ------------------------------------------------------------------
+    # Planck tension check (full error budget)
+    # ------------------------------------------------------------------
+    # CRITICAL: tension with Planck must include BOTH the lens-model
+    # uncertainty AND the Planck uncertainty. Using only Planck's tiny
+    # ±0.5 would overstate the tension by ~8x.
+    #
+    # sigma_total^2 = sigma_lens^2 + sigma_planck^2
+    #
+    # For Refsdal: sigma_lens ≈ 4.1, sigma_planck = 0.5
+    #   => sigma_total ≈ 4.13
+    #   => tension = |69.3 - 67.4| / 4.13 ≈ 0.46 sigma (not 3.8!)
+    # ------------------------------------------------------------------
+    def tension_with_planck(h0_tep, err_lens):
+        diff = h0_tep - H0_PLANCK
+        sigma_total = np.sqrt(err_lens**2 + H0_PLANCK_ERR_PLUS**2)
+        z = abs(diff) / sigma_total
+        # Two-sided p-value: tension tests ask "are these measurements consistent?"
+        # regardless of the direction of the discrepancy.
+        p = float(2 * stats.norm.sf(z))
+        return {"diff": diff, "sigma_total": sigma_total, "z": z, "p": p}
+
+    tension_r = tension_with_planck(h0_r_tep, (err_r_plus + err_r_minus) / 2)
+    tension_h = tension_with_planck(h0_h_tep, (err_h_plus + err_h_minus) / 2)
+    tension_e = tension_with_planck(h0_e_tep, (err_e_plus + err_e_minus) / 2)
+
+    print_status(f"\nPlanck tension check (FULL error budget):")
+    print_status(f"  Refsdal: |{h0_r_tep:.1f} - {H0_PLANCK:.1f}| = {abs(tension_r['diff']):.1f} d")
+    print_status(f"    sigma_total = sqrt({(err_r_plus+err_r_minus)/2:.1f}^2 + {H0_PLANCK_ERR_PLUS:.1f}^2) = {tension_r['sigma_total']:.2f}")
+    print_status(f"    tension = {tension_r['z']:.2f} sigma  (p = {tension_r['p']:.3f})")
+    print_status(f"  H0pe:    tension = {tension_h['z']:.2f} sigma")
+    print_status(f"  Encore:  tension = {tension_e['z']:.2f} sigma")
+    print_status(f"  NOTE: The Refsdal TEP shift does NOT resolve the H0 tension.")
+    print_status(f"        The lens-model uncertainty (~4 km/s/Mpc) dominates.")
+
+    # ------------------------------------------------------------------
     # Save results
     # ------------------------------------------------------------------
     results = {
+        "step": STEP_NUM,
+        "status": "success",
         "alpha": ALPHA,
         "sn_refsdal": {
             "gr": h0_r_gr,
@@ -341,6 +410,15 @@ def main():
             "dt_obs_days": float(refsdal["dt_obs"]),
             "dt_geom_days": float(refsdal["dt_geom"]),
             "r_tep_days": float(refsdal["r_tep_days"]),
+            "planck_tension": {
+                "H0_planck": H0_PLANCK,
+                "H0_planck_err": H0_PLANCK_ERR_PLUS,
+                "diff_kms_mpc": float(tension_r["diff"]),
+                "sigma_total_kms_mpc": float(tension_r["sigma_total"]),
+                "z_sigma": float(tension_r["z"]),
+                "p_value": float(tension_r["p"]),
+                "caveat": "Tension uses full error budget: sigma_total = sqrt(sigma_lens^2 + sigma_planck^2). Using only Planck uncertainty would overstate tension by ~8x.",
+            },
             "note": refsdal["note"],
         },
         "sn_h0pe": {
@@ -354,6 +432,12 @@ def main():
             "per_delay_factors": h0pe["per_delay_factors"],
             "gamma_factors": h0pe["gamma_factors"],
             "predicted_closure_residual_days": float(h0pe["predicted_closure_residual_days"]),
+            "planck_tension": {
+                "diff_kms_mpc": float(tension_h["diff"]),
+                "sigma_total_kms_mpc": float(tension_h["sigma_total"]),
+                "z_sigma": float(tension_h["z"]),
+                "p_value": float(tension_h["p"]),
+            },
             "note": h0pe["note"],
         },
         "sn_encore": {
@@ -366,6 +450,12 @@ def main():
             "sigma_shift_factor": float(encore["sigma_shift_factor"]),
             "per_reference_factors": encore["per_reference_factors"],
             "gamma_factors": encore["gamma_factors"],
+            "planck_tension": {
+                "diff_kms_mpc": float(tension_e["diff"]),
+                "sigma_total_kms_mpc": float(tension_e["sigma_total"]),
+                "z_sigma": float(tension_e["z"]),
+                "p_value": float(tension_e["p"]),
+            },
             "note": encore["note"],
         },
         "combined_low_h0": {
@@ -377,7 +467,7 @@ def main():
             "sn_refsdal": {
                 "independence_level": "not_independent",
                 "circularity_note": (
-                    "The alpha_lens=-0.055 used here was empirically determined from the "
+                    "The alpha_proxy=-0.055 used here was empirically determined from the "
                     "same SN Refsdal SX delay data (step_07). The H0 shift is therefore a "
                     "self-consistency check, not an independent confirmation. It shows that "
                     "the TEP framework is internally consistent, but does not add degrees of "
@@ -387,7 +477,7 @@ def main():
             "sn_h0pe": {
                 "independence_level": "independent_prediction",
                 "circularity_note": (
-                    "alpha_lens was calibrated on SN Refsdal, then applied to H0pe without "
+                    "alpha_proxy was calibrated on SN Refsdal, then applied to H0pe without "
                     "refitting. The predicted shift is an independent prediction, but the "
                     "shift is negligible (~0.1) due to modest magnification contrast."
                 ),
@@ -395,7 +485,7 @@ def main():
             "sn_encore": {
                 "independence_level": "independent_prediction",
                 "circularity_note": (
-                    "alpha_lens was calibrated on SN Refsdal, then applied to Encore without "
+                    "alpha_proxy was calibrated on SN Refsdal, then applied to Encore without "
                     "refitting. The predicted shift is an independent prediction, but the "
                     "shift is negligible (~0.1) due to modest magnification contrast and "
                     "reference dependence of the 2-image system."
@@ -408,7 +498,7 @@ def main():
             "SN H0pe and SN Encore receive negligible shifts (+0.1 and +0.1 respectively) "
             "due to their smaller magnification contrasts and fewer independent delays. "
             "The combined low-H0 cluster shifts by +0.8 toward Planck, driven primarily by Refsdal. "
-            "IMPORTANT: The Refsdal H0 shift is not an independent confirmation because alpha_lens "
+            "IMPORTANT: The Refsdal H0 shift is not an independent confirmation because alpha_proxy "
             "was derived from the same Refsdal data. It is an internal consistency check."
         ),
     }
@@ -469,4 +559,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

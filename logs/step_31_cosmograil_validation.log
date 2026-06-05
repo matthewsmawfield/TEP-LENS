@@ -23,7 +23,12 @@ lensed quasars, and measure ΔΓ between bands for matched image pairs.
 
 Result: PARTIAL
 Primary systems: Single-band monitoring only (COSMOGRAIL public releases)
-Multi-band auxiliary ΔΓ summaries not found (expected JSON outputs missing).
+Multi-band auxiliary checks available: 9 matched system/pair tests.
+  HE0435:B-C: bands=R,V, ΔΓ=83.65, p_consistency=0.625
+  HE0435:C-D: bands=R,V, ΔΓ=128.32, p_consistency=0.687
+  Q2237:A-B: bands=I,V,G, ΔΓ=61.14, p_consistency=0.787
+  HE1104:A-B: bands=B,I,J, ΔΓ=66.44, p_consistency=0.851
+  HE0435:A-C: bands=R,V, ΔΓ=30.42, p_consistency=0.905
 
 ======================================================================
 2. GEOMETRIC CORRELATION ANALYSIS
@@ -86,7 +91,7 @@ Null (<1σ): 44 (91.7%)
 4.3 Fit Quality (R²)
 ----------------------------------------
 Significant detections: No significant pairs (R² = N/A)
-Null detections: R² = -17.86 ± 73.51
+Null detections: R² = -19.49 ± 85.31
 
 4.4 Combined Significance
 ----------------------------------------
@@ -101,47 +106,47 @@ Null detections: R² = -17.86 ± 73.51
 ======================================================================
 Loading data from DESJ0408_Courbin2017.rdb...
 System DESJ0408: 3 images
-[23:58:11] [PROCESS]   Analyzing pair A-B
-[23:58:12] [PROCESS]   Analyzing pair A-D
-[23:58:13] [PROCESS]   Analyzing pair B-D
+[19:00:18] [PROCESS]   Analyzing pair A-B
+[19:00:18] [PROCESS]   Analyzing pair A-D
+[19:00:18] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[23:59:08] [PROCESS]   Analyzing pair A-B
-[23:59:09] [PROCESS]   Analyzing pair A-D
-[23:59:09] [PROCESS]   Analyzing pair B-D
+[19:00:32] [PROCESS]   Analyzing pair A-B
+[19:00:33] [PROCESS]   Analyzing pair A-D
+[19:00:33] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[00:00:05] [PROCESS]   Analyzing pair A-B
-[00:00:06] [PROCESS]   Analyzing pair A-D
-[00:00:07] [PROCESS]   Analyzing pair B-D
+[19:00:53] [PROCESS]   Analyzing pair A-B
+[19:00:53] [PROCESS]   Analyzing pair A-D
+[19:00:53] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
 Best pair: A-B
 Original Gamma: -29.9 (σ=18.6, z=1.61, n_boot=200)
 
 Analyzing TIME-REVERSED data (A-B)...
-[00:01:04] [PROCESS]   Analyzing pair A-B
+[19:01:16] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
 Time-reversed Gamma: 17.1 (σ=10.6, z=1.62, n_boot=200)
 
-Signal Reduction (z): -0.6%
+Signal Reduction (z): -0.7%
 Test Status: PASSED
   Gamma sign flipped: -29.9 → +17.1
   Interpretation: Signal is time-directional (consistent with TEP prediction).
-[00:01:19] [PROCESS]   Analyzing pair A-B
-[00:01:19] [PROCESS]   Analyzing pair A-D
-[00:01:20] [PROCESS]   Analyzing pair B-D
+[19:01:24] [PROCESS]   Analyzing pair A-B
+[19:01:24] [PROCESS]   Analyzing pair A-D
+[19:01:24] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[00:02:08] [PROCESS]   Analyzing pair A-B
-[00:02:09] [PROCESS]   Analyzing pair A-D
-[00:02:10] [PROCESS]   Analyzing pair B-D
+[19:01:44] [PROCESS]   Analyzing pair A-B
+[19:01:44] [PROCESS]   Analyzing pair A-D
+[19:01:44] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[00:03:04] [PROCESS]   Analyzing pair A-B
-[00:03:05] [PROCESS]   Analyzing pair A-D
-[00:03:05] [PROCESS]   Analyzing pair B-D
+[19:02:05] [PROCESS]   Analyzing pair A-B
+[19:02:06] [PROCESS]   Analyzing pair A-D
+[19:02:06] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[00:03:57] [PROCESS]   Analyzing pair A-B
-[00:03:58] [PROCESS]   Analyzing pair A-D
-[00:03:58] [PROCESS]   Analyzing pair B-D
+[19:02:28] [PROCESS]   Analyzing pair A-B
+[19:02:28] [PROCESS]   Analyzing pair A-D
+[19:02:28] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[00:04:40] [PROCESS]   Analyzing pair A-B
+[19:02:47] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
 
 Season Shuffle Test:
@@ -153,140 +158,33 @@ Season Shuffle Test:
 ======================================================================
 6. EMPIRICAL SEASON SHUFFLE NULL
 ======================================================================
-[00:04:53] [PROCESS]   Analyzing pair A-B
-[00:04:53] [PROCESS]   Analyzing pair A-D
-[00:04:54] [PROCESS]   Analyzing pair B-D
+[19:02:53] [PROCESS]   Analyzing pair A-B
+[19:02:54] [PROCESS]   Analyzing pair A-D
+[19:02:54] [PROCESS]   Analyzing pair B-D
   Running 200 bootstrap iterations using 14 cores...
-[00:05:42] [PROCESS]   Analyzing pair A-B
+  Empirical shuffle 1/50 for A-B...
+[19:03:13] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:05:56] [PROCESS]   Analyzing pair A-B
+[19:03:20] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:06:06] [PROCESS]   Analyzing pair A-B
+[19:03:26] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:06:19] [PROCESS]   Analyzing pair A-B
+[19:03:31] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:06:33] [PROCESS]   Analyzing pair A-B
+  Empirical shuffle 5/50 for A-B...
+[19:03:36] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:06:53] [PROCESS]   Analyzing pair A-B
+[19:03:48] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:07:10] [PROCESS]   Analyzing pair A-B
+[19:03:58] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:07:28] [PROCESS]   Analyzing pair A-B
+[19:04:07] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:07:41] [PROCESS]   Analyzing pair A-B
+[19:04:14] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:07:59] [PROCESS]   Analyzing pair A-B
+  Empirical shuffle 10/50 for A-B...
+[19:04:20] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:08:19] [PROCESS]   Analyzing pair A-B
+[19:04:25] [PROCESS]   Analyzing pair A-B
   Running 200 bootstrap iterations using 14 cores...
-[00:08:35] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:08:49] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:09:05] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:09:22] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:09:38] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:09:54] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:10:08] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:10:24] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:10:41] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:10:55] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:11:11] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:11:26] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:11:43] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:11:56] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:12:08] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:12:21] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:12:36] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:12:52] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:13:04] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:13:17] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:13:27] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:13:36] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:13:47] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:13:57] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:14:13] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:14:25] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:14:37] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:14:46] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:14:56] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:15:07] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:15:18] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:15:25] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:15:30] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:15:39] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:15:48] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:16:00] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:16:15] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:16:31] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-[00:16:41] [PROCESS]   Analyzing pair A-B
-  Running 200 bootstrap iterations using 14 cores...
-
-======================================================================
-6. MICROLENSING INJECTION TEST
-======================================================================
-Creating Synthetic Null Pair from Image A...
-[00:16:59] [PROCESS]   Analyzing pair A-B
-Baseline Null Gamma: 0.0 (Should be ~0)
-
-Injecting Microlensing (Amp=0.3 mag, Period=2000d)...
-[00:17:00] [PROCESS]   Analyzing pair A-B
-Microlensed Gamma: 17.5 (σ=3.1)
-
-Comparison:
-Observed Gamma (Real Data DESJ0408 A-B): -90.7
-Simulated Microlensing Gamma: 17.5
-Test Status: PASSED (Standard ML does not reproduce large negative shear)
-
-======================================================================
-Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_31_cosmograil_validation.json
-======================================================================
-
-======================================================================
-VALIDATION SUMMARY
-======================================================================
-
-1. ACHROMATICITY: See output
-2. GEOMETRIC CORRELATIONS: See above
-3. INJECTION-RECOVERY: See above
-4. ROBUSTNESS: See above
-5. SCRAMBLED RESIDUALS: See output
-6. SEASON SHUFFLE NULL: See output (with empirical null)
-7. MICROLENSING INJECTION: See output
-
+[19:04:31] [PROCESS]   Analyzing pair A-B

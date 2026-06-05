@@ -9,10 +9,11 @@
       "B",
       "C"
     ],
-    "notes": "Data sourced from Pierel et al. 2024 (ApJ 967, 50) and Frye et al. 2024."
+    "notes": "Data sourced from Pierel et al. 2024 (ApJ 967, 50), Frye et al. 2024, and Grayling et al. 2025 (arXiv:2510.11719)."
   },
   "time_delays": {
     "pierel_2024_photometric": {
+      "reference": "Pierel et al. 2024, ApJ 967, 50",
       "dt_AB": {
         "value": -116.6,
         "err_plus": 10.8,
@@ -27,9 +28,38 @@
         "value": -68.0,
         "err": 11.5
       }
+    },
+    "grayling_2025_bayesn_td": {
+      "reference": "Grayling et al. 2025, arXiv:2510.11719",
+      "dt_AB": {
+        "value": -121.9,
+        "err_plus": 9.5,
+        "err_minus": 7.5
+      },
+      "dt_CB": {
+        "value": -63.2,
+        "err_plus": 3.2,
+        "err_minus": 3.3
+      }
+    }
+  },
+  "photometry": {
+    "reference": "Pierel et al. 2024, ApJ 967, 50",
+    "mu_A": {
+      "value": 4.43,
+      "err": 0.5
+    },
+    "mu_B": {
+      "value": 8.00,
+      "err": 0.8
+    },
+    "mu_C": {
+      "value": 6.43,
+      "err": 0.6
     }
   },
   "lens_model": {
+    "reference": "Pascale et al. 2025, arXiv:2403.18902",
     "mu_A": {
       "value": 5.4,
       "err": 0.5

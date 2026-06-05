@@ -1,25 +1,26 @@
 
-[00:24:59] [INFO] ======================================================================
-[00:24:59] [INFO] STEP 36: Forward-Prediction Falsification Thresholds — SN 2025wny
-[00:24:59] [INFO] ======================================================================
-[00:24:59] [INFO] Predicted residual magnitude distribution (N=100000):
-[00:24:59] [INFO]   16th percentile: 0.47 d
-[00:24:59] [INFO]   50th percentile: 1.91 d
-[00:24:59] [INFO]   84th percentile: 5.38 d
-[00:24:59] [INFO]   95th percentile: 8.93 d
-[00:24:59] [INFO]   99th percentile: 13.77 d
-[00:24:59] [INFO]   P(R > 1 d): 68.66%
-[00:24:59] [INFO]   P(R > 5 d): 18.12%
-[00:24:59] [INFO] 
+[12:28:25] [INFO] ======================================================================
+[12:28:25] [INFO] STEP 36: Forward-Prediction Falsification Thresholds — SN 2025wny
+[12:28:25] [INFO] ======================================================================
+[12:28:25] [INFO] Loaded alpha from Step 07: -0.0560 +/- 0.0108 (bootstrap std; analytical=0.044)
+[12:28:25] [INFO] Predicted residual magnitude distribution (N=100000):
+[12:28:25] [INFO]   16th percentile: 0.82 d
+[12:28:25] [INFO]   50th percentile: 2.27 d
+[12:28:25] [INFO]   84th percentile: 4.64 d
+[12:28:25] [INFO]   95th percentile: 6.57 d
+[12:28:25] [INFO]   99th percentile: 8.94 d
+[12:28:25] [INFO]   P(R > 1 d): 79.33%
+[12:28:25] [INFO]   P(R > 5 d): 13.10%
+[12:28:25] [INFO] 
 Required delay precision (longest baseline):
-[00:24:59] [INFO]   For 3-sigma test (median signal): sigma_dt < 0.64 d
-[00:24:59] [INFO]   For 5-sigma test (median signal): sigma_dt < 0.38 d
-[00:24:59] [INFO]   For 3-sigma test (conservative, 16th pct): sigma_dt < 0.16 d
-[00:24:59] [INFO]   For 5-sigma test (conservative, 16th pct): sigma_dt < 0.09 d
-[00:24:59] [INFO] 
+[12:28:25] [INFO]   For 3-sigma test (median signal): sigma_dt < 0.76 d
+[12:28:25] [INFO]   For 5-sigma test (median signal): sigma_dt < 0.45 d
+[12:28:25] [INFO]   For 3-sigma test (conservative, 16th pct): sigma_dt < 0.27 d
+[12:28:25] [INFO]   For 5-sigma test (conservative, 16th pct): sigma_dt < 0.16 d
+[12:28:25] [INFO] 
 Pre-registered falsification condition (sigma_dt = 2.0 d):
-[00:24:59] [INFO]   If |R_obs| < 4.0 d, the proxy model is excluded at 95% CL.
-[00:24:59] [INFO]   This threshold excludes 74.9% of the prior prediction envelope.
-[00:24:59] [INFO] 
+[12:28:25] [INFO]   If |R_obs| < 4.0 d, the proxy model is excluded at 95% CL.
+[12:28:25] [INFO]   This threshold excludes 77.4% of the prior prediction envelope.
+[12:28:25] [INFO] 
 Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_36_falsification_forward_prediction.json
-[00:24:59] [INFO] Step 36 complete.
+[12:28:25] [INFO] Step 36 complete.

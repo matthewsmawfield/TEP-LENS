@@ -69,8 +69,9 @@ def main():
             "Step 19 provides full lens-name coverage for the target TDCOSMO set. "
             "However, combining external-informed tests with core sign tests is "
             "statistically invalid due to underlying data correlation. The recommended "
-            "reporting track remains the single most robust non-parametric test "
-            "(Wilcoxon signed-rank), supported by external consistency."
+            "reporting track is the single most robust non-parametric test: "
+            "the exact family-sign-flip test respecting method-family clusters, "
+            "supported by the independence-primary Wilcoxon and external consistency."
         ),
     }
 
@@ -92,7 +93,7 @@ def main():
         },
         "recommended_reporting_track": {
             "name": "single_robust_test_benchmark",
-            "result": s16.get("headline_significance", {}),
+            "result": s16.get("test_hierarchy", {}).get("tier_1b_primary_correlation_aware", {}),
         },
         "interpretation": interpretation,
     }

@@ -1,0 +1,33 @@
+
+[12:28:30] [INFO] ======================================================================
+[12:28:30] [INFO] STEP 39: SN H0pe Blind-Prediction Residual Test
+[12:28:30] [INFO] ======================================================================
+[12:28:30] [INFO] Loaded alpha from Step 07: -0.0560 +/- 0.0108
+[12:28:30] [INFO] Observed Delta_t(A,B) = -116.6 (+10.8/-9.3) d (Pierel+2024)
+[12:28:30] [INFO] Observed Delta_t(C,B) = -48.6 (+3.6/-4.0) d (Pierel+2024)
+[12:28:30] [INFO] Observed magnifications: mu_A=4.43, mu_B=8.0, mu_C=6.43 (Pierel+2024 photometry)
+[12:28:30] [INFO] 
+[WSLAP+ leave-out] AB: n_neg=5/6, R_obs = -10.64 +/- 5.14 d
+[12:28:30] [INFO] [WSLAP+ leave-out] CB: n_neg=2/6, R_obs = +0.09 +/- 2.67 d
+[12:28:30] [INFO] 
+--- Delay pair AB ---
+[12:28:30] [INFO] Weighted mean residual = -10.16 +/- 5.13 d
+[12:28:30] [INFO] Binomial: 2/7 positive, p = 0.9375
+[12:28:30] [INFO] Wilcoxon (two-sided): p = 0.8125
+[12:28:30] [INFO] 
+--- Delay pair CB ---
+[12:28:30] [INFO] Weighted mean residual = -0.23 +/- 2.67 d
+[12:28:30] [INFO] Binomial: 4/7 positive, p = 0.5000
+[12:28:30] [INFO] Wilcoxon (two-sided): p = 0.6875
+[12:28:30] [INFO] 
+TEP proxy predicted residuals:
+[12:28:30] [INFO]   AB: -1.577 d (log10(mu_A/mu_B)=-0.257, dt_mean=-109.7 d; WSLAP+ excluded)
+[12:28:30] [INFO]   CB: -0.257 d (log10(mu_C/mu_B)=-0.095, dt_mean=-48.4 d; WSLAP+ excluded)
+[12:28:30] [INFO]   All-model mean diagnostic: AB=-1.913 d, CB=+0.040 d
+[12:28:30] [INFO]   Directional matches: AB=5/7 negative, CB=3/7 negative
+[12:28:30] [INFO] 
+System summary:
+[12:28:30] [INFO]   Mean residual across pairs: -5.20 d
+[12:28:30] [INFO] 
+Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_39_sn_h0pe_residuals.json
+[12:28:30] [INFO] Step 39 complete.

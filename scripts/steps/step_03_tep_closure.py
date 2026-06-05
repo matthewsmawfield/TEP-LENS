@@ -35,6 +35,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 
 STEP_NUM = "03"
 
@@ -81,7 +82,7 @@ def main():
     mu_ref = np.mean(list(mu_rel.values()))  # normalise to mean flux
     mu_norm = {img: mu_rel[img] / mu_ref for img in mu_rel}
 
-    alpha_tep = -0.055  # Empirical lensing-sector coupling from SN Refsdal data (alpha_lens)
+    alpha_tep = ALPHA_PROXY  # Empirical lensing-sector proxy coupling from SN Refsdal data
 
     # Gamma_t(i) = 1 + alpha * log10(mu_norm_i)
     Gamma = {img: 1.0 + alpha_tep * np.log10(mu_norm[img]) for img in mu_norm}

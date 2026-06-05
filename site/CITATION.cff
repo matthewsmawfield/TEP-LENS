@@ -8,7 +8,7 @@ authors:
 title: "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae"
 abstract: "The Temporal Equivalence Principle (TEP) predicts that light rays traversing different gravitational potential depths experience differential temporal scaling. This work applies a blind-prediction residual test to multiply-imaged supernovae, with SN Refsdal as the primary system. Seven blind pre-reappearance GR predictions of the SX–S1 delay are compared to the later Kelly et al. (2023) measurement. The strongest single observed result is a Wilcoxon signed-rank test: all seven non-zero model residuals are positive (p = 0.0078, 2.4 sigma), matching the TEP expansion prediction. Additional strands are directionally consistent: weighted residual R_obs = +14.6 +/- 11.6 d, delay–magnification correlation (r = 0.932), and 46% wRMS reduction after TEP correction. The extended TDCOSMO-2025 and SN Encore dataset shows a predicted systematic scaling trend consistent with TEP at the measured coupling, though these systems do not permit an independent closure test. Robustness analyses show stability to model dependence and 10–30% flux-proxy perturbations; hierarchical Bayesian model comparison remains inconclusive at current lens-model uncertainties. A cross-system consistency check shows that applying the measured TEP coupling provides a candidate resolution for the low-H0 bias in SN Refsdal, though this is not an independent confirmation because the coupling was calibrated on the same data."
 version: "v0.1 (Lisboa)"
-date-released: 2026-03-02
+date-released: 2026-05-29
 url: "https://github.com/matthewsmawfield/TEP-LENS"
 repository-code: "https://github.com/matthewsmawfield/TEP-LENS"
 license: CC-BY-4.0

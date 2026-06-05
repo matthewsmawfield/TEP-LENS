@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 """COSMOGRAIL Temporal Shear Validation Suite (Step 31)
 
 This script performs four validation analyses:
@@ -26,6 +28,10 @@ from scipy.optimize import curve_fit
 import sys
 import warnings
 warnings.filterwarnings('ignore')
+
+STEPS_DIR = Path(__file__).resolve().parent
+if str(STEPS_DIR) not in sys.path:
+    sys.path.insert(0, str(STEPS_DIR))
 
 # Statistical thresholds
 SIGNIFICANCE_THRESHOLD = 0.05
@@ -327,45 +333,53 @@ We can test the estimator on public multi-band, image-resolved monitoring in oth
 lensed quasars, and measure ΔΓ between bands for matched image pairs.
 """)
 
-    project_root = Path(__file__).parent.parent.parent
-    outputs_dir = project_root / "results" / "outputs"
-
-    multiband_sources = {
-        "Q2237_Goicoechea2020_JAA637A89": outputs_dir / "step_3_12_q2237_multiband_chromaticity.json",
-        "HE0435_Sorgenfrei2025_JAA703A250": outputs_dir / "step_3_13_he0435_multiband_chromaticity.json",
-        "HE1104_Blackburne2015_JApJ798_95": outputs_dir / "step_3_14_he1104_multiband_chromaticity.json",
-        "Q2237_Vakulik2004_JAA420_447": outputs_dir / "step_3_15_q2237_vakulik_multiband_chromaticity.json",
-    }
-
-    loaded = {}
-    for key, path in multiband_sources.items():
-        if path.exists():
-            try:
-                with open(path) as f:
-                    loaded[key] = json.load(f)
-            except Exception:
-                continue
-
-    ab_summary = {}
-    for key, payload in loaded.items():
-        comps = payload.get("comparisons", {})
-        ab_entry = None
-        for _, v in comps.items():
-            if isinstance(v, dict) and "A-B" in v:
-                ab_entry = v["A-B"]
-                break
-            if isinstance(v, dict) and "delta_gamma" in v and "delta_uncertainty" in v:
-                ab_entry = v
-                break
-
-        if ab_entry is None:
+    band_groups = {}
+    for pair in pairs:
+        system = str(pair["system"])
+        if "_" not in system:
             continue
 
-        ab_summary[key] = {
-            "delta_gamma": ab_entry.get("delta_gamma"),
-            "delta_uncertainty": ab_entry.get("delta_uncertainty"),
-            "delta_sigma": ab_entry.get("delta_sigma"),
+        base_system, band = system.split("_", 1)
+        key = (base_system, pair["pair"])
+        band_groups.setdefault(key, []).append({
+            "band": band,
+            "gamma": pair["gamma"],
+            "uncertainty": pair["uncertainty"],
+            "sigma": pair["sigma"],
+        })
+
+    multiband_summary = {}
+    for (base_system, pair_id), entries in sorted(band_groups.items()):
+        finite_entries = [
+            entry for entry in entries
+            if np.isfinite(entry["gamma"]) and entry["uncertainty"] and entry["uncertainty"] > 0
+        ]
+        if len(finite_entries) < 2:
+            continue
+
+        gammas = np.array([entry["gamma"] for entry in finite_entries], dtype=float)
+        variances = np.array([entry["uncertainty"] ** 2 for entry in finite_entries], dtype=float)
+        weights = 1.0 / variances
+        weighted_mean = float(np.sum(weights * gammas) / np.sum(weights))
+        chi2 = float(np.sum((gammas - weighted_mean) ** 2 / variances))
+        dof = len(finite_entries) - 1
+        p_chi2 = float(stats.chi2.sf(chi2, dof)) if dof > 0 else np.nan
+
+        multiband_summary[f"{base_system}:{pair_id}"] = {
+            "bands": [entry["band"] for entry in finite_entries],
+            "gamma_by_band": {entry["band"]: entry["gamma"] for entry in finite_entries},
+            "uncertainty_by_band": {entry["band"]: entry["uncertainty"] for entry in finite_entries},
+            "weighted_mean_gamma": weighted_mean,
+            "max_delta_gamma": float(np.max(gammas) - np.min(gammas)),
+            "chi2": chi2,
+            "dof": dof,
+            "p_chi2_consistency": p_chi2,
         }
+
+    strongest_chromatic = sorted(
+        multiband_summary.items(),
+        key=lambda item: item[1]["p_chi2_consistency"] if np.isfinite(item[1]["p_chi2_consistency"]) else 1.0,
+    )[:5]
 
     result = {
         "status": "PARTIAL",
@@ -373,9 +387,12 @@ lensed quasars, and measure ΔΓ between bands for matched image pairs.
         "primary_systems": ["DESJ0408", "PG1115", "J1206"],
         "recommendation": "Obtain multi-band, image-resolved monitoring light curves for DESJ0408, PG1115, J1206.",
         "multiband_auxiliary": {
-            "available": sorted(list(loaded.keys())),
-            "A-B_summary": ab_summary,
-            "outputs_dir": str(outputs_dir),
+            "source": "Current step_30 system outputs grouped by base system, band suffix, and image pair.",
+            "n_matched_band_pair_tests": len(multiband_summary),
+            "summaries": multiband_summary,
+            "strongest_chromatic_candidates": [
+                {"system_pair": key, **summary} for key, summary in strongest_chromatic
+            ],
         },
         "tdcosmo_public_repo": {
             "repo": "https://github.com/TDCOSMO/TD_data_public",
@@ -385,10 +402,16 @@ lensed quasars, and measure ΔΓ between bands for matched image pairs.
 
     print(f"\nResult: {result['status']}")
     print(f"Primary systems: {result['primary_systems_status']}")
-    if ab_summary:
-        print("Multi-band auxiliary A-B ΔΓ summaries loaded from results/outputs.")
+    if multiband_summary:
+        print(f"Multi-band auxiliary checks available: {len(multiband_summary)} matched system/pair tests.")
+        for key, summary in strongest_chromatic:
+            print(
+                f"  {key}: bands={','.join(summary['bands'])}, "
+                f"ΔΓ={summary['max_delta_gamma']:.2f}, "
+                f"p_consistency={summary['p_chi2_consistency']:.3f}"
+            )
     else:
-        print("Multi-band auxiliary ΔΓ summaries not found (expected JSON outputs missing).")
+        print("No matched multi-band auxiliary pairs are available in the current step_30 output.")
 
     return result
 
@@ -1292,7 +1315,10 @@ def run_empirical_season_shuffle_null(
     l1_label, l2_label = best_pair.split('-')
     z_null = []
     n_valid_null = []
+    progress_every = max(1, int(n_shuffles) // 10)
     for k in range(int(n_shuffles)):
+        if k == 0 or (k + 1) % progress_every == 0 or (k + 1) == int(n_shuffles):
+            print(f"  Empirical shuffle {k + 1}/{int(n_shuffles)} for {best_pair}...")
         trial_seed = int(rng.integers(0, 2**31 - 1))
 
         lc2_shuf = _shuffle_within_seasons(system.light_curves[l2_label], gap_days=season_gap_days, seed=trial_seed)
@@ -1454,23 +1480,23 @@ def run_microlensing_injection_test(data_dir: Path, target_system: str = 'DESJ04
     
     print(f"Microlensed Gamma: {gamma_ml:.1f} (σ={sigma_ml:.1f})")
     
-    # Get actual observed gamma from results for comparison
-    # Load results to get real observed value
+    # Get actual observed gamma from step_30 results (required)
     project_root = Path(__file__).parent.parent.parent
     results_path = project_root / 'results' / 'outputs' / 'step_30_cosmograil_temporal_shear.json'
-    observed_gamma = -30.0  # Default fallback based on typical DESJ0408 A-B values
-    if results_path.exists():
-        try:
-            with open(results_path) as f:
-                results_data = json.load(f)
-                desj0408_data = results_data.get('systems', {}).get('DESJ0408', {})
-                ab_pair = desj0408_data.get('pairs', {}).get('A-B', {})
-                gamma_data = ab_pair.get('gamma', {})
-                if gamma_data.get('value') is not None and np.isfinite(gamma_data.get('value', np.nan)):
-                    observed_gamma = float(gamma_data['value'])
-        except Exception:
-            pass  # Use default if loading fails
-    
+    if not results_path.exists():
+        raise FileNotFoundError(
+            f"Required upstream output not found: {results_path}\n"
+            "Run step_30_cosmograil_temporal_shear.py first."
+        )
+    with open(results_path) as f:
+        results_data = json.load(f)
+    desj0408_data = results_data.get('systems', {}).get('DESJ0408', {})
+    ab_pair = desj0408_data.get('pairs', {}).get('A-B', {})
+    gamma_data = ab_pair.get('gamma', {})
+    if gamma_data.get('value') is None or not np.isfinite(gamma_data.get('value', np.nan)):
+        raise ValueError("Gamma value missing or non-finite in step_30 output for DESJ0408 A-B.")
+    observed_gamma = float(gamma_data['value'])
+
     print(f"\nComparison:")
     print(f"Observed Gamma (Real Data DESJ0408 A-B): {observed_gamma:.1f}")
     print(f"Simulated Microlensing Gamma: {gamma_ml:.1f}")
@@ -1502,7 +1528,7 @@ def main():
     parser.add_argument('--target-system', type=str, default='DESJ0408', help='System ID for raw-data null controls')
     parser.add_argument('--target-pair', type=str, default='', help='Image pair key (e.g., A-B). Default: choose best pair by bootstrap z')
     parser.add_argument('--run-empirical-null', action='store_true', help='Run many within-season shuffles to estimate empirical null p-value')
-    parser.add_argument('--n-shuffles', type=int, default=200, help='Number of within-season shuffles for empirical null')
+    parser.add_argument('--n-shuffles', type=int, default=50, help='Number of within-season shuffles for empirical null')
     parser.add_argument('--seed', type=int, default=0, help='RNG seed for null shuffles')
     parser.add_argument('--season-gap-days', type=float, default=30.0, help='Gap threshold (days) to define seasons for shuffling')
 
@@ -1541,9 +1567,38 @@ def main():
         print(f"ERROR: Results file not found: {results_path}")
         # The raw data tests may still be run if available
     
-    all_results = {}
+    all_results = {
+        "step": "31",
+        "status": "success",
+    }
 
-    if not args.only_empirical_null:
+    if args.only_empirical_null:
+        if data_dir.exists():
+            print("\n" + "=" * 70)
+            print("EMPIRICAL SEASON SHUFFLE NULL")
+            print("=" * 70)
+            tau_values = [float(t.strip()) for t in args.tau_values.split(",") if t.strip()]
+            all_results['empirical_season_shuffle_null'] = run_empirical_season_shuffle_null(
+                data_dir=data_dir,
+                target_system=args.target_system,
+                n_shuffles=args.n_shuffles,
+                seed=args.seed,
+                n_bootstrap=args.n_bootstrap,
+                detrend_window=args.detrend_window,
+                tau_values=tau_values,
+                estimator=args.estimator,
+                broadband_estimator=args.broadband_estimator,
+                min_variance_fraction=args.min_variance_fraction,
+                min_correlation=args.min_correlation,
+                lag_step=args.lag_step,
+                mode_lock_window=args.mode_lock_window,
+                bootstrap_mode=args.bootstrap_mode,
+                pair=args.target_pair,
+                season_gap_days=args.season_gap_days,
+            )
+        else:
+            print(f"WARNING: Data directory not found: {data_dir}. Skipping empirical null.")
+    else:
         # Load JSON results if available
         if results_path.exists():
             data = load_temporal_shear_results(results_path)
@@ -1573,24 +1628,24 @@ def main():
             print("\n" + "=" * 70)
             print("6. EMPIRICAL SEASON SHUFFLE NULL")
             print("=" * 70)
-            tau_values = [10.0, 20.0, 40.0, 80.0, 160.0]
+            tau_values = [float(t.strip()) for t in args.tau_values.split(",") if t.strip()]
             all_results['empirical_season_shuffle_null'] = run_empirical_season_shuffle_null(
                 data_dir=data_dir,
-                target_system='DESJ0408',
-                n_shuffles=50,
-                seed=0,
-                n_bootstrap=200,
-                detrend_window=200.0,
+                target_system=args.target_system,
+                n_shuffles=args.n_shuffles,
+                seed=args.seed,
+                n_bootstrap=args.n_bootstrap,
+                detrend_window=args.detrend_window,
                 tau_values=tau_values,
-                estimator='iccf',
-                broadband_estimator='interp',
-                min_variance_fraction=0.01,
-                min_correlation=0.2,
-                lag_step=1.0,
-                mode_lock_window=50.0,
-                bootstrap_mode='fr',
-                pair='A-B',
-                season_gap_days=30.0,
+                estimator=args.estimator,
+                broadband_estimator=args.broadband_estimator,
+                min_variance_fraction=args.min_variance_fraction,
+                min_correlation=args.min_correlation,
+                lag_step=args.lag_step,
+                mode_lock_window=args.mode_lock_window,
+                bootstrap_mode=args.bootstrap_mode,
+                pair=args.target_pair or 'A-B',
+                season_gap_days=args.season_gap_days,
             )
             
             # Update season_shuffle_null interpretation based on empirical null
@@ -1647,16 +1702,18 @@ def main():
     print("\n" + "=" * 70)
     print("VALIDATION SUMMARY")
     print("=" * 70)
-    
-    print("""
-1. ACHROMATICITY: See output
-2. GEOMETRIC CORRELATIONS: See above
-3. INJECTION-RECOVERY: See above
-4. ROBUSTNESS: See above
-5. SCRAMBLED RESIDUALS: See output
-6. SEASON SHUFFLE NULL: See output (with empirical null)
-7. MICROLENSING INJECTION: See output
-""")
+    summary_labels = {
+        "achromaticity": "ACHROMATICITY",
+        "geometric": "GEOMETRIC CORRELATIONS",
+        "injection_recovery": "INJECTION-RECOVERY",
+        "robustness": "ROBUSTNESS",
+        "scrambled_residuals": "SCRAMBLED RESIDUALS",
+        "season_shuffle_null": "SEASON SHUFFLE NULL",
+        "empirical_season_shuffle_null": "EMPIRICAL SEASON SHUFFLE NULL",
+        "microlensing_injection": "MICROLENSING INJECTION",
+    }
+    for idx, key in enumerate([k for k in summary_labels if k in all_results_clean], start=1):
+        print(f"{idx}. {summary_labels[key]}: written to JSON")
 
 
 if __name__ == '__main__':

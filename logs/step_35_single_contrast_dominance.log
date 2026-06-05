@@ -1,30 +1,30 @@
 
-[00:24:46] [INFO] ======================================================================
-[00:24:46] [INFO] STEP 35: Single-Contrast Dominance Quantification
-[00:24:46] [INFO] ======================================================================
-[00:24:46] [INFO] Original loop residuals:
-[00:24:46] [INFO]   S1_S2_S3: -0.109 d
-[00:24:46] [INFO]   S1_S2_S4: +0.278 d
-[00:24:46] [INFO]   S1_S3_S4: +0.342 d
-[00:24:46] [INFO]   S1_S2_SX: -8.492 d
-[00:24:46] [INFO]   S1_S4_SX: -14.538 d
-[00:24:46] [INFO] 
+[12:28:24] [INFO] ======================================================================
+[12:28:24] [INFO] STEP 35: Single-Contrast Dominance Quantification
+[12:28:24] [INFO] ======================================================================
+[12:28:24] [INFO] Original loop residuals:
+[12:28:24] [INFO]   S1_S2_S3: -0.109 d
+[12:28:24] [INFO]   S1_S2_S4: +0.278 d
+[12:28:24] [INFO]   S1_S3_S4: +0.342 d
+[12:28:24] [INFO]   S1_S2_SX: -8.492 d
+[12:28:24] [INFO]   S1_S4_SX: -14.538 d
+[12:28:24] [INFO] 
 S4-SX contrast knockout:
-[00:24:46] [INFO]   Total energy (sum R^2):     283.676 d^2
-[00:24:46] [INFO]   Energy after knockout:      1.312 d^2
-[00:24:46] [INFO]   Fraction DROP from S4-SX:   99.5%
-[00:24:46] [INFO] 
+[12:28:24] [INFO]   Total energy (sum R^2):     283.676 d^2
+[12:28:24] [INFO]   Energy after knockout:      1.312 d^2
+[12:28:24] [INFO]   Fraction DROP from S4-SX:   99.5%
+[12:28:24] [INFO] 
 Isolate S4-SX contrast (zero inner-cross differences):
-[00:24:46] [INFO]   Retained energy fraction:   72.3%
-[00:24:46] [INFO] 
+[12:28:24] [INFO]   Retained energy fraction:   72.3%
+[12:28:24] [INFO] 
 Effective degrees of freedom (participation ratio):
-[00:24:46] [INFO]   eff_dof = 1.99
-[00:24:46] [INFO]   Interpretation: the predicted TEP signal is concentrated in
-[00:24:46] [INFO]   ~2.0 effective independent contrast(s).
-[00:24:46] [INFO] 
+[12:28:24] [INFO]   eff_dof = 1.99
+[12:28:24] [INFO]   Interpretation: the predicted TEP signal is concentrated in
+[12:28:24] [INFO]   ~2.0 effective independent contrast(s).
+[12:28:24] [INFO] 
 Loop-type energy split:
-[00:24:46] [INFO]   SX-containing loops:   283.470 d^2 (99.9%)
-[00:24:46] [INFO]   Inner-cross only loops: 0.206 d^2 (0.1%)
-[00:24:46] [INFO] 
+[12:28:24] [INFO]   SX-containing loops:   283.470 d^2 (99.9%)
+[12:28:24] [INFO]   Inner-cross only loops: 0.206 d^2 (0.1%)
+[12:28:24] [INFO] 
 Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_35_single_contrast_dominance.json
-[00:24:46] [INFO] Step 35 complete.
+[12:28:24] [INFO] Step 35 complete.

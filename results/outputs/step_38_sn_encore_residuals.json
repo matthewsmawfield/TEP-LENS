@@ -1,0 +1,185 @@
+{
+  "step": "38",
+  "system": "SN Encore",
+  "status": "success",
+  "description": "Blind-prediction residual test for SN Encore (MACS J0138-2155). Eight independent lens models from Suyu+2025 compared against Pierel+2026 observed delay.",
+  "observed": {
+    "dt_1b_1a_days": -39.8,
+    "err_plus": 3.9,
+    "err_minus": 3.3,
+    "reference": "Pierel et al. 2026, ApJ, Table 5"
+  },
+  "magnifications_observed": {
+    "mu_1a": 21.8,
+    "mu_1b": 32.4,
+    "reference": "Pierel et al. 2026"
+  },
+  "models": [
+    {
+      "name": "glafic",
+      "team": "Oguri",
+      "ref": "Suyu+2025, Table E.1 (glafic)",
+      "method": "GLAFIC parametric",
+      "blind": true,
+      "dt_pred_days": -32.4,
+      "err_plus": 2.2,
+      "err_minus": 2.5,
+      "sigma_model_days": 2.35,
+      "delta_obs_minus_pred_days": -7.399999999999999,
+      "sigma_total_days": 4.2991278185231945,
+      "z_score": -1.7212793646461049,
+      "alpha_inferred": -0.8394558532734702
+    },
+    {
+      "name": "GLEE",
+      "team": "Acebron/Grillo",
+      "ref": "Suyu+2025, Table E.1 (GLEE)",
+      "method": "GLEE parametric",
+      "blind": true,
+      "dt_pred_days": -37.1,
+      "err_plus": 2.7,
+      "err_minus": 2.6,
+      "sigma_model_days": 2.6500000000000004,
+      "delta_obs_minus_pred_days": -2.6999999999999957,
+      "sigma_total_days": 4.47017896733453,
+      "z_score": -0.6040026629202156,
+      "alpha_inferred": -0.3062879464646441
+    },
+    {
+      "name": "GLEE-baseline",
+      "team": "Acebron/Grillo",
+      "ref": "Suyu+2025, Table E.1 (GLEE-baseline)",
+      "method": "GLEE parametric (baseline)",
+      "blind": true,
+      "dt_pred_days": -36.9,
+      "err_plus": 2.6,
+      "err_minus": 3.0,
+      "sigma_model_days": 2.8,
+      "delta_obs_minus_pred_days": -2.8999999999999986,
+      "sigma_total_days": 4.560701700396551,
+      "z_score": -0.635867063997596,
+      "alpha_inferred": -0.32897594249906253
+    },
+    {
+      "name": "Lenstool I",
+      "team": "Acebron",
+      "ref": "Suyu+2025, Table E.1 (Lenstool I)",
+      "method": "Lenstool parametric",
+      "blind": true,
+      "dt_pred_days": -75.0,
+      "err_plus": 55.0,
+      "err_minus": 54.0,
+      "sigma_model_days": 54.5,
+      "delta_obs_minus_pred_days": 35.2,
+      "sigma_total_days": 54.61876966757856,
+      "z_score": 0.6444670982930352,
+      "alpha_inferred": 3.9930873020575888
+    },
+    {
+      "name": "Lenstool II",
+      "team": "Acebron",
+      "ref": "Suyu+2025, Table E.1 (Lenstool II)",
+      "method": "Lenstool parametric (alt. scaling)",
+      "blind": true,
+      "dt_pred_days": -35.6,
+      "err_plus": 3.1,
+      "err_minus": 4.3,
+      "sigma_model_days": 3.7,
+      "delta_obs_minus_pred_days": -4.199999999999996,
+      "sigma_total_days": 5.162363799656123,
+      "z_score": -0.8135807864373619,
+      "alpha_inferred": -0.47644791672278
+    },
+    {
+      "name": "MrMARTIAN",
+      "team": "Furtak/Zitrin",
+      "ref": "Suyu+2025, Table E.1 (MrMARTIAN)",
+      "method": "MrMARTIAN free-form",
+      "blind": true,
+      "dt_pred_days": -40.6,
+      "err_plus": 9.8,
+      "err_minus": 2.9,
+      "sigma_model_days": 6.3500000000000005,
+      "delta_obs_minus_pred_days": 0.8000000000000043,
+      "sigma_total_days": 7.299486283294188,
+      "z_score": 0.10959675365524106,
+      "alpha_inferred": 0.09075198413767295
+    },
+    {
+      "name": "WSLAP+",
+      "team": "Diego/Sendra",
+      "ref": "Suyu+2025, Table E.1 (WSLAP+)",
+      "method": "WSLAP+ hybrid",
+      "blind": true,
+      "dt_pred_days": -112.0,
+      "err_plus": 32.0,
+      "err_minus": 32.0,
+      "sigma_model_days": 32.0,
+      "delta_obs_minus_pred_days": 72.2,
+      "sigma_total_days": 32.20186330012597,
+      "z_score": 2.242106282083297,
+      "alpha_inferred": 8.19036656842494
+    },
+    {
+      "name": "Zitrin-analytic",
+      "team": "Zitrin",
+      "ref": "Suyu+2025, Table E.1 (Zitrin-analytic)",
+      "method": "Zitrin-LTM analytic",
+      "blind": true,
+      "dt_pred_days": -40.2,
+      "err_plus": 7.5,
+      "err_minus": 11.1,
+      "sigma_model_days": 9.3,
+      "delta_obs_minus_pred_days": 0.4000000000000057,
+      "sigma_total_days": 9.972462083156797,
+      "z_score": 0.04011045583974636,
+      "alpha_inferred": 0.04537599206883688
+    }
+  ],
+  "weighted_mean_residual": {
+    "R_obs_days": -3.329462659636591,
+    "sigma_R_obs_days": 2.1326268917956055,
+    "z_score": -1.5612026053152162,
+    "alpha_inferred": -0.37769417809289085
+  },
+  "unweighted_statistics": {
+    "mean_days": 11.425000000000004,
+    "std_days": 26.211960533313796,
+    "n_positive": 4,
+    "n_negative": 4
+  },
+  "tep_prediction": {
+    "R_tep_prediction_days": -0.4935532560666476,
+    "alpha_used": -0.055988671582071256,
+    "log10_mu_ratio": -0.17208851660200725,
+    "dt_mean_pred_days": -51.224999999999994,
+    "R_tep_unit_days_per_alpha": 8.815234262937821,
+    "note": "Single-pair TEP residual is ~<1 d because magnification contrast is modest. No loop-closure test possible with only two images."
+  },
+  "gr_null_test": {
+    "z_score": -1.5612026053152162,
+    "p_value_two_sided": 0.11847595449156224
+  },
+  "binomial_sign_test": {
+    "n_positive": 4,
+    "n_total": 8,
+    "p_value_one_sided": 0.63671875,
+    "z_approx": 0.0
+  },
+  "wilcoxon_test": {
+    "p_value_two_sided": 1.0,
+    "n_nonzero": 8
+  },
+  "chi2_comparison": {
+    "chi2_gr": 9.849861205127239,
+    "chi2_tep": 9.1808035422954,
+    "delta_chi2": 0.6690576628318379,
+    "p_delta_chi2": 0.4133803416588565
+  },
+  "limitations": [
+    "Only two resolved images (1a, 1b); no three-image loop for direct TEP closure test.",
+    "TEP predicted residual is <1 d, far smaller than per-model scatter (~3-50 d).",
+    "System serves as independent consistency check, not high-SNR evidence strand.",
+    "Models with very large uncertainties (Lenstool I, WSLAP+) dominate unweighted scatter but are downweighted in the precision-weighted mean."
+  ]
+}

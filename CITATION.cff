@@ -1,61 +1,135 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it as below."
+message: If you use this work, please cite it as below.
 type: article
 authors:
-  - family-names: "Smawfield"
-    given-names: "Matthew Lukin"
-    orcid: "https://orcid.org/0009-0003-8219-3159"
-title: "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae"
-abstract: |
-    The Temporal Equivalence Principle (TEP) predicts that light rays traversing
-    different gravitational potential depths experience differential temporal scaling
-    ($\alpha \neq 0$). This work applies a blind-prediction residual test to SN Refsdal,
-    the only multiply-imaged supernova with five resolved images and precision-measured
-    time delays. The key observational lever is a comparison of seven blind
-    pre-reappearance GR predictions of $\Delta t_{\rm SX,S1}$ against the later Kelly
-    et al. (2023) measurement — two completely disjoint datasets. The pre-specified
-    primary non-parametric directional test is a Wilcoxon signed-rank test on the six
-    non-zero residuals among the seven blind models, all of which are positive
-    ($p = 0.016$, approximately $2.2\sigma$), matching the TEP prediction for a negative
-    temporal-shear coupling. The supplementary all-eight-model Wilcoxon (including one
-    post-blind precision update) gives $p = 0.0078$ ($2.4\sigma$). Additional strands
-    are directionally consistent: a 46% reduction in weighted RMS after TEP correction,
-    and a binomial sign test of 6/7 positive among blind models ($p = 0.0625$).
-    Hierarchical Bayesian model comparison remains inconclusive (BF = 1.06
-    fixed-$\alpha$ baseline / 0.997 h0pe-informed, BF = 0.615 free-$\alpha$ baseline /
-    0.492 h0pe-informed with a GR-centred prior), indicating that
-    present lens-model uncertainties dominate formal model-selection metrics. The
-    measured coupling $\alpha_{\rm lens} = -0.055 \pm 0.044$ is calibrated from the same
-    SN Refsdal data, so the magnitude agreement with the TEP prediction is definitional
-    rather than an independent confirmation; the probative content lies in the sign
-    consistency across independent modelling groups. Applying this coupling shifts SN
-    Refsdal's inferred $H_0$ from $66.6$ to $69.3$ km s$^{-1}$ Mpc$^{-1}$ as an internal
-    consistency check; corrections to SN Encore and SN H0pe are negligible
-    ($\sim 0.1$ km s$^{-1}$ Mpc$^{-1}$) due to their smaller magnification contrasts.
-version: "v0.1 (Lisboa)"
-date-released: 2026-03-02
-url: "https://github.com/matthewsmawfield/TEP-LENS"
-repository-code: "https://github.com/matthewsmawfield/TEP-LENS"
+- family-names: Smawfield
+  given-names: Matthew Lukin
+  orcid: https://orcid.org/0009-0003-8219-3159
+title: 'Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged
+  Supernovae'
+abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays traversing
+
+  different gravitational potential depths experience differential temporal scaling
+
+  ($\alpha \neq 0$). This work applies a blind-prediction residual test to SN Refsdal,
+
+  the only multiply-imaged supernova with five resolved images and precision-measured
+
+  time delays. The key observational lever is a comparison of seven blind
+
+  pre-reappearance GR predictions of $\Delta t_{\rm SX,S1}$ against the later Kelly
+
+  et al. (2023) measurement -- two completely disjoint datasets. This single-system
+
+  probe reduces to a single-contrast measurement: signal-energy partitioning (Step
+  35)
+
+  shows that 99.9% of the predicted proxy-model signal resides in the long-baseline
+
+  S4--SX contrast, with an effective dimensionality $D_{\rm eff} \approx 2.0$; the
+
+  inner Einstein cross serves as a null region providing no probative leverage.
+
+  The underlying algebraic loop identity is insensitive to a uniform Mass Sheet
+
+  Degeneracy, but the empirical blind-prediction residual remains limited by GR
+
+  lens-model precision and correlated modelling systematics.
+
+
+  The designated primary non-parametric directional test is a Wilcoxon signed-rank
+
+  test on the six non-zero residuals among the seven blind models, all of which are
+
+  positive ($p = 0.016$, approximately $2.2\sigma$ under between-model independence),
+
+  matching the log-magnification proxy prediction for a negative temporal-shear
+
+  coupling. The independence assumption is not strictly justified: a method-family
+
+  block-bootstrap (Step 11) gives a dependence-adjusted Wilcoxon
+
+  $p_{\rm median} = 0.011$ [0.007, 0.017] blind-only. The supplementary
+
+  all-eight-model Wilcoxon gives $p = 0.0078$ ($2.4\sigma$) under independence and
+
+  $p_{\rm median} = 0.007$ [0.004, 0.015] under the block-bootstrap. Additional
+
+  strands are directionally consistent: a 46% reduction in weighted RMS after
+
+  proxy-model correction, and a binomial sign test of 6/7 positive among blind models
+
+  ($p = 0.0625$). Hierarchical Bayesian model comparison remains inconclusive
+
+  (BF = 1.06 fixed-$\alpha$ baseline / 0.997 h0pe-informed, BF = 0.615 free-$\alpha$
+
+  baseline / 0.492 h0pe-informed with a GR-centred prior), indicating that present
+
+  lens-model uncertainties dominate formal model-selection metrics. The measured
+
+  coupling $\alpha_{\rm lens} = -0.055 \pm 0.044$ is calibrated from the same SN Refsdal
+
+  data, so the magnitude agreement with the proxy-model prediction is definitional
+
+  rather than an independent confirmation; the probative content lies in the sign
+
+  consistency across modelling groups that use independent codes but share the same
+
+  lens and image constraints. Independent blind-prediction residual tests for two
+
+  additional multiply-imaged supernovae (SN Encore, SN H0pe) are directionally
+
+  consistent with the proxy model (all three systems show the predicted residual sign;
+
+  3/3 binomial $p = 0.125$) but serve as consistency checks rather than high-precision
+
+  evidence strands, as their predicted TEP shifts are sub-day and swamped by per-model
+
+  scatter ($\sim$3--50 d). In the absence of a solved TEP lensing transfer function
+  for
+
+  $\kappa(\boldsymbol{\theta})$ or $\psi(\boldsymbol{\theta})$, this test should be
+  read as a
+
+  falsifiable phenomenological screen, not a fundamental coupling measurement. Internal
+
+  consistency checks, including a numerical $H_0$ exercise confined to SN Refsdal,
+
+  are discussed in Section 4.8.
+
+  '
+version: v0.1 (Lisboa)
+date-released: 2026-06-07
+url: https://github.com/matthewsmawfield/TEP-LENS
+repository-code: https://github.com/matthewsmawfield/TEP-LENS
 license: CC-BY-4.0
 keywords:
-  - gravitational lensing
-  - time delays
-  - multiply-imaged supernovae
-  - SN Refsdal
-  - SN H0pe
-  - Temporal Equivalence Principle
-  - blind-prediction residual
-  - Wilcoxon signed-rank test
-  - strong lensing cosmology
-
+- Temporal Equivalence Principle
+- Temporal Shear
+- Temporal Topology
+- proper time
+- conformal metric
+- disformal metric
+- synchronization holonomy
+- clock-sector gravity
+- scalar-tensor theory
+- gravitational lensing
+- time delays
+- multiply-imaged supernovae
+- SN Refsdal
+- SN H0pe
+- blind-prediction residual
+- Wilcoxon signed-rank test
+- strong lensing cosmology
 preferred-citation:
   type: article
-  title: "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae"
+  title: 'Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged
+    Supernovae'
   authors:
-    - family-names: Smawfield
-      given-names: Matthew Lukin
-      orcid: "https://orcid.org/0009-0003-8219-3159"
+  - family-names: Smawfield
+    given-names: Matthew Lukin
+    orcid: https://orcid.org/0009-0003-8219-3159
   year: 2026
   journal: Zenodo
-  url: "https://github.com/matthewsmawfield/TEP-LENS"
-  notes: "Preprint v0.1 (Lisboa)"
+  url: https://github.com/matthewsmawfield/TEP-LENS
+  notes: Preprint v0.1 (Lisboa)

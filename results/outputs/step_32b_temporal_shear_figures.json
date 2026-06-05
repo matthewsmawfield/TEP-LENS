@@ -1,0 +1,27 @@
+{
+  "step": "32b",
+  "status": "success",
+  "description": "Publication figures for COSMOGRAIL temporal-shear diagnostics.",
+  "input": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_30_cosmograil_temporal_shear.json",
+  "figures": {
+    "gamma_significance": {
+      "png": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32b_cosmograil_gamma_significance.png",
+      "pdf": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32b_cosmograil_gamma_significance.pdf"
+    },
+    "multiscale_delays": {
+      "png": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32b_cosmograil_multiscale_delays.png",
+      "pdf": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32b_cosmograil_multiscale_delays.pdf"
+    },
+    "summary_panel": {
+      "png": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32b_cosmograil_summary_panel.png",
+      "pdf": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32b_cosmograil_summary_panel.pdf"
+    }
+  },
+  "summary": {
+    "n_systems": 18,
+    "n_pairs_valid": 48,
+    "n_significant_2sigma": 0,
+    "n_significant_3sigma": 0,
+    "interpretation": "NULL: No significant temporal shear detected. Consistent with GR (single constant delay)."
+  }
+}

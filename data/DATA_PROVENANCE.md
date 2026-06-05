@@ -17,7 +17,7 @@ This document provides complete provenance information for all external data use
 **Ingestion:** Same catalog file via step_01
 
 **Additional target:** SN Encore  
-**Source:** Pierel et al. (2025, in prep)  
+**Source:** Pierel et al. (2026, ApJ, arXiv:2509.12301)  
 **Ingestion:** Same catalog file via step_01
 
 ---

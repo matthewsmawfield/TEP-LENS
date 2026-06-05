@@ -1,0 +1,72 @@
+{
+  "step": "44",
+  "status": "success",
+  "description": "Loop residual under flux-ratio proxy vs parity-signed model magnification vs model convergence, using GLAFIC v3 values (Kelly+2023). Tests whether the headline sign survives the mu->kappa substitution the referee requires.",
+  "alpha_proxy_ref": -0.055,
+  "observed_blind_residual_days": 14.605519391230912,
+  "glafic_v3_kappa": {
+    "S1": 0.722,
+    "S2": 0.733,
+    "S3": 0.675,
+    "S4": 0.727,
+    "SX": 0.966
+  },
+  "kappa_ordering": {
+    "highest": "SX",
+    "lowest": "S3"
+  },
+  "results_by_tracer": {
+    "flux_ratio_proxy": {
+      "R_closure_days": -14.538035062734984,
+      "R_predicted_obs_minus_model_days": 14.538035062734984,
+      "dGamma_S4_minus_SX": -0.03922879481242192,
+      "q_norm": {
+        "S1": 1.181391552744338,
+        "S2": 0.9049173638033055,
+        "S3": 0.7304631707814732,
+        "S4": 1.8292185268312589,
+        "SX": 0.35400938583962455
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "model_mu_abs": {
+      "R_closure_days": -4.944280143873674,
+      "R_predicted_obs_minus_model_days": 4.944280143873674,
+      "dGamma_S4_minus_SX": -0.012201681228899641,
+      "q_norm": {
+        "S1": 1.185064935064935,
+        "S2": 1.3636363636363638,
+        "S3": 1.5422077922077921,
+        "S4": 0.5681818181818181,
+        "SX": 0.34090909090909094
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "model_kappa": {
+      "R_closure_days": 2.556141746345112,
+      "R_predicted_obs_minus_model_days": -2.556141746345112,
+      "dGamma_S4_minus_SX": 0.0067893493556050455,
+      "q_norm": {
+        "S1": 0.9442845932513733,
+        "S2": 0.9586712006277793,
+        "S3": 0.8828145435521842,
+        "S4": 0.9508239602406487,
+        "SX": 1.2634057023280147
+      },
+      "predicted_sign_matches_observed": false
+    }
+  },
+  "sign_flip_flux_vs_kappa": true,
+  "verdict": "CRITICAL: under the physically-motivated model CONVERGENCE, the proxy-model predicted residual is -2.6 d \u2014 OPPOSITE in sign to the flux-proxy prediction (+14.5 d) and to the observed blind residual (+14.6 d). The GLAFIC v3 maps place SX at the HIGHEST convergence (kappa=0.966), not the lowest, inverting the assumption that SX samples the shallowest potential. The headline sign agreement therefore depends on using flux magnification as the tracer; it does not survive substitution of the actual model convergence. The blind-residual FACT (models under-predict SX) is unchanged, but TEP's claim to PREDICT its sign via a convergence/potential coupling is not supported by these convergence values.",
+  "provenance": {
+    "primary_reference": "Kelly et al. 2023, ApJ 948, 93 (arXiv:2305.06377), lensing-parameters table (GLAFIC v3)",
+    "model_maps": "https://archive.stsci.edu/pub/hlsp/frontier/macs1149/models/glafic/v3/",
+    "transcription_note": "Values transcribed via automated web extraction (ar5iv HTML of arXiv:2305.06377), corroborated by (i) two independent extractions returning identical kappa, (ii) internal consistency of (kappa,gamma,mu,parity) under mu = 1/[(1-kappa)^2 - gamma^2], and (iii) the SX/S1 magnification ratio 4.2/14.6 = 0.29 matching the Kelly+2023 measured value 0.30. VERIFY against the published table / archived GLAFIC maps before use in a final publication.",
+    "verification_status": "web-extracted; pending direct confirmation against archived maps"
+  },
+  "caveats": [
+    "kappa (projected density, ~Laplacian of potential) is not identical to the potential depth |Phi| TEP couples to; the lensing potential psi would be the cleaner tracer but is not tabulated. kappa is, however, the tracer the paper itself names as physically preferred over flux magnification.",
+    "Total kappa includes the cluster-member-galaxy contribution at S1-S4; a cluster-only potential decomposition could shift the comparison and should be checked.",
+    "GLAFIC v3 values are web-transcribed (see provenance); confirm against archived maps before publication."
+  ]
+}

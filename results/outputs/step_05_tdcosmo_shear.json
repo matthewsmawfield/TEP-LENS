@@ -301,8 +301,8 @@
         "type": "supernova",
         "z_lens": 0.338,
         "z_src": 1.95,
-        "ref_delays": "Pierel et al. 2025",
-        "ref_fluxes": "Pierel et al. 2025",
+        "ref_delays": "Pierel et al. 2026",
+        "ref_fluxes": "Pierel et al. 2026",
         "images": [
           "1a",
           "1b"
@@ -312,13 +312,13 @@
       "pair_results": {
         "dt_1b1a": {
           "image": "1b",
-          "dt_obs_days": -37.3,
-          "dt_err_days": 13.1,
-          "flux_ratio_i_A": 2.0,
-          "log10_flux_ratio": 0.3010299956639812,
-          "tep_fractional_residual": -0.016556649761518966,
-          "tep_predicted_shift_days": -0.6175630361046573,
-          "tep_shift_err_days": 0.21689211187589844
+          "dt_obs_days": -39.8,
+          "dt_err_days": 3.6,
+          "flux_ratio_i_A": 1.486,
+          "log10_flux_ratio": 0.1720188094245565,
+          "tep_fractional_residual": -0.009461034518350607,
+          "tep_predicted_shift_days": -0.37654917383035413,
+          "tep_shift_err_days": 0.034059724266062186
         }
       }
     }
@@ -330,7 +330,7 @@
     "spearman_rho": -0.7334714657637699,
     "spearman_pval": 0.0005322591726799869,
     "test_type": "predicted_sensitivity_check",
-    "interpretation": "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. These are PREDICTED shifts at the empirically measured coupling alpha_lens=-0.055; they are NOT observed detections of TEP in these systems. The physically meaningful quantity is the predicted shift magnitude versus published delay measurement uncertainties. The Spearman correlation between log(flux_ratio) and predicted shift is tautological (sign set by alpha_lens < 0; computed rho=-0.733) and therefore not independent evidence.",
+    "interpretation": "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. These are PREDICTED shifts at the empirically measured coupling alpha_proxy=-0.055; they are NOT observed detections of TEP in these systems. The physically meaningful quantity is the predicted shift magnitude versus published delay measurement uncertainties. The Spearman correlation between log(flux_ratio) and predicted shift is tautological (sign set by alpha_proxy < 0; computed rho=-0.733) and therefore not independent evidence.",
     "caveat": "These systems do not permit a full geometric blind-prediction residual test because all independent pairwise delays are referenced to the same image. Any closure sum is arithmetically zero by construction. The analysis here is a structural consistency check: it asks whether the predicted TEP shift pattern is compatible with the data, not whether TEP is detected."
   }
 }

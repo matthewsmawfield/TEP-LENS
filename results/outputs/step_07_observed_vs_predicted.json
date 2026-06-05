@@ -3,7 +3,7 @@
   "status": "success",
   "system": "SN Refsdal (MACS J1149.6+2223)",
   "analysis": "Observed vs. blind-predicted Delta_t(SX, S1)",
-  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +14.61 +/- 11.57 d (z = +1.26 sigma from GR null, z = +0.01 sigma from TEP). Binomial sign test: 7/8 positive, p=0.0352 (blind only: 6/7, p=0.0625). Chi-squared: GR chi2=2.3, TEP chi2=0.7, Delta chi2=+1.6 in favour of TEP (p=0.2069). TEP correction (14.5 d) reduces wRMS by 46%, improving 5/8 models. Inferred alpha = -0.0553 +/- 0.0438.",
+  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +14.61 +/- 11.57 d (z = +1.26 sigma from GR null, z = +0.01 sigma from TEP). Reportable non-zero binomial sign test: 7/7 positive, p=0.0078 (blind non-zero: 6/6, p=0.0156). Legacy diagnostic counting zero as non-positive: 7/8 positive, p=0.0352. Chi-squared: GR chi2=2.3, TEP chi2=0.7, Delta chi2=+1.6 in favour of TEP (p=0.2069). TEP correction (14.5 d) reduces wRMS by 46%, improving 5/8 models. Inferred alpha = -0.0553 +/- 0.0438.",
   "observed": {
     "dt_SX_S1_days": 376.0,
     "err_days": 5.6,
@@ -44,6 +44,12 @@
     "n_total": 8,
     "p_value_one_sided": 0.03515625,
     "z_approx": 2.1213203435596424,
+    "reporting_caveat": "Legacy diagnostic: exact zero residual counted as not positive. Use nonzero_all/nonzero_blind for reportable sign tests.",
+    "nonzero_all": {
+      "n_positive": 7,
+      "n_total": 7,
+      "p_value": 0.0078125
+    },
     "p_wilcoxon_signed_rank_all": 0.0078125,
     "p_wilcoxon_signed_rank_blind": 0.015625,
     "wilcoxon_note": "All 6 non-zero blind residuals positive (p=1/64=0.0156); all 7 non-zero total residuals positive (p=1/128=0.0078)",
@@ -51,6 +57,12 @@
       "n_positive": 6,
       "n_total": 7,
       "p_value": 0.0625,
+      "legacy_reporting_caveat": "Exact zero residual counted as not positive.",
+      "nonzero": {
+        "n_positive": 6,
+        "n_total": 6,
+        "p_value": 0.015625
+      },
       "p_wilcoxon_signed_rank_blind": 0.015625
     }
   },
@@ -60,7 +72,7 @@
     "delta_chi2": 1.5927472735173445,
     "p_value": 0.20693406382260188,
     "n_dof": 8,
-    "note": "TEP has 0 free parameters (alpha_lens=-0.055 from empirical SN Refsdal measurement)"
+    "note": "TEP has 0 free parameters (alpha_proxy=-0.055 from empirical SN Refsdal measurement)"
   },
   "tep_corrected_consistency": {
     "dt_corr_days": 361.461964937265,
@@ -199,7 +211,7 @@
   "evidence_tier": {
     "description": "Separation of genuinely independent directional evidence from definitional amplitude evidence",
     "tier_1_directional_sign_consistency": {
-      "description": "Tests that are independent of the amplitude calibration of alpha_lens",
+      "description": "Tests that are independent of the amplitude calibration of alpha_proxy",
       "tests": {
         "wilcoxon_signed_rank_blind": {
           "p_value": 0.015625,
@@ -214,15 +226,25 @@
         "binomial_sign_test_blind_7": {
           "p_value": 0.0625,
           "z_equiv": 1.889822365046136,
-          "note": "6/7 positive. Corroborating check."
+          "note": "6/7 positive, counting exact zero as non-positive. Conservative diagnostic."
+        },
+        "binomial_sign_test_nonzero_blind": {
+          "p_value": 0.015625,
+          "z_equiv": 2.1538746940614564,
+          "note": "6/6 non-zero blind residuals positive. Reportable sign-only check."
         },
         "binomial_sign_test_all_8": {
           "p_value": 0.03515625,
           "z_equiv": 2.1213203435596424,
-          "note": "7/8 positive. Includes post-blind update."
+          "note": "7/8 positive, counting exact zero as non-positive. Legacy diagnostic including post-blind update."
+        },
+        "binomial_sign_test_nonzero_all": {
+          "p_value": 0.0078125,
+          "z_equiv": 2.417559016236505,
+          "note": "7/7 non-zero residuals positive. Reportable supplementary sign-only check."
         }
       },
-      "interpretation": "These tests require only that the residuals have a consistent sign, not that their amplitude matches a pre-calibrated value. They are the most robust evidence strand because they are independent of alpha_lens calibration and of the proxy-model amplitude."
+      "interpretation": "These tests require only that the residuals have a consistent sign, not that their amplitude matches a pre-calibrated value. They are the most robust evidence strand because they are independent of alpha_proxy calibration and of the proxy-model amplitude."
     },
     "tier_2_amplitude_consistency": {
       "description": "Tests that compare observed residual amplitude against proxy-model prediction",
@@ -232,24 +254,30 @@
           "sigma_days": 11.57281297405183,
           "z_from_gr_null": 1.2620543876392813,
           "p_value": 0.10346460827225168,
-          "note": "Definitional: alpha_lens was calibrated from this same weighted mean residual via R_obs / R_tep_unit."
+          "note": "Definitional: alpha_proxy was calibrated from this same weighted mean residual via R_obs / R_tep_unit."
         },
         "chi2_model_comparison": {
           "delta_chi2": 1.5927472735173445,
           "p_value": 0.20693406382260188,
-          "note": "TEP has 0 free parameters because alpha_lens is empirically determined from the same data."
+          "note": "TEP has 0 free parameters because alpha_proxy is empirically determined from the same data."
         },
         "tep_corrected_wrms": {
           "improvement_pct": 45.874403211374045,
-          "note": "R_tep_prediction used for correction is derived from alpha_lens, so this is a self-consistency check."
+          "note": "R_tep_prediction used for correction is derived from alpha_proxy, so this is a self-consistency check."
         }
       },
-      "interpretation": "These tests compare the observed residual amplitude to the proxy-model prediction at the empirically calibrated alpha_lens. Because alpha_lens was derived from the same SN Refsdal data (R_obs / R_tep_unit), the amplitude agreement is definitional, not an independent confirmation. The probative content lies in the directional sign consistency (Tier 1), not in the amplitude match."
+      "interpretation": "These tests compare the observed residual amplitude to the proxy-model prediction at the empirically calibrated alpha_proxy. Because alpha_proxy was derived from the same SN Refsdal data (R_obs / R_tep_unit), the amplitude agreement is definitional, not an independent confirmation. The probative content lies in the directional sign consistency (Tier 1), not in the amplitude match."
     }
   },
   "test_registry": {
     "primary_test": "wilcoxon_signed_rank_blind",
-    "primary_test_justification": "Selected a priori as the most robust non-parametric directional test: it equal-weights independent modelling groups, eliminating inverse-variance downweighting from heterogeneous model uncertainties. It is more powerful than the binomial sign test (which discards rank information) and more robust than the parametric z-test (which is biased by outlier uncertainties).",
+    "primary_scope": "independence_assuming_benchmark",
+    "headline_superseded_by": {
+      "step": "16",
+      "test": "Exact family-sign-flip test blind",
+      "reason": "Accounts for method-family dependence among lens-model predictions."
+    },
+    "primary_test_justification": "Selected as the independence-assuming non-parametric directional benchmark: it equal-weights independent modelling groups, eliminating inverse-variance downweighting from heterogeneous model uncertainties. It is more powerful than the binomial sign test (which discards rank information) and more robust than the parametric z-test (which is biased by outlier uncertainties). Step 16 supersedes this as the correlation-aware headline with an exact family-sign-flip test.",
     "all_tests": {
       "weighted_mean_z_test": {
         "description": "Inverse-variance weighted mean residual against GR null",
@@ -260,18 +288,36 @@
         "is_primary": false
       },
       "binomial_sign_test_all_8": {
-        "description": "Binomial test on sign of all 8 model residuals",
+        "description": "Legacy diagnostic binomial test on sign of all 8 model residuals; exact zero is counted as not positive.",
         "n_positive": 7,
         "n_total": 8,
         "p_value_one_sided": 0.03515625,
         "z_approx": 2.1213203435596424,
+        "reporting_caveat": "Do not use as headline; zero residuals carry no directional information.",
+        "is_primary": false
+      },
+      "binomial_sign_test_nonzero_all": {
+        "description": "Reportable binomial test on non-zero residual signs only",
+        "n_positive": 7,
+        "n_total": 7,
+        "p_value_one_sided": 0.0078125,
+        "note": "Exact zero residual excluded because it carries no directional information.",
         "is_primary": false
       },
       "binomial_sign_test_blind_7": {
-        "description": "Binomial test on sign of 7 blind model residuals only",
+        "description": "Legacy diagnostic binomial test on sign of 7 blind model residuals only; exact zero is counted as not positive.",
         "n_positive": 6,
         "n_total": 7,
         "p_value_one_sided": 0.0625,
+        "reporting_caveat": "Conservative diagnostic only; use binomial_sign_test_nonzero_blind for sign-only reporting.",
+        "is_primary": false
+      },
+      "binomial_sign_test_nonzero_blind": {
+        "description": "Reportable binomial test on non-zero blind residual signs only",
+        "n_positive": 6,
+        "n_total": 6,
+        "p_value_one_sided": 0.015625,
+        "note": "Exact zero residual excluded because it carries no directional information.",
         "is_primary": false
       },
       "wilcoxon_signed_rank_all": {
@@ -294,7 +340,7 @@
         "chi2_tep": 0.6599439737023928,
         "delta_chi2": 1.5927472735173445,
         "p_value": 0.20693406382260188,
-        "note": "TEP has 0 free parameters (alpha_lens empirically determined)",
+        "note": "TEP has 0 free parameters (alpha_proxy empirically determined)",
         "is_primary": false
       },
       "tep_corrected_wrms": {

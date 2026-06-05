@@ -6,7 +6,7 @@ Monte Carlo propagation of flux-ratio perturbations to test how strongly
 microlensing-scale systematics can change key proxy-model inferences.
 
 Outputs per perturbation level:
-- Distribution of R_pred(alpha_lens≈-0.055) for S1-S4-SX loop
+- Distribution of R_pred(alpha_proxy≈-0.055) for S1-S4-SX loop
 - Probability proxy model still improves chi^2 vs GR
 - Probability inferred alpha remains < 0
 - Robustness interval for R_pred and alpha_inferred
@@ -23,6 +23,7 @@ from joblib import Parallel, delayed, cpu_count
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
+from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
 
 STEP_NUM = "12"
 
@@ -35,17 +36,21 @@ def safe_json_default(obj):
 
 def compute_r_tep_alpha(mu_norm):
     """
-    Compute S1-S4-SX closure residual under alpha_lens≈-0.055 using the same loop
+    Compute S1-S4-SX closure residual under alpha_proxy≈-0.055 using the same loop
     decomposition used by prior steps.
     """
-    alpha = -0.055
+    alpha = ALPHA_PROXY
     gamma = {k: 1.0 + alpha * np.log10(v) for k, v in mu_norm.items()}
 
-    # Loop (S1, S4, SX) using arrival times relative to S1:
-    # t(S1)=0, t(S4)=20.3, t(SX)=376.0
-    dt_14 = 20.3
-    dt_4x = 355.7
-    dt_x1 = -376.0
+    # Load delays from canonical catalog (relative to S1)
+    catalog_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "lensed_sn_catalog.json"
+    with open(catalog_path) as f:
+        catalog = json.load(f)
+    refsdal = catalog["sn_refsdal"]["time_delays_days"]
+    dt_14 = float(refsdal["dt_S4_S1"]["value"])          # S1 -> S4
+    dt_SX_S1 = float(refsdal["dt_SX_S1"]["value"])      # S1 -> SX
+    dt_4x = dt_SX_S1 - dt_14                              # S4 -> SX
+    dt_x1 = -dt_SX_S1                                    # SX -> S1
 
     r = (gamma["S1"] - 1.0) * dt_14 + (gamma["S4"] - 1.0) * dt_4x + (gamma["SX"] - 1.0) * dt_x1
     return float(r)
@@ -65,7 +70,7 @@ def _single_draw(seed, mu_base, mu_err, frac, deltas, sigmas, r_obs):
 
     r_tep = compute_r_tep_alpha(mu_norm)
 
-    r_unit = r_tep / 0.055 if abs(r_tep) > 1e-12 else np.nan
+    r_unit = r_tep / abs(ALPHA_PROXY) if abs(r_tep) > 1e-12 else np.nan
     alpha_inf = r_obs / r_unit if np.isfinite(r_unit) else np.nan
 
     chi2_gr = np.sum((deltas / sigmas) ** 2)
@@ -108,7 +113,7 @@ def _proxy_mapping_draw(seed, mu_base, deltas, sigmas, r_obs, gamma_prior):
 
     r_tep = compute_r_tep_alpha(kappa_norm)
 
-    r_unit = r_tep / 0.055 if abs(r_tep) > 1e-12 else np.nan
+    r_unit = r_tep / abs(ALPHA_PROXY) if abs(r_tep) > 1e-12 else np.nan
     alpha_inf = r_obs / r_unit if np.isfinite(r_unit) else np.nan
 
     chi2_gr = np.sum((deltas / sigmas) ** 2)

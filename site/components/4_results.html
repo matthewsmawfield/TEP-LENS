@@ -6,13 +6,13 @@ SN Refsdal (MACS J1149.6+2223, $z_s = 1.489$, $z_l = 0.542$) was detected in 201
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Image pair</th><th>$\Delta t$ [days]</th><th>$\sigma$ [days]</th><th>Precision</th></tr>
+        <tr><th scope="col">Image pair</th><th scope="col">$\Delta t$ [days]</th><th scope="col">$\sigma$ [days]</th><th scope="col">Precision</th></tr>
     </thead>
     <tbody>
         <tr><td>S2 − S1</td><td>+9.9</td><td>4.0</td><td>40%</td></tr>
         <tr><td>S3 − S1</td><td>+9.0</td><td>4.2</td><td>47%</td></tr>
         <tr><td>S4 − S1</td><td>+20.3</td><td>6.4</td><td>32%</td></tr>
-        <tr><td>SX − S1</td><td>+376.0</td><td>5.6</td><td><strong>1.5%</strong> (5.6/376.0)</td></tr>
+        <tr><td>SX − S1</td><td>+376.0</td><td>5.6</td><td><em>1.5%</em> (5.6/376.0)</td></tr>
     </tbody>
 </table>
 <p>
@@ -33,13 +33,13 @@ All three pairwise delays are derived from the same three absolute arrival times
 </p>
 
 <h3>3.3 Proxy-Model Predicted GR Discrepancies</h3>
-<p class="callout-note"><strong>Note on SNR column:</strong> The SNR values in the table below are the <em>predicted detection sensitivity</em> — the ratio of the predicted TEP residual to the propagated delay measurement uncertainty. They are not observed significances. The primary observed evidence (§3.5) yields $1.26\sigma$ from GR. The high SNR values for SX loops reflect the measurement precision of the Kelly et al. (2023) delay, not a detection of the TEP signal.</p>
+<p class="callout-note"><em>Note on SNR column:</em> The SNR values in the table below are the <em>predicted detection sensitivity</em> — the ratio of the predicted TEP residual to the propagated delay measurement uncertainty. They are not observed significances. The primary observed evidence (§3.5) yields $1.26\sigma$ from GR. The high SNR values for SX loops reflect the measurement precision of the Kelly et al. (2023) delay, not a detection of the TEP signal.</p>
 <p>
 Under TEP, the effective transit time of light along path $i$ is scaled by $\Gamma_t(i) = 1 + \alpha \log_{10}(\mu_{\rm norm}(i))$, where $\mu_{\rm norm}(i)$ is the relative magnification at image $i$ (normalised to the mean). Using Kelly et al. 2023 total flux ratios as magnification proxies and the empirically determined coupling $\alpha_{\rm proxy} \approx -0.055$:
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Image</th><th>$\mu_{\rm rel}$</th><th>$\mu_{\rm norm}$</th><th>$\Gamma_t$</th></tr>
+        <tr><th scope="col">Image</th><th scope="col">$\mu_{\rm rel}$</th><th scope="col">$\mu_{\rm norm}$</th><th scope="col">$\Gamma_t$</th></tr>
     </thead>
     <tbody>
         <tr><td>S1</td><td>1.158</td><td>1.181</td><td>0.99602</td></tr>
@@ -56,7 +56,7 @@ Because the physically relevant quantity is expected to be closer to convergence
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Image</th><th>$\mu_{\rm proxy}$</th><th>$\mu_{\rm norm}$</th><th>$\kappa_{\rm median}$</th><th>$\kappa_{\rm p16}$</th><th>$\kappa_{\rm p84}$</th><th>$\kappa_{\rm norm}$</th></tr>
+        <tr><th scope="col">Image</th><th scope="col">$\mu_{\rm proxy}$</th><th scope="col">$\mu_{\rm norm}$</th><th scope="col">$\kappa_{\rm median}$</th><th scope="col">$\kappa_{\rm p16}$</th><th scope="col">$\kappa_{\rm p84}$</th><th scope="col">$\kappa_{\rm norm}$</th></tr>
     </thead>
     <tbody>
         <tr><td>S1</td><td>1.158</td><td>1.181</td><td>0.093</td><td>0.000</td><td>0.267</td><td>0.614</td></tr>
@@ -70,7 +70,7 @@ Because the physically relevant quantity is expected to be closer to convergence
 The S4–SX contrast in convergence matches the flux-proxy ordering ($\kappa_{\rm S4} > \kappa_{\rm SX}$) with probability $P \approx 80$%, confirming that the binary sign-contrast is robust to the shear–magnification degeneracy. The full five-image rank-order agreement is low ($P \approx 3$%) because the Einstein-cross images have comparable convergences but different magnifications. The equivalent coupling required to match the observed residual using inferred kappa rather than flux-proxy mu is $\alpha_{\rm equiv} = -0.032$ [$-0.068$, $+0.009$], a factor-of-two shift from the nominal $-0.055$. The 84th percentile of this amplitude reconstruction crosses zero; this cross-zero behaviour is restricted strictly to the amplitude reconstruction. The binary sign-contrast itself — the S4–SX convergence ordering — remains stable at approximately 80% and does not cross the 50% null.
 </p>
 <p>
-<strong>Sign prediction is proxy-robust under the SN Refsdal geometry.</strong> The empirical sign of the blind residuals is proxy-independent: the models underpredict the observed SX delay regardless of how temporal shear is parameterized. The TEP interpretation of that sign is proxy-robust rather than proxy-free: under any plausible potential-depth ordering in which SX samples a shallower region than S4, the expected temporal-shear correction has the observed direction. Image SX lies on the outer cluster arc ~8 arcsec from the Einstein cross, while S4 sits deep in the member-galaxy potential. Any physically reasonable tracer of potential depth — flux ratio, convergence, deflection-potential value, or even simple radial distance from the cluster centre — places SX in a shallower region than S4. The proxy model assigns a numerical magnitude to the predicted delay ($\mathcal{R}_{\rm TEP} \approx -14.5$ d at $\alpha = -0.055$), but the <em>sign</em> of the predicted residual (SX late) follows from the spatial configuration under the adopted potential-depth ordering.
+<em>Sign prediction is proxy-robust under the SN Refsdal geometry.</em> The empirical sign of the blind residuals is proxy-independent: the models underpredict the observed SX delay regardless of how temporal shear is parameterized. The TEP interpretation of that sign is proxy-robust rather than proxy-free: under any plausible potential-depth ordering in which SX samples a shallower region than S4, the expected temporal-shear correction has the observed direction. Image SX lies on the outer cluster arc ~8 arcsec from the Einstein cross, while S4 sits deep in the member-galaxy potential. Any physically reasonable tracer of potential depth — flux ratio, convergence, deflection-potential value, or even simple radial distance from the cluster centre — places SX in a shallower region than S4. The proxy model assigns a numerical magnitude to the predicted delay ($\mathcal{R}_{\rm TEP} \approx -14.5$ d at $\alpha = -0.055$), but the <em>sign</em> of the predicted residual (SX late) follows from the spatial configuration under the adopted potential-depth ordering.
 </p>
 
 <h4>3.3.2 Signal-Energy Concentration and Effective Degrees of Freedom (Step 35)</h4>
@@ -79,7 +79,7 @@ The five independent algebraic loops from five images do not contribute equally 
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Loop</th><th>$\mathcal{R}_{\rm TEP}$ [days]</th><th>$E_i = \mathcal{R}_i^2$ [d$^2$]</th><th>Energy fraction</th></tr>
+        <tr><th scope="col">Loop</th><th scope="col">$\mathcal{R}_{\rm TEP}$ [days]</th><th scope="col">$E_i = \mathcal{R}_i^2$ [d$^2$]</th><th scope="col">Energy fraction</th></tr>
     </thead>
     <tbody>
         <tr><td>S1–S2–S3</td><td>$-0.109$</td><td>0.012</td><td>0.004%</td></tr>
@@ -109,7 +109,7 @@ For $n$ loops of equal amplitude, $D_{\rm eff} = n$; for a single dominant contr
 
 <figure>
     <img src="figures/step_32_kappa_mu_comparison.png" alt="Comparison of magnification-based and convergence-based TEP proxies for SN Refsdal and TDCOSMO lenses" class="figure-responsive">
-    <figcaption><strong>Figure 1:</strong> Left panel: inferred convergence $\kappa$ versus flux-proxy magnification $\mu$ for each SN Refsdal image (median and 16th–84th percentile envelope from the shear-degeneracy Monte Carlo). The grey line marks $\mu = \kappa$; departures quantify the proxy systematic. Right panel: theoretical $\Delta\log_{10}\mu/\Delta\log_{10}\kappa$ ratio for six TDCOSMO lenses. Blue circles show the spherical power-law approximation (lower bound on the proxy discrepancy). Red squares show elliptical SIE lenses with external shear ($\gamma_{\rm ext} \sim 0.06$–0.12), which amplify the misestimation because additional shear at fixed convergence reduces magnification further. The spherical comparison is therefore a conservative lower bound; real lenses exhibit larger proxy discrepancies.</figcaption>
+    <figcaption><em>Figure 1:</em> Left panel: inferred convergence $\kappa$ versus flux-proxy magnification $\mu$ for each SN Refsdal image (median and 16th–84th percentile envelope from the shear-degeneracy Monte Carlo). The grey line marks $\mu = \kappa$; departures quantify the proxy systematic. Right panel: theoretical $\Delta\log_{10}\mu/\Delta\log_{10}\kappa$ ratio for six TDCOSMO lenses. Blue circles show the spherical power-law approximation (lower bound on the proxy discrepancy). Red squares show elliptical SIE lenses with external shear ($\gamma_{\rm ext} \sim 0.06$–0.12), which amplify the misestimation because additional shear at fixed convergence reduces magnification further. The spherical comparison is therefore a conservative lower bound; real lenses exhibit larger proxy discrepancies.</figcaption>
 </figure>
 
 <p>
@@ -117,14 +117,14 @@ The predicted proxy-model GR discrepancy for each loop is $\mathcal{R}_{\rm TEP/
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Loop</th><th>Type</th><th>$\mathcal{R}_{\rm TEP}$ [days]</th><th>$\sigma_{\mathcal{R}}$ [days]</th><th>SNR</th></tr>
+        <tr><th scope="col">Loop</th><th scope="col">Type</th><th scope="col">$\mathcal{R}_{\rm TEP}$ [days]</th><th scope="col">$\sigma_{\mathcal{R}}$ [days]</th><th scope="col">SNR</th></tr>
     </thead>
     <tbody>
         <tr><td>S1–S2–S3</td><td>Inner cross</td><td>−0.109</td><td>0.033</td><td>3.3</td></tr>
         <tr><td>S1–S2–S4</td><td>Inner cross</td><td>+0.278</td><td>0.111</td><td>2.5</td></tr>
         <tr><td>S1–S3–S4</td><td>Inner cross</td><td>+0.342</td><td>0.148</td><td>2.3</td></tr>
-        <tr><td>S1–S2–SX</td><td>Cross-to-arc</td><td>−8.492</td><td>0.128</td><td><strong>66.3</strong></td></tr>
-        <tr><td>S1–S4–SX</td><td>Cross-to-arc</td><td><strong>−14.538</strong></td><td>0.230</td><td><strong>63.3</strong></td></tr>
+        <tr><td>S1–S2–SX</td><td>Cross-to-arc</td><td>−8.492</td><td>0.128</td><td><em>66.3</em></td></tr>
+        <tr><td>S1–S4–SX</td><td>Cross-to-arc</td><td><em>−14.538</em></td><td>0.230</td><td><em>63.3</em></td></tr>
     </tbody>
 </table>
 <p>
@@ -158,11 +158,11 @@ All seven blind pre-reappearance GR model predictions plus the Grillo et al. (20
 This observed residual is consistent with the proxy-model prediction ($\mathcal{R}_{\rm pred} = -\mathcal{R}_{\rm TEP/GR} = +14.5$ d).
 </p>
 <p class="callout-note">
-    <strong>Phenomenological proxy framing.</strong> The ansatz $\Gamma_t = 1 + \alpha \log_{10}(\mu_{\rm norm})$ is a first-order log-magnification <em>phenomenological proxy model</em>, not a derived fundamental coupling. Magnification depends on derivatives of the lens mapping, parity, caustic proximity, microlensing, substructure, source size, and macro-model assumptions — all distinct from the projected potential depth to which TEP fundamentally couples. The test should therefore be read as a falsifiable phenomenological screen: a confirmed proxy-model signal would motivate deriving the true TEP transfer function from $\kappa(\boldsymbol{\theta})$, but it is not yet a fundamental coupling measurement.
+    <em>Phenomenological proxy framing.</em> The ansatz $\Gamma_t = 1 + \alpha \log_{10}(\mu_{\rm norm})$ is a first-order log-magnification <em>phenomenological proxy model</em>, not a derived fundamental coupling. Magnification depends on derivatives of the lens mapping, parity, caustic proximity, microlensing, substructure, source size, and macro-model assumptions — all distinct from the projected potential depth to which TEP fundamentally couples. The test should therefore be read as a falsifiable phenomenological screen: a confirmed proxy-model signal would motivate deriving the true TEP transfer function from $\kappa(\boldsymbol{\theta})$, but it is not yet a fundamental coupling measurement.
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Model</th><th>Method</th><th>Blind?</th><th>$\Delta t_{\rm pred}$ [d]</th><th>$\sigma_{\rm model}$ [d]</th><th>Residual [d]</th><th>$z$</th></tr>
+        <tr><th scope="col">Model</th><th scope="col">Method</th><th scope="col">Blind?</th><th scope="col">$\Delta t_{\rm pred}$ [d]</th><th scope="col">$\sigma_{\rm model}$ [d]</th><th scope="col">Residual [d]</th><th scope="col">$z$</th></tr>
     </thead>
     <tbody>
         <tr><td>Oguri-a</td><td>GLAFIC parametric</td><td>Yes</td><td>324</td><td>59.0</td><td>+52.0</td><td>+0.88</td></tr>
@@ -205,18 +205,18 @@ Three independent statistical tests are applied to assess whether the ensemble o
 
 <table class="results-table">
     <thead>
-        <tr><th>Test</th><th>Result</th><th>GR $p$-value</th><th>Interpretation</th></tr>
+        <tr><th scope="col">Test</th><th scope="col">Result</th><th scope="col">GR $p$-value</th><th scope="col">Interpretation</th></tr>
     </thead>
     <tbody>
-        <tr><td><strong>Wilcoxon signed-rank</strong> (blind 7, independence)</td><td>6/6 non-zero residuals positive</td><td>$p = 0.016$ ($\approx 2.2\sigma$)</td><td>Tier 1a: designated primary directional test (assumes between-model independence)</td></tr>
-        <tr><td><strong>Exact family-sign-flip</strong> (blind 7, method-family clusters)</td><td>All method-family sign assignments enumerated</td><td>$p = 0.031$</td><td>Tier 1b: most rigorous correlation-aware rank bound (Step 11)</td></tr>
-        <tr><td><strong>Wilcoxon signed-rank</strong> (all 8, independence)</td><td>7/7 non-zero residuals positive</td><td>$p = 0.0078$ ($2.4\sigma$)</td><td>Supplementary (includes post-blind update)</td></tr>
-        <tr><td><strong>Exact family-sign-flip</strong> (all 8, method-family clusters)</td><td>All method-family sign assignments enumerated</td><td>$p = 0.031$</td><td>Correlation-aware supplementary (Step 11)</td></tr>
-        <tr><td><strong>Binomial sign test</strong> (all non-zero)</td><td>7/7 positive non-zero residuals</td><td>$p = 0.0078$ ($2.4\sigma$)</td><td>Supplementary directional check; zero residual excluded</td></tr>
-        <tr><td><strong>Binomial sign test</strong> (blind non-zero)</td><td>6/6 positive non-zero residuals</td><td>$p = 0.0156$ ($2.2\sigma$)</td><td>Supplementary sign-only check; zero residual excluded</td></tr>
-        <tr><td><strong>Weighted mean $z$-test</strong></td><td>$\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d</td><td>$p = 0.10$ ($1.26\sigma$)</td><td>Consistent with proxy model (+14.5 d); definitional, not independent</td></tr>
-        <tr><td><strong>$\chi^2$ model comparison</strong></td><td>$\Delta\chi^2 = +1.59$ (proxy wins)</td><td>$p = 0.21$</td><td>Proxy model fits ensemble better than GR</td></tr>
-        <tr><td><strong>wRMS improvement</strong></td><td>$46\%$ reduction after proxy-model correction</td><td>—</td><td>5/8 models closer to proxy-corrected value</td></tr>
+        <tr><td><em>Wilcoxon signed-rank</em> (blind 7, independence)</td><td>6/6 non-zero residuals positive</td><td>$p = 0.016$ ($\approx 2.2\sigma$)</td><td>Tier 1a: designated primary directional test (assumes between-model independence)</td></tr>
+        <tr><td><em>Exact family-sign-flip</em> (blind 7, method-family clusters)</td><td>All method-family sign assignments enumerated</td><td>$p = 0.031$</td><td>Tier 1b: most rigorous correlation-aware rank bound (Step 11)</td></tr>
+        <tr><td><em>Wilcoxon signed-rank</em> (all 8, independence)</td><td>7/7 non-zero residuals positive</td><td>$p = 0.0078$ ($2.4\sigma$)</td><td>Supplementary (includes post-blind update)</td></tr>
+        <tr><td><em>Exact family-sign-flip</em> (all 8, method-family clusters)</td><td>All method-family sign assignments enumerated</td><td>$p = 0.031$</td><td>Correlation-aware supplementary (Step 11)</td></tr>
+        <tr><td><em>Binomial sign test</em> (all non-zero)</td><td>7/7 positive non-zero residuals</td><td>$p = 0.0078$ ($2.4\sigma$)</td><td>Supplementary directional check; zero residual excluded</td></tr>
+        <tr><td><em>Binomial sign test</em> (blind non-zero)</td><td>6/6 positive non-zero residuals</td><td>$p = 0.0156$ ($2.2\sigma$)</td><td>Supplementary sign-only check; zero residual excluded</td></tr>
+        <tr><td><em>Weighted mean $z$-test</em></td><td>$\mathcal{R}_{\rm obs} = +14.6 \pm 11.6$ d</td><td>$p = 0.10$ ($1.26\sigma$)</td><td>Consistent with proxy model (+14.5 d); definitional, not independent</td></tr>
+        <tr><td><em>$\chi^2$ model comparison</em></td><td>$\Delta\chi^2 = +1.59$ (proxy wins)</td><td>$p = 0.21$</td><td>Proxy model fits ensemble better than GR</td></tr>
+        <tr><td><em>wRMS improvement</em></td><td>$46\%$ reduction after proxy-model correction</td><td>—</td><td>5/8 models closer to proxy-corrected value</td></tr>
     </tbody>
 </table>
 <p>
@@ -231,7 +231,7 @@ The proxy-corrected observed value $\Delta t_{\rm corr} = 376.0 - 14.5 = 361.5$ 
 \end{equation}
 </div>
 <p class="callout-note">
-    <strong>Test-selection transparency.</strong> No formal external preregistration (e.g., OSF, AsPredicted) was performed for this analysis. The Wilcoxon signed-rank test on blind-only residuals was designated as the primary directional test in the analysis protocol before computation of supplementary tests, based on its statistical property of equal-weighting independent modelling groups and eliminating inverse-variance downweighting bias. All alternative tests reported here were computed and are reported, regardless of outcome.
+    <em>Test-selection transparency.</em> No formal external preregistration (e.g., OSF, AsPredicted) was performed for this analysis. The Wilcoxon signed-rank test on blind-only residuals was designated as the primary directional test in the analysis protocol before computation of supplementary tests, based on its statistical property of equal-weighting independent modelling groups and eliminating inverse-variance downweighting bias. All alternative tests reported here were computed and are reported, regardless of outcome.
 </p>
 <p>
 Because $\alpha_{\rm inferred}$ is derived by dividing the observed weighted-mean residual by the unit proxy-model sensitivity, the agreement with the empirical coupling $\alpha_{\rm proxy} \approx -0.055$ is definitional rather than an independent confirmation: the same ensemble residual both determines and tests the coupling. The non-circular evidence lies in the sign consistency and the fact that a one-parameter correction reduces scatter where GR predicts none. A bootstrap resampling of the eight models (10,000 draws with replacement) confirms the negative-sign inference is stable to model resampling: 100% of draws produce $\alpha < 0$, with a resampled-mean 68% interval of $[-0.064, -0.048]$. This interval reflects scatter in the ensemble mean only and is narrower than the measurement-error-propagated $\pm 0.044$, which remains the headline uncertainty on $\alpha_{\rm proxy}$. The weighted-mean residual $z = 1.26\sigma$ is a <em>conservative lower bound</em> because it downweights the models with large quoted uncertainties (Oguri $\delta = +52$ d, Sharon $\delta = +31$ d) even though their positive sign contributes equally to the non-parametric evidence. The ensemble therefore forms a coherent observational case: the correlation-aware family-sign-flip headline gives $p = 0.031$, the independence-assuming blind Wilcoxon benchmark gives $p = 0.016$, the supplementary all-8 Wilcoxon gives $p = 0.0078$, all non-zero signs are positive, and $\Delta\chi^2 = +1.59$ favours the proxy model with no additional free parameters after calibration.
@@ -239,7 +239,7 @@ Because $\alpha_{\rm inferred}$ is derived by dividing the observed weighted-mea
 
 <figure>
     <img src="figures/step_07_observed_vs_predicted.png" alt="SN Refsdal GR model predictions vs observed SX delay with TEP correction" class="figure-responsive">
-    <figcaption><strong>Figure 2:</strong> GR lens-model predictions for $\Delta t_{\rm SX,S1}$ from 7 blind (blue circles) and 1 post-blind (purple square) teams, compared to the Kelly et al. (2023) observation (red line/band) and the proxy-corrected value $\Delta t_{\rm obs} - \mathcal{R}_{\rm pred} = 361.5$ d (orange dashed). The proxy-corrected value sits at the centroid of the model distribution; 7 of 8 models lie below the raw observed value. wRMS improves by 46% after proxy-model correction.</figcaption>
+    <figcaption><em>Figure 2:</em> GR lens-model predictions for $\Delta t_{\rm SX,S1}$ from 7 blind (blue circles) and 1 post-blind (purple square) teams, compared to the Kelly et al. (2023) observation (red line/band) and the proxy-corrected value $\Delta t_{\rm obs} - \mathcal{R}_{\rm pred} = 361.5$ d (orange dashed). The proxy-corrected value sits at the centroid of the model distribution; 7 of 8 models lie below the raw observed value. wRMS improves by 46% after proxy-model correction.</figcaption>
 </figure>
 
 
@@ -249,7 +249,7 @@ SN Encore (AT 2024xxx, MACS J0138-2155, $z_s = 1.95$, $z_l = 0.338$) is a multip
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Model</th><th>Method</th><th>Blind?</th><th>$\Delta t_{\rm pred}$ [d]</th><th>$\sigma_{\rm model}$ [d]</th><th>Residual [d]</th><th>$z$</th></tr>
+        <tr><th scope="col">Model</th><th scope="col">Method</th><th scope="col">Blind?</th><th scope="col">$\Delta t_{\rm pred}$ [d]</th><th scope="col">$\sigma_{\rm model}$ [d]</th><th scope="col">Residual [d]</th><th scope="col">$z$</th></tr>
     </thead>
     <tbody>
         <tr><td>glafic (Oguri)</td><td>GLAFIC parametric</td><td>Yes</td><td>$-32.4$</td><td>2.4</td><td>$-7.4$</td><td>$-1.72$</td></tr>
@@ -273,7 +273,7 @@ SN H0pe (PLCK G165.7+67.0, $z_s = 1.783$, $z_l = 0.351$) is a triply-imaged Type
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Model</th><th>$\Delta t_{AB}^{\rm pred}$ [d]</th><th>$\Delta t_{CB}^{\rm pred}$ [d]</th><th>$\mathcal{R}_{AB}$ [d]</th><th>$\mathcal{R}_{CB}$ [d]</th></tr>
+        <tr><th scope="col">Model</th><th scope="col">$\Delta t_{AB}^{\rm pred}$ [d]</th><th scope="col">$\Delta t_{CB}^{\rm pred}$ [d]</th><th scope="col">$\mathcal{R}_{AB}$ [d]</th><th scope="col">$\mathcal{R}_{CB}$ [d]</th></tr>
     </thead>
     <tbody>
         <tr><td>GLAFIC</td><td>$-105.2$</td><td>$-50.7$</td><td>$-11.4$</td><td>$+2.1$</td></tr>
@@ -290,10 +290,10 @@ SN H0pe (PLCK G165.7+67.0, $z_s = 1.783$, $z_l = 0.351$) is a triply-imaged Type
 The AB pair yields $\mathcal{R}_{\rm obs} = -10.16 \pm 5.13$ d with a predicted TEP shift of $\mathcal{R}_{\rm TEP} = -1.58$ d; the CB pair yields $\mathcal{R}_{\rm obs} = -0.23 \pm 2.67$ d with $\mathcal{R}_{\rm TEP} = -0.26$ d. These proxy predictions use the WSLAP+-excluded central delay because WSLAP+ is an extreme outlier for both delays (predicted $-273$ d and $+343$ d versus observed $-117$ d and $-49$ d) and was given zero weight in the official H0pe H0 inference. The all-model mean is retained only as a diagnostic (it would give CB $\mathcal{R}_{\rm TEP}=+0.04$ d). The directional sign tests give 5/7 negative residuals for AB ($p = 0.23$ one-sided) and 3/7 for CB ($p = 0.77$), consistent with GR. As with Encore, the predicted TEP shifts are sub-day to order 1–2 d, far below the per-model scatter (5–50 d).
 </p>
 <p>
-<strong>WSLAP+ leave-out sensitivity (Step 39).</strong> Removing the dominant outlier and recomputing the residual statistics on the remaining six models gives $\mathcal{R}_{\rm obs}(AB) = -10.64 \pm 5.14$ d with 5/6 residuals matching the predicted negative sign (binomial one-sided $p \approx 0.11$ for $\geq 5/6$ negative; weighted-mean $z \approx -2.07$), and $\mathcal{R}_{\rm obs}(CB) = +0.09 \pm 2.67$ d with 2/6 negative ($z \approx +0.03$). The AB result is therefore <em>not</em> driven by WSLAP+: the directional consistency with the TEP prediction strengthens when WSLAP+ is excluded. The CB result remains a near-zero null; its sign is not probative at this precision even though the WSLAP+-excluded proxy prediction is negative.
+<em>WSLAP+ leave-out sensitivity (Step 39).</em> Removing the dominant outlier and recomputing the residual statistics on the remaining six models gives $\mathcal{R}_{\rm obs}(AB) = -10.64 \pm 5.14$ d with 5/6 residuals matching the predicted negative sign (binomial one-sided $p \approx 0.11$ for $\geq 5/6$ negative; weighted-mean $z \approx -2.07$), and $\mathcal{R}_{\rm obs}(CB) = +0.09 \pm 2.67$ d with 2/6 negative ($z \approx +0.03$). The AB result is therefore <em>not</em> driven by WSLAP+: the directional consistency with the TEP prediction strengthens when WSLAP+ is excluded. The CB result remains a near-zero null; its sign is not probative at this precision even though the WSLAP+-excluded proxy prediction is negative.
 </p>
 <p class="callout-note">
-    <strong>Assessment of multi-system evidence.</strong> SN Refsdal remains the only system with a high-SNR TEP predicted residual ($\sim$14.5 d). SN Encore and SN H0pe have predicted shifts of $\lesssim$2 d, swamped by per-model scatter. Their residuals are directionally consistent with TEP (all three systems show the predicted sign), but they do not provide statistically independent high-precision evidence strands. Using the correlation-aware Refsdal headline, a cross-system Stouffer combination of directional z-scores yields $z = +1.73$ ($p = 0.042$), dominated by Refsdal ($z = +1.86$); Encore and H0pe together contribute $\Delta z = -0.13$.
+    <em>Assessment of multi-system evidence.</em> SN Refsdal remains the only system with a high-SNR TEP predicted residual ($\sim$14.5 d). SN Encore and SN H0pe have predicted shifts of $\lesssim$2 d, swamped by per-model scatter. Their residuals are directionally consistent with TEP (all three systems show the predicted sign), but they do not provide statistically independent high-precision evidence strands. Using the correlation-aware Refsdal headline, a cross-system Stouffer combination of directional z-scores yields $z = +1.73$ ($p = 0.042$), dominated by Refsdal ($z = +1.86$); Encore and H0pe together contribute $\Delta z = -0.13$.
 </p>
 
 <h3>3.6 Extended Evidence Tests</h3>
@@ -318,11 +318,11 @@ An ansatz-free rank test (Step 34) replaces the flux-proxy magnification with th
 
 <h4>3.6.2 Per-Model Inferred Coupling</h4>
 <p>
-Each of the eight model residuals implies a per-model inferred coupling $\alpha_{\rm inferred,i} = \mathcal{R}_{{\rm obs},i} / (d\mathcal{R}_{\rm TEP}/d\alpha)$. Every non-zero model yields $\alpha < 0$; the Diego (WSLAP+) blind prediction returned exactly the observed value ($\delta = 0$), which is the only outcome strictly consistent with GR. Under GR with truly independent draws, non-zero residuals should be sign-symmetric. The honest binomial count is therefore <strong>7/7 strictly positive non-zero residuals, $p = 0.0078$</strong> (one-sided binomial under the GR null). Counting Diego as a positive draw would yield the previously reported $p = 0.0039$ but is not defensible: a zero residual carries no directional information and should be excluded from the sign test rather than coded as a vote in the predicted direction.
+Each of the eight model residuals implies a per-model inferred coupling $\alpha_{\rm inferred,i} = \mathcal{R}_{{\rm obs},i} / (d\mathcal{R}_{\rm TEP}/d\alpha)$. Every non-zero model yields $\alpha < 0$; the Diego (WSLAP+) blind prediction returned exactly the observed value ($\delta = 0$), which is the only outcome strictly consistent with GR. Under GR with truly independent draws, non-zero residuals should be sign-symmetric. The honest binomial count is therefore <em>7/7 strictly positive non-zero residuals, $p = 0.0078$</em> (one-sided binomial under the GR null). Counting Diego as a positive draw would yield the previously reported $p = 0.0039$ but is not defensible: a zero residual carries no directional information and should be excluded from the sign test rather than coded as a vote in the predicted direction.
 </p>
 <table class="results-table">
     <thead>
-        <tr><th>Model</th><th>Method family</th><th>Blind?</th><th>Residual [d]</th><th>$\alpha_{\rm inferred}$</th><th>$\sigma_\alpha$</th><th>$z$ from GR null</th></tr>
+        <tr><th scope="col">Model</th><th scope="col">Method family</th><th scope="col">Blind?</th><th scope="col">Residual [d]</th><th scope="col">$\alpha_{\rm inferred}$</th><th scope="col">$\sigma_\alpha$</th><th scope="col">$z$ from GR null</th></tr>
     </thead>
     <tbody>
         <tr><td>Oguri-a</td><td>GLAFIC</td><td>Yes</td><td>+52.0</td><td>$-0.197$</td><td>0.224</td><td>$-0.88$</td></tr>
@@ -409,5 +409,5 @@ For SN Refsdal the shift is $+2.7$ km s$^{-1}$ Mpc$^{-1}$ ($66.6 \to 69.3$); for
 </p>
 <figure>
     <img src="figures/step_10_h0_tension.png" alt="Low-$H_0$ Consistency Check" class="figure-responsive">
-    <figcaption><strong>Figure 3:</strong> The Hubble constant $H_0$ inferred from SN Refsdal, SN Encore, and SN H0pe. Under GR (blue), Refsdal and Encore lie at the low end of the Planck range. Under the proxy model with the empirically determined coupling (orange), the SN Refsdal value shifts upward by approximately $2.7$ km s$^{-1}$ Mpc$^{-1}$. <em>This is a definitional internal consistency check, not independent cosmological evidence:</em> $\alpha_{\rm proxy}$ was calibrated on the same SN Refsdal SX delay used here, so the resulting shift is mathematically prescribed by the calibration and cannot be read as a resolution of the $H_0$ tension. SN Encore and SN H0pe shifts are sub-percent and not probative.</figcaption>
+    <figcaption><em>Figure 3:</em> The Hubble constant $H_0$ inferred from SN Refsdal, SN Encore, and SN H0pe. Under GR (blue), Refsdal and Encore lie at the low end of the Planck range. Under the proxy model with the empirically determined coupling (orange), the SN Refsdal value shifts upward by approximately $2.7$ km s$^{-1}$ Mpc$^{-1}$. <em>This is a definitional internal consistency check, not independent cosmological evidence:</em> $\alpha_{\rm proxy}$ was calibrated on the same SN Refsdal SX delay used here, so the resulting shift is mathematically prescribed by the calibration and cannot be read as a resolution of the $H_0$ tension. SN Encore and SN H0pe shifts are sub-percent and not probative.</figcaption>
 </figure>

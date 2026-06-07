@@ -2,11 +2,16 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
+
+## Abstract
+
+Abstract SN Refsdal provides a rare blind-prediction test of potential-dependent temporal propagation: seven GR lens-modelling teams predicted the SX reappearance delay before the image was observed, while the later Kelly et al. (2023) measurement provides an independent comparator. This single-system probe reduces to a single-contrast measurement: signal-energy partitioning (Step 35) shows that 99.9% of the predicted proxy-model signal resides in the long-baseline S4–SX contrast, with an effective dimensionality D_{ eff}  2.0; the inner Einstein cross serves as a null region providing no probative leverage. The underlying algebraic loop identity is insensitive to a uniform Mass Sheet Degeneracy — a uniform convergence sheet rescales all delays symmetrically and cannot generate a differential residual — but the empirical blind-prediction residual remains limited by GR lens-model precision and correlated modelling systematics. The independence-assuming non-parametric directional benchmark is a Wilcoxon signed-rank test on the six non-zero residuals among the seven blind models, all of which are positive (p = 0.016, approximately 2.2 under between-model independence), matching the log-magnification proxy prediction for a negative temporal-shear coupling. The independence assumption is not strictly justified: an exact family-sign-flip test enumerating all method-family sign assignments gives p = 0.031 (one-sided), which is the correlation-aware headline and the most rigorous dependence-aware rank bound. A method-family block-bootstrap (Step 11) yields p_{ median} = 0.016 [0.008, 0.031] blind-only, reported as a sensitivity exploration. The supplementary all-eight-model Wilcoxon gives p = 0.0078 (2.4). Hierarchical Bayesian model comparison remains inconclusive (BF  1), indicating that present lens-model uncertainties dominate formal model-selection metrics. The measured coupling _{ proxy} = -0.055  0.044 is calibrated from the same SN Refsdal data, so the magnitude agreement with the proxy-model prediction is definitional rather than an independent confirmation; the probative content lies in the sign consistency across modelling groups that use independent codes but share the same lens and image constraints. Blind-prediction residual tests for two additional multiply-imaged supernovae (SN Encore, SN H0pe) are directionally consistent with the proxy model (all three systems show the predicted primary residual sign; 3/3 binomial p = 0.125) but serve as consistency checks rather than high-precision evidence strands, as their predicted TEP shifts are sub-day to 2 d and swamped by per-model scatter. In the absence of a solved TEP lensing transfer function, this test should be read as a falsifiable phenomenological screen, not a fundamental coupling measurement.
+
 **Author:** Matthew Lukin Smawfield  
 **Version:** v0.1 (Lisboa)  
 **First published:** 29 May 2026  
-**Status:** Preprint (Open for Collaboration)  
-**Website:** [https://matthewsmawfield.github.io/TEP-LENS/](https://matthewsmawfield.github.io/TEP-LENS/)  
+**Status:** In Development  
+**Website:** [https://mlsmawfield.com/tep/lens](https://mlsmawfield.com/tep/lens)  
 **Paper Series:** TEP Series: Paper 19 (Strong Lensing Time Delays)
 
 ## Abstract

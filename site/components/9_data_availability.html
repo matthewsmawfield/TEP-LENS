@@ -11,10 +11,10 @@
 
     <h3>Repository & Code</h3>
     <p>
-        <strong>GitHub Repository:</strong> <a href="https://github.com/matthewsmawfield/TEP-LENS">github.com/matthewsmawfield/TEP-LENS</a>
+        <em>GitHub Repository:</em> <a href="https://github.com/matthewsmawfield/TEP-LENS">github.com/matthewsmawfield/TEP-LENS</a>
     </p>
     <p>
-        The repository contains a deterministic, version-controlled analysis pipeline with <strong>36 analysis steps</strong>
+        The repository contains a deterministic, version-controlled analysis pipeline with <em>36 analysis steps</em>
         (numbered 00–20, 30–42, with 32b and 38b diagnostics) for geometric blind-prediction residual tests in multiply-imaged supernovae.
     </p>
 
@@ -46,11 +46,11 @@ TEP-LENS/
     <table class="data-provenance-table">
         <thead>
             <tr>
-                <th>Data Source</th>
-                <th>Provider</th>
-                <th>Access Method</th>
-                <th>Download Size</th>
-                <th>Reference</th>
+                <th scope="col">Data Source</th>
+                <th scope="col">Provider</th>
+                <th scope="col">Access Method</th>
+                <th scope="col">Download Size</th>
+                <th scope="col">Reference</th>
             </tr>
         </thead>
         <tbody>
@@ -85,8 +85,8 @@ TEP-LENS/
         </tbody>
     </table>
     <p>
-        <strong>Total Download Size:</strong> ~75 MB for all primary data sources.<br>
-        <strong>Data Provenance Log:</strong> Complete acquisition details maintained in <code>data/DATA_PROVENANCE.md</code>.
+        <em>Total Download Size:</em> ~75 MB for all primary data sources.<br>
+        <em>Data Provenance Log:</em> Complete acquisition details maintained in <code>data/DATA_PROVENANCE.md</code>.
     </p>
 
     <h3>Reproduction Instructions</h3>
@@ -145,62 +145,62 @@ npm run build
     </table>
 
     <h4>Detailed Pipeline Steps</h4>
-    <p>The analysis pipeline consists of <strong>36 analysis steps</strong> (numbered 00–20, 30–42, with 32b and 38b diagnostics). Each step produces JSON outputs and logs for full traceability:</p>
+    <p>The analysis pipeline consists of <em>36 analysis steps</em> (numbered 00–20, 30–42, with 32b and 38b diagnostics). Each step produces JSON outputs and logs for full traceability:</p>
 
     <h5>Data Acquisition & Closure Tests (Steps 00-04)</h5>
     <ul>
-        <li><strong>step_00_fetch_literature_and_cross_paper_data.py</strong> — Fetch literature data and cross-paper reference values for TEP consistency checks</li>
-        <li><strong>step_01_fetch_snh0pe_data.py</strong> — Fetch SN H0pe light curve data from public release; parses multiply-imaged supernova magnitudes and time delays</li>
-        <li><strong>step_02_gr_closure.py</strong> — GR algebraic loop sum; computes the identically-zero loop baseline for GR with SN Refsdal and SN H0pe</li>
-        <li><strong>step_03_tep_closure.py</strong> — TEP predicted GR discrepancy; computes TEP-predicted GR discrepancies for each loop</li>
-        <li><strong>step_04_plot_closure.py</strong> — Generate predicted GR discrepancy plots (Figure 4 baseline vs discrepancy)</li>
+        <li><em>step_00_fetch_literature_and_cross_paper_data.py</em> — Fetch literature data and cross-paper reference values for TEP consistency checks</li>
+        <li><em>step_01_fetch_snh0pe_data.py</em> — Fetch SN H0pe light curve data from public release; parses multiply-imaged supernova magnitudes and time delays</li>
+        <li><em>step_02_gr_closure.py</em> — GR algebraic loop sum; computes the identically-zero loop baseline for GR with SN Refsdal and SN H0pe</li>
+        <li><em>step_03_tep_closure.py</em> — TEP predicted GR discrepancy; computes TEP-predicted GR discrepancies for each loop</li>
+        <li><em>step_04_plot_closure.py</em> — Generate predicted GR discrepancy plots (Figure 4 baseline vs discrepancy)</li>
     </ul>
 
     <h5>TDCOSMO & H0 Analysis (Steps 05-10)</h5>
     <ul>
-        <li><strong>step_05_tdcosmo_shear.py</strong> — TDCOSMO temporal shear test; computes TEP-predicted delay shifts as a predicted-sensitivity consistency check</li>
-        <li><strong>step_06_alpha_sensitivity.py</strong> — α₀ parameter sensitivity analysis; tests how predicted GR discrepancies depend on TEP coupling</li>
-        <li><strong>step_07_observed_vs_predicted.py</strong> — Observed vs predicted time-delay comparison; quantifies TEP predictive accuracy</li>
-        <li><strong>step_08_new_evidence.py</strong> — Compile new evidence from independent lens systems</li>
-        <li><strong>step_09_precision_roadmap.py</strong> — Precision requirements analysis; quantifies significance as a function of model precision and sample size</li>
-        <li><strong>step_10_h0_tension.py</strong> — H0 internal-consistency check in lensing context; compares proxy-model shifts to local and CMB H0 without claiming a tension resolution</li>
+        <li><em>step_05_tdcosmo_shear.py</em> — TDCOSMO temporal shear test; computes TEP-predicted delay shifts as a predicted-sensitivity consistency check</li>
+        <li><em>step_06_alpha_sensitivity.py</em> — α₀ parameter sensitivity analysis; tests how predicted GR discrepancies depend on TEP coupling</li>
+        <li><em>step_07_observed_vs_predicted.py</em> — Observed vs predicted time-delay comparison; quantifies TEP predictive accuracy</li>
+        <li><em>step_08_new_evidence.py</em> — Compile new evidence from independent lens systems</li>
+        <li><em>step_09_precision_roadmap.py</em> — Precision requirements analysis; quantifies significance as a function of model precision and sample size</li>
+        <li><em>step_10_h0_tension.py</em> — H0 internal-consistency check in lensing context; compares proxy-model shifts to local and CMB H0 without claiming a tension resolution</li>
     </ul>
 
     <h5>Model Dependence & Robustness (Steps 11-15)</h5>
     <ul>
-        <li><strong>step_11_model_dependence.py</strong> — Model dependence analysis; tests sensitivity to lens model assumptions</li>
-        <li><strong>step_12_microlensing_robustness.py</strong> — Microlensing robustness tests; quantifies microlensing contamination effects</li>
-        <li><strong>step_13_bayes_model_comparison.py</strong> — Bayesian model comparison; computes Bayes factors for GR vs TEP lens models</li>
-        <li><strong>step_14_external_chain_ingestion.py</strong> — External chain ingestion; imports TDCOSMO/H0LiCOW MCMC chains for joint analysis</li>
-        <li><strong>step_15_external_informed_inflation.py</strong> — External-informed inflation analysis; tests TEP effects on time-delay cosmography precision under external uncertainty priors</li>
+        <li><em>step_11_model_dependence.py</em> — Model dependence analysis; tests sensitivity to lens model assumptions</li>
+        <li><em>step_12_microlensing_robustness.py</em> — Microlensing robustness tests; quantifies microlensing contamination effects</li>
+        <li><em>step_13_bayes_model_comparison.py</em> — Bayesian model comparison; computes Bayes factors for GR vs TEP lens models</li>
+        <li><em>step_14_external_chain_ingestion.py</em> — External chain ingestion; imports TDCOSMO/H0LiCOW MCMC chains for joint analysis</li>
+        <li><em>step_15_external_informed_inflation.py</em> — External-informed inflation analysis; tests TEP effects on time-delay cosmography precision under external uncertainty priors</li>
     </ul>
 
     <h5>External Data & Completeness (Steps 16-20)</h5>
     <ul>
-        <li><strong>step_16_independence_tier_significance.py</strong> — Independence tier significance; statistical tests for multiple independent lens systems</li>
-        <li><strong>step_17_directional_odds.py</strong> — Directional odds analysis; tests TEP predictions for specific image parity configurations</li>
-        <li><strong>step_18_external_dataset_registry.py</strong> — External dataset registry; catalogs all public lensed SN light curves</li>
-        <li><strong>step_19_tdcosmo2025_ingestion.py</strong> — TDCOSMO-2025 chain ingestion; imports latest time-delay cosmography constraints</li>
-        <li><strong>step_20_external_completeness_synthesis.py</strong> — External completeness synthesis; combines all lensing constraints with TEP</li>
+        <li><em>step_16_independence_tier_significance.py</em> — Independence tier significance; statistical tests for multiple independent lens systems</li>
+        <li><em>step_17_directional_odds.py</em> — Directional odds analysis; tests TEP predictions for specific image parity configurations</li>
+        <li><em>step_18_external_dataset_registry.py</em> — External dataset registry; catalogs all public lensed SN light curves</li>
+        <li><em>step_19_tdcosmo2025_ingestion.py</em> — TDCOSMO-2025 chain ingestion; imports latest time-delay cosmography constraints</li>
+        <li><em>step_20_external_completeness_synthesis.py</em> — External completeness synthesis; combines all lensing constraints with TEP</li>
     </ul>
 
     <h5>Proxy Validation, Null Tests, Forward Prediction & Evidence Scaling (Steps 30–42)</h5>
     <ul>
-        <li><strong>step_30_cosmograil_temporal_shear.py</strong> — CosmoGRAIL temporal-shear analysis; time-domain signal extraction from light curves</li>
-        <li><strong>step_31_cosmograil_validation.py</strong> — CosmoGRAIL validation; injection-recovery tests for delay estimation</li>
-        <li><strong>step_32_kappa_proxy_validation.py</strong> — Kappa proxy validation; Monte Carlo shear-degeneracy analysis quantifying mu-to-kappa systematic</li>
-        <li><strong>step_32b_temporal_shear_figure.py</strong> — Temporal-shear figure generation; produces diagnostic plots for shear analysis</li>
-        <li><strong>step_33_einstein_cross_null.py</strong> — Einstein cross null test; Spearman rank test on inner-cross delays vs magnification</li>
-        <li><strong>step_34_agnostic_rank_test.py</strong> — Agnostic rank test; proxy-agnostic statistical verification of rank-order predictions</li>
-        <li><strong>step_35_single_contrast_dominance.py</strong> — Single-contrast dominance quantification; effective degrees of freedom and signal-energy fractions</li>
-        <li><strong>step_36_falsification_forward_prediction.py</strong> — Falsification forward prediction; forward-projected thresholds for SN 2025wny</li>
-        <li><strong>step_37_multi_system_evidence.py</strong> — Multi-system evidence accumulation projection; Stouffer projection and alpha-inference scaling with N independent systems</li>
-        <li><strong>step_38_cosmograil_cross_system.py</strong> — CosmoGRAIL cross-system directional consistency diagnostic; caveated quasar check separate from the supernova residual tests</li>
-        <li><strong>step_38_sn_encore_residuals.py</strong> — SN Encore blind-prediction residual test; 8 independent lens models from Suyu+2025 vs Pierel+2026 observed delay</li>
-        <li><strong>step_39_sn_h0pe_residuals.py</strong> — SN H0pe blind-prediction residual test; 7 independent lens models from Pascale+2025 vs Pierel+2024 observed delays</li>
-        <li><strong>step_40_cross_system_trio.py</strong> — Cross-system trio evidence synthesis; Stouffer combination of directional evidence from Refsdal, Encore, and H0pe</li>
-        <li><strong>step_41_null_channel_discriminator.py</strong> — Null-channel discriminator; AIC comparison of the TEP proxy against generic bias models (null, constant offset, uniform-fractional H0/MSD-like) across cross-system contrasts, separating amplitude from sign evidence</li>
-        <li><strong>step_42_precision_persistence.py</strong> — Precision-persistence test; extrapolates the SN Refsdal SX residual to the high-precision lens-model limit to test the model-immaturity explanation</li>
+        <li><em>step_30_cosmograil_temporal_shear.py</em> — CosmoGRAIL temporal-shear analysis; time-domain signal extraction from light curves</li>
+        <li><em>step_31_cosmograil_validation.py</em> — CosmoGRAIL validation; injection-recovery tests for delay estimation</li>
+        <li><em>step_32_kappa_proxy_validation.py</em> — Kappa proxy validation; Monte Carlo shear-degeneracy analysis quantifying mu-to-kappa systematic</li>
+        <li><em>step_32b_temporal_shear_figure.py</em> — Temporal-shear figure generation; produces diagnostic plots for shear analysis</li>
+        <li><em>step_33_einstein_cross_null.py</em> — Einstein cross null test; Spearman rank test on inner-cross delays vs magnification</li>
+        <li><em>step_34_agnostic_rank_test.py</em> — Agnostic rank test; proxy-agnostic statistical verification of rank-order predictions</li>
+        <li><em>step_35_single_contrast_dominance.py</em> — Single-contrast dominance quantification; effective degrees of freedom and signal-energy fractions</li>
+        <li><em>step_36_falsification_forward_prediction.py</em> — Falsification forward prediction; forward-projected thresholds for SN 2025wny</li>
+        <li><em>step_37_multi_system_evidence.py</em> — Multi-system evidence accumulation projection; Stouffer projection and alpha-inference scaling with N independent systems</li>
+        <li><em>step_38_cosmograil_cross_system.py</em> — CosmoGRAIL cross-system directional consistency diagnostic; caveated quasar check separate from the supernova residual tests</li>
+        <li><em>step_38_sn_encore_residuals.py</em> — SN Encore blind-prediction residual test; 8 independent lens models from Suyu+2025 vs Pierel+2026 observed delay</li>
+        <li><em>step_39_sn_h0pe_residuals.py</em> — SN H0pe blind-prediction residual test; 7 independent lens models from Pascale+2025 vs Pierel+2024 observed delays</li>
+        <li><em>step_40_cross_system_trio.py</em> — Cross-system trio evidence synthesis; Stouffer combination of directional evidence from Refsdal, Encore, and H0pe</li>
+        <li><em>step_41_null_channel_discriminator.py</em> — Null-channel discriminator; AIC comparison of the TEP proxy against generic bias models (null, constant offset, uniform-fractional H0/MSD-like) across cross-system contrasts, separating amplitude from sign evidence</li>
+        <li><em>step_42_precision_persistence.py</em> — Precision-persistence test; extrapolates the SN Refsdal SX residual to the high-precision lens-model limit to test the model-immaturity explanation</li>
     </ul>
 
     <p>
@@ -225,10 +225,10 @@ npm run build
 
     <h3>Software Versions</h3>
     <ul>
-        <li><strong>Python</strong> 3.10+</li>
-        <li><strong>NumPy</strong> 1.24+</li>
-        <li><strong>SciPy</strong> 1.10+</li>
-        <li><strong>Pandas</strong> 2.0+</li>
-        <li><strong>Matplotlib</strong> 3.7+</li>
+        <li><em>Python</em> 3.10+</li>
+        <li><em>NumPy</em> 1.24+</li>
+        <li><em>SciPy</em> 1.10+</li>
+        <li><em>Pandas</em> 2.0+</li>
+        <li><em>Matplotlib</em> 3.7+</li>
     </ul>
 </section>

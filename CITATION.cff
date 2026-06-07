@@ -5,8 +5,7 @@ authors:
 - family-names: Smawfield
   given-names: Matthew Lukin
   orcid: https://orcid.org/0009-0003-8219-3159
-title: 'Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged
-  Supernovae'
+title: 'Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae'
 abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays traversing
 
   different gravitational potential depths experience differential temporal scaling
@@ -99,9 +98,10 @@ abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays tra
 
   '
 version: v0.1 (Lisboa)
-date-released: 2026-06-07
-url: https://github.com/matthewsmawfield/TEP-LENS
+date-released: 2026-06-06
+url: https://mlsmawfield.com/tep/lens
 repository-code: https://github.com/matthewsmawfield/TEP-LENS
+doi: 10.5281/zenodo.20572720
 license: CC-BY-4.0
 keywords:
 - Temporal Equivalence Principle
@@ -131,5 +131,5 @@ preferred-citation:
     orcid: https://orcid.org/0009-0003-8219-3159
   year: 2026
   journal: Zenodo
-  url: https://github.com/matthewsmawfield/TEP-LENS
+  url: https://mlsmawfield.com/tep/lens
   notes: Preprint v0.1 (Lisboa)

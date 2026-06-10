@@ -52,6 +52,7 @@ site/dist/
 results/**/*.fits
 results/**/*.hdf5
 data/raw/external/Cepheid-Distance-Ladder-Data/
+data/raw/sn_lensing/maps/*.fits
 
 # Private research notes (should never be committed)
 research

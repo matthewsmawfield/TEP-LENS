@@ -54,12 +54,12 @@ def main():
     with open(s15_path) as f:
         s15 = json.load(f)
 
-    # Primary independence test: Wilcoxon signed-rank on blind models only
+    # Primary independence test: Wilcoxon signed-rank on delay-blind models only
     p_sign = float(s07["binomial_sign_test"]["p_wilcoxon_signed_rank_blind"])
-    # Primary correlation-aware bound: exact family-sign-flip test.
-    p_perm = float(s11["permutation_test_wilcoxon"]["blind_7"]["p_value_one_sided"])
+    # Primary correlation-aware bound: exact family-sign-flip test (delay-blind tier).
+    p_perm = float(s11["permutation_test_wilcoxon"]["delay_blind"]["p_value_one_sided"])
     # Sensitivity exploration: block-bootstrap (demoted from operational primary)
-    p_boot = float(s11["block_bootstrap_wilcoxon"]["blind_7"]["p_median"])
+    p_boot = float(s11["block_bootstrap_wilcoxon"]["delay_blind"]["p_median"])
     p_ext = float(s15["scenarios"]["kappa50"]["p_z_one_sided"])
     p_pearson = float(s08["test_A_delay_mu_correlation"]["pearson_p_onesided"])
     p_alpha = float(s08["test_C_alpha_inference"]["p_vs_gr_null_onesided"])
@@ -73,12 +73,12 @@ def main():
     z_alpha = float(stats.norm.isf(p_alpha))
 
     print_status("Individual Correlated Tests (SN Refsdal SX):")
-    print_status(f"  Wilcoxon signed-rank (blind): z={z_sign:.2f}, p={p_sign:.4f} (Independence primary)")
-    boot = s11["block_bootstrap_wilcoxon"]["blind_7"]
+    print_status(f"  Wilcoxon signed-rank (delay-blind): z={z_sign:.2f}, p={p_sign:.4f} (Independence primary)")
+    boot = s11["block_bootstrap_wilcoxon"]["delay_blind"]
 
-    print_status(f"  Exact family-sign-flip (blind): z={z_perm:.2f}, p={p_perm:.4f} (Correlation-aware primary)")
+    print_status(f"  Exact family-sign-flip (delay-blind): z={z_perm:.2f}, p={p_perm:.4f} (Correlation-aware primary)")
     print_status(
-        f"  Block-bootstrap (blind):       z={z_boot:.2f}, p={p_boot:.4f} "
+        f"  Block-bootstrap (delay-blind):       z={z_boot:.2f}, p={p_boot:.4f} "
         f"[{boot['p_16']:.4f}, {boot['p_84']:.4f}] (Sensitivity)"
     )
     print_status(f"  Pearson delay-mu:             z={z_pearson:.2f}, p={p_pearson:.4f}")

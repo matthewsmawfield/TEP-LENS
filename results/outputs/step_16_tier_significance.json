@@ -11,8 +11,8 @@
   "test_hierarchy": {
     "tier_1a_primary_independence": {
       "test": "Wilcoxon signed-rank blind",
-      "z_score": 2.1538746940614564,
-      "p_value": 0.015625
+      "z_score": 2.417559016236505,
+      "p_value": 0.0078125
     },
     "tier_1b_primary_correlation_aware": {
       "test": "Exact family-sign-flip test blind",
@@ -21,8 +21,8 @@
     },
     "tier_2_sensitivity_exploration": {
       "test": "Block-bootstrap Wilcoxon blind",
-      "z_score": 2.1538746940614564,
-      "p_value": 0.015625,
+      "z_score": 2.417559016236505,
+      "p_value": 0.0078125,
       "caveat": "Demoted from operational primary; retained for sensitivity exploration."
     }
   },
@@ -32,24 +32,24 @@
       "p": 0.03125
     },
     "wilcoxon": {
-      "z": 2.1538746940614564,
-      "p": 0.015625
+      "z": 2.417559016236505,
+      "p": 0.0078125
     },
     "block_bootstrap": {
-      "z": 2.1538746940614564,
-      "p": 0.015625
+      "z": 2.417559016236505,
+      "p": 0.0078125
     },
     "pearson": {
       "z": 2.305013663729567,
       "p": 0.01058290409089799
     },
     "external_mean": {
-      "z": 1.2543378547038597,
-      "p": 0.10485961513562109
+      "z": 3.366734860994791,
+      "p": 0.00038031890759077216
     },
     "alpha_inference": {
-      "z": 0.955562515649419,
-      "p": 0.16964665349101754
+      "z": 3.468020802963835,
+      "p": 0.00026215334950881945
     }
   },
   "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_16_tier_significance.png"

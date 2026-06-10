@@ -250,7 +250,7 @@ def main():
     # ------------------------------------------------------------------
     binomial_proj = []
     for n in range(1, max_n + 1):
-        # Under TEP: P(positive) ~ 0.89 (from Refsdal's 6/7 blind positive)
+        # Under TEP: P(positive) = 1.0 (from Refsdal's 6/6 blind positive)
         # Under GR: P(positive) = 0.50
         # For k positive out of n, binomial p = P(X >= k | p=0.5, n)
         for k in range(n, 0, -1):
@@ -282,7 +282,7 @@ def main():
         "note": (
             "These thresholds assume each new system provides an independent blind-prediction "
             "residual test with precision equivalent to SN Refsdal (blind model uncertainty "
-            "sigma_model ~ 16-60 d, 7 blind models, R_tep ~ 14.5 d). Degraded precision in "
+            "sigma_model ~ 16-60 d, 6 blind models, R_tep ~ 14.5 d). Degraded precision in "
             "new systems increases the required N proportionally. These thresholds are "
             "designated prospectively for future systems and should not be adjusted post-measurement."
         ),

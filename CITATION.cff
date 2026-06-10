@@ -12,7 +12,7 @@ abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays tra
 
   ($\alpha \neq 0$). This work applies a blind-prediction residual test to SN Refsdal,
 
-  the only multiply-imaged supernova with five resolved images and precision-measured
+  currently unique among multiply-imaged supernovae in having five resolved images and precision-measured
 
   time delays. The key observational lever is a comparison of seven blind
 
@@ -36,69 +36,55 @@ abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays tra
   lens-model precision and correlated modelling systematics.
 
 
-  The designated primary non-parametric directional test is a Wilcoxon signed-rank
+  The primary evidence is directional and sign-coherent: all seven selected blind
 
-  test on the six non-zero residuals among the seven blind models, all of which are
+  pre-reappearance model variants yield positive residuals, matching the TEP-predicted
 
-  positive ($p = 0.016$, approximately $2.2\sigma$ under between-model independence),
+  sign for a negative temporal-shear coupling. The independence-assuming non-parametric
 
-  matching the log-magnification proxy prediction for a negative temporal-shear
+  benchmark is a Wilcoxon signed-rank test on the seven non-zero residuals ($p = 0.0078$,
 
-  coupling. The independence assumption is not strictly justified: a method-family
+  approximately $2.4\sigma$ under between-model independence). Because the independence
 
-  block-bootstrap (Step 11) gives a dependence-adjusted Wilcoxon
+  assumption is not strictly justified, the correlation-aware headline is an exact
 
-  $p_{\rm median} = 0.011$ [0.007, 0.017] blind-only. The supplementary
+  family-sign-flip test enumerating all method-family sign assignments ($p = 0.031$,
 
-  all-eight-model Wilcoxon gives $p = 0.0078$ ($2.4\sigma$) under independence and
+  one-sided), which is the most rigorous dependence-aware rank bound. A method-family
 
-  $p_{\rm median} = 0.007$ [0.004, 0.015] under the block-bootstrap. Additional
+  block-bootstrap (Step 11) yields $p_{\rm median} = 0.0078$ [0.0039, 0.0156] blind-only,
 
-  strands are directionally consistent: a 46% reduction in weighted RMS after
+  reported as a sensitivity exploration. The supplementary all-eight-model Wilcoxon gives
 
-  proxy-model correction, and a binomial sign test of 6/7 positive among blind models
+  $p = 0.0039$ ($2.8\sigma$). Hierarchical Bayesian model comparison remains inconclusive
 
-  ($p = 0.0625$). Hierarchical Bayesian model comparison remains inconclusive
+  (BF $\sim 1$), indicating that present lens-model uncertainties dominate formal
 
-  (BF = 1.06 fixed-$\alpha$ baseline / 0.997 h0pe-informed, BF = 0.615 free-$\alpha$
+  model-selection metrics. The corrected-compilation amplitude $\mathcal{R}_{\rm obs}
 
-  baseline / 0.492 h0pe-informed with a GR-centred prior), indicating that present
+  = +30.1 \pm 8.9$ d is retained as a secondary response-scale diagnostic, implying
 
-  lens-model uncertainties dominate formal model-selection metrics. The measured
+  $\alpha_{\rm inferred} = -0.114 \pm 0.034$. Direct potential-map and 3D geodesic
 
-  coupling $\alpha_{\rm lens} = -0.055 \pm 0.044$ is calibrated from the same SN Refsdal
+  reconstructions preserve the observed residual sign but yield sub-day amplitudes,
 
-  data, so the magnitude agreement with the proxy-model prediction is definitional
+  identifying the missing theoretical object as a magnification-sensitive transfer/amplification
 
-  rather than an independent confirmation; the probative content lies in the sign
+  kernel. Blind-prediction residual tests for SN Encore and SN H0pe are directionally
 
-  consistency across modelling groups that use independent codes but share the same
+  consistent with the proxy model (3/3 systems, exact binomial $p = 0.125$) but serve
 
-  lens and image constraints. Independent blind-prediction residual tests for two
+  as consistency checks rather than high-precision evidence strands. The present result
 
-  additional multiply-imaged supernovae (SN Encore, SN H0pe) are directionally
+  is a sign-coherent directional measurement of an operational lensing-sector temporal
 
-  consistent with the proxy model (all three systems show the predicted residual sign;
+  response; the decisive next step is a prospective blind test on a future long-baseline
 
-  3/3 binomial $p = 0.125$) but serve as consistency checks rather than high-precision
-
-  evidence strands, as their predicted TEP shifts are sub-day and swamped by per-model
-
-  scatter ($\sim$3--50 d). In the absence of a solved TEP lensing transfer function
-  for
-
-  $\kappa(\boldsymbol{\theta})$ or $\psi(\boldsymbol{\theta})$, this test should be
-  read as a
-
-  falsifiable phenomenological screen, not a fundamental coupling measurement. Internal
-
-  consistency checks, including a numerical $H_0$ exercise confined to SN Refsdal,
-
-  are discussed in Section 4.8.
+  multiply-imaged supernova.
 
   '
 version: v0.1 (Lisboa)
-date-released: 2026-06-06
+date-released: 2026-06-10
 url: https://mlsmawfield.com/tep/lens
 repository-code: https://github.com/matthewsmawfield/TEP-LENS
 doi: 10.5281/zenodo.20572720
@@ -106,21 +92,14 @@ license: CC-BY-4.0
 keywords:
 - Temporal Equivalence Principle
 - Temporal Shear
-- Temporal Topology
-- proper time
-- conformal metric
-- disformal metric
-- synchronization holonomy
-- clock-sector gravity
-- scalar-tensor theory
 - gravitational lensing
 - time delays
 - multiply-imaged supernovae
 - SN Refsdal
+- SN Encore
 - SN H0pe
 - blind-prediction residual
 - Wilcoxon signed-rank test
-- strong lensing cosmology
 preferred-citation:
   type: article
   title: 'Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged

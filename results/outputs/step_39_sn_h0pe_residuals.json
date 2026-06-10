@@ -4,8 +4,8 @@
   "status": "success",
   "description": "Blind-prediction residual test for SN H0pe (PLCK G165.7+67.0). Seven independent lens models from Pascale+2025 compared against Pierel+2024 observed delays for two image pairs (AB, CB).",
   "alpha_prior": {
-    "mean": -0.055988671582071256,
-    "sigma": 0.010753157889521704
+    "mean": -0.11801455702619729,
+    "sigma": 0.02866574993909914
   },
   "observed": {
     "dt_AB_days": -116.6,
@@ -427,9 +427,9 @@
     }
   },
   "tep_prediction": {
-    "R_tep_AB_days": -1.5769153341627233,
-    "R_tep_CB_days": -0.25725856891504517,
-    "alpha_used": -0.055988671582071256,
+    "R_tep_AB_days": -3.3238681928046394,
+    "R_tep_CB_days": -0.5422571244112978,
+    "alpha_used": -0.11801455702619729,
     "log10_mu_ratio_AB": -0.2566862607688741,
     "log10_mu_ratio_CB": -0.09487901406772153,
     "dt_mean_pred_AB": -109.72500000000001,
@@ -453,8 +453,8 @@
       "method": "mean excluding explicitly zero-weighted extreme outliers"
     },
     "all_model_mean_diagnostic": {
-      "R_tep_AB_days": -1.912849678533228,
-      "R_tep_CB_days": 0.03959828354904514,
+      "R_tep_AB_days": -4.031960414329436,
+      "R_tep_CB_days": 0.08346641847338929,
       "central_prediction_AB": {
         "mean_days": -133.1,
         "median_days": -105.52,

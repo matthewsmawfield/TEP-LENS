@@ -223,7 +223,7 @@ def main():
                 label=f"$\\alpha_{{\\rm lens}} = {ALPHA_PROXY}$ (empirical)")
 
     # Shade +/- 1-day falsification band
-    ax1.axhspan(-1, 1, alpha=0.08, color="green",
+    ax1.axhspan(-1, 1, alpha=0.08, color=COLORS['light_gray'],
                 label=r"$|\mathcal{R}| < 1$ d falsification zone")
 
     ax1.set_xlabel(r"TEP coupling $\alpha$", )
@@ -249,8 +249,8 @@ def main():
                  color=loop_colors[name], lw=loop_lw[name],
                  label=LOOP_LABELS[name])
 
-    ax2.axhline(3, color="darkorange", lw=1.2, ls="--", label="SNR = 3 (detection)")
-    ax2.axhline(5, color="red",        lw=1.2, ls="--", label="SNR = 5 (strong)")
+    ax2.axhline(3, color=COLORS['gray'], lw=1.2, ls="--", label="SNR = 3 (detection)")
+    ax2.axhline(5, color=COLORS['primary'], lw=1.2, ls="--", label="SNR = 5 (strong)")
     ax2.axvline(-0.055, color="grey",    lw=1.0, ls=":", label=r"$\alpha_{\rm lens} = -0.055$")
 
     ax2.set_xlabel(r"TEP coupling $\alpha$", )
@@ -287,8 +287,8 @@ def main():
                  f"{snr_val:.1f}", va="center", ha="left",
                  fontweight="bold")
 
-    ax3.axvline(3, color="darkorange", lw=1.5, ls="--", label="SNR = 3 (detection)")
-    ax3.axvline(5, color="red",        lw=1.5, ls="--", label="SNR = 5 (strong)")
+    ax3.axvline(3, color=COLORS['gray'], lw=1.5, ls="--", label="SNR = 3 (detection)")
+    ax3.axvline(5, color=COLORS['primary'], lw=1.5, ls="--", label="SNR = 5 (strong)")
 
     ax3.set_yticks(y_pos)
     ax3.set_yticklabels([LOOP_LABELS[n] for n in loop_names], )
@@ -320,9 +320,9 @@ def main():
                    color=loop_colors[name], lw=loop_lw[name],
                    label=LOOP_LABELS[name])
 
-    ax4.axhline(1.0,  color="green", lw=1.2, ls="--",
+    ax4.axhline(1.0,  color=COLORS['light_gray'], lw=1.2, ls="--",
                 label=r"$|\mathcal{R}| = 1$ d (falsification limit)")
-    ax4.axhline(5.6,  color="purple", lw=1.0, ls=":",
+    ax4.axhline(5.6,  color=COLORS['text'], lw=1.0, ls=":",
                 label=r"$\sigma_{\rm SX}=5.6$ d (measurement noise)")
 
     ax4.set_xlabel(r"TEP coupling $\alpha$ (positive branch)", )
@@ -350,9 +350,9 @@ def main():
 
     ax5.axvline(ALPHA_PROXY, color="grey", lw=1.0, ls=":",
                 label=rf"$\alpha_{{\rm lens}} = {ALPHA_PROXY}$ (empirical)")
-    ax5.axhline(1.0, color="green", lw=1.2, ls="--",
+    ax5.axhline(1.0, color=COLORS['light_gray'], lw=1.2, ls="--",
                 label=r"$|\mathcal{R}| = 1$ d (falsification limit)")
-    ax5.axhline(5.6, color="purple", lw=1.0, ls=":",
+    ax5.axhline(5.6, color=COLORS['text'], lw=1.0, ls=":",
                 label=r"$\sigma_{\rm SX}=5.6$ d (measurement noise)")
 
     ax5.set_xlabel(r"TEP coupling $\alpha$", )

@@ -542,30 +542,32 @@ def main():
 
     # Fisher combination: ONLY genuinely observed data tests
     # Excluded: H0pe (predicted residual), arrival order (p=0.41, not directional)
-    # Primary: Wilcoxon signed-rank BLIND ONLY (p=0.016) + alpha vs zero (p~0.10)
+    # Primary: Wilcoxon signed-rank BLIND ONLY (p~0.0156) + alpha vs zero (p~0.0006)
     # Blind-only excludes the post-blind update model, preserving the designated
     # blind-prediction test.
     # These two use DIFFERENT underlying data:
-    #   Wilcoxon: signs of (obs - model_i) residuals for 7 blind models
+    #   Wilcoxon: signs of (obs - model_i) residuals for blind models
     #   Pearson: raw image delays vs 1/mu across 5 images
     # alpha_inferred vs zero (p3) is also included but noted as overlapping
     # with the weighted mean z (both derived from the same residuals).
     p_wilcoxon = float(s07["binomial_sign_test"]["p_wilcoxon_signed_rank_blind"])
+    n_nonzero_blind = s07["binomial_sign_test"].get("n_nonzero_blind", 6)
     independent_p = {
-        "Wilcoxon signed-rank (blind 6 nonzero positive)": p_wilcoxon,
-        "alpha_inferred vs zero (7 blind models)": p_vs_zero,
+        "Wilcoxon signed-rank (blind nonzero positive)": p_wilcoxon,
+        "alpha_inferred vs zero (blind models)": p_vs_zero,
     }
     print_status("\n  NOTE: Pearson delay-mu, H0pe, and arrival-order excluded from summary.")
     print_status("  Pearson excluded: n=5 with extreme SX leverage; correlation test is")
     print_status("  statistically inappropriate and not probative (see robustness diagnostics).")
     print_status(f"  H0pe SNR={snr_total:.2f} is a PREDICTION (testability), not an observation.")
     print_status("  Arrival-order: tau=0.20, p=0.41 -- not significant, excluded.")
-    print_status("  Wilcoxon BLIND-ONLY (p=0.016) is the primary rank test:")
-    print_status("  all 6 non-zero blind residuals are positive, giving max Wilcoxon statistic.")
+    print_status(f"  Wilcoxon BLIND-ONLY (p={p_wilcoxon:.4f}) is the primary rank test:")
+    print_status(f"  all {n_nonzero_blind} non-zero blind residuals are positive, giving max Wilcoxon statistic.")
 
+    z_wilcoxon = scipy_stats.norm.isf(p_wilcoxon)
     print_status(f"\n  NOTE: These tests are fundamentally correlated. Combining them")
     print_status(f"  via Fisher/Stouffer is statistically invalid. The conservative")
-    print_status(f"  independence-primary significance is z=2.15 (Wilcoxon blind).")
+    print_status(f"  independence-primary significance is z={z_wilcoxon:.2f} (Wilcoxon blind).")
 
     # Add H0pe sensitivity as a separate forward-looking result
     print_status(f"\n  SN H0pe sensitivity:")
@@ -770,9 +772,9 @@ def main():
     fig_e, ax_e = plt.subplots(figsize=FIG_SIZE)
 
     all_tests = [
-        ("Wilcoxon signed-rank\n6/6 blind nonzero positive (observed)",
+        (f"Wilcoxon signed-rank\n{n_nonzero_blind}/{n_nonzero_blind} blind nonzero positive (observed)",
          p_wilcoxon, True),
-        (r"$\alpha_{\rm inferred}$ vs. zero" + "\n7 blind models (observed)",
+        (r"$\alpha_{\rm inferred}$ vs. zero" + f"\n{len(blind_models)} blind models (observed)",
          p_vs_zero, True),
         ("Pearson delay–$\\mu$\n5 images (SX-leveraged; not probative)",
          p_pearson_onesided, False),
@@ -796,13 +798,13 @@ def main():
         elif z_val >= 1.5:
             bar_cols.append(COLORS['tep'])
         else:
-            bar_cols.append("#91bfdb")
+            bar_cols.append(COLORS['null'])
 
     y_pos = np.arange(len(all_tests))
     ax_e.barh(y_pos, test_z, color=bar_cols, edgecolor="black", lw=0.8, height=0.6)
     ax_e.axvline(1.645, color="grey", lw=1.2, ls="--", alpha=0.7,
                  label="$p=0.05$ threshold (1.64$\\sigma$)")
-    ax_e.axvline(2.0,   color="#fc8d59", lw=1.5, ls=":", alpha=0.9, label="$2\\sigma$")
+    ax_e.axvline(2.0,   color=COLORS['gray'], lw=1.5, ls=":", alpha=0.9, label="$2\\sigma$")
     ax_e.axvline(3.0,   color="black", lw=1.5, ls="--", label="$3\\sigma$")
 
     for i_t, (z_val, p_val, valid) in enumerate(zip(test_z, test_pvals, test_valid)):
@@ -869,7 +871,7 @@ def main():
                  f" z_vs_0={t_vs_zero:.2f}, p={p_vs_zero:.4f} [OBSERVED]")
     print_status(f"  D. SN H0pe sensitivity:       SNR={snr_total:.2f} PREDICTED (not observed)")
     print_status(f"  E. Headline Signif:           z={float(scipy_stats.norm.isf(p_wilcoxon)):.2f}σ (Wilcoxon), p={p_wilcoxon:.5f}")
-    print_status(f"  Best single result:           Wilcoxon sign test p={p_wilcoxon:.4f} (2.15σ) [OBSERVED]")
+    print_status(f"  Best single result:           Wilcoxon sign test p={p_wilcoxon:.4f} (~{z_wilcoxon:.2f}σ) [OBSERVED]")
     print_status(f"\nResults saved to {output_path}")
     print_status(f"Step {STEP_NUM} complete.")
 

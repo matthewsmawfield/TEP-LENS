@@ -113,7 +113,7 @@ def wilcoxon_positive_rank_statistic(values: np.ndarray) -> float:
     return float(np.sum(ranks[nonzero > 0]))
 
 
-def wilcoxon_block_bootstrap(deltas, method_families, n_bootstrap=20000, seed=42):
+def wilcoxon_block_bootstrap(deltas, method_families, n_bootstrap=20000, seed=20260607):
     """
     Bootstrap Wilcoxon p-values respecting method-family clustering.
     Models within the same family are treated as correlated blocks.
@@ -245,8 +245,26 @@ def main():
     p_binom_blind = float(stats.binomtest(n_blind_pos, n_blind_total, 0.5, alternative="greater").pvalue)
     p_wilcoxon_blind = exact_nonzero_wilcoxon_greater(blind_deltas)
 
-    print_status(f"Blind sign test: {n_blind_pos}/{n_blind_total} positive, p={p_binom_blind:.4f}")
-    print_status(f"Blind Wilcoxon signed-rank p(one-sided): {p_wilcoxon_blind:.4f}")
+    print_status(f"Delay-blind sign test: {n_blind_pos}/{n_blind_total} positive, p={p_binom_blind:.4f}")
+    print_status(f"Delay-blind Wilcoxon signed-rank p(one-sided): {p_wilcoxon_blind:.4f}")
+
+    # Strictly blind original-values baseline
+    strictly_blind_original_deltas = np.array([
+        m["delta_obs_minus_pred_original_days"]
+        for m in models if m.get("blind", True)
+    ], dtype=float)
+    strictly_blind_original_sigmas = np.array([
+        m["sigma_total_days"]
+        for m in models if m.get("blind", True)
+    ], dtype=float)
+    n_strictly_blind_pos = int(np.sum(strictly_blind_original_deltas > 0))
+    n_strictly_blind_total = len(strictly_blind_original_deltas)
+    p_binom_strictly_blind = float(stats.binomtest(
+        n_strictly_blind_pos, n_strictly_blind_total, 0.5, alternative="greater"
+    ).pvalue)
+    p_wilcoxon_strictly_blind = exact_nonzero_wilcoxon_greater(strictly_blind_original_deltas)
+    print_status(f"Strictly blind sign test (original values): {n_strictly_blind_pos}/{n_strictly_blind_total} positive, p={p_binom_strictly_blind:.4f}")
+    print_status(f"Strictly blind Wilcoxon (original values): p={p_wilcoxon_strictly_blind:.4f}")
 
     # Method-family effective sample size (Kish-style weighting)
     fams = [method_family(m.get("method", "")) for m in models]
@@ -275,12 +293,26 @@ def main():
             }
         )
 
-    # Correlation sensitivity curve for blind-only sign-test p-values
+    # Correlation sensitivity curve for delay-blind sign-test p-values
     corr_curve_blind = []
     for rho in rho_grid:
         p_corr = beta_binom_tail_p(n_blind_pos, n_blind_total, float(rho))
         neff_rho = n_blind_total / (1.0 + (n_blind_total - 1.0) * rho)
         corr_curve_blind.append(
+            {
+                "rho": float(rho),
+                "n_eff": float(neff_rho),
+                "p_beta_binom_tail": float(p_corr),
+                "z_equiv": float(stats.norm.isf(min(max(p_corr, 1e-12), 1 - 1e-12))),
+            }
+        )
+
+    # Correlation sensitivity curve for strictly blind sign-test p-values
+    corr_curve_strictly_blind = []
+    for rho in rho_grid:
+        p_corr = beta_binom_tail_p(n_strictly_blind_pos, n_strictly_blind_total, float(rho))
+        neff_rho = n_strictly_blind_total / (1.0 + (n_strictly_blind_total - 1.0) * rho)
+        corr_curve_strictly_blind.append(
             {
                 "rho": float(rho),
                 "n_eff": float(neff_rho),
@@ -308,7 +340,10 @@ def main():
         return float(rhos[idx - 1] + frac * (rhos[idx] - rhos[idx - 1]))
 
     rho_break_even_all = find_break_even_rho(n_pos, n_total)
-    rho_break_even_blind = find_break_even_rho(n_blind_pos, n_blind_total)
+    rho_break_even_delay_blind = find_break_even_rho(n_blind_pos, n_blind_total)
+    rho_break_even_strictly_blind = find_break_even_rho(n_strictly_blind_pos, n_strictly_blind_total)
+
+    n_nonzero_strictly_blind = int(np.sum(strictly_blind_original_deltas != 0))
 
     # Wilcoxon break-even (approximate): n_eff = n / (1 + (n-1)*rho) under ICC,
     # and p ≈ 1/2^{n_eff} for all-positive ranks.
@@ -320,44 +355,61 @@ def main():
         return float(min(rho, 0.99))
 
     rho_break_even_wilcoxon_all = wilcoxon_break_even_rho(n_nonzero_all)
-    rho_break_even_wilcoxon_blind = wilcoxon_break_even_rho(n_nonzero_blind)
+    rho_break_even_wilcoxon_delay_blind = wilcoxon_break_even_rho(n_nonzero_blind)
+    rho_break_even_wilcoxon_strictly_blind = wilcoxon_break_even_rho(n_nonzero_strictly_blind)
 
-    print_status(f"Break-even ICC (all 8 binomial {n_pos}/{n_total}): rho = {rho_break_even_all:.3f}")
-    print_status(f"Break-even ICC (blind 7 binomial {n_blind_pos}/{n_blind_total}): rho = {rho_break_even_blind:.3f}")
+    print_status(f"Break-even ICC (all {n_total} binomial {n_pos}/{n_total}): rho = {rho_break_even_all:.3f}")
+    print_status(f"Break-even ICC (delay-blind {n_blind_total} binomial {n_blind_pos}/{n_blind_total}): rho = {rho_break_even_delay_blind:.3f}")
+    print_status(f"Break-even ICC (strictly blind {n_strictly_blind_total} binomial {n_strictly_blind_pos}/{n_strictly_blind_total}): rho = {rho_break_even_strictly_blind:.3f}")
 
     # Family-sign-flip test (exact under sharp null, no superpopulation assumption)
+    blind_fams = [f for i, f in enumerate(fams) if blind_mask[i]]
     perm_all = wilcoxon_permutation_test(deltas, fams)
-    perm_blind = wilcoxon_permutation_test(blind_deltas,
-                                            [f for i, f in enumerate(fams) if blind_mask[i]])
+    perm_delay_blind = wilcoxon_permutation_test(blind_deltas, blind_fams)
+    perm_strictly_blind = wilcoxon_permutation_test(
+        strictly_blind_original_deltas, blind_fams
+    )
     print_status(
-        f"Exact family-sign-flip Wilcoxon (all 8): p = {perm_all['p_value_one_sided']:.4f} "
+        f"Exact family-sign-flip Wilcoxon (all {n_total}): p = {perm_all['p_value_one_sided']:.4f} "
         f"({perm_all['n_extreme_or_more']}/{perm_all['n_permutations']})"
     )
     print_status(
-        f"Exact family-sign-flip Wilcoxon (blind 7): p = {perm_blind['p_value_one_sided']:.4f} "
-        f"({perm_blind['n_extreme_or_more']}/{perm_blind['n_permutations']})"
+        f"Exact family-sign-flip Wilcoxon (delay-blind {perm_delay_blind['n_method_families']} families): p = {perm_delay_blind['p_value_one_sided']:.4f} "
+        f"({perm_delay_blind['n_extreme_or_more']}/{perm_delay_blind['n_permutations']})"
+    )
+    print_status(
+        f"Exact family-sign-flip Wilcoxon (strictly blind {perm_strictly_blind['n_method_families']} families): p = {perm_strictly_blind['p_value_one_sided']:.4f} "
+        f"({perm_strictly_blind['n_extreme_or_more']}/{perm_strictly_blind['n_permutations']})"
     )
 
     # Block-bootstrap Wilcoxon (realistic method-family dependence)
     boot_all = wilcoxon_block_bootstrap(deltas, fams, n_bootstrap=20000)
-    boot_blind = wilcoxon_block_bootstrap(blind_deltas,
-                                          [f for i, f in enumerate(fams) if blind_mask[i]],
-                                          n_bootstrap=20000)
+    boot_delay_blind = wilcoxon_block_bootstrap(blind_deltas, blind_fams, n_bootstrap=20000)
+    boot_strictly_blind = wilcoxon_block_bootstrap(
+        strictly_blind_original_deltas, blind_fams, n_bootstrap=20000
+    )
 
-    print_status(f"Block-bootstrap Wilcoxon (all 8, family-aware): "
+    print_status(f"Block-bootstrap Wilcoxon (all {n_total}, family-aware): "
                  f"p_median={boot_all['p_median']:.4f}, "
                  f"p_16-84=[{boot_all['p_16']:.4f}, {boot_all['p_84']:.4f}], "
                  f"P(p<=0.05)={boot_all['fraction_le_0_05']:.2%}")
-    print_status(f"Block-bootstrap Wilcoxon (blind 7, family-aware): "
-                 f"p_median={boot_blind['p_median']:.4f}, "
-                 f"p_16-84=[{boot_blind['p_16']:.4f}, {boot_blind['p_84']:.4f}], "
-                 f"P(p<=0.05)={boot_blind['fraction_le_0_05']:.2%}")
+    n_blind_fams = len(np.unique(blind_fams))
+    print_status(f"Block-bootstrap Wilcoxon (delay-blind {n_blind_fams} families, family-aware): "
+                 f"p_median={boot_delay_blind['p_median']:.4f}, "
+                 f"p_16-84=[{boot_delay_blind['p_16']:.4f}, {boot_delay_blind['p_84']:.4f}], "
+                 f"P(p<=0.05)={boot_delay_blind['fraction_le_0_05']:.2%}")
+    print_status(f"Block-bootstrap Wilcoxon (strictly blind {n_blind_fams} families, family-aware): "
+                 f"p_median={boot_strictly_blind['p_median']:.4f}, "
+                 f"p_16-84=[{boot_strictly_blind['p_16']:.4f}, {boot_strictly_blind['p_84']:.4f}], "
+                 f"P(p<=0.05)={boot_strictly_blind['fraction_le_0_05']:.2%}")
 
     # DEPRECATED: Wilcoxon break-even via n_eff scaling is mathematically invalid.
     # The block-bootstrap above is the primary dependence-aware test.
-    print_status(f"[CAVEAT] Wilcoxon break-even ICC (all 8): rho ≈ {rho_break_even_wilcoxon_all:.3f} — "
+    print_status(f"[CAVEAT] Wilcoxon break-even ICC (all {n_total}): rho ≈ {rho_break_even_wilcoxon_all:.3f} — "
                  f"approximate, not a closed-form correction; use block-bootstrap instead.")
-    print_status(f"[CAVEAT] Wilcoxon break-even ICC (blind): rho ≈ {rho_break_even_wilcoxon_blind:.3f} — "
+    print_status(f"[CAVEAT] Wilcoxon break-even ICC (delay-blind): rho ≈ {rho_break_even_wilcoxon_delay_blind:.3f} — "
+                 f"approximate, not a closed-form correction; use block-bootstrap instead.")
+    print_status(f"[CAVEAT] Wilcoxon break-even ICC (strictly blind): rho ≈ {rho_break_even_wilcoxon_strictly_blind:.3f} — "
                  f"approximate, not a closed-form correction; use block-bootstrap instead.")
     print_status("Interpretation: if inter-model correlation exceeds these values, p > 0.05.")
 
@@ -475,12 +527,21 @@ def main():
             "p_binomial_independent": float(p_binom_all),
             "p_wilcoxon_signed_rank": float(p_wilcoxon),
         },
-        "blind_baseline": {
+        "delay_blind_baseline": {
             "n_positive": int(n_blind_pos),
             "n_total": int(n_blind_total),
             "p_binomial_independent": float(p_binom_blind),
             "p_wilcoxon_signed_rank": float(p_wilcoxon_blind),
             "n_nonzero": int(n_nonzero_blind),
+            "note": "Delay-blind tier: revised values fixed before measured delay known.",
+        },
+        "strictly_blind_baseline": {
+            "n_positive": int(n_strictly_blind_pos),
+            "n_total": int(n_strictly_blind_total),
+            "p_binomial_independent": float(p_binom_strictly_blind),
+            "p_wilcoxon_signed_rank": float(p_wilcoxon_strictly_blind),
+            "n_nonzero": int(n_nonzero_strictly_blind),
+            "note": "Strictly blind tier: original pre-reappearance published predictions.",
         },
         "effective_sample_size": {
             "n_total": int(n_total),
@@ -488,7 +549,8 @@ def main():
             "n_eff_family_kish": float(neff_family),
         },
         "dependence_sensitivity_curve": corr_curve,
-        "dependence_sensitivity_curve_blind": corr_curve_blind,
+        "dependence_sensitivity_curve_delay_blind": corr_curve_blind,
+        "dependence_sensitivity_curve_strictly_blind": corr_curve_strictly_blind,
         "dependence_aware_test_hierarchy": {
             "bridge_statement": (
                 "Because the Wilcoxon statistic lacks a closed-form variance under "
@@ -497,9 +559,10 @@ def main():
                 "rigorous dependence-aware bound. The block-bootstrap is retained as "
                 "a sensitivity exploration but is demoted from operational primary."
             ),
-            "tier_1a_primary_independence": "wilcoxon_signed_rank_blind",
-            "tier_1b_primary_correlation_aware": "permutation_test_wilcoxon_blind",
-            "tier_2_corroborating_sign_test": "beta_binomial_blind",
+            "tier_1a_primary_independence": "wilcoxon_signed_rank_delay_blind",
+            "tier_1b_primary_correlation_aware": "permutation_test_wilcoxon_delay_blind",
+            "tier_1c_correlation_aware_floor": "permutation_test_wilcoxon_strictly_blind",
+            "tier_2_corroborating_sign_test": "beta_binomial_delay_blind",
             "sensitivity_exploration": "block_bootstrap_wilcoxon",
         },
         "permutation_test_wilcoxon": {
@@ -508,39 +571,51 @@ def main():
                 "all method-family sign assignments; exact under sharp null; no "
                 "superpopulation assumption. More rigorous than bootstrap for tiny samples."
             ),
-            "all_8": perm_all,
-            "blind_7": perm_blind,
+            "all_models": perm_all,
+            "delay_blind": perm_delay_blind,
+            "strictly_blind": perm_strictly_blind,
         },
         "block_bootstrap_wilcoxon": {
             "description": "Family-aware block-bootstrap respecting method-family clusters. Sensitivity exploration (not operational primary).",
-            "all_8": boot_all,
-            "blind_7": boot_blind,
+            "all_models": boot_all,
+            "delay_blind": boot_delay_blind,
+            "strictly_blind": boot_strictly_blind,
         },
         "break_even_icc": {
             "description": "Inter-model correlation (ICC) at which one-sided p-value reaches 0.05. Two distinct methods are reported: (1) exact beta-binomial for sign-test p-values, and (2) an approximate n_eff scaling heuristic for Wilcoxon p-values that lacks formal justification.",
             "beta_binomial_sign_test": {
                 "description": "Exact beta-binomial ICC break-even for binomial sign-test p-values. These are rigorous.",
-                "binomial_all_8": {
+                "binomial_all": {
                     "n_positive": int(n_pos),
                     "n_total": int(n_total),
                     "rho_break_even": rho_break_even_all,
                 },
-                "binomial_blind_7": {
+                "binomial_delay_blind": {
                     "n_positive": int(n_blind_pos),
                     "n_total": int(n_blind_total),
-                    "rho_break_even": rho_break_even_blind,
+                    "rho_break_even": rho_break_even_delay_blind,
+                },
+                "binomial_strictly_blind": {
+                    "n_positive": int(n_strictly_blind_pos),
+                    "n_total": int(n_strictly_blind_total),
+                    "rho_break_even": rho_break_even_strictly_blind,
                 },
             },
             "wilcoxon_approx_heuristic": {
-                "description": "Approximate ICC break-even for Wilcoxon p-values via n_eff = n / (1 + (n-1)*rho) and p ≈ 1/2^n_eff. This is a mathematically unfounded heuristic, NOT a beta-binomial result. The exact family-sign-flip test (p=0.031) is the primary correlation-aware rank bound.",
-                "wilcoxon_all_8_approx": {
+                "description": f"Approximate ICC break-even for Wilcoxon p-values via n_eff = n / (1 + (n-1)*rho) and p ≈ 1/2^n_eff. This is a mathematically unfounded heuristic, NOT a beta-binomial result. The exact family-sign-flip test (delay-blind p={perm_delay_blind['p_value_one_sided']:.4f}) is the primary correlation-aware rank bound; strictly blind floor is p={perm_strictly_blind['p_value_one_sided']:.4f}.",
+                "wilcoxon_all_approx": {
                     "n_nonzero": int(n_nonzero_all),
                     "rho_break_even": rho_break_even_wilcoxon_all,
                     "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead.",
                 },
-                "wilcoxon_blind_approx": {
+                "wilcoxon_delay_blind_approx": {
                     "n_nonzero": int(n_nonzero_blind),
-                    "rho_break_even": rho_break_even_wilcoxon_blind,
+                    "rho_break_even": rho_break_even_wilcoxon_delay_blind,
+                    "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead.",
+                },
+                "wilcoxon_strictly_blind_approx": {
+                    "n_nonzero": int(n_nonzero_strictly_blind),
+                    "rho_break_even": rho_break_even_wilcoxon_strictly_blind,
                     "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead.",
                 },
             },

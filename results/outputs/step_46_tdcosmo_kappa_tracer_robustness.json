@@ -1,0 +1,106 @@
+{
+  "step": "46",
+  "status": "success",
+  "description": "Distribution of flux-proxy predicted residuals across the TDCOSMO quad-lens sample. Quantifies whether SN Refsdal's predicted ~15 d shift is typical or an outlier among strong-lens systems.",
+  "alpha_proxy": -0.055,
+  "n_systems": 8,
+  "per_system": [
+    {
+      "system": "HE0435-1223",
+      "z_lens": 0.454,
+      "z_src": 1.693,
+      "max_contrast_pair": "dt_DA",
+      "dt_days": -13.8,
+      "flux_ratio": 0.56,
+      "log10_flux_ratio": -0.25181197299379954,
+      "tep_predicted_shift_days": 0.19112528750229385
+    },
+    {
+      "system": "WFI2033-4723",
+      "z_lens": 0.6575,
+      "z_src": 1.662,
+      "max_contrast_pair": "dt_CA",
+      "dt_days": 22.7,
+      "flux_ratio": 0.424,
+      "log10_flux_ratio": -0.37263414340726736,
+      "tep_predicted_shift_days": 0.4652337280439733
+    },
+    {
+      "system": "DES0408-5354",
+      "z_lens": 0.597,
+      "z_src": 2.375,
+      "max_contrast_pair": "dt_CA",
+      "dt_days": -155.5,
+      "flux_ratio": 0.248,
+      "log10_flux_ratio": -0.6055483191737837,
+      "tep_predicted_shift_days": 5.178951999733785
+    },
+    {
+      "system": "RXJ1131-1231",
+      "z_lens": 0.295,
+      "z_src": 0.654,
+      "max_contrast_pair": "dt_DA",
+      "dt_days": 91.4,
+      "flux_ratio": 0.11,
+      "log10_flux_ratio": -0.958607314841775,
+      "tep_predicted_shift_days": 4.818918971709603
+    },
+    {
+      "system": "PG1115+080",
+      "z_lens": 0.311,
+      "z_src": 1.722,
+      "max_contrast_pair": "dt_A2A1",
+      "dt_days": -14.3,
+      "flux_ratio": 0.16,
+      "log10_flux_ratio": -0.7958800173440752,
+      "tep_predicted_shift_days": 0.6259596336411152
+    },
+    {
+      "system": "B1608+656",
+      "z_lens": 0.63,
+      "z_src": 1.394,
+      "max_contrast_pair": "dt_DA",
+      "dt_days": 77.0,
+      "flux_ratio": 0.16,
+      "log10_flux_ratio": -0.7958800173440752,
+      "tep_predicted_shift_days": 3.3705518734521585
+    },
+    {
+      "system": "J1206+4332",
+      "z_lens": 0.745,
+      "z_src": 1.789,
+      "max_contrast_pair": "dt_BA",
+      "dt_days": 111.3,
+      "flux_ratio": 0.47,
+      "log10_flux_ratio": -0.3279021420642826,
+      "tep_predicted_shift_days": 2.007252962646506
+    },
+    {
+      "system": "SN Encore",
+      "z_lens": 0.338,
+      "z_src": 1.95,
+      "max_contrast_pair": "dt_1b1a",
+      "dt_days": -39.8,
+      "flux_ratio": 1.486,
+      "log10_flux_ratio": 0.1720188094245565,
+      "tep_predicted_shift_days": -0.37654917383035413
+    }
+  ],
+  "distribution_summary": {
+    "n_systems": 8,
+    "median_shift_days": 1.3166062981438105,
+    "mean_shift_days": 2.0351806603623848,
+    "std_shift_days": 2.174005905404081,
+    "min_shift_days": -0.37654917383035413,
+    "max_shift_days": 5.178951999733785,
+    "p16_days": 0.22401830036729542,
+    "p84_days": 4.645114919918709,
+    "fraction_above_1_day": 0.5,
+    "fraction_above_5_days": 0.125
+  },
+  "sn_refsdal_comparison": {
+    "sn_refsdal_predicted_shift_days": 14.538035062734984,
+    "fraction_tdcosmo_below_sn_refsdal": 1.0
+  },
+  "interpretation": "The flux proxy predicts sub-day residuals for all TDCOSMO systems, making SN Refsdal the only system where the predicted shift exceeds per-model scatter. This is expected: the proxy amplitude scales as log(mu_ratio) * dt, and SN Refsdal has both the largest magnification contrast and the longest delay baseline in the current sample."
+}

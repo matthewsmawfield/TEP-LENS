@@ -1,0 +1,120 @@
+{
+  "step": "055",
+  "status": "success",
+  "description": "Data availability audit for the proposed cross-system kernel consistency test. Checks whether per-image convergence values are available in the TDCOSMO2025 public release and reports what is missing.",
+  "alpha_proxy": -0.055,
+  "n_systems": 8,
+  "systems_with_per_image_kappa": 0,
+  "systems_missing_per_image_kappa": 8,
+  "required_data": {
+    "per_image_convergence": "Not available in public release; needed for independent transport prediction",
+    "per_image_potential": "Not available in public release; alternative to convergence",
+    "flux_ratios_and_delays": "Available for 8 systems from step_05",
+    "lens_model_parameters": "Available for 7 systems from TDCOSMO2025 YAML"
+  },
+  "refsdal_context": {
+    "note": "SN Refsdal is not in the TDCOSMO sample.",
+    "K_from_steps_50_52": 41.0,
+    "log_max_mu": 1.173,
+    "source": "Steps 50\u201352: geodesic transport \u2248 +0.35 d, log-\u03bc \u2248 +14.5 d"
+  },
+  "per_system": [
+    {
+      "system": "HE0435-1223",
+      "z_lens": 0.454,
+      "z_src": 1.693,
+      "n_images": 4,
+      "n_pairs": 3,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 0.1911,
+      "max_mu_proxy": 1.79,
+      "log_max_mu": 0.252
+    },
+    {
+      "system": "WFI2033-4723",
+      "z_lens": 0.6575,
+      "z_src": 1.662,
+      "n_images": 3,
+      "n_pairs": 2,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 0.4652,
+      "max_mu_proxy": 2.36,
+      "log_max_mu": 0.373
+    },
+    {
+      "system": "DES0408-5354",
+      "z_lens": 0.597,
+      "z_src": 2.375,
+      "n_images": 4,
+      "n_pairs": 3,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 5.179,
+      "max_mu_proxy": 5.24,
+      "log_max_mu": 0.719
+    },
+    {
+      "system": "RXJ1131-1231",
+      "z_lens": 0.295,
+      "z_src": 0.654,
+      "n_images": 4,
+      "n_pairs": 3,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 4.8189,
+      "max_mu_proxy": 9.09,
+      "log_max_mu": 0.959
+    },
+    {
+      "system": "PG1115+080",
+      "z_lens": 0.311,
+      "z_src": 1.722,
+      "n_images": 4,
+      "n_pairs": 2,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 0.626,
+      "max_mu_proxy": 6.25,
+      "log_max_mu": 0.796
+    },
+    {
+      "system": "B1608+656",
+      "z_lens": 0.63,
+      "z_src": 1.394,
+      "n_images": 4,
+      "n_pairs": 3,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 3.3706,
+      "max_mu_proxy": 6.25,
+      "log_max_mu": 0.796
+    },
+    {
+      "system": "J1206+4332",
+      "z_lens": 0.745,
+      "z_src": 1.789,
+      "n_images": 2,
+      "n_pairs": 1,
+      "has_lens_params": true,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 2.0073,
+      "max_mu_proxy": 2.13,
+      "log_max_mu": 0.328
+    },
+    {
+      "system": "SN Encore",
+      "z_lens": 0.338,
+      "z_src": 1.95,
+      "n_images": 2,
+      "n_pairs": 1,
+      "has_lens_params": false,
+      "has_per_image_kappa": false,
+      "max_shift_logmu_days": 0.3765,
+      "max_mu_proxy": 1.49,
+      "log_max_mu": 0.172
+    }
+  ],
+  "verdict": "A genuine cross-system kernel test is not possible with the current TDCOSMO2025 public release. Per-image convergence or potential values (\u03ba_i or \u03c8_i at each image position) are required for an independent transport prediction, but these are not published for any of the 8 systems. The public release contains power-law lens parameters (\u03b3, \u03b8_E, \u03ba_ext) and LOS convergence samples, but not per-image lensing quantities. Future releases that include per-image convergence tables or lens-model posterior maps would enable this test."
+}

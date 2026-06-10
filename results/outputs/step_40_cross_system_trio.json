@@ -7,8 +7,8 @@
       "name": "SN Refsdal",
       "n_models": 7,
       "n_delay_pairs": 1,
-      "R_obs_days": 14.605519391230912,
-      "sigma_R_days": 11.57281297405183,
+      "R_obs_days": 30.04957673068333,
+      "sigma_R_days": 8.870863592461008,
       "R_tep_pred_days": 14.538035062734984,
       "predicted_sign": "positive",
       "observed_sign": "positive",
@@ -17,8 +17,8 @@
       "directional_test": "Exact family-sign-flip test blind",
       "independence_primary": {
         "test": "Wilcoxon signed-rank blind",
-        "z_score": 2.1538746940614564,
-        "p_value": 0.015625
+        "z_score": 2.417559016236505,
+        "p_value": 0.0078125
       },
       "snr_description": "high"
     },
@@ -28,7 +28,7 @@
       "n_delay_pairs": 1,
       "R_obs_days": -3.329462659636591,
       "sigma_R_days": 2.1326268917956055,
-      "R_tep_pred_days": -0.4935532560666476,
+      "R_tep_pred_days": -1.0403259666227636,
       "predicted_sign": "negative",
       "observed_sign": "negative",
       "z_directional": 0.0,
@@ -47,7 +47,7 @@
       "n_delay_pairs": 2,
       "R_obs_days": -5.195041139504747,
       "sigma_R_days": 5.134875721841973,
-      "R_tep_pred_days": -0.9170869515388842,
+      "R_tep_pred_days": -1.9330626586079687,
       "primary_directional_pair": "AB",
       "predicted_sign": "negative",
       "observed_sign": "negative",
@@ -64,7 +64,7 @@
       "pair_details": {
         "AB": {
           "R_obs": -10.157034430488352,
-          "R_tep_pred": -1.5769153341627233,
+          "R_tep_pred": -3.3238681928046394,
           "predicted_sign": "negative",
           "observed_sign": "negative",
           "z_directional": 1.1338934190276817,
@@ -79,7 +79,7 @@
         },
         "CB": {
           "R_obs": -0.2330478485211418,
-          "R_tep_pred": -0.25725856891504517,
+          "R_tep_pred": -0.5422571244112978,
           "predicted_sign": "negative",
           "observed_sign": "negative",
           "z_directional": -0.3779644730092272,
@@ -107,9 +107,10 @@
     "p_total": 0.04180598935269363,
     "n_systems": 3
   },
+  "stouffer_caveat": "Stouffer combines z-scores from different test types (exact family-sign-flip for Refsdal, binomial sign tests for Encore/H0pe) which have different power properties. This is a sensitivity exploration, not a formal combined significance.",
   "precision_weighted_mean": {
-    "R_combined_days": -3.091366157125694,
-    "sigma_R_combined_days": 1.9416011163984228
+    "R_combined_days": -2.0229578546315454,
+    "sigma_R_combined_days": 1.9226995196372059
   },
   "evidence_comparison": {
     "refsdal_z": 1.8627318674216515,

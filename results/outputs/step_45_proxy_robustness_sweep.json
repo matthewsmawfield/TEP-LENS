@@ -1,0 +1,157 @@
+{
+  "step": "45",
+  "status": "success",
+  "description": "Systematic evaluation of the proxy-model predicted residual sign under multiple lens-model tracers. Measures how proxy-dependent the headline directional evidence is.",
+  "alpha_proxy": -0.055,
+  "observed_residual_days": 30.04957673068333,
+  "loop_images": [
+    "S1",
+    "S4",
+    "SX"
+  ],
+  "n_models_evaluated": 1,
+  "per_model_results": [
+    {
+      "model_name": "refsdal_glafic_v3",
+      "flux_ratio_proxy": {
+        "available": true,
+        "R_closure_days": -14.538035062735064,
+        "R_predicted_obs_minus_model_days": 14.538035062735064,
+        "observed_residual_days": 30.04957673068333,
+        "sign_match": true,
+        "q_norm": {
+          "S1": 1.0533656761673742,
+          "S4": 1.630988477865373,
+          "SX": 0.31564584596725287
+        },
+        "Gamma": {
+          "S1": 0.9987581460458581,
+          "S4": 0.988315200886466,
+          "SX": 1.027543995698888
+        },
+        "S4_SX_ordering": {
+          "q_S4": 1.793,
+          "q_SX": 0.347,
+          "S4_gt_SX": true
+        }
+      },
+      "model_mu_abs": {
+        "available": true,
+        "R_closure_days": -4.944280143873671,
+        "R_predicted_obs_minus_model_days": 4.944280143873671,
+        "observed_residual_days": 30.04957673068333,
+        "sign_match": true,
+        "q_norm": {
+          "S1": 1.6976744186046513,
+          "S4": 0.813953488372093,
+          "SX": 0.48837209302325585
+        },
+        "Gamma": {
+          "S1": 0.9873580077502522,
+          "S4": 1.004917022617612,
+          "SX": 1.0171187038465117
+        },
+        "S4_SX_ordering": {
+          "q_S4": 7.0,
+          "q_SX": 4.2,
+          "S4_gt_SX": true
+        }
+      },
+      "model_kappa": {
+        "available": true,
+        "R_closure_days": 2.556141746345112,
+        "R_predicted_obs_minus_model_days": -2.556141746345112,
+        "observed_residual_days": 30.04957673068333,
+        "sign_match": false,
+        "q_norm": {
+          "S1": 0.8968944099378882,
+          "S4": 0.9031055900621118,
+          "SX": 1.2
+        },
+        "Gamma": {
+          "S1": 1.0025992275539026,
+          "S4": 1.0024343808229856,
+          "SX": 0.9956450314673806
+        },
+        "S4_SX_ordering": {
+          "q_S4": 0.727,
+          "q_SX": 0.966,
+          "S4_gt_SX": false
+        }
+      }
+    }
+  ],
+  "robustness": {
+    "flux_ratio_proxy": {
+      "n_models_available": 1,
+      "n_models_sign_match": 1,
+      "fraction_sign_match": 1.0,
+      "interpretation": "1/1 models predict the same residual sign as the observed blind residual under the flux_ratio_proxy tracer."
+    },
+    "model_mu_abs": {
+      "n_models_available": 1,
+      "n_models_sign_match": 1,
+      "fraction_sign_match": 1.0,
+      "interpretation": "1/1 models predict the same residual sign as the observed blind residual under the model_mu_abs tracer."
+    },
+    "model_kappa": {
+      "n_models_available": 1,
+      "n_models_sign_match": 0,
+      "fraction_sign_match": 0.0,
+      "interpretation": "0/1 models predict the same residual sign as the observed blind residual under the model_kappa tracer."
+    }
+  },
+  "amplitude_summary": {
+    "flux_ratio_proxy": {
+      "median_days": 14.538035062735064,
+      "mean_days": 14.538035062735064,
+      "std_days": null,
+      "min_days": 14.538035062735064,
+      "max_days": 14.538035062735064
+    },
+    "model_mu_abs": {
+      "median_days": 4.944280143873671,
+      "mean_days": 4.944280143873671,
+      "std_days": null,
+      "min_days": 4.944280143873671,
+      "max_days": 4.944280143873671
+    },
+    "model_kappa": {
+      "median_days": -2.556141746345112,
+      "mean_days": -2.556141746345112,
+      "std_days": null,
+      "min_days": -2.556141746345112,
+      "max_days": -2.556141746345112
+    }
+  },
+  "S4_SX_ordering_stability": {
+    "flux_ratio_proxy": {
+      "fraction_S4_gt_SX": 1.0,
+      "n_models": 1
+    },
+    "model_mu_abs": {
+      "fraction_S4_gt_SX": 1.0,
+      "n_models": 1
+    },
+    "model_kappa": {
+      "fraction_S4_gt_SX": 0.0,
+      "n_models": 1
+    }
+  },
+  "theory_space_mc": {
+    "n_draws": 20000,
+    "seed": 20260607,
+    "fraction_sign_match": 0.7968,
+    "n_sign_match": 15936,
+    "predicted_obs_residual": {
+      "median": 17.657610027160867,
+      "mean": 6.689020967547526,
+      "std": 44.99639390351679,
+      "p16": -16.056049805536535,
+      "p84": 29.707700895422526,
+      "p2.5": -88.94529806556821,
+      "p97.5": 116.49728183641541
+    }
+  },
+  "interpretation": "The headline sign evidence (observed residual positive) is robust only if the majority of physically-motivated tracers predict the same sign. If convergence-based tracers systematically flip the sign, the evidence is specific to the flux proxy and cannot be claimed as a first-principles test of TEP without a solved lensing transfer function."
+}

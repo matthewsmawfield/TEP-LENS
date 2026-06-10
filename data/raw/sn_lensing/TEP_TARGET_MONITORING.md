@@ -6,7 +6,7 @@ Last updated: 2026-05-28
 
 | System | Images | z_src | z_lens | Blind Models | Time Delays | TEP Evidence | Status |
 |--------|--------|-------|--------|--------------|-------------|--------------|--------|
-| SN Refsdal | 5 (S1,S2,S3,S4,SX) | 1.49 | 0.54 | 7 (+1 post-blind) | Measured (Kelly+2023) | **z = +2.15, p = 0.016** (blind Wilcoxon) | Primary evidence strand |
+| SN Refsdal | 5 (S1,S2,S3,S4,SX) | 1.49 | 0.54 | 7 (+1 post-blind) | Measured (Kelly+2023) | **z ≈ +2.4, p = 0.0078** (blind Wilcoxon) | Primary evidence strand |
 | SN Encore | 2 (1a,1b) | 1.95 | 0.338 | 8 | Measured (Pierel+2026) | Consistency check only; predicted shift ~0.5 d swamped by scatter | Secondary check |
 | SN H0pe | 3 (A,B,C) | 1.783 | 0.351 | 7 | Measured (Pierel+2024) | Consistency check only; predicted shift ~1-2 d swamped by scatter | Secondary check |
 

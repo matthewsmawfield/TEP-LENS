@@ -4,8 +4,8 @@
   "description": "Multi-system evidence accumulation projection",
   "template_system": {
     "system": "SN Refsdal SX",
-    "alpha_inferred": -0.05525530534568526,
-    "sigma_alpha": 0.04378203181008889,
+    "alpha_inferred": -0.11368295048510237,
+    "sigma_alpha": 0.03356007159701878,
     "R_tep_days": 14.538035062734984,
     "headline_test": "Exact family-sign-flip test blind",
     "z_headline": 1.8627318674216515,
@@ -182,186 +182,186 @@
   "alpha_inference_projection": {
     "method": "Inverse-variance weighted alpha across independent systems",
     "assumption": "Each system provides independent alpha inference with same precision as Refsdal",
-    "n_for_3sigma": 6,
-    "n_for_5sigma": 16,
+    "n_for_3sigma": 1,
+    "n_for_5sigma": 3,
     "per_system_results": [
       {
         "n_systems": 1,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.04378203181008889,
-        "z_vs_zero": -1.2620543876392811,
-        "p_vs_zero": 0.10346460827225162,
-        "reaches_3sigma": false,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.03356007159701878,
+        "z_vs_zero": -3.3874466017289753,
+        "p_vs_zero": 0.0003527322418703658,
+        "reaches_3sigma": true,
         "reaches_5sigma": false
       },
       {
         "n_systems": 2,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.030958571587038988,
-        "z_vs_zero": -1.784814431451943,
-        "p_vs_zero": 0.03714571086298726,
-        "reaches_3sigma": false,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.023730554203358026,
+        "z_vs_zero": -4.790572925979769,
+        "p_vs_zero": 8.315288237385125e-07,
+        "reaches_3sigma": true,
         "reaches_5sigma": false
       },
       {
         "n_systems": 3,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.02527756785122358,
-        "z_vs_zero": -2.1859423213064617,
-        "p_vs_zero": 0.014409912719773026,
-        "reaches_3sigma": false,
-        "reaches_5sigma": false
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.019375916370561904,
+        "z_vs_zero": -5.867229622121121,
+        "p_vs_zero": 2.2156839572196187e-09,
+        "reaches_3sigma": true,
+        "reaches_5sigma": true
       },
       {
         "n_systems": 4,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.021891015905044445,
-        "z_vs_zero": -2.5241087752785623,
-        "p_vs_zero": 0.005799601583438076,
-        "reaches_3sigma": false,
-        "reaches_5sigma": false
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.01678003579850939,
+        "z_vs_zero": -6.7748932034579505,
+        "p_vs_zero": 6.224909527942088e-12,
+        "reaches_3sigma": true,
+        "reaches_5sigma": true
       },
       {
         "n_systems": 5,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.019579919864083382,
-        "z_vs_zero": -2.8220394020633033,
-        "p_vs_zero": 0.00238596569773235,
-        "reaches_3sigma": false,
-        "reaches_5sigma": false
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.015008520284138783,
+        "z_vs_zero": -7.5745608716166455,
+        "p_vs_zero": 1.8017220330668827e-14,
+        "reaches_3sigma": true,
+        "reaches_5sigma": true
       },
       {
         "n_systems": 6,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.017873939639503258,
-        "z_vs_zero": -3.0913892773569245,
-        "p_vs_zero": 0.0009961113303995337,
+        "alpha_combined": -0.11368295048510238,
+        "sigma_combined": 0.013700841857327761,
+        "z_vs_zero": -8.29751570516086,
+        "p_vs_zero": 5.3155524805615184e-17,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 7,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.016548052580373472,
-        "z_vs_zero": -3.339082050731447,
-        "p_vs_zero": 0.0004202786633111955,
+        "alpha_combined": -0.1136829504851024,
+        "sigma_combined": 0.012684514775319138,
+        "z_vs_zero": -8.96234128768573,
+        "p_vs_zero": 1.589281459498438e-19,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 8,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.015479285793519494,
-        "z_vs_zero": -3.569628862903886,
-        "p_vs_zero": 0.0001787436673725841,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.011865277101679013,
+        "z_vs_zero": -9.581145851959539,
+        "p_vs_zero": 4.798708479561098e-22,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 9,
-        "alpha_combined": -0.055255305345685256,
-        "sigma_combined": 0.014594010603362961,
-        "z_vs_zero": -3.7861631629178434,
-        "p_vs_zero": 7.649561959504166e-05,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.011186690532339593,
+        "z_vs_zero": -10.162339805186924,
+        "p_vs_zero": 1.4599186135037526e-24,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 10,
-        "alpha_combined": -0.05525530534568525,
-        "sigma_combined": 0.013845094110982543,
-        "z_vs_zero": -3.9909663959491826,
-        "p_vs_zero": 3.290230239198341e-05,
+        "alpha_combined": -0.11368295048510238,
+        "sigma_combined": 0.010612626468490384,
+        "z_vs_zero": -10.712046713660833,
+        "p_vs_zero": 4.468197276858367e-27,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 11,
-        "alpha_combined": -0.05525530534568525,
-        "sigma_combined": 0.013200779279406317,
-        "z_vs_zero": -4.1857608688212435,
-        "p_vs_zero": 1.421062213465834e-05,
+        "alpha_combined": -0.11368295048510238,
+        "sigma_combined": 0.010118742311343146,
+        "z_vs_zero": -11.234889375299478,
+        "p_vs_zero": 1.374189455724361e-29,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 12,
-        "alpha_combined": -0.05525530534568524,
-        "sigma_combined": 0.012638783925611788,
-        "z_vs_zero": -4.3718846426129225,
-        "p_vs_zero": 6.158930363048629e-06,
+        "alpha_combined": -0.11368295048510238,
+        "sigma_combined": 0.009687958185280952,
+        "z_vs_zero": -11.734459244242244,
+        "p_vs_zero": 4.2433492801035105e-32,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 13,
-        "alpha_combined": -0.05525530534568524,
-        "sigma_combined": 0.012142950818097764,
-        "z_vs_zero": -4.550401807057733,
-        "p_vs_zero": 2.677178490853917e-06,
+        "alpha_combined": -0.11368295048510238,
+        "sigma_combined": 0.009307889150099528,
+        "z_vs_zero": -12.213612415430063,
+        "p_vs_zero": 1.314747397108059e-34,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 14,
-        "alpha_combined": -0.05525530534568524,
-        "sigma_combined": 0.011701240195013623,
-        "z_vs_zero": -4.722175122020979,
-        "p_vs_zero": 1.1666781547094595e-06,
+        "alpha_combined": -0.1136829504851024,
+        "sigma_combined": 0.00896930641368912,
+        "z_vs_zero": -12.674664599661508,
+        "p_vs_zero": 4.085371477229289e-37,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 15,
-        "alpha_combined": -0.055255305345685235,
-        "sigma_combined": 0.01130447200423984,
-        "z_vs_zero": -4.887915625334934,
-        "p_vs_zero": 5.095459316130323e-07,
+        "alpha_combined": -0.1136829504851024,
+        "sigma_combined": 0.008665173226185485,
+        "z_vs_zero": -13.119524274663233,
+        "p_vs_zero": 1.2726383677413251e-39,
         "reaches_3sigma": true,
-        "reaches_5sigma": false
+        "reaches_5sigma": true
       },
       {
         "n_systems": 16,
-        "alpha_combined": -0.05525530534568526,
-        "sigma_combined": 0.010945507952522223,
-        "z_vs_zero": -5.0482175505571245,
-        "p_vs_zero": 2.2297558183950556e-07,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.008390017899254695,
+        "z_vs_zero": -13.549786406915901,
+        "p_vs_zero": 3.973050865318591e-42,
         "reaches_3sigma": true,
         "reaches_5sigma": true
       },
       {
         "n_systems": 17,
-        "alpha_combined": -0.055255305345685256,
-        "sigma_combined": 0.010618702450420521,
-        "z_vs_zero": -5.203583545510972,
-        "p_vs_zero": 9.774090492882035e-08,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.008139512941047035,
+        "z_vs_zero": -13.966800140068164,
+        "p_vs_zero": 1.2427257552848434e-44,
         "reaches_3sigma": true,
         "reaches_5sigma": true
       },
       {
         "n_systems": 18,
-        "alpha_combined": -0.055255305345685256,
-        "sigma_combined": 0.010319523862346329,
-        "z_vs_zero": -5.354443294355828,
-        "p_vs_zero": 4.2910114245908324e-08,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.007910184734452675,
+        "z_vs_zero": -14.371718777939309,
+        "p_vs_zero": 3.8937158694047624e-47,
         "reaches_3sigma": true,
         "reaches_5sigma": true
       },
       {
         "n_systems": 19,
-        "alpha_combined": -0.055255305345685256,
-        "sigma_combined": 0.010044286958055822,
-        "z_vs_zero": -5.501167536971734,
-        "p_vs_zero": 1.8864224421042034e-08,
+        "alpha_combined": -0.11368295048510237,
+        "sigma_combined": 0.007699208454178658,
+        "z_vs_zero": -14.765537413576876,
+        "p_vs_zero": 1.2218331162862613e-49,
         "reaches_3sigma": true,
         "reaches_5sigma": true
       },
       {
         "n_systems": 20,
-        "alpha_combined": -0.05525530534568525,
-        "sigma_combined": 0.009789959932041691,
-        "z_vs_zero": -5.644078804126605,
-        "p_vs_zero": 8.303400052698436e-09,
+        "alpha_combined": -0.11368295048510235,
+        "sigma_combined": 0.007504260142069391,
+        "z_vs_zero": -15.14912174323329,
+        "p_vs_zero": 3.839292281175913e-52,
         "reaches_3sigma": true,
         "reaches_5sigma": true
       }
@@ -3546,8 +3546,8 @@
   "prospective_thresholds": {
     "stouffer_3sigma_n_systems": 3,
     "stouffer_5sigma_n_systems": 8,
-    "alpha_3sigma_n_systems": 6,
-    "alpha_5sigma_n_systems": 16,
-    "note": "These thresholds assume each new system provides an independent blind-prediction residual test with precision equivalent to SN Refsdal (blind model uncertainty sigma_model ~ 16-60 d, 7 blind models, R_tep ~ 14.5 d). Degraded precision in new systems increases the required N proportionally. These thresholds are designated prospectively for future systems and should not be adjusted post-measurement."
+    "alpha_3sigma_n_systems": 1,
+    "alpha_5sigma_n_systems": 3,
+    "note": "These thresholds assume each new system provides an independent blind-prediction residual test with precision equivalent to SN Refsdal (blind model uncertainty sigma_model ~ 16-60 d, 6 blind models, R_tep ~ 14.5 d). Degraded precision in new systems increases the required N proportionally. These thresholds are designated prospectively for future systems and should not be adjusted post-measurement."
   }
 }

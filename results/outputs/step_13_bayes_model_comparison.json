@@ -17,41 +17,41 @@
     "baseline": {
       "note": "Proper GR-null prior for free-alpha model (alpha ~ N(0, 0.15)); fixed-alpha model tests alpha=-0.055 directly.",
       "evidence": {
-        "logZ_gr": -39.21865613815221,
-        "logZ_tep_fixed": -39.15736794793194,
-        "logZ_tep_free": -39.70413117657338,
-        "log_bf_tep_fixed_over_gr": 0.06128819022027443,
-        "log_bf_tep_free_over_gr": -0.48547503842116413,
-        "bf_tep_fixed_over_gr": 1.063205275402437,
-        "bf_tep_free_over_gr": 0.6154047863985971
+        "logZ_gr": -39.58274597629642,
+        "logZ_tep_fixed": -39.3765121633481,
+        "logZ_tep_free": -39.95112686627536,
+        "log_bf_tep_fixed_over_gr": 0.20623381294831944,
+        "log_bf_tep_free_over_gr": -0.3683808899789369,
+        "bf_tep_fixed_over_gr": 1.229040535994357,
+        "bf_tep_free_over_gr": 0.6918536113888046
       },
       "posterior": {
-        "tau_mean_days": 10.100507420162302,
-        "tau_p16_days": 2.2854443112839946,
-        "tau_p84_days": 17.813084823227495,
-        "alpha_mean": -0.03843011387548659,
-        "alpha_p16": -0.1237342901670884,
-        "alpha_p84": 0.04548033937176393
+        "tau_mean_days": 10.607798209611598,
+        "tau_p16_days": 2.4833545955108076,
+        "tau_p84_days": 18.597743381352885,
+        "alpha_mean": -0.05354741514782703,
+        "alpha_p16": -0.13879563583976393,
+        "alpha_p84": 0.03112754128714961
       }
     },
     "h0pe2025_informed": {
       "note": "Sensitivity prior set informed by reported H0pe lens-model bias direction (2510.07637): allows broader/positive residual-bias nuisance without forcing it. Free-alpha prior remains GR-centered to avoid circularity.",
       "evidence": {
-        "logZ_gr": -39.51117968332026,
-        "logZ_tep_fixed": -39.51395514022423,
-        "logZ_tep_free": -40.2195932311105,
-        "log_bf_tep_fixed_over_gr": -0.002775456903975737,
-        "log_bf_tep_free_over_gr": -0.7084135477902436,
-        "bf_tep_fixed_over_gr": 0.9972283911157097,
-        "bf_tep_free_over_gr": 0.4924247865043298
+        "logZ_gr": -39.74259415680137,
+        "logZ_tep_fixed": -39.650970077858744,
+        "logZ_tep_free": -40.37906027789404,
+        "log_bf_tep_fixed_over_gr": 0.09162407894262259,
+        "log_bf_tep_free_over_gr": -0.6364661210926741,
+        "bf_tep_fixed_over_gr": 1.0959527529152198,
+        "bf_tep_free_over_gr": 0.5291591079932441
       },
       "posterior": {
-        "tau_mean_days": 11.164233593089477,
-        "tau_p16_days": 2.5103773068473205,
-        "tau_p84_days": 19.721527102977262,
-        "alpha_mean": -0.03789034609882954,
-        "alpha_p16": -0.1299555156358506,
-        "alpha_p84": 0.051636091969205516
+        "tau_mean_days": 11.808381335662279,
+        "tau_p16_days": 2.767239342834465,
+        "tau_p84_days": 20.70914428085426,
+        "alpha_mean": -0.0488919294620774,
+        "alpha_p16": -0.14089479071970945,
+        "alpha_p84": 0.0421569494706421
       }
     }
   },

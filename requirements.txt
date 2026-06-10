@@ -12,6 +12,11 @@ pandas==2.3.3
 
 # Visualization
 matplotlib==3.10.7
+
+# Parallel processing (COSMOGRAIL steps)
+joblib>=1.3.0
+
+# Testing
 pytest==9.0.1
 
 # Manuscript PDF generation

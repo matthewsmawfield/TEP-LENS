@@ -2,138 +2,250 @@
   "step": "11",
   "status": "success",
   "baseline": {
-    "weighted_mean_days": 14.605519391230912,
-    "weighted_sigma_days": 11.57281297405183,
-    "z_from_gr": 1.2620543876392813,
-    "n_positive": 7,
+    "weighted_mean_days": 30.04957673068333,
+    "weighted_sigma_days": 8.870863592461008,
+    "z_from_gr": 3.3874466017289753,
+    "n_positive": 8,
     "n_total": 8,
-    "p_binomial_independent": 0.03515625,
-    "p_wilcoxon_signed_rank": 0.0078125
+    "p_binomial_independent": 0.00390625,
+    "p_wilcoxon_signed_rank": 0.00390625
   },
-  "blind_baseline": {
+  "delay_blind_baseline": {
+    "n_positive": 7,
+    "n_total": 7,
+    "p_binomial_independent": 0.0078125,
+    "p_wilcoxon_signed_rank": 0.0078125,
+    "n_nonzero": 7,
+    "note": "Delay-blind tier: revised values fixed before measured delay known."
+  },
+  "strictly_blind_baseline": {
     "n_positive": 6,
     "n_total": 7,
     "p_binomial_independent": 0.0625,
-    "p_wilcoxon_signed_rank": 0.015625,
-    "n_nonzero": 6
+    "p_wilcoxon_signed_rank": 0.0546875,
+    "n_nonzero": 7,
+    "note": "Strictly blind tier: original pre-reappearance published predictions."
   },
   "effective_sample_size": {
     "n_total": 8,
     "method_family_counts": {
-      "GLAFIC": 1,
-      "LTM": 1,
+      "GLAFIC": 2,
+      "LTM": 2,
       "WSLAP+": 1,
       "GLEE": 2,
-      "OTHER": 1,
-      "LENSTOOL": 2
+      "LENSTOOL": 1
     },
-    "n_eff_family_kish": 7.2
+    "n_eff_family_kish": 7.142857142857143
   },
   "dependence_sensitivity_curve": [
     {
       "rho": 0.0,
       "n_eff": 8.0,
-      "p_beta_binom_tail": 0.03515625,
-      "z_equiv": 1.8098922384806087
+      "p_beta_binom_tail": 0.00390625,
+      "z_equiv": 2.6600674686174592
     },
     {
       "rho": 0.05,
       "n_eff": 5.925925925925926,
-      "p_beta_binom_tail": 0.06388780287095727,
-      "z_equiv": 1.5229324521183671
+      "p_beta_binom_tail": 0.011396202674278842,
+      "z_equiv": 2.276896526821969
     },
     {
       "rho": 0.1,
       "n_eff": 4.705882352941176,
-      "p_beta_binom_tail": 0.09364318847656253,
-      "z_equiv": 1.3186493205612906
+      "p_beta_binom_tail": 0.022671508789062524,
+      "z_equiv": 2.0014583532796615
     },
     {
       "rho": 0.15000000000000002,
       "n_eff": 3.9024390243902434,
-      "p_beta_binom_tail": 0.12303121466385723,
-      "z_equiv": 1.1599665400900294
+      "p_beta_binom_tail": 0.03722482905214142,
+      "z_equiv": 1.783840059505433
     },
     {
       "rho": 0.2,
       "n_eff": 3.333333333333333,
-      "p_beta_binom_tail": 0.15151515151515152,
-      "z_equiv": 1.0299567622253682
+      "p_beta_binom_tail": 0.05454545454545452,
+      "z_equiv": 1.6022926552158765
     },
     {
       "rho": 0.25,
       "n_eff": 2.909090909090909,
-      "p_beta_binom_tail": 0.17892456054687497,
-      "z_equiv": 0.9194712798419056
+      "p_beta_binom_tail": 0.07418823242187499,
+      "z_equiv": 1.4452899313077765
     },
     {
       "rho": 0.30000000000000004,
       "n_eff": 2.580645161290322,
-      "p_beta_binom_tail": 0.2052487460049718,
-      "z_equiv": 0.8230184667817739
+      "p_beta_binom_tail": 0.09578274813565354,
+      "z_equiv": 1.3059619535685014
     },
     {
       "rho": 0.35000000000000003,
       "n_eff": 2.318840579710145,
-      "p_beta_binom_tail": 0.23054492812907648,
-      "z_equiv": 0.7370534327330165
+      "p_beta_binom_tail": 0.1190255210340814,
+      "z_equiv": 1.179872215305326
     },
     {
       "rho": 0.4,
       "n_eff": 2.1052631578947367,
-      "p_beta_binom_tail": 0.25489606900452483,
-      "z_equiv": 0.6591613890933156
+      "p_beta_binom_tail": 0.143668693438914,
+      "z_equiv": 1.0639808233140249
     },
     {
       "rho": 0.45,
       "n_eff": 1.9277108433734937,
-      "p_beta_binom_tail": 0.2783912886596508,
-      "z_equiv": 0.5876271590175465
+      "p_beta_binom_tail": 0.1695093624283207,
+      "z_equiv": 0.9561059186816175
     },
     {
       "rho": 0.5,
       "n_eff": 1.7777777777777777,
-      "p_beta_binom_tail": 0.30111694335937506,
-      "z_equiv": 0.5211907651356134
+      "p_beta_binom_tail": 0.19638061523437506,
+      "z_equiv": 0.8546205802823992
     },
     {
       "rho": 0.55,
       "n_eff": 1.6494845360824741,
-      "p_beta_binom_tail": 0.32315285261287285,
-      "z_equiv": 0.4589003809099663
+      "p_beta_binom_tail": 0.22414431904637577,
+      "z_equiv": 0.7582712111413265
     },
     {
       "rho": 0.6000000000000001,
       "n_eff": 1.538461538461538,
-      "p_beta_binom_tail": 0.3445710299930246,
-      "z_equiv": 0.40001962805081526
+      "p_beta_binom_tail": 0.2526854219948846,
+      "z_equiv": 0.666062982670541
     },
     {
       "rho": 0.65,
       "n_eff": 1.4414414414414416,
-      "p_beta_binom_tail": 0.36543561410212805,
-      "z_equiv": 0.343966834463198
+      "p_beta_binom_tail": 0.2819074737359272,
+      "z_equiv": 0.5771843211116819
     },
     {
       "rho": 0.7000000000000001,
       "n_eff": 1.3559322033898304,
-      "p_beta_binom_tail": 0.3858033462091981,
-      "z_equiv": 0.290273915721545
+      "p_beta_binom_tail": 0.3117291037370322,
+      "z_equiv": 0.49095509603808324
     },
     {
       "rho": 0.75,
       "n_eff": 1.28,
-      "p_beta_binom_tail": 0.405724265358665,
-      "z_equiv": 0.23855774890927908
+      "p_beta_binom_tail": 0.34208124334161966,
+      "z_equiv": 0.40678965324817307
     },
     {
       "rho": 0.8,
       "n_eff": 1.212121212121212,
-      "p_beta_binom_tail": 0.4252424568965518,
-      "z_equiv": 0.18849974704217154
+      "p_beta_binom_tail": 0.37290492374005313,
+      "z_equiv": 0.3241693207725759
     }
   ],
-  "dependence_sensitivity_curve_blind": [
+  "dependence_sensitivity_curve_delay_blind": [
+    {
+      "rho": 0.0,
+      "n_eff": 7.0,
+      "p_beta_binom_tail": 0.0078125,
+      "z_equiv": 2.417559016236505
+    },
+    {
+      "rho": 0.05,
+      "n_eff": 5.384615384615384,
+      "p_beta_binom_tail": 0.017957652698863635,
+      "z_equiv": 2.097884999819007
+    },
+    {
+      "rho": 0.1,
+      "n_eff": 4.375,
+      "p_beta_binom_tail": 0.031542968750000046,
+      "z_equiv": 1.8585853340514173
+    },
+    {
+      "rho": 0.15000000000000002,
+      "n_eff": 3.6842105263157894,
+      "p_beta_binom_tail": 0.047950627253605875,
+      "z_equiv": 1.6650576513309812
+    },
+    {
+      "rho": 0.2,
+      "n_eff": 3.1818181818181817,
+      "p_beta_binom_tail": 0.06666666666666667,
+      "z_equiv": 1.5010859460440247
+    },
+    {
+      "rho": 0.25,
+      "n_eff": 2.8,
+      "p_beta_binom_tail": 0.0872802734375,
+      "z_equiv": 1.3576948019735977
+    },
+    {
+      "rho": 0.30000000000000004,
+      "n_eff": 2.4999999999999996,
+      "p_beta_binom_tail": 0.10946599786931836,
+      "z_equiv": 1.2293729809810294
+    },
+    {
+      "rho": 0.35000000000000003,
+      "n_eff": 2.258064516129032,
+      "p_beta_binom_tail": 0.1329654469209558,
+      "z_equiv": 1.1124821660732538
+    },
+    {
+      "rho": 0.4,
+      "n_eff": 2.0588235294117645,
+      "p_beta_binom_tail": 0.15757211538461535,
+      "z_equiv": 1.0044863844222538
+    },
+    {
+      "rho": 0.45,
+      "n_eff": 1.8918918918918919,
+      "p_beta_binom_tail": 0.18311960320723691,
+      "z_equiv": 0.903540306286308
+    },
+    {
+      "rho": 0.5,
+      "n_eff": 1.75,
+      "p_beta_binom_tail": 0.20947265625000003,
+      "z_equiv": 0.8082523752172853
+    },
+    {
+      "rho": 0.55,
+      "n_eff": 1.6279069767441858,
+      "p_beta_binom_tail": 0.2365203857421874,
+      "z_equiv": 0.7175403127358194
+    },
+    {
+      "rho": 0.6000000000000001,
+      "n_eff": 1.5217391304347825,
+      "p_beta_binom_tail": 0.2641711229946525,
+      "z_equiv": 0.6305386158937567
+    },
+    {
+      "rho": 0.65,
+      "n_eff": 1.4285714285714284,
+      "p_beta_binom_tail": 0.292348491281703,
+      "z_equiv": 0.5465368236674416
+    },
+    {
+      "rho": 0.7000000000000001,
+      "n_eff": 1.346153846153846,
+      "p_beta_binom_tail": 0.3209883840460524,
+      "z_equiv": 0.46493672755295584
+    },
+    {
+      "rho": 0.75,
+      "n_eff": 1.2727272727272727,
+      "p_beta_binom_tail": 0.3500366210937496,
+      "z_equiv": 0.3852215989812876
+    },
+    {
+      "rho": 0.8,
+      "n_eff": 1.2068965517241377,
+      "p_beta_binom_tail": 0.3794471153846155,
+      "z_equiv": 0.30693318324838764
+    }
+  ],
+  "dependence_sensitivity_curve_strictly_blind": [
     {
       "rho": 0.0,
       "n_eff": 7.0,
@@ -239,60 +351,81 @@
   ],
   "dependence_aware_test_hierarchy": {
     "bridge_statement": "Because the Wilcoxon statistic lacks a closed-form variance under exchangeable intra-class correlation, an exact family-sign-flip test (enumerating all method-family sign assignments) provides the most rigorous dependence-aware bound. The block-bootstrap is retained as a sensitivity exploration but is demoted from operational primary.",
-    "tier_1a_primary_independence": "wilcoxon_signed_rank_blind",
-    "tier_1b_primary_correlation_aware": "permutation_test_wilcoxon_blind",
-    "tier_2_corroborating_sign_test": "beta_binomial_blind",
+    "tier_1a_primary_independence": "wilcoxon_signed_rank_delay_blind",
+    "tier_1b_primary_correlation_aware": "permutation_test_wilcoxon_delay_blind",
+    "tier_1c_correlation_aware_floor": "permutation_test_wilcoxon_strictly_blind",
+    "tier_2_corroborating_sign_test": "beta_binomial_delay_blind",
     "sensitivity_exploration": "block_bootstrap_wilcoxon"
   },
   "permutation_test_wilcoxon": {
     "description": "Exact family-sign-flip test for the Wilcoxon statistic. Enumerates all method-family sign assignments; exact under sharp null; no superpopulation assumption. More rigorous than bootstrap for tiny samples.",
-    "all_8": {
+    "all_models": {
       "p_value_one_sided": 0.03125,
-      "n_permutations": 64,
-      "n_extreme_or_more": 2,
-      "n_method_families": 6,
+      "n_permutations": 32,
+      "n_extreme_or_more": 1,
+      "n_method_families": 5,
       "method_families": [
         "GLAFIC",
         "GLEE",
         "LENSTOOL",
         "LTM",
-        "OTHER",
+        "WSLAP+"
+      ],
+      "observed_statistic": 36.0,
+      "description": "Exact family-sign-flip test: enumerates all method-family sign assignments. Exact under sharp null; no superpopulation assumption."
+    },
+    "delay_blind": {
+      "p_value_one_sided": 0.03125,
+      "n_permutations": 32,
+      "n_extreme_or_more": 1,
+      "n_method_families": 5,
+      "method_families": [
+        "GLAFIC",
+        "GLEE",
+        "LENSTOOL",
+        "LTM",
         "WSLAP+"
       ],
       "observed_statistic": 28.0,
       "description": "Exact family-sign-flip test: enumerates all method-family sign assignments. Exact under sharp null; no superpopulation assumption."
     },
-    "blind_7": {
-      "p_value_one_sided": 0.03125,
-      "n_permutations": 64,
-      "n_extreme_or_more": 2,
-      "n_method_families": 6,
+    "strictly_blind": {
+      "p_value_one_sided": 0.09375,
+      "n_permutations": 32,
+      "n_extreme_or_more": 3,
+      "n_method_families": 5,
       "method_families": [
         "GLAFIC",
         "GLEE",
         "LENSTOOL",
         "LTM",
-        "OTHER",
         "WSLAP+"
       ],
-      "observed_statistic": 21.0,
+      "observed_statistic": 24.0,
       "description": "Exact family-sign-flip test: enumerates all method-family sign assignments. Exact under sharp null; no superpopulation assumption."
     }
   },
   "block_bootstrap_wilcoxon": {
     "description": "Family-aware block-bootstrap respecting method-family clusters. Sensitivity exploration (not operational primary).",
-    "all_8": {
-      "p_median": 0.0078125,
+    "all_models": {
+      "p_median": 0.00390625,
       "p_16": 0.001953125,
-      "p_84": 0.03125,
-      "fraction_le_0_05": 0.929,
+      "p_84": 0.0078125,
+      "fraction_le_0_05": 1.0,
       "n_bootstrap": 20000
     },
-    "blind_7": {
-      "p_median": 0.015625,
-      "p_16": 0.0078125,
-      "p_84": 0.03125,
-      "fraction_le_0_05": 0.85845,
+    "delay_blind": {
+      "p_median": 0.0078125,
+      "p_16": 0.00390625,
+      "p_84": 0.015625,
+      "fraction_le_0_05": 1.0,
+      "n_bootstrap": 20000
+    },
+    "strictly_blind": {
+      "p_median": 0.046875,
+      "p_16": 0.00390625,
+      "p_84": 0.234375,
+      "fraction_le_0_05": 0.5125,
       "n_bootstrap": 20000
     }
   },
@@ -300,126 +433,136 @@
     "description": "Inter-model correlation (ICC) at which one-sided p-value reaches 0.05. Two distinct methods are reported: (1) exact beta-binomial for sign-test p-values, and (2) an approximate n_eff scaling heuristic for Wilcoxon p-values that lacks formal justification.",
     "beta_binomial_sign_test": {
       "description": "Exact beta-binomial ICC break-even for binomial sign-test p-values. These are rigorous.",
-      "binomial_all_8": {
-        "n_positive": 7,
+      "binomial_all": {
+        "n_positive": 8,
         "n_total": 8,
-        "rho_break_even": 0.02629978120719422
+        "rho_break_even": 0.18755147546925396
       },
-      "binomial_blind_7": {
+      "binomial_delay_blind": {
+        "n_positive": 7,
+        "n_total": 7,
+        "rho_break_even": 0.1557663794734301
+      },
+      "binomial_strictly_blind": {
         "n_positive": 6,
         "n_total": 7,
         "rho_break_even": 0.0
       }
     },
     "wilcoxon_approx_heuristic": {
-      "description": "Approximate ICC break-even for Wilcoxon p-values via n_eff = n / (1 + (n-1)*rho) and p \u2248 1/2^n_eff. This is a mathematically unfounded heuristic, NOT a beta-binomial result. The exact family-sign-flip test (p=0.031) is the primary correlation-aware rank bound.",
-      "wilcoxon_all_8_approx": {
+      "description": "Approximate ICC break-even for Wilcoxon p-values via n_eff = n / (1 + (n-1)*rho) and p \u2248 1/2^n_eff. This is a mathematically unfounded heuristic, NOT a beta-binomial result. The exact family-sign-flip test (delay-blind p=0.0312) is the primary correlation-aware rank bound; strictly blind floor is p=0.0938.",
+      "wilcoxon_all_approx": {
+        "n_nonzero": 8,
+        "rho_break_even": 0.12157510075401046,
+        "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead."
+      },
+      "wilcoxon_delay_blind_approx": {
         "n_nonzero": 7,
         "rho_break_even": 0.10327458201971902,
         "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead."
       },
-      "wilcoxon_blind_approx": {
-        "n_nonzero": 6,
-        "rho_break_even": 0.07765385579171098,
+      "wilcoxon_strictly_blind_approx": {
+        "n_nonzero": 7,
+        "rho_break_even": 0.10327458201971902,
         "caveat": "Mathematically unfounded approximation. Use exact permutation_test_wilcoxon instead."
       }
     }
   },
   "deprecated_tests": {
     "exact_sign_flip_pvalue": {
-      "value": 0.0078125,
+      "value": 0.00390625,
       "caveat": "Assumes independent, symmetric residuals. Invalid under correlated lens-model systematics. Not reported in headline results."
     }
   },
   "leave_one_out": [
     {
-      "left_out": "Oguri-a",
-      "weighted_mean_days": 13.123102175814562,
-      "weighted_sigma_days": 11.79997218245534,
-      "z_from_gr": 1.112129924791391,
-      "n_positive": 6,
-      "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 1.2224545976415442
-    },
-    {
-      "left_out": "Sharon",
-      "weighted_mean_days": 13.966800025208672,
-      "weighted_sigma_days": 11.796094036815276,
-      "z_from_gr": 1.1840190474591574,
-      "n_positive": 6,
-      "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 1.3995560487183725
-    },
-    {
-      "left_out": "Diego",
-      "weighted_mean_days": 15.421441947513717,
-      "weighted_sigma_days": 11.89167204469083,
-      "z_from_gr": 1.2968270474965538,
+      "left_out": "Oguri-a*",
+      "weighted_mean_days": 32.01885973322708,
+      "weighted_sigma_days": 9.921407999988125,
+      "z_from_gr": 3.2272495731720143,
       "n_positive": 7,
       "n_total": 7,
       "p_sign": 0.0078125,
-      "delta_chi2_gr_minus_tep": 1.676241704765888
+      "delta_chi2_gr_minus_tep": 7.310743096004366
     },
     {
-      "left_out": "Grillo",
-      "weighted_mean_days": 14.4880296474126,
-      "weighted_sigma_days": 13.184039968540727,
-      "z_from_gr": 1.0989066842927817,
-      "n_positive": 6,
+      "left_out": "Oguri-g*",
+      "weighted_mean_days": 26.50729777431676,
+      "weighted_sigma_days": 9.847354408168274,
+      "z_from_gr": 2.691819211089757,
+      "n_positive": 7,
       "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 1.207581514882747
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 5.768498942084121
     },
     {
-      "left_out": "Kawamata",
-      "weighted_mean_days": 15.05829810337412,
-      "weighted_sigma_days": 11.912314761009714,
-      "z_from_gr": 1.2640950483160123,
-      "n_positive": 6,
+      "left_out": "Sharon-a*",
+      "weighted_mean_days": 27.272863262822383,
+      "weighted_sigma_days": 9.124096151878097,
+      "z_from_gr": 2.9891030090918713,
+      "n_positive": 7,
       "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 1.5960288391287585
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 6.986658204760853
     },
     {
-      "left_out": "Jauzac",
-      "weighted_mean_days": 14.45984463061226,
-      "weighted_sigma_days": 11.91964752361972,
-      "z_from_gr": 1.213110085844312,
-      "n_positive": 6,
+      "left_out": "Sharon-g*",
+      "weighted_mean_days": 28.88349359245074,
+      "weighted_sigma_days": 9.210317669643816,
+      "z_from_gr": 3.1359932011517397,
+      "n_positive": 7,
       "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 1.4715930494800755
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 7.408515624533047
     },
     {
-      "left_out": "CATS",
-      "weighted_mean_days": 15.444017483465212,
-      "weighted_sigma_days": 11.951518732342223,
-      "z_from_gr": 1.2922221710343702,
-      "n_positive": 6,
+      "left_out": "Diego-a",
+      "weighted_mean_days": 27.83097957996607,
+      "weighted_sigma_days": 8.987316454295023,
+      "z_from_gr": 3.096695183873902,
+      "n_positive": 7,
       "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 1.664091772452955
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 7.40184851853612
+    },
+    {
+      "left_out": "Grillo-g",
+      "weighted_mean_days": 32.5082934385685,
+      "weighted_sigma_days": 9.568099142638442,
+      "z_from_gr": 3.397570714302215,
+      "n_positive": 7,
+      "n_total": 7,
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 8.016065650735376
+    },
+    {
+      "left_out": "Jauzac15.2*",
+      "weighted_mean_days": 30.73945081732015,
+      "weighted_sigma_days": 9.071906087938224,
+      "z_from_gr": 3.388422512242553,
+      "n_positive": 7,
+      "n_total": 7,
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 8.292008206255916
     },
     {
       "left_out": "Grillo+2024",
-      "weighted_mean_days": 15.134081029878427,
-      "weighted_sigma_days": 15.837876415226484,
-      "z_from_gr": 0.9555625156494194,
-      "n_positive": 6,
+      "weighted_mean_days": 36.102149113254356,
+      "weighted_sigma_days": 10.41001515400392,
+      "z_from_gr": 3.468020802963834,
+      "n_positive": 7,
       "n_total": 7,
-      "p_sign": 0.0625,
-      "delta_chi2_gr_minus_tep": 0.9116833875510731
+      "p_sign": 0.0078125,
+      "delta_chi2_gr_minus_tep": 7.736148506857653
     }
   ],
   "leave_one_out_summary": {
     "p_sign_min": 0.0078125,
-    "p_sign_max": 0.0625,
-    "z_min": 0.9555625156494194,
-    "z_max": 1.2968270474965538,
-    "delta_chi2_min": 0.9116833875510731,
-    "delta_chi2_max": 1.676241704765888,
+    "p_sign_max": 0.0078125,
+    "z_min": 2.691819211089757,
+    "z_max": 3.468020802963834,
+    "delta_chi2_min": 5.768498942084121,
+    "delta_chi2_max": 8.292008206255916,
     "n_cases_tep_better": 8,
     "n_cases_total": 8
   },

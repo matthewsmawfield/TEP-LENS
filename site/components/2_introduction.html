@@ -3,15 +3,21 @@
 The Temporal Equivalence Principle (TEP) posits that the effective rate of temporal propagation scales with the depth of the local gravitational potential. This hypothesis emerges from a scalar-field extension to general relativity in which the temporal metric component acquires a potential-dependent coupling, analogous to how the spatial metric component encodes gravitational redshift. In such a framework, photons traversing regions of different gravitational potential depth experience differential temporal scaling—a phenomenon termed "temporal shear." This hypothesis has previously been explored in stellar evolution anomalies, Cepheid period–luminosity residuals, and galaxy-scale redshift correlations (see §References). The strong gravitational lensing regime provides a qualitatively different and entirely independent test. Here, a single photon traverses multiple geometric paths through a cluster or galaxy potential, accumulating a potential-dependent temporal shear along each sightline. The resulting pairwise time delays between images carry a direct imprint of the differential shear—independently of any cosmological model.
 </p>
 
+<p>
+In the covariant formulation, matter couples universally to a causal metric $\tilde{g}_{\mu\nu}$ that is related to the gravitational metric $g_{\mu\nu}$ through a scalar time field $\phi$ via the disformal map $\tilde{g}_{\mu\nu} = A^2(\phi) g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi$ (Paper 0). The conformal factor $A(\phi)$ rescales local proper-time intervals and generates the temporal shear probed here. The disformal function $B(\phi)$ instead controls matter-frame cone tilts and is the sector associated with the convention-independent synchronization holonomy $H_{\rm resid}$, the theory's loop-level signature. The present strong-lensing test operates in the conformal sector: the blind-prediction residual is an open-path, differential measure of the position-dependent clock-rate scaling $A(\phi)$, equivalent to comparing observed arrival times against a GR reference that assumes $A \equiv 1$. Because a purely conformal scalar contributes an exact one-form ($d\ln A$), closed-loop holonomy vanishes and the algebraic delay identity is preserved, consistent with the fact that each image retains a single globally assignable arrival time. The log-magnification proxy adopted below is an operational lensing-sector response model; its derivation from the scalar-field action through the projected lensing potential and amplification kernel remains the central open theoretical task.
+</p>
+
 <h3>1.1 The Blind-Prediction Residual Test</h3>
 <p>
-For a source producing three or more resolved images, the pairwise time delays obey a strict algebraic closure identity under any theory in which each image has a single, globally assignable arrival time: any three delays in a closed loop sum to identically zero. This identity holds for GR and for the TEP ansatz alike, because TEP modifies the effective transit time along each path but still assigns a unique arrival time to each image. The genuine TEP observable is not a closure violation but a <em>blind-prediction residual</em>: the discrepancy between the observed delay and the delay predicted by a GR lens model that assumes standard time propagation. In the fundamental theory, light along path $i$ through a region of projected convergence $\kappa_i$ acquires a temporal shear that scales with the local gravitational potential depth. In the absence of a solved TEP lensing transfer function for $\kappa(\boldsymbol{\theta})$ or $\psi(\boldsymbol{\theta})$, a first-order log-magnification phenomenological proxy model is adopted:
+For a source producing three or more resolved images, the pairwise time delays obey a strict algebraic closure identity under any theory in which each image has a single, globally assignable arrival time: any three delays in a closed loop sum to identically zero. This identity holds for GR and for the TEP ansatz alike, because TEP modifies the effective transit time along each path but still assigns a unique arrival time to each image. The genuine TEP observable is not a closure violation but a <em>blind-prediction residual</em>: the discrepancy between the observed delay and the delay predicted by a GR lens model that assumes standard time propagation. TEP does not alter the algebraic fact that each image has a unique observed arrival time. Its claim is instead that the accumulated transport time along each path can respond dynamically to the gravitational time field beyond the standard GR Fermat-potential delay. In the fundamental theory, light along path $i$ acquires temporal shear through the local scalar time-field profile associated with gravitational potential depth; in the operational lensing test below, projected convergence $\kappa_i$, lensing potential $\psi_i$, and magnification $\mu_i$ are treated as candidate observational tracers of that profile. In the absence of a solved TEP lensing transfer function, a first-order operational log-magnification response model is adopted:
 </p>
-<p style="text-align:center; margin:1em 0;">
-    $\Gamma_t(i) = 1 + \alpha\log_{10}(\mu_i)$,
-</p>
+<div class="equation">
+\begin{equation} \label{eq:2_introduction_01a}
+\Gamma_t(i) = 1 + \alpha\log_{10}(\mu_i),
+\end{equation}
+</div>
 <p>
-where $\mu_i$ is the total magnification at image $i$ and $\alpha$ is the proxy-model coupling. The predicted GR-vs-TEP discrepancy for loop $(i,j,k)$,
+where $\mu_i$ is the total magnification at image $i$ and $\alpha$ is the proxy-model coupling. <em>This formula is used here as an operational lensing-sector response model:</em> magnification encodes lens-mapping derivatives, parity, caustic proximity, and macro-model structure rather than the scalar potential itself, so the corrected-compilation amplitude is treated as a response-scale target until the corresponding transfer kernel is derived from the scalar-field action. The predicted GR-vs-TEP discrepancy for loop $(i,j,k)$ is
 </p>
 <div class="equation">
 \begin{equation} \label{eq:2_introduction_01}
@@ -19,28 +25,28 @@ where $\mu_i$ is the total magnification at image $i$ and $\alpha$ is the proxy-
 \end{equation}
 </div>
 <p>
-is non-zero if and only if the images traverse regions of different potential depth. The differential proxy prediction is not generated by a uniform mass-sheet rescaling: a uniform convergence sheet rescales all delays by the same factor, leaving the algebraic loop sum unchanged at zero under both GR and TEP, so the predicted discrepancy arises purely from contrast in temporal shear between image positions. The observed-minus-predicted residual, however, remains lens-model limited.
+which is non-zero if and only if the images traverse regions of different potential depth. The differential proxy prediction is not generated by a uniform mass-sheet rescaling: a uniform convergence sheet rescales all delays by the same factor, leaving the algebraic loop sum unchanged at zero under both GR and TEP, so the predicted discrepancy arises purely from contrast in temporal shear between image positions. The observed-minus-predicted residual, however, remains lens-model limited.
 </p>
 
 <h3>1.2 SN Refsdal: The Ideal System</h3>
 <p>
-SN Refsdal (MACS J1149.6+2223, Kelly et al. 2015) is the only known multiply-imaged supernova with <em>five</em> resolved images and precision-measured relative time delays. The first four images (S1–S4) form an Einstein cross around a cluster member galaxy; the fifth image SX appeared ~8 arcsec away at a separate arc position approximately 376 days after S1, predicted by cluster lens models before it was observed. Kelly et al. (2023, ApJ 948, 93) published the precise time delay measurements from the combined light curve analysis, including the SX–S1 delay measured to 1.5% precision—the most precise lensed supernova delay to date.
+SN Refsdal (MACS J1149.6+2223, Kelly et al. 2015) is currently unique among multiply-imaged supernovae in having <em>five</em> resolved images and precision-measured relative time delays. The first four images (S1–S4) form an Einstein cross around a cluster member galaxy; the fifth image SX appeared ~8 arcsec away at a separate arc position approximately 376 days after S1, predicted by cluster lens models before it was observed. Kelly et al. (2023, ApJ 948, 93) published the precise time delay measurements from the combined light curve analysis, including the SX–S1 delay measured to 1.5% precision—the most precise lensed supernova delay to date.
 </p>
 <p>
-The geometry of SN Refsdal is ideal for the blind-prediction residual test. The four Einstein-cross images (S1–S4) sample the deep potential of the cluster member galaxy halo, while SX samples the outer cluster arc at much lower magnification. This contrast in potential depth—combined with the long 376-day SX baseline—amplifies the expected TEP predicted discrepancy by a factor of ~18 relative to the inner cross loops alone.
+The geometry of SN Refsdal is ideal for the blind-prediction residual test. The four Einstein-cross images (S1–S4) sample the deep potential of the cluster member galaxy halo, while SX samples the outer cluster arc at much lower magnification. This high-leverage magnification contrast—combined with the long 376-day SX baseline—amplifies the operational proxy-model discrepancy by a factor of ~18 relative to the inner cross loops alone.
 </p>
 <p>
-The test is structurally a single-contrast measurement: the S4–SX magnification difference provides the sole predictive leverage. The inner Einstein cross is a <em>null region</em> where the proxy is physically non-probative because shear degeneracy renders the magnification ordering uninformative about convergence (Step 32); the five-image rank-order agreement between flux-proxy $\mu_{\rm norm}$ and inferred $\kappa_{\rm norm}$ drops to $P \approx 3\%$. The sole testable contrast is the long-baseline S4–SX pair.
+The test is structurally a single-contrast measurement: the S4–SX magnification difference provides the sole predictive leverage (§4.1.1).
 </p>
 
 <h3>1.3 TDCOSMO Quad Lenses: Sub-Noise Supplementary Check</h3>
 <p>
-As a supplementary structural check, proxy-model predicted delay shifts are computed for eight quad-lens quasar systems from the expanded TDCOSMO-2025 dataset. These quasar systems have shorter delay baselines ($\lesssim 160$ days) and moderate magnification contrasts, yielding predicted proxy shifts of 0.03–4.7 days at the measured coupling $\alpha_{\rm proxy} \approx -0.055$. At this coupling, 16 of 18 image pairs exhibit a predicted shift exceeding the $1\sigma$ measurement uncertainty. The Spearman rank correlation between logarithmic flux ratio and predicted shift is tautological ($\rho < 0$ by construction because $\alpha_{\rm proxy} < 0$; computed $\rho = -0.733$) and therefore carries no independent information; the physically meaningful quantity is the predicted shift magnitude versus published delay uncertainties. Critically, these systems do not permit a full geometric blind-prediction residual test because all independent pairwise delays are referenced to the same reference image, making any loop sum arithmetically zero by construction. SN Encore is discussed separately in §1.5, where its actual blind-prediction residual test results are presented.
+As a supplementary structural check, proxy-model predicted delay shifts are computed for eight quad-lens quasar systems from the expanded TDCOSMO-2025 dataset. These quasar systems have shorter delay baselines ($\lesssim 160$ days) and moderate magnification contrasts, yielding predicted proxy shifts of 0.03–4.7 days at the measured coupling $\alpha_{\rm proxy} \approx -0.055$. At this coupling, 16 of 18 image pairs exhibit a predicted shift exceeding the $1\sigma$ measurement uncertainty. The Spearman rank correlation between logarithmic flux ratio and predicted shift is tautological ($\rho < 0$ by construction because $\alpha_{\rm proxy} < 0$; computed $\rho = -0.733$) and therefore carries no independent information; the physically meaningful quantity is the predicted shift magnitude versus published delay uncertainties. Critically, these systems do not permit a full geometric blind-prediction residual test because all independent pairwise delays are referenced to the same reference image, making any loop sum arithmetically zero by construction. SN Encore is discussed separately in §1.5 and tested directly in §3.5.1.
 </p>
 
 <h3>1.4 The Core Evidence Approach: Observed vs. Blind-Predicted</h3>
 <p>
-The strongest observational lever available with current data is a feature of SN Refsdal's discovery history that has not previously been exploited as a TEP test: seven independent GR lens modelling teams published blind predictions for the $\Delta t_{\rm SX,S1}$ delay before SX reappeared in December 2015 (compiled in Treu et al. 2016, ApJ 817, 60). Kelly et al. (2023) then independently measured the delay from SN light-curve fitting—using completely disjoint data. The comparison of these two independent determinations constitutes a genuine non-trivial residual test: the residual $\mathcal{R}_{\rm obs} = \Delta t_{\rm obs} - \langle\Delta t_{\rm model}\rangle$ is not constrained to be zero. Six of the seven blind models give positive residuals, while the seventh (Diego, WSLAP+) lies exactly at the observed value (δ = 0, consistent with GR). The sign and magnitude are consistent with the proxy-model prediction. This test is a falsifiable phenomenological screen of the proxy ansatz, not a fundamental coupling measurement. This is the primary evidence result of this paper.
+The strongest observational lever available with current data is a feature of SN Refsdal's discovery history that has not previously been exploited as a TEP test: seven delay-blind model variants spanning five modelling families published predictions for the $\Delta t_{\rm SX,S1}$ delay before SX reappeared in December 2015 (see per-variant references in \S3.5). Kelly et al. (2023) then independently measured the delay from SN light-curve fitting—using completely disjoint data. The comparison constitutes a genuine residual test: $\mathcal{R}_{\rm obs} = \Delta t_{\rm obs} - \Delta t_{\rm model}$ is not constrained to be zero. The headline evidence is sign coherence: all seven delay-blind variants yield positive residuals against the Kelly+2023 compilation used in the primary test (strict original-blind floor: six of seven). Amplitude is treated separately: the nominal S4–SX proxy sensitivity is $\sim +14.5$ d at $\alpha_{\rm proxy} = -0.055$; the strict original-blind ensemble has a larger positive weighted mean ($\approx +55$ d, six of seven positive); and the Kelly+2023 corrected-compilation diagnostic gives $+30.1 \pm 8.9$ d. Together, these layers show a stable positive residual direction and a strong-lensing response scale that points toward magnification-amplified temporal propagation.
 </p>
 
 <h3>1.5 Multi-System Blind-Prediction Tests</h3>
@@ -48,10 +54,46 @@ The strongest observational lever available with current data is a feature of SN
 Beyond SN Refsdal, two additional multiply-imaged supernovae now have measured time delays and blind lens-model predictions, enabling independent blind-prediction residual tests. SN Encore (MACS J0138-2155, $z_s = 1.95$; Pierel et al. 2026, ApJ, arXiv:2509.12301) has two resolved images with a measured delay $\Delta t_{\rm 1b,1a} = -39.8^{+3.9}_{-3.3}$ d and eight blind lens-model predictions (Suyu et al. 2025/2026, A&A, arXiv:2509.12319). SN H0pe (PLCK G165.7+67.0, $z_s = 1.783$; Pierel et al. 2024, ApJ 967, 50) has three images with two measured delay pairs and seven blind predictions (Pascale et al. 2025, ApJ, arXiv:2403.18902).
 </p>
 <p>
-Both systems yield directionally consistent residuals (negative sign for the less-magnified minus more-magnified delay pair, matching the TEP proxy prediction), but their predicted TEP shifts are sub-day ($\lesssim 2$ d) and swamped by per-model scatter ($\sim$3–50 d). They serve as independent consistency checks rather than high-precision evidence strands. Using the correlation-aware Refsdal headline, the cross-system Stouffer combination of directional z-scores from Refsdal, Encore, and H0pe yields $z = +1.73$ ($p = 0.042$), dominated by Refsdal ($z = +1.86$); Encore and H0pe together contribute $\Delta z = -0.13$.
+Both systems yield directionally consistent residuals (negative sign for the less-magnified minus more-magnified delay pair, matching the TEP proxy prediction), but their predicted TEP shifts are sub-day ($\lesssim 2$ d) and swamped by per-model scatter ($\sim$3–50 d). They serve as independent consistency checks rather than high-precision evidence strands. All three systems (Refsdal, Encore, and H0pe) show primary residual signs consistent with the TEP prediction (3/3 by exact binomial, $p = 0.125$). A cross-system Stouffer combination is not reported in the headline evidence chain because it dilutes the Refsdal signal and is reserved as a sensitivity exploration.
 </p>
 
 <h3>1.6 SN 2025wny: Forward Prediction Target</h3>
 <p>
 The quadruply-imaged SLSN-I SN 2025wny ($z_s = 2.011$, Johansson et al. 2025, ApJ 995, L17; Taubenberger et al. 2025, arXiv:2510.21694)—the first resolved quadruply-imaged superluminous supernova—provides the most promising future test target. With magnifications estimated at $\mu \sim 20$–50 and four images in an Einstein cross geometry, a post-hoc geometric model predicts long-baseline delays of $\sim$175 days. Once time delays are measured and blind lens-model predictions are published, SN 2025wny could yield a proxy-model residual comparable in magnitude to SN Refsdal's S4–SX contrast. HST (PID 17611) and JWST (PID 5564) follow-up is ongoing (PI: Goobar).
+</p>
+
+<h3>1.7 Evidence Roadmap</h3>
+<p>
+The empirical case built in this paper is organised into two tiers. Table R1 previews the primary directional evidence from SN Refsdal; Table R2 previews the supplementary cross-system checks. Full details, statistical methodology, and robustness tests are given in §3 and §4.7.
+</p>
+
+<h4>Table R1 — Primary Directional Evidence (SN Refsdal)</h4>
+<table class="results-table">
+    <thead>
+        <tr><th>Evidence strand</th><th>Independence</th><th>Key result</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Family-sign-flip (correlation-aware)</td><td>Methodological constraint</td><td>$p = 0.031$ ($1.86\sigma$) — headline significance</td></tr>
+        <tr><td>Wilcoxon signed-rank (delay-blind 7/7)</td><td>Yes (delay-blind subset)</td><td>All non-zero residuals positive; $p = 0.0078$ ($2.4\sigma$)</td></tr>
+        <tr><td>Wilcoxon signed-rank (all 8/8)</td><td>Yes (includes post-blind update)</td><td>All non-zero residuals positive; $p = 0.0039$ ($2.8\sigma$)</td></tr>
+        <tr><td>Loop sensitivity geometry</td><td>Yes (theoretical)</td><td>Alpha-independent SNR invariant; SX-loop ratio 63–66</td></tr>
+        <tr><td>Signal-energy concentration</td><td>Yes (structural)</td><td>99.9% signal energy in SX loops; single-contrast geometry</td></tr>
+        <tr><td>Proxy-model amplitude ($\alpha_{\rm inferred}$)</td><td>No (same ensemble)</td><td>$-0.114 \pm 0.034$; definitional calibration, not corroboration</td></tr>
+    </tbody>
+</table>
+
+<h4>Table R2 — Supplementary & Cross-System Checks</h4>
+<table class="results-table">
+    <thead>
+        <tr><th>Evidence strand</th><th>Independence</th><th>Key result</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>TDCOSMO + Encore shear (18 pairs)</td><td>Yes (different systems)</td><td>16/18 pairs: predicted shift exceeds $1\sigma$; structural consistency</td></tr>
+        <tr><td>SN Encore blind-prediction residual</td><td>Yes (different system)</td><td>Directional sign matches TEP; sub-day shift, swamped by scatter</td></tr>
+        <tr><td>SN H0pe blind-prediction residual</td><td>Yes (different system)</td><td>AB sign matches TEP; CB near zero; sub-day, swamped by scatter</td></tr>
+        <tr><td>Cross-system trio sign consistency</td><td>Yes (different systems)</td><td>3/3 systems: primary signs match TEP; $p = 0.125$ exact binomial</td></tr>
+    </tbody>
+</table>
+<p>
+Several additional consistency checks (delay–$\mu$ correlation, per-model $\alpha$ inference, $\chi^2$ comparison, directional-odds Bayes factor, proxy-agnostic rank test) are reported for transparency but are not statistically independent of the primary strands above; they are detailed in §4.7.
 </p>

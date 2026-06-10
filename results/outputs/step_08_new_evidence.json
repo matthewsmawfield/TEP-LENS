@@ -9,9 +9,9 @@
     "test_B_kendall_tau": 0.19999999999999998,
     "test_B_p_exact": 0.4083333333333333,
     "test_B_exact_match": false,
-    "test_C_alpha_wmean": -0.05725494903894681,
-    "test_C_z_vs_zero": -0.9555625156494191,
-    "test_C_p_vs_zero": 0.16964665349101754,
+    "test_C_alpha_wmean": -0.13658091981898432,
+    "test_C_z_vs_zero": -3.4680208029638346,
+    "test_C_p_vs_zero": 0.00026215334950881945,
     "test_D_R_tep_days": 1.2912814776975223,
     "test_D_snr": 3.4166670875328036,
     "test_D_p_onesided": 0.0003169637449590173
@@ -141,50 +141,50 @@
     "description": "Consistency of per-model inferred alpha with GR (0) and TEP (-0.055)",
     "per_model": [
       {
-        "name": "Oguri-a",
-        "alpha_inferred": -0.19672534752175508,
-        "sigma": 0.22421077964582165
+        "name": "Oguri-a*",
+        "alpha_inferred": -0.08398659067274923,
+        "sigma": 0.07493752416241548
       },
       {
-        "name": "Sharon",
-        "alpha_inferred": -0.11727857256104629,
-        "sigma": 0.22609397674057657
+        "name": "Oguri-g*",
+        "alpha_inferred": -0.17137804312952898,
+        "sigma": 0.07729939863947959
       },
       {
-        "name": "Diego",
-        "alpha_inferred": -0.0,
-        "sigma": 0.19034169576184826
+        "name": "Sharon-a*",
+        "alpha_inferred": -0.2950880212826326,
+        "sigma": 0.1434423924296741
       },
       {
-        "name": "Grillo",
+        "name": "Sharon-g*",
+        "alpha_inferred": -0.17024308920151882,
+        "sigma": 0.12476523058165469
+      },
+      {
+        "name": "Diego-a",
+        "alpha_inferred": -0.43128249264384766,
+        "sigma": 0.2091506560383657
+      },
+      {
+        "name": "Grillo-g",
         "alpha_inferred": -0.056747696400506274,
-        "sigma": 0.09139413776245187
+        "sigma": 0.08955514488762262
       },
       {
-        "name": "Kawamata",
-        "alpha_inferred": -0.02648225832023626,
-        "sigma": 0.1847032668673034
-      },
-      {
-        "name": "Jauzac",
-        "alpha_inferred": -0.06431405592057378,
-        "sigma": 0.1828242902968233
-      },
-      {
-        "name": "CATS",
-        "alpha_inferred": -0.007566359520067503,
-        "sigma": 0.17531109688879382
+        "name": "Jauzac15.2*",
+        "alpha_inferred": -0.056747696400506274,
+        "sigma": 0.16029971494142914
       }
     ],
-    "weighted_mean_alpha": -0.05725494903894681,
-    "sigma_alpha": 0.05991753349600075,
-    "z_vs_gr_null": -0.9555625156494191,
-    "p_vs_gr_null_onesided": 0.16964665349101754,
-    "z_vs_tep_alpha_proxy": -0.03763421001128691,
-    "p_vs_tep_twosided": 0.969979331588912,
-    "scatter_chi2": 0.6575202564177397,
+    "weighted_mean_alpha": -0.13658091981898432,
+    "sigma_alpha": 0.03938295863227226,
+    "z_vs_gr_null": -3.4680208029638346,
+    "p_vs_gr_null_onesided": 0.00026215334950881945,
+    "z_vs_tep_alpha_proxy": -2.071477681012342,
+    "p_vs_tep_twosided": 0.03831417808650933,
+    "scatter_chi2": 5.017186881246744,
     "scatter_chi2_dof": 6,
-    "scatter_p": 0.995362345846555
+    "scatter_p": 0.5416106659954989
   },
   "test_D_snh0pe_closure": {
     "description": "TEP closure SENSITIVITY for SN H0pe A-B-C loop (predicted, not observed)",
@@ -215,8 +215,8 @@
     "description": "Summary of OBSERVED (not predicted) evidence strands",
     "caveat": "Tests are derived from same SN Refsdal dataset -- not independent. Combining p-values via Fisher/Stouffer is invalid (double-dipping). Independence-primary significance is driven by the Wilcoxon blind test.",
     "included_tests": {
-      "Wilcoxon signed-rank (blind 6 nonzero positive)": 0.015625,
-      "alpha_inferred vs zero (7 blind models)": 0.16964665349101754
+      "Wilcoxon signed-rank (blind nonzero positive)": 0.0078125,
+      "alpha_inferred vs zero (blind models)": 0.00026215334950881945
     },
     "excluded_tests": {
       "delay_mu_pearson": {
@@ -233,14 +233,14 @@
       }
     },
     "all_p_values": {
-      "binomial_sign_test_all8": 0.03515625,
-      "binomial_sign_test_blind7": 0.0625,
+      "binomial_sign_test_all8": 0.00390625,
+      "binomial_sign_test_blind7": 0.0078125,
       "delay_mu_pearson": 0.01058290409089799,
       "arrival_order_kendall": 0.4083333333333333,
-      "alpha_inference_vs_zero": 0.16964665349101754,
+      "alpha_inference_vs_zero": 0.00026215334950881945,
       "snh0pe_closure_PREDICTED": 0.0003169637449590173
     },
-    "headline_z": 2.1538746940614564,
+    "headline_z": 2.417559016236505,
     "n_tests": 2,
     "h0pe_sensitivity_snr": 3.4166670875328036,
     "h0pe_sensitivity_note": "Future 4th-image delay for H0pe detectable at SNR=3.42"

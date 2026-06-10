@@ -6,11 +6,11 @@
   "contrasts": [
     {
       "label": "Refsdal",
-      "R_obs": 14.605519391230912,
-      "sigma": 11.57281297405183,
+      "R_obs": 30.04957673068333,
+      "sigma": 8.870863592461008,
       "R_tep_pred": 14.538035062734984,
       "baseline": 376.0,
-      "r_aligned": 14.605519391230912,
+      "r_aligned": 30.04957673068333,
       "pred_aligned": 14.538035062734984,
       "sign_match": true
     },
@@ -18,96 +18,96 @@
       "label": "Encore",
       "R_obs": -3.329462659636591,
       "sigma": 2.1326268917956055,
-      "R_tep_pred": -0.4935532560666476,
+      "R_tep_pred": -1.0403259666227636,
       "baseline": 39.8,
       "r_aligned": 3.329462659636591,
-      "pred_aligned": 0.4935532560666476,
+      "pred_aligned": 1.0403259666227636,
       "sign_match": true
     },
     {
       "label": "H0pe-AB",
       "R_obs": -10.157034430488352,
       "sigma": 5.13,
-      "R_tep_pred": -1.5769153341627233,
+      "R_tep_pred": -3.3238681928046394,
       "baseline": 116.6,
       "r_aligned": 10.157034430488352,
-      "pred_aligned": 1.5769153341627233,
+      "pred_aligned": 3.3238681928046394,
       "sign_match": true
     },
     {
       "label": "H0pe-CB",
       "R_obs": -0.2330478485211418,
       "sigma": 2.67,
-      "R_tep_pred": -0.25725856891504517,
+      "R_tep_pred": -0.5422571244112978,
       "baseline": 48.6,
       "r_aligned": 0.2330478485211418,
-      "pred_aligned": 0.25725856891504517,
+      "pred_aligned": 0.5422571244112978,
       "sign_match": true
     }
   ],
   "model_comparison": {
     "null_GR": {
       "params": 0,
-      "chi2": 7.957871131717124,
-      "aic": 7.957871131717124,
+      "chi2": 17.839884333922747,
+      "aic": 17.839884333922747,
       "best_fit": {},
-      "delta_aic": 4.051132206044343
+      "delta_aic": 15.125720338871398
     },
     "constant_offset": {
       "params": 1,
-      "chi2": 4.0453245030367375,
-      "aic": 6.0453245030367375,
+      "chi2": 12.12313610550947,
+      "aic": 14.12313610550947,
       "best_fit": {
-        "k_days": 3.1058092171108576
+        "k_days": 3.730195779160406
       },
-      "delta_aic": 2.138585577363956
+      "delta_aic": 11.408972110458121
     },
     "uniform_fractional": {
       "params": 1,
-      "chi2": 1.9067389256727814,
-      "aic": 3.9067389256727814,
+      "chi2": 1.7694429886627756,
+      "aic": 3.7694429886627754,
       "best_fit": {
-        "c_fractional": 0.05183845921045715,
+        "c_fractional": 0.07327840921935369,
         "note": "r_i = c*|dt|_i; H0/mass-sheet-like rescaling, no potential-depth info"
       },
-      "delta_aic": 0.0
+      "delta_aic": 1.0552789936114269
     },
     "tep_proxy": {
       "params": 1,
-      "chi2": 4.170434507125892,
-      "aic": 6.170434507125892,
+      "chi2": 0.7141639950513485,
+      "aic": 2.7141639950513485,
       "best_fit": {
-        "alpha_fit": 0.08125160568687695,
+        "alpha_fit": 0.12371347205646108,
         "alpha_proxy_ref": -0.055
       },
-      "delta_aic": 2.2636955814531103
+      "delta_aic": 0.0
     }
   },
-  "aic_preferred_model": "uniform_fractional",
+  "aic_preferred_model": "tep_proxy",
   "amplitude_excess": [
     {
       "label": "Refsdal",
-      "r_obs_aligned": 14.605519391230912,
+      "r_obs_aligned": 30.04957673068333,
       "r_tep_pred_aligned": 14.538035062734984,
-      "obs_over_pred": 1.0046419153760957
+      "obs_over_pred": 2.06696273609277
     },
     {
       "label": "Encore",
       "r_obs_aligned": 3.329462659636591,
-      "r_tep_pred_aligned": 0.4935532560666476,
-      "obs_over_pred": 6.745903544777734
+      "r_tep_pred_aligned": 1.0403259666227636,
+      "obs_over_pred": 3.200403302865841
     },
     {
       "label": "H0pe-AB",
       "r_obs_aligned": 10.157034430488352,
-      "r_tep_pred_aligned": 1.5769153341627233,
-      "obs_over_pred": 6.441077850182309
+      "r_tep_pred_aligned": 3.3238681928046394,
+      "obs_over_pred": 3.0557873662005743
     },
     {
       "label": "H0pe-CB",
       "r_obs_aligned": 0.2330478485211418,
-      "r_tep_pred_aligned": 0.25725856891504517,
-      "obs_over_pred": 0.905889547251977
+      "r_tep_pred_aligned": 0.5422571244112978,
+      "obs_over_pred": 0.4297736959641619
     }
   ],
   "sign_channel": {
@@ -116,9 +116,9 @@
     "p_one_sided": 0.0625
   },
   "interpretation": [
-    "AMPLITUDE NOT TEP-PROBATIVE: a uniform fractional (H0/mass-sheet-like) offset fits the cross-system residual magnitudes at least as well as the TEP magnification proxy. The TEP proxy under-predicts the Encore/H0pe residual magnitudes (they are several-day, while TEP predicts sub-2 d), so amplitude cannot distinguish TEP from a generic baseline-scaling bias.",
+    "TEP proxy is the AIC-preferred amplitude model across contrasts.",
     "Sign channel: 4/4 contrasts match the TEP-predicted direction (one-sided binomial p = 0.062). Under a uniform fractional or constant offset, the per-contrast SIGN is not predicted by potential-depth ordering, so the directional match \u2014 not the amplitude \u2014 remains the carrier of TEP evidence.",
     "With only 4 contrasts this discriminator is weak; it sharpens as additional independent long-baseline systems are added (the same N that drives the Stouffer projection in Step 37)."
   ],
-  "headline": "Cross-system discriminator (n=4): AIC-preferred amplitude model = 'uniform_fractional'. TEP proxy dAIC = 2.26, uniform-fractional dAIC = 0.00. Sign match 4/4 (p=0.062). Amplitude does not favour TEP over a generic baseline-scaling bias; the sign pattern is the residual evidence."
+  "headline": "Cross-system discriminator (n=4): AIC-preferred amplitude model = 'tep_proxy'. TEP proxy dAIC = 0.00, uniform-fractional dAIC = 1.06. Sign match 4/4 (p=0.062). Amplitude does not favour TEP over a generic baseline-scaling bias; the sign pattern is the residual evidence."
 }

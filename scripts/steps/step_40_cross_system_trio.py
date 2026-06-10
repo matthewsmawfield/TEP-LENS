@@ -5,11 +5,11 @@ TEP-LENS: Step 40 - Cross-System Trio Evidence Synthesis
 Purpose: Combine blind-prediction residual evidence from all three independent
 multiply-imaged supernova systems with published blind lens-model predictions:
 
-  1. SN Refsdal (Kelly+2023): 7 blind models, loop-closure TEP test.
+  1. SN Refsdal (Kelly+2023): 6 blind + 2 post-blind models, loop-closure TEP test.
      Predicted residual: +14.5 d (high SNR).
-  2. SN Encore (Pierel+2026): 8 blind models, single delay pair (1b,1a).
+  2. SN Encore (Pierel+2026): 8 models, single delay pair (1b,1a).
      Predicted residual: ~-0.5 d (very low SNR; magnification contrast is modest).
-  3. SN H0pe (Pierel+2024): 7 blind models, two delay pairs (AB, CB).
+  3. SN H0pe (Pierel+2024): 7 models, two delay pairs (AB, CB).
      Predicted residuals: ~-1.6 d (AB), ~-0.3 d (CB) (low SNR).
 
 Combination method: Stouffer's z-method for independent directional tests.
@@ -322,6 +322,13 @@ def main():
     print_status(
         f"  Combined z = {stouffer['z_total']:+.3f}, p = {stouffer['p_total']:.4f}"
     )
+    print_status(
+        f"  WARNING: These z-scores come from different test types (exact family-"
+        f"sign-flip for Refsdal, binomial sign tests for Encore/H0pe) with different "
+        f"statistical power. Stouffer assumes equivalent tests; mixing test types is "
+        f"methodologically questionable. Interpret as a sensitivity exploration, not "
+        f"a formal combined significance."
+    )
 
     # ------------------------------------------------------------------
     # Precision-weighted mean residual across systems
@@ -375,6 +382,12 @@ def main():
             "z_approx_caveat": "Normal approximation is INVALID for n=3. Exact p=0.125; z=1.73 implies p≈0.042. Do NOT quote z_sign as a formal metric.",
         },
         "stouffer_combination": stouffer,
+        "stouffer_caveat": (
+            "Stouffer combines z-scores from different test types "
+            "(exact family-sign-flip for Refsdal, binomial sign tests for Encore/H0pe) "
+            "which have different power properties. This is a sensitivity exploration, "
+            "not a formal combined significance."
+        ),
         "precision_weighted_mean": {
             "R_combined_days": R_combined,
             "sigma_R_combined_days": sigma_R_combined,

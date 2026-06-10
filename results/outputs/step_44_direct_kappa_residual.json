@@ -3,7 +3,7 @@
   "status": "success",
   "description": "Loop residual under flux-ratio proxy vs parity-signed model magnification vs model convergence, using GLAFIC v3 values (Kelly+2023). Tests whether the headline sign survives the mu->kappa substitution the referee requires.",
   "alpha_proxy_ref": -0.055,
-  "observed_blind_residual_days": 14.605519391230912,
+  "observed_blind_residual_days": 30.04957673068333,
   "glafic_v3_kappa": {
     "S1": 0.722,
     "S2": 0.733,
@@ -54,10 +54,24 @@
         "SX": 1.2634057023280147
       },
       "predicted_sign_matches_observed": false
+    },
+    "model_inv_kappa": {
+      "R_closure_days": -2.5561417463451512,
+      "R_predicted_obs_minus_model_days": 2.5561417463451512,
+      "dGamma_S4_minus_SX": -0.0067893493556051565,
+      "q_norm": {
+        "S1": 1.042718674762079,
+        "S2": 1.0270707819621023,
+        "S3": 1.1153227898936606,
+        "S4": 1.035547294605531,
+        "SX": 0.7793404587766263
+      },
+      "predicted_sign_matches_observed": true
     }
   },
   "sign_flip_flux_vs_kappa": true,
-  "verdict": "CRITICAL: under the physically-motivated model CONVERGENCE, the proxy-model predicted residual is -2.6 d \u2014 OPPOSITE in sign to the flux-proxy prediction (+14.5 d) and to the observed blind residual (+14.6 d). The GLAFIC v3 maps place SX at the HIGHEST convergence (kappa=0.966), not the lowest, inverting the assumption that SX samples the shallowest potential. The headline sign agreement therefore depends on using flux magnification as the tracer; it does not survive substitution of the actual model convergence. The blind-residual FACT (models under-predict SX) is unchanged, but TEP's claim to PREDICT its sign via a convergence/potential coupling is not supported by these convergence values.",
+  "sign_flip_flux_vs_inv_kappa": false,
+  "verdict": "Inv-kappa residual (+2.6 d) shares the sign of the flux-proxy prediction (+14.5 d) and the observation (+30.0 d); the sign evidence survives substitution of the 1/kappa potential proxy (amplitude differs).",
   "provenance": {
     "primary_reference": "Kelly et al. 2023, ApJ 948, 93 (arXiv:2305.06377), lensing-parameters table (GLAFIC v3)",
     "model_maps": "https://archive.stsci.edu/pub/hlsp/frontier/macs1149/models/glafic/v3/",
@@ -65,7 +79,7 @@
     "verification_status": "web-extracted; pending direct confirmation against archived maps"
   },
   "caveats": [
-    "kappa (projected density, ~Laplacian of potential) is not identical to the potential depth |Phi| TEP couples to; the lensing potential psi would be the cleaner tracer but is not tabulated. kappa is, however, the tracer the paper itself names as physically preferred over flux magnification.",
+    "1/kappa is a proxy for potential depth under the isothermal assumption (beta_A=-1); the true TEP coupling variable is |Phi|, i.e. the lensing potential psi, which would be the cleanest tracer but is not tabulated in Kelly+2023.",
     "Total kappa includes the cluster-member-galaxy contribution at S1-S4; a cluster-only potential decomposition could shift the comparison and should be checked.",
     "GLAFIC v3 values are web-transcribed (see provenance); confirm against archived maps before publication."
   ]

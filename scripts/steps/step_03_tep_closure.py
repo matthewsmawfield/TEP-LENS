@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TEP-LENS: Step 03 - Proxy-Model Predicted GR Discrepancy (SN Refsdal)
+TEP-LENS: Step 03 - Proxy-Model GR Discrepancy / Sensitivity (SN Refsdal)
 
 Under the log-magnification phenomenological proxy model, the effective transit
 time of light scales with local magnification Gamma_t:
@@ -82,7 +82,7 @@ def main():
     mu_ref = np.mean(list(mu_rel.values()))  # normalise to mean flux
     mu_norm = {img: mu_rel[img] / mu_ref for img in mu_rel}
 
-    alpha_tep = ALPHA_PROXY  # Empirical lensing-sector proxy coupling from SN Refsdal data
+    alpha_tep = ALPHA_PROXY  # Nominal illustrative coupling; not a pre-observation forecast
 
     # Gamma_t(i) = 1 + alpha * log10(mu_norm_i)
     Gamma = {img: 1.0 + alpha_tep * np.log10(mu_norm[img]) for img in mu_norm}
@@ -124,6 +124,9 @@ def main():
         # dd/d(dt_j) = (G_i-1) - (G_j-1) = G_i - G_j
         # dd/d(dt_k) = (G_j-1) - (G_k-1) = G_j - G_k
         # This avoids double-counting shared delay uncertainties in the loop edges.
+        # CAVEAT: If delays are pairwise differences from a common reference (S1),
+        # uncertainties may be correlated. Here we treat them as independent,
+        # which is conservative when Gamma differences are small.
         dd_ddt_j = Gamma[i] - Gamma[j]
         dd_ddt_k = Gamma[j] - Gamma[k]
         d_err = propagate_error(

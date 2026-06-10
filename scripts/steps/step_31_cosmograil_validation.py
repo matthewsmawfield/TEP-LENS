@@ -27,7 +27,9 @@ from scipy import stats
 from scipy.optimize import curve_fit
 import sys
 import warnings
-warnings.filterwarnings('ignore')
+# Scoped suppression: RuntimeWarnings from numerical edge cases only.
+# Do NOT use blanket warnings.filterwarnings('ignore').
+warnings.filterwarnings('ignore', category=RuntimeWarning)
 
 STEPS_DIR = Path(__file__).resolve().parent
 if str(STEPS_DIR) not in sys.path:

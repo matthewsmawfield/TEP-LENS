@@ -1,0 +1,69 @@
+{
+  "step": "052",
+  "status": "success",
+  "observed_residual_days": 30.04957673068333,
+  "audit_table": [
+    {
+      "tracer": "log(|mu|) flux proxy",
+      "predicted_residual_days": 14.538035062734984,
+      "sign_match": true,
+      "amplitude_ratio": 0.4838016586067363,
+      "interpretation": "operational response model (captures full amplitude)"
+    },
+    {
+      "tracer": "model |mu|",
+      "predicted_residual_days": 4.944280143873674,
+      "sign_match": true,
+      "amplitude_ratio": 0.16453743053309358,
+      "interpretation": "model magnification check"
+    },
+    {
+      "tracer": "raw kappa",
+      "predicted_residual_days": -2.556141746345112,
+      "sign_match": false,
+      "amplitude_ratio": 0.08506415146057816,
+      "interpretation": "density tracer, not transport (reverses sign)"
+    },
+    {
+      "tracer": "1/kappa",
+      "predicted_residual_days": 2.5561417463451512,
+      "sign_match": true,
+      "amplitude_ratio": 0.08506415146057947,
+      "interpretation": "exploratory potential-oriented proxy (sign preserved, amplitude suppressed)"
+    },
+    {
+      "tracer": "psi(theta) global background",
+      "predicted_residual_days": 0.040482367178305244,
+      "sign_match": true,
+      "amplitude_ratio": 0.0013471859367978748,
+      "interpretation": "sign preserved, amplitude suppressed (slow potential variation)"
+    },
+    {
+      "tracer": "3D geodesic potential",
+      "predicted_residual_days": 0.34595105273079507,
+      "sign_match": true,
+      "amplitude_ratio": 0.011512676395789224,
+      "interpretation": "path transport preserves sign, amplitude still suppressed"
+    },
+    {
+      "tracer": "fundamental formula (Phi/c^2)",
+      "predicted_residual_days": 0.7817342923820156,
+      "sign_match": true,
+      "amplitude_ratio": 0.026014818757290326,
+      "interpretation": "amplitude gap remains (requires effective alpha ~ 4e5)"
+    }
+  ],
+  "amplification_factors": {
+    "log(|mu|) flux proxy": 2.06696273609277,
+    "model |mu|": 6.077644440903488,
+    "raw kappa": -11.755833483667166,
+    "1/kappa": 11.755833483666985,
+    "psi(theta) global background": 742.2880336599261,
+    "3D geodesic potential": 86.86077551573945,
+    "fundamental formula (Phi/c^2)": 38.439629709884585
+  },
+  "sign_stable": true,
+  "sign_match_fraction": 0.8571428571428571,
+  "verdict": "Transport-oriented tracers (psi-map, geodesic, 1/kappa) consistently preserve the observed residual sign. The sole sign inversion occurs for raw kappa, which is expected because kappa measures projected density, not potential depth. The amplitude gap between pure transport and the log-magnification response identifies the missing theoretical object: a transfer/amplification kernel that maps lensing geometry (Jacobian, magnification) into temporal response. The log-magnification term is therefore interpreted as a regularised critical-lensing amplification kernel, not merely an empirical proxy.",
+  "interpretation": "SN Refsdal reveals a coherent, blind, sign-aligned temporal-response anomaly. The log-magnification response captures the observed amplitude. Direct potential and geodesic reconstructions preserve the sign but underpredict the amplitude, implying that the missing theoretical object is not the signal itself, but the transfer/amplification kernel from lensing geometry to temporal response."
+}

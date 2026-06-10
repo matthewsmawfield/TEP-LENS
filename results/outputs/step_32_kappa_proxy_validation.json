@@ -5,54 +5,54 @@
     "n_draws": 20000,
     "kappa_summary_per_image": {
       "S1": {
-        "median": 0.09323842575643015,
-        "mean": 0.12387829238864467,
-        "std": 0.12417271795789726,
+        "median": 0.09544007834459389,
+        "mean": 0.12462345710204074,
+        "std": 0.12416619589416697,
         "p2": 5.000001249699793e-07,
         "p16": 5.000001249699793e-07,
-        "p50": 0.09323842575643015,
-        "p84": 0.26682242596609346,
-        "p98": 0.3962141267344273
+        "p50": 0.09544007834459389,
+        "p84": 0.26704210729039707,
+        "p98": 0.39481700071775155
       },
       "S2": {
-        "median": 0.028986516115255767,
-        "mean": 0.08593299779907144,
-        "std": 0.10325438392140787,
+        "median": 0.03171631778954842,
+        "mean": 0.08663035237727096,
+        "std": 0.10303053116076241,
         "p2": 5.000001249699793e-07,
         "p16": 5.000001249699793e-07,
-        "p50": 0.028986516115255767,
-        "p84": 0.20569294369165886,
-        "p98": 0.332905437587288
+        "p50": 0.03171631778954842,
+        "p84": 0.2056459474545943,
+        "p98": 0.3317804186903668
       },
       "S3": {
         "median": 0.01,
-        "mean": 0.05854195833597585,
-        "std": 0.08296842552829753,
+        "mean": 0.05875526874338086,
+        "std": 0.08291642434568579,
         "p2": 5.000001249699793e-07,
         "p16": 5.000001249699793e-07,
         "p50": 0.01,
-        "p84": 0.15069464976991434,
-        "p98": 0.27883287557592157
+        "p84": 0.15134327408727152,
+        "p98": 0.2785818034330973
       },
       "S4": {
-        "median": 0.1810690971975985,
-        "mean": 0.18791986166477137,
-        "std": 0.14677423528556338,
+        "median": 0.18186525126505015,
+        "mean": 0.18823168516069458,
+        "std": 0.1451685340095092,
         "p2": 5.000001249699793e-07,
-        "p16": 0.0014742106243842996,
-        "p50": 0.1810690971975985,
-        "p84": 0.3480013189788227,
-        "p98": 0.4844028656567891
+        "p16": 0.0031952319643321673,
+        "p50": 0.18186525126505015,
+        "p84": 0.34738445101935234,
+        "p98": 0.48093010027412003
       },
       "SX": {
         "median": 0.01,
-        "mean": 0.02577573274139702,
-        "std": 0.03388546411225645,
+        "mean": 0.025946982886959274,
+        "std": 0.0341715840155859,
         "p2": 5.000001249699793e-07,
         "p16": 0.01,
         "p50": 0.01,
-        "p84": 0.05722397534877934,
-        "p98": 0.12624665776365293
+        "p84": 0.05891739110319573,
+        "p98": 0.1265570429971358
       }
     },
     "mu_proxy_per_image": {
@@ -70,38 +70,38 @@
       "SX": 0.35400938583962455
     },
     "closure_residual_kappa": {
-      "median": -17.627804973108553,
-      "mean": -6.113975410711406,
-      "std": 44.92157691249189,
-      "p2": -115.7938010389135,
-      "p16": -29.49564386641119,
-      "p50": -17.627804973108553,
-      "p84": 22.69993519234109,
+      "median": -17.657610027160867,
+      "mean": -6.689020967547526,
+      "std": 44.995268979607474,
+      "p2": -116.49728183641558,
+      "p16": -29.707700895422526,
+      "p50": -17.657610027160867,
+      "p84": 16.056049805536535,
       "p98": 88.94529806556821
     },
     "closure_residual_mu_nominal": -14.538035062734984,
     "alpha_equiv_to_match_obs": {
-      "median": -0.03196405528641873,
-      "mean": -0.03993225879521538,
-      "std": 0.6631653180233222,
-      "p2": -0.20567364036248753,
-      "p16": -0.06778889832219714,
-      "p50": -0.03196405528641873,
+      "median": -0.03204598365584023,
+      "mean": -0.035894693153948054,
+      "std": 1.1642599162213476,
+      "p2": -0.21412090401182804,
+      "p16": -0.06751658606576921,
+      "p50": -0.03204598365584023,
       "p84": 0.00898970429961329,
-      "p98": 0.06485214983493268
+      "p98": 0.06826405074069307
     },
     "C_prior_summary": {
-      "median": 2.243547509351057,
-      "mean": 2.242968738169181,
-      "std": 1.0085010777212713,
-      "p2": 0.5858984564173526,
-      "p16": 1.0641817316884297,
-      "p50": 2.243547509351057,
-      "p84": 3.4320410454108035,
-      "p98": 3.916985471520184
+      "median": 2.2615905386714283,
+      "mean": 2.2551543467860755,
+      "std": 1.0110233197205107,
+      "p2": 0.5868690120944658,
+      "p16": 1.0589672963895596,
+      "p50": 2.2615905386714283,
+      "p84": 3.440206662387292,
+      "p98": 3.913571893246663
     },
-    "P_rank_agreement_mu_vs_kappa": 0.03415,
-    "P_contrast_sign_agreement_S4_SX": 0.79745,
+    "P_rank_agreement_mu_vs_kappa": 0.0371,
+    "P_contrast_sign_agreement_S4_SX": 0.79995,
     "gamma_priors": {
       "S1": {
         "mean": 0.6,
@@ -277,23 +277,22 @@
       "note": "Elliptical SIE with external shear. The ratio exceeds the spherical power-law value because external shear increases total shear at fixed kappa, amplifying the magnification-convergence discrepancy."
     }
   },
-  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_32_kappa_mu_comparison.png",
   "proxy_systematic_budget": {
     "measurement_uncertainty_days": 5.6,
-    "measurement_fraction": 0.17229152914467474,
-    "lens_model_uncertainty_days": 18.418417283743338,
-    "lens_model_fraction": 0.5666673711144369,
-    "proxy_systematic_days": 26.09778952937614,
-    "proxy_systematic_fraction": 0.8029335830914459,
+    "measurement_fraction": 0.06959914432057884,
+    "lens_model_uncertainty_days": 76.90408373576851,
+    "lens_model_fraction": 0.9557961469227916,
+    "proxy_systematic_days": 22.881875350479532,
+    "proxy_systematic_fraction": 0.2843855258649144,
     "microlensing_uncertainty_days": 2.1807052594102476,
-    "microlensing_fraction": 0.06709232924243325,
-    "sign_robustness_probability": 0.79745,
-    "amplitude_uncertainty_fraction": 1.201014732546046,
-    "total_uncertainty_days": 32.50304891831118,
-    "interpretation": "The evidence is suggestive rather than decisive because the proxy-systematic contribution to the total uncertainty budget is 80%, comparable to the lens-model contribution (57%)."
+    "microlensing_fraction": 0.027102717869703422,
+    "sign_robustness_probability": 0.79995,
+    "amplitude_uncertainty_fraction": 1.1936954594220983,
+    "total_uncertainty_days": 80.46075931919482,
+    "interpretation": "The evidence is suggestive rather than decisive because the proxy-systematic contribution to the total uncertainty budget is 28%, comparable to the lens-model contribution (96%)."
   },
   "key_findings": {
-    "sn_refsdal": "SN Refsdal: The flux-proxy mu and inferred kappa give different S1-S4-SX closure residuals: mu-proxy = -14.54 d, kappa-inferred = -17.63 [-29.50, 22.70] d. Equivalent alpha shifts to -0.0320 [-0.0678, 0.0090]. Crucially, the S4-SX contrast sign is stable: P(same sign) = 79.7%.",
+    "sn_refsdal": "SN Refsdal: The flux-proxy mu and inferred kappa give different S1-S4-SX closure residuals: mu-proxy = -14.54 d, kappa-inferred = -17.66 [-29.71, 16.06] d. Equivalent alpha shifts to -0.0320 [-0.0675, 0.0090]. Crucially, the S4-SX contrast sign is stable: P(same sign) = 80.0%.",
     "tdcosmo": "TDCOSMO spherical power-law ratios reach up to 3.1, but elliptical lenses with external shear amplify this to 3.2. The spherical comparison is a lower bound on the proxy discrepancy; real lenses exhibit larger misestimation."
   }
 }

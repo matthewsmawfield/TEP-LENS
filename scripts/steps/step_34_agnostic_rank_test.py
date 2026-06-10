@@ -42,7 +42,7 @@ def safe_json_default(obj):
     raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
 
-def permutation_pvalue(delays, tracer, n_perm=20000, seed=42):
+def permutation_pvalue(delays, tracer, n_perm=20000, seed=20260607):
     """
     One-sided permutation test for Spearman correlation.
     H0: delays and tracer are independent.

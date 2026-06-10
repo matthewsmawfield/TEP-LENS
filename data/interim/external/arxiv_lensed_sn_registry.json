@@ -1,6 +1,257 @@
 {
   "query": "http://export.arxiv.org/api/query?search_query=cat:astro-ph.HE+OR+cat:astro-ph.CO+OR+cat:astro-ph.GA&submittedDate:[20240101+TO+20261231]&title:%22lensed+supernova%22+OR+title:%22SN+Refsdal%22+OR+title:%22SN+H0pe%22+OR+title:%22SN+Encore%22+OR+title:%22strong+lensing+time+delay%22&max_results=50&sortBy=submittedDate&sortOrder=descending",
-  "n_entries": 0,
-  "entries": [],
+  "n_entries": 50,
+  "entries": [
+    {
+      "title": "Time lags as proxy of spectral evolution in gamma-ray bursts",
+      "id": "http://arxiv.org/abs/2606.10926v1",
+      "published": "2026-06-09T14:34:18Z"
+    },
+    {
+      "title": "Isochrones in primordial magnetic field evolution",
+      "id": "http://arxiv.org/abs/2606.10863v1",
+      "published": "2026-06-09T13:40:20Z"
+    },
+    {
+      "title": "Formation of Parallel Stellar Streams through Encounters with Dark Matter Subhalos and Intermediate-Mass Black Holes",
+      "id": "http://arxiv.org/abs/2606.10859v1",
+      "published": "2026-06-09T13:37:46Z"
+    },
+    {
+      "title": "Pulsar Wind Nebulae (PWNe) -- A Review",
+      "id": "http://arxiv.org/abs/2606.10855v1",
+      "published": "2026-06-09T13:33:42Z"
+    },
+    {
+      "title": "Fermi-LAT Gamma-ray Emission Discovered from the Composite Supernova Remnant B0453-685 in the Large Magellanic Cloud",
+      "id": "http://arxiv.org/abs/2606.10840v1",
+      "published": "2026-06-09T13:26:48Z"
+    },
+    {
+      "title": "A Multiwavelength Interpretation of HESS J1857+026 Emission Using the Fermi-LAT, VERITAS, and HAWC Observatories",
+      "id": "http://arxiv.org/abs/2606.10828v1",
+      "published": "2026-06-09T13:17:06Z"
+    },
+    {
+      "title": "AGN-driven BBH mergers: Black hole populations and hierarchical growth across the AGN parameter space",
+      "id": "http://arxiv.org/abs/2606.10823v1",
+      "published": "2026-06-09T13:04:12Z"
+    },
+    {
+      "title": "The Thousand-Pulsar-Array programme on MeerKAT XIX: Single-pulse data analysis, nulling and pulse energy distributions",
+      "id": "http://arxiv.org/abs/2606.10807v1",
+      "published": "2026-06-09T12:52:50Z"
+    },
+    {
+      "title": "Potential detection of ~ 4.2 keV emission line from GRS 1747-312",
+      "id": "http://arxiv.org/abs/2606.10739v1",
+      "published": "2026-06-09T11:50:25Z"
+    },
+    {
+      "title": "DIffuse X-ray Explorer (DIXE): Sky Survey Strategy and Collimator Response Demodulation",
+      "id": "http://arxiv.org/abs/2606.10712v1",
+      "published": "2026-06-09T11:16:20Z"
+    },
+    {
+      "title": "Hubble as a Unique Discovery Engine of the Fate of Massive Stars and Black Hole Formation",
+      "id": "http://arxiv.org/abs/2606.10710v1",
+      "published": "2026-06-09T11:13:44Z"
+    },
+    {
+      "title": "Balancing bias, baryons, and scale cuts in LSST 3x2pt analysis",
+      "id": "http://arxiv.org/abs/2606.10679v1",
+      "published": "2026-06-09T10:32:19Z"
+    },
+    {
+      "title": "Full one-fluid dusty gas with multiple grain species in SPH",
+      "id": "http://arxiv.org/abs/2606.10676v1",
+      "published": "2026-06-09T10:30:19Z"
+    },
+    {
+      "title": "Optical-morphology-based assessment of astrometric quality in Gaia-CRF3 quasars",
+      "id": "http://arxiv.org/abs/2606.10655v1",
+      "published": "2026-06-09T10:02:52Z"
+    },
+    {
+      "title": "Star-formation variability on the star-forming main sequence during the Epoch of Reionization",
+      "id": "http://arxiv.org/abs/2606.10648v1",
+      "published": "2026-06-09T09:57:42Z"
+    },
+    {
+      "title": "Rogue Ones: Orbital census of Galactic Cepheids and their Anomalies",
+      "id": "http://arxiv.org/abs/2606.10623v1",
+      "published": "2026-06-09T09:22:10Z"
+    },
+    {
+      "title": "Synergy between the gravitational potential decay rate and other structure growth probes in testing gravity",
+      "id": "http://arxiv.org/abs/2606.10597v1",
+      "published": "2026-06-09T09:01:21Z"
+    },
+    {
+      "title": "Discovery of EP J175257.3-351923 as a Candidate Black Hole Low-Mass X-ray Binary",
+      "id": "http://arxiv.org/abs/2606.10566v1",
+      "published": "2026-06-09T08:29:21Z"
+    },
+    {
+      "title": "Hector Galaxy Survey: Linking the low- and high-mass ends of the initial mass function in star-forming galaxies",
+      "id": "http://arxiv.org/abs/2606.10558v1",
+      "published": "2026-06-09T08:25:18Z"
+    },
+    {
+      "title": "Molecular Gas Structure and Star Formation Diversity in Stephan's Quintet Revealed by ACA CO(1-0) Mapping",
+      "id": "http://arxiv.org/abs/2606.10557v1",
+      "published": "2026-06-09T08:25:07Z"
+    },
+    {
+      "title": "Updating the PATH framework with FRB host galaxy models",
+      "id": "http://arxiv.org/abs/2606.10538v1",
+      "published": "2026-06-09T08:07:25Z"
+    },
+    {
+      "title": "Circular polarization effects induced by photon-axion mixing in astrophysical environments",
+      "id": "http://arxiv.org/abs/2606.10527v1",
+      "published": "2026-06-09T07:56:02Z"
+    },
+    {
+      "title": "Gamma-Ray Emission from the Crab Pulsar: A 17-Year Fermi-LAT Reanalysis",
+      "id": "http://arxiv.org/abs/2606.10519v1",
+      "published": "2026-06-09T07:50:29Z"
+    },
+    {
+      "title": "Phase-drifting with emitting plasma temperature in the quasi-periodic pulsations of an X-class solar flare",
+      "id": "http://arxiv.org/abs/2606.10506v1",
+      "published": "2026-06-09T07:33:23Z"
+    },
+    {
+      "title": "Natural Inflation with a negative cosmological constant",
+      "id": "http://arxiv.org/abs/2606.10485v1",
+      "published": "2026-06-09T06:56:29Z"
+    },
+    {
+      "title": "The dynamics of the Anglerfish cluster",
+      "id": "http://arxiv.org/abs/2606.10483v1",
+      "published": "2026-06-09T06:54:35Z"
+    },
+    {
+      "title": "The Extreme Quasar Main Sequence of Super-Eddington DESI-DR1 NLSy1 Galaxies",
+      "id": "http://arxiv.org/abs/2606.10455v1",
+      "published": "2026-06-09T06:02:42Z"
+    },
+    {
+      "title": "Narrow-Line Seyfert 1 Galaxies in the Dark Energy Spectroscopic Instrument Data Release 1",
+      "id": "http://arxiv.org/abs/2606.10447v1",
+      "published": "2026-06-09T05:52:41Z"
+    },
+    {
+      "title": "Constraints on axion-like particles from ultra-high-energy observations of M87 with the HAWC observatory",
+      "id": "http://arxiv.org/abs/2606.10292v1",
+      "published": "2026-06-09T01:29:30Z"
+    },
+    {
+      "title": "Multiphase images of a powerful supernova-driven wind in the early Universe",
+      "id": "http://arxiv.org/abs/2606.10271v1",
+      "published": "2026-06-09T00:36:56Z"
+    },
+    {
+      "title": "Milky Way's warped disc traced by AGB stars",
+      "id": "http://arxiv.org/abs/2606.10235v1",
+      "published": "2026-06-08T22:47:33Z"
+    },
+    {
+      "title": "Integral Field Unit Spectroscopy with One Fiber",
+      "id": "http://arxiv.org/abs/2606.10197v1",
+      "published": "2026-06-08T21:35:52Z"
+    },
+    {
+      "title": "Radio precursors of monster shocks: a mechanism for fast radio bursts from SGR 1935+2154",
+      "id": "http://arxiv.org/abs/2606.10189v1",
+      "published": "2026-06-08T21:28:28Z"
+    },
+    {
+      "title": "Aether-SHELLQs: JWST integral-field spectroscopy of candidate obscured quasars at z ~ 6",
+      "id": "http://arxiv.org/abs/2606.10160v1",
+      "published": "2026-06-08T20:39:21Z"
+    },
+    {
+      "title": "Internal constitution of the outer crust of non-accreted neutron stars and magnetars",
+      "id": "http://arxiv.org/abs/2606.10118v1",
+      "published": "2026-06-08T19:50:31Z"
+    },
+    {
+      "title": "The emergence of the faint nature of Low Surface Brightness Galaxies in the IllustrisTNG simulation",
+      "id": "http://arxiv.org/abs/2606.10117v1",
+      "published": "2026-06-08T19:49:52Z"
+    },
+    {
+      "title": "The Importance of Galaxy-Wide Star Formation in Driving Winds at z~1",
+      "id": "http://arxiv.org/abs/2606.10116v1",
+      "published": "2026-06-08T19:49:24Z"
+    },
+    {
+      "title": "The Fifth RIT Catalog of Binary Black Hole Simulations: Multiple-Resolution Studies of Eccentric Orbits",
+      "id": "http://arxiv.org/abs/2606.10104v1",
+      "published": "2026-06-08T19:31:32Z"
+    },
+    {
+      "title": "Method to get Better Sky Maps in a GstLAL Low-Latency Analysis",
+      "id": "http://arxiv.org/abs/2606.10076v1",
+      "published": "2026-06-08T18:49:53Z"
+    },
+    {
+      "title": "Identical Bosons, large occupation numbers and classical field description",
+      "id": "http://arxiv.org/abs/2606.10055v1",
+      "published": "2026-06-08T18:32:14Z"
+    },
+    {
+      "title": "Learning the Universe with the 2nd Generation of CAMELS: Varying 35 parameters of the IllustrisTNG model in (50Mpc/h)^3 boxes",
+      "id": "http://arxiv.org/abs/2606.10038v1",
+      "published": "2026-06-08T18:12:32Z"
+    },
+    {
+      "title": "Learning the Universe at High Redshifts: Impact of Accretion Modeling on Early Black Hole Growth",
+      "id": "http://arxiv.org/abs/2606.10036v1",
+      "published": "2026-06-08T18:12:01Z"
+    },
+    {
+      "title": "Learning the Universe: Constrained simulations of the Coma galaxy cluster -- I. Radial X-ray and Compton-y signatures",
+      "id": "http://arxiv.org/abs/2606.10028v1",
+      "published": "2026-06-08T18:08:03Z"
+    },
+    {
+      "title": "Learning the Universe: The Structure of Dust Attenuation Curves in Galaxy Simulations",
+      "id": "http://arxiv.org/abs/2606.10027v1",
+      "published": "2026-06-08T18:08:03Z"
+    },
+    {
+      "title": "Pressure-regulated feedback-modulated star formation as a subgrid model for galaxy formation simulations",
+      "id": "http://arxiv.org/abs/2606.10026v1",
+      "published": "2026-06-08T18:08:02Z"
+    },
+    {
+      "title": "Learning the Universe with cosmological rescaling of merger trees and semi-analytic galaxy formation models",
+      "id": "http://arxiv.org/abs/2606.10024v1",
+      "published": "2026-06-08T18:08:01Z"
+    },
+    {
+      "title": "Learning the Universe: Posterior Reliability of Neural Generative Models in High-Dimensional Field-Level Inference of Cosmic Initial Conditions",
+      "id": "http://arxiv.org/abs/2606.10023v1",
+      "published": "2026-06-08T18:08:00Z"
+    },
+    {
+      "title": "Learning the Universe with PRFM-vol: Introducing a new subgrid model for star formation in cosmological simulations",
+      "id": "http://arxiv.org/abs/2606.10022v1",
+      "published": "2026-06-08T18:07:58Z"
+    },
+    {
+      "title": "The Manticore Project II: Bayesian digital twins of cosmic structure across the SDSS and BOSS volumes",
+      "id": "http://arxiv.org/abs/2606.10020v1",
+      "published": "2026-06-08T18:07:40Z"
+    },
+    {
+      "title": "Refined anti-proton and anti-deuteron fluxes from weak-scale Dark Matter",
+      "id": "http://arxiv.org/abs/2606.10017v1",
+      "published": "2026-06-08T18:05:14Z"
+    }
+  ],
   "note": "Latest arXiv preprints relevant to lensed supernova time delays. Manual review required to extract updated delay measurements."
 }

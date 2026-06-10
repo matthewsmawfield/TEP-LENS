@@ -460,6 +460,7 @@ def main():
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
+        from scripts.utils.plot_style import COLORS
 
         fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
@@ -467,7 +468,7 @@ def main():
         ax1 = axes[0]
         names = [r["system"] for r in system_results]
         agree_frac = [r["n_agree"] / r["n_pairs"] if r["n_pairs"] > 0 else 0 for r in system_results]
-        colors = ["C2" if f > 0.5 else "C3" for f in agree_frac]
+        colors = [COLORS['tep'] if f > 0.5 else COLORS['null'] for f in agree_frac]
         ax1.barh(range(len(names)), agree_frac, color=colors, alpha=0.7)
         ax1.axvline(0.5, color="black", linestyle="--", label="GR null (50%)")
         ax1.set_yticks(range(len(names)))

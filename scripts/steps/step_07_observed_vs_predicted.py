@@ -12,7 +12,7 @@ from SN light-curve fitting. This provides a genuine observed-vs-predicted compa
 using two completely independent datasets.
 
 The analysis:
-1. Compile all 7 blind pre-reappearance + 1 post-blind high-precision model predictions.
+1. Compile all blind pre-reappearance + post-blind high-precision model predictions.
 2. Compute per-model residual: Delta_i = Delta_t_obs - Delta_t_model_i
 3. Inverse-variance weighted mean residual R_obs and sigma_R_obs.
 4. Binomial sign test: P(>= n_positive | p=0.5, N) under the GR null.
@@ -23,8 +23,7 @@ The analysis:
 7. Inferred alpha from weighted mean residual.
 
 Data sources:
-- Treu et al. 2016, ApJ 817, 60 (arXiv:1510.05750), Table 2
-- Kelly et al. 2023, Science 380, abh1322, Supplementary Table S4
+- Kelly et al. 2023, Science 380, abh1322, Supplementary Table S4 (blind model predictions)
 - Kelly et al. 2023, ApJ 948, 93, Table 15 (observed delays)
 - Grillo et al. 2024, ApJ 971, 49 (post-blind precision model)
 """
@@ -113,80 +112,95 @@ def main():
 
     # ------------------------------------------------------------------
     # Blind model predictions (all published BEFORE SX reappeared Dec 2015)
-    # Source: Treu+2016 ApJ 817 60 Table 2, and Kelly+2023 Science Table S4.
+    # Source: Original modeling papers (per-model refs), with corrections from Kelly+2023 Science Table S4 where available.
     # Values are median (or central) predictions with 1-sigma uncertainties.
     # The Jauzac and Sharon models required post-publication corrections
     # (noted in Kelly+2023) -- the corrected values from Kelly+2023 S4 are used.
-    # Models marked blind=True were published fully blind to SX position/time.
+    # Models marked blind=True were published before SX reappeared.
+    # dt_pred_original = strictly blind (pre-reappearance published values).
+    # dt_pred          = delay-blind (revised using SX position but before measured delay).
     # ------------------------------------------------------------------
     models = [
+        # Source: Kelly et al. 2023, Science 380, abh1322, Supplementary Table S4.
+        # Seven pre-reappearance models used in the H0 analysis.
+        # Asterisk (*) denotes post-reappearance revisions by Kelly+2023.
+        # Oguri/Sharon asterisked values are computational corrections to the same
+        # pre-reappearance mass models and retain blind=True status.
+        # Jauzac15.2* was corrected using SX position data and is flagged blind=False.
         {
-            "name": "Oguri-a",
+            "name": "Oguri-a*",
             "team": "Oguri",
-            "ref": "Oguri 2015 (MNRAS 449, L86)",
-            "dt_pred": 324.0,
-            "err_plus": 66.0,
-            "err_minus": 52.0,
-            "method": "GLAFIC parametric",
+            "ref": "Oguri 2015 (MNRAS 449, L86); revised in Kelly+2023 S4",
+            "dt_pred": 353.8,
+            "dt_pred_original": 336.0,
+            "err_plus": 20.7,
+            "err_minus": 17.3,
+            "method": "GLAFIC parametric (all images)",
             "blind": True,
         },
         {
-            "name": "Sharon",
+            "name": "Oguri-g*",
+            "team": "Oguri",
+            "ref": "Oguri 2015 (MNRAS 449, L86); revised in Kelly+2023 S4",
+            "dt_pred": 330.7,
+            "dt_pred_original": 311.0,
+            "err_plus": 21.9,
+            "err_minus": 17.4,
+            "method": "GLAFIC parametric (gold images)",
+            "blind": True,
+        },
+        {
+            "name": "Sharon-a*",
             "team": "Sharon & Johnson",
-            "ref": "Sharon & Johnson 2015 (ApJ 800, L26)",
-            "dt_pred": 345.0,
-            "err_plus": 68.0,
-            "err_minus": 51.0,
-            "method": "LTM parametric",
+            "ref": "Sharon & Johnson 2015 (ApJ 800, L26); revised in Kelly+2023 S4",
+            "dt_pred": 298.0,
+            "dt_pred_original": 237.0,
+            "err_plus": 58.0,
+            "err_minus": 17.0,
+            "method": "LTM parametric (all images)",
             "blind": True,
         },
         {
-            "name": "Diego",
+            "name": "Sharon-g*",
+            "team": "Sharon & Johnson",
+            "ref": "Sharon & Johnson 2015 (ApJ 800, L26); revised in Kelly+2023 S4",
+            "dt_pred": 331.0,
+            "dt_pred_original": 237.0,
+            "err_plus": 30.0,
+            "err_minus": 35.0,
+            "method": "LTM parametric (gold images)",
+            "blind": True,
+        },
+        {
+            "name": "Diego-a",
             "team": "Diego et al.",
-            "ref": "Diego et al. 2016 (MNRAS 456, 356)",
-            "dt_pred": 376.0,
-            "err_plus": 40.0,
-            "err_minus": 60.0,
+            "ref": "Diego et al. 2016 (MNRAS 456, 356); Kelly+2023 S4",
+            "dt_pred": 262.0,
+            "dt_pred_original": 262.0,
+            "err_plus": 55.0,
+            "err_minus": 55.0,
             "method": "WSLAP+ free-form",
             "blind": True,
         },
         {
-            "name": "Grillo",
+            "name": "Grillo-g",
             "team": "Grillo et al.",
-            "ref": "Grillo et al. 2016 (ApJ 822, 78)",
+            "ref": "Grillo et al. 2016 (ApJ 822, 78); Kelly+2023 S4",
             "dt_pred": 361.0,
-            "err_plus": 20.0,
+            "dt_pred_original": 361.0,
+            "err_plus": 19.0,
             "err_minus": 27.0,
             "method": "GLEE parametric",
             "blind": True,
         },
         {
-            "name": "Kawamata",
-            "team": "Kawamata et al.",
-            "ref": "Kawamata et al. 2016 (ApJ 819, 114)",
-            "dt_pred": 369.0,
-            "err_plus": 53.0,
-            "err_minus": 44.0,
-            "method": "Parametric",
-            "blind": True,
-        },
-        {
-            "name": "Jauzac",
+            "name": "Jauzac15.2*",
             "team": "Jauzac et al.",
-            "ref": "Jauzac et al. 2016 (MNRAS 457, 2029) [corrected in Kelly+2023]",
-            "dt_pred": 359.0,
-            "err_plus": 40.0,
-            "err_minus": 56.0,
-            "method": "LENSTOOL parametric",
-            "blind": True,
-        },
-        {
-            "name": "CATS",
-            "team": "Treu et al. (CATS)",
-            "ref": "Treu et al. 2016 (ApJ 817, 60)",
-            "dt_pred": 374.0,
-            "err_plus": 51.0,
-            "err_minus": 41.0,
+            "ref": "Jauzac et al. 2016 (MNRAS 457, 2029); revised in Kelly+2023 S4 using SX position",
+            "dt_pred": 361.0,
+            "dt_pred_original": 449.0,
+            "err_plus": 42.0,
+            "err_minus": 42.0,
             "method": "LENSTOOL parametric",
             "blind": True,
         },
@@ -205,8 +219,9 @@ def main():
     n_blind   = sum(1 for m in models if m["blind"])
     n_total   = len(models)
 
-    print_status(f"Loaded {n_blind} blind + 1 post-blind precision model "
-                 f"({n_total} total; Treu+2016, Kelly+2023 Sci Table S4, Grillo+2024)")
+    n_post_blind = n_total - n_blind
+    print_status(f"Loaded {n_blind} pre-reappearance + {n_post_blind} post-blind precision model "
+                 f"({n_total} total; original modeling papers, Kelly+2023 Sci Table S4, Grillo+2024)")
 
     # ------------------------------------------------------------------
     # TEP prediction from step_03: d_TEP_GR(S1, S4, SX)
@@ -254,6 +269,9 @@ def main():
         sigma_tot = float(np.sqrt(obs_err**2 + sigma_m**2))
         z = delta / sigma_tot
         alpha_inferred = delta / R_tep_unit if R_tep_unit != 0 else None
+        dt_pred_original = m.get("dt_pred_original", m["dt_pred"])
+        delta_original = obs_value - dt_pred_original
+        z_original = delta_original / sigma_tot
 
         results_per_model.append({
             "name": m["name"],
@@ -262,12 +280,20 @@ def main():
             "method": m["method"],
             "blind": m["blind"],
             "dt_pred_days": m["dt_pred"],
+            "dt_pred_original_days": float(dt_pred_original),
+            "value_status": (
+                "post_reappearance_revised"
+                if dt_pred_original != m["dt_pred"]
+                else "original_unrevised"
+            ),
             "err_plus": m["err_plus"],
             "err_minus": m["err_minus"],
             "sigma_model_days": sigma_m,
             "delta_obs_minus_pred_days": float(delta),
+            "delta_obs_minus_pred_original_days": float(delta_original),
             "sigma_total_days": sigma_tot,
             "z_score": float(z),
+            "z_score_original": float(z_original),
             "alpha_inferred": float(alpha_inferred) if alpha_inferred is not None else None,
         })
 
@@ -300,8 +326,109 @@ def main():
     print_status(f"Models with positive residual: {n_positive}/{len(models)}")
 
     # ------------------------------------------------------------------
-    # TEP consistency test
-    # Is R_obs consistent with R_TEP(alpha_proxy=-0.055) = +14.54 d?
+    # Blind-original residual ensemble (pre-reappearance published values)
+    # Excludes post-blind Grillo+2024; uses dt_pred_original where revised.
+    # ------------------------------------------------------------------
+    blind_pre_reappearance = [m for m in models if m["name"] != "Grillo+2024"]
+
+    def weighted_residual_stats(entries):
+        d = np.array([e["delta"] for e in entries], dtype=float)
+        s = np.array([e["sigma"] for e in entries], dtype=float)
+        w = 1.0 / s**2
+        w_sum = w.sum()
+        return {
+            "R_obs_days": float((w * d).sum() / w_sum),
+            "sigma_days": float(1.0 / np.sqrt(w_sum)),
+            "mean_unweighted_days": float(d.mean()),
+            "std_unweighted_days": float(d.std()),
+            "n_positive": int(np.sum(d > 0)),
+            "n_total": int(d.size),
+        }
+
+    blind_original_entries = []
+    for m in blind_pre_reappearance:
+        dt_orig = m.get("dt_pred_original", m["dt_pred"])
+        sigma_m = (m["err_plus"] + m["err_minus"]) / 2.0
+        sigma_tot = float(np.sqrt(obs_err**2 + sigma_m**2))
+        blind_original_entries.append({
+            "name": m["name"],
+            "dt_pred_original_days": float(dt_orig),
+            "delta": float(obs_value - dt_orig),
+            "sigma": sigma_tot,
+        })
+
+    blind_original_stats = weighted_residual_stats(blind_original_entries)
+    blind_original_stats["z_from_gr_null"] = (
+        blind_original_stats["R_obs_days"] / blind_original_stats["sigma_days"]
+    )
+    blind_original_stats["note"] = (
+        "Uses published pre-reappearance predictions (dt_pred_original). "
+        "Full blind-original weighted mean is typically much larger than the "
+        "nominal proxy sensitivity (~14.5 d) because several teams predicted "
+        "substantially shorter delays."
+    )
+
+    parametric_near_361 = [
+        e for e in blind_original_entries
+        if abs(e["dt_pred_original_days"] - 361.0) <= 50.0
+    ]
+    parametric_near_361_stats = weighted_residual_stats(parametric_near_361)
+    parametric_near_361_stats["models"] = [e["name"] for e in parametric_near_361]
+    parametric_near_361_stats["note"] = (
+        "Subset with original predictions within 50 d of 361 d (parametric "
+        "cluster). This subset sits near the nominal proxy sensitivity; it is "
+        "not the full blind ensemble."
+    )
+
+    print_status("\nBlind-original residual ensemble (7 pre-reappearance models):")
+    print_status(
+        f"  Weighted mean = {blind_original_stats['R_obs_days']:+.1f} "
+        f"+/- {blind_original_stats['sigma_days']:.1f} d "
+        f"({blind_original_stats['n_positive']}/{blind_original_stats['n_total']} positive)"
+    )
+    print_status(
+        f"  Parametric-near-361 subset ({len(parametric_near_361)} models): "
+        f"{parametric_near_361_stats['R_obs_days']:+.1f} d"
+    )
+
+    # ------------------------------------------------------------------
+    # Delay-blind residual ensemble (revised values, fixed before delay known)
+    # All 7 pre-reappearance models, using Kelly+2023 S4 revised dt_pred.
+    # These values were fixed before the measured delay (376.0 d) was known,
+    # but some (Oguri, Sharon, Jauzac) used the SX reappearance position.
+    # ------------------------------------------------------------------
+    delay_blind_entries = []
+    for m in blind_pre_reappearance:
+        dt_rev = m["dt_pred"]
+        sigma_m = (m["err_plus"] + m["err_minus"]) / 2.0
+        sigma_tot = float(np.sqrt(obs_err**2 + sigma_m**2))
+        delay_blind_entries.append({
+            "name": m["name"],
+            "dt_pred_revised_days": float(dt_rev),
+            "delta": float(obs_value - dt_rev),
+            "sigma": sigma_tot,
+        })
+
+    delay_blind_stats = weighted_residual_stats(delay_blind_entries)
+    delay_blind_stats["z_from_gr_null"] = (
+        delay_blind_stats["R_obs_days"] / delay_blind_stats["sigma_days"]
+    )
+    delay_blind_stats["note"] = (
+        "Uses Kelly+2023 S4 revised predictions (dt_pred). All values fixed before "
+        "the measured delay was known, but some models (Oguri, Sharon, Jauzac) used "
+        "the SX reappearance position. This is the delay-blind tier."
+    )
+
+    print_status("\nDelay-blind residual ensemble (7 pre-reappearance models, revised values):")
+    print_status(
+        f"  Weighted mean = {delay_blind_stats['R_obs_days']:+.1f} "
+        f"+/- {delay_blind_stats['sigma_days']:.1f} d "
+        f"({delay_blind_stats['n_positive']}/{delay_blind_stats['n_total']} positive)"
+    )
+
+    # ------------------------------------------------------------------
+    # Proxy sensitivity check (not a pre-observation forecast)
+    # Is R_obs consistent with nominal proxy sensitivity at alpha=-0.055?
     # Sigma for this comparison: sigma_TEP_comparison = sigma_R_obs
     # (model errors dominate; TEP prediction is analytical, no free params)
     # ------------------------------------------------------------------
@@ -312,9 +439,9 @@ def main():
     # Inferred alpha from weighted mean
     alpha_inferred_wmean = R_obs_weighted / R_tep_unit
 
-    print_status(f"\nTEP consistency test:")
+    print_status(f"\nProxy sensitivity check (post-hoc, not pre-observation forecast):")
     print_status(f"  R_obs (weighted)  = {R_obs_weighted:+.2f} +/- {sigma_R_obs:.2f} d")
-    print_status(f"  R_TEP_pred        = {R_tep_prediction:+.3f} d")
+    print_status(f"  Nominal proxy   = {R_tep_prediction:+.3f} d  (alpha={alpha_ref})")
     print_status(f"  Tension           = {z_tep:+.2f} sigma")
     print_status(f"  Inferred alpha    = {alpha_inferred_wmean:.4f} "
                  f"(if R_obs attributed entirely to TEP)")
@@ -360,7 +487,10 @@ def main():
     )
 
     print_status(f"\nBootstrap alpha inference (N={n_boot}, resampling models with replacement):")
-    print_status(f"  Bootstrap mean alpha   = {boot_alpha_mean:+.4f} +/- {boot_alpha_std:.4f}")
+    print_status(f"  Bootstrap mean alpha   = {boot_alpha_mean:+.4f}")
+    print_status(f"  Bootstrap std (resampling scatter ONLY) = {boot_alpha_std:.4f}")
+    print_status(f"  WARNING: bootstrap std is NOT the headline uncertainty.")
+    print_status(f"  Headline uncertainty (measurement error) = {sigma_alpha_analytical:.4f}")
     print_status(f"  Bootstrap median       = {boot_alpha_p50:+.4f}")
     print_status(f"  68% CI (16th-84th pct) = [{boot_alpha_p16:+.4f}, {boot_alpha_p84:+.4f}]")
     print_status(f"  P(alpha < 0 | data)    = {boot_frac_negative:.3f} ({boot_frac_negative*100:.1f}%)")
@@ -420,7 +550,7 @@ def main():
     # non-zero-residual test and avoids SciPy's small-sample approximation path.
     p_wilcoxon = exact_nonzero_wilcoxon_greater(deltas)
     print_status(f"  Wilcoxon signed-rank (all {n_models_total}, ties excluded): p = {p_wilcoxon:.6f}")
-    print_status(f"  All {n_nonzero_all} non-zero residuals positive: max Wilcoxon statistic (p=1/2^{n_nonzero_all}=0.0078)")
+    print_status(f"  All {n_nonzero_all} non-zero residuals positive: max Wilcoxon statistic (p=1/2^{n_nonzero_all})")
 
     # Blind-only Wilcoxon signed-rank test
     # Excludes post-blind Grillo+2024 and drops zero residuals.
@@ -429,7 +559,7 @@ def main():
     p_wilcoxon_blind = exact_nonzero_wilcoxon_greater(blind_deltas)
     n_nonzero_blind = int(np.sum(blind_deltas != 0))
     print_status(f"  Wilcoxon signed-rank (blind {n_blind_total} only, ties excluded): p = {p_wilcoxon_blind:.6f}")
-    print_status(f"  All {n_nonzero_blind} non-zero blind residuals positive: max Wilcoxon statistic (p=1/2^{n_nonzero_blind}=0.0156)")
+    print_status(f"  All {n_nonzero_blind} non-zero blind residuals positive: max Wilcoxon statistic (p=1/2^{n_nonzero_blind})")
 
     # ------------------------------------------------------------------
     # Chi-squared model comparison: GR (R=0) vs TEP (R=R_tep_prediction)
@@ -441,17 +571,22 @@ def main():
     chi2_tep = float(np.sum(((deltas_all - R_tep_prediction) / sigma_tots_all)**2))
     delta_chi2 = chi2_gr - chi2_tep
 
-    # p-value for improvement: chi^2 difference with 0 free parameters
-    # (TEP has no free parameters here -- alpha is calibrated, not fitted)
-    # Use one-sided chi^2 with 1 dof as conservative bound
-    p_delta_chi2 = float(scipy_stats.chi2.sf(delta_chi2, df=1))
+    # Both GR and TEP here are *fixed predictions* (0 free parameters each),
+    # not nested models with different dof.  Delta chi^2 therefore does NOT
+    # follow a chi-squared distribution, and assigning a p-value via chi2.sf
+    # with df=1 is statistically unfounded.  We report:
+    #   (i)  the raw chi-squared values and their individual goodness-of-fit p-values
+    #   (ii) the descriptive delta_chi2 as a relative fit-quality metric
+    # Individual p-values test the absolute adequacy of each fixed prediction.
+    p_chi2_gr  = float(scipy_stats.chi2.sf(chi2_gr,  df=n_models_total))
+    p_chi2_tep = float(scipy_stats.chi2.sf(chi2_tep, df=n_models_total))
 
     print_status(f"\nChi-squared model comparison ({n_models_total} models):")
-    print_status(f"  chi^2 under GR  (R=0):            {chi2_gr:.3f}")
-    print_status(f"  chi^2 under TEP (R={R_tep_prediction:.1f} d):  {chi2_tep:.3f}")
+    print_status(f"  chi^2 under GR  (R=0):            {chi2_gr:.3f}  (p={p_chi2_gr:.3f})")
+    print_status(f"  chi^2 under TEP (R={R_tep_prediction:.1f} d):  {chi2_tep:.3f}  (p={p_chi2_tep:.3f})")
     print_status(f"  Delta chi^2 = chi^2_GR - chi^2_TEP = {delta_chi2:+.3f}")
     print_status(f"  TEP preferred over GR by Delta chi^2 = {delta_chi2:.2f}")
-    print_status(f"  p-value (chi^2, 1 dof): p = {p_delta_chi2:.4f}")
+    print_status(f"  NOTE: Both are fixed predictions (0 free params); delta_chi2 has no formal p-value.")
 
     # ------------------------------------------------------------------
     # TEP-corrected consistency
@@ -516,10 +651,10 @@ def main():
                     markeredgecolor=col, markeredgewidth=1.5)
 
     # Observed delay — raw
-    ax.axvline(obs_value, color="crimson", lw=2.0, zorder=4,
+    ax.axvline(obs_value, color=COLORS['primary'], lw=2.0, zorder=4,
                label=f"Observed: {obs_value:.1f} d (Kelly+2023)")
     ax.axvspan(obs_value - obs_err, obs_value + obs_err,
-               alpha=0.15, color="crimson", zorder=2)
+               alpha=0.15, color=COLORS['primary'], zorder=2)
 
     # Proxy-corrected observed value
     ax.axvline(dt_corr, color=COLORS['tep'], lw=1.8, ls="--", zorder=4,
@@ -544,7 +679,7 @@ def main():
         f"{n_improved}/{n_models_total} models better fit",
         xy=(0.02, 0.05), xycoords="axes fraction",
         color="#444",
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="lightyellow", alpha=0.8)
+        bbox=dict(boxstyle="round,pad=0.3", facecolor="#e2e8f0", alpha=0.8)
     )
     # fig.tight_layout()
     out1 = fig_dir / f"step_{STEP_NUM}_observed_vs_predicted.png"
@@ -613,8 +748,7 @@ def main():
     ax2b.set_title(
         r"Per-model $\chi^2$ under GR vs. proxy-model hypotheses" + "\n"
         f"$\\Delta\\chi^2 = {delta_chi2:.1f}$ in favour of proxy model  "
-        f"($p = {p_delta_chi2:.3f}$, $\\alpha_{{\\rm lens}}={alpha_ref}$)",
-        
+        f"(GR $p={p_chi2_gr:.2f}$, proxy $p={p_chi2_tep:.2f}$)",
     )
     ax2b.legend()
     ax2b.grid(axis="y", alpha=0.3, ls=":")
@@ -686,14 +820,14 @@ def main():
                 "p_value_one_sided": float(1 - scipy_stats.norm.cdf(z_weighted)),
                 "is_primary": PRIMARY_TEST == "weighted_mean_z_test",
             },
-            "binomial_sign_test_all_8": {
-                "description": "Legacy diagnostic binomial test on sign of all 8 model residuals; exact zero is counted as not positive.",
+            "binomial_sign_test_all": {
+                "description": f"Legacy diagnostic binomial test on sign of all {n_models_total} model residuals; exact zero is counted as not positive.",
                 "n_positive": n_pos,
                 "n_total": n_models_total,
                 "p_value_one_sided": float(p_binom),
                 "z_approx": float(z_binom_approx),
                 "reporting_caveat": "Do not use as headline; zero residuals carry no directional information.",
-                "is_primary": PRIMARY_TEST == "binomial_sign_test_all_8",
+                "is_primary": PRIMARY_TEST == "binomial_sign_test_all",
             },
             "binomial_sign_test_nonzero_all": {
                 "description": "Reportable binomial test on non-zero residual signs only",
@@ -703,13 +837,13 @@ def main():
                 "note": "Exact zero residual excluded because it carries no directional information.",
                 "is_primary": False,
             },
-            "binomial_sign_test_blind_7": {
-                "description": "Legacy diagnostic binomial test on sign of 7 blind model residuals only; exact zero is counted as not positive.",
+            "binomial_sign_test_blind": {
+                "description": f"Legacy diagnostic binomial test on sign of {n_blind_total} blind model residuals only; exact zero is counted as not positive.",
                 "n_positive": n_blind_pos,
                 "n_total": n_blind_total,
                 "p_value_one_sided": float(p_binom_blind),
                 "reporting_caveat": "Conservative diagnostic only; use binomial_sign_test_nonzero_blind for sign-only reporting.",
-                "is_primary": PRIMARY_TEST == "binomial_sign_test_blind_7",
+                "is_primary": PRIMARY_TEST == "binomial_sign_test_blind",
             },
             "binomial_sign_test_nonzero_blind": {
                 "description": "Reportable binomial test on non-zero blind residual signs only",
@@ -723,14 +857,14 @@ def main():
                 "description": "Non-parametric signed-rank test on all non-zero residuals (equal weight per model)",
                 "n_nonzero": n_nonzero_all,
                 "p_value_one_sided": float(p_wilcoxon),
-                "note": "All 7 non-zero residuals positive; max statistic; p=1/2^7",
+                "note": f"All {n_nonzero_all} non-zero residuals positive; max statistic; p=1/2^{n_nonzero_all}",
                 "is_primary": False,
             },
             "wilcoxon_signed_rank_blind": {
                 "description": "Non-parametric signed-rank test on blind-only non-zero residuals (excludes post-blind update)",
                 "n_nonzero": n_nonzero_blind,
                 "p_value_one_sided": float(p_wilcoxon_blind),
-                "note": "All 6 non-zero blind residuals positive; max statistic; p=1/2^6",
+                "note": f"All {n_nonzero_blind} non-zero blind residuals positive; max statistic; p=1/2^{n_nonzero_blind}",
                 "is_primary": True,
             },
             "chi2_model_comparison": {
@@ -738,8 +872,9 @@ def main():
                 "chi2_gr": float(chi2_gr),
                 "chi2_tep": float(chi2_tep),
                 "delta_chi2": float(delta_chi2),
-                "p_value": float(p_delta_chi2),
-                "note": "TEP has 0 free parameters (alpha_proxy empirically determined)",
+                "p_value_chi2_gr": float(p_chi2_gr),
+                "p_value_chi2_tep": float(p_chi2_tep),
+                "note": "Both GR and TEP are fixed predictions (0 free parameters each), not nested models. Delta chi^2 has no formal sampling distribution; individual p-values test absolute goodness of fit.",
                 "is_primary": PRIMARY_TEST == "chi2_model_comparison",
             },
             "tep_corrected_wrms": {
@@ -763,7 +898,7 @@ def main():
         "analysis": "Observed vs. blind-predicted Delta_t(SX, S1)",
         "key_finding": (
             f"The inverse-variance weighted mean of all {n_total} model predictions "
-            f"({n_blind} blind + 1 post-blind) gives a residual "
+            f"({n_blind} blind + {n_post_blind} post-blind) gives a residual "
             f"R_obs = {R_obs_weighted:+.2f} +/- {sigma_R_obs:.2f} d "
             f"(z = {z_gr:+.2f} sigma from GR null, z = {z_tep:+.2f} sigma from TEP). "
             f"Reportable non-zero binomial sign test: {n_nonzero_pos}/{n_nonzero_all} positive, "
@@ -771,7 +906,7 @@ def main():
             f"p={p_binom_blind_nonzero:.4f}). Legacy diagnostic counting zero as non-positive: "
             f"{n_pos}/{n_models_total} positive, p={p_binom:.4f}. "
             f"Chi-squared: GR chi2={chi2_gr:.1f}, TEP chi2={chi2_tep:.1f}, "
-            f"Delta chi2={delta_chi2:+.1f} in favour of TEP (p={p_delta_chi2:.4f}). "
+            f"Delta chi2={delta_chi2:+.1f} in favour of TEP (no formal p-value for non-nested fixed predictions). "
             f"TEP correction ({R_tep_prediction:.1f} d) reduces wRMS by {wrms_improvement_pct:.0f}%, "
             f"improving {n_improved}/{n_models_total} models. "
             f"Inferred alpha = {alpha_inferred_wmean:.4f} +/- "
@@ -782,12 +917,42 @@ def main():
             "err_days": obs_err,
             "ref": "Kelly et al. 2023, ApJ 948, 93, Table 15"
         },
+        "proxy_sensitivity": {
+            "R_nominal_proxy_days": float(R_tep_prediction),
+            "alpha_nominal": float(alpha_ref),
+            "R_tep_unit_days_per_alpha": float(R_tep_unit),
+            "loop": "S1-S4-SX (obs-model residual = -closure)",
+            "ref": "This work, step_03",
+            "status": "post_hoc_illustrative",
+            "note": (
+                "Computed after Kelly+2023 data with fixed nominal alpha. "
+                "Not a pre-registered pre-observation TEP forecast. "
+                "Use for sensitivity illustration only; headline evidence is blind sign."
+            ),
+        },
         "tep_prediction": {
             "R_tep_prediction_days": float(R_tep_prediction),
             "alpha_ref": float(alpha_ref),
             "R_tep_unit_days_per_alpha": float(R_tep_unit),
             "loop": "S1-S4-SX (Residual Prediction = -Closure)",
-            "ref": "This work, step_03"
+            "ref": "This work, step_03",
+            "deprecated_alias_of": "proxy_sensitivity",
+            "note": "Legacy key; prefer proxy_sensitivity. See status field there.",
+        },
+        "blind_original_residuals": {
+            "ensemble": "seven_pre_reappearance_models",
+            "tier": "strictly_blind",
+            "note": "Uses original pre-reappearance published predictions (dt_pred_original). Jauzac15.1 residual is negative (-73 d).",
+            "per_model": blind_original_entries,
+            "weighted_mean": blind_original_stats,
+            "parametric_near_361_subset": parametric_near_361_stats,
+        },
+        "delay_blind_residuals": {
+            "ensemble": "seven_pre_reappearance_models_revised",
+            "tier": "delay_blind",
+            "note": "Uses Kelly+2023 S4 revised values (dt_pred). All fixed before measured delay known; some used SX position.",
+            "per_model": delay_blind_entries,
+            "weighted_mean": delay_blind_stats,
         },
         "weighted_mean_residual": {
             "R_obs_days": float(R_obs_weighted),
@@ -815,6 +980,7 @@ def main():
         "binomial_sign_test": {
             "n_positive": n_pos,
             "n_total": n_models_total,
+            "n_nonzero_blind": n_nonzero_blind,
             "p_value_one_sided": float(p_binom),
             "z_approx": float(z_binom_approx),
             "reporting_caveat": (
@@ -828,7 +994,7 @@ def main():
             },
             "p_wilcoxon_signed_rank_all": float(p_wilcoxon),
             "p_wilcoxon_signed_rank_blind": float(p_wilcoxon_blind),
-            "wilcoxon_note": "All 6 non-zero blind residuals positive (p=1/64=0.0156); all 7 non-zero total residuals positive (p=1/128=0.0078)",
+            "wilcoxon_note": f"All {n_nonzero_blind} non-zero blind residuals positive (p=1/2^{n_nonzero_blind}); all {n_nonzero_all} non-zero total residuals positive (p=1/2^{n_nonzero_all})",
             "blind_only": {
                 "n_positive": n_blind_pos,
                 "n_total": n_blind_total,
@@ -846,9 +1012,10 @@ def main():
             "chi2_gr": float(chi2_gr),
             "chi2_tep": float(chi2_tep),
             "delta_chi2": float(delta_chi2),
-            "p_value": float(p_delta_chi2),
+            "p_value_chi2_gr": float(p_chi2_gr),
+            "p_value_chi2_tep": float(p_chi2_tep),
             "n_dof": n_total,
-            "note": "TEP has 0 free parameters (alpha_proxy=-0.055 from empirical SN Refsdal measurement)"
+            "note": "Both GR and TEP are fixed predictions (0 free parameters each), not nested models. Delta chi^2 has no formal sampling distribution; individual p-values test absolute goodness of fit."
         },
         "tep_corrected_consistency": {
             "dt_corr_days": float(dt_corr),
@@ -871,32 +1038,32 @@ def main():
                     "wilcoxon_signed_rank_blind": {
                         "p_value": float(p_wilcoxon_blind),
                         "z_equiv": float(scipy_stats.norm.isf(p_wilcoxon_blind)),
-                        "note": "All 6 non-zero blind residuals positive. Independent of R_tep_unit amplitude calibration.",
+                        "note": "All non-zero blind residuals positive. Independent of R_tep_unit amplitude calibration.",
                     },
                     "wilcoxon_signed_rank_all": {
                         "p_value": float(p_wilcoxon),
                         "z_equiv": float(scipy_stats.norm.isf(p_wilcoxon)),
-                        "note": "All 7 non-zero residuals positive. Supplementary.",
+                        "note": "All non-zero residuals positive. Supplementary.",
                     },
-                    "binomial_sign_test_blind_7": {
+                    "binomial_sign_test_blind": {
                         "p_value": float(p_binom_blind),
                         "z_equiv": float((n_blind_pos - n_blind_total*0.5) / np.sqrt(n_blind_total*0.25)),
-                        "note": "6/7 positive, counting exact zero as non-positive. Conservative diagnostic.",
+                        "note": "All blind models positive. Conservative diagnostic (legacy zero-exclusion no longer applicable).",
                     },
                     "binomial_sign_test_nonzero_blind": {
                         "p_value": float(p_binom_blind_nonzero),
                         "z_equiv": float(scipy_stats.norm.isf(p_binom_blind_nonzero)),
-                        "note": "6/6 non-zero blind residuals positive. Reportable sign-only check.",
+                        "note": "All non-zero blind residuals positive. Reportable sign-only check.",
                     },
-                    "binomial_sign_test_all_8": {
+                    "binomial_sign_test_all": {
                         "p_value": float(p_binom),
                         "z_equiv": float(z_binom_approx),
-                        "note": "7/8 positive, counting exact zero as non-positive. Legacy diagnostic including post-blind update.",
+                        "note": "All positive. Legacy diagnostic (zero-exclusion no longer applicable)."
                     },
                     "binomial_sign_test_nonzero_all": {
                         "p_value": float(p_binom_nonzero),
                         "z_equiv": float(scipy_stats.norm.isf(p_binom_nonzero)),
-                        "note": "7/7 non-zero residuals positive. Reportable supplementary sign-only check.",
+                        "note": f"All {n_nonzero_all} non-zero residuals positive. Reportable supplementary sign-only check.",
                     },
                 },
                 "interpretation": (
@@ -918,8 +1085,9 @@ def main():
                     },
                     "chi2_model_comparison": {
                         "delta_chi2": float(delta_chi2),
-                        "p_value": float(p_delta_chi2),
-                        "note": "TEP has 0 free parameters because alpha_proxy is empirically determined from the same data.",
+                        "p_value_chi2_gr": float(p_chi2_gr),
+                        "p_value_chi2_tep": float(p_chi2_tep),
+                        "note": "Both GR and TEP are fixed predictions (0 free parameters each), not nested models. Delta chi^2 has no formal p-value.",
                     },
                     "tep_corrected_wrms": {
                         "improvement_pct": float(wrms_improvement_pct),

@@ -2,7 +2,7 @@
 """
 TEP-LENS: Step 38 - SN Encore Blind-Prediction Residual Test
 
-SN Encore (AT 2024xxx) is a multiply-imaged Type Ia supernova in the galaxy
+SN Encore is a multiply-imaged Type Ia supernova in the galaxy
 cluster MACS J0138.2-2155. Pierel et al. (2026, ApJ, arXiv:2509.12301) measured
 the time delay between images 1b and 1a from JWST light-curve photometry.
 Suyu et al. (2025/2026, A&A, arXiv:2509.12319) published blind lens-model
@@ -331,15 +331,19 @@ def main():
         np.sum(((deltas - R_tep_prediction) / sigma_tots) ** 2)
     )
     delta_chi2 = chi2_gr - chi2_tep
-    p_delta_chi2 = float(scipy_stats.chi2.sf(delta_chi2, df=1))
+
+    # Both are fixed predictions (0 free params), not nested models.
+    # Report individual goodness-of-fit p-values; delta_chi2 has no formal p-value.
+    p_chi2_gr = float(scipy_stats.chi2.sf(chi2_gr, df=n_total))
+    p_chi2_tep = float(scipy_stats.chi2.sf(chi2_tep, df=n_total))
 
     print_status(f"\nChi-squared model comparison ({n_total} models):")
-    print_status(f"  chi^2 under GR  (R=0):            {chi2_gr:.3f}")
+    print_status(f"  chi^2 under GR  (R=0):            {chi2_gr:.3f}  (p={p_chi2_gr:.3f})")
     print_status(
-        f"  chi^2 under TEP (R={R_tep_prediction:.2f} d):  {chi2_tep:.3f}"
+        f"  chi^2 under TEP (R={R_tep_prediction:.2f} d):  {chi2_tep:.3f}  (p={p_chi2_tep:.3f})"
     )
     print_status(f"  Delta chi^2 = {delta_chi2:+.3f}")
-    print_status(f"  p-value (chi^2, 1 dof): p = {p_delta_chi2:.4f}")
+    print_status(f"  NOTE: Both are fixed predictions (0 free params); delta_chi2 has no formal p-value.")
 
     # ------------------------------------------------------------------
     # Save outputs
@@ -408,7 +412,9 @@ def main():
             "chi2_gr": chi2_gr,
             "chi2_tep": chi2_tep,
             "delta_chi2": delta_chi2,
-            "p_delta_chi2": p_delta_chi2,
+            "p_value_chi2_gr": p_chi2_gr,
+            "p_value_chi2_tep": p_chi2_tep,
+            "note": "Both GR and TEP are fixed predictions (0 free params), not nested models. Delta chi^2 has no formal p-value.",
         },
         "limitations": [
             "Only two resolved images (1a, 1b); no three-image loop for direct TEP closure test.",

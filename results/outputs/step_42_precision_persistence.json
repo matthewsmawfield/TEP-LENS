@@ -3,14 +3,14 @@
   "status": "success",
   "description": "Tests whether the SN Refsdal SX blind under-prediction vanishes in the high-precision (sigma_model -> 0) limit. A positive intercept disfavours the model-immaturity (GR) explanation.",
   "fits": {
-    "all_8": {
-      "intercept_r0_days": 11.245337023414184,
-      "intercept_sigma_days": 7.577355457602896,
-      "intercept_z": 1.4840714661380894,
-      "intercept_p_one_sided": 0.06889498105515289,
-      "slope_days_per_day": 0.12014640408377589,
-      "slope_sigma": 0.2398940096335667,
-      "chi2": 0.6400775757870891,
+    "all": {
+      "intercept_r0_days": -8.201968680094247,
+      "intercept_sigma_days": 18.295093978739327,
+      "intercept_z": -0.4483151980320915,
+      "intercept_p_one_sided": 0.6730371331458367,
+      "slope_days_per_day": 1.6786548775173746,
+      "slope_sigma": 0.7574222087252189,
+      "chi2": 3.5793966663855663,
       "dof": 6,
       "most_precise_model": {
         "name": "Grillo+2024",
@@ -18,23 +18,23 @@
         "residual_days": 14.0
       }
     },
-    "blind_7": {
-      "intercept_r0_days": 6.922666185459244,
-      "intercept_sigma_days": 16.211796491453654,
-      "intercept_z": 0.4270141306738371,
-      "intercept_p_one_sided": 0.3346845177329971,
-      "slope_days_per_day": 0.21121016745441312,
-      "slope_sigma": 0.3929363515029475,
-      "chi2": 0.6280545397485001,
+    "blind": {
+      "intercept_r0_days": -1.1743191247349287,
+      "intercept_sigma_days": 24.6230786807123,
+      "intercept_z": -0.04769180734717767,
+      "intercept_p_one_sided": 0.5190190682676961,
+      "slope_days_per_day": 1.4728298158400732,
+      "slope_sigma": 0.9215754960152195,
+      "chi2": 3.4267694236670962,
       "dof": 5,
       "most_precise_model": {
-        "name": "Grillo",
-        "sigma_model_days": 23.5,
-        "residual_days": 15.0
+        "name": "Oguri-a*",
+        "sigma_model_days": 19.0,
+        "residual_days": 22.19999999999999
       }
     }
   },
-  "verdict": "SUGGESTIVE BUT NOT DECISIVE: the sigma->0 intercept is positive (r0=+6.9 d) but only at p=0.33; the immaturity explanation is weakened, not excluded, at current N and precision.",
+  "verdict": "IMMATURITY NOT EXCLUDED: the intercept is consistent with (or below) zero, so a high-precision GR model could plausibly remove the residual.",
   "caveats": [
     "Small N (7 blind / 8 total) and shared lens inputs limit the regression.",
     "The intercept is an extrapolation beyond the data's precision range.",
@@ -42,5 +42,5 @@
     "Grillo+2024 is a post-blind precision update; it still retains a ~+14 d residual, which is the single strongest data point against the immaturity explanation, but post-blind models are not independent confirmations.",
     "Schuldt et al. 2026 reach sub-percent statistical precision on dt_SX:S1 but are post-observation (use SX), so they cannot serve as a blind high-precision anchor; they bound what precision is achievable, not the blind residual."
   ],
-  "headline": "Precision-persistence (blind 7): sigma->0 residual intercept r0 = +6.9 +/- 16.2 d (one-sided p=0.335). Most-precise blind model (Grillo, sigma=24 d) retains a +15 d residual."
+  "headline": "Precision-persistence (blind 7): sigma->0 residual intercept r0 = -1.2 +/- 24.6 d (one-sided p=0.519). Most-precise blind model (Oguri-a*, sigma=19 d) retains a +22 d residual."
 }

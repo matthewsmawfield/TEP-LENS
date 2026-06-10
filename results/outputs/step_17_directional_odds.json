@@ -4,6 +4,16 @@
   "description": "Directional Bayes-factor expansion for sign-based evidence. H0: p(sign+)=0.5; H1: p(sign+)~Uniform(0.5,1).",
   "scenarios": {
     "all_models_nonzero": {
+      "k_positive": 8,
+      "n_total": 8,
+      "binomial_p_one_sided": 0.00390625,
+      "likelihood_h0": 0.00390625,
+      "likelihood_h1": 0.22178819444444442,
+      "bf10_directional": 56.77777777777777,
+      "posterior_h1_equal_prior": 0.9826923076923076,
+      "n_zero_excluded": 0
+    },
+    "blind_models_nonzero": {
       "k_positive": 7,
       "n_total": 7,
       "binomial_p_one_sided": 0.0078125,
@@ -11,17 +21,7 @@
       "likelihood_h1": 0.2490234375,
       "bf10_directional": 31.875,
       "posterior_h1_equal_prior": 0.9695817490494296,
-      "n_zero_excluded": 1
-    },
-    "blind_models_nonzero": {
-      "k_positive": 6,
-      "n_total": 6,
-      "binomial_p_one_sided": 0.015625,
-      "likelihood_h0": 0.015625,
-      "likelihood_h1": 0.28348214285714285,
-      "bf10_directional": 18.142857142857142,
-      "posterior_h1_equal_prior": 0.9477611940298507,
-      "n_zero_excluded": 1
+      "n_zero_excluded": 0
     },
     "method_family_collapsed": {
       "k_positive": 5,
@@ -31,39 +31,34 @@
       "likelihood_h1": 0.328125,
       "bf10_directional": 10.5,
       "posterior_h1_equal_prior": 0.9130434782608695,
-      "n_zero_excluded": 1
+      "n_zero_excluded": 0
     }
   },
   "method_family_details": [
     {
       "family": "GLAFIC",
-      "n_models": 1,
-      "weighted_mean_residual_days": 52.0
+      "n_models": 2,
+      "weighted_mean_residual_days": 33.39170209022125
     },
     {
       "family": "GLEE",
       "n_models": 2,
-      "weighted_mean_residual_days": 14.329930996475195
+      "weighted_mean_residual_days": 14.33897985183787
     },
     {
       "family": "LENSTOOL",
-      "n_models": 2,
-      "weighted_mean_residual_days": 9.185458828568366
+      "n_models": 1,
+      "weighted_mean_residual_days": 14.999999999999998
     },
     {
       "family": "LTM",
-      "n_models": 1,
-      "weighted_mean_residual_days": 31.0
-    },
-    {
-      "family": "OTHER",
-      "n_models": 1,
-      "weighted_mean_residual_days": 7.000000000000001
+      "n_models": 2,
+      "weighted_mean_residual_days": 59.21307054434861
     },
     {
       "family": "WSLAP+",
       "n_models": 1,
-      "weighted_mean_residual_days": 0.0
+      "weighted_mean_residual_days": 113.99999999999999
     }
   ],
   "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_17_directional_odds.png"

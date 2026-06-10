@@ -31,7 +31,6 @@ Key physical insight:
 
 Outputs:
 - results/outputs/step_32_kappa_proxy_validation.json
-- results/figures/step_32_kappa_mu_comparison.png
 """
 
 import json
@@ -90,7 +89,7 @@ def closure_residual(alpha, quantities, delays, loop_images):
     return float(R)
 
 
-def sn_refsdal_sensitivity_envelope(n_draws=20000, seed=42):
+def sn_refsdal_sensitivity_envelope(n_draws=20000, seed=20260607):
     """
     Monte Carlo sensitivity analysis for SN Refsdal.
 
@@ -492,11 +491,13 @@ def plot_comparison(sn_results, tdcosmo_results, elliptical_results):
     axs[1].grid(alpha=0.3, ls=":")
 
     fig.tight_layout()
-    out_fig = PROJECT_ROOT / "results" / "figures" / f"step_{STEP_NUM}_kappa_mu_comparison.png"
-    fig.savefig(out_fig, dpi=200)
+    # Figure generation disabled — removed from manuscript
+    # out_fig = PROJECT_ROOT / "results" / "figures" / f"step_{STEP_NUM}_kappa_mu_comparison.png"
+    # fig.savefig(out_fig, dpi=200)
     plt.close(fig)
-    print_status(f"Figure saved: {out_fig}")
-    return str(out_fig)
+    # print_status(f"Figure saved: {out_fig}")
+    # return str(out_fig)
+    return None
 
 
 def main():
@@ -549,9 +550,9 @@ def main():
             print_status(f"  {name}: mu diverges in elliptical model")
 
     # ------------------------------------------------------------------
-    # C. Plot
+    # C. Plot (disabled — figure removed from manuscript)
     # ------------------------------------------------------------------
-    fig_path = plot_comparison(sn_results, tdcosmo_results, elliptical_results)
+    # fig_path = plot_comparison(sn_results, tdcosmo_results, elliptical_results)
 
     # ------------------------------------------------------------------
     # Save results
@@ -571,11 +572,15 @@ def main():
     # Kelly+2023 measurement uncertainty on SX-S1 delay
     sigma_measurement = 5.6  # days
 
-    # Lens-model uncertainty: spread of blind predictions (std of model medians)
-    # From Treu+2016 Table 2: model predictions range ~324-376 d
-    # Approximate as half the range / sqrt(N) or std directly from literature
-    model_preds = np.array([324.0, 345.0, 376.0, 361.0, 369.0, 359.0, 374.0])
-    sigma_lens_model = float(np.std(model_preds, ddof=1))  # ~17.5 d
+    # Lens-model uncertainty: spread of original blind predictions (std of model medians)
+    # Read dt_pred_original_days from step_07 to stay in sync with the model ensemble.
+    s07_path = PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"
+    with open(s07_path) as f:
+        s07 = json.load(f)
+    model_preds = np.array([
+        m["dt_pred_original_days"] for m in s07["per_model_results"] if m["blind"]
+    ], dtype=float)
+    sigma_lens_model = float(np.std(model_preds, ddof=1))
 
     # Proxy systematic: spread from mu->kappa MC envelope
     # Use the 16th-84th spread of the kappa-based closure residual
@@ -638,7 +643,6 @@ def main():
         "sn_refsdal_sensitivity": sn_results,
         "tdcosmo_theoretical": tdcosmo_results,
         "tdcosmo_elliptical_shear": elliptical_results,
-        "figure": fig_path,
         "proxy_systematic_budget": proxy_systematic_budget,
         "key_findings": {
             "sn_refsdal": (

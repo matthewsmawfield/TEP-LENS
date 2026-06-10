@@ -28,7 +28,7 @@
       "delta_obs_minus_pred_days": -7.399999999999999,
       "sigma_total_days": 4.2991278185231945,
       "z_score": -1.7212793646461049,
-      "alpha_inferred": -0.8394558532734702
+      "alpha_inferred": -0.8394558532734704
     },
     {
       "name": "GLEE",
@@ -43,7 +43,7 @@
       "delta_obs_minus_pred_days": -2.6999999999999957,
       "sigma_total_days": 4.47017896733453,
       "z_score": -0.6040026629202156,
-      "alpha_inferred": -0.3062879464646441
+      "alpha_inferred": -0.30628794646464413
     },
     {
       "name": "GLEE-baseline",
@@ -58,7 +58,7 @@
       "delta_obs_minus_pred_days": -2.8999999999999986,
       "sigma_total_days": 4.560701700396551,
       "z_score": -0.635867063997596,
-      "alpha_inferred": -0.32897594249906253
+      "alpha_inferred": -0.3289759424990626
     },
     {
       "name": "Lenstool I",
@@ -73,7 +73,7 @@
       "delta_obs_minus_pred_days": 35.2,
       "sigma_total_days": 54.61876966757856,
       "z_score": 0.6444670982930352,
-      "alpha_inferred": 3.9930873020575888
+      "alpha_inferred": 3.9930873020575897
     },
     {
       "name": "Lenstool II",
@@ -88,7 +88,7 @@
       "delta_obs_minus_pred_days": -4.199999999999996,
       "sigma_total_days": 5.162363799656123,
       "z_score": -0.8135807864373619,
-      "alpha_inferred": -0.47644791672278
+      "alpha_inferred": -0.4764479167227801
     },
     {
       "name": "MrMARTIAN",
@@ -103,7 +103,7 @@
       "delta_obs_minus_pred_days": 0.8000000000000043,
       "sigma_total_days": 7.299486283294188,
       "z_score": 0.10959675365524106,
-      "alpha_inferred": 0.09075198413767295
+      "alpha_inferred": 0.09075198413767298
     },
     {
       "name": "WSLAP+",
@@ -118,7 +118,7 @@
       "delta_obs_minus_pred_days": 72.2,
       "sigma_total_days": 32.20186330012597,
       "z_score": 2.242106282083297,
-      "alpha_inferred": 8.19036656842494
+      "alpha_inferred": 8.190366568424942
     },
     {
       "name": "Zitrin-analytic",
@@ -133,14 +133,14 @@
       "delta_obs_minus_pred_days": 0.4000000000000057,
       "sigma_total_days": 9.972462083156797,
       "z_score": 0.04011045583974636,
-      "alpha_inferred": 0.04537599206883688
+      "alpha_inferred": 0.04537599206883689
     }
   ],
   "weighted_mean_residual": {
     "R_obs_days": -3.329462659636591,
     "sigma_R_obs_days": 2.1326268917956055,
     "z_score": -1.5612026053152162,
-    "alpha_inferred": -0.37769417809289085
+    "alpha_inferred": -0.37769417809289096
   },
   "unweighted_statistics": {
     "mean_days": 11.425000000000004,
@@ -149,11 +149,11 @@
     "n_negative": 4
   },
   "tep_prediction": {
-    "R_tep_prediction_days": -0.4935532560666476,
-    "alpha_used": -0.055988671582071256,
+    "R_tep_prediction_days": -1.0403259666227636,
+    "alpha_used": -0.11801455702619729,
     "log10_mu_ratio": -0.17208851660200725,
     "dt_mean_pred_days": -51.224999999999994,
-    "R_tep_unit_days_per_alpha": 8.815234262937821,
+    "R_tep_unit_days_per_alpha": 8.81523426293782,
     "note": "Single-pair TEP residual is ~<1 d because magnification contrast is modest. No loop-closure test possible with only two images."
   },
   "gr_null_test": {
@@ -172,9 +172,11 @@
   },
   "chi2_comparison": {
     "chi2_gr": 9.849861205127239,
-    "chi2_tep": 9.1808035422954,
-    "delta_chi2": 0.6690576628318379,
-    "p_delta_chi2": 0.4133803416588565
+    "chi2_tep": 8.56467001155207,
+    "delta_chi2": 1.2851911935751676,
+    "p_value_chi2_gr": 0.2757222837835498,
+    "p_value_chi2_tep": 0.38033854961254693,
+    "note": "Both GR and TEP are fixed predictions (0 free params), not nested models. Delta chi^2 has no formal p-value."
   },
   "limitations": [
     "Only two resolved images (1a, 1b); no three-image loop for direct TEP closure test.",

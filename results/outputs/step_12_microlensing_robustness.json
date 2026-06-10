@@ -2,7 +2,7 @@
   "step": "12",
   "status": "success",
   "nominal": {
-    "R_obs_weighted_days": 14.605519391230912,
+    "R_obs_weighted_days": 30.04957673068333,
     "R_tep_alpha_nominal_days": 14.538035062734984
   },
   "design": {
@@ -24,13 +24,13 @@
       "R_tep_p025_days": -17.21400595956059,
       "R_tep_p975_days": -11.97626221356213,
       "P_R_tep_positive": 0.0,
-      "alpha_inferred_median": -0.05529821416191137,
-      "alpha_inferred_p16": -0.060696279565904974,
-      "alpha_inferred_p84": -0.05070189276965666,
+      "alpha_inferred_median": -0.11377123161575378,
+      "alpha_inferred_p16": -0.12487727832381834,
+      "alpha_inferred_p84": -0.10431470298053358,
       "P_alpha_inferred_positive": 0.0,
-      "delta_chi2_median": 1.5869076412963483,
-      "delta_chi2_p16": 1.5665764667139386,
-      "delta_chi2_p84": 1.59224720885632,
+      "delta_chi2_median": 8.412763497488882,
+      "delta_chi2_p16": 7.88185395258548,
+      "delta_chi2_p84": 8.91027083459954,
       "P_delta_chi2_gt_0": 1.0
     },
     {
@@ -42,14 +42,14 @@
       "R_tep_p025_days": -20.029747175009458,
       "R_tep_p975_days": -9.358582524538896,
       "P_R_tep_positive": 0.0,
-      "alpha_inferred_median": -0.05541152603423531,
-      "alpha_inferred_p16": -0.06696660241058147,
-      "alpha_inferred_p84": -0.04690673123427841,
+      "alpha_inferred_median": -0.11400436086714762,
+      "alpha_inferred_p16": -0.13777791830793212,
+      "alpha_inferred_p84": -0.09650649057069914,
       "P_alpha_inferred_positive": 0.0,
-      "delta_chi2_median": 1.5708907808151629,
-      "delta_chi2_p16": 1.490510866419853,
-      "delta_chi2_p84": 1.5908090464956819,
-      "P_delta_chi2_gt_0": 0.9999
+      "delta_chi2_median": 8.40103268402292,
+      "delta_chi2_p16": 7.332750750184393,
+      "delta_chi2_p84": 9.352215302172215,
+      "P_delta_chi2_gt_0": 1.0
     },
     {
       "microlensing_fraction": 0.3,
@@ -60,14 +60,14 @@
       "R_tep_p025_days": -23.295265747471657,
       "R_tep_p975_days": -5.8579043726274325,
       "P_R_tep_positive": 0.0039,
-      "alpha_inferred_median": -0.05517227754762063,
-      "alpha_inferred_p16": -0.07501925408782859,
-      "alpha_inferred_p84": -0.04365885707938221,
+      "alpha_inferred_median": -0.11351212806366756,
+      "alpha_inferred_p16": -0.15434554373631545,
+      "alpha_inferred_p84": -0.0898242740048334,
       "P_alpha_inferred_positive": 0.0039,
-      "delta_chi2_median": 1.5426948386896737,
-      "delta_chi2_p16": 1.3524614609915158,
-      "delta_chi2_p84": 1.5884671126626575,
-      "P_delta_chi2_gt_0": 0.99195
+      "delta_chi2_median": 8.41100195165675,
+      "delta_chi2_p16": 6.679385870224938,
+      "delta_chi2_p84": 9.725848886855715,
+      "P_delta_chi2_gt_0": 0.9957
     }
   ],
   "proxy_mapping_summary": {
@@ -76,14 +76,14 @@
     "R_tep_p16_days": -29.67254914324502,
     "R_tep_p84_days": 0.8957916041081954,
     "P_R_tep_positive": 0.1764,
-    "alpha_inferred_median": -0.03136123119920055,
-    "alpha_inferred_p16": -0.06854680994302755,
-    "alpha_inferred_p84": 0.06286582241453896,
+    "alpha_inferred_median": -0.06452298600588519,
+    "alpha_inferred_p16": -0.14102905688265147,
+    "alpha_inferred_p84": 0.12934092268689895,
     "P_alpha_inferred_positive": 0.17935943060498222,
-    "delta_chi2_median": 0.520222054376589,
-    "delta_chi2_p16": -1.0451902688877956,
-    "delta_chi2_p84": 1.482827594875024,
-    "P_delta_chi2_gt_0": 0.62905
+    "delta_chi2_median": 9.542788343368326,
+    "delta_chi2_p16": -0.714697155506809,
+    "delta_chi2_p84": 11.408367598464999,
+    "P_delta_chi2_gt_0": 0.8063
   },
   "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_12_microlensing_robustness.png"
 }

@@ -1,4 +1,6 @@
 {
+  "step": "31",
+  "status": "success",
   "achromaticity": {
     "status": "PARTIAL",
     "primary_systems_status": "Single-band monitoring only (COSMOGRAIL public releases)",

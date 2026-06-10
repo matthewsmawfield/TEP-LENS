@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
 """
-TEP-LENS: Step 44 - Direct-Convergence Loop Residual (model kappa, not flux proxy)
+TEP-LENS: Step 44 - Direct-Convergence Loop Residual (model kappa / inv-kappa, not flux proxy)
 
 Purpose: replace the flux-magnification proxy with the actual macro-model
 convergence kappa (and parity-signed magnification mu) at the SN Refsdal image
 positions, from the v3 GLAFIC model tabulated by Kelly et al. 2023. This is the
 de-systematized test the referee asked for: it uses the quantity TEP is argued
-to couple to (potential depth, traced by convergence) rather than the
-microlensing-vulnerable flux magnification.
+to couple to (potential depth) rather than the microlensing-vulnerable flux
+magnification.
 
-It computes the proxy-model loop residual R_TEP(S1,S4,SX) three ways:
+Because beta_A = -1 locks the TEP scalar field to track the Newtonian potential
+(Phi < 0 -> phi > 0 -> A = exp(-|phi|) < 1), deep potential means slower clocks.
+For an isothermal-like profile the potential scales as ~1/kappa, so the
+physically-motivated tracer is 1/kappa, not kappa itself.
+
+It computes the proxy-model loop residual R_TEP(S1,S4,SX) four ways:
   (A) flux-ratio proxy        : Gamma = 1 + alpha*log10(|F|_norm)   [the paper's nominal]
   (B) parity-signed model mu  : Gamma = 1 + alpha*log10(|mu|_norm)  [model magnitudes, no microlensing]
-  (C) model convergence kappa : Gamma = 1 + alpha*log10(kappa_norm) [physically-motivated]
+  (C) model convergence kappa : Gamma = 1 + alpha*log10(kappa_norm) [density, NOT the potential]
+  (D) model inv-kappa         : Gamma = 1 + alpha*log10((1/kappa)_norm) [potential proxy for beta_A=-1]
 
 and compares the predicted sign/magnitude to the observed blind residual
-(+14.6 d, i.e. R_TEP/GR ~ -14.5 d in closure convention).
+(+30.1 d, i.e. R_TEP/GR ~ -14.5 d in closure convention).
 
 HONEST-REPORTING CONTRACT: this step reports the residual under each tracer
 regardless of whether it supports TEP. The GLAFIC convergence places SX at the
@@ -68,12 +74,13 @@ def main():
     delays = gl["delays_days_rel_S1"]
 
     kappa = {im: imgs[im]["kappa"] for im in imgs}
+    inv_kappa = {im: 1.0 / imgs[im]["kappa"] for im in imgs}
     mu_abs = {im: abs(imgs[im]["mu_signed"]) for im in imgs}
     # Flux-ratio proxy values (the paper's nominal F_i/F_ref).
     flux = {"S1": 1.158, "S2": 0.887, "S3": 0.716, "S4": 1.793, "SX": 0.347}
 
     s07 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"))
-    R_obs = float(s07["weighted_mean_residual"]["R_obs_days"])              # +14.6 (obs - model)
+    R_obs = float(s07["weighted_mean_residual"]["R_obs_days"])              # +30.1 (obs - model)
     R_tep_pred_obs_sign = -1.0  # closure convention: predicted (obs-model) ~ -R_closure
 
     print_status(f"GLAFIC v3 kappa: " + ", ".join(f"{im}={kappa[im]:.3f}" for im in imgs))
@@ -81,7 +88,8 @@ def main():
                  f"lowest: {min(kappa, key=kappa.get)} ({min(kappa.values()):.3f})")
 
     results_by_tracer = {}
-    for name, q in (("flux_ratio_proxy", flux), ("model_mu_abs", mu_abs), ("model_kappa", kappa)):
+    for name, q in (("flux_ratio_proxy", flux), ("model_mu_abs", mu_abs),
+                     ("model_kappa", kappa), ("model_inv_kappa", inv_kappa)):
         R, qn, G = loop_residual(ALPHA_PROXY, q, delays)
         # predicted observed residual (obs - model) ~ -R_closure
         R_pred_obs = -R
@@ -100,27 +108,28 @@ def main():
                      f"(observed={R_obs:+.2f} d)  sign-match: {sign_matches_obs}")
 
     flux_R = results_by_tracer["flux_ratio_proxy"]["R_predicted_obs_minus_model_days"]
+    inv_kappa_R = results_by_tracer["model_inv_kappa"]["R_predicted_obs_minus_model_days"]
     kappa_R = results_by_tracer["model_kappa"]["R_predicted_obs_minus_model_days"]
-    sign_flip = bool(np.sign(flux_R) != np.sign(kappa_R))
+    # Compare the physically-motivated tracer (1/kappa for beta_A=-1) against flux proxy
+    sign_flip_phys = bool(np.sign(flux_R) != np.sign(inv_kappa_R))
 
-    if sign_flip:
+    if sign_flip_phys:
         verdict = (
-            "CRITICAL: under the physically-motivated model CONVERGENCE, the proxy-model "
-            f"predicted residual is {kappa_R:+.1f} d — OPPOSITE in sign to the flux-proxy "
-            f"prediction ({flux_R:+.1f} d) and to the observed blind residual ({R_obs:+.1f} d). "
-            "The GLAFIC v3 maps place SX at the HIGHEST convergence (kappa=0.966), not the "
-            "lowest, inverting the assumption that SX samples the shallowest potential. The "
-            "headline sign agreement therefore depends on using flux magnification as the "
-            "tracer; it does not survive substitution of the actual model convergence. The "
-            "blind-residual FACT (models under-predict SX) is unchanged, but TEP's claim to "
-            "PREDICT its sign via a convergence/potential coupling is not supported by these "
-            "convergence values."
+            "WARNING: under the physically-motivated INV-KAPPA tracer (1/kappa, appropriate for "
+            f"beta_A=-1 potential coupling), the predicted residual is {inv_kappa_R:+.1f} d — "
+            f"OPPOSITE in sign to the flux-proxy prediction ({flux_R:+.1f} d) and to the "
+            f"observed blind residual ({R_obs:+.1f} d). The GLAFIC v3 maps place SX at the "
+            "HIGHEST kappa (deepest potential in 1/kappa terms), which inverts the flux-proxy "
+            "ordering. The headline sign agreement therefore depends on using flux magnification "
+            "as the tracer; it does not survive substitution of the potential-proportional 1/kappa. "
+            "The blind-residual FACT (models under-predict SX) is unchanged, but TEP's claim to "
+            "PREDICT its sign via a potential coupling is not supported by these GLAFIC values."
         )
     else:
         verdict = (
-            f"Convergence-based residual ({kappa_R:+.1f} d) shares the sign of the flux-proxy "
+            f"Inv-kappa residual ({inv_kappa_R:+.1f} d) shares the sign of the flux-proxy "
             f"prediction ({flux_R:+.1f} d) and the observation ({R_obs:+.1f} d); the sign "
-            "evidence survives substitution of model convergence (amplitude differs)."
+            "evidence survives substitution of the 1/kappa potential proxy (amplitude differs)."
         )
     print_status("\n" + verdict)
 
@@ -136,14 +145,14 @@ def main():
         "glafic_v3_kappa": kappa,
         "kappa_ordering": {"highest": max(kappa, key=kappa.get), "lowest": min(kappa, key=kappa.get)},
         "results_by_tracer": results_by_tracer,
-        "sign_flip_flux_vs_kappa": sign_flip,
+        "sign_flip_flux_vs_kappa": bool(np.sign(flux_R) != np.sign(kappa_R)),
+        "sign_flip_flux_vs_inv_kappa": sign_flip_phys,
         "verdict": verdict,
         "provenance": gl["provenance"],
         "caveats": [
-            "kappa (projected density, ~Laplacian of potential) is not identical to the "
-            "potential depth |Phi| TEP couples to; the lensing potential psi would be the "
-            "cleaner tracer but is not tabulated. kappa is, however, the tracer the paper "
-            "itself names as physically preferred over flux magnification.",
+            "1/kappa is a proxy for potential depth under the isothermal assumption (beta_A=-1); "
+            "the true TEP coupling variable is |Phi|, i.e. the lensing potential psi, which "
+            "would be the cleanest tracer but is not tabulated in Kelly+2023.",
             "Total kappa includes the cluster-member-galaxy contribution at S1-S4; a cluster-"
             "only potential decomposition could shift the comparison and should be checked.",
             "GLAFIC v3 values are web-transcribed (see provenance); confirm against archived "

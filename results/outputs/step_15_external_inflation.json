@@ -15,257 +15,257 @@
   "scenarios": {
     "kappa16": {
       "kappa": 0.08490586713395334,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.61445230493382,
-      "z_from_gr": 1.2575297575613174,
-      "p_z_one_sided": 0.10428093529393695,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.581347330689398
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 8.902781227798561,
+      "z_from_gr": 3.375302162525884,
+      "p_z_one_sided": 0.0003686734249741514,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.356966965539666
     },
     "kappa50": {
       "kappa": 0.11109275751693769,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.644007502810457,
-      "z_from_gr": 1.2543378547038595,
-      "p_z_one_sided": 0.10485961513562109,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5733298644465519
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 8.925436059376645,
+      "z_from_gr": 3.366734860994791,
+      "p_z_one_sided": 0.00038031890759077216,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.314596956599521
     },
     "kappa84": {
       "kappa": 0.13977355178670964,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.685313136761025,
-      "z_from_gr": 1.249903979490559,
-      "p_z_one_sided": 0.10566731277760666,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5622266056952356
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 8.957097907295314,
+      "z_from_gr": 3.3548340145091826,
+      "p_z_one_sided": 0.00039706309218493386,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.25591941954374
     }
   },
   "curve": [
     {
       "kappa": 0.04245293356697667,
-      "weighted_mean_days": 14.60551939123091,
-      "weighted_sigma_days": 11.583236839725863,
-      "z_from_gr": 1.2609186528190313,
-      "p_z_one_sided": 0.10366907852823098,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5898819063579732
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.878853757921023,
+      "z_from_gr": 3.3843982061170266,
+      "p_z_one_sided": 0.00035667232159677004,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.402069749439836
     },
     {
       "kappa": 0.04941990832168866,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.58693665440328,
-      "z_from_gr": 1.260516029979374,
-      "p_z_one_sided": 0.10374163445043805,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.588866740838922
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 8.881689762563484,
+      "z_from_gr": 3.383317536865896,
+      "p_z_one_sided": 0.0003580788868378201,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.396704890915318
     },
     {
       "kappa": 0.056386883076400655,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.591196140489302,
-      "z_from_gr": 1.2600528206241162,
-      "p_z_one_sided": 0.10382515412092408,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5876992146924715
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 8.884954769967285,
+      "z_from_gr": 3.3820742489602993,
+      "p_z_one_sided": 0.0003597034859313283,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.39053485018617
     },
     {
       "kappa": 0.06335385783111264,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.596014681242945,
-      "z_from_gr": 1.2595292255757464,
-      "p_z_one_sided": 0.10391962043816555,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5863800021732204
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.888648307384345,
+      "z_from_gr": 3.3806688814225336,
+      "p_z_one_sided": 0.00036154811762724594,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.38356319049449
     },
     {
       "kappa": 0.07032083258582464,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.601391580068222,
-      "z_from_gr": 1.258945471362585,
-      "p_z_one_sided": 0.10402501406328979,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5849098633443957
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 8.892769840855632,
+      "z_from_gr": 3.379102042271237,
+      "p_z_one_sided": 0.00036361504936420784,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.375793928556385
     },
     {
       "kappa": 0.07728780734053663,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.607326061015163,
-      "z_from_gr": 1.258301809947909,
-      "p_z_one_sided": 0.10414131342564009,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5832896429885879
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.897318775595215,
+      "z_from_gr": 3.3773744077943375,
+      "p_z_one_sided": 0.00036590681927673173,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.367231528805489
     },
     {
       "kappa": 0.08425478209524861,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.613817269336284,
-      "z_from_gr": 1.257598518429729,
-      "p_z_one_sided": 0.10426849472903554,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5815202694017225
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.902294456416811,
+      "z_from_gr": 3.3754867217432323,
+      "p_z_one_sided": 0.00036842623842438997,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.357880897019434
     },
     {
       "kappa": 0.09122175684996062,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.620864272097565,
-      "z_from_gr": 1.2568358987119137,
-      "p_z_one_sided": 0.10440653195873856,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5796027530734507
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 8.907696168202115,
+      "z_from_gr": 3.3734397944500607,
+      "p_z_one_sided": 0.00037117639323905994,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.347747373346138
     },
     {
       "kappa": 0.09818873160467259,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.628466058842918,
-      "z_from_gr": 1.2560142771474214,
-      "p_z_one_sided": 0.10455539688914772,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.577538185257449
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.913523136410117,
+      "z_from_gr": 3.3712345018701178,
+      "p_z_one_sided": 0.00037416064818594145,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.336836724748194
     },
     {
       "kappa": 0.1051557063593846,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.636621542311056,
-      "z_from_gr": 1.255134004154459,
-      "p_z_one_sided": 0.10471505909223044,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.575327736435356
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 8.91977452762664,
+      "z_from_gr": 3.368871784551586,
+      "p_z_one_sided": 0.00037738264863359334,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.325155136885277
     },
     {
       "kappa": 0.11212268111409658,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.645329559203628,
-      "z_from_gr": 1.2541954538064373,
-      "p_z_one_sided": 0.10488548594671465,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.572972654678341
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 8.926449450153086,
+      "z_from_gr": 3.366352646534954,
+      "p_z_one_sided": 0.00038084632392777344,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.312709205455434
     },
     {
       "kappa": 0.11908965586880857,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.654588871003297,
-      "z_from_gr": 1.2531990233966601,
-      "p_z_one_sided": 0.10506664264805521,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.570474263910533
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 8.93354695463355,
+      "z_from_gr": 3.36367815418461,
+      "p_z_one_sided": 0.00038455589066341647,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.299505927017876
     },
     {
       "kappa": 0.12605663062352057,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.664398164840483,
-      "z_from_gr": 1.2521451329787192,
-      "p_z_one_sided": 0.10525849221919537,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5678339620787534
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.941066034719194,
+      "z_from_gr": 3.360849434955222,
+      "p_z_one_sided": 0.0003885158561486515,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.28555268932049
     },
     {
       "kappa": 0.13302360537823255,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.674756054407396,
-      "z_from_gr": 1.2510342248836204,
-      "p_z_one_sided": 0.10546099552214083,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5650532192331899
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 8.94900562776886,
+      "z_from_gr": 3.3578676760956734,
+      "p_z_one_sided": 0.00039273102205423507,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.270857261156772
     },
     {
       "kappa": 0.13999058013294455,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.685661080917859,
-      "z_from_gr": 1.2498667632147098,
-      "p_z_one_sided": 0.10567411127036552,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5621335755238324
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 8.957364615584819,
+      "z_from_gr": 3.3547341232934085,
+      "p_z_one_sided": 0.000397206488241344,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.255427781777557
     },
     {
       "kappa": 0.14695755488765655,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.697111714111418,
-      "z_from_gr": 1.2486432333215032,
-      "p_z_one_sided": 0.1058977960420679,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5590766391176694
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.966141825182444,
+      "z_from_gr": 3.3514500792621447,
+      "p_z_one_sided": 0.00040194765676018166,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.239272749884009
     },
     {
       "kappa": 0.15392452964236852,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.709106353300184,
-      "z_from_gr": 1.247364141253562,
-      "p_z_one_sided": 0.1061320042942972,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.555884084041748
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.975336029592635,
+      "z_from_gr": 3.3480169022760475,
+      "p_z_one_sided": 0.00040696023601128787,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.222401012228815
     },
     {
       "kappa": 0.1608915043970805,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.721643328456766,
-      "z_from_gr": 1.246030013195584,
-      "p_z_one_sided": 0.10637668837796704,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5525576479573686
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 8.98494594869575,
+      "z_from_gr": 3.344436004653463,
+      "p_z_one_sided": 0.00041225024506109286,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.204821751853412
     },
     {
       "kappa": 0.16785847915179253,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.734720901341596,
-      "z_from_gr": 1.24464139488491,
-      "p_z_one_sided": 0.10663179855377419,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5490991298707486
+      "weighted_mean_days": 30.049576730683338,
+      "weighted_sigma_days": 8.994970250085732,
+      "z_from_gr": 3.3407088511934693,
+      "p_z_one_sided": 0.0004178240181025592,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.186544475989537
     },
     {
       "kappa": 0.1748254539065045,
-      "weighted_mean_days": 14.60551939123091,
-      "weighted_sigma_days": 11.748337266667978,
-      "z_from_gr": 1.2431988510126655,
-      "p_z_one_sided": 0.10689728300904133,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5455103877855938
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 9.005407549963149,
+      "z_from_gr": 3.336836957568489,
+      "p_z_one_sided": 0.00042368820905143445,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.167579003653739
     },
     {
       "kappa": 0.18179242866121648,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.76249055330307,
-      "z_from_gr": 1.2417029646097766,
-      "p_z_one_sided": 0.10717308787549806,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5417933363030762
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 9.016256414055777,
+      "z_from_gr": 3.332821888676317,
+      "p_z_one_sided": 0.0004298497962679572,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.147935452963923
     },
     {
       "kappa": 0.18875940341592845,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.777178825503,
-      "z_from_gr": 1.2401543364191139,
-      "p_z_one_sided": 0.10745915724801824,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.537949944174756
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 9.027515358565353,
+      "z_from_gr": 3.328665256954909,
+      "p_z_one_sided": 0.00043631608739348493,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.12762422820726
     },
     {
       "kappa": 0.19572637817064048,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.792400084180349,
-      "z_from_gr": 1.238553584255032,
-      "p_z_one_sided": 0.1077554332043249,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5339822318140013
+      "weighted_mean_days": 30.049576730683327,
+      "weighted_sigma_days": 9.039182851139115,
+      "z_from_gr": 3.3243687206633386,
+      "p_z_one_sided": 0.0004430947242908804,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.106656006688754
     },
     {
       "kappa": 0.20269335292535245,
-      "weighted_mean_days": 14.605519391230912,
-      "weighted_sigma_days": 11.808152268202045,
-      "z_from_gr": 1.2369013423515756,
-      "p_z_one_sided": 0.10806185582567773,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5298922687714858
+      "weighted_mean_days": 30.04957673068333,
+      "weighted_sigma_days": 9.051257311864708,
+      "z_from_gr": 3.319933982132326,
+      "p_z_one_sided": 0.0004501936880770628,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.085041725389974
     },
     {
       "kappa": 0.20966032768006446,
-      "weighted_mean_days": 14.605519391230914,
-      "weighted_sigma_days": 11.824433255715963,
-      "z_from_gr": 1.2351982607006189,
-      "p_z_one_sided": 0.10837836321855587,
-      "p_sign_one_sided": 0.03515625,
-      "delta_chi2_gr_minus_tep": 1.5256821711803055
+      "weighted_mean_days": 30.049576730683334,
+      "weighted_sigma_days": 9.06373711428702,
+      "z_from_gr": 3.3153627859877663,
+      "p_z_one_sided": 0.00045762130423556156,
+      "p_sign_one_sided": 0.00390625,
+      "delta_chi2_gr_minus_tep": 8.062792567467252
     }
   ],
   "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_15_external_inflation.png"

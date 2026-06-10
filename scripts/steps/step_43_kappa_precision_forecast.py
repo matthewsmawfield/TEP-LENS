@@ -75,7 +75,7 @@ def closure_residual_from_kappa(alpha, kappa, delays, loop):
             + (G[k] - 1.0) * (delays[i] - delays[k]))
 
 
-def run_level(gamma_scale, c_mode, deltas, sigmas, r_obs, n_draws=20000, seed=42):
+def run_level(gamma_scale, c_mode, deltas, sigmas, r_obs, n_draws=20000, seed=20260607):
     """One precision level: shear std scaled by gamma_scale; C knowledge = c_mode."""
     rng = np.random.default_rng(seed)
     # Nominal flux-proxy residual (no inversion), for the alpha_equiv reference.

@@ -1,0 +1,245 @@
+{
+  "step": "50",
+  "status": "success",
+  "description": "Loop residual under lensing-potential psi tracer, computed from archived GLAFIC v3 maps via direct sampling and FFT Poisson solver. Tests whether the headline sign survives substitution of the fundamental TEP coupling variable (potential depth) for the phenomenological log-magnification proxy.",
+  "alpha_proxy_ref": -0.055,
+  "observed_blind_residual_days": 30.04957673068333,
+  "image_positions_deg": {
+    "S1": [
+      177.398494,
+      22.398331
+    ],
+    "S2": [
+      177.398295,
+      22.398505
+    ],
+    "S3": [
+      177.398702,
+      22.3986
+    ],
+    "S4": [
+      177.398184,
+      22.398706
+    ],
+    "SX": [
+      177.397473,
+      22.399527
+    ]
+  },
+  "map_metadata": {
+    "shape": [
+      5033,
+      5566
+    ],
+    "pixel_scale_arcsec": 0.02999999999999988,
+    "psi_bg_edge": 4722.694030761719,
+    "psi_bg_max": 6365.70068359375,
+    "psi_bg_mean": 3061.4708039002953
+  },
+  "map_json_agreement": {
+    "S1": {
+      "kappa_map": 2.863612651824951,
+      "kappa_json": 0.722,
+      "ratio": 3.966222509452841
+    },
+    "S2": {
+      "kappa_map": 2.695136547088623,
+      "kappa_json": 0.733,
+      "ratio": 3.6768574994387766
+    },
+    "S3": {
+      "kappa_map": 5.005581378936768,
+      "kappa_json": 0.675,
+      "ratio": 7.4156761169433585
+    },
+    "S4": {
+      "kappa_map": 2.620854377746582,
+      "kappa_json": 0.727,
+      "ratio": 3.605026654396949
+    },
+    "SX": {
+      "kappa_map": 3.0837724208831787,
+      "kappa_json": 0.966,
+      "ratio": 3.1923109947030834
+    }
+  },
+  "maps_consistent_with_json": false,
+  "psi_map_values": {
+    "S1": 1055.697998046875,
+    "S2": 1054.6705322265625,
+    "S3": 1045.28466796875,
+    "S4": 1052.11181640625,
+    "SX": 1061.3414306640625
+  },
+  "psi_fft_values": {
+    "S1": 0.0024802378232820113,
+    "S2": 0.0024778106061897967,
+    "S3": 0.0025006538767028456,
+    "S4": 0.0024788110504407315,
+    "SX": 0.002439532407986118
+  },
+  "results_by_tracer": {
+    "psi_map_bg_edge": {
+      "R_closure_days": -0.022137562067723937,
+      "R_predicted_obs_minus_model_days": 0.022137562067723937,
+      "dGamma_S4_minus_SX": -6.013705845819839e-05,
+      "q_norm": {
+        "S1": 0.9994884780376695,
+        "S2": 0.9997685274949959,
+        "S3": 1.0023267694724665,
+        "S4": 1.000465939479672,
+        "SX": 0.9979502855151963
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "psi_map_bg_max": {
+      "R_closure_days": -0.015286408180442213,
+      "R_predicted_obs_minus_model_days": 0.015286408180442213,
+      "dGamma_S4_minus_SX": -4.152599595641515e-05,
+      "q_norm": {
+        "S1": 0.9996466958594152,
+        "S2": 0.9998401237865195,
+        "S3": 1.0016070811213331,
+        "S4": 1.0003218206832802,
+        "SX": 0.9985842785494519
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "psi_map_bg_mean": {
+      "R_closure_days": -0.040482367178305244,
+      "R_predicted_obs_minus_model_days": 0.040482367178305244,
+      "dGamma_S4_minus_SX": -0.00010996952697861495,
+      "q_norm": {
+        "S1": 0.9990652208114491,
+        "S2": 0.9995769963044915,
+        "S3": 1.0042520474966667,
+        "S4": 1.000851479625112,
+        "SX": 0.9962542557622813
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "psi_map_bg_annulus": {
+      "R_closure_days": 1.398709961130021,
+      "R_predicted_obs_minus_model_days": -1.398709961130021,
+      "dGamma_S4_minus_SX": 0.003838967929348458,
+      "q_norm": {
+        "S1": 0.8741827718259828,
+        "S2": 0.8215350083255776,
+        "S3": 1.5710399298244617,
+        "S4": 0.797129381444613,
+        "SX": 0.9361129085793652
+      },
+      "predicted_sign_matches_observed": false
+    },
+    "psi_fft_bg_edge": {
+      "R_closure_days": 7.484326707274391e-08,
+      "R_predicted_obs_minus_model_days": -7.484326707274391e-08,
+      "dGamma_S4_minus_SX": 1.9866164269188857e-10,
+      "q_norm": {
+        "S1": 0.9999999989775596,
+        "S2": 0.9999999994915074,
+        "S3": 0.9999999946545898,
+        "S4": 0.9999999992796698,
+        "SX": 1.0000000075966733
+      },
+      "predicted_sign_matches_observed": false
+    },
+    "psi_fft_bg_max": {
+      "R_closure_days": 5.552598054681113e-08,
+      "R_predicted_obs_minus_model_days": -5.552598054681113e-08,
+      "dGamma_S4_minus_SX": 1.4738643638878557e-10,
+      "q_norm": {
+        "S1": 0.9999999992414546,
+        "S2": 0.9999999996227509,
+        "S3": 0.9999999960342568,
+        "S4": 0.999999999465589,
+        "SX": 1.000000005635948
+      },
+      "predicted_sign_matches_observed": false
+    },
+    "psi_fft_bg_mean": {
+      "R_closure_days": 1.1545492744069463e-07,
+      "R_predicted_obs_minus_model_days": -1.1545492744069463e-07,
+      "dGamma_S4_minus_SX": 3.0645996851319524e-10,
+      "q_norm": {
+        "S1": 0.99999999842276,
+        "S2": 0.9999999992155878,
+        "S3": 0.9999999917540472,
+        "S4": 0.9999999988888021,
+        "SX": 1.0000000117188033
+      },
+      "predicted_sign_matches_observed": false
+    },
+    "flux_ratio_proxy": {
+      "R_closure_days": -14.538035062734984,
+      "R_predicted_obs_minus_model_days": 14.538035062734984,
+      "dGamma_S4_minus_SX": -0.03922879481242192,
+      "q_norm": {
+        "S1": 1.181391552744338,
+        "S2": 0.9049173638033055,
+        "S3": 0.7304631707814732,
+        "S4": 1.8292185268312589,
+        "SX": 0.35400938583962455
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "model_mu_abs": {
+      "R_closure_days": -4.944280143873674,
+      "R_predicted_obs_minus_model_days": 4.944280143873674,
+      "dGamma_S4_minus_SX": -0.012201681228899641,
+      "q_norm": {
+        "S1": 1.185064935064935,
+        "S2": 1.3636363636363638,
+        "S3": 1.5422077922077921,
+        "S4": 0.5681818181818181,
+        "SX": 0.34090909090909094
+      },
+      "predicted_sign_matches_observed": true
+    },
+    "model_kappa": {
+      "R_closure_days": 2.556141746345112,
+      "R_predicted_obs_minus_model_days": -2.556141746345112,
+      "dGamma_S4_minus_SX": 0.0067893493556050455,
+      "q_norm": {
+        "S1": 0.9442845932513733,
+        "S2": 0.9586712006277793,
+        "S3": 0.8828145435521842,
+        "S4": 0.9508239602406487,
+        "SX": 1.2634057023280147
+      },
+      "predicted_sign_matches_observed": false
+    },
+    "model_inv_kappa": {
+      "R_closure_days": -2.5561417463451512,
+      "R_predicted_obs_minus_model_days": 2.5561417463451512,
+      "dGamma_S4_minus_SX": -0.0067893493556051565,
+      "q_norm": {
+        "S1": 1.042718674762079,
+        "S2": 1.0270707819621023,
+        "S3": 1.1153227898936606,
+        "S4": 1.035547294605531,
+        "SX": 0.7793404587766263
+      },
+      "predicted_sign_matches_observed": true
+    }
+  },
+  "fundamental_tep": {
+    "phi_over_c2": {
+      "S1": 1.1146315308808341e-05,
+      "S2": 1.113546707567404e-05,
+      "S3": 1.1036368846202351e-05,
+      "S4": 1.1108451533945626e-05,
+      "SX": 1.1205900038050569e-05
+    },
+    "K_calibration": 449.20221868868487,
+    "R_predicted_obs_minus_model_days": -1.972960154328346e-06,
+    "alpha_eff_to_match_observation": 837688.8486884928
+  },
+  "verdict": "Global-background psi-map tracers (edge, mean, max) preserve the SIGN of the flux-proxy prediction (+0.02 to +0.04 d).  The local-annulus tracer inverts the sign (-1.40 d) because a local background is not the physical potential at infinity; it measures curvature rather than depth.  The FFT-reconstructed psi gives zero contrast because the gauge choice (DC mode = 0) removes the large-scale gradient.  All psi amplitudes are suppressed because the lensing potential varies slowly across the ~5-arcsec S4-SX separation, whereas the flux proxy amplifies the contrast through the (1-kappa)^2-gamma^2 magnification denominator.  The sign agreement confirms that SX sits at a shallower potential than S4, consistent with the flux-proxy ordering and the observed +30.0 d residual.",
+  "caveats": [
+    "The archived GLAFIC v3 maps may be at a different source redshift than SN Refsdal (z=1.489), causing a normalization offset relative to the Kelly+2023 tabulated values. The map kappa values do not match the JSON tabulated values (ratio mean=4.37, std=1.54).",
+    "The psi background (psi_bg) is approximated by the map edge/mean/max, which is uncertain because the cluster potential has not decayed to the cosmological background within the ~2.5-arcmin map extent.",
+    "The fundamental TEP formula (Gamma = 1 + alpha*|Phi|/c^2) predicts an effect ~10^5 times smaller than observed for alpha=-0.055.  The log-magnification proxy is a phenomenological ansatz that lacks a first-principles derivation from the scalar-field action through the lensing potential.  The required 'effective alpha' for the fundamental formula is orders of magnitude larger than the lab-scale value.",
+    "Image positions are from Kelly+2015 and should be verified against the archived GLAFIC model astrometric solution."
+  ]
+}

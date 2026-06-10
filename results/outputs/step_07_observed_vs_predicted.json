@@ -3,194 +3,367 @@
   "status": "success",
   "system": "SN Refsdal (MACS J1149.6+2223)",
   "analysis": "Observed vs. blind-predicted Delta_t(SX, S1)",
-  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +14.61 +/- 11.57 d (z = +1.26 sigma from GR null, z = +0.01 sigma from TEP). Reportable non-zero binomial sign test: 7/7 positive, p=0.0078 (blind non-zero: 6/6, p=0.0156). Legacy diagnostic counting zero as non-positive: 7/8 positive, p=0.0352. Chi-squared: GR chi2=2.3, TEP chi2=0.7, Delta chi2=+1.6 in favour of TEP (p=0.2069). TEP correction (14.5 d) reduces wRMS by 46%, improving 5/8 models. Inferred alpha = -0.0553 +/- 0.0438.",
+  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +30.05 +/- 8.87 d (z = +3.39 sigma from GR null, z = +1.75 sigma from TEP). Reportable non-zero binomial sign test: 8/8 positive, p=0.0039 (blind non-zero: 7/7, p=0.0078). Legacy diagnostic counting zero as non-positive: 8/8 positive, p=0.0039. Chi-squared: GR chi2=17.7, TEP chi2=9.3, Delta chi2=+8.4 in favour of TEP (no formal p-value for non-nested fixed predictions). TEP correction (14.5 d) reduces wRMS by 28%, improving 8/8 models. Inferred alpha = -0.1137 +/- 0.0336.",
   "observed": {
     "dt_SX_S1_days": 376.0,
     "err_days": 5.6,
     "ref": "Kelly et al. 2023, ApJ 948, 93, Table 15"
+  },
+  "proxy_sensitivity": {
+    "R_nominal_proxy_days": 14.538035062734984,
+    "alpha_nominal": -0.055,
+    "R_tep_unit_days_per_alpha": -264.32791023154516,
+    "loop": "S1-S4-SX (obs-model residual = -closure)",
+    "ref": "This work, step_03",
+    "status": "post_hoc_illustrative",
+    "note": "Computed after Kelly+2023 data with fixed nominal alpha. Not a pre-registered pre-observation TEP forecast. Use for sensitivity illustration only; headline evidence is blind sign."
   },
   "tep_prediction": {
     "R_tep_prediction_days": 14.538035062734984,
     "alpha_ref": -0.055,
     "R_tep_unit_days_per_alpha": -264.32791023154516,
     "loop": "S1-S4-SX (Residual Prediction = -Closure)",
-    "ref": "This work, step_03"
+    "ref": "This work, step_03",
+    "deprecated_alias_of": "proxy_sensitivity",
+    "note": "Legacy key; prefer proxy_sensitivity. See status field there."
+  },
+  "blind_original_residuals": {
+    "ensemble": "seven_pre_reappearance_models",
+    "tier": "strictly_blind",
+    "note": "Uses original pre-reappearance published predictions (dt_pred_original). Jauzac15.1 residual is negative (-73 d).",
+    "per_model": [
+      {
+        "name": "Oguri-a*",
+        "dt_pred_original_days": 336.0,
+        "delta": 40.0,
+        "sigma": 19.808079159777204
+      },
+      {
+        "name": "Oguri-g*",
+        "dt_pred_original_days": 311.0,
+        "delta": 65.0,
+        "sigma": 20.432388504528785
+      },
+      {
+        "name": "Sharon-a*",
+        "dt_pred_original_days": 237.0,
+        "delta": 139.0,
+        "sigma": 37.91582782954897
+      },
+      {
+        "name": "Sharon-g*",
+        "dt_pred_original_days": 237.0,
+        "delta": 139.0,
+        "sigma": 32.978932669205655
+      },
+      {
+        "name": "Diego-a",
+        "dt_pred_original_days": 262.0,
+        "delta": 114.0,
+        "sigma": 55.2843558341779
+      },
+      {
+        "name": "Grillo-g",
+        "dt_pred_original_days": 361.0,
+        "delta": 15.0,
+        "sigma": 23.671924298628532
+      },
+      {
+        "name": "Jauzac15.2*",
+        "dt_pred_original_days": 449.0,
+        "delta": -73.0,
+        "sigma": 42.37168866118036
+      }
+    ],
+    "weighted_mean": {
+      "R_obs_days": 54.784695181428226,
+      "sigma_days": 10.41001515400392,
+      "mean_unweighted_days": 62.714285714285715,
+      "std_unweighted_days": 71.19934647716586,
+      "n_positive": 6,
+      "n_total": 7,
+      "z_from_gr_null": 5.262691203706542,
+      "note": "Uses published pre-reappearance predictions (dt_pred_original). Full blind-original weighted mean is typically much larger than the nominal proxy sensitivity (~14.5 d) because several teams predicted substantially shorter delays."
+    },
+    "parametric_near_361_subset": {
+      "R_obs_days": 42.26921959034786,
+      "sigma_days": 12.190991754915492,
+      "mean_unweighted_days": 40.0,
+      "std_unweighted_days": 20.412414523193153,
+      "n_positive": 3,
+      "n_total": 3,
+      "models": [
+        "Oguri-a*",
+        "Oguri-g*",
+        "Grillo-g"
+      ],
+      "note": "Subset with original predictions within 50 d of 361 d (parametric cluster). This subset sits near the nominal proxy sensitivity; it is not the full blind ensemble."
+    }
+  },
+  "delay_blind_residuals": {
+    "ensemble": "seven_pre_reappearance_models_revised",
+    "tier": "delay_blind",
+    "note": "Uses Kelly+2023 S4 revised values (dt_pred). All fixed before measured delay known; some used SX position.",
+    "per_model": [
+      {
+        "name": "Oguri-a*",
+        "dt_pred_revised_days": 353.8,
+        "delta": 22.19999999999999,
+        "sigma": 19.808079159777204
+      },
+      {
+        "name": "Oguri-g*",
+        "dt_pred_revised_days": 330.7,
+        "delta": 45.30000000000001,
+        "sigma": 20.432388504528785
+      },
+      {
+        "name": "Sharon-a*",
+        "dt_pred_revised_days": 298.0,
+        "delta": 78.0,
+        "sigma": 37.91582782954897
+      },
+      {
+        "name": "Sharon-g*",
+        "dt_pred_revised_days": 331.0,
+        "delta": 45.0,
+        "sigma": 32.978932669205655
+      },
+      {
+        "name": "Diego-a",
+        "dt_pred_revised_days": 262.0,
+        "delta": 114.0,
+        "sigma": 55.2843558341779
+      },
+      {
+        "name": "Grillo-g",
+        "dt_pred_revised_days": 361.0,
+        "delta": 15.0,
+        "sigma": 23.671924298628532
+      },
+      {
+        "name": "Jauzac15.2*",
+        "dt_pred_revised_days": 361.0,
+        "delta": 15.0,
+        "sigma": 42.37168866118036
+      }
+    ],
+    "weighted_mean": {
+      "R_obs_days": 36.102149113254356,
+      "sigma_days": 10.41001515400392,
+      "mean_unweighted_days": 47.785714285714285,
+      "std_unweighted_days": 34.04956171613997,
+      "n_positive": 7,
+      "n_total": 7,
+      "z_from_gr_null": 3.468020802963834,
+      "note": "Uses Kelly+2023 S4 revised predictions (dt_pred). All values fixed before the measured delay was known, but some models (Oguri, Sharon, Jauzac) used the SX reappearance position. This is the delay-blind tier."
+    }
   },
   "weighted_mean_residual": {
-    "R_obs_days": 14.605519391230912,
-    "sigma_days": 11.57281297405183,
-    "z_from_gr_null": 1.2620543876392813,
-    "z_from_tep_prediction": 0.005831281352877537,
-    "alpha_inferred": -0.05525530534568526,
-    "alpha_inferred_err": 0.04378203181008889,
+    "R_obs_days": 30.04957673068333,
+    "sigma_days": 8.870863592461008,
+    "z_from_gr_null": 3.3874466017289753,
+    "z_from_tep_prediction": 1.7485943173707446,
+    "alpha_inferred": -0.11368295048510237,
+    "alpha_inferred_err": 0.03356007159701878,
     "n_models": 8,
-    "n_positive_residual": 7
+    "n_positive_residual": 8
   },
   "bootstrap_alpha_inference": {
     "n_bootstrap": 10000,
     "random_seed": 42,
     "method": "Resample models with replacement, compute weighted-mean residual, convert to alpha",
-    "alpha_mean": -0.055988671582071256,
-    "alpha_std": 0.010753157889521704,
-    "alpha_median": -0.05501585033109692,
-    "alpha_p16": -0.06419733207763173,
-    "alpha_p84": -0.04754336931809137,
-    "sigma_alpha_analytical": 0.04378203181008889,
+    "alpha_mean": -0.11801455702619729,
+    "alpha_std": 0.02866574993909914,
+    "alpha_median": -0.11427377099761511,
+    "alpha_p16": -0.1451035061337535,
+    "alpha_p84": -0.09049546375622718,
+    "sigma_alpha_analytical": 0.03356007159701878,
     "P_alpha_lt_0": 1.0,
-    "P_alpha_consistent_with_ref": 0.995
+    "P_alpha_consistent_with_ref": 0.1364
   },
   "binomial_sign_test": {
-    "n_positive": 7,
+    "n_positive": 8,
     "n_total": 8,
-    "p_value_one_sided": 0.03515625,
-    "z_approx": 2.1213203435596424,
+    "n_nonzero_blind": 7,
+    "p_value_one_sided": 0.00390625,
+    "z_approx": 2.82842712474619,
     "reporting_caveat": "Legacy diagnostic: exact zero residual counted as not positive. Use nonzero_all/nonzero_blind for reportable sign tests.",
     "nonzero_all": {
+      "n_positive": 8,
+      "n_total": 8,
+      "p_value": 0.00390625
+    },
+    "p_wilcoxon_signed_rank_all": 0.00390625,
+    "p_wilcoxon_signed_rank_blind": 0.0078125,
+    "wilcoxon_note": "All 7 non-zero blind residuals positive (p=1/2^7); all 8 non-zero total residuals positive (p=1/2^8)",
+    "blind_only": {
       "n_positive": 7,
       "n_total": 7,
-      "p_value": 0.0078125
-    },
-    "p_wilcoxon_signed_rank_all": 0.0078125,
-    "p_wilcoxon_signed_rank_blind": 0.015625,
-    "wilcoxon_note": "All 6 non-zero blind residuals positive (p=1/64=0.0156); all 7 non-zero total residuals positive (p=1/128=0.0078)",
-    "blind_only": {
-      "n_positive": 6,
-      "n_total": 7,
-      "p_value": 0.0625,
+      "p_value": 0.0078125,
       "legacy_reporting_caveat": "Exact zero residual counted as not positive.",
       "nonzero": {
-        "n_positive": 6,
-        "n_total": 6,
-        "p_value": 0.015625
+        "n_positive": 7,
+        "n_total": 7,
+        "p_value": 0.0078125
       },
-      "p_wilcoxon_signed_rank_blind": 0.015625
+      "p_wilcoxon_signed_rank_blind": 0.0078125
     }
   },
   "chi2_model_comparison": {
-    "chi2_gr": 2.252691247219737,
-    "chi2_tep": 0.6599439737023928,
-    "delta_chi2": 1.5927472735173445,
-    "p_value": 0.20693406382260188,
+    "chi2_gr": 17.726426440524413,
+    "chi2_tep": 9.309214047700491,
+    "delta_chi2": 8.417212392823922,
+    "p_value_chi2_gr": 0.023373677661205048,
+    "p_value_chi2_tep": 0.3168862959560849,
     "n_dof": 8,
-    "note": "TEP has 0 free parameters (alpha_proxy=-0.055 from empirical SN Refsdal measurement)"
+    "note": "Both GR and TEP are fixed predictions (0 free parameters each), not nested models. Delta chi^2 has no formal sampling distribution; individual p-values test absolute goodness of fit."
   },
   "tep_corrected_consistency": {
     "dt_corr_days": 361.461964937265,
-    "wrms_raw_days": 17.36959812541315,
-    "wrms_corrected_days": 9.401398645165855,
-    "improvement_pct": 45.874403211374045,
-    "n_models_improved": 5,
+    "wrms_raw_days": 37.34878665767877,
+    "wrms_corrected_days": 27.06589603216706,
+    "improvement_pct": 27.53206073268136,
+    "n_models_improved": 8,
     "n_total": 8
   },
   "unweighted_statistics": {
-    "mean_days": 17.25,
-    "std_days": 15.998046755776157
+    "mean_days": 43.5625,
+    "std_days": 33.75351602055703
   },
   "per_model_results": [
     {
-      "name": "Oguri-a",
+      "name": "Oguri-a*",
       "team": "Oguri",
-      "ref": "Oguri 2015 (MNRAS 449, L86)",
-      "method": "GLAFIC parametric",
+      "ref": "Oguri 2015 (MNRAS 449, L86); revised in Kelly+2023 S4",
+      "method": "GLAFIC parametric (all images)",
       "blind": true,
-      "dt_pred_days": 324.0,
-      "err_plus": 66.0,
-      "err_minus": 52.0,
-      "sigma_model_days": 59.0,
-      "delta_obs_minus_pred_days": 52.0,
-      "sigma_total_days": 59.265166835165495,
-      "z_score": 0.8774125304435211,
-      "alpha_inferred": -0.19672534752175508
+      "dt_pred_days": 353.8,
+      "dt_pred_original_days": 336.0,
+      "value_status": "post_reappearance_revised",
+      "err_plus": 20.7,
+      "err_minus": 17.3,
+      "sigma_model_days": 19.0,
+      "delta_obs_minus_pred_days": 22.19999999999999,
+      "delta_obs_minus_pred_original_days": 40.0,
+      "sigma_total_days": 19.808079159777204,
+      "z_score": 1.120754810243281,
+      "z_score_original": 2.019378036474381,
+      "alpha_inferred": -0.08398659067274923
     },
     {
-      "name": "Sharon",
+      "name": "Oguri-g*",
+      "team": "Oguri",
+      "ref": "Oguri 2015 (MNRAS 449, L86); revised in Kelly+2023 S4",
+      "method": "GLAFIC parametric (gold images)",
+      "blind": true,
+      "dt_pred_days": 330.7,
+      "dt_pred_original_days": 311.0,
+      "value_status": "post_reappearance_revised",
+      "err_plus": 21.9,
+      "err_minus": 17.4,
+      "sigma_model_days": 19.65,
+      "delta_obs_minus_pred_days": 45.30000000000001,
+      "delta_obs_minus_pred_original_days": 65.0,
+      "sigma_total_days": 20.432388504528785,
+      "z_score": 2.2170682585621053,
+      "z_score_original": 3.1812237705637263,
+      "alpha_inferred": -0.17137804312952898
+    },
+    {
+      "name": "Sharon-a*",
       "team": "Sharon & Johnson",
-      "ref": "Sharon & Johnson 2015 (ApJ 800, L26)",
-      "method": "LTM parametric",
+      "ref": "Sharon & Johnson 2015 (ApJ 800, L26); revised in Kelly+2023 S4",
+      "method": "LTM parametric (all images)",
       "blind": true,
-      "dt_pred_days": 345.0,
-      "err_plus": 68.0,
-      "err_minus": 51.0,
-      "sigma_model_days": 59.5,
-      "delta_obs_minus_pred_days": 31.0,
-      "sigma_total_days": 59.762948387776184,
-      "z_score": 0.5187160412310028,
-      "alpha_inferred": -0.11727857256104629
+      "dt_pred_days": 298.0,
+      "dt_pred_original_days": 237.0,
+      "value_status": "post_reappearance_revised",
+      "err_plus": 58.0,
+      "err_minus": 17.0,
+      "sigma_model_days": 37.5,
+      "delta_obs_minus_pred_days": 78.0,
+      "delta_obs_minus_pred_original_days": 139.0,
+      "sigma_total_days": 37.91582782954897,
+      "z_score": 2.0571883686847054,
+      "z_score_original": 3.666015169835565,
+      "alpha_inferred": -0.2950880212826326
     },
     {
-      "name": "Diego",
+      "name": "Sharon-g*",
+      "team": "Sharon & Johnson",
+      "ref": "Sharon & Johnson 2015 (ApJ 800, L26); revised in Kelly+2023 S4",
+      "method": "LTM parametric (gold images)",
+      "blind": true,
+      "dt_pred_days": 331.0,
+      "dt_pred_original_days": 237.0,
+      "value_status": "post_reappearance_revised",
+      "err_plus": 30.0,
+      "err_minus": 35.0,
+      "sigma_model_days": 32.5,
+      "delta_obs_minus_pred_days": 45.0,
+      "delta_obs_minus_pred_original_days": 139.0,
+      "sigma_total_days": 32.978932669205655,
+      "z_score": 1.3645074706137812,
+      "z_score_original": 4.214811964784791,
+      "alpha_inferred": -0.17024308920151882
+    },
+    {
+      "name": "Diego-a",
       "team": "Diego et al.",
-      "ref": "Diego et al. 2016 (MNRAS 456, 356)",
+      "ref": "Diego et al. 2016 (MNRAS 456, 356); Kelly+2023 S4",
       "method": "WSLAP+ free-form",
       "blind": true,
-      "dt_pred_days": 376.0,
-      "err_plus": 40.0,
-      "err_minus": 60.0,
-      "sigma_model_days": 50.0,
-      "delta_obs_minus_pred_days": 0.0,
-      "sigma_total_days": 50.31262267065791,
-      "z_score": 0.0,
-      "alpha_inferred": -0.0
+      "dt_pred_days": 262.0,
+      "dt_pred_original_days": 262.0,
+      "value_status": "original_unrevised",
+      "err_plus": 55.0,
+      "err_minus": 55.0,
+      "sigma_model_days": 55.0,
+      "delta_obs_minus_pred_days": 114.0,
+      "delta_obs_minus_pred_original_days": 114.0,
+      "sigma_total_days": 55.2843558341779,
+      "z_score": 2.062066171882985,
+      "z_score_original": 2.062066171882985,
+      "alpha_inferred": -0.43128249264384766
     },
     {
-      "name": "Grillo",
+      "name": "Grillo-g",
       "team": "Grillo et al.",
-      "ref": "Grillo et al. 2016 (ApJ 822, 78)",
+      "ref": "Grillo et al. 2016 (ApJ 822, 78); Kelly+2023 S4",
       "method": "GLEE parametric",
       "blind": true,
       "dt_pred_days": 361.0,
-      "err_plus": 20.0,
+      "dt_pred_original_days": 361.0,
+      "value_status": "original_unrevised",
+      "err_plus": 19.0,
       "err_minus": 27.0,
-      "sigma_model_days": 23.5,
+      "sigma_model_days": 23.0,
       "delta_obs_minus_pred_days": 15.0,
-      "sigma_total_days": 24.15802144216285,
-      "z_score": 0.6209117760703942,
+      "delta_obs_minus_pred_original_days": 15.0,
+      "sigma_total_days": 23.671924298628532,
+      "z_score": 0.6336620466832537,
+      "z_score_original": 0.6336620466832537,
       "alpha_inferred": -0.056747696400506274
     },
     {
-      "name": "Kawamata",
-      "team": "Kawamata et al.",
-      "ref": "Kawamata et al. 2016 (ApJ 819, 114)",
-      "method": "Parametric",
-      "blind": true,
-      "dt_pred_days": 369.0,
-      "err_plus": 53.0,
-      "err_minus": 44.0,
-      "sigma_model_days": 48.5,
-      "delta_obs_minus_pred_days": 7.0,
-      "sigma_total_days": 48.8222285439737,
-      "z_score": 0.1433773141612159,
-      "alpha_inferred": -0.02648225832023626
-    },
-    {
-      "name": "Jauzac",
+      "name": "Jauzac15.2*",
       "team": "Jauzac et al.",
-      "ref": "Jauzac et al. 2016 (MNRAS 457, 2029) [corrected in Kelly+2023]",
+      "ref": "Jauzac et al. 2016 (MNRAS 457, 2029); revised in Kelly+2023 S4 using SX position",
       "method": "LENSTOOL parametric",
       "blind": true,
-      "dt_pred_days": 359.0,
-      "err_plus": 40.0,
-      "err_minus": 56.0,
-      "sigma_model_days": 48.0,
-      "delta_obs_minus_pred_days": 17.0,
-      "sigma_total_days": 48.32556259372466,
-      "z_score": 0.3517806950933985,
-      "alpha_inferred": -0.06431405592057378
-    },
-    {
-      "name": "CATS",
-      "team": "Treu et al. (CATS)",
-      "ref": "Treu et al. 2016 (ApJ 817, 60)",
-      "method": "LENSTOOL parametric",
-      "blind": true,
-      "dt_pred_days": 374.0,
-      "err_plus": 51.0,
-      "err_minus": 41.0,
-      "sigma_model_days": 46.0,
-      "delta_obs_minus_pred_days": 2.0,
-      "sigma_total_days": 46.33961588101481,
-      "z_score": 0.04315961541708406,
-      "alpha_inferred": -0.007566359520067503
+      "dt_pred_days": 361.0,
+      "dt_pred_original_days": 449.0,
+      "value_status": "post_reappearance_revised",
+      "err_plus": 42.0,
+      "err_minus": 42.0,
+      "sigma_model_days": 42.0,
+      "delta_obs_minus_pred_days": 15.0,
+      "delta_obs_minus_pred_original_days": -73.0,
+      "sigma_total_days": 42.37168866118036,
+      "z_score": 0.3540099645295124,
+      "z_score_original": -1.7228484940436268,
+      "alpha_inferred": -0.056747696400506274
     },
     {
       "name": "Grillo+2024",
@@ -199,12 +372,16 @@
       "method": "GLEE parametric (updated)",
       "blind": false,
       "dt_pred_days": 362.0,
+      "dt_pred_original_days": 362.0,
+      "value_status": "original_unrevised",
       "err_plus": 16.0,
       "err_minus": 16.0,
       "sigma_model_days": 16.0,
       "delta_obs_minus_pred_days": 14.0,
+      "delta_obs_minus_pred_original_days": 14.0,
       "sigma_total_days": 16.951696080333672,
       "z_score": 0.8258760618202653,
+      "z_score_original": 0.8258760618202653,
       "alpha_inferred": -0.05296451664047252
     }
   ],
@@ -214,34 +391,34 @@
       "description": "Tests that are independent of the amplitude calibration of alpha_proxy",
       "tests": {
         "wilcoxon_signed_rank_blind": {
-          "p_value": 0.015625,
-          "z_equiv": 2.1538746940614564,
-          "note": "All 6 non-zero blind residuals positive. Independent of R_tep_unit amplitude calibration."
+          "p_value": 0.0078125,
+          "z_equiv": 2.417559016236505,
+          "note": "All non-zero blind residuals positive. Independent of R_tep_unit amplitude calibration."
         },
         "wilcoxon_signed_rank_all": {
-          "p_value": 0.0078125,
-          "z_equiv": 2.417559016236505,
-          "note": "All 7 non-zero residuals positive. Supplementary."
+          "p_value": 0.00390625,
+          "z_equiv": 2.6600674686174592,
+          "note": "All non-zero residuals positive. Supplementary."
         },
-        "binomial_sign_test_blind_7": {
-          "p_value": 0.0625,
-          "z_equiv": 1.889822365046136,
-          "note": "6/7 positive, counting exact zero as non-positive. Conservative diagnostic."
+        "binomial_sign_test_blind": {
+          "p_value": 0.0078125,
+          "z_equiv": 2.6457513110645903,
+          "note": "All blind models positive. Conservative diagnostic (legacy zero-exclusion no longer applicable)."
         },
         "binomial_sign_test_nonzero_blind": {
-          "p_value": 0.015625,
-          "z_equiv": 2.1538746940614564,
-          "note": "6/6 non-zero blind residuals positive. Reportable sign-only check."
-        },
-        "binomial_sign_test_all_8": {
-          "p_value": 0.03515625,
-          "z_equiv": 2.1213203435596424,
-          "note": "7/8 positive, counting exact zero as non-positive. Legacy diagnostic including post-blind update."
-        },
-        "binomial_sign_test_nonzero_all": {
           "p_value": 0.0078125,
           "z_equiv": 2.417559016236505,
-          "note": "7/7 non-zero residuals positive. Reportable supplementary sign-only check."
+          "note": "All non-zero blind residuals positive. Reportable sign-only check."
+        },
+        "binomial_sign_test_all": {
+          "p_value": 0.00390625,
+          "z_equiv": 2.82842712474619,
+          "note": "All positive. Legacy diagnostic (zero-exclusion no longer applicable)."
+        },
+        "binomial_sign_test_nonzero_all": {
+          "p_value": 0.00390625,
+          "z_equiv": 2.6600674686174592,
+          "note": "All 8 non-zero residuals positive. Reportable supplementary sign-only check."
         }
       },
       "interpretation": "These tests require only that the residuals have a consistent sign, not that their amplitude matches a pre-calibrated value. They are the most robust evidence strand because they are independent of alpha_proxy calibration and of the proxy-model amplitude."
@@ -250,19 +427,20 @@
       "description": "Tests that compare observed residual amplitude against proxy-model prediction",
       "tests": {
         "weighted_mean_z_test": {
-          "R_obs_days": 14.605519391230912,
-          "sigma_days": 11.57281297405183,
-          "z_from_gr_null": 1.2620543876392813,
-          "p_value": 0.10346460827225168,
+          "R_obs_days": 30.04957673068333,
+          "sigma_days": 8.870863592461008,
+          "z_from_gr_null": 3.3874466017289753,
+          "p_value": 0.0003527322418703793,
           "note": "Definitional: alpha_proxy was calibrated from this same weighted mean residual via R_obs / R_tep_unit."
         },
         "chi2_model_comparison": {
-          "delta_chi2": 1.5927472735173445,
-          "p_value": 0.20693406382260188,
-          "note": "TEP has 0 free parameters because alpha_proxy is empirically determined from the same data."
+          "delta_chi2": 8.417212392823922,
+          "p_value_chi2_gr": 0.023373677661205048,
+          "p_value_chi2_tep": 0.3168862959560849,
+          "note": "Both GR and TEP are fixed predictions (0 free parameters each), not nested models. Delta chi^2 has no formal p-value."
         },
         "tep_corrected_wrms": {
-          "improvement_pct": 45.874403211374045,
+          "improvement_pct": 27.53206073268136,
           "note": "R_tep_prediction used for correction is derived from alpha_proxy, so this is a self-consistency check."
         }
       },
@@ -281,74 +459,75 @@
     "all_tests": {
       "weighted_mean_z_test": {
         "description": "Inverse-variance weighted mean residual against GR null",
-        "R_obs_days": 14.605519391230912,
-        "sigma_days": 11.57281297405183,
-        "z_from_gr_null": 1.2620543876392813,
-        "p_value_one_sided": 0.10346460827225168,
+        "R_obs_days": 30.04957673068333,
+        "sigma_days": 8.870863592461008,
+        "z_from_gr_null": 3.3874466017289753,
+        "p_value_one_sided": 0.0003527322418703793,
         "is_primary": false
       },
-      "binomial_sign_test_all_8": {
+      "binomial_sign_test_all": {
         "description": "Legacy diagnostic binomial test on sign of all 8 model residuals; exact zero is counted as not positive.",
-        "n_positive": 7,
+        "n_positive": 8,
         "n_total": 8,
-        "p_value_one_sided": 0.03515625,
-        "z_approx": 2.1213203435596424,
+        "p_value_one_sided": 0.00390625,
+        "z_approx": 2.82842712474619,
         "reporting_caveat": "Do not use as headline; zero residuals carry no directional information.",
         "is_primary": false
       },
       "binomial_sign_test_nonzero_all": {
         "description": "Reportable binomial test on non-zero residual signs only",
+        "n_positive": 8,
+        "n_total": 8,
+        "p_value_one_sided": 0.00390625,
+        "note": "Exact zero residual excluded because it carries no directional information.",
+        "is_primary": false
+      },
+      "binomial_sign_test_blind": {
+        "description": "Legacy diagnostic binomial test on sign of 7 blind model residuals only; exact zero is counted as not positive.",
+        "n_positive": 7,
+        "n_total": 7,
+        "p_value_one_sided": 0.0078125,
+        "reporting_caveat": "Conservative diagnostic only; use binomial_sign_test_nonzero_blind for sign-only reporting.",
+        "is_primary": false
+      },
+      "binomial_sign_test_nonzero_blind": {
+        "description": "Reportable binomial test on non-zero blind residual signs only",
         "n_positive": 7,
         "n_total": 7,
         "p_value_one_sided": 0.0078125,
         "note": "Exact zero residual excluded because it carries no directional information.",
         "is_primary": false
       },
-      "binomial_sign_test_blind_7": {
-        "description": "Legacy diagnostic binomial test on sign of 7 blind model residuals only; exact zero is counted as not positive.",
-        "n_positive": 6,
-        "n_total": 7,
-        "p_value_one_sided": 0.0625,
-        "reporting_caveat": "Conservative diagnostic only; use binomial_sign_test_nonzero_blind for sign-only reporting.",
-        "is_primary": false
-      },
-      "binomial_sign_test_nonzero_blind": {
-        "description": "Reportable binomial test on non-zero blind residual signs only",
-        "n_positive": 6,
-        "n_total": 6,
-        "p_value_one_sided": 0.015625,
-        "note": "Exact zero residual excluded because it carries no directional information.",
-        "is_primary": false
-      },
       "wilcoxon_signed_rank_all": {
         "description": "Non-parametric signed-rank test on all non-zero residuals (equal weight per model)",
-        "n_nonzero": 7,
-        "p_value_one_sided": 0.0078125,
-        "note": "All 7 non-zero residuals positive; max statistic; p=1/2^7",
+        "n_nonzero": 8,
+        "p_value_one_sided": 0.00390625,
+        "note": "All 8 non-zero residuals positive; max statistic; p=1/2^8",
         "is_primary": false
       },
       "wilcoxon_signed_rank_blind": {
         "description": "Non-parametric signed-rank test on blind-only non-zero residuals (excludes post-blind update)",
-        "n_nonzero": 6,
-        "p_value_one_sided": 0.015625,
-        "note": "All 6 non-zero blind residuals positive; max statistic; p=1/2^6",
+        "n_nonzero": 7,
+        "p_value_one_sided": 0.0078125,
+        "note": "All 7 non-zero blind residuals positive; max statistic; p=1/2^7",
         "is_primary": true
       },
       "chi2_model_comparison": {
         "description": "Chi-squared ensemble fit: GR (R=0) vs TEP (R=R_pred)",
-        "chi2_gr": 2.252691247219737,
-        "chi2_tep": 0.6599439737023928,
-        "delta_chi2": 1.5927472735173445,
-        "p_value": 0.20693406382260188,
-        "note": "TEP has 0 free parameters (alpha_proxy empirically determined)",
+        "chi2_gr": 17.726426440524413,
+        "chi2_tep": 9.309214047700491,
+        "delta_chi2": 8.417212392823922,
+        "p_value_chi2_gr": 0.023373677661205048,
+        "p_value_chi2_tep": 0.3168862959560849,
+        "note": "Both GR and TEP are fixed predictions (0 free parameters each), not nested models. Delta chi^2 has no formal sampling distribution; individual p-values test absolute goodness of fit.",
         "is_primary": false
       },
       "tep_corrected_wrms": {
         "description": "Weighted RMS reduction after subtracting TEP-predicted residual",
-        "wrms_raw_days": 17.36959812541315,
-        "wrms_corrected_days": 9.401398645165855,
-        "improvement_pct": 45.874403211374045,
-        "n_models_improved": 5,
+        "wrms_raw_days": 37.34878665767877,
+        "wrms_corrected_days": 27.06589603216706,
+        "improvement_pct": 27.53206073268136,
+        "n_models_improved": 8,
         "is_primary": false
       }
     }

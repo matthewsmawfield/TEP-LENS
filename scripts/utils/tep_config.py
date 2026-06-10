@@ -4,10 +4,22 @@ All pipeline scripts should import values from here rather than hardcoding
 them. This module is the single source of truth for empirical constants.
 """
 
-# Phenomenological lensing-sector proxy parameter (formerly ALPHA_LENS).
-# This is the sensitivity of the log-magnification proxy ansatz to the
-# observed blind-prediction residuals. It is NOT a fundamental coupling
-# constant — no solved TEP lensing transfer function exists yet.
+# Nominal illustrative lensing-sector proxy parameter (formerly ALPHA_LENS).
+#
+# IMPORTANT — provenance and usage:
+#   - This is NOT a fundamental coupling constant and NOT a pre-observation
+#     forecast for SN Refsdal.
+#   - No solved TEP lensing transfer function exists yet.
+#   - ALPHA_PROXY is a fixed nominal value used to compute post-hoc proxy
+#     sensitivity (e.g. ~14.5 d on the S1–S4–SX loop with Kelly+2023 inputs).
+#   - It must NOT be described as "TEP predicted 14.5 days before observation."
+#   - Primary Refsdal evidence is the blind sign-directional test (Tier 1).
+#   - Amplitude comparisons at this alpha are illustrative/diagnostic (Tier 3).
+#   - alpha_inferred from the corrected model ensemble (~-0.11) is a separate
+#     response-scale diagnostic and is definitional, not independent confirmation.
+#
+# SIGMA_ALPHA_PROXY is a nominal uncertainty envelope for sensitivity scans,
+# not a blind forecast uncertainty.
 ALPHA_PROXY = -0.055
 SIGMA_ALPHA_PROXY = 0.044
 

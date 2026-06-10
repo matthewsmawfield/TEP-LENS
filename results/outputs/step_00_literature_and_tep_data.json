@@ -3,7 +3,7 @@
   "status": "success",
   "data_sources": {
     "arxiv": {
-      "n_entries": 0,
+      "n_entries": 50,
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/data/interim/external/arxiv_lensed_sn_registry.json"
     },
     "tep_coefficients": {

@@ -57,6 +57,7 @@ def main():
     resid = np.array([m["delta_obs_minus_pred_days"] for m in models], dtype=float)
     sig_model = np.array([m["sigma_model_days"] for m in models], dtype=float)
     blind = np.array([m["blind"] for m in models], dtype=bool)
+    n_blind = int(blind.sum())
 
     print_status("Per-model (sigma_model, residual):")
     for n, s, r, b in zip(names, sig_model, resid, blind):
@@ -85,7 +86,7 @@ def main():
                 float(slope), float(np.sqrt(var_slope)),
                 float(chi2), int(dof))
 
-    for subset_name, mask in (("all_8", np.ones_like(blind)), ("blind_7", blind)):
+    for subset_name, mask in (("all", np.ones_like(blind)), ("blind", blind)):
         x = sig_model[mask]
         y = resid[mask]
         w = 1.0 / x ** 2  # precision weighting
@@ -120,8 +121,8 @@ def main():
         }
 
     fits = globals()["_fit"]
-    r0_blind = fits["blind_7"]["intercept_r0_days"]
-    p_blind = fits["blind_7"]["intercept_p_one_sided"]
+    r0_blind = fits["blind"]["intercept_r0_days"]
+    p_blind = fits["blind"]["intercept_p_one_sided"]
 
     if r0_blind > 0 and p_blind < 0.05:
         verdict = ("IMMATURITY DISFAVOURED: the sigma->0 intercept is positive and "
@@ -139,8 +140,9 @@ def main():
 
     print_status("\n" + verdict)
 
+    n_total = len(models)
     caveats = [
-        "Small N (7 blind / 8 total) and shared lens inputs limit the regression.",
+        f"Small N ({n_blind} blind / {n_total} total) and shared lens inputs limit the regression.",
         "The intercept is an extrapolation beyond the data's precision range.",
         "Residual and sigma_model may be mildly correlated across method families.",
         "Grillo+2024 is a post-blind precision update; it still retains a ~+14 d residual, "
@@ -152,12 +154,12 @@ def main():
     ]
 
     headline = (
-        f"Precision-persistence (blind 7): sigma->0 residual intercept r0 = "
-        f"{r0_blind:+.1f} +/- {fits['blind_7']['intercept_sigma_days']:.1f} d "
+        f"Precision-persistence (blind {n_blind}): sigma->0 residual intercept r0 = "
+        f"{r0_blind:+.1f} +/- {fits['blind']['intercept_sigma_days']:.1f} d "
         f"(one-sided p={p_blind:.3f}). Most-precise blind model "
-        f"({fits['blind_7']['most_precise_model']['name']}, "
-        f"sigma={fits['blind_7']['most_precise_model']['sigma_model_days']:.0f} d) retains "
-        f"a {fits['blind_7']['most_precise_model']['residual_days']:+.0f} d residual."
+        f"({fits['blind']['most_precise_model']['name']}, "
+        f"sigma={fits['blind']['most_precise_model']['sigma_model_days']:.0f} d) retains "
+        f"a {fits['blind']['most_precise_model']['residual_days']:+.0f} d residual."
     )
 
     results = {

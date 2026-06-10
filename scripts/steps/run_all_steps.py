@@ -27,7 +27,7 @@ STEPS = [
     "step_04_plot_closure.py",          # Figures: loop comparison + baseline scaling
     "step_05_tdcosmo_shear.py",         # TDCOSMO quad-lens temporal shear test
     "step_06_alpha_sensitivity.py",     # Alpha scan: SNR is alpha-independent (geometric)
-    "step_07_observed_vs_predicted.py", # Evidence: observed vs 7 blind model predictions
+    "step_07_observed_vs_predicted.py", # Evidence: observed vs blind model predictions
     "step_08_new_evidence.py",          # Extended evidence: delay-mu corr, alpha inference, H0pe sensitivity
     "step_09_precision_roadmap.py",     # TEP precision roadmap simulation
     "step_10_h0_tension.py",            # H0 internal-consistency check, not tension resolution
@@ -57,6 +57,14 @@ STEPS = [
     "step_42_precision_persistence.py",         # Does the SX residual vanish as lens-model precision improves?
     "step_43_kappa_precision_forecast.py",      # Forecast: convergence precision needed to de-systematize the mu->kappa amplitude
     "step_44_direct_kappa_residual.py",         # Loop residual using GLAFIC v3 model kappa (Kelly+2023) vs flux proxy — sign test
+    "step_45_proxy_robustness_sweep.py",        # Systematic proxy-tracer robustness across all available lens models
+    "step_46_tdcosmo_kappa_tracer_robustness.py", # Cross-system proxy-robustness using TDCOSMO sample
+    "step_50_psi_transport.py",                   # Lensing-potential transport integration (psi-tracer) — fundamental TEP coupling
+    "step_51_geodesic_transport.py",              # Full 3D geodesic transport integration — proper scalar-field path integral
+    "step_052_transfer_kernel_bridge.py",         # Response-transfer audit: canonical tracer comparison table
+    "step_053_amplification_kernel.py",           # Amplification-kernel diagnostic: K = R_obs / R_transport
+    "step_054_transfer_kernel_first_principles.py", # First-principles Jacobian transfer-kernel derivation
+    "step_055_tdcosmo_kernel_test.py",            # Cross-system kernel consistency audit: TDCOSMO sample data availability
     "step_20_external_completeness_synthesis.py", # Completeness-aware Tier-A significance synthesis from steps 16+19
 ]
 

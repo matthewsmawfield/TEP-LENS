@@ -14,8 +14,8 @@
         <em>GitHub Repository:</em> <a href="https://github.com/matthewsmawfield/TEP-LENS">github.com/matthewsmawfield/TEP-LENS</a>
     </p>
     <p>
-        The repository contains a deterministic, version-controlled analysis pipeline with <em>36 analysis steps</em>
-        (numbered 00–20, 30–42, with 32b and 38b diagnostics) for geometric blind-prediction residual tests in multiply-imaged supernovae.
+        The repository contains a deterministic, version-controlled analysis pipeline covering <em>Steps 00–20, 30–46, and 50–55</em>,
+        including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting.
     </p>
 
     <h4>Repository Structure</h4>
@@ -101,7 +101,7 @@ cd TEP-LENS
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run complete pipeline (36 steps, 00–20 plus 30–42)
+# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–55
 python scripts/steps/run_all_steps.py
 
 # 4. Build manuscript
@@ -145,7 +145,7 @@ npm run build
     </table>
 
     <h4>Detailed Pipeline Steps</h4>
-    <p>The analysis pipeline consists of <em>36 analysis steps</em> (numbered 00–20, 30–42, with 32b and 38b diagnostics). Each step produces JSON outputs and logs for full traceability:</p>
+    <p>The analysis pipeline covers <em>Steps 00–20, 30–46, and 50–55</em>, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:</p>
 
     <h5>Data Acquisition & Closure Tests (Steps 00-04)</h5>
     <ul>
@@ -160,7 +160,7 @@ npm run build
     <ul>
         <li><em>step_05_tdcosmo_shear.py</em> — TDCOSMO temporal shear test; computes TEP-predicted delay shifts as a predicted-sensitivity consistency check</li>
         <li><em>step_06_alpha_sensitivity.py</em> — α₀ parameter sensitivity analysis; tests how predicted GR discrepancies depend on TEP coupling</li>
-        <li><em>step_07_observed_vs_predicted.py</em> — Observed vs predicted time-delay comparison; quantifies TEP predictive accuracy</li>
+        <li><em>step_07_observed_vs_predicted.py</em> — Observed vs blind-predicted delay comparison; blind sign evidence + post-hoc proxy sensitivity (not pre-observation forecast)</li>
         <li><em>step_08_new_evidence.py</em> — Compile new evidence from independent lens systems</li>
         <li><em>step_09_precision_roadmap.py</em> — Precision requirements analysis; quantifies significance as a function of model precision and sample size</li>
         <li><em>step_10_h0_tension.py</em> — H0 internal-consistency check in lensing context; compares proxy-model shifts to local and CMB H0 without claiming a tension resolution</li>

@@ -1,5 +1,5 @@
 v0.1 (Lisboa) - Initial release of TEP-LENS manuscript
 
 - 36-step strong-lensing time-delay pipeline, steps 00–20 plus 30–42 (SN Refsdal, SN H0pe, SN Encore, TDCOSMO-2025, COSMOGRAIL)
-- Headline: designated primary blind-only Wilcoxon signed-rank test — all six non-zero blind residuals positive (p = 0.016, ≈2.2σ); supplementary all-eight-model Wilcoxon gives p = 0.0078 (2.4σ); correlation-aware permutation p = 0.031
+- Headline: exact family-sign-flip test (correlation-aware, p = 0.031, ≈1.9σ); Wilcoxon signed-rank benchmark (blind 7, p = 0.0078, ≈2.4σ); supplementary all-eight-model Wilcoxon gives p = 0.0039 (2.8σ)
 - Robustness: model dependence, microlensing MC, hierarchical Bayes, external chains, kappa-proxy validation, single-contrast dominance

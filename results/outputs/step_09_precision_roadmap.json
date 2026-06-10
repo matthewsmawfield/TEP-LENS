@@ -10,10 +10,10 @@
   "falsification": {
     "note": "Symmetric thresholds: if GR is true, same sigma_model excludes TEP at same confidence.",
     "current_precision": {
-      "sigma_R_obs_days": 11.57281297405183,
-      "tep_excluded_2sigma_if_abs_residual_deviation_gt_days": 23.14562594810366,
-      "tep_excluded_3sigma_if_abs_residual_deviation_gt_days": 34.71843892215549,
-      "tep_excluded_5sigma_if_abs_residual_deviation_gt_days": 57.86406487025915
+      "sigma_R_obs_days": 8.870863592461008,
+      "tep_excluded_2sigma_if_abs_residual_deviation_gt_days": 17.741727184922016,
+      "tep_excluded_3sigma_if_abs_residual_deviation_gt_days": 26.612590777383026,
+      "tep_excluded_5sigma_if_abs_residual_deviation_gt_days": 44.35431796230504
     },
     "sigma_model_for_tep_exclusion": {
       "3sigma_days": 13.706590903983603,

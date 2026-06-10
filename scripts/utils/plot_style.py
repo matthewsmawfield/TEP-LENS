@@ -2,7 +2,7 @@
 TEP publication figure style for manuscript pipeline figures.
 
 Aligned with TEP-JWST / TEP-WB / TEP-EFA: serif typography, 300 DPI exports,
-blue-slate data series, and manuscript CSS accent (#b43b4e) for contrast.
+blue-slate data series, and cool slate accent (#334155) for contrast.
 """
 
 from __future__ import annotations
@@ -28,13 +28,13 @@ COLORS = {
     "model": "#475569",
     "text": "#0f172a",
     "background": "#ffffff",
-    "red": "#b43b4e",
+    "red": "#334155",
     "significant": "#2563eb",
     "marginal": "#64748b",
     "null": "#94a3b8",
-    "fit": "#b43b4e",
+    "fit": "#334155",
     "planck": "#395d85",
-    "shoes": "#b43b4e",
+    "shoes": "#1e293b",
     "lcdm": "#64748b",
 }
 
@@ -99,7 +99,7 @@ def set_pub_style(scale: float = 1.0, dpi: int = 300, transparent: bool = False)
         }
     )
     mpl.rcParams["axes.prop_cycle"] = mpl.cycler(
-        color=["#2563eb", "#64748b", "#60a5fa", "#1e3a8a", "#b43b4e"]
+        color=["#2563eb", "#64748b", "#60a5fa", "#1e3a8a", "#475569"]
     )
 
 

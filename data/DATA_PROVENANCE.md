@@ -5,7 +5,7 @@ This document provides complete provenance information for all external data use
 ## 1. Multiply-Imaged Supernova and Time-Delay Data
 
 **Primary system:** SN Refsdal (MACS J1149.6+2223)  
-**Sources:** Kelly et al. (2023, ApJ 948, 93) — measured pairwise delays (Table 15, "Combined" method) and magnification proxies (total flux ratios); Treu et al. (2016, ApJ 817, 60) — pre-reappearance blind GR model predictions (Table 2); Grillo et al. (2024, ApJ 971, 49) — post-blind precision update  
+**Sources:** Kelly et al. (2023, ApJ 948, 93) — measured pairwise delays (Table 15, "Combined" method) and magnification proxies (total flux ratios); original modeling papers — pre-reappearance blind GR model predictions (per-team references in scripts/steps/step_07_observed_vs_predicted.py); Grillo et al. (2024, ApJ 971, 49) — post-blind precision update  
 **Ingestion:** `scripts/steps/step_01_fetch_snh0pe_data.py` compiles values from published literature into `data/raw/sn_lensing/lensed_sn_catalog.json`
 
 **Secondary system:** SN H0pe (PLCK G165.7+67.0)  

@@ -10,7 +10,7 @@ The Temporal Equivalence Principle (TEP) postulates that the rate of proper time
 \end{equation}
 </div>
 <p>
-where $\alpha$ is the lensing-sector effective coupling. The coupling is determined empirically from the SN Refsdal data: $\alpha_{\rm proxy} = -0.055 \pm 0.044$. In the strong lensing regime, the relevant potential is the projected gravitational potential $\psi(\boldsymbol{\theta})$ integrated along the line of sight. For singular isothermal sphere (SIS) or NFW profiles typical of cluster lenses, the projected potential depth scales logarithmically with the surface mass density $\Sigma$, which is directly related to the magnification $\mu$.
+where $\alpha$ is the lensing-sector effective coupling. The proxy-model coefficient is empirically $\alpha_{\rm proxy} \approx -0.055$; under the corrected Kelly+2023 Supplementary Table S4 compilation, the SN Refsdal data infer a lensing-sector coupling $\alpha_{\rm inferred} = -0.114 \pm 0.034$, which exceeds the proxy value by $1.75\sigma$. In the strong lensing regime, the relevant potential is the projected gravitational potential $\psi(\boldsymbol{\theta})$ integrated along the line of sight. For singular isothermal sphere (SIS) or NFW profiles typical of cluster lenses, the projected potential depth scales logarithmically with the surface mass density $\Sigma$, which is directly related to the magnification $\mu$.
 </p>
 <p>
 No first-principles derivation of the log-magnification ansatz from the TEP scalar-field action through the lensing potential $\psi(\boldsymbol{\theta})$ currently exists. The mapping from projected convergence $\kappa$ to observed magnification $\mu$ involves the full boundary-value problem of the scalar-field equation in a non-trivial cluster potential, including ellipticity, external shear, and substructure. Solving this transfer function is beyond the scope of the present work.
@@ -96,7 +96,34 @@ Explicitly for the triplet $(i, j, k)$:
 where $\Delta t_{ij} \equiv \Delta t_{ij}^{\rm GR}$. This equation demonstrates that the residual is generated purely by the <em>differences</em> in $\Gamma$ around the loop. If the potential depth is constant ($\Gamma_i = \Gamma_j = \Gamma_k$), the residual vanishes. For the S1–S4–SX loop of SN Refsdal, where the other two delays are well-constrained by the Einstein-cross images, this weighted sum approximately equals the TEP-induced discrepancy in the SX–S1 delay.
 </p>
 
-<h3>A.3 Immunity to Mass Sheet Degeneracy</h3>
+<h3>A.3 Prediction-Provenance Audit</h3>
+<p>
+The blind-prediction residual test relies on a delay-blind ensemble of pre-reappearance model variants. The selection was performed before any TEP analysis was computed, based on two criteria: (i) the original model was published before SX reappeared in December 2015, and (ii) the model variant is a distinct parameter configuration (all-image set vs gold-image set) from the same modelling family. The table below documents the provenance of each delay-blind variant, including whether the <em>value used in this analysis</em> is the originally published prediction or a later revision.
+</p>
+<table class="results-table">
+    <thead>
+        <tr><th scope="col">Selected model</th><th scope="col">Original paper</th><th scope="col">Original $\Delta t_{\rm pred}$</th><th scope="col">Original residual sign</th><th scope="col">Value used</th><th scope="col">Kelly+2023 revision?</th><th scope="col">Blind?</th><th scope="col">Reason selected</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Oguri-a*</td><td>Oguri (2015, MNRAS 449, L86)</td><td>336 ± 21 d — Kelly+2023 Science S4, original pre-reappearance prediction</td><td>+</td><td>353.8 d</td><td>Yes — post-reappearance computational revision by Kelly+2023 using the SX reappearance position (Rodney et al. 2023, ApJ 948, 93); original was 336^{+21}_{-21}, revised to 354^{+21}_{-17}</td><td>Original prediction: yes. Revised value: No — not blind</td><td>All-image set; parametric GLAFIC</td></tr>
+        <tr><td>Oguri-g*</td><td>Oguri (2015, MNRAS 449, L86)</td><td>311 ± 24 d — Kelly+2023 Science S4, original pre-reappearance prediction</td><td>+</td><td>330.7 d</td><td>Yes — same as Oguri-a; original was 311^{+24}_{-24}, revised to 331^{+22}_{-17}</td><td>Same as Oguri-a</td><td>Gold-image set; parametric GLAFIC</td></tr>
+        <tr><td>Sharon-a*</td><td>Sharon &amp; Johnson (2015, ApJ 800, L26)</td><td>237^{+37}_{-50} d — Sharon &amp; Johnson 2015, Δt_{1.2-S1}; a/g variants from Treu 2015 use same underlying model</td><td>+</td><td>298.0 d</td><td>Yes — post-reappearance computational revision by Kelly+2023; original ~237 d rescaled to 298^{+58}_{-17}</td><td>Original prediction: yes. Revised value: No — not blind</td><td>All-image set; parametric LTM</td></tr>
+        <tr><td>Sharon-g*</td><td>Sharon &amp; Johnson (2015, ApJ 800, L26)</td><td>237^{+37}_{-50} d — Same original paper; variant from Treu 2015 gold-image set</td><td>+</td><td>331.0 d</td><td>Yes — same as Sharon-a; best-fit realization adopted as 331^{+30}_{-35}</td><td>Same as Sharon-a</td><td>Gold-image set; parametric LTM</td></tr>
+        <tr><td>Diego-a</td><td>Diego et al. (2016, MNRAS 456, 356)</td><td>262 ± 55 d — Original prediction, no post-reappearance revision noted in Kelly+2023 S4</td><td>+</td><td>262.0 d</td><td>No — value taken directly from Kelly+2023 Supplementary Table S4 compilation, no post-reappearance revision noted</td><td>Yes — original pre-reappearance prediction</td><td>All-image set; free-form WSLAP+</td></tr>
+        <tr><td>Grillo-g</td><td>Grillo et al. (2016, ApJ 822, 78)</td><td>361^{+19}_{-27} d — Original prediction, no post-reappearance revision noted in Kelly+2023 S4</td><td>+</td><td>361.0 d</td><td>No — value taken directly from Kelly+2023 Supplementary Table S4 compilation, no post-reappearance revision noted</td><td>Yes — original pre-reappearance prediction</td><td>Gold-image set; parametric GLEE</td></tr>
+        <tr><td>Jauzac15.2*</td><td>Jauzac et al. (2016, MNRAS 457, 2029)</td><td>Jauzac15.1 = 449 ± 45 d (strictly blind, pre-reappearance); Jauzac15.2 = 361 ± 42 d (delay-blind, revised using SX position)</td><td>+</td><td>361.0 d</td><td>Yes — Kelly+2023 S4 revised value. Original Jauzac15.1 (449 d) is strictly blind; revised Jauzac15.2 (361 d) is delay-blind (fixed before measured delay known, but used SX position)</td><td>Original Jauzac15.1: strictly blind. Revised Jauzac15.2: delay-blind</td><td>Selected model version; free-form LENSTOOL</td></tr>
+        <tr style="background-color:#f8f8f8;"><td colspan="8" style="padding:0.5em 1em; font-style:italic; color:#555;"><em>Post-blind supplementary only</em></td></tr>
+        <tr><td>Grillo+2024</td><td>Grillo et al. (2024, A&amp;A 689, A78)</td><td>N/A (post-blind)</td><td>N/A</td><td>362.0 d</td><td>No</td><td>Post-blind</td><td>Supplementary consistency check only</td></tr>
+    </tbody>
+</table>
+<p>
+<strong>Blindness caveat.</strong> The Kelly+2023 <em>Science</em> paper (published 2023, post-reappearance) compiled blind model predictions in Supplementary Table S4. Three provenance tiers are distinguished. <em>Strictly blind</em>: original pre-reappearance published predictions (Oguri-a 336 d, Oguri-g 311 d, Sharon-a 237 d, Sharon-g 237 d, Diego-a 262 d, Grillo-g 361 d, Jauzac15.1 449 d). <em>Delay-blind</em>: Kelly+2023 S4 revised values, all fixed before the measured delay (376.0 d) was known, but some (Oguri, Sharon, Jauzac) used the SX reappearance position (Rodney et al. 2023, ApJ 948, 93). <em>Post-blind</em>: Grillo+2024 (2024), published after the delay was measured. The primary sign test uses the delay-blind tier because all seven values were fixed before anyone knew 376.0 d, and all seven yield positive residuals. The strictly blind floor (6/7 positive, Jauzac15.1 residual −73 d) is reported for transparency. The amplitude-based 3.39σ result depends on revised values and is retained as a strong response-scale diagnostic, not as blind evidence.
+</p>
+<p>
+The primary sign test uses the seven delay-blind model variants exactly as tabulated in the prediction-provenance table. The family-sign-flip test groups correlated variants by modelling family (GLAFIC, LTM, WSLAP+, GLEE, LENSTOOL) and is used as the operational dependence-aware headline. The post-blind Grillo+2024 update is reported as a supplementary consistency check and is excluded from the primary test.
+</p>
+
+<h3>A.4 Immunity to Mass Sheet Degeneracy</h3>
 <p>
 The Mass Sheet Degeneracy (MSD) corresponds to a transformation of the convergence $\kappa \to \lambda \kappa + (1-\lambda)$, which rescales time delays by a factor $\lambda$:
 </p>
@@ -117,5 +144,5 @@ Substituting this into the predicted GR discrepancy definition:
 Since $\Delta t_{ij} + \Delta t_{jk} + \Delta t_{ki} = 0$ in GR, then $\mathcal{R}' = \lambda \cdot 0 = 0$.
 </p>
 <p>
-Thus, the MSD cannot produce a non-zero loop sum. A measured non-zero blind-prediction residual $\mathcal{R}_{\rm obs} \neq 0$ is therefore a robust signature of non-GR physics (specifically, potential-dependent temporal shear) that cannot be mimicked by standard lensing degeneracies.
+Thus, a uniform Mass Sheet Degeneracy cannot generate a non-zero algebraic loop sum by itself, because it rescales all delays coherently. This does not imply that the empirical blind-prediction residual is immune to all lens-model systematics. The narrower result is that the temporal-shear residual tested here is not algebraically equivalent to a trivial uniform mass-sheet rescaling.
 </p>

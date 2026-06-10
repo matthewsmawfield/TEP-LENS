@@ -98,6 +98,19 @@
     font-weight: 600;
 }
 
+.results-table td ul {
+    margin: 0;
+    padding-left: 1.2em;
+}
+
+.results-table td li {
+    margin-bottom: 0.3em;
+}
+
+.results-table td li:last-child {
+    margin-bottom: 0;
+}
+
 /* ============================================
    COMPARISON TABLES
    ============================================ */

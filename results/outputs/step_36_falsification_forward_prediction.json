@@ -16,10 +16,10 @@
       210.0
     ],
     "alpha_prior": {
-      "mean": -0.055988671582071256,
-      "sigma": 0.04378203181008889,
+      "mean": -0.11801455702619729,
+      "sigma": 0.03356007159701878,
       "source": "step_07_headline_propagated_uncertainty",
-      "bootstrap_model_resampling_sigma": 0.010753157889521704
+      "bootstrap_model_resampling_sigma": 0.02866574993909914
     },
     "loop_geometry_factor_range": [
       0.6,
@@ -29,63 +29,63 @@
     "seed": 42
   },
   "predicted_residual_distribution_days": {
-    "p16": 1.5487652976637774,
-    "p50": 5.179553499943088,
-    "p84": 11.266690782927185,
-    "p95": 16.603571350978818,
-    "p99": 23.639230739187386,
-    "fraction_gt_1d": 0.89664,
-    "fraction_gt_5d": 0.51527
+    "p16": 6.090605279263944,
+    "p50": 11.530114839092567,
+    "p84": 19.045353164022043,
+    "p95": 25.2780617300187,
+    "p99": 33.060023714062005,
+    "fraction_gt_1d": 0.99497,
+    "fraction_gt_5d": 0.89246
   },
   "required_precision_days": {
-    "for_3sigma_median_signal": 1.7265178333143627,
-    "for_5sigma_median_signal": 1.0359106999886176,
-    "for_3sigma_conservative_16th_pct": 0.5162550992212591,
-    "for_5sigma_conservative_16th_pct": 0.30975305953275545
+    "for_3sigma_median_signal": 3.8433716130308557,
+    "for_5sigma_median_signal": 2.3060229678185133,
+    "for_3sigma_conservative_16th_pct": 2.030201759754648,
+    "for_5sigma_conservative_16th_pct": 1.2181210558527886
   },
   "falsification_thresholds_vs_precision": [
     {
       "sigma_dt_days": 0.5,
       "exclusion_threshold_2sigma_days": 1.0,
-      "fraction_of_prior_predictions_excluded": 0.10336,
-      "interpretation": "At sigma_dt=0.5d, a residual |R_obs|<1.0d excludes 10.3% of the prior prediction envelope."
+      "fraction_of_prior_predictions_excluded": 0.00503,
+      "interpretation": "At sigma_dt=0.5d, a residual |R_obs|<1.0d excludes 0.5% of the prior prediction envelope."
     },
     {
       "sigma_dt_days": 1.0,
       "exclusion_threshold_2sigma_days": 2.0,
-      "fraction_of_prior_predictions_excluded": 0.20543,
-      "interpretation": "At sigma_dt=1.0d, a residual |R_obs|<2.0d excludes 20.5% of the prior prediction envelope."
+      "fraction_of_prior_predictions_excluded": 0.01807,
+      "interpretation": "At sigma_dt=1.0d, a residual |R_obs|<2.0d excludes 1.8% of the prior prediction envelope."
     },
     {
       "sigma_dt_days": 1.5,
       "exclusion_threshold_2sigma_days": 3.0,
-      "fraction_of_prior_predictions_excluded": 0.30318,
-      "interpretation": "At sigma_dt=1.5d, a residual |R_obs|<3.0d excludes 30.3% of the prior prediction envelope."
+      "fraction_of_prior_predictions_excluded": 0.04006,
+      "interpretation": "At sigma_dt=1.5d, a residual |R_obs|<3.0d excludes 4.0% of the prior prediction envelope."
     },
     {
       "sigma_dt_days": 2.0,
       "exclusion_threshold_2sigma_days": 4.0,
-      "fraction_of_prior_predictions_excluded": 0.39739,
-      "interpretation": "At sigma_dt=2.0d, a residual |R_obs|<4.0d excludes 39.7% of the prior prediction envelope."
+      "fraction_of_prior_predictions_excluded": 0.06969,
+      "interpretation": "At sigma_dt=2.0d, a residual |R_obs|<4.0d excludes 7.0% of the prior prediction envelope."
     },
     {
       "sigma_dt_days": 3.0,
       "exclusion_threshold_2sigma_days": 6.0,
-      "fraction_of_prior_predictions_excluded": 0.56259,
-      "interpretation": "At sigma_dt=3.0d, a residual |R_obs|<6.0d excludes 56.3% of the prior prediction envelope."
+      "fraction_of_prior_predictions_excluded": 0.15523,
+      "interpretation": "At sigma_dt=3.0d, a residual |R_obs|<6.0d excludes 15.5% of the prior prediction envelope."
     },
     {
       "sigma_dt_days": 5.0,
       "exclusion_threshold_2sigma_days": 10.0,
-      "fraction_of_prior_predictions_excluded": 0.79284,
-      "interpretation": "At sigma_dt=5.0d, a residual |R_obs|<10.0d excludes 79.3% of the prior prediction envelope."
+      "fraction_of_prior_predictions_excluded": 0.40078,
+      "interpretation": "At sigma_dt=5.0d, a residual |R_obs|<10.0d excludes 40.1% of the prior prediction envelope."
     }
   ],
   "prospective_falsification_condition": {
     "sigma_dt_reference_days": 2.0,
     "exclusion_threshold_2sigma_days": 4.0,
-    "fraction_of_prior_excluded": 0.39739,
+    "fraction_of_prior_excluded": 0.06969,
     "statement": "If an independent blind-prediction residual for the longest-baseline loop in SN 2025wny is consistent with zero at the 2-sigma level (|R_obs| < 4.0 d) and the delay precision satisfies sigma_dt < 2.0 d, the linear log-magnification ansatz is excluded at 95% confidence for that system geometry."
   },
-  "headline": "SN 2025wny predicted proxy-model residual: 5.2 [1.5, 11.3] days (16th-84th percentile). Required precision for 3-sigma test: sigma_dt < 1.7 days. Falsification threshold (sigma_dt=2.0d): |R_obs| < 4.0d."
+  "headline": "SN 2025wny predicted proxy-model residual: 11.5 [6.1, 19.0] days (16th-84th percentile). Required precision for 3-sigma test: sigma_dt < 3.8 days. Falsification threshold (sigma_dt=2.0d): |R_obs| < 4.0d."
 }

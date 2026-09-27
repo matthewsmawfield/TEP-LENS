@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TEP-LENS: Step 10 - H0 Tension under measured proxy-model coupling (alpha_proxy ≈ -0.055)
+TEP-LENS: Step 10 - H0 Tension under measured proxy-model coupling (kappa_lens ≈ -0.055)
 
 Computes the H0 shift for each lensed SN system from first principles using
 proxy-model gamma factors derived from the magnification data in the step_01 catalog.
@@ -36,7 +36,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
 from scripts.utils.tep_config import (
-    ALPHA_PROXY,
+    KAPPA_LENS,
     H0_REFSDAL_GR,
     H0_REFSDAL_ERR_PLUS,
     H0_REFSDAL_ERR_MINUS,
@@ -46,11 +46,11 @@ from scripts.utils.tep_config import (
     H0_H0PE_ENC_GR,
     H0_H0PE_ENC_ERR_PLUS,
     H0_H0PE_ENC_ERR_MINUS,
-    SIGMA_ALPHA_PROXY,
+    SIGMA_KAPPA_LENS,
 )
 
 STEP_NUM = "10"
-ALPHA = ALPHA_PROXY
+ALPHA = KAPPA_LENS
 
 
 def gamma_factor(alpha, mu, mu_mean):
@@ -467,7 +467,7 @@ def main():
             "sn_refsdal": {
                 "independence_level": "not_independent",
                 "circularity_note": (
-                    "The alpha_proxy=-0.055 used here was empirically determined from the "
+                    "The kappa_lens=-0.055 used here was empirically determined from the "
                     "same SN Refsdal SX delay data (step_07). The H0 shift is therefore a "
                     "self-consistency check, not an independent confirmation. It shows that "
                     "the TEP framework is internally consistent, but does not add degrees of "
@@ -477,7 +477,7 @@ def main():
             "sn_h0pe": {
                 "independence_level": "independent_prediction",
                 "circularity_note": (
-                    "alpha_proxy was calibrated on SN Refsdal, then applied to H0pe without "
+                    "kappa_lens was calibrated on SN Refsdal, then applied to H0pe without "
                     "refitting. The predicted shift is an independent prediction, but the "
                     "shift is negligible (~0.1) due to modest magnification contrast."
                 ),
@@ -485,7 +485,7 @@ def main():
             "sn_encore": {
                 "independence_level": "independent_prediction",
                 "circularity_note": (
-                    "alpha_proxy was calibrated on SN Refsdal, then applied to Encore without "
+                    "kappa_lens was calibrated on SN Refsdal, then applied to Encore without "
                     "refitting. The predicted shift is an independent prediction, but the "
                     "shift is negligible (~0.1) due to modest magnification contrast and "
                     "reference dependence of the 2-image system."
@@ -498,7 +498,7 @@ def main():
             "SN H0pe and SN Encore receive negligible shifts (+0.1 and +0.1 respectively) "
             "due to their smaller magnification contrasts and fewer independent delays. "
             "The combined low-H0 cluster shifts by +0.8 toward Planck, driven primarily by Refsdal. "
-            "IMPORTANT: The Refsdal H0 shift is not an independent confirmation because alpha_proxy "
+            "IMPORTANT: The Refsdal H0 shift is not an independent confirmation because kappa_lens "
             "was derived from the same Refsdal data. It is an internal consistency check."
         ),
     }

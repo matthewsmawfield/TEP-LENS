@@ -1,7 +1,7 @@
 {
   "step": "30",
   "status": "success",
-  "analysis_date": "2026-06-10T04:20:10.129427",
+  "analysis_date": "2026-09-14T01:23:26.073281",
   "detrend_window_days": 200.0,
   "tau_values": [
     40.0,

@@ -4,7 +4,7 @@ TEP-LENS: Step 16 - Independence-Tier Significance
 
 Evaluates the overall significance of the evidence.
 Because the various tests for SN Refsdal (Wilcoxon sign test, weighted mean,
-Pearson correlation, alpha inference) all rely fundamentally on the single
+Pearson correlation, coupling inference) all rely fundamentally on the single
 anomalous SX arrival time, they are highly correlated.
 
 Using Fisher's or Stouffer's method to combine p-values from tests on the
@@ -158,7 +158,7 @@ def main():
             "block_bootstrap": {"z": z_boot, "p": p_boot},
             "pearson": {"z": z_pearson, "p": p_pearson},
             "external_mean": {"z": z_ext, "p": p_ext},
-            "alpha_inference": {"z": z_alpha, "p": p_alpha}
+            "kappa_inference": {"z": z_alpha, "p": p_alpha}
         },
         "figure": str(out_fig) if out_fig else None,
     }

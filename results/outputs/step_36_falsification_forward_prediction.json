@@ -15,7 +15,7 @@
       140.0,
       210.0
     ],
-    "alpha_prior": {
+    "kappa_prior": {
       "mean": -0.11801455702619729,
       "sigma": 0.03356007159701878,
       "source": "step_07_headline_propagated_uncertainty",

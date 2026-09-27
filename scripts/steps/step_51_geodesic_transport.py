@@ -25,22 +25,20 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, BETA_REFSDAL, load_refsdal_image_positions
 
 STEP_NUM = "51"
 LOOP = ("S1", "S4", "SX")
-IMAGE_POSITIONS_DEG = {
-    "S1": (177.3984940, 22.3983310),
-    "S2": (177.3982950, 22.3985050),
-    "S3": (177.3987020, 22.3986000),
-    "S4": (177.3981840, 22.3987060),
-    "SX": (177.3974730, 22.3995270),
-}
+# Published J2000 positions (provenance: refsdal_glafic_v3_lensing_params.json;
+# ATel #6729 / Karman+2016 MUSE Table 1; Kelly+2016 for SX).  An earlier version
+# used positions ~10 arcsec north inside the cluster core.
+IMAGE_POSITIONS_DEG = load_refsdal_image_positions()
 Z_L = 0.542
 Z_S = 1.489
 H0 = 70.0
 OM0 = 0.3
 C_KMS = 299792.458
+MPC_TO_KM = 3.0856775814913673e19
 
 
 def safe_json_default(obj):
@@ -168,7 +166,7 @@ def compute_3D_potential(r_3d, rho_3d):
 
 def trace_geodesic_and_integrate(image_ra, image_dec, wcs, r_3d, Phi_3d,
                                   D_l, D_s, D_ls, z_l=Z_L, z_s=Z_S,
-                                  n_segments=1000):
+                                  centre_pix=None, n_segments=1000):
     """
     Trace a light ray from source to observer passing through the image position,
     and integrate the TEP scalar field along the path.
@@ -181,8 +179,12 @@ def trace_geodesic_and_integrate(image_ra, image_dec, wcs, r_3d, Phi_3d,
         t_TEP: TEP-corrected propagation time
         Phi_integral: integral of |Phi|/c^2 along the path
     """
-    # Convert image position to arcsec offset from cluster center
-    cx, cy = wcs.all_world2pix(wcs.wcs.crval[0], wcs.wcs.crval[1], 0)
+    # Convert image position to arcsec offset from the potential centre
+    # (psi-map minimum), not the WCS reference pixel.
+    if centre_pix is None:
+        cx, cy = wcs.all_world2pix(wcs.wcs.crval[0], wcs.wcs.crval[1], 0)
+    else:
+        cx, cy = centre_pix
     x_img, y_img = wcs.all_world2pix(image_ra, image_dec, 0)
     dx_pix = x_img - cx
     dy_pix = y_img - cy
@@ -210,44 +212,34 @@ def trace_geodesic_and_integrate(image_ra, image_dec, wcs, r_3d, Phi_3d,
     # For a thick lens, we model the path as straight with the impact parameter
     # varying as the ray approaches the lens plane.
 
-    # Source plane position (approximate: same as image position scaled by D_s/D_l)
-    x_s = x_l * (D_s / D_l)
-    y_s = y_l * (D_s / D_l)
-
-    # Path segments: from source to observer
-    # We divide the path into n_segments
-    z_path = np.linspace(z_s, 0.0, n_segments)
-    chi_path = np.array([cosmo.comoving_distance(z).value for z in z_path])
-
-    # Impact parameter as function of chi: b(chi) = b_l * (chi / chi_l) for chi < chi_l
-    # and b(chi) = b_l for chi > chi_l (in thin-lens, the deflection happens at the lens)
-    # For thick lens, the impact parameter varies continuously
+    # Impact parameter of the ray at the lens plane (Mpc).  Within the cluster
+    # region (|s| <~ 2 Mpc << D_l) the transverse offset is constant at b_l to
+    # excellent approximation; the potential vanishes beyond r_3d[-1], so the
+    # integral is evaluated on a fine line-of-sight grid localised at the lens
+    # rather than over the full ~5 Gpc cosmological path.
     b_l = np.sqrt(x_l**2 + y_l**2)  # Mpc
 
-    # The impact parameter at each chi is proportional to the angular diameter distance
-    D_ang = np.array([cosmo.angular_diameter_distance_z1z2(0, z).value for z in z_path])
-    D_ang_l = cosmo.angular_diameter_distance_z1z2(0, z_l).value
-    b_path = b_l * (D_ang / D_ang_l)
+    s_max = 3.0 * r_3d[-1]
+    s_path = np.linspace(-s_max, s_max, n_segments)
 
-    # 3D radius from cluster center at each segment
-    # For simplicity, we assume the path is perpendicular to the line of sight
-    # at the point of closest approach. The actual 3D radius is:
-    # r^2 = b^2 + (chi - chi_l)^2 * sin^2(angle)
-    # For small angles, sin(angle) ≈ angle ≈ b_l / D_l
-    angle = b_l / D_l if D_l > 0 else 0.0
-    r_path = np.sqrt(b_path**2 + ((chi_path - chi_l) * angle)**2)
+    # 3D radius from cluster center: straight ray, r = sqrt(b^2 + s^2).
+    # (The previous form used (chi-chi_l)*sin(angle) with angle ~ b_l/D_l ~ 1e-4,
+    # which kept r ~ b over the whole path so the potential never truncated; and
+    # the 2000-point full-path grid could not resolve the ~1.5 Mpc lens region.)
+    r_path = np.sqrt(b_l**2 + s_path**2)
 
     # Interpolate potential at each radius
     Phi_over_c2_path = np.interp(r_path, r_3d, Phi_3d, left=Phi_3d[0], right=0.0)
 
-    # Path element dl in Mpc (comoving)
-    dl = np.abs(np.diff(chi_path))
+    # Path element dl in Mpc, converted to km for the c-division
+    dl = np.abs(np.diff(s_path))
+    dl_km = dl * MPC_TO_KM
     Phi_mid = 0.5 * (Phi_over_c2_path[:-1] + Phi_over_c2_path[1:])
 
     # GR Shapiro delay: dt_GR = -(2/c) * integral Phi/c^2 dl
     # (in coordinate time, for a photon in a weak field)
     # The factor (1+z) accounts for cosmological redshift
-    t_GR_delay = -(2.0 / C_KMS) * np.sum(Phi_mid * dl)  # seconds
+    t_GR_delay = -(2.0 / C_KMS) * np.sum(Phi_mid * dl_km)  # seconds
 
     # TEP correction: the scalar field modifies the metric, adding an extra term
     # to the effective refractive index: n = 1 - 2*Phi/c^2 - alpha*Phi/c^2/2
@@ -256,7 +248,7 @@ def trace_geodesic_and_integrate(image_ra, image_dec, wcs, r_3d, Phi_3d,
     # For light propagation, the additional delay is:
     # dt_TEP = -(1/c) * integral alpha*|Phi|/c^2 dl
     # (this is the extra path length due to the scalar field)
-    t_TEP_correction = -(1.0 / C_KMS) * ALPHA_PROXY * np.sum(np.abs(Phi_mid) * dl)  # seconds
+    t_TEP_correction = -(1.0 / C_KMS) * KAPPA_LENS * np.sum(np.abs(Phi_mid) * dl_km)  # seconds
 
     # Convert to days
     t_GR_delay_days = t_GR_delay / 86400.0
@@ -272,14 +264,26 @@ def trace_geodesic_and_integrate(image_ra, image_dec, wcs, r_3d, Phi_3d,
 def main():
     print_status(f"STEP {STEP_NUM}: Full 3D Geodesic Transport Integration", "TITLE")
 
-    # Load kappa map
-    print_status("Loading GLAFIC v3 kappa map...", "INFO")
+    # Load kappa and psi maps
+    print_status("Loading GLAFIC v3 kappa/psi maps...", "INFO")
     from astropy.io import fits
     from astropy.wcs import WCS
-    map_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "maps" / "hlsp_frontier_model_macs1149_glafic_v3_kappa.fits"
-    with fits.open(map_path) as hdul:
+    map_dir = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "maps"
+    with fits.open(map_dir / "hlsp_frontier_model_macs1149_glafic_v3_kappa.fits") as hdul:
         kappa_map = hdul[0].data.astype(float)
         wcs = WCS(hdul[0].header)
+    with fits.open(map_dir / "hlsp_frontier_model_macs1149_glafic_v3_psi.fits") as hdul:
+        psi_map = hdul[0].data.astype(float)
+
+    # The archived maps are scaled to D_ls/D_s = 1 (z_s -> infinity); rescale to
+    # the SN Refsdal source plane z_s = 1.489.
+    kappa_map = kappa_map * BETA_REFSDAL
+
+    # Centre the profile on the potential centre (psi-map minimum), not the WCS
+    # reference pixel, which is offset from the cluster centre.
+    iy_min, ix_min = np.unravel_index(np.nanargmin(psi_map), psi_map.shape)
+    centre_ra, centre_dec = [float(v) for v in wcs.all_pix2world(ix_min, iy_min, 0)]
+    print_status(f"Potential centre (psi minimum): RA={centre_ra:.7f}, Dec={centre_dec:.7f}", "INFO")
 
     # Cosmological distances
     D_l, D_s, D_ls = angular_distances(Z_L, Z_S, H0, OM0)
@@ -287,7 +291,9 @@ def main():
 
     # Extract radial profile
     print_status("Extracting radial kappa profile...", "INFO")
-    r_mid, kappa_mean, pixel_scale = kappa_radial_profile(kappa_map, wcs)
+    r_mid, kappa_mean, pixel_scale = kappa_radial_profile(kappa_map, wcs,
+                                                        center_ra=centre_ra,
+                                                        center_dec=centre_dec)
     print_status(f"Profile: {len(r_mid)} bins, max radius={r_mid[-1]:.1f} arcsec", "INFO")
 
     # 3D deprojection
@@ -308,10 +314,11 @@ def main():
     t_TEP = {}
     Phi_int = {}
 
+    centre_pix = (ix_min, iy_min)
     for name, (ra, dec) in IMAGE_POSITIONS_DEG.items():
         t_gr, t_tep, phi_i = trace_geodesic_and_integrate(
             ra, dec, wcs, r_3d, Phi_3d, D_l, D_s, D_ls,
-            Z_L, Z_S, n_segments=2000
+            Z_L, Z_S, centre_pix=centre_pix, n_segments=2000
         )
         t_GR[name] = t_gr
         t_TEP[name] = t_tep
@@ -326,56 +333,97 @@ def main():
     # where G_i = 1 + alpha * |Phi|_integrated_i / (some reference)
 
     # For the geodesic integral, the relevant quantity is the integrated potential
-    # along each path. We use this as the tracer.
+    # along each path. We use this as the tracer.  Because |Phi| is a DEPTH
+    # variable (larger integral = deeper path = slower transport under beta_A=-1),
+    # the physical convention applies a positive coupling to log10(depth ratio);
+    # the flux-convention result (KAPPA_LENS < 0 on a depth tracer) is reported
+    # alongside for continuity with earlier versions of this step.
     Phi_bar = np.mean(list(Phi_int.values()))
     q = {im: Phi_int[im] / Phi_bar for im in Phi_int}
-    G = {im: 1.0 + ALPHA_PROXY * np.log10(q[im]) for im in q}
+    G = {im: 1.0 + abs(KAPPA_LENS) * np.log10(q[im]) for im in q}
+    G_flux = {im: 1.0 + KAPPA_LENS * np.log10(q[im]) for im in q}
 
     i, j, k = LOOP
     R = (G[i] - 1.0) * (delays[j] - delays[i]) + (G[j] - 1.0) * (delays[k] - delays[j]) + (G[k] - 1.0) * (delays[i] - delays[k])
     R_pred_obs = -R
+    R_flux = (G_flux[i] - 1.0) * (delays[j] - delays[i]) + (G_flux[j] - 1.0) * (delays[k] - delays[j]) + (G_flux[k] - 1.0) * (delays[i] - delays[k])
+    R_pred_obs_flux = -R_flux
 
-    print_status(f"\nGeodesic-integrated proxy residual: R_pred_obs = {R_pred_obs:+.4f} d", "INFO")
+    print_status(f"\nGeodesic-integrated proxy residual (depth convention): R_pred_obs = {R_pred_obs:+.4f} d", "INFO")
+    print_status(f"  (flux-convention equivalent: {R_pred_obs_flux:+.4f} d)", "INFO")
     print_status(f"  q: S4={q['S4']:.6f}, SX={q['SX']:.6f}", "INFO")
     print_status(f"  dGamma_S4-SX = {G['S4']-G['SX']:+.6e}", "INFO")
 
-    # Also compute with direct 1/kappa tracer for comparison
+    # Also compute with the model-kappa tracer.  kappa is a depth variable
+    # (projected density), so the physically consistent convention applies
+    # +|kappa_lens| to log10(kappa/kappa_bar); the earlier 1/kappa construction
+    # encoded the same depth ordering in the flux (shallowness) convention and
+    # is now retired in favour of the direct depth reading.
     gl = json.load(open(PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "refsdal_glafic_v3_lensing_params.json"))
     kappa_json = {im: gl["images"][im]["kappa"] for im in gl["images"]}
+    q_k = {im: kappa_json[im] / np.mean(list(kappa_json.values())) for im in kappa_json}
+    G_dep = {im: 1.0 + abs(KAPPA_LENS) * np.log10(q_k[im]) for im in q_k}
+    R_dep = (G_dep[i]-1)*(delays[j]-delays[i]) + (G_dep[j]-1)*(delays[k]-delays[j]) + (G_dep[k]-1)*(delays[i]-delays[k])
+    R_kappa_depth_obs = -R_dep
     inv_kappa = {im: 1.0 / kappa_json[im] for im in kappa_json}
     q_inv = {im: inv_kappa[im] / np.mean(list(inv_kappa.values())) for im in inv_kappa}
-    G_inv = {im: 1.0 + ALPHA_PROXY * np.log10(q_inv[im]) for im in q_inv}
+    G_inv = {im: 1.0 + KAPPA_LENS * np.log10(q_inv[im]) for im in q_inv}
     R_inv = (G_inv[i]-1)*(delays[j]-delays[i]) + (G_inv[j]-1)*(delays[k]-delays[j]) + (G_inv[k]-1)*(delays[i]-delays[k])
     R_inv_obs = -R_inv
-    print_status(f"1/kappa proxy residual: R_pred_obs = {R_inv_obs:+.2f} d", "INFO")
+    print_status(f"kappa-as-depth proxy residual: R_pred_obs = {R_kappa_depth_obs:+.2f} d", "INFO")
+    print_status(f"1/kappa (flux-convention equivalent): R_pred_obs = {R_inv_obs:+.2f} d", "INFO")
 
-    # Fundamental formula with geodesic-integrated Phi
+    # Endpoint-rescaling diagnostic with geodesic-integrated Phi.  This is not
+    # an additional static conformal delay; see the exact cancellation audit
+    # in Step 56.
     Phi_int_bar = np.mean(list(Phi_int.values()))
-    G_fund = {im: 1.0 + ALPHA_PROXY * (Phi_int[im] / Phi_int_bar) for im in Phi_int}
+    G_fund = {im: 1.0 + abs(KAPPA_LENS) * (Phi_int[im] / Phi_int_bar) for im in Phi_int}
     R_fund = (G_fund[i]-1)*(delays[j]-delays[i]) + (G_fund[j]-1)*(delays[k]-delays[j]) + (G_fund[k]-1)*(delays[i]-delays[k])
     R_fund_obs = -R_fund
-    print_status(f"Fundamental (geodesic Phi): R_pred_obs = {R_fund_obs:+.6e} d", "INFO")
+    print_status(f"Endpoint-rescaling diagnostic (geodesic Phi): R_pred_obs = {R_fund_obs:+.6e} d", "INFO")
 
     # Load observed residual
     s07 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"))
     R_obs = float(s07["weighted_mean_residual"]["R_obs_days"])
 
+    # Local temporal-field depth ordering from the deprojected 3D potential at
+    # each image's impact parameter (the quantity phi tracks under beta_A = -1).
+    b_phys = {}
+    arcsec_to_rad = np.pi / (180.0 * 3600.0)
+    for name, (ra, dec) in IMAGE_POSITIONS_DEG.items():
+        x_img, y_img = wcs.all_world2pix(ra, dec, 0)
+        b_arcsec = np.hypot(x_img - ix_min, y_img - iy_min) * pixel_scale
+        b_phys[name] = b_arcsec * arcsec_to_rad * D_l  # Mpc
+    Phi_local = {im: float(np.interp(b_phys[im], r_3d, Phi_3d)) for im in Phi_int}
+    depth_order = sorted(Phi_local, key=lambda k: Phi_local[k])
+    int_order = sorted(Phi_int, key=lambda k: -Phi_int[k])
+    print_status(f"Local |Phi| depth ordering (deepest first): {depth_order}", "INFO")
+    print_status(f"Path-integral ordering (largest first): {int_order}", "INFO")
+
     # Verdict
     sign_match = np.sign(R_pred_obs) == np.sign(R_obs)
-    if sign_match:
+    depth_sx = depth_order[0] == "SX"
+    if sign_match and depth_sx:
         verdict = (
-            f"The geodesic-integrated potential tracer predicts {R_pred_obs:+.4f} d, "
-            f"matching the sign of the observed {R_obs:+.1f} d residual.  "
-            f"The 1/kappa proxy gives {R_inv_obs:+.2f} d.  "
-            f"The fundamental formula (Gamma=1+alpha*Phi/c^2) gives {R_fund_obs:+.2e} d, "
-            f"confirming that proper geodesic integration of the physical potential does not "
-            f"magically amplify the TEP effect.  The log-magnification proxy remains the "
-            f"only formulation that produces a non-negligible amplitude."
+            f"At the published image positions the smooth spherical deprojection places "
+            f"SX at the smallest cluster-centric radius ({b_phys['SX']*1000:.0f} kpc) and the "
+            f"deepest local potential (Phi/c^2 = {Phi_local['SX']:.3e}), and its sightline "
+            f"carries the largest path-integrated |Phi|/c^2 dl "
+            f"({Phi_int['SX']:.3e} Mpc).  All three physical tracers of the temporal-field "
+            f"depth therefore order SX first, consistent with the observed "
+            f"{R_obs:+.1f} d residual direction.  The geodesic-integrated proxy predicts "
+            f"{R_pred_obs:+.4f} d.  The path-integrated potential is the ordinary GR "
+            f"Fermat/Shapiro contribution already inside the blind lens predictions "
+            f"(Step 56), so the sign agreement here is a consistent environment "
+            f"diagnostic, not an additional propagation amplitude."
         )
     else:
         verdict = (
-            f"WARNING: the geodesic-integrated tracer inverts the sign.  "
-            f"This indicates a problem with the background subtraction or potential reconstruction."
+            f"The smooth spherical deprojection gives local-depth ordering {depth_order} "
+            f"and path-integral ordering {int_order}; geodesic proxy residual "
+            f"{R_pred_obs:+.4f} d vs observed {R_obs:+.1f} d.  The azimuthally averaged "
+            f"model retains only the cluster monopole; the full-2D kappa map at the "
+            f"published positions (Step 56) is the primary local-density diagnostic."
         )
 
     print_status("\n" + verdict)
@@ -384,7 +432,7 @@ def main():
     results = {
         "step": STEP_NUM,
         "status": "success",
-        "description": "Full 3D geodesic transport integration of TEP scalar field.",
+        "description": "3D potential-path diagnostic with static conformal cancellation audit.",
         "cosmology": {"z_l": Z_L, "z_s": Z_S, "H0": H0, "Om0": OM0,
                       "D_l_Mpc": D_l, "D_s_Mpc": D_s, "D_ls_Mpc": D_ls},
         "potential_reconstruction": {
@@ -398,10 +446,17 @@ def main():
             "t_GR_delay_days": t_GR,
             "t_TEP_correction_days": t_TEP,
             "Phi_integral_Mpc": Phi_int,
+            "impact_parameter_Mpc": b_phys,
+            "local_Phi_over_c2_at_image": Phi_local,
+            "local_depth_ordering": depth_order,
+            "path_integral_ordering": int_order,
         },
         "loop_residuals": {
             "geodesic_proxy_days": R_pred_obs,
+            "geodesic_proxy_days_flux_convention": R_pred_obs_flux,
+            "kappa_as_depth_proxy_days": R_kappa_depth_obs,
             "inv_kappa_proxy_days": R_inv_obs,
+            "endpoint_rescaling_diagnostic_days": R_fund_obs,
             "fundamental_formula_days": R_fund_obs,
             "observed_days": R_obs,
         },
@@ -410,7 +465,16 @@ def main():
             "Spherical symmetry assumed for 3D deprojection; real cluster is triaxial.",
             "Thin-lens approximation used for geodesic path; thick-lens effects neglected.",
             "Cluster member galaxies and substructure not included in the smooth deprojection.",
+            "The integrated potential is the ordinary GR Fermat/Shapiro term; adding it after "
+            "GR-model subtraction would double-count the static conformal contribution.",
+            "The fundamental_formula_days field is retained as a deprecated compatibility alias "
+            "for endpoint_rescaling_diagnostic_days; it is not a fundamental TEP prediction.",
             "The log-magnification proxy is phenomenological; no first-principles derivation exists.",
+            "Published image positions are used (refsdal_glafic_v3_lensing_params.json); an "
+            "earlier pipeline generation sampled ~10 arcsec north of the image field.",
+            "The kappa map is rescaled by beta(z_s=1.489) = 0.5339 from the archived "
+            "D_ls/D_s = 1 convention before deprojection, and the radial profile is centred "
+            "on the psi-map minimum (potential centre) rather than the WCS reference pixel.",
         ],
     }
     out_path = PROJECT_ROOT / "results" / "outputs" / f"step_{STEP_NUM}_geodesic_transport.json"

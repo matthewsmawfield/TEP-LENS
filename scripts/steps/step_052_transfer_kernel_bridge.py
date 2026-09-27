@@ -2,15 +2,15 @@
 """
 TEP-LENS: Step 052 — Transfer-Kernel Bridge / Response-Transfer Audit
 
-Purpose: compile a canonical comparison table of all tracer predictions against
-the observed Refsdal residual, quantifying the amplification gap between pure
-potential/geodesic transport and the operational log-magnification response.
+Purpose: compile a canonical comparison table of all tracer diagnostics against
+the observed Refsdal residual, separating ordinary GR potential terms from the
+operational log-magnification response.
 
-The central claim: direct potential and geodesic reconstructions preserve the
-observed residual sign but underpredict the amplitude. The log-magnification
-response captures the full amplitude. This identifies the missing theoretical
-object as the transfer/amplification kernel from lensing geometry to temporal
-response, not the signal itself.
+The direct potential and geodesic quantities are lens-environment diagnostics:
+in a static conformal metric their path-integrated contribution is already the
+GR Fermat/Shapiro term and cannot be added after GR subtraction.  The empirical
+log-magnification response is compared separately; an action-derived
+non-conformal or backreaction kernel remains the missing theoretical object.
 
 Inputs:  results/outputs/step_07_observed_vs_predicted.json
          results/outputs/step_44_direct_kappa_residual.json
@@ -56,7 +56,10 @@ def main():
     # Load step 51 (geodesic transport)
     s51 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_51_geodesic_transport.json"))
     R_geo = s51.get("loop_residuals", {}).get("geodesic_proxy_days", 0.0)
-    R_fund = s51.get("loop_residuals", {}).get("fundamental_formula_days", 0.0)
+    R_fund = s51.get("loop_residuals", {}).get(
+        "endpoint_rescaling_diagnostic_days",
+        s51.get("loop_residuals", {}).get("fundamental_formula_days", 0.0),
+    )
 
     # Assemble canonical comparison table
     # Each entry: (name, predicted_residual, sign_match, interpretation)
@@ -82,24 +85,24 @@ def main():
         "interpretation": "model magnification check",
     })
 
-    # 3. Raw kappa (density tracer)
+    # 3. Raw kappa (projected-density/depth tracer)
     kappa_r = tracers_44.get("model_kappa", {}).get("R_predicted_obs_minus_model_days", 0.0)
     table.append({
         "tracer": "raw kappa",
         "predicted_residual_days": kappa_r,
         "sign_match": np.sign(kappa_r) == np.sign(R_obs),
         "amplitude_ratio": abs(kappa_r / R_obs) if abs(R_obs) > 0 else None,
-        "interpretation": "density tracer, not transport (reverses sign)",
+        "interpretation": "projected-density depth tracer (depth convention)",
     })
 
-    # 4. 1/kappa (potential-oriented proxy)
+    # 4. 1/kappa (same ordering expressed in the shallowness convention)
     invk_r = tracers_44.get("model_inv_kappa", {}).get("R_predicted_obs_minus_model_days", 0.0)
     table.append({
         "tracer": "1/kappa",
         "predicted_residual_days": invk_r,
         "sign_match": np.sign(invk_r) == np.sign(R_obs),
         "amplitude_ratio": abs(invk_r / R_obs) if abs(R_obs) > 0 else None,
-        "interpretation": "exploratory potential-oriented proxy (sign preserved, amplitude suppressed)",
+        "interpretation": "kappa ordering in the shallowness convention (sign preserved, amplitude suppressed)",
     })
 
     # 5. psi map (global background) — select sign-matching tracer with largest amplitude
@@ -120,7 +123,7 @@ def main():
         "predicted_residual_days": psi_best_r,
         "sign_match": np.sign(psi_best_r) == np.sign(R_obs),
         "amplitude_ratio": abs(psi_best_r / R_obs) if abs(R_obs) > 0 else None,
-        "interpretation": "sign preserved, amplitude suppressed (slow potential variation)",
+        "interpretation": "GR potential/environment diagnostic; not an additional conformal residual",
     })
 
     # 6. 3D geodesic potential
@@ -129,16 +132,16 @@ def main():
         "predicted_residual_days": R_geo,
         "sign_match": np.sign(R_geo) == np.sign(R_obs),
         "amplitude_ratio": abs(R_geo / R_obs) if abs(R_obs) > 0 else None,
-        "interpretation": "path transport preserves sign, amplitude still suppressed",
+        "interpretation": "GR path-potential diagnostic; not an additional conformal residual",
     })
 
-    # 7. Fundamental formula
+    # 7. Endpoint-rescaling diagnostic (legacy field formerly labelled fundamental)
     table.append({
-        "tracer": "fundamental formula (Phi/c^2)",
+        "tracer": "endpoint rescaling (Phi/c^2)",
         "predicted_residual_days": R_fund,
         "sign_match": np.sign(R_fund) == np.sign(R_obs),
         "amplitude_ratio": abs(R_fund / R_obs) if abs(R_obs) > 0 else None,
-        "interpretation": "amplitude gap remains (requires effective alpha ~ 4e5)",
+        "interpretation": "diagnostic only; static conformal residual is exactly zero",
     })
 
     # Compute amplification factors K = R_obs / R_transport
@@ -155,32 +158,36 @@ def main():
     print_status("-" * 80, "INFO")
     for row in table:
         r = row["predicted_residual_days"]
-        sign = "match" if row["sign_match"] else ("opposite" if row["tracer"] == "raw kappa" else "mismatch")
+        sign = "match" if row["sign_match"] else "mismatch"
         amp = row["amplitude_ratio"]
         amp_str = f"{amp:.3f}" if amp else "—"
         k = amplification[row["tracer"]]
         k_str = f"{k:.0f}x" if k else "—"
         print_status(f"{row['tracer']:<35} {r:>+12.4f} {sign:>6} {amp_str:>10} {k_str:>10}", "INFO")
 
-    # Verdict: sign-stable, amplitude-amplified
+    # Verdict: environment-ordering audit; no propagation amplitude is inferred.
     sign_match_count = sum(1 for row in table if row["sign_match"])
     n_tracers = len(table)
-    sign_stable = sign_match_count >= n_tracers - 1  # allow one sign inversion (raw kappa)
+    sign_stable = sign_match_count == n_tracers
 
     if sign_stable:
         verdict = (
-            "Transport-oriented tracers (psi-map, geodesic, 1/kappa) consistently preserve the observed "
-            "residual sign. The sole sign inversion occurs for raw kappa, which is expected because "
-            "kappa measures projected density, not potential depth. The amplitude gap between pure "
-            "transport and the log-magnification response identifies the missing theoretical object: "
-            "a transfer/amplification kernel that maps lensing geometry (Jacobian, magnification) into "
-            "temporal response. The log-magnification term is therefore interpreted as a regularised "
-            "critical-lensing amplification kernel, not merely an empirical proxy."
+            "All environment tracers preserve the observed residual sign once each is read in "
+            "its correct convention: the depth tracers (kappa, background-subtracted psi bowl "
+            "depth, geodesic path integral) are evaluated with +|kappa_lens| on the depth ratio, "
+            "and the shallowness tracers (flux, |mu|, 1/kappa) with kappa_lens < 0.  The single "
+            "underlying ordering is that SX occupies the deepest temporal environment (highest "
+            "convergence, smallest cluster-centric radius).  These quantities do not define an "
+            "additional static conformal propagation signal: their path integral is already the "
+            "GR Fermat/Shapiro term. "
+            "The distinct response of the phenomenological log-magnification ansatz identifies the missing object: "
+            "an action-derived non-conformal or backreaction kernel mapping lensing environment into "
+            "temporal response. The log-magnification term remains an empirical proxy for that target."
         )
     else:
         verdict = (
-            "Transport tracers do not consistently preserve the sign. The transfer-kernel interpretation "
-            "requires further development."
+            "Potential diagnostics do not consistently preserve the sign. An action-derived non-conformal "
+            "or backreaction transfer kernel is required."
         )
 
     print_status("\n" + verdict)
@@ -196,11 +203,10 @@ def main():
         "sign_match_fraction": sign_match_count / n_tracers,
         "verdict": verdict,
         "interpretation": (
-            "SN Refsdal reveals a coherent, blind, sign-aligned temporal-response anomaly. "
-            "The log-magnification response captures the observed amplitude. Direct potential and "
-            "geodesic reconstructions preserve the sign but underpredict the amplitude, implying that "
-            "the missing theoretical object is not the signal itself, but the transfer/amplification kernel "
-            "from lensing geometry to temporal response."
+            "SN Refsdal exhibits a blind, sign-aligned residual under the operational proxy. "
+            "Direct potential and geodesic quantities are GR lens-environment diagnostics, not residual "
+            "propagation predictions. The missing theoretical object is an action-derived non-conformal "
+            "or backreaction kernel from the lens environment to temporal response."
         ),
     }
     out_path = PROJECT_ROOT / "results" / "outputs" / f"step_{STEP_NUM}_transfer_kernel_bridge.json"

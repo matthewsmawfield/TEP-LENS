@@ -1,10 +1,10 @@
 
-[18:49:32] [INFO] ======================================================================
-[18:49:32] [INFO] STEP 00: Fetch Literature & Cross-Paper TEP Data
-[18:49:32] [INFO] ======================================================================
-[18:49:32] [INFO] Querying arXiv API for latest lensed supernova papers...
-[18:49:33] [INFO] arXiv API unavailable (HTTP Error 429: Unknown Error), using cached/empty
-[18:49:33] [INFO] Saved TEP cross-paper coefficients to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_00_tep_response_coefficients.json
-[18:49:33] [INFO] Saved arXiv registry to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/data/interim/external/arxiv_lensed_sn_registry.json
-[18:49:33] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_00_literature_and_tep_data.json
-[18:49:33] [INFO] Step 00 complete.
+[01:22:30] [INFO] ======================================================================
+[01:22:30] [INFO] STEP 00: Fetch Literature & Cross-Paper TEP Data
+[01:22:30] [INFO] ======================================================================
+[01:22:30] [INFO] Querying arXiv API for latest lensed supernova papers...
+[01:22:47] [INFO] arXiv API unavailable (HTTP Error 429: Too Many Requests), using cached/empty
+[01:22:47] [INFO] Saved TEP cross-paper coefficients to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_00_tep_response_coefficients.json
+[01:22:47] [INFO] Saved arXiv registry to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/data/interim/external/arxiv_lensed_sn_registry.json
+[01:22:47] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_00_literature_and_tep_data.json
+[01:22:47] [INFO] Step 00 complete.

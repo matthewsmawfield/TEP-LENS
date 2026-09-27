@@ -1,0 +1,497 @@
+{
+  "step": "60",
+  "status": "success",
+  "description": "Per-contrast implied mass-sheet slip lambda = R_obs/<dt_pred>_wmean computed in both directions: measured slips where residuals are non-zero, counter-direction |lambda| bounds where residuals are consistent with zero, a negative-slip census across all per-model residuals, and a pooled common-slip consistency test.",
+  "sign_convention": "lambda > 0: measured delay magnitude exceeds the GR model prediction (GR mass model under-reads the lensing mass). lambda < 0: counter-direction (delay shorter than predicted).",
+  "contrasts": {
+    "Refsdal_SX_S1_delay_blind": {
+      "system": "SN Refsdal (MACS J1149.6+2223)",
+      "tier": "delay_blind_corrected_compilation",
+      "dt_obs_days": 376.0,
+      "R_obs_days": 30.04957673068333,
+      "sigma_R_days": 8.870863592461008,
+      "dt_pred_wmean_days": 345.9504232693167,
+      "lambda": 0.08686093356009636,
+      "sigma_lambda": 0.02564200820634692,
+      "consistent_with_zero_1sigma": false,
+      "bound_1sigma_abs": 0.02564200820634692,
+      "bound_2sigma_abs": 0.05128401641269384
+    },
+    "Refsdal_SX_S1_strictly_blind": {
+      "system": "SN Refsdal (MACS J1149.6+2223)",
+      "tier": "strictly_blind_pre_reappearance",
+      "dt_obs_days": 376.0,
+      "R_obs_days": 54.784695181428226,
+      "sigma_R_days": 10.41001515400392,
+      "dt_pred_wmean_days": 321.2153048185718,
+      "lambda": 0.17055443610438056,
+      "sigma_lambda": 0.032408216538385944,
+      "consistent_with_zero_1sigma": false,
+      "bound_1sigma_abs": 0.032408216538385944,
+      "bound_2sigma_abs": 0.06481643307677189
+    },
+    "Encore_1b_1a": {
+      "system": "SN Encore (MACS J0138-2155)",
+      "tier": "delay_blind",
+      "dt_obs_days": -39.8,
+      "R_obs_days": -3.329462659636591,
+      "sigma_R_days": 2.1326268917956055,
+      "dt_pred_wmean_days": -36.47053734036341,
+      "lambda": 0.09129184548514291,
+      "sigma_lambda": 0.05847533508740881,
+      "consistent_with_zero_1sigma": false,
+      "bound_1sigma_abs": 0.05847533508740881,
+      "bound_2sigma_abs": 0.11695067017481763
+    },
+    "H0pe_AB": {
+      "system": "SN H0pe (PLCK G165.7+67.0)",
+      "tier": "delay_blind",
+      "dt_obs_days": -116.6,
+      "R_obs_days": -10.157034430488352,
+      "sigma_R_days": 5.134875721841973,
+      "dt_pred_wmean_days": -106.44296556951164,
+      "lambda": 0.09542231725830103,
+      "sigma_lambda": 0.04824063003476437,
+      "consistent_with_zero_1sigma": false,
+      "bound_1sigma_abs": 0.04824063003476437,
+      "bound_2sigma_abs": 0.09648126006952874
+    },
+    "H0pe_CB": {
+      "system": "SN H0pe (PLCK G165.7+67.0)",
+      "tier": "delay_blind",
+      "dt_obs_days": -48.6,
+      "R_obs_days": -0.2330478485211418,
+      "sigma_R_days": 2.6654433615273554,
+      "dt_pred_wmean_days": -48.36695215147886,
+      "lambda": 0.004818328179771736,
+      "sigma_lambda": 0.05510877247711498,
+      "consistent_with_zero_1sigma": true,
+      "bound_1sigma_abs": 0.05510877247711498,
+      "bound_2sigma_abs": 0.11021754495422996
+    }
+  },
+  "counter_direction_bounds": {
+    "note": "Contrasts consistent with zero residual are upper bounds on the scalar backreaction for that geometry; they are counted, not discarded.",
+    "systems": {
+      "H0pe_CB": {
+        "lambda": 0.004818328179771736,
+        "sigma_lambda": 0.05510877247711498,
+        "abs_bound_1sigma": 0.05510877247711498,
+        "abs_bound_2sigma": 0.11021754495422996
+      }
+    }
+  },
+  "negative_direction_census": {
+    "n_models_total": 36,
+    "n_negative_slip": 12,
+    "n_negative_gt_1sigma": 5,
+    "negative_cases": [
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Jauzac15.2*",
+        "delta_obs_minus_pred_days": -73.0,
+        "dt_pred_days": 449.0,
+        "lambda": -0.16258351893095768,
+        "sigma_lambda": 0.09436901706276249
+      },
+      {
+        "system": "SN Encore",
+        "model": "Lenstool I",
+        "delta_obs_minus_pred_days": 35.2,
+        "dt_pred_days": -75.0,
+        "lambda": -0.4693333333333334,
+        "sigma_lambda": 0.7282502622343808
+      },
+      {
+        "system": "SN Encore",
+        "model": "MrMARTIAN",
+        "delta_obs_minus_pred_days": 0.8000000000000043,
+        "dt_pred_days": -40.6,
+        "lambda": -0.01970443349753705,
+        "sigma_lambda": 0.17979030254419182
+      },
+      {
+        "system": "SN Encore",
+        "model": "WSLAP+",
+        "delta_obs_minus_pred_days": 72.2,
+        "dt_pred_days": -112.0,
+        "lambda": -0.6446428571428572,
+        "sigma_lambda": 0.2875166366082676
+      },
+      {
+        "system": "SN Encore",
+        "model": "Zitrin-analytic",
+        "delta_obs_minus_pred_days": 0.4000000000000057,
+        "dt_pred_days": -40.2,
+        "lambda": -0.009950248756219046,
+        "sigma_lambda": 0.24807119609842776
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "MARS",
+        "delta_obs_minus_pred_days": 19.670000000000016,
+        "dt_pred_days": -136.27,
+        "lambda": -0.1443457841050856,
+        "sigma_lambda": 0.16606107923266383
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "WSLAP+",
+        "delta_obs_minus_pred_days": 156.75000000000003,
+        "dt_pred_days": -273.35,
+        "lambda": -0.5734406438631792,
+        "sigma_lambda": 0.3505705267932972
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "GLAFIC",
+        "delta_obs_minus_pred_days": 2.1099999999999994,
+        "dt_pred_days": -50.71,
+        "lambda": -0.041609150069019905,
+        "sigma_lambda": 0.11213178069956309
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "LENSTOOL",
+        "delta_obs_minus_pred_days": 5.490000000000002,
+        "dt_pred_days": -54.09,
+        "lambda": -0.10149750415973381,
+        "sigma_lambda": 0.09513698613602825
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "MARS",
+        "delta_obs_minus_pred_days": 15.119999999999997,
+        "dt_pred_days": -63.72,
+        "lambda": -0.2372881355932203,
+        "sigma_lambda": 0.4566726904794706
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "Chen-2020",
+        "delta_obs_minus_pred_days": 4.75,
+        "dt_pred_days": -53.35,
+        "lambda": -0.08903467666354264,
+        "sigma_lambda": 0.08903467666354264
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "WSLAP+",
+        "delta_obs_minus_pred_days": -391.35,
+        "dt_pred_days": 342.75,
+        "lambda": -1.1417943107221007,
+        "sigma_lambda": 0.2702202405655487
+      }
+    ],
+    "per_model": [
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Oguri-a*",
+        "delta_obs_minus_pred_days": 40.0,
+        "dt_pred_days": 336.0,
+        "lambda": 0.11904761904761904,
+        "sigma_lambda": 0.058952616546955966
+      },
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Oguri-g*",
+        "delta_obs_minus_pred_days": 65.0,
+        "dt_pred_days": 311.0,
+        "lambda": 0.2090032154340836,
+        "sigma_lambda": 0.06569899840684497
+      },
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Sharon-a*",
+        "delta_obs_minus_pred_days": 139.0,
+        "dt_pred_days": 237.0,
+        "lambda": 0.5864978902953587,
+        "sigma_lambda": 0.15998239590526991
+      },
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Sharon-g*",
+        "delta_obs_minus_pred_days": 139.0,
+        "dt_pred_days": 237.0,
+        "lambda": 0.5864978902953587,
+        "sigma_lambda": 0.13915161463799855
+      },
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Diego-a",
+        "delta_obs_minus_pred_days": 114.0,
+        "dt_pred_days": 262.0,
+        "lambda": 0.4351145038167939,
+        "sigma_lambda": 0.21100899173350343
+      },
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Grillo-g",
+        "delta_obs_minus_pred_days": 15.0,
+        "dt_pred_days": 361.0,
+        "lambda": 0.04155124653739612,
+        "sigma_lambda": 0.06557319750312612
+      },
+      {
+        "system": "SN Refsdal (strictly blind tier)",
+        "model": "Jauzac15.2*",
+        "delta_obs_minus_pred_days": -73.0,
+        "dt_pred_days": 449.0,
+        "lambda": -0.16258351893095768,
+        "sigma_lambda": 0.09436901706276249
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Oguri-a*",
+        "delta_obs_minus_pred_days": 22.19999999999999,
+        "dt_pred_days": 353.8,
+        "lambda": 0.06274731486715655,
+        "sigma_lambda": 0.05598665675459922
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Oguri-g*",
+        "delta_obs_minus_pred_days": 45.30000000000001,
+        "dt_pred_days": 330.7,
+        "lambda": 0.13698215905654676,
+        "sigma_lambda": 0.061785269139790704
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Sharon-a*",
+        "delta_obs_minus_pred_days": 78.0,
+        "dt_pred_days": 298.0,
+        "lambda": 0.26174496644295303,
+        "sigma_lambda": 0.12723432157566766
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Sharon-g*",
+        "delta_obs_minus_pred_days": 45.0,
+        "dt_pred_days": 331.0,
+        "lambda": 0.13595166163141995,
+        "sigma_lambda": 0.09963423767131618
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Diego-a",
+        "delta_obs_minus_pred_days": 114.0,
+        "dt_pred_days": 262.0,
+        "lambda": 0.4351145038167939,
+        "sigma_lambda": 0.21100899173350343
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Grillo-g",
+        "delta_obs_minus_pred_days": 15.0,
+        "dt_pred_days": 361.0,
+        "lambda": 0.04155124653739612,
+        "sigma_lambda": 0.06557319750312612
+      },
+      {
+        "system": "SN Refsdal (delay-blind tier)",
+        "model": "Jauzac15.2*",
+        "delta_obs_minus_pred_days": 15.0,
+        "dt_pred_days": 361.0,
+        "lambda": 0.04155124653739612,
+        "sigma_lambda": 0.11737309878443312
+      },
+      {
+        "system": "SN Encore",
+        "model": "glafic",
+        "delta_obs_minus_pred_days": -7.399999999999999,
+        "dt_pred_days": -32.4,
+        "lambda": 0.22839506172839502,
+        "sigma_lambda": 0.13268913020133316
+      },
+      {
+        "system": "SN Encore",
+        "model": "GLEE",
+        "delta_obs_minus_pred_days": -2.6999999999999957,
+        "dt_pred_days": -37.1,
+        "lambda": 0.07277628032345002,
+        "sigma_lambda": 0.1204899991195291
+      },
+      {
+        "system": "SN Encore",
+        "model": "GLEE-baseline",
+        "delta_obs_minus_pred_days": -2.8999999999999986,
+        "dt_pred_days": -36.9,
+        "lambda": 0.07859078590785905,
+        "sigma_lambda": 0.12359625204326698
+      },
+      {
+        "system": "SN Encore",
+        "model": "Lenstool I",
+        "delta_obs_minus_pred_days": 35.2,
+        "dt_pred_days": -75.0,
+        "lambda": -0.4693333333333334,
+        "sigma_lambda": 0.7282502622343808
+      },
+      {
+        "system": "SN Encore",
+        "model": "Lenstool II",
+        "delta_obs_minus_pred_days": -4.199999999999996,
+        "dt_pred_days": -35.6,
+        "lambda": 0.11797752808988751,
+        "sigma_lambda": 0.1450102190914641
+      },
+      {
+        "system": "SN Encore",
+        "model": "MrMARTIAN",
+        "delta_obs_minus_pred_days": 0.8000000000000043,
+        "dt_pred_days": -40.6,
+        "lambda": -0.01970443349753705,
+        "sigma_lambda": 0.17979030254419182
+      },
+      {
+        "system": "SN Encore",
+        "model": "WSLAP+",
+        "delta_obs_minus_pred_days": 72.2,
+        "dt_pred_days": -112.0,
+        "lambda": -0.6446428571428572,
+        "sigma_lambda": 0.2875166366082676
+      },
+      {
+        "system": "SN Encore",
+        "model": "Zitrin-analytic",
+        "delta_obs_minus_pred_days": 0.4000000000000057,
+        "dt_pred_days": -40.2,
+        "lambda": -0.009950248756219046,
+        "sigma_lambda": 0.24807119609842776
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "GLAFIC",
+        "delta_obs_minus_pred_days": -11.419999999999987,
+        "dt_pred_days": -105.18,
+        "lambda": 0.10857577486214097,
+        "sigma_lambda": 0.11392288440295534
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "Zitrin-analytic",
+        "delta_obs_minus_pred_days": -11.079999999999998,
+        "dt_pred_days": -105.52,
+        "lambda": 0.1050037907505686,
+        "sigma_lambda": 0.10951822371035087
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "LENSTOOL",
+        "delta_obs_minus_pred_days": -13.919999999999987,
+        "dt_pred_days": -102.68,
+        "lambda": 0.13556680950525893,
+        "sigma_lambda": 0.11728343108593672
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "MARS",
+        "delta_obs_minus_pred_days": 19.670000000000016,
+        "dt_pred_days": -136.27,
+        "lambda": -0.1443457841050856,
+        "sigma_lambda": 0.16606107923266383
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "Chen-2020",
+        "delta_obs_minus_pred_days": -4.349999999999994,
+        "dt_pred_days": -112.25,
+        "lambda": 0.038752783964365205,
+        "sigma_lambda": 0.10662640215704629
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "WSLAP+",
+        "delta_obs_minus_pred_days": 156.75000000000003,
+        "dt_pred_days": -273.35,
+        "lambda": -0.5734406438631792,
+        "sigma_lambda": 0.3505705267932972
+      },
+      {
+        "system": "SN H0pe (AB)",
+        "model": "Zitrin-LTM",
+        "delta_obs_minus_pred_days": -20.14999999999999,
+        "dt_pred_days": -96.45,
+        "lambda": 0.20891653706583713,
+        "sigma_lambda": 0.11943517428253819
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "GLAFIC",
+        "delta_obs_minus_pred_days": 2.1099999999999994,
+        "dt_pred_days": -50.71,
+        "lambda": -0.041609150069019905,
+        "sigma_lambda": 0.11213178069956309
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "Zitrin-analytic",
+        "delta_obs_minus_pred_days": -7.539999999999999,
+        "dt_pred_days": -41.06,
+        "lambda": 0.1836337067705796,
+        "sigma_lambda": 0.3469594219902926
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "LENSTOOL",
+        "delta_obs_minus_pred_days": 5.490000000000002,
+        "dt_pred_days": -54.09,
+        "lambda": -0.10149750415973381,
+        "sigma_lambda": 0.09513698613602825
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "MARS",
+        "delta_obs_minus_pred_days": 15.119999999999997,
+        "dt_pred_days": -63.72,
+        "lambda": -0.2372881355932203,
+        "sigma_lambda": 0.4566726904794706
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "Chen-2020",
+        "delta_obs_minus_pred_days": 4.75,
+        "dt_pred_days": -53.35,
+        "lambda": -0.08903467666354264,
+        "sigma_lambda": 0.08903467666354264
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "WSLAP+",
+        "delta_obs_minus_pred_days": -391.35,
+        "dt_pred_days": 342.75,
+        "lambda": -1.1417943107221007,
+        "sigma_lambda": 0.2702202405655487
+      },
+      {
+        "system": "SN H0pe (CB)",
+        "model": "Zitrin-LTM",
+        "delta_obs_minus_pred_days": -20.96,
+        "dt_pred_days": -27.64,
+        "lambda": 0.7583212735166426,
+        "sigma_lambda": 0.2466462199323304
+      }
+    ]
+  },
+  "pooled_delay_blind_common_slip": {
+    "lambda_bar": 0.07829285300339753,
+    "sigma": 0.01971685306275632,
+    "chi2": 2.0647443429892705,
+    "dof": 3,
+    "p_value": 0.5590780836242999,
+    "consistent_with_common_slip": true,
+    "n_contrasts": 4
+  },
+  "mundane_floor": {
+    "n_systems_with_kext": 7,
+    "kappa_ext_halfwidth_median": 0.0302,
+    "kappa_ext_halfwidth_range": [
+      0.027,
+      0.047
+    ],
+    "sdss1206_powerlaw_vs_composite_frac": 0.06,
+    "note": "Mundane mass-model floor from step_58 real per-system kappa_ext posterior half-widths and the SDSS1206+4332 power-law-vs-composite D_dt spread (~6%). Implied slips must be evaluated against this floor: a slip within it is absorbed by ordinary mass-sheet systematics, not excluded by them."
+  },
+  "interpretation": "Of 4 delay-blind contrasts, 3 yield non-zero implied slips (all positive, +0.087 to +0.095) and 1 is consistent with zero (bounding the slip to <~11% at 2-sigma for that geometry). The pooled delay-blind slip is 7.8 +/- 2.0% with chi2 = 2.06 on 3 dof (p = 0.56): the measured and bounding directions are mutually consistent with a common order-percent slip. The negative-direction census counts 12 per-model slips with negative sign out of 36 model contrasts, of which 5 exceed 1-sigma \u2014 dominated by the free-form WSLAP+ models over-predicting the Encore and H0pe delays and by the strictly-blind Jauzac15.1 variant; every ensemble-level weighted mean remains positive. Measured slips sit at the measured mundane floor (median kappa_ext half-width 3.0%, SDSS1206 family spread ~6%), commensurate with the systematic the mechanism predicts the slip to masquerade as."
+}

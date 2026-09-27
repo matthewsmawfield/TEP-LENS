@@ -2,8 +2,10 @@
 """
 TEP-LENS: Step 053 — Amplification-Kernel Diagnostic
 
-Purpose: compute the empirical amplification kernel that maps potential-oriented
-transport tracers to the observed residual amplitude.
+Purpose: compute descriptive ratios between potential-oriented diagnostics and
+the observed residual. These ratios are not physical amplification factors in
+the static conformal sector, because the potential integrals are already part
+of the GR Fermat/Shapiro delay.
 
 The amplification factor K is defined as:
     K = R_observed / R_transport
@@ -67,7 +69,10 @@ def main():
     # Load step 51 (geodesic transport)
     s51 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_51_geodesic_transport.json"))
     R_geo = abs(s51.get("loop_residuals", {}).get("geodesic_proxy_days", 0.0))
-    R_fund = abs(s51.get("loop_residuals", {}).get("fundamental_formula_days", 0.0))
+    R_fund = abs(s51.get("loop_residuals", {}).get(
+        "endpoint_rescaling_diagnostic_days",
+        s51.get("loop_residuals", {}).get("fundamental_formula_days", 0.0),
+    ))
 
     # Load step 052 (transfer kernel bridge)
     s052 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_052_transfer_kernel_bridge.json"))
@@ -98,16 +103,16 @@ def main():
 
     if K_psi and K_psi > 10:
         verdict = (
-            f"Direct potential transport underpredicts the observed amplitude by a factor of {K_psi:.0f}. "
-            f"Geodesic transport underpredicts by {K_geo:.0f}x, and the fundamental formula by {K_fund:.0f}x. "
-            "This quantifies the magnification-amplification kernel: the log-magnification response "
-            "captures an empirical amplification of order 10–400 relative to pure potential transport, "
-            "consistent with near-critical lensing structure enhancing the temporal response."
+            f"The observed residual is numerically {K_psi:.0f} times the selected psi diagnostic; "
+            f"the corresponding geodesic and endpoint-rescaling ratios are {K_geo:.0f} and {K_fund:.0f}. "
+            "These are descriptive scale ratios, not a derived amplification kernel: the static "
+            "potential terms are already included in the GR Fermat delay. A physical residual requires "
+            "an independently derived backreaction, time-dependent, or disformal response."
         )
     else:
         verdict = (
-            "The amplification factor is modest; the fundamental formula may already capture "
-            "most of the observed amplitude."
+            "The descriptive scale ratio is modest, but it does not constitute a static conformal "
+            "prediction because the potential contribution is already included in GR."
         )
 
     print_status("\n" + verdict)
@@ -128,12 +133,10 @@ def main():
         "amplification_factors": amplification,
         "verdict": verdict,
         "interpretation": (
-            "The amplification kernel K quantifies how much stronger the observed residual is "
-            "compared to pure potential/geodesic transport predictions. K ~ 10–400 indicates that "
-            "the log-magnification response encodes a lensing-geometry amplification not captured "
-            "by scalar potential alone. This identifies the central theoretical target: the TEP "
-            "lensing transfer function must explain not only the sign of temporal shear, but the "
-            "magnification-amplified response near critical lensing structure."
+            "The reported K values are numerical ratios to lens-environment diagnostics, not "
+            "physical amplification measurements. The central theoretical target is an "
+            "action-derived non-conformal or backreaction lensing response that predicts both "
+            "the sign and amplitude without reusing the GR potential term."
         ),
     }
     out_path = PROJECT_ROOT / "results" / "outputs" / f"step_{STEP_NUM}_amplification_kernel.json"

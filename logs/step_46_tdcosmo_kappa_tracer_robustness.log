@@ -1,0 +1,29 @@
+
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] STEP 46: TDCOSMO Flux-Proxy Residual Distribution
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] TDCOSMO systems in step_05: 8
+[01:27:34] [INFO] 
+System predictions (largest contrast pair per system):
+[01:27:34] [INFO]   HE0435-1223    : dt=-13.8 d, flux_ratio=0.560, R_pred=+0.191 d
+[01:27:34] [INFO]   WFI2033-4723   : dt=+22.7 d, flux_ratio=0.424, R_pred=+0.465 d
+[01:27:34] [INFO]   DES0408-5354   : dt=-155.5 d, flux_ratio=0.248, R_pred=+5.179 d
+[01:27:34] [INFO]   RXJ1131-1231   : dt=+91.4 d, flux_ratio=0.110, R_pred=+4.819 d
+[01:27:34] [INFO]   PG1115+080     : dt=-14.3 d, flux_ratio=0.160, R_pred=+0.626 d
+[01:27:34] [INFO]   B1608+656      : dt=+77.0 d, flux_ratio=0.160, R_pred=+3.371 d
+[01:27:34] [INFO]   J1206+4332     : dt=+111.3 d, flux_ratio=0.470, R_pred=+2.007 d
+[01:27:34] [INFO]   SN Encore      : dt=-39.8 d, flux_ratio=1.486, R_pred=-0.377 d
+[01:27:34] [INFO] 
+Distribution summary:
+[01:27:34] [INFO]   Median predicted shift: 1.317 d
+[01:27:34] [INFO]   Mean predicted shift:   2.035 d
+[01:27:34] [INFO]   Std:                    2.174 d
+[01:27:34] [INFO]   Range: [-0.377, 5.179] d
+[01:27:34] [INFO]   Fraction > 1 d:         50%
+[01:27:34] [INFO]   Fraction > 5 d:         12%
+[01:27:34] [INFO] 
+SN Refsdal (S1-S4-SX) predicted shift: 14.538 d
+[01:27:34] [INFO]   SN Refsdal is an outlier: its predicted shift exceeds 100% of the TDCOSMO sample.
+[01:27:34] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_46_tdcosmo_kappa_tracer_robustness.json
+[01:27:34] [INFO] Step 46 complete.

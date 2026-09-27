@@ -4,23 +4,36 @@
 <p>
 The Temporal Equivalence Principle (TEP) postulates that the rate of proper time flow for a photon traversing a gravitational potential $\Phi$ is scaled relative to the cosmological background rate by a factor $\Gamma_t$:
 </p>
+
+<!-- include: screening_projection_notice.html -->
+
 <div class="equation">
 \begin{equation} \label{eq:8_appendix_01}
-\Gamma_t(\Phi) = 1 + \alpha \frac{|\Phi|}{c^2}
+\Gamma_t(\Phi) = 1 + \kappa_{\rm lens} \frac{|\Phi|}{c^2}
 \end{equation}
 </div>
 <p>
-where $\alpha$ is the lensing-sector effective coupling. The proxy-model coefficient is empirically $\alpha_{\rm proxy} \approx -0.055$; under the corrected Kelly+2023 Supplementary Table S4 compilation, the SN Refsdal data infer a lensing-sector coupling $\alpha_{\rm inferred} = -0.114 \pm 0.034$, which exceeds the proxy value by $1.75\sigma$. In the strong lensing regime, the relevant potential is the projected gravitational potential $\psi(\boldsymbol{\theta})$ integrated along the line of sight. For singular isothermal sphere (SIS) or NFW profiles typical of cluster lenses, the projected potential depth scales logarithmically with the surface mass density $\Sigma$, which is directly related to the magnification $\mu$.
+where $\kappa_{\rm lens}$ is the lensing-sector effective coupling. The proxy-model coefficient is empirically $\kappa_{\rm lens} \approx -0.055$; under the corrected Kelly+2023 Supplementary Table S4 compilation, the SN Refsdal data infer a lensing-sector coupling $\kappa_{\rm inferred} = -0.114 \pm 0.034$, which exceeds the proxy value by $1.75\sigma$. In the strong lensing regime, the relevant potential is the projected gravitational potential $\psi(\boldsymbol{\theta})$ integrated along the line of sight. For singular isothermal sphere (SIS) or NFW profiles typical of cluster lenses, the projected potential depth scales logarithmically with the surface mass density $\Sigma$, which is directly related to the magnification $\mu$.
 </p>
 <p>
-No first-principles derivation of the log-magnification ansatz from the TEP scalar-field action through the lensing potential $\psi(\boldsymbol{\theta})$ currently exists. The mapping from projected convergence $\kappa$ to observed magnification $\mu$ involves the full boundary-value problem of the scalar-field equation in a non-trivial cluster potential, including ellipticity, external shear, and substructure. Solving this transfer function is beyond the scope of the present work.
+The endpoint expression above is a clock-ratio diagnostic, not by itself an additional arrival-time observable. In the strictly static conformal sector, $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}$, null propagation obeys the exact identity
+</p>
+<div class="equation">
+\begin{equation} \label{eq:8_appendix_01b}
+\tilde g_{\mu\nu}k^\mu k^\nu=A^2(\phi)g_{\mu\nu}k^\mu k^\nu=0
+\quad\Longleftrightarrow\quad
+g_{\mu\nu}k^\mu k^\nu=0\,.
+\end{equation}
+</div>
+<p>
+Consequently, conformal rescaling preserves the unparameterised null trajectories and their static coordinate travel times. The thin-lens relation $\int |\Phi|c^{-2}dl=(D_lD_s/2D_{ls})\psi(\boldsymbol{\theta}_i)$ is the ordinary potential part of the GR Fermat delay already contained in the lens predictions. Adding a fitted multiple of this term after subtracting those predictions double-counts the same potential. Step 56 therefore gives $\Delta t^{\rm residual}_{\rm static,conf}=0$ exactly; the archived $\psi$ ordering is retained only as a lens-environment diagnostic.
 </p>
 <p>
-The following phenomenological scaling relation is therefore adopted as a strong-lensing-specific ansatz, analogous to the PPN strategy of treating the observable response separately from the microscopic coupling:
+Any non-zero TEP lensing residual must therefore enter through a channel absent from this static conformal calculation: scalar backreaction on the solved lens geometry, explicit time dependence, or the disformal term $B(\phi)\nabla_\mu\phi\nabla_\nu\phi$. No action-derived map from those channels to the residual log-magnification response currently exists. The following relation is accordingly tested only as a phenomenological strong-lensing ansatz, with its amplitude subjected to the external holdout test of Step 57.
 </p>
 <div class="equation">
 \begin{equation} \label{eq:8_appendix_02}
-\Gamma_t(i) \approx 1 + \alpha \log_{10}\left(\frac{\mu_i}{\bar{\mu}}\right)
+\Gamma_t(i) \approx 1 + \kappa_{\rm lens} \log_{10}\left(\frac{\mu_i}{\bar{\mu}}\right)
 \end{equation}
 </div>
 <p>
@@ -93,7 +106,7 @@ Explicitly for the triplet $(i, j, k)$:
 \end{equation}
 </div>
 <p>
-where $\Delta t_{ij} \equiv \Delta t_{ij}^{\rm GR}$. This equation demonstrates that the residual is generated purely by the <em>differences</em> in $\Gamma$ around the loop. If the potential depth is constant ($\Gamma_i = \Gamma_j = \Gamma_k$), the residual vanishes. For the S1–S4–SX loop of SN Refsdal, where the other two delays are well-constrained by the Einstein-cross images, this weighted sum approximately equals the TEP-induced discrepancy in the SX–S1 delay.
+where $\Delta t_{ij} \equiv \Delta t_{ij}^{\rm GR}$. This equation demonstrates that the residual is generated purely by the <em>differences</em> in $\Gamma$ across the oriented image triplet. If the potential depth is constant ($\Gamma_i = \Gamma_j = \Gamma_k$), the residual vanishes. For the S1–S4–SX loop of SN Refsdal, where the other two delays are well-constrained by the Einstein-cross images, this weighted sum approximately equals the TEP-induced discrepancy in the SX–S1 delay. <strong>This is not an observed delay-closure violation.</strong> It is a model-space residual combination comparing GR-predicted delays to a TEP-scaled reference. Algebraic closure of pairwise delays remains exactly zero; the genuine TEP observable is the blind-prediction residual, not a synchronization holonomy.
 </p>
 
 <h3>A.3 Prediction-Provenance Audit</h3>

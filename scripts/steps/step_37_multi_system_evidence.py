@@ -5,13 +5,13 @@ TEP-LENS: Step 37 - Multi-System Evidence Accumulation Projection
 Purpose: Quantify how the TEP evidence strengthens as independent multiply-imaged
 supernova systems are added. The current SN Refsdal measurement is a single-system,
 single-contrast test (D_eff ~ 2.0). No single system can yield decisive evidence
-because the proxy model is phenomenological and alpha_proxy was calibrated on the
+because the proxy model is phenomenological and kappa_lens was calibrated on the
 data it tests. This step projects the number of independent systems required for
 decisive significance under valid statistical combination rules.
 
 Valid combination methods (independent systems only):
 1. Stouffer's z-method for independent directional tests.
-2. Inverse-variance weighted alpha inference.
+2. Inverse-variance weighted coupling inference.
 3. Binomial across systems: P(k of N positive | GR).
 
 Invalid methods (not used):
@@ -23,7 +23,7 @@ Invalid methods (not used):
 Assumptions:
 - Each new system is statistically independent of SN Refsdal.
 - Per-system precision is characterised by blind-model uncertainty sigma_model.
-- The proxy-model coupling alpha_proxy is common across all lens systems.
+- The proxy-model coupling kappa_lens is common across all lens systems.
 - Long-baseline contrast dominates the signal (proven by Step 35 for Refsdal).
 """
 
@@ -73,7 +73,7 @@ def inverse_variance_alpha(alphas, sigma_alphas):
     # norm.cdf(z_obs) = P(Z < z_obs) gives the correct left-tail probability.
     p_vs_zero = float(stats.norm.cdf(z_vs_zero))
     return {
-        "alpha_combined": alpha_combined,
+        "kappa_combined": alpha_combined,
         "sigma_combined": sigma_combined,
         "z_vs_zero": z_vs_zero,
         "p_vs_zero": p_vs_zero,
@@ -152,8 +152,8 @@ def main():
         s16 = json.load(f)
 
     # Template alpha from Refsdal
-    alpha_ref = float(s07["weighted_mean_residual"]["alpha_inferred"])
-    sigma_alpha_ref = float(s07["weighted_mean_residual"]["alpha_inferred_err"])
+    kappa_ref = float(s07["weighted_mean_residual"]["kappa_inferred"])
+    sigma_alpha_ref = float(s07["weighted_mean_residual"]["kappa_inferred_err"])
     r_tep_true = float(s07["tep_prediction"]["R_tep_prediction_days"])
 
     # Template headline z from the current correlation-aware primary test.
@@ -163,7 +163,7 @@ def main():
     headline_test = headline["test"]
 
     print_status(f"Template system (SN Refsdal SX):")
-    print_status(f"  alpha_inferred = {alpha_ref:+.4f} +/- {sigma_alpha_ref:.4f}")
+    print_status(f"  kappa_inferred = {kappa_ref:+.4f} +/- {sigma_alpha_ref:.4f}")
     print_status(f"  R_tep = {r_tep_true:.3f} d")
     print_status(f"  {headline_test}: z = {z_template:.2f}, p = {p_template:.4f}")
 
@@ -199,12 +199,12 @@ def main():
     # ------------------------------------------------------------------
     alpha_proj = []
     for n in range(1, max_n + 1):
-        alphas = [alpha_ref] * n
+        alphas = [kappa_ref] * n
         sigmas = [sigma_alpha_ref] * n
         comb = inverse_variance_alpha(alphas, sigmas)
         alpha_proj.append({
             "n_systems": n,
-            "alpha_combined": comb["alpha_combined"],
+            "kappa_combined": comb["kappa_combined"],
             "sigma_combined": comb["sigma_combined"],
             "z_vs_zero": comb["z_vs_zero"],
             "p_vs_zero": comb["p_vs_zero"],
@@ -216,7 +216,7 @@ def main():
     n_alpha_5sig = next((r["n_systems"] for r in alpha_proj if r["reaches_5sigma"]), None)
 
     print_status(f"\nAlpha-inference projection (identical systems):")
-    print_status(f"  Combined sigma_alpha = {sigma_alpha_ref:.4f} / sqrt(N)")
+    print_status(f"  Combined sigma_kappa = {sigma_alpha_ref:.4f} / sqrt(N)")
     print_status(f"  3-sigma exclusion of alpha=0: N = {n_alpha_3sig}")
     print_status(f"  5-sigma exclusion of alpha=0: N = {n_alpha_5sig}")
 
@@ -277,8 +277,8 @@ def main():
     prospective_thresholds = {
         "stouffer_3sigma_n_systems": n_for_3sigma,
         "stouffer_5sigma_n_systems": n_for_5sigma,
-        "alpha_3sigma_n_systems": n_alpha_3sig,
-        "alpha_5sigma_n_systems": n_alpha_5sig,
+        "kappa_3sigma_n_systems": n_alpha_3sig,
+        "kappa_5sigma_n_systems": n_alpha_5sig,
         "note": (
             "These thresholds assume each new system provides an independent blind-prediction "
             "residual test with precision equivalent to SN Refsdal (blind model uncertainty "
@@ -300,8 +300,8 @@ def main():
         "description": "Multi-system evidence accumulation projection",
         "template_system": {
             "system": "SN Refsdal SX",
-            "alpha_inferred": alpha_ref,
-            "sigma_alpha": sigma_alpha_ref,
+            "kappa_inferred": kappa_ref,
+            "sigma_kappa": sigma_alpha_ref,
             "R_tep_days": r_tep_true,
             "headline_test": headline_test,
             "z_headline": z_template,
@@ -314,9 +314,9 @@ def main():
             "n_for_5sigma": n_for_5sigma,
             "per_system_results": stouffer_results,
         },
-        "alpha_inference_projection": {
+        "kappa_inference_projection": {
             "method": "Inverse-variance weighted alpha across independent systems",
-            "assumption": "Each system provides independent alpha inference with same precision as Refsdal",
+            "assumption": "Each system provides independent coupling inference with same precision as Refsdal",
             "n_for_3sigma": n_alpha_3sig,
             "n_for_5sigma": n_alpha_5sig,
             "per_system_results": alpha_proj,

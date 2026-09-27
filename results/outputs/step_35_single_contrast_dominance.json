@@ -2,7 +2,7 @@
   "step": "35",
   "status": "success",
   "system": "SN Refsdal (MACS J1149.6+2223)",
-  "alpha_tep": -0.055,
+  "kappa_tep": -0.055,
   "energy_metrics": {
     "total_energy_sum_R2_d2": 283.67619199141274,
     "total_abs_sum_R_d": 23.759191012331538,

@@ -1,9 +1,9 @@
 
-[18:50:45] [INFO] ======================================================================
-[18:50:45] [INFO] STEP 15: External-Informed Inflation
-[18:50:45] [INFO] ======================================================================
-[18:50:45] [INFO] External chain CV prior (from step_14): kappa16=0.085, kappa50=0.111, kappa84=0.140
-[18:50:45] [INFO] kappa50 scenario: z=1.25, p_z=0.105, Δχ²=+1.57
-[18:50:46] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_15_external_inflation.png
-[18:50:46] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_15_external_inflation.json
-[18:50:46] [INFO] Step 15 complete.
+[01:23:23] [INFO] ======================================================================
+[01:23:23] [INFO] STEP 15: External-Informed Inflation
+[01:23:23] [INFO] ======================================================================
+[01:23:23] [INFO] External chain CV prior (from step_14): kappa16=0.073, kappa50=0.086, kappa84=0.098
+[01:23:23] [INFO] kappa50 scenario: z=3.38, p_z=0.000, Δχ²=+8.36
+[01:23:24] [INFO] Figure saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_15_external_inflation.png
+[01:23:24] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_15_external_inflation.json
+[01:23:24] [INFO] Step 15 complete.

@@ -83,7 +83,7 @@ abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays tra
   multiply-imaged supernova.
 
   '
-version: v0.1 (Lisboa)
+version: v0.2 (Lisboa)
 date-released: 2026-06-10
 url: https://mlsmawfield.com/tep/lens
 repository-code: https://github.com/matthewsmawfield/TEP-LENS
@@ -111,4 +111,4 @@ preferred-citation:
   year: 2026
   journal: Zenodo
   url: https://mlsmawfield.com/tep/lens
-  notes: Preprint v0.1 (Lisboa)
+  notes: Preprint v0.2 (Lisboa)

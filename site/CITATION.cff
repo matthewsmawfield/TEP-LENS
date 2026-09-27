@@ -7,7 +7,7 @@ authors:
     orcid: "https://orcid.org/0009-0003-8219-3159"
 title: "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae"
 abstract: "The Temporal Equivalence Principle (TEP) predicts that light rays traversing different gravitational potential depths experience differential temporal scaling. This work presents sign-coherent directional evidence from SN Refsdal: all seven selected blind pre-reappearance model variants yield positive residuals (Wilcoxon p = 0.0078, ~2.4 sigma), matching the TEP-predicted sign. The correlation-aware headline is the exact family-sign-flip test (p = 0.031). A corrected-compilation amplitude estimate from Kelly+2023 Supplementary Table S4 gives R_obs = +30.1 +/- 8.9 d (3.39 sigma from GR), implying alpha_inferred = -0.114 +/- 0.034; however, five of seven models underwent post-reappearance revisions whose reappearance-independence is not documented, so this amplitude estimate should be interpreted as corrected-compilation dependent. The all-sector proxy predicts the sign and ~half the amplitude (+14.5 d). Direct potential and geodesic reconstructions preserve the sign but yield sub-day amplitudes, revealing a magnification-sensitive transfer kernel as the missing theoretical object. Cross-system directional consistency checks (SN Encore, SN H0pe) support the sign pattern at 3/3 exact binomial p = 0.125."
-version: "v0.1 (Lisboa)"
+version: "v0.2 (Lisboa)"
 date-released: 2026-06-10
 url: "https://github.com/matthewsmawfield/TEP-LENS"
 repository-code: "https://github.com/matthewsmawfield/TEP-LENS"
@@ -35,4 +35,4 @@ preferred-citation:
   year: 2026
   journal: Zenodo
   url: "https://github.com/matthewsmawfield/TEP-LENS"
-  notes: "Preprint v0.1 (Lisboa)"
+  notes: "Preprint v0.2 (Lisboa)"

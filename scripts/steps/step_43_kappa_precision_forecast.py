@@ -44,7 +44,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS
 
 STEP_NUM = "43"
 
@@ -78,8 +78,8 @@ def closure_residual_from_kappa(alpha, kappa, delays, loop):
 def run_level(gamma_scale, c_mode, deltas, sigmas, r_obs, n_draws=20000, seed=20260607):
     """One precision level: shear std scaled by gamma_scale; C knowledge = c_mode."""
     rng = np.random.default_rng(seed)
-    # Nominal flux-proxy residual (no inversion), for the alpha_equiv reference.
-    r_mu = closure_residual_from_kappa(ALPHA_PROXY, FLUXES, DELAYS, LOOP)
+    # Nominal flux-proxy residual (no inversion), for the kappa_equiv reference.
+    r_mu = closure_residual_from_kappa(KAPPA_LENS, FLUXES, DELAYS, LOOP)
 
     R, ALPHA, DCHI2 = [], [], []
     for _ in range(n_draws):
@@ -100,9 +100,9 @@ def run_level(gamma_scale, c_mode, deltas, sigmas, r_obs, n_draws=20000, seed=20
             g = min(g, max_g)
             term = 1.0 / mu_abs + g ** 2
             kappa[im] = 0.01 if (term < 0 or term > 1.0) else 1.0 - np.sqrt(term)
-        r_tep = closure_residual_from_kappa(ALPHA_PROXY, kappa, DELAYS, LOOP)
+        r_tep = closure_residual_from_kappa(KAPPA_LENS, kappa, DELAYS, LOOP)
         R.append(r_tep)
-        r_unit = r_tep / abs(ALPHA_PROXY) if abs(r_tep) > 1e-9 else np.nan
+        r_unit = r_tep / abs(KAPPA_LENS) if abs(r_tep) > 1e-9 else np.nan
         ALPHA.append(r_obs / r_unit if np.isfinite(r_unit) else np.nan)
         chi2_gr = np.sum((deltas / sigmas) ** 2)
         chi2_tep = np.sum(((deltas + r_tep) / sigmas) ** 2)
@@ -117,9 +117,9 @@ def run_level(gamma_scale, c_mode, deltas, sigmas, r_obs, n_draws=20000, seed=20
         "R_median": float(np.median(R)), "R_p16": float(r16), "R_p84": float(r84),
         "R_zero_crossing": bool(r16 < 0 < r84),
         "P_R_negative": float(np.mean(R < 0)),                 # sign stability
-        "alpha_equiv_median": float(np.nanmedian(ALPHA)),
-        "alpha_equiv_p16": float(a16), "alpha_equiv_p84": float(a84),
-        "alpha_zero_crossing": bool(a16 < 0 < a84),
+        "kappa_equiv_median": float(np.nanmedian(ALPHA)),
+        "kappa_equiv_p16": float(a16), "kappa_equiv_p84": float(a84),
+        "kappa_zero_crossing": bool(a16 < 0 < a84),
         "P_delta_chi2_gt_0": float(np.mean(DCHI2 > 0)),
     }
 
@@ -136,7 +136,7 @@ def main():
     c_modes = ["unknown", "constrained", "known"]
 
     print_status(f"Nominal flux-proxy residual (no inversion): "
-                 f"{closure_residual_from_kappa(ALPHA_PROXY, FLUXES, DELAYS, LOOP):.2f} d")
+                 f"{closure_residual_from_kappa(KAPPA_LENS, FLUXES, DELAYS, LOOP):.2f} d")
     print_status("Ladder (sigma_gamma S1-S4 | C-knowledge -> R_med [p16,p84], zero-cross?, P(dchi2>0)):")
 
     ladder = []
@@ -149,7 +149,7 @@ def main():
                 f"R={res['R_median']:6.1f} [{res['R_p16']:6.1f},{res['R_p84']:5.1f}] "
                 f"zero={'Y' if res['R_zero_crossing'] else 'n'}  "
                 f"P(dchi2>0)={res['P_delta_chi2_gt_0']:.2f}  "
-                f"alpha_eq={res['alpha_equiv_median']:+.3f}")
+                f"kappa_eq={res['kappa_equiv_median']:+.3f}")
 
     # Requirement: smallest shear precision (largest scale) at which, for the
     # realistic 'constrained' C scenario, the residual no longer crosses zero.
@@ -185,8 +185,8 @@ def main():
             "Conditional on the central shear estimates; quantifies the convergence "
             "precision required to remove the residual zero-crossing and restore the "
             "amplitude. The primary blind-residual SIGN evidence does not depend on this proxy."),
-        "alpha_proxy_ref": ALPHA_PROXY,
-        "nominal_flux_proxy_residual_days": closure_residual_from_kappa(ALPHA_PROXY, FLUXES, DELAYS, LOOP),
+        "kappa_lens_ref": KAPPA_LENS,
+        "nominal_flux_proxy_residual_days": closure_residual_from_kappa(KAPPA_LENS, FLUXES, DELAYS, LOOP),
         "current_state": next(x for x in ladder if x["gamma_std_scale"] == 1.0 and x["C_knowledge"] == "unknown"),
         "precision_ladder": ladder,
         "convergence_precision_requirement": requirement,

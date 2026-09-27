@@ -49,7 +49,7 @@ import yaml
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS
 
 STEP_NUM = "055"
 
@@ -170,7 +170,7 @@ def main():
             "Checks whether per-image convergence values are available in the TDCOSMO2025 "
             "public release and reports what is missing."
         ),
-        "alpha_proxy": ALPHA_PROXY,
+        "kappa_lens": KAPPA_LENS,
         "n_systems": len(per_system),
         "systems_with_per_image_kappa": has_per_image_kappa,
         "systems_missing_per_image_kappa": missing_per_image_kappa,

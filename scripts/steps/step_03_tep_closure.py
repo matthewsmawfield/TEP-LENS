@@ -35,7 +35,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "03"
 
@@ -82,12 +82,12 @@ def main():
     mu_ref = np.mean(list(mu_rel.values()))  # normalise to mean flux
     mu_norm = {img: mu_rel[img] / mu_ref for img in mu_rel}
 
-    alpha_tep = ALPHA_PROXY  # Nominal illustrative coupling; not a pre-observation forecast
+    kappa_tep = KAPPA_LENS  # Nominal illustrative coupling; not a pre-observation forecast
 
     # Gamma_t(i) = 1 + alpha * log10(mu_norm_i)
-    Gamma = {img: 1.0 + alpha_tep * np.log10(mu_norm[img]) for img in mu_norm}
+    Gamma = {img: 1.0 + kappa_tep * np.log10(mu_norm[img]) for img in mu_norm}
 
-    print_status(f"Proxy-model coupling alpha = {alpha_tep} (Expansion/Screening)")
+    print_status(f"Proxy-model coupling alpha = {kappa_tep} (Expansion/Screening)")
     print_status("Temporal shear factors Gamma_t per image:")
     for img in ["S1", "S2", "S3", "S4", "SX"]:
         print_status(f"  {img}: mu_rel={mu_rel[img]:.3f}, mu_norm={mu_norm[img]:.3f}, "
@@ -176,7 +176,7 @@ def main():
         "status": "success",
         "system": "SN Refsdal (MACS J1149.6+2223)",
         "reference": "Kelly et al. 2023, ApJ 948, 93",
-        "alpha_tep": alpha_tep,
+        "kappa_tep": kappa_tep,
         "gamma_per_image": {img: float(Gamma[img]) for img in Gamma},
         "mu_norm_per_image": {img: float(mu_norm[img]) for img in mu_norm},
         "tep_predicted_discrepancies": loop_results,

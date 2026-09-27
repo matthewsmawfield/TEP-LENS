@@ -26,11 +26,11 @@ B. INNER-CROSS ARRIVAL-ORDER CONSISTENCY CHECK
    Compute the expected proxy delay shift per image and compare to the
    measured delays to confirm the inner cross is in the noise-dominated regime.
 
-C. ALPHA INFERENCE CONSISTENCY TEST (cross-model)
-   Each blind model's per-model residual implies an alpha_inferred_i.
+C. KAPPA INFERENCE CONSISTENCY TEST (cross-model)
+   Each blind model's per-model residual implies a kappa_inferred_i.
    Under GR, these should scatter around 0.
-   Under the proxy model, they should cluster around alpha_proxy ≈ -0.055.
-   Test: z-test of weighted mean alpha_inferred against 0 and alpha_proxy ≈ -0.055.
+   Under the proxy model, they should cluster around kappa_lens ≈ -0.055.
+   Test: z-test of weighted mean kappa_inferred against 0 and kappa_lens ≈ -0.055.
    Scatter test: chi^2 of residuals about the mean.
 
 D. SN H0PE CLOSURE SENSITIVITY ANALYSIS
@@ -38,7 +38,7 @@ D. SN H0PE CLOSURE SENSITIVITY ANALYSIS
    independently measured delays (Pierel+2024) and absolute magnifications
    (Frye+2024). This is a COMPLETELY INDEPENDENT system from SN Refsdal.
    IMPORTANT: The proxy-model closure residual computed here is the PREDICTED residual
-   from the measured delays and magnifications under alpha_proxy ≈ -0.055. The OBSERVED
+   from the measured delays and magnifications under kappa_lens ≈ -0.055. The OBSERVED
    closure of the measured delays is identically 0 by construction (same issue
    as SN Refsdal inner cross). This analysis demonstrates the SENSITIVITY of
    H0pe to the proxy model: if an independent SX-like image existed, what SNR would result?
@@ -58,7 +58,7 @@ E. FISHER COMBINED SIGNIFICANCE (genuinely observed p-values only)
 Data sources:
 - SN Refsdal: Kelly et al. 2023, ApJ 948, 93
 - SN H0pe: Pierel et al. 2024, ApJ 967, 50; Frye et al. 2024
-- Blind model alpha_inferred values: step_07 output
+- Blind model kappa_inferred values: step_07 output
 """
 
 import json
@@ -119,10 +119,10 @@ def main():
     with open(s07_path) as f:
         s07 = json.load(f)
 
-    alpha_ref = float(s07["tep_prediction"]["alpha_ref"])          # -0.055
-    R_tep_unit = float(s07["tep_prediction"]["R_tep_unit_days_per_alpha"])  # -264.328
+    kappa_ref = float(s07["tep_prediction"]["kappa_ref"])          # -0.055
+    R_tep_unit = float(s07["tep_prediction"]["R_tep_unit_days_per_kappa"])  # -264.328
     # Calibration magnitude for display only
-    alpha_cal = abs(alpha_ref)  # 0.055
+    alpha_cal = abs(kappa_ref)  # 0.055
 
     results = {}
 
@@ -286,7 +286,7 @@ def main():
 
     # Compute expected TEP delay shift per inner-cross image to quantify noise dominance
     # Delta_t_TEP_i = (Gamma_i - 1) * baseline  -- how much TEP shifts each delay
-    Gamma_vals = {img: 1.0 + alpha_ref * np.log10(mu_norm[img]) for img in images}
+    Gamma_vals = {img: 1.0 + kappa_ref * np.log10(mu_norm[img]) for img in images}
     tep_shift_from_s1 = {img: (Gamma_vals[img] - Gamma_vals["S1"]) * dt_ref[img]
                           if img != "S1" else 0.0 for img in images}
     print_status(f"  TEP-induced delay shifts relative to S1:")
@@ -327,23 +327,23 @@ def main():
     print_status("TEST C: Alpha Inference Consistency (cross-model)")
     print_status("="*60)
 
-    # Get blind model alpha_inferred values from step_07
+    # Get blind model kappa_inferred values from step_07
     blind_models = [m for m in s07["per_model_results"] if m["blind"]]
-    alpha_inf_vals = np.array([m["alpha_inferred"] for m in blind_models])
+    alpha_inf_vals = np.array([m["kappa_inferred"] for m in blind_models])
     alpha_inf_errs = np.array([m["sigma_total_days"] / abs(R_tep_unit) for m in blind_models])
     model_names_blind = [m["name"] for m in blind_models]
 
-    print_status(f"  Per-model alpha_inferred:")
+    print_status(f"  Per-model kappa_inferred:")
     for name, ai, ae in zip(model_names_blind, alpha_inf_vals, alpha_inf_errs):
         print_status(f"    {name:<12}: alpha = {ai:.4f} ± {ae:.4f}")
 
-    # Inverse-variance weighted mean alpha_inferred
+    # Inverse-variance weighted mean kappa_inferred
     alpha_inf_errs_abs = alpha_inf_errs  # already positive from abs(R_tep_unit)
     w = 1.0 / alpha_inf_errs_abs**2
     alpha_inf_wmean = float((w * alpha_inf_vals).sum() / w.sum())
     sigma_alpha_wmean = float(1.0 / np.sqrt(w.sum()))
 
-    print_status(f"\n  Weighted mean alpha_inferred = {alpha_inf_wmean:.4f} ± {sigma_alpha_wmean:.4f}")
+    print_status(f"\n  Weighted mean kappa_inferred = {alpha_inf_wmean:.4f} ± {sigma_alpha_wmean:.4f}")
 
     # One-sided z-test against GR null (alpha = 0)
     # Predicted direction is alpha < 0 (in the measured direction).
@@ -353,10 +353,10 @@ def main():
 
     print_status(f"  z vs GR null (alpha=0):   z = {t_vs_zero:.3f}, p = {p_vs_zero:.4f}")
 
-    # t-test vs TEP (alpha_proxy ≈ -0.055)
-    t_vs_tep = (alpha_inf_wmean - alpha_ref) / sigma_alpha_wmean
+    # t-test vs TEP (kappa_lens ≈ -0.055)
+    t_vs_tep = (alpha_inf_wmean - kappa_ref) / sigma_alpha_wmean
     p_vs_tep = float(2 * scipy_stats.norm.sf(abs(t_vs_tep)))  # two-sided consistency
-    print_status(f"  z vs TEP (alpha_proxy≈-0.055): z = {t_vs_tep:.3f}, p = {p_vs_tep:.4f}")
+    print_status(f"  z vs TEP (kappa_lens≈-0.055): z = {t_vs_tep:.3f}, p = {p_vs_tep:.4f}")
 
     # Variance test: is scatter consistent with measurement noise alone?
     chi2_scatter = float(np.sum(((alpha_inf_vals - alpha_inf_wmean) / alpha_inf_errs)**2))
@@ -367,13 +367,13 @@ def main():
 
     results["test_C_alpha_inference"] = {
         "description": "Consistency of per-model inferred alpha with GR (0) and TEP (-0.055)",
-        "per_model": [{"name": n, "alpha_inferred": float(ai), "sigma": float(ae)}
+        "per_model": [{"name": n, "kappa_inferred": float(ai), "sigma": float(ae)}
                       for n, ai, ae in zip(model_names_blind, alpha_inf_vals, alpha_inf_errs)],
         "weighted_mean_alpha": float(alpha_inf_wmean),
-        "sigma_alpha": float(sigma_alpha_wmean),
+        "sigma_kappa": float(sigma_alpha_wmean),
         "z_vs_gr_null": float(t_vs_zero),
         "p_vs_gr_null_onesided": float(p_vs_zero),
-        "z_vs_tep_alpha_proxy": float(t_vs_tep),
+        "z_vs_tep_kappa_lens": float(t_vs_tep),
         "p_vs_tep_twosided": float(p_vs_tep),
         "scatter_chi2": float(chi2_scatter),
         "scatter_chi2_dof": n_models_blind - 1,
@@ -426,7 +426,7 @@ def main():
         print_status(f"  {img}: mu={mu_abs[img]:.1f}, mu_norm={mu_norm_h0pe[img]:.3f}")
 
     # Gamma_t for each image
-    Gamma_h0pe = {img: 1.0 + alpha_ref * np.log10(mu_norm_h0pe[img])
+    Gamma_h0pe = {img: 1.0 + kappa_ref * np.log10(mu_norm_h0pe[img])
                   for img in ["A", "B", "C"]}
 
     # Delays relative to B: dt_i = arrival_time_i - arrival_time_B
@@ -530,7 +530,7 @@ def main():
         "binomial_sign_test_blind7":    s07["binomial_sign_test"]["blind_only"]["p_value"],
         "delay_mu_pearson":             p_pearson_onesided,
         "arrival_order_kendall":        p_exact_onesided,
-        "alpha_inference_vs_zero":      p_vs_zero,
+        "kappa_inference_vs_zero":      p_vs_zero,
         "snh0pe_closure_PREDICTED":     p_h0pe,
     }
 
@@ -548,13 +548,13 @@ def main():
     # These two use DIFFERENT underlying data:
     #   Wilcoxon: signs of (obs - model_i) residuals for blind models
     #   Pearson: raw image delays vs 1/mu across 5 images
-    # alpha_inferred vs zero (p3) is also included but noted as overlapping
+    # kappa_inferred vs zero (p3) is also included but noted as overlapping
     # with the weighted mean z (both derived from the same residuals).
     p_wilcoxon = float(s07["binomial_sign_test"]["p_wilcoxon_signed_rank_blind"])
     n_nonzero_blind = s07["binomial_sign_test"].get("n_nonzero_blind", 6)
     independent_p = {
         "Wilcoxon signed-rank (blind nonzero positive)": p_wilcoxon,
-        "alpha_inferred vs zero (blind models)": p_vs_zero,
+        "kappa_inferred vs zero (blind models)": p_vs_zero,
     }
     print_status("\n  NOTE: Pearson delay-mu, H0pe, and arrival-order excluded from summary.")
     print_status("  Pearson excluded: n=5 with extreme SX leverage; correlation test is")
@@ -636,7 +636,7 @@ def main():
               label=f"Theil-Sen robust: slope={theil_slope:.1f} d")
 
     # TEP theoretical curve: dt ~ (1/Gamma_t - 1) ≈ alpha * log10(mu) shift
-    # Illustrative: show what alpha_proxy≈-0.055 scaling looks like relative to S1
+    # Illustrative: show what kappa_lens≈-0.055 scaling looks like relative to S1
     ax_a.set_xlabel(r"$1/\mu_{\rm norm}$  (less magnified $\rightarrow$)", )
     ax_a.set_ylabel(r"$\Delta t_{i,S1}$ [days]", )
     ax_a.set_title(
@@ -696,8 +696,8 @@ def main():
                   fmt="o", ms=8, color=COLORS['tep'], lw=1.5, capsize=4,
                   label=r"$\alpha_{\rm inferred,i}$ per blind model")
     ax_c.axhline(0, color="black", lw=1.5, label="GR null ($\\alpha=0$)")
-    ax_c.axhline(alpha_ref, color=COLORS['tep'], lw=2.0, ls="--",
-                 label=f"TEP calibrated ($\\alpha={alpha_ref}$)")
+    ax_c.axhline(kappa_ref, color=COLORS['tep'], lw=2.0, ls="--",
+                 label=f"TEP calibrated ($\\alpha={kappa_ref}$)")
     ax_c.axhline(alpha_inf_wmean, color=COLORS['observed'], lw=1.8,
                  label=f"Weighted mean = {alpha_inf_wmean:.3f} ± {sigma_alpha_wmean:.3f}")
     ax_c.axhspan(alpha_inf_wmean - sigma_alpha_wmean,
@@ -742,7 +742,7 @@ def main():
     # Right: TEP predicted closure residual
     R_vals = [0.0, R_tep_h0pe]
     R_errs = [0.0, R_err_total]
-    ax_d2.bar(["GR\n($R=0$)", f"TEP\n($\\alpha={alpha_ref}$)"],
+    ax_d2.bar(["GR\n($R=0$)", f"TEP\n($\\alpha={kappa_ref}$)"],
               R_vals, yerr=R_errs,
               color=[COLORS['gr'], COLORS['tep']], edgecolor="black", lw=0.8,
               capsize=6, error_kw={"elinewidth": 1.5})
@@ -774,7 +774,7 @@ def main():
     all_tests = [
         (f"Wilcoxon signed-rank\n{n_nonzero_blind}/{n_nonzero_blind} blind nonzero positive (observed)",
          p_wilcoxon, True),
-        (r"$\alpha_{\rm inferred}$ vs. zero" + f"\n{len(blind_models)} blind models (observed)",
+        (r"$\kappa_{\rm inferred}$ vs. zero" + f"\n{len(blind_models)} blind models (observed)",
          p_vs_zero, True),
         ("Pearson delay–$\\mu$\n5 images (SX-leveraged; not probative)",
          p_pearson_onesided, False),

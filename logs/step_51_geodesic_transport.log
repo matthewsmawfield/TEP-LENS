@@ -1,0 +1,29 @@
+
+[01:27:35] [INFO] ======================================================================
+[01:27:35] [INFO] STEP 51: Full 3D Geodesic Transport Integration
+[01:27:35] [INFO] ======================================================================
+[01:27:35] [INFO] Loading GLAFIC v3 kappa map...
+[01:27:36] [INFO] D_l=1312.8 Mpc, D_s=1745.1 Mpc, D_ls=931.7 Mpc
+[01:27:36] [INFO] Extracting radial kappa profile...
+[01:27:53] [INFO] Profile: 800 bins, max radius=119.9 arcsec
+[01:27:53] [INFO] Deprojecting to 3D density (spherical symmetry)...
+[01:27:53] [INFO] 3D grid: 800 points, max r=0.763 Mpc
+[01:27:53] [INFO] Computing 3D gravitational potential...
+[01:27:53] [INFO] Potential range: Phi/c^2 = [-1.113e-05, -4.055e-06]
+[01:27:53] [INFO] Tracing geodesics and integrating TEP scalar field...
+[01:27:54] [INFO]   S1: GR delay=+0.0000 d, TEP corr=+1.011600e-13 d, Phi_int=4.764e-02 Mpc
+[01:27:54] [INFO]   S2: GR delay=+0.0000 d, TEP corr=+1.006456e-13 d, Phi_int=4.740e-02 Mpc
+[01:27:54] [INFO]   S3: GR delay=+0.0000 d, TEP corr=+1.023554e-13 d, Phi_int=4.820e-02 Mpc
+[01:27:54] [INFO]   S4: GR delay=+0.0000 d, TEP corr=+1.001010e-13 d, Phi_int=4.714e-02 Mpc
+[01:27:54] [INFO]   SX: GR delay=+0.0000 d, TEP corr=+9.637323e-14 d, Phi_int=4.539e-02 Mpc
+[01:27:54] [INFO] 
+Geodesic-integrated proxy residual: R_pred_obs = +0.3460 d
+[01:27:54] [INFO]   q: S4=0.999740, SX=0.962509
+[01:27:54] [INFO]   dGamma_S4-SX = -9.065109e-04
+[01:27:54] [INFO] 1/kappa proxy residual: R_pred_obs = +2.56 d
+[01:27:54] [INFO] Fundamental (geodesic Phi): R_pred_obs = +7.817343e-01 d
+[01:27:54] [INFO] 
+The geodesic-integrated potential tracer predicts +0.3460 d, matching the sign of the observed +30.0 d residual.  The 1/kappa proxy gives +2.56 d.  The fundamental formula (Gamma=1+alpha*Phi/c^2) gives +7.82e-01 d, confirming that proper geodesic integration of the physical potential does not magically amplify the TEP effect.  The log-magnification proxy remains the only formulation that produces a non-negligible amplitude.
+[01:27:54] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_51_geodesic_transport.json
+[01:27:54] [INFO] Step 51 complete.

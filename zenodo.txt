@@ -4,11 +4,11 @@ The Temporal Equivalence Principle posits that the effective rate of temporal pr
 
 The probative signal is structurally concentrated in the S4–SX contrast: the inner Einstein cross provides negligible probative leverage under the adopted proxy, while the 376-day SX baseline amplifies the differential temporal-shear signature. Direct potential-map and 3D geodesic reconstructions preserve the residual sign but predict sub-day amplitudes, indicating that the corrected-compilation response scale points to a magnification-sensitive amplification mechanism. The operational log-magnification response captures the sign and the corrected-compilation order of magnitude, yet the amplitude match remains phenomenological: deriving the corresponding transfer kernel from the scalar-field action remains the central open theoretical task. The decisive next step is a prospective amplitude test on a future long-baseline multiply-imaged supernova.
 
-Keywords: gravitational lensing — time delays — Temporal Equivalence Principle — SN Refsdal — SN H0pe — H0 discrepancy — Wilcoxon signed-rank test
+Keywords: gravitational lensing – time delays – Temporal Equivalence Principle – SN Refsdal – SN H0pe – H0 discrepancy – Wilcoxon signed-rank test
 
 Website: https://mlsmawfield.com/tep/lens
 Repository: https://github.com/matthewsmawfield/TEP-LENS
 
 DOI: 10.5281/zenodo.20572720
 
-Open Science Statement: This work is a preprint and is open to community review, ideas, and collaboration. All analysis code, data, and manuscripts are open source and available at https://github.com/matthewsmawfield/TEP-LENS. Feedback and contributions to further test these results are welcome.
+Open Science Statement: This work is a preprint and is open to community review, ideas, and collaboration. All analysis code, configuration files, and manuscripts are open source. Feedback and contributions to further test these results are welcome.

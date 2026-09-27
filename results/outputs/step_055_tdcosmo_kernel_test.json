@@ -2,7 +2,7 @@
   "step": "055",
   "status": "success",
   "description": "Data availability audit for the proposed cross-system kernel consistency test. Checks whether per-image convergence values are available in the TDCOSMO2025 public release and reports what is missing.",
-  "alpha_proxy": -0.055,
+  "kappa_lens": -0.055,
   "n_systems": 8,
   "systems_with_per_image_kappa": 0,
   "systems_missing_per_image_kappa": 8,

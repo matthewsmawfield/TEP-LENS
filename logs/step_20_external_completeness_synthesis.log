@@ -1,8 +1,8 @@
 
-[12:28:31] [INFO] ======================================================================
-[12:28:31] [INFO] STEP 20: External Completeness Synthesis
-[12:28:31] [INFO] ======================================================================
-[12:28:31] [INFO] Lens coverage: 7/7 (1.00)
-[12:28:31] [INFO] Recommended Reporting Track: single_robust_test_benchmark (z=1.866)
-[12:28:31] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_20_external_completeness_synthesis.json
-[12:28:31] [INFO] Step 20 complete.
+[01:27:55] [INFO] ======================================================================
+[01:27:55] [INFO] STEP 20: External Completeness Synthesis
+[01:27:55] [INFO] ======================================================================
+[01:27:55] [INFO] Lens coverage: 7/7 (1.00)
+[01:27:55] [INFO] Recommended Reporting Track: single_robust_test_benchmark (z=1.863)
+[01:27:55] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_20_external_completeness_synthesis.json
+[01:27:55] [INFO] Step 20 complete.

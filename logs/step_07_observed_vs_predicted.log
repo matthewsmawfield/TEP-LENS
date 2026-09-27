@@ -1,73 +1,83 @@
 
-[18:49:37] [INFO] ======================================================================
-[18:49:37] [INFO] STEP 07: Observed vs. Blind-Predicted Delay — SN Refsdal SX
-[18:49:37] [INFO] ======================================================================
-[18:49:37] [INFO] Observed Delta_t(SX, S1) = 376.0 +/- 5.6 d (Kelly+2023, independent photometric light-curve fit)
-[18:49:37] [INFO] Loaded 7 blind + 1 post-blind precision model (8 total; Treu+2016, Kelly+2023 Sci Table S4, Grillo+2024)
-[18:49:37] [INFO] TEP predicted GR discrepancy from Step 03: -14.538 d (alpha=-0.055)
-[18:49:37] [INFO] TEP Predicted Residual (Obs-Model): 14.538 d
-[18:49:37] [INFO] Sensitivity: -264.3 d per unit alpha
-[18:49:37] [INFO] 
+[01:22:49] [INFO] ======================================================================
+[01:22:49] [INFO] STEP 07: Observed vs. Blind-Predicted Delay — SN Refsdal SX
+[01:22:49] [INFO] ======================================================================
+[01:22:49] [INFO] Observed Delta_t(SX, S1) = 376.0 +/- 5.6 d (Kelly+2023, independent photometric light-curve fit)
+[01:22:49] [INFO] Loaded 7 pre-reappearance + 1 post-blind precision model (8 total; original modeling papers, Kelly+2023 Sci Table S4, Grillo+2024)
+[01:22:49] [INFO] TEP predicted GR discrepancy from Step 03: -14.538 d (alpha=-0.055)
+[01:22:49] [INFO] TEP Predicted Residual (Obs-Model): 14.538 d
+[01:22:49] [INFO] Sensitivity: -264.3 d per unit alpha
+[01:22:49] [INFO] 
 Per-model observed - predicted residuals:
-[18:49:37] [INFO] Model          Pred   Delta  sigma_m  sigma_tot      z
-[18:49:37] [INFO] Oguri-a       324.0    +52.0      59.0        59.3  +0.877
-[18:49:37] [INFO] Sharon        345.0    +31.0      59.5        59.8  +0.519
-[18:49:37] [INFO] Diego         376.0     +0.0      50.0        50.3  +0.000
-[18:49:37] [INFO] Grillo        361.0    +15.0      23.5        24.2  +0.621
-[18:49:37] [INFO] Kawamata      369.0     +7.0      48.5        48.8  +0.143
-[18:49:37] [INFO] Jauzac        359.0    +17.0      48.0        48.3  +0.352
-[18:49:37] [INFO] CATS          374.0     +2.0      46.0        46.3  +0.043
-[18:49:37] [INFO] Grillo+2024   362.0    +14.0      16.0        17.0  +0.826
-[18:49:37] [INFO] 
-Weighted mean residual R_obs = +14.61 +/- 11.57 d  (z = +1.26)
-[18:49:37] [INFO] Unweighted mean: +17.25 d, std = 16.00 d
-[18:49:37] [INFO] Models with positive residual: 7/8
-[18:49:37] [INFO] 
-TEP consistency test:
-[18:49:37] [INFO]   R_obs (weighted)  = +14.61 +/- 11.57 d
-[18:49:37] [INFO]   R_TEP_pred        = +14.538 d
-[18:49:37] [INFO]   Tension           = +0.01 sigma
-[18:49:37] [INFO]   Inferred alpha    = -0.0553 (if R_obs attributed entirely to TEP)
-[18:49:37] [INFO] 
+[01:22:49] [INFO] Model          Pred   Delta  sigma_m  sigma_tot      z
+[01:22:49] [INFO] Oguri-a*      353.8    +22.2      19.0        19.8  +1.121
+[01:22:49] [INFO] Oguri-g*      330.7    +45.3      19.6        20.4  +2.217
+[01:22:49] [INFO] Sharon-a*     298.0    +78.0      37.5        37.9  +2.057
+[01:22:49] [INFO] Sharon-g*     331.0    +45.0      32.5        33.0  +1.365
+[01:22:49] [INFO] Diego-a       262.0   +114.0      55.0        55.3  +2.062
+[01:22:49] [INFO] Grillo-g      361.0    +15.0      23.0        23.7  +0.634
+[01:22:49] [INFO] Jauzac15.2*   361.0    +15.0      42.0        42.4  +0.354
+[01:22:49] [INFO] Grillo+2024   362.0    +14.0      16.0        17.0  +0.826
+[01:22:49] [INFO] 
+Weighted mean residual R_obs = +30.05 +/- 8.87 d  (z = +3.39)
+[01:22:49] [INFO] Unweighted mean: +43.56 d, std = 33.75 d
+[01:22:49] [INFO] Models with positive residual: 8/8
+[01:22:49] [INFO] 
+Blind-original residual ensemble (7 pre-reappearance models):
+[01:22:49] [INFO]   Weighted mean = +54.8 +/- 10.4 d (6/7 positive)
+[01:22:49] [INFO]   Parametric-near-361 subset (3 models): +42.3 d
+[01:22:49] [INFO] 
+Delay-blind residual ensemble (7 pre-reappearance models, revised values):
+[01:22:49] [INFO]   Weighted mean = +36.1 +/- 10.4 d (7/7 positive)
+[01:22:49] [INFO] 
+Proxy sensitivity check (post-hoc, not pre-observation forecast):
+[01:22:49] [INFO]   R_obs (weighted)  = +30.05 +/- 8.87 d
+[01:22:49] [INFO]   Nominal proxy   = +14.538 d  (alpha=-0.055)
+[01:22:49] [INFO]   Tension           = +1.75 sigma
+[01:22:49] [INFO]   Inferred kappa    = -0.1137 (if R_obs attributed entirely to TEP)
+[01:22:49] [INFO] 
 GR null test:
-[18:49:37] [INFO]   R_obs = +14.61 +/- 11.57 d
-[18:49:37] [INFO]   Tension with GR (R=0): +1.26 sigma
-[18:49:37] [INFO] 
-Bootstrap alpha inference (N=10000, resampling models with replacement):
-[18:49:37] [INFO]   Bootstrap mean alpha   = -0.0560 +/- 0.0108
-[18:49:37] [INFO]   Bootstrap median       = -0.0550
-[18:49:37] [INFO]   68% CI (16th-84th pct) = [-0.0642, -0.0475]
-[18:49:37] [INFO]   P(alpha < 0 | data)    = 1.000 (100.0%)
-[18:49:37] [INFO]   P(|alpha - alpha_ref| < 0.044) = 0.995
-[18:49:37] [INFO] 
+[01:22:49] [INFO]   R_obs = +30.05 +/- 8.87 d
+[01:22:49] [INFO]   Tension with GR (R=0): +3.39 sigma
+[01:22:49] [INFO] 
+Bootstrap coupling inference (N=10000, resampling models with replacement):
+[01:22:49] [INFO]   Bootstrap mean alpha   = -0.1180
+[01:22:49] [INFO]   Bootstrap std (resampling scatter ONLY) = 0.0287
+[01:22:49] [INFO]   WARNING: bootstrap std is NOT the headline uncertainty.
+[01:22:49] [INFO]   Headline uncertainty (measurement error) = 0.0336
+[01:22:49] [INFO]   Bootstrap median       = -0.1143
+[01:22:49] [INFO]   68% CI (16th-84th pct) = [-0.1451, -0.0905]
+[01:22:49] [INFO]   P(alpha < 0 | data)    = 1.000 (100.0%)
+[01:22:49] [INFO]   P(|alpha - kappa_ref| < 0.034) = 0.136
+[01:22:49] [INFO] 
 Binomial sign test (legacy diagnostic: all 8 models, zero counted as non-positive):
-[18:49:37] [INFO]   Models with positive residual: 7/8
-[18:49:37] [INFO]   One-sided p-value (H0: p=0.5): p = 0.0352
-[18:49:37] [INFO]   Equivalent z (normal approx):  z = +2.12
-[18:49:37] [INFO]   Reportable non-zero sign test: 7/7 positive, p = 0.0078
-[18:49:37] [INFO]   Blind models only (legacy diagnostic, zero counted as non-positive): 6/7 positive, p = 0.0625
-[18:49:37] [INFO]   Blind non-zero sign test: 6/6 positive, p = 0.0156
-[18:49:37] [INFO]   Wilcoxon signed-rank (all 8, ties excluded): p = 0.007812
-[18:49:37] [INFO]   All 7 non-zero residuals positive: max Wilcoxon statistic (p=1/2^7=0.0078)
-[18:49:37] [INFO]   Wilcoxon signed-rank (blind 7 only, ties excluded): p = 0.015625
-[18:49:37] [INFO]   All 6 non-zero blind residuals positive: max Wilcoxon statistic (p=1/2^6=0.0156)
-[18:49:37] [INFO] 
+[01:22:49] [INFO]   Models with positive residual: 8/8
+[01:22:49] [INFO]   One-sided p-value (H0: p=0.5): p = 0.0039
+[01:22:49] [INFO]   Equivalent z (normal approx):  z = +2.83
+[01:22:49] [INFO]   Reportable non-zero sign test: 8/8 positive, p = 0.0039
+[01:22:49] [INFO]   Blind models only (legacy diagnostic, zero counted as non-positive): 7/7 positive, p = 0.0078
+[01:22:49] [INFO]   Blind non-zero sign test: 7/7 positive, p = 0.0078
+[01:22:49] [INFO]   Wilcoxon signed-rank (all 8, ties excluded): p = 0.003906
+[01:22:49] [INFO]   All 8 non-zero residuals positive: max Wilcoxon statistic (p=1/2^8)
+[01:22:49] [INFO]   Wilcoxon signed-rank (blind 7 only, ties excluded): p = 0.007812
+[01:22:49] [INFO]   All 7 non-zero blind residuals positive: max Wilcoxon statistic (p=1/2^7)
+[01:22:49] [INFO] 
 Chi-squared model comparison (8 models):
-[18:49:37] [INFO]   chi^2 under GR  (R=0):            2.253
-[18:49:37] [INFO]   chi^2 under TEP (R=14.5 d):  0.660
-[18:49:37] [INFO]   Delta chi^2 = chi^2_GR - chi^2_TEP = +1.593
-[18:49:37] [INFO]   TEP preferred over GR by Delta chi^2 = 1.59
-[18:49:37] [INFO]   p-value (chi^2, 1 dof): p = 0.2069
-[18:49:37] [INFO] 
+[01:22:49] [INFO]   chi^2 under GR  (R=0):            17.726  (p=0.023)
+[01:22:49] [INFO]   chi^2 under TEP (R=14.5 d):  9.309  (p=0.317)
+[01:22:49] [INFO]   Delta chi^2 = chi^2_GR - chi^2_TEP = +8.417
+[01:22:49] [INFO]   TEP preferred over GR by Delta chi^2 = 8.42
+[01:22:49] [INFO]   NOTE: Both are fixed predictions (0 free params); delta_chi2 has no formal p-value.
+[01:22:49] [INFO] 
 TEP-corrected consistency (Delta_t_corr = 361.5 d):
-[18:49:37] [INFO]   Weighted RMS before correction: 17.37 d
-[18:49:37] [INFO]   Weighted RMS after  correction: 9.40 d
-[18:49:37] [INFO]   Improvement: 45.9% reduction in wRMS
-[18:49:37] [INFO]   Models improved: 5/8
-[18:49:37] [INFO] Figure 1 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_observed_vs_predicted.png
-[18:49:38] [INFO] Figure 2 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_residuals.png
-[18:49:38] [INFO] Figure 2b saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_chi2_comparison.png
-[18:49:38] [INFO] Figure 3 saved: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_alpha_inference.png
-[18:49:38] [INFO] 
-Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_07_observed_vs_predicted.json
-[18:49:38] [INFO] Step 07 complete.
+[01:22:49] [INFO]   Weighted RMS before correction: 37.35 d
+[01:22:49] [INFO]   Weighted RMS after  correction: 27.07 d
+[01:22:49] [INFO]   Improvement: 27.5% reduction in wRMS
+[01:22:49] [INFO]   Models improved: 8/8
+[01:22:49] [INFO] Figure 1 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_observed_vs_predicted.png
+[01:22:49] [INFO] Figure 2 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_residuals.png
+[01:22:49] [INFO] Figure 2b saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_chi2_comparison.png
+[01:22:49] [INFO] Figure 3 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_alpha_inference.png
+[01:22:49] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_07_observed_vs_predicted.json
+[01:22:49] [INFO] Step 07 complete.

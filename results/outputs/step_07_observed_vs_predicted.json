@@ -3,7 +3,7 @@
   "status": "success",
   "system": "SN Refsdal (MACS J1149.6+2223)",
   "analysis": "Observed vs. blind-predicted Delta_t(SX, S1)",
-  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +30.05 +/- 8.87 d (z = +3.39 sigma from GR null, z = +1.75 sigma from TEP). Reportable non-zero binomial sign test: 8/8 positive, p=0.0039 (blind non-zero: 7/7, p=0.0078). Legacy diagnostic counting zero as non-positive: 8/8 positive, p=0.0039. Chi-squared: GR chi2=17.7, TEP chi2=9.3, Delta chi2=+8.4 in favour of TEP (no formal p-value for non-nested fixed predictions). TEP correction (14.5 d) reduces wRMS by 28%, improving 8/8 models. Inferred alpha = -0.1137 +/- 0.0336.",
+  "key_finding": "The inverse-variance weighted mean of all 8 model predictions (7 blind + 1 post-blind) gives a residual R_obs = +30.05 +/- 8.87 d (z = +3.39 sigma from GR null, z = +1.75 sigma from TEP). Reportable non-zero binomial sign test: 8/8 positive, p=0.0039 (blind non-zero: 7/7, p=0.0078). Legacy diagnostic counting zero as non-positive: 8/8 positive, p=0.0039. Chi-squared: GR chi2=17.7, TEP chi2=9.3, Delta chi2=+8.4 in favour of TEP (no formal p-value for non-nested fixed predictions). TEP correction (14.5 d) reduces wRMS by 28%, improving 8/8 models. Inferred kappa = -0.1137 +/- 0.0336.",
   "observed": {
     "dt_SX_S1_days": 376.0,
     "err_days": 5.6,
@@ -11,8 +11,8 @@
   },
   "proxy_sensitivity": {
     "R_nominal_proxy_days": 14.538035062734984,
-    "alpha_nominal": -0.055,
-    "R_tep_unit_days_per_alpha": -264.32791023154516,
+    "kappa_nominal": -0.055,
+    "R_tep_unit_days_per_kappa": -264.32791023154516,
     "loop": "S1-S4-SX (obs-model residual = -closure)",
     "ref": "This work, step_03",
     "status": "post_hoc_illustrative",
@@ -20,8 +20,8 @@
   },
   "tep_prediction": {
     "R_tep_prediction_days": 14.538035062734984,
-    "alpha_ref": -0.055,
-    "R_tep_unit_days_per_alpha": -264.32791023154516,
+    "kappa_ref": -0.055,
+    "R_tep_unit_days_per_kappa": -264.32791023154516,
     "loop": "S1-S4-SX (Residual Prediction = -Closure)",
     "ref": "This work, step_03",
     "deprecated_alias_of": "proxy_sensitivity",
@@ -164,21 +164,21 @@
     "sigma_days": 8.870863592461008,
     "z_from_gr_null": 3.3874466017289753,
     "z_from_tep_prediction": 1.7485943173707446,
-    "alpha_inferred": -0.11368295048510237,
-    "alpha_inferred_err": 0.03356007159701878,
+    "kappa_inferred": -0.11368295048510237,
+    "kappa_inferred_err": 0.03356007159701878,
     "n_models": 8,
     "n_positive_residual": 8
   },
-  "bootstrap_alpha_inference": {
+  "bootstrap_kappa_inference": {
     "n_bootstrap": 10000,
     "random_seed": 42,
     "method": "Resample models with replacement, compute weighted-mean residual, convert to alpha",
-    "alpha_mean": -0.11801455702619729,
-    "alpha_std": 0.02866574993909914,
-    "alpha_median": -0.11427377099761511,
-    "alpha_p16": -0.1451035061337535,
-    "alpha_p84": -0.09049546375622718,
-    "sigma_alpha_analytical": 0.03356007159701878,
+    "kappa_mean": -0.11801455702619729,
+    "kappa_std": 0.02866574993909914,
+    "kappa_median": -0.11427377099761511,
+    "kappa_p16": -0.1451035061337535,
+    "kappa_p84": -0.09049546375622718,
+    "sigma_kappa_analytical": 0.03356007159701878,
     "P_alpha_lt_0": 1.0,
     "P_alpha_consistent_with_ref": 0.1364
   },
@@ -249,7 +249,7 @@
       "sigma_total_days": 19.808079159777204,
       "z_score": 1.120754810243281,
       "z_score_original": 2.019378036474381,
-      "alpha_inferred": -0.08398659067274923
+      "kappa_inferred": -0.08398659067274923
     },
     {
       "name": "Oguri-g*",
@@ -268,7 +268,7 @@
       "sigma_total_days": 20.432388504528785,
       "z_score": 2.2170682585621053,
       "z_score_original": 3.1812237705637263,
-      "alpha_inferred": -0.17137804312952898
+      "kappa_inferred": -0.17137804312952898
     },
     {
       "name": "Sharon-a*",
@@ -287,7 +287,7 @@
       "sigma_total_days": 37.91582782954897,
       "z_score": 2.0571883686847054,
       "z_score_original": 3.666015169835565,
-      "alpha_inferred": -0.2950880212826326
+      "kappa_inferred": -0.2950880212826326
     },
     {
       "name": "Sharon-g*",
@@ -306,7 +306,7 @@
       "sigma_total_days": 32.978932669205655,
       "z_score": 1.3645074706137812,
       "z_score_original": 4.214811964784791,
-      "alpha_inferred": -0.17024308920151882
+      "kappa_inferred": -0.17024308920151882
     },
     {
       "name": "Diego-a",
@@ -325,7 +325,7 @@
       "sigma_total_days": 55.2843558341779,
       "z_score": 2.062066171882985,
       "z_score_original": 2.062066171882985,
-      "alpha_inferred": -0.43128249264384766
+      "kappa_inferred": -0.43128249264384766
     },
     {
       "name": "Grillo-g",
@@ -344,7 +344,7 @@
       "sigma_total_days": 23.671924298628532,
       "z_score": 0.6336620466832537,
       "z_score_original": 0.6336620466832537,
-      "alpha_inferred": -0.056747696400506274
+      "kappa_inferred": -0.056747696400506274
     },
     {
       "name": "Jauzac15.2*",
@@ -363,7 +363,7 @@
       "sigma_total_days": 42.37168866118036,
       "z_score": 0.3540099645295124,
       "z_score_original": -1.7228484940436268,
-      "alpha_inferred": -0.056747696400506274
+      "kappa_inferred": -0.056747696400506274
     },
     {
       "name": "Grillo+2024",
@@ -382,13 +382,13 @@
       "sigma_total_days": 16.951696080333672,
       "z_score": 0.8258760618202653,
       "z_score_original": 0.8258760618202653,
-      "alpha_inferred": -0.05296451664047252
+      "kappa_inferred": -0.05296451664047252
     }
   ],
   "evidence_tier": {
     "description": "Separation of genuinely independent directional evidence from definitional amplitude evidence",
     "tier_1_directional_sign_consistency": {
-      "description": "Tests that are independent of the amplitude calibration of alpha_proxy",
+      "description": "Tests that are independent of the amplitude calibration of kappa_lens",
       "tests": {
         "wilcoxon_signed_rank_blind": {
           "p_value": 0.0078125,
@@ -421,7 +421,7 @@
           "note": "All 8 non-zero residuals positive. Reportable supplementary sign-only check."
         }
       },
-      "interpretation": "These tests require only that the residuals have a consistent sign, not that their amplitude matches a pre-calibrated value. They are the most robust evidence strand because they are independent of alpha_proxy calibration and of the proxy-model amplitude."
+      "interpretation": "These tests require only that the residuals have a consistent sign, not that their amplitude matches a pre-calibrated value. They are the most robust evidence strand because they are independent of kappa_lens calibration and of the proxy-model amplitude."
     },
     "tier_2_amplitude_consistency": {
       "description": "Tests that compare observed residual amplitude against proxy-model prediction",
@@ -431,7 +431,7 @@
           "sigma_days": 8.870863592461008,
           "z_from_gr_null": 3.3874466017289753,
           "p_value": 0.0003527322418703793,
-          "note": "Definitional: alpha_proxy was calibrated from this same weighted mean residual via R_obs / R_tep_unit."
+          "note": "Definitional: kappa_lens was calibrated from this same weighted mean residual via R_obs / R_tep_unit."
         },
         "chi2_model_comparison": {
           "delta_chi2": 8.417212392823922,
@@ -441,10 +441,10 @@
         },
         "tep_corrected_wrms": {
           "improvement_pct": 27.53206073268136,
-          "note": "R_tep_prediction used for correction is derived from alpha_proxy, so this is a self-consistency check."
+          "note": "R_tep_prediction used for correction is derived from kappa_lens, so this is a self-consistency check."
         }
       },
-      "interpretation": "These tests compare the observed residual amplitude to the proxy-model prediction at the empirically calibrated alpha_proxy. Because alpha_proxy was derived from the same SN Refsdal data (R_obs / R_tep_unit), the amplitude agreement is definitional, not an independent confirmation. The probative content lies in the directional sign consistency (Tier 1), not in the amplitude match."
+      "interpretation": "These tests compare the observed residual amplitude to the proxy-model prediction at the empirically calibrated kappa_lens. Because kappa_lens was derived from the same SN Refsdal data (R_obs / R_tep_unit), the amplitude agreement is definitional, not an independent confirmation. The probative content lies in the directional sign consistency (Tier 1), not in the amplitude match."
     }
   },
   "test_registry": {
@@ -533,9 +533,9 @@
     }
   },
   "figures": [
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_observed_vs_predicted.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_residuals.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_chi2_comparison.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_alpha_inference.png"
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_observed_vs_predicted.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_residuals.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_chi2_comparison.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_07_alpha_inference.png"
   ]
 }

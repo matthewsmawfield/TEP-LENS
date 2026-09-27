@@ -2,7 +2,7 @@
   "step": "46",
   "status": "success",
   "description": "Distribution of flux-proxy predicted residuals across the TDCOSMO quad-lens sample. Quantifies whether SN Refsdal's predicted ~15 d shift is typical or an outlier among strong-lens systems.",
-  "alpha_proxy": -0.055,
+  "kappa_lens": -0.055,
   "n_systems": 8,
   "per_system": [
     {

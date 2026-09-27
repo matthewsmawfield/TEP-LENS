@@ -1,0 +1,58 @@
+{
+  "step": "059",
+  "g_t_m_s2": 3.400464162104563e-10,
+  "Sigma_crit_kg_m2": 4.954319994217471,
+  "D_l_Mpc": 1312.8296293841408,
+  "D_s_Mpc": 1745.078666427676,
+  "D_ls_Mpc": 931.7466903287022,
+  "images": [
+    {
+      "image": "S1",
+      "kappa": 0.722,
+      "g_m_s2": 1.5000538272331318e-09,
+      "g_over_g_t": 4.411320795407947,
+      "y": 0.32597194921783623,
+      "scalar_force_fraction": 0.39465256601815496
+    },
+    {
+      "image": "S2",
+      "kappa": 0.733,
+      "g_m_s2": 1.522907832911199e-09,
+      "g_over_g_t": 4.478529283980644,
+      "y": 0.3231519505641762,
+      "scalar_force_fraction": 0.3925787339053168
+    },
+    {
+      "image": "S3",
+      "kappa": 0.675,
+      "g_m_s2": 1.4024048938813904e-09,
+      "g_over_g_t": 4.124157253324604,
+      "y": 0.338762734213254,
+      "scalar_force_fraction": 0.40388386416691247
+    },
+    {
+      "image": "S4",
+      "kappa": 0.727,
+      "g_m_s2": 1.5104420116322532e-09,
+      "g_over_g_t": 4.441870108395537,
+      "y": 0.32468242506552564,
+      "scalar_force_fraction": 0.39370600754554436
+    },
+    {
+      "image": "SX",
+      "kappa": 0.966,
+      "g_m_s2": 2.0069972259102566e-09,
+      "g_over_g_t": 5.902127269202322,
+      "y": 0.27506048865314603,
+      "scalar_force_fraction": 0.3548890605056255
+    }
+  ],
+  "mean_blind_model_delay_days": 313.2857142857143,
+  "SX_y": 0.27506048865314603,
+  "SX_g_over_g_t": 5.902127269202322,
+  "baryonic_delay_amplification_1_plus_2y": 1.550120977306292,
+  "conformal_transport_delay_days": 0.0,
+  "uses_observed_residual_as_input": false,
+  "not_done": "The mean blind-model delay is recorded only as context. It is not multiplied by 1+2y, because those models already include dark halos.",
+  "statement": "At the Refsdal image the sheet acceleration is a few times g_t, so the kinetic screening profile is order unity rather than 10^{-6}. Conformal transport remains exactly zero. The force-law amplification of a baryonic-only delay is 1+2y."
+}

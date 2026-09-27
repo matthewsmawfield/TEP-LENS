@@ -31,7 +31,7 @@ from scipy import stats as scipy_stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "39"
 
@@ -207,17 +207,17 @@ def main():
     if s07_path.exists():
         with open(s07_path) as f:
             s07 = json.load(f)
-        bai = s07.get("bootstrap_alpha_inference", {})
-        alpha_mean = float(bai.get("alpha_mean", -0.055))
-        alpha_std = float(bai.get("alpha_std", 0.011))
+        bai = s07.get("bootstrap_kappa_inference", {})
+        alpha_mean = float(bai.get("kappa_mean", -0.055))
+        alpha_std = float(bai.get("kappa_std", 0.011))
         print_status(
             f"Loaded alpha from Step 07: {alpha_mean:+.4f} +/- {alpha_std:.4f}"
         )
     else:
-        alpha_mean = ALPHA_PROXY
-        alpha_std = SIGMA_ALPHA_PROXY
+        alpha_mean = KAPPA_LENS
+        alpha_std = SIGMA_KAPPA_LENS
         print_status(
-            f"Step 07 output not found; falling back to alpha = {ALPHA_PROXY} +/- {SIGMA_ALPHA_PROXY}",
+            f"Step 07 output not found; falling back to alpha = {KAPPA_LENS} +/- {SIGMA_KAPPA_LENS}",
             "WARN",
         )
 
@@ -425,7 +425,7 @@ def main():
             "Seven independent lens models from Pascale+2025 compared against "
             "Pierel+2024 observed delays for two image pairs (AB, CB)."
         ),
-        "alpha_prior": {"mean": alpha_mean, "sigma": alpha_std},
+        "kappa_prior": {"mean": alpha_mean, "sigma": alpha_std},
         "observed": {
             "dt_AB_days": obs_ab,
             "dt_AB_err_plus": obs_ab_err_plus,
@@ -459,7 +459,7 @@ def main():
         "tep_prediction": {
             "R_tep_AB_days": R_tep_ab,
             "R_tep_CB_days": R_tep_cb,
-            "alpha_used": alpha_mean,
+            "kappa_used": alpha_mean,
             "log10_mu_ratio_AB": log_mu_ratio_ab,
             "log10_mu_ratio_CB": log_mu_ratio_cb,
             "dt_mean_pred_AB": mean_pred_ab,

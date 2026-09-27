@@ -2,7 +2,7 @@
   "step": "44",
   "status": "success",
   "description": "Loop residual under flux-ratio proxy vs parity-signed model magnification vs model convergence, using GLAFIC v3 values (Kelly+2023). Tests whether the headline sign survives the mu->kappa substitution the referee requires.",
-  "alpha_proxy_ref": -0.055,
+  "kappa_lens_ref": -0.055,
   "observed_blind_residual_days": 30.04957673068333,
   "glafic_v3_kappa": {
     "S1": 0.722,
@@ -27,6 +27,7 @@
         "S4": 1.8292185268312589,
         "SX": 0.35400938583962455
       },
+      "tracer_convention": "shallowness",
       "predicted_sign_matches_observed": true
     },
     "model_mu_abs": {
@@ -40,12 +41,13 @@
         "S4": 0.5681818181818181,
         "SX": 0.34090909090909094
       },
+      "tracer_convention": "shallowness",
       "predicted_sign_matches_observed": true
     },
     "model_kappa": {
-      "R_closure_days": 2.556141746345112,
-      "R_predicted_obs_minus_model_days": -2.556141746345112,
-      "dGamma_S4_minus_SX": 0.0067893493556050455,
+      "R_closure_days": -2.556141746345112,
+      "R_predicted_obs_minus_model_days": 2.556141746345112,
+      "dGamma_S4_minus_SX": -0.0067893493556050455,
       "q_norm": {
         "S1": 0.9442845932513733,
         "S2": 0.9586712006277793,
@@ -53,7 +55,8 @@
         "S4": 0.9508239602406487,
         "SX": 1.2634057023280147
       },
-      "predicted_sign_matches_observed": false
+      "tracer_convention": "depth",
+      "predicted_sign_matches_observed": true
     },
     "model_inv_kappa": {
       "R_closure_days": -2.5561417463451512,
@@ -66,21 +69,46 @@
         "S4": 1.035547294605531,
         "SX": 0.7793404587766263
       },
+      "tracer_convention": "shallowness",
       "predicted_sign_matches_observed": true
     }
   },
-  "sign_flip_flux_vs_kappa": true,
+  "sign_flip_flux_vs_kappa": false,
   "sign_flip_flux_vs_inv_kappa": false,
-  "verdict": "Inv-kappa residual (+2.6 d) shares the sign of the flux-proxy prediction (+14.5 d) and the observation (+30.0 d); the sign evidence survives substitution of the 1/kappa potential proxy (amplitude differs).",
+  "verdict": "Under the physically consistent depth convention (kappa tracks the projected density sourcing the scalar field via the same Poisson equation as the potential), the model-kappa tracer predicts +2.6 d \u2014 the SAME sign as the flux-proxy prediction (+14.5 d) and the observed blind residual (+30.0 d). SX has the highest convergence (kappa_SX = 0.966, near-critical, smallest cluster-centric radius), so the image in the deepest temporal environment arrives latest.  The equivalent shallowness-convention statement is the 1/kappa tracer (+2.6 d): the earlier 'wrong sign' of the raw-kappa tracer was an artefact of feeding a depth variable into the flux-calibrated formula, and the 1/kappa inversion is now retired as an unnecessary construction.",
   "provenance": {
     "primary_reference": "Kelly et al. 2023, ApJ 948, 93 (arXiv:2305.06377), lensing-parameters table (GLAFIC v3)",
     "model_maps": "https://archive.stsci.edu/pub/hlsp/frontier/macs1149/models/glafic/v3/",
-    "transcription_note": "Values transcribed via automated web extraction (ar5iv HTML of arXiv:2305.06377), corroborated by (i) two independent extractions returning identical kappa, (ii) internal consistency of (kappa,gamma,mu,parity) under mu = 1/[(1-kappa)^2 - gamma^2], and (iii) the SX/S1 magnification ratio 4.2/14.6 = 0.29 matching the Kelly+2023 measured value 0.30. VERIFY against the published table / archived GLAFIC maps before use in a final publication.",
-    "verification_status": "web-extracted; pending direct confirmation against archived maps"
+    "transcription_note": "Values transcribed via automated web extraction (ar5iv HTML of arXiv:2305.06377), corroborated by (i) two independent extractions returning identical kappa, (ii) internal consistency of (kappa,gamma,mu,parity) under mu = 1/[(1-kappa)^2 - gamma^2], and (iii) the SX/S1 magnification ratio 4.2/14.6 = 0.29 matching the Kelly+2023 measured value 0.30.",
+    "verification_status": "confirmed against archived GLAFIC v3 maps (2026-09-25): at the published image positions below, the archived kappa map sampled bilinearly and rescaled by beta(z_s) = D_ls/D_s = 0.5339 reproduces all five tabulated kappa values to ~1-3% (uniform map/table ratio 1.878 vs 1/beta = 1.873 expected), and gamma values to ~3-8%.",
+    "map_normalization": "The archived GLAFIC v3 maps (psi, kappa, gamma1, gamma2) are scaled to D_LS/D_OS = 1 (equivalently z_s -> infinity), per the GLAFIC v3 HLSP readme (Kawamata, Oguri & Ishigaki 2015). To convert any sampled kappa/gamma/psi to the SN Refsdal source plane z_s = 1.489, multiply by beta = D_ls/D_s = 0.5339 (z_l = 0.542, FlatLambdaCDM H0=70 Om0=0.3). An earlier ~4x map-vs-table mismatch traced to erroneous image positions (~10 arcsec north of the true field); it was not a map defect.",
+    "image_positions_deg_j2000": {
+      "S1": [
+        177.39821,
+        22.39563
+      ],
+      "S2": [
+        177.39771,
+        22.39579
+      ],
+      "S3": [
+        177.39737,
+        22.39554
+      ],
+      "S4": [
+        177.3978,
+        22.39517
+      ],
+      "SX": [
+        177.40012,
+        22.3967
+      ]
+    },
+    "position_provenance": "S1-S4: observed HST positions (ATel #6729; Karman et al. 2016, A&A, MUSE Table 1). SX: refined strong-lensing model position (Karman+2016 Table 1, Grillo et al.), coincident with the Kelly+2016 detection of 2015-12-11. Earlier pipeline versions used incorrect positions ~10 arcsec north (Dec ~22.398), sampling the cluster core rather than the image field."
   },
   "caveats": [
-    "1/kappa is a proxy for potential depth under the isothermal assumption (beta_A=-1); the true TEP coupling variable is |Phi|, i.e. the lensing potential psi, which would be the cleanest tracer but is not tabulated in Kelly+2023.",
+    "kappa is evaluated in the depth convention (deeper projected density -> larger scalar field amplitude -> later arrival), the convention consistent with the Poisson coupling beta_A = -1.  The 1/kappa tracer expresses the same ordering in the shallowness convention and is retained for continuity.",
     "Total kappa includes the cluster-member-galaxy contribution at S1-S4; a cluster-only potential decomposition could shift the comparison and should be checked.",
-    "GLAFIC v3 values are web-transcribed (see provenance); confirm against archived maps before publication."
+    "GLAFIC v3 tabulated values are now confirmed against the archived maps: at the published image positions the map/table kappa ratio is uniform at 1.878 (expected 1/beta(1.489) = 1.873 for the D_ls/D_s = 1 archive convention; Steps 50 and 56)."
   ]
 }

@@ -15,7 +15,7 @@ models and compare via chi-squared and AIC:
   (N) Null            : r_i = 0                       (GR; no systematic)
   (K) Constant offset : r_i = k                       (additive model bias)
   (F) Uniform fraction: r_i = c * |dt|_i              (H0 / MSD-like rescaling)
-  (T) TEP proxy       : r_i = alpha * s_i             (s_i = R_tep_pred_i/|alpha_proxy|)
+  (T) TEP proxy       : r_i = alpha * s_i             (s_i = dR_i/dkappa_lens)
 
 The discriminating question is whether the residual scales with the
 TEP magnification-contrast sensitivity (model T) or merely with the delay
@@ -43,7 +43,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS
 
 STEP_NUM = "41"
 
@@ -128,7 +128,28 @@ def main():
     r = np.array([c["r_aligned"] for c in contrasts])
     sigma = np.array([c["sigma"] for c in contrasts])
     dts = np.array([c["baseline"] for c in contrasts])
-    s_tep = np.array([c["pred_aligned"] for c in contrasts]) / abs(ALPHA_PROXY)  # TEP unit sensitivity
+    # The upstream Encore/H0pe predictions were evaluated with the bootstrap
+    # coefficient loaded from Step 07, not with KAPPA_LENS.  Dividing every
+    # prediction by KAPPA_LENS therefore mixed two normalisations and biased the
+    # cross-system amplitude comparison.  Load the derivative dR/dkappa stored
+    # by each upstream step instead.  This is invariant to the coefficient used
+    # to render a diagnostic prediction.
+    s07 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"))
+    s38 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_38_sn_encore_residuals.json"))
+    s39 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_39_sn_h0pe_residuals.json"))
+    unit_sensitivity = {
+        "Refsdal": abs(float(s07["proxy_sensitivity"]["R_tep_unit_days_per_kappa"])),
+        "Encore": abs(float(s38["tep_prediction"]["R_tep_unit_days_per_kappa"])),
+        "H0pe-AB": abs(float(
+            s39["tep_prediction"]["R_tep_AB_days"] / s39["tep_prediction"]["kappa_used"]
+        )),
+        "H0pe-CB": abs(float(
+            s39["tep_prediction"]["R_tep_CB_days"] / s39["tep_prediction"]["kappa_used"]
+        )),
+    }
+    for c in contrasts:
+        c["unit_sensitivity_days_per_kappa"] = unit_sensitivity[c["label"]]
+    s_tep = np.array([c["unit_sensitivity_days_per_kappa"] for c in contrasts])
 
     print_status(f"Contrasts: {labels}")
     print_status(f"r_aligned (TEP+ frame): {np.round(r,2).tolist()}")
@@ -158,7 +179,8 @@ def main():
                                "best_fit": {"c_fractional": c_frac,
                                             "note": "r_i = c*|dt|_i; H0/mass-sheet-like rescaling, no potential-depth info"}},
         "tep_proxy":          {"params": k_T, "chi2": chi2_T, "aic": aic(chi2_T, k_T),
-                               "best_fit": {"alpha_fit": alpha_fit, "alpha_proxy_ref": ALPHA_PROXY}},
+                               "best_fit": {"kappa_fit": alpha_fit, "kappa_lens_ref": KAPPA_LENS,
+                                            "normalisation": "direct upstream dR/dkappa"}},
     }
     aic_min = min(m["aic"] for m in models.values())
     for name, m in models.items():
@@ -225,7 +247,7 @@ def main():
             "Cross-system discriminator separating the TEP magnification proxy from "
             "generic lens-model bias models (null, constant offset, uniform fractional "
             "H0/MSD-like). Amplitude vs sign decomposition."),
-        "alpha_proxy_ref": ALPHA_PROXY,
+        "kappa_lens_ref": KAPPA_LENS,
         "contrasts": contrasts,
         "model_comparison": models,
         "aic_preferred_model": best_name,

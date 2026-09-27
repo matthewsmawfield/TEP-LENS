@@ -1,0 +1,31 @@
+
+[01:22:48] [INFO] ======================================================================
+[01:22:48] [INFO] STEP 06: Coupling Sensitivity Scan — SN Refsdal
+[01:22:48] [INFO] ======================================================================
+[01:22:48] [INFO] Scanning 300 alpha values from -0.150 to 0.150...
+[01:22:48] [INFO] SNR is coupling-independent for all loops (R and R_err both ∝ alpha):
+[01:22:48] [INFO] Detection thresholds per loop:
+[01:22:48] [INFO]   S1–S2–S3: 3σ → holds at all |alpha| > 0 (SNR=3.27 is constant)
+[01:22:48] [INFO]   S1–S2–S3: 5σ → never reached (SNR=3.27 < 5, constant)
+[01:22:48] [INFO]   S1–S2–S4: 3σ → never reached (SNR=2.52 < 3, constant)
+[01:22:48] [INFO]   S1–S2–S4: 5σ → never reached (SNR=2.52 < 5, constant)
+[01:22:48] [INFO]   S1–S3–S4: 3σ → never reached (SNR=2.30 < 3, constant)
+[01:22:48] [INFO]   S1–S3–S4: 5σ → never reached (SNR=2.30 < 5, constant)
+[01:22:48] [INFO]   S1–S2–SX: 3σ → holds at all |alpha| > 0 (SNR=66.29 is constant)
+[01:22:48] [INFO]   S1–S2–SX: 5σ → holds at all |alpha| > 0 (SNR=66.29 is constant)
+[01:22:48] [INFO]   S1–S4–SX: 3σ → holds at all |alpha| > 0 (SNR=63.31 is constant)
+[01:22:48] [INFO]   S1–S4–SX: 5σ → holds at all |alpha| > 0 (SNR=63.31 is constant)
+[01:22:48] [INFO] 
+At reference alpha = -0.055:
+[01:22:48] [INFO]   S1–S2–S3: R_TEP = -0.109 d, SNR = 3.3
+[01:22:48] [INFO]   S1–S2–S4: R_TEP = +0.278 d, SNR = 2.5
+[01:22:48] [INFO]   S1–S3–S4: R_TEP = +0.342 d, SNR = 2.3
+[01:22:48] [INFO]   S1–S2–SX: R_TEP = -8.492 d, SNR = 66.3
+[01:22:48] [INFO]   S1–S4–SX: R_TEP = -14.538 d, SNR = 63.3
+[01:22:48] [INFO] Figure 1 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_rtep_vs_alpha.png
+[01:22:48] [INFO] Figure 2 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_snr_vs_alpha.png
+[01:22:48] [INFO] Figure 3 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_loop_snr_intrinsic.png
+[01:22:48] [INFO] Figure 4 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_rtep_loglog.png
+[01:22:48] [INFO] Figure 5 saved: /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_06_rtep_symmetric.png
+[01:22:48] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_06_alpha_sensitivity.json
+[01:22:48] [INFO] Step 06 complete.

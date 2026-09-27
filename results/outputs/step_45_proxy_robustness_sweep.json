@@ -2,7 +2,7 @@
   "step": "45",
   "status": "success",
   "description": "Systematic evaluation of the proxy-model predicted residual sign under multiple lens-model tracers. Measures how proxy-dependent the headline directional evidence is.",
-  "alpha_proxy": -0.055,
+  "kappa_lens": -0.055,
   "observed_residual_days": 30.04957673068333,
   "loop_images": [
     "S1",

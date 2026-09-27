@@ -1,0 +1,178 @@
+{
+  "step": "56",
+  "status": "success",
+  "description": "Consistency audit of the path-integrated potential scale using the thin-lens relation int|Phi|dl = (c^2/2) D_Delta psi.",
+  "classification": "GR potential-delay diagnostic; not an additional conformal TEP prediction",
+  "conformal_only_additional_residual_days": 0.0,
+  "conformal_cancellation_reason": "For B=0, g_tilde=A^2 g has the same null curves as g. The static psi-dependent Shapiro/Fermat delay is already included in the GR lens prediction.",
+  "cosmology": {
+    "z_l": 0.542,
+    "z_s": 1.489,
+    "H0": 70.0,
+    "Om0": 0.3,
+    "D_l_Mpc": 1312.829629382965,
+    "D_s_Mpc": 1745.078666250277,
+    "D_ls_Mpc": 931.7466901520319,
+    "D_Delta_Mpc": 2458.8131118379956
+  },
+  "psi_map_arcsec2": {
+    "S1": 1246.4024421637635,
+    "S2": 1249.1253831788626,
+    "S3": 1286.9314645452016,
+    "S4": 1305.1269560911926,
+    "SX": 1136.5498506343229
+  },
+  "kappa_map_sampled": {
+    "S1": 1.3681003820097515,
+    "S2": 1.349821536176378,
+    "S3": 1.2506681489877955,
+    "S4": 1.3593856865124476,
+    "SX": 1.8122029046965282
+  },
+  "map_normalisation_reconciliation": {
+    "archive_convention": "GLAFIC v3 maps scaled to D_ls/D_s = 1 (z_s -> infinity; HLSP readme)",
+    "beta_z_src_1p489": 0.5339,
+    "kappa_rescaled_to_z_src": {
+      "S1": 0.7304287939550064,
+      "S2": 0.7206697181645683,
+      "S3": 0.6677317247445841,
+      "S4": 0.7257760180289958,
+      "SX": 0.9675351308174764
+    },
+    "kappa_table_kelly2023": {
+      "S1": 0.722,
+      "S2": 0.733,
+      "S3": 0.675,
+      "S4": 0.727,
+      "SX": 0.966
+    },
+    "rescaled_over_table_ratio": {
+      "S1": 1.0116742298545796,
+      "S2": 0.9831783331030945,
+      "S3": 0.9892321848067912,
+      "S4": 0.9983163934374083,
+      "SX": 1.0015891623369322
+    },
+    "ratio_mean": 0.9967980607077612,
+    "ratio_std": 0.009892419883505857,
+    "interpretation": "At the published image positions the map/table ratio is uniform to ~3%, identifying the documented D_ls/D_s = 1 normalisation (expected factor 1/beta = 1.873, measured 1.867). The earlier ~4x non-uniform mismatch was caused by erroneous image positions ~10 arcsec north of the image field, not a map defect."
+  },
+  "int_Phi_dl": {
+    "Mpc": {
+      "S1": 3.601666941378221e-05,
+      "S2": 3.609535288154227e-05,
+      "S3": 3.718781634947174e-05,
+      "S4": 3.771360238908793e-05,
+      "SX": 3.284231389302877e-05
+    },
+    "light_days": {
+      "S1": 42906.16014806884,
+      "S2": 42999.89467498839,
+      "S3": 44301.33129513738,
+      "S4": 44927.69293230638,
+      "SX": 39124.59431876884
+    }
+  },
+  "dpsi_arcsec2": {
+    "SX_minus_S1": -109.85259152944059,
+    "SX_minus_S4": -168.57710545686973,
+    "SX_minus_inner_mean": -135.34671086043204
+  },
+  "observed_residual_days": 30.04957673068333,
+  "additive_psi_template_coefficient_required": {
+    "from_SX_S1_contrast": -0.005153263152291964,
+    "from_SX_S4_contrast": -0.003358103169337442,
+    "from_SX_inner_mean_contrast": -0.0041825863998734445
+  },
+  "kappa_lens_proxy": -0.055,
+  "additive_template_over_kappa_lens": 0.09369569367803571,
+  "fitted_additive_template_residuals": {
+    "S1": 0.0,
+    "S2": -0.7448456502222598,
+    "S3": -11.086492825653693,
+    "S4": -16.063770209384984,
+    "SX": 30.049576730683327
+  },
+  "sign_check": {
+    "psi_SX_is_smallest": true,
+    "psi_ordering_meaning": "radial: psi is a bowl with its minimum at the cluster centre; smallest psi = smallest cluster-centric radius (SX ~9.3 arcsec vs 12-14 arcsec for S1-S4)",
+    "local_depth_ordering": {
+      "rescaled_kappa_highest": "SX",
+      "deprojected_local_Phi_deepest_first": [
+        "SX",
+        "S2",
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "interpretation": "TEP field tracks the local potential/density (same Poisson source); SX samples the deepest temporal environment and is predicted to arrive latest"
+    },
+    "observed_sign": "+30.1 d (SX latest)",
+    "matches": true,
+    "evidential_status": "ordering diagnostic only; GR potential already subtracted"
+  },
+  "smooth_deprojection_crosscheck": {
+    "centre": {
+      "ra": 177.3987716334101,
+      "dec": 22.399043299998972,
+      "note": "psi-map minimum (potential centre), not the WCS reference pixel"
+    },
+    "per_image": {
+      "S1": {
+        "b_kpc": 79.10947302244212,
+        "local_Phi_over_c2": -1.0157082430361796e-05,
+        "int_Phi_Mpc": 1.03476289930111e-05,
+        "light_days": 12326.987307633768
+      },
+      "S2": {
+        "b_kpc": 77.86239593207975,
+        "local_Phi_over_c2": -1.0174586679324731e-05,
+        "int_Phi_Mpc": 1.0355095894293437e-05,
+        "light_days": 12335.882523861259
+      },
+      "S3": {
+        "b_kpc": 85.58767813108479,
+        "local_Phi_over_c2": -1.0066552827562894e-05,
+        "int_Phi_Mpc": 1.0307237665558813e-05,
+        "light_days": 12278.869677867651
+      },
+      "S4": {
+        "b_kpc": 91.10544296794608,
+        "local_Phi_over_c2": -9.989327934428577e-06,
+        "int_Phi_Mpc": 1.0271793470254194e-05,
+        "light_days": 12236.64549820829
+      },
+      "SX": {
+        "b_kpc": 60.81795662897743,
+        "local_Phi_over_c2": -1.0418566295264919e-05,
+        "int_Phi_Mpc": 1.045144534273027e-05,
+        "light_days": 12450.662289233649
+      }
+    },
+    "dI_SX_minus_S1_Mpc": 1.038163497191696e-07,
+    "local_depth_ordering": [
+      "SX",
+      "S2",
+      "S1",
+      "S3",
+      "S4"
+    ],
+    "path_integral_ordering": [
+      "SX",
+      "S2",
+      "S1",
+      "S3",
+      "S4"
+    ],
+    "limitation": "Azimuthally averaged spherical deprojection retains only the cluster monopole and misses the member-galaxy sub-structure around S1-S4 and the near-critical compression at SX; the full-2D rescaled kappa map is the primary local-density diagnostic.  Neither ordering is an additional static conformal propagation prediction."
+  },
+  "loop_closure_days": 0.0,
+  "bugs_fixed_relative_to_step_50_51": [
+    "step_50 applied the endpoint clock ratio Gamma(Phi_i) to delay differences; that quantity is not a propagation residual.",
+    "step_51 ray geometry used r = sqrt(b^2 + (s*angle)^2) with angle ~ 1e-4, so the cluster potential never truncated over the ~5 Gpc path (~4400x inflation).",
+    "step_51 divided dl [Mpc] by c [km/s], missing the 3.086e19 km/Mpc conversion; the resulting t_TEP was never used in the residual.",
+    "step_56 previously counted the GR Shapiro/Fermat potential a second time as an additional conformal TEP delay; conformal null-curve invariance makes that additional static contribution identically zero.",
+    "steps 50/51/56/054 sampled the GLAFIC maps at incorrect image positions ~10 arcsec north of the published coordinates (Dec ~22.398 instead of ~22.396), inside the cluster core; corrected positions recover the documented D_ls/D_s = 1 map normalisation (uniform 1.878 map/table ratio = 1/beta(1.489) = 1.873) and show psi_SX is the smallest, not largest, of the five."
+  ],
+  "verdict": "The GLAFIC psi map gives the ordinary path-integrated potential scale. At the published image positions, psi_SX = 1136.5 arcsec^2 is the SMALLEST of the five images: the deflection potential is a bowl with its minimum at the cluster centre, so the psi ordering is a cluster-centric radius ordering (SX at ~9.3 arcsec, S1-S4 at 12-14 arcsec), not a local temporal-field-depth ordering.  The TEP field tracks the local potential and projected density (same Poisson source): by those measures SX samples the deepest environment of the five (rescaled kappa_SX = 0.968, the maximum; deprojected local |Phi| ordering: ['SX', 'S2', 'S1', 'S3', 'S4']), so SX arriving latest is the sign the mechanism predicts -- matching the observed +30.1 d residual direction.  This is an environment ordering only: the corresponding Shapiro/Fermat term is already inside every GR lens prediction, and a static conformal factor preserves null curves exactly, so the additional conformal propagation residual is zero. Fitting an extra psi template to +30.1 d would require alpha = -0.0052 (sign-flipped and suppressed relative to |kappa_lens| by a factor 0.09); it is calibrated on the same residual and has no first-principles status.  A non-zero TEP amplitude must be obtained from scalar backreaction, time dependence, or the disformal sector without double-counting the GR Fermat potential."
+}

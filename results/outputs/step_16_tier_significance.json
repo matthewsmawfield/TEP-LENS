@@ -44,13 +44,13 @@
       "p": 0.01058290409089799
     },
     "external_mean": {
-      "z": 3.366734860994791,
-      "p": 0.00038031890759077216
+      "z": 3.375088896971342,
+      "p": 0.0003689592507522103
     },
-    "alpha_inference": {
+    "kappa_inference": {
       "z": 3.468020802963835,
       "p": 0.00026215334950881945
     }
   },
-  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_16_tier_significance.png"
+  "figure": "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_16_tier_significance.png"
 }

@@ -26,9 +26,9 @@ STEPS = [
     "step_03_tep_closure.py",           # TEP closure residuals: best loop SNR=78
     "step_04_plot_closure.py",          # Figures: loop comparison + baseline scaling
     "step_05_tdcosmo_shear.py",         # TDCOSMO quad-lens temporal shear test
-    "step_06_alpha_sensitivity.py",     # Alpha scan: SNR is alpha-independent (geometric)
+    "step_06_kappa_sensitivity.py",     # Kappa scan: SNR is coupling-independent (geometric)
     "step_07_observed_vs_predicted.py", # Evidence: observed vs blind model predictions
-    "step_08_new_evidence.py",          # Extended evidence: delay-mu corr, alpha inference, H0pe sensitivity
+    "step_08_new_evidence.py",          # Extended evidence: delay-mu corr, coupling inference, H0pe sensitivity
     "step_09_precision_roadmap.py",     # TEP precision roadmap simulation
     "step_10_h0_tension.py",            # H0 internal-consistency check, not tension resolution
     "step_11_model_dependence.py",      # Model dependence robustness (N_eff, LOO, exact sign-flip)
@@ -59,12 +59,16 @@ STEPS = [
     "step_44_direct_kappa_residual.py",         # Loop residual using GLAFIC v3 model kappa (Kelly+2023) vs flux proxy — sign test
     "step_45_proxy_robustness_sweep.py",        # Systematic proxy-tracer robustness across all available lens models
     "step_46_tdcosmo_kappa_tracer_robustness.py", # Cross-system proxy-robustness using TDCOSMO sample
-    "step_50_psi_transport.py",                   # Lensing-potential transport integration (psi-tracer) — fundamental TEP coupling
-    "step_51_geodesic_transport.py",              # Full 3D geodesic transport integration — proper scalar-field path integral
+    "step_50_psi_transport.py",                   # Lensing-potential transport integration (psi-tracer) — endpoint clock-ratio diagnostic
+    "step_51_geodesic_transport.py",              # 3D potential-path diagnostic; static conformal term cancels against GR
+    "step_56_transport_lapse.py",                 # Conformal-cancellation audit for the thin-lens psi path integral
+    "step_57_external_amplitude_crossvalidation.py", # Refsdal hold-out amplitude test with shared-observation covariance
     "step_052_transfer_kernel_bridge.py",         # Response-transfer audit: canonical tracer comparison table
-    "step_053_amplification_kernel.py",           # Amplification-kernel diagnostic: K = R_obs / R_transport
-    "step_054_transfer_kernel_first_principles.py", # First-principles Jacobian transfer-kernel derivation
+    "step_053_amplification_kernel.py",           # Descriptive scale-ratio diagnostic; not a physical amplification derivation
+    "step_054_transfer_kernel_first_principles.py", # Phenomenological Jacobian transfer-kernel ansatz diagnostic
     "step_055_tdcosmo_kernel_test.py",            # Cross-system kernel consistency audit: TDCOSMO sample data availability
+    "step_58_h0_channel_audit.py",                # H0LiCOW/TDCOSMO-class time-delay channel audit under the TEP mechanism (issue 11-9)
+    "step_60_mass_slip_two_directions.py",        # Two-direction mass-sheet slip bookkeeping: per-system implied slips, counter-direction bounds, negative-slip census
     "step_20_external_completeness_synthesis.py", # Completeness-aware Tier-A significance synthesis from steps 16+19
 ]
 
@@ -113,19 +117,27 @@ def main():
     print_status("TEP-LENS PIPELINE INITIATED", "TITLE")
     
     successful_steps = 0
+    failed = False
     for step in STEPS:
         success = run_step(step)
         if success:
             successful_steps += 1
         else:
+            failed = True
             break
             
     print(f"\n======================================================================")
-    print(f"PIPELINE COMPLETE")
+    if failed:
+        print(f"PIPELINE FAILED (stopped at step {successful_steps + 1}/{len(STEPS)})")
+    else:
+        print(f"PIPELINE COMPLETE")
     print(f"======================================================================")
     print(f"Steps completed: {successful_steps}/{len(STEPS)}")
     print(f"Results saved to: results/outputs/")
     print(f"Figures saved to: results/figures/")
+    
+    if failed:
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

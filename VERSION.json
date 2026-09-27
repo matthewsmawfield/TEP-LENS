@@ -1,8 +1,10 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "codename": "Lisboa",
-  "date": "2026-06-10",
+  "date": "2026-09-16",
   "author": "Matthew Lukin Smawfield",
   "description": "Blind-prediction residual test in multiply-imaged supernovae",
-  "status": "Preprint"
+  "status": "Preprint",
+  "paper": "19",
+  "previous_version": "0.1"
 }

@@ -50,7 +50,7 @@
       "paper": "TEP-LLR (Paper 17)",
       "note": "eta itself is the observable response coefficient"
     },
-    "alpha_proxy": {
+    "kappa_lens": {
       "value": -0.055,
       "err": 0.044,
       "probe": "strong-lensing time-delay closure residual",
@@ -59,6 +59,6 @@
     }
   },
   "cross_probe_comparison": {
-    "note": "All TEP probes report probe-specific empirical couplings. None claim a first-principles prediction. The lensing-sector coupling alpha_proxy is the direct geometric analogue: it probes the conformal clock-rate sector without stellar-physics mediation."
+    "note": "All TEP probes report probe-specific empirical couplings. None claim a first-principles prediction. The lensing-sector coupling kappa_lens is the direct geometric analogue: it probes the conformal clock-rate sector without stellar-physics mediation."
   }
 }

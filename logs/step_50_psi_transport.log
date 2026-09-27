@@ -1,0 +1,69 @@
+
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] STEP 50: Lensing-Potential Transport Integration (psi-tracer)
+[01:27:34] [INFO] ======================================================================
+WARNING: File may have been truncated: actual file length (107823104) is smaller than the expected size (112060800) [astropy.io.fits.file]
+[01:27:35] [INFO] WARNING: Gamma maps appear truncated on disk. Using JSON tabulated gamma values instead.
+[01:27:35] [INFO] Map shape: (5033, 5566), pixel scale: 0.0300 arcsec/pix
+[01:27:35] [INFO] Map-sampled values at image positions:
+[01:27:35] [INFO]   S1: kappa_map=2.864, gamma_map=0.093, psi_map=1055.70
+[01:27:35] [INFO]   S2: kappa_map=2.695, gamma_map=0.361, psi_map=1054.67
+[01:27:35] [INFO]   S3: kappa_map=5.006, gamma_map=0.230, psi_map=1045.28
+[01:27:35] [INFO]   S4: kappa_map=2.621, gamma_map=0.466, psi_map=1052.11
+[01:27:35] [INFO]   SX: kappa_map=3.084, gamma_map=0.488, psi_map=1061.34
+[01:27:35] [INFO] WARNING: Map kappa does NOT match tabulated JSON values. The archived maps may be at a different source redshift or use different units. Using JSON values as ground truth.
+[01:27:35] [INFO] Skipping FFT Poisson reconstruction: kappa map normalization is inconsistent with JSON ground truth (ratios vary across images).
+[01:27:35] [INFO] 
+[psi_map_bg_edge]
+[01:27:35] [INFO]   q_norm S4=1.0005  SX=0.9980   dGamma(S4-SX)=-0.000060
+[01:27:35] [INFO]   R_closure=-0.02 d  -> predicted (obs-model)=+0.02 d  (observed=+30.05 d)  sign-match: True
+[01:27:35] [INFO] 
+[psi_map_bg_max]
+[01:27:35] [INFO]   q_norm S4=1.0003  SX=0.9986   dGamma(S4-SX)=-0.000042
+[01:27:35] [INFO]   R_closure=-0.02 d  -> predicted (obs-model)=+0.02 d  (observed=+30.05 d)  sign-match: True
+[01:27:35] [INFO] 
+[psi_map_bg_mean]
+[01:27:35] [INFO]   q_norm S4=1.0009  SX=0.9963   dGamma(S4-SX)=-0.000110
+[01:27:35] [INFO]   R_closure=-0.04 d  -> predicted (obs-model)=+0.04 d  (observed=+30.05 d)  sign-match: True
+[01:27:35] [INFO] 
+[psi_map_bg_annulus]
+[01:27:35] [INFO]   q_norm S4=0.7971  SX=0.9361   dGamma(S4-SX)=+0.003839
+[01:27:35] [INFO]   R_closure=+1.40 d  -> predicted (obs-model)=-1.40 d  (observed=+30.05 d)  sign-match: False
+[01:27:35] [INFO] 
+[flux_ratio_proxy]
+[01:27:35] [INFO]   q_norm S4=1.8292  SX=0.3540   dGamma(S4-SX)=-0.039229
+[01:27:35] [INFO]   R_closure=-14.54 d  -> predicted (obs-model)=+14.54 d  (observed=+30.05 d)  sign-match: True
+[01:27:35] [INFO] 
+[model_mu_abs]
+[01:27:35] [INFO]   q_norm S4=0.5682  SX=0.3409   dGamma(S4-SX)=-0.012202
+[01:27:35] [INFO]   R_closure=-4.94 d  -> predicted (obs-model)=+4.94 d  (observed=+30.05 d)  sign-match: True
+[01:27:35] [INFO] 
+[model_kappa]
+[01:27:35] [INFO]   q_norm S4=0.9508  SX=1.2634   dGamma(S4-SX)=+0.006789
+[01:27:35] [INFO]   R_closure=+2.56 d  -> predicted (obs-model)=-2.56 d  (observed=+30.05 d)  sign-match: False
+[01:27:35] [INFO] 
+[model_inv_kappa]
+[01:27:35] [INFO]   q_norm S4=1.0355  SX=0.7793   dGamma(S4-SX)=-0.006789
+[01:27:35] [INFO]   R_closure=-2.56 d  -> predicted (obs-model)=+2.56 d  (observed=+30.05 d)  sign-match: True
+[01:27:35] [INFO] 
+--- Fundamental TEP formula (Gamma = 1 + alpha*|Phi|/c^2) ---
+[01:27:35] [INFO] Physical potential |Phi|/c^2 at image positions (K_calib=4.492e+02):
+[01:27:35] [INFO]   S1: |Phi|/c^2 = 1.115e-05
+[01:27:35] [INFO]   S2: |Phi|/c^2 = 1.114e-05
+[01:27:35] [INFO]   S3: |Phi|/c^2 = 1.104e-05
+[01:27:35] [INFO]   S4: |Phi|/c^2 = 1.111e-05
+[01:27:35] [INFO]   SX: |Phi|/c^2 = 1.121e-05
+[01:27:35] [INFO] 
+Fundamental (alpha=-0.055): R_pred_obs=-0.000002 d, dGamma_S4-SX=+5.359668e-09
+[01:27:35] [INFO] Effective alpha to match observation: 8.377e+05
+[01:27:35] [INFO] 
+--- Comparison: proxy vs fundamental ---
+[01:27:35] [INFO] Flux-proxy prediction:      +14.54 d  (kappa_lens=-0.055)
+[01:27:35] [INFO] 1/kappa proxy prediction:   +2.56 d
+[01:27:35] [INFO] Fundamental prediction:     -0.000002 d  (same alpha)
+[01:27:35] [INFO] Required fundamental alpha: 8.377e+05 to match +30.0 d
+[01:27:35] [INFO] 
+Global-background psi-map tracers preserve the SIGN of the flux-proxy prediction. The sign agreement confirms that SX sits at a shallower potential than S4, consistent with the observed +30.0 d residual.  Amplitudes are suppressed because the lensing potential varies slowly across the image separation.  The FUNDAMENTAL TEP formula (Gamma = 1 + alpha*|Phi|/c^2) with alpha=-0.055 predicts only -1.97e-06 days — 2e+07 times smaller than observed.  The log-magnification proxy is a phenomenological ansatz that captures the correct phenomenology but currently lacks a first-principles derivation from the scalar-field action through the lensing potential.
+[01:27:35] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_50_psi_transport.json
+[01:27:35] [INFO] Step 50 complete.

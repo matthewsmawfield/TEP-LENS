@@ -28,11 +28,31 @@ This is a purely algebraic identity, independent of the lens model, cosmology, o
 
 <h3>2.3 TEP Temporal Shear: The Log-Magnification Operational Response Model</h3>
 <p>
-In the absence of a solved TEP lensing transfer function for $\kappa(\boldsymbol{\theta})$ or $\psi(\boldsymbol{\theta})$, a first-order log-magnification operational response model is adopted. The physically relevant quantity is expected to be closer to projected convergence or potential depth than to total magnification, though the exact TEP lensing transfer function remains unsolved. The effective transit time of light along path $i$ under a convergence-proxy model is:
+The TEP lensing response is obtained by mapping the scalar-field gradient through the lensing Jacobian.  Starting from the TEP amplification matrix (Paper 4, §3.1.4):
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_02a}
+\mathcal{A}_{ij} = \delta_{ij} - \Psi_{,ij} - \delta\mathcal{A}_{ij}, \qquad
+\delta\mathcal{A}_{ij} = \frac{1}{2}\int_0^{\chi_s} \frac{(\chi_s - \chi)\chi}{\chi_s}\left(\alpha_{,ij} - \frac{1}{2}\delta_{ij}\nabla^2\alpha\right) d\chi
+\end{equation}
+</div>
+<p>
+where $\alpha_{,ij} = \nabla_i\nabla_j\alpha(\phi)$ is sourced by the scalar-field gradient.  The magnification is $\mu = (\det\mathcal{A})^{-1}$.  To first order in the TEP correction, the fractional change in magnification is:
+</p>
+<div class="equation">
+\begin{equation} \label{eq:3_methodology_02b}
+\frac{\delta\mu}{\mu} = \mathcal{A}^{-1}_{ji}\,\delta\mathcal{A}_{ij} = \mathrm{Tr}\left(\mathcal{A}^{-1}\delta\mathcal{A}\right)
+\end{equation}
+</div>
+<p>
+This defines the <em>lensing amplification kernel</em> $\mathcal{P}_\mu$: a projection operator that maps the scalar-field Hessian $\alpha_{,ij}$ to the observable magnification shift.  The kernel is not a single scalar but a tensor contraction weighted by the inverse geometric Jacobian $\mathcal{A}^{-1}_{\rm GR} = (\delta - \Psi_{,ij})^{-1}$.  Near a tangential critical curve, where $\det\mathcal{A}_{\rm GR} \to 0$, the response can be strongly amplified. This structure must be derived jointly with the altered lens solution: the static $\psi$-dependent Fermat/Shapiro term is already contained in the GR prediction and cannot be added a second time as a conformal TEP delay.
+</p>
+<p>
+Operationally, the exact kernel requires the full 3D potential and ray-bundle integration, which is not yet available for every image.  A first-order log-magnification operational response model is therefore adopted as a tractable proxy.  The effective transit time of light along path $i$ under a convergence-proxy model is:
 </p>
 <div class="equation">
 \begin{equation} \label{eq:3_methodology_03a}
-\Gamma_t^{(\kappa)}(i) = 1 + \alpha_\kappa\log_{10}(\kappa_{\rm norm}(i))
+\Gamma_t^{(\kappa)}(i) = 1 + \kappa_{\rm lens}\log_{10}(\kappa_{\rm norm}(i))
 \end{equation}
 </div>
 <p>
@@ -40,25 +60,25 @@ where $\kappa_{\rm norm}(i) = \kappa(i)/\bar{\kappa}$. Because direct convergenc
 </p>
 <div class="equation">
 \begin{equation} \label{eq:3_methodology_03}
-\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t^{\rm proxy}(i), \quad \Gamma_t^{\rm proxy}(i) = 1 + \alpha\log_{10}(\mu_{\rm norm}(i))
+\Delta t_i^{\rm obs} = \Delta t_i^{\rm GR} \cdot \Gamma_t^{\rm proxy}(i), \quad \Gamma_t^{\rm proxy}(i) = 1 + \kappa_{\rm lens}\log_{10}(\mu_{\rm norm}(i))
 \end{equation}
 </div>
 <p>
-where $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\alpha$ is the proxy-model temporal-shear coupling parameter. The pipeline uses $\alpha_{\rm proxy} = -0.055$ as the nominal response normalization for reporting the S4–SX proxy sensitivity. This fixes the sign expectation and the order-of-magnitude response scale; the strict evidence test is the observed-minus-model residual sign, while the corrected-compilation amplitude determines the stronger diagnostic lensing-sector coefficient. Using the Kelly+2023 Supplementary Table S4 corrected compilation as a response-scale diagnostic gives $\alpha_{\rm inferred} = -0.114 \pm 0.034$, which maps the corrected-compilation amplitude by construction and should be interpreted as a calibrated response-scale estimate. Because five contributing values are post-reappearance revisions, this coefficient is interpreted as a corrected-compilation response-scale diagnostic rather than the strict blind headline. Because the proxy coefficient $\alpha < 0$, images with below-average magnification ($\mu_{\rm norm} < 1$, $\log_{10}(\mu_{\rm norm}) < 0$) experience a temporal expansion ($\Gamma_t > 1$) and arrive *later* than GR predicts, while highly magnified images ($\mu_{\rm norm} > 1$) arrive *earlier* ($\Gamma_t < 1$).
+where $\mu_{\rm norm}(i) = \mu(i)/\bar{\mu}$ is the magnification at image $i$ normalised to the mean across all images, and $\kappa_{\rm lens}$ is the proxy-model temporal-shear coupling parameter. The pipeline uses $\kappa_{\rm lens} = -0.055$ as the nominal response normalization for reporting the S4–SX proxy sensitivity. This fixes the sign expectation and the order-of-magnitude response scale; the strict evidence test is the observed-minus-model residual sign, while the corrected-compilation amplitude determines the stronger diagnostic lensing-sector coefficient. Using the Kelly+2023 Supplementary Table S4 corrected compilation as a response-scale diagnostic gives $\kappa_{\rm inferred} = -0.114 \pm 0.034$, which maps the corrected-compilation amplitude by construction and should be interpreted as a calibrated response-scale estimate. Because five contributing values are post-reappearance revisions, this coefficient is interpreted as a corrected-compilation response-scale diagnostic rather than the strict blind headline. Because the proxy coefficient $\kappa_{\rm lens} < 0$, images with below-average magnification ($\mu_{\rm norm} < 1$, $\log_{10}(\mu_{\rm norm}) < 0$) experience a temporal expansion ($\Gamma_t > 1$) and arrive *later* than GR predicts, while highly magnified images ($\mu_{\rm norm} > 1$) arrive *earlier* ($\Gamma_t < 1$).
 </p>
 <p>
 The systematic error introduced by the proxy is the difference between the convergence-proxy and flux-proxy temporal shear factors:
 </p>
 <div class="equation">
 \begin{equation} \label{eq:3_methodology_03b}
-\delta\Gamma_t(i) \equiv \Gamma_t^{\rm proxy}(i) - \Gamma_t^{(\kappa)}(i) = \alpha\left[\log_{10}(\mu_{\rm norm}(i)) - \log_{10}(\kappa_{\rm norm}(i))\right]
+\delta\Gamma_t(i) \equiv \Gamma_t^{\rm proxy}(i) - \Gamma_t^{(\kappa)}(i) = \kappa_{\rm lens}\left[\log_{10}(\mu_{\rm norm}(i)) - \log_{10}(\kappa_{\rm norm}(i))\right]
 \end{equation}
 </div>
 <p>
 This systematic vanishes only when $\mu_{\rm norm}(i) = \kappa_{\rm norm}(i)$ for all images, which requires the shear $\gamma$ to be negligible or identical across images. In cluster lenses, neither condition holds (see §2.4.2). Because the five-image rank-order agreement between $\mu_{\rm norm}$ and $\kappa_{\rm norm}$ is only $P \approx 3\%$ (Step 32), the proxy model makes no reliable prediction for the inner-cross images. The operational test is therefore the S4–SX contrast alone.
 </p>
 <p>
-<em>Relation to the TEP response-coefficient framework.</em> Other papers in the TEP series (Papers 10–12) report observable response coefficients $\kappa$ (e.g., $\kappa_{\rm MSP}$ for pulsar spin-down, $\kappa_{\rm Cep}$ for Cepheid period–luminosity, $\kappa_{\rm gal}$ for galaxy stellar populations). These $\kappa$ coefficients absorb stellar-physics and environmental-activation factors, following the PPN strategy of treating the observable response separately from the microscopic coupling. In strong-lensing time delays, the proxy coupling $\alpha$ enters as a phenomenological temporal-shear parameter: $\Gamma_t = 1 + \alpha \log_{10}(\mu_{\rm norm})$. No stellar-physics translation is required because the test compares arrival times of the same photon along different paths. The present paper measures operational lensing-sector response at the <em>sign</em> level from the blind GR-vs-observation comparison, while identifying the theoretical object that must be derived next: the transfer function from the scalar-field boundary-value problem through the cluster lensing potential and Jacobian amplification kernel. At nominal $\alpha_{\rm proxy} = -0.055$, the S1–S4–SX geometry yields a post-hoc proxy sensitivity of $\sim +14.5$ d; this provides the nominal S4–SX response normalization used to compare sign and scale across the delay-blind ensemble. The corrected-compilation $\alpha_{\rm inferred} \approx -0.114$ quantifies the larger response scale suggested by Kelly+2023 revised models, while direct potential and geodesic reconstructions preserve the sign and identify the required transfer/amplification kernel.
+<em>Relation to the TEP response-coefficient framework.</em> Other papers in the TEP series (Papers 10–12) report observable response coefficients $\kappa$ (e.g., $\kappa_{\rm MSP}$ for pulsar spin-down, $\kappa_{\rm Cep}$ for Cepheid period–luminosity, $\kappa_{\rm gal}$ for galaxy stellar populations). These $\kappa$ coefficients absorb stellar-physics and environmental-activation factors. In strong-lensing time delays, $\kappa_{\rm lens}$ is explicitly phenomenological: $\Gamma_t = 1 + \kappa_{\rm lens}\log_{10}(\mu_{\rm norm})$. At nominal $\kappa_{\rm lens}=-0.055$, the S1–S4–SX geometry gives a post-hoc sensitivity of $\sim+14.5$ d; the corrected Refsdal compilation instead gives $\kappa_{\rm inferred}\approx-0.114$ by construction. Step 56 proves that a static conformal path integral supplies no additional residual after the GR Fermat potential is subtracted. Step 57 therefore performs the non-circular empirical test: a coefficient fitted only to Encore and H0pe predicts the held-out Refsdal amplitude, while the action-level transfer function remains the object to be derived.
 </p>
 <p>
 The resulting proxy-model GR discrepancy for loop $(i,j,k)$ is:
@@ -111,7 +131,10 @@ The inferred convergence depends on the unknown total shear $\gamma$ (the sum of
 Because observed flux ratios constrain $|\mu|$ rather than signed magnification, the inversion is branch-dependent near critical curves where image parity matters. The Monte Carlo should therefore be read as a proxy-systematic exploration, not a unique reconstruction of $\kappa$.
 </p>
 <p>
-Because the flux ratios are proportional to absolute magnification with an unknown overall scale factor $C$ (where $\mu_i = C \cdot F_i$), the inferred $\kappa$ depends on both the unknown shear and the unknown scale. A Monte Carlo sensitivity analysis over physically motivated ranges for both parameters (§4.3) shows that the S4–SX contrast sign is stable ($P \approx 80$%), but the inferred amplitude shifts significantly: the equivalent $\alpha$ required to match the same observed residual is $-0.032$ [$-0.068$, $+0.009$], compared to the nominal proxy-model value $-0.055$. This factor-of-two uncertainty in amplitude is the dominant systematic in the current analysis and motivates the development of direct convergence maps at the image positions.
+Because the flux ratios are proportional to absolute magnification with an unknown overall scale factor $C$ (where $\mu_i = C \cdot F_i$), the inferred $\kappa$ depends on both the unknown shear and the unknown scale. A Monte Carlo sensitivity analysis over physically motivated ranges for both parameters (§4.3) shows that the S4–SX contrast sign is stable ($P \approx 80$%), but the inferred amplitude shifts significantly: the equivalent $\kappa_{\rm lens}$ required to match the same observed residual is $-0.032$ [$-0.068$, $+0.009$], compared to the nominal proxy-model value $-0.055$. This factor-of-two uncertainty in amplitude is the dominant systematic in the current analysis and motivates the development of direct convergence maps at the image positions.
+</p>
+<p>
+<em>Framework status.</em> With the cosmological sector now demonstrated at the background-plus-acoustic level (TEP-C0, Paper 26) and weak-field astrophysical response coefficients established across pulsar spin-down, Cepheid period–luminosity, and galaxy stellar populations (Papers 10–12), the strong-lensing temporal-shear kernel is the sole remaining macroscopic proxy in the TEP framework. The log-magnification operational response $\Gamma_t(i) = 1 + \kappa_{\rm lens}\log_{10}(\mu_{\rm norm}(i))$ is a phenomenological parameterisation, not a derived transfer function. The theoretical target is the projection operator $\mathcal{P}_\mu$ that maps the scalar-field gradient $\nabla_\mu\phi$ through the strong-lensing Jacobian $\mathcal{A}_{ij}$ to the observable magnification shift. Deriving this operator from the scalar-field action remains the decisive open theoretical task.
 </p>
 
 <h3>2.5 Error Propagation</h3>
@@ -133,7 +156,7 @@ For the eight TDCOSMO quad-lens quasar systems and SN Encore, each pair of image
 </p>
 <div class="equation">
 \begin{equation} \label{eq:3_methodology_06}
-\delta_{\rm TEP}^{iA} = \alpha \log_{10}(F_i/F_A)
+\delta_{\rm TEP}^{iA} = \kappa_{\rm lens} \log_{10}(F_i/F_A)
 \end{equation}
 </div>
 <p>

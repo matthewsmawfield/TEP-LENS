@@ -1,0 +1,28 @@
+
+[01:27:28] [INFO] ======================================================================
+[01:27:28] [INFO] STEP 42: Precision-Persistence Test — SN Refsdal SX
+[01:27:28] [INFO] ======================================================================
+[01:27:28] [INFO] Per-model (sigma_model, residual):
+[01:27:28] [INFO]   Oguri-a*     sigma= 19.0 d  resid= +22.2 d  blind=True
+[01:27:28] [INFO]   Oguri-g*     sigma= 19.6 d  resid= +45.3 d  blind=True
+[01:27:28] [INFO]   Sharon-a*    sigma= 37.5 d  resid= +78.0 d  blind=True
+[01:27:28] [INFO]   Sharon-g*    sigma= 32.5 d  resid= +45.0 d  blind=True
+[01:27:28] [INFO]   Diego-a      sigma= 55.0 d  resid=+114.0 d  blind=True
+[01:27:28] [INFO]   Grillo-g     sigma= 23.0 d  resid= +15.0 d  blind=True
+[01:27:28] [INFO]   Jauzac15.2*  sigma= 42.0 d  resid= +15.0 d  blind=True
+[01:27:28] [INFO]   Grillo+2024  sigma= 16.0 d  resid= +14.0 d  blind=False
+[01:27:28] [INFO] 
+[all] precision-weighted fit  resid = r0 + slope*sigma:
+[01:27:28] [INFO]   intercept r0 (sigma->0) = -8.20 +/- 18.30 d  (z=-0.45, one-sided p=0.673)
+[01:27:28] [INFO]   slope                   = +1.679 +/- 0.757 d per d
+[01:27:28] [INFO]   most-precise model      = Grillo+2024 (sigma=16 d, resid=+14.0 d)
+[01:27:28] [INFO] 
+[blind] precision-weighted fit  resid = r0 + slope*sigma:
+[01:27:28] [INFO]   intercept r0 (sigma->0) = -1.17 +/- 24.62 d  (z=-0.05, one-sided p=0.519)
+[01:27:28] [INFO]   slope                   = +1.473 +/- 0.922 d per d
+[01:27:28] [INFO]   most-precise model      = Oguri-a* (sigma=19 d, resid=+22.2 d)
+[01:27:28] [INFO] 
+IMMATURITY NOT EXCLUDED: the intercept is consistent with (or below) zero, so a high-precision GR model could plausibly remove the residual.
+[01:27:28] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_42_precision_persistence.json
+[01:27:28] [INFO] Step 42 complete.

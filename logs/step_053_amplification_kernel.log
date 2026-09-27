@@ -1,0 +1,17 @@
+
+[01:27:54] [INFO] ======================================================================
+[01:27:54] [INFO] STEP 053: Amplification-Kernel Diagnostic
+[01:27:54] [INFO] ======================================================================
+[01:27:54] [INFO] Observed residual: |R_obs| = 30.05 d
+[01:27:54] [INFO] 
+Amplification factors K = |R_obs| / |R_transport|:
+[01:27:54] [INFO]   psi_map                  : K = 21.5x
+[01:27:54] [INFO]   geodesic                 : K = 86.9x
+[01:27:54] [INFO]   fundamental              : K = 38.4x
+[01:27:54] [INFO]   psi_x_logmu              : K = undefined
+[01:27:54] [INFO]   geodesic_phi_x_logmu     : K = undefined
+[01:27:54] [INFO] 
+Direct potential transport underpredicts the observed amplitude by a factor of 21. Geodesic transport underpredicts by 87x, and the fundamental formula by 38x. This quantifies the magnification-amplification kernel: the log-magnification response captures an empirical amplification of order 10–400 relative to pure potential transport, consistent with near-critical lensing structure enhancing the temporal response.
+[01:27:54] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_053_amplification_kernel.json
+[01:27:54] [INFO] Step 053 complete.

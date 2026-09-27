@@ -1,27 +1,33 @@
 
-[18:49:49] [INFO] ======================================================================
-[18:49:49] [INFO] STEP 11: Model Dependence Robustness
-[18:49:49] [INFO] ======================================================================
-[18:49:49] [INFO] Baseline weighted mean residual: +14.61 ± 11.57 d (z=1.26)
-[18:49:49] [INFO] Baseline sign test: 7/8 positive, p=0.0352
-[18:49:49] [INFO] Wilcoxon signed-rank p(one-sided): 0.0078
-[18:49:49] [INFO] [DEPRECATED] Exact sign-flip p=0.0078 — assumes independent residuals; invalid under correlation
-[18:49:49] [INFO] Blind sign test: 6/7 positive, p=0.0625
-[18:49:49] [INFO] Blind Wilcoxon signed-rank p(one-sided): 0.0156
-[18:49:49] [INFO] Method-family effective sample size (Kish proxy): N_eff=7.20 from N=8
-[18:49:50] [INFO] Break-even ICC (all 8 binomial 7/8): rho = 0.026
-[18:49:50] [INFO] Break-even ICC (blind 7 binomial 6/7): rho = 0.000
-[18:49:50] [INFO] Exact family-sign-flip Wilcoxon (all 8): p = 0.0312 (2/64)
-[18:49:50] [INFO] Exact family-sign-flip Wilcoxon (blind 7): p = 0.0312 (2/64)
-[18:50:08] [INFO] Block-bootstrap Wilcoxon (all 8, family-aware): p_median=0.0078, p_16-84=[0.0020, 0.0312], P(p<=0.05)=92.90%
-[18:50:08] [INFO] Block-bootstrap Wilcoxon (blind 7, family-aware): p_median=0.0156, p_16-84=[0.0078, 0.0312], P(p<=0.05)=85.84%
-[18:50:08] [INFO] [CAVEAT] Wilcoxon break-even ICC (all 8): rho ≈ 0.103 — approximate, not a closed-form correction; use block-bootstrap instead.
-[18:50:08] [INFO] [CAVEAT] Wilcoxon break-even ICC (blind): rho ≈ 0.078 — approximate, not a closed-form correction; use block-bootstrap instead.
-[18:50:08] [INFO] Interpretation: if inter-model correlation exceeds these values, p > 0.05.
-[18:50:08] [INFO] LOO robustness summary:
-[18:50:08] [INFO]   Sign-test p range: 0.0078 to 0.0625
-[18:50:08] [INFO]   Weighted-mean z range: 0.96 to 1.30
-[18:50:08] [INFO]   Δχ² (GR-TEP) range: +0.91 to +1.68
-[18:50:09] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_11_model_dependence.png
-[18:50:09] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_11_model_dependence.json
-[18:50:09] [INFO] Step 11 complete.
+[01:22:54] [INFO] ======================================================================
+[01:22:54] [INFO] STEP 11: Model Dependence Robustness
+[01:22:54] [INFO] ======================================================================
+[01:22:54] [INFO] Baseline weighted mean residual: +30.05 ± 8.87 d (z=3.39)
+[01:22:54] [INFO] Baseline sign test: 8/8 positive, p=0.0039
+[01:22:54] [INFO] Wilcoxon signed-rank p(one-sided): 0.0039
+[01:22:54] [INFO] [DEPRECATED] Exact sign-flip p=0.0039 — assumes independent residuals; invalid under correlation
+[01:22:54] [INFO] Delay-blind sign test: 7/7 positive, p=0.0078
+[01:22:54] [INFO] Delay-blind Wilcoxon signed-rank p(one-sided): 0.0078
+[01:22:54] [INFO] Strictly blind sign test (original values): 6/7 positive, p=0.0625
+[01:22:54] [INFO] Strictly blind Wilcoxon (original values): p=0.0547
+[01:22:54] [INFO] Method-family effective sample size (Kish proxy): N_eff=7.14 from N=8
+[01:22:55] [INFO] Break-even ICC (all 8 binomial 8/8): rho = 0.188
+[01:22:55] [INFO] Break-even ICC (delay-blind 7 binomial 7/7): rho = 0.156
+[01:22:55] [INFO] Break-even ICC (strictly blind 7 binomial 6/7): rho = 0.000
+[01:22:55] [INFO] Exact family-sign-flip Wilcoxon (all 8): p = 0.0312 (1/32)
+[01:22:55] [INFO] Exact family-sign-flip Wilcoxon (delay-blind 5 families): p = 0.0312 (1/32)
+[01:22:55] [INFO] Exact family-sign-flip Wilcoxon (strictly blind 5 families): p = 0.0938 (3/32)
+[01:23:05] [INFO] Block-bootstrap Wilcoxon (all 8, family-aware): p_median=0.0039, p_16-84=[0.0020, 0.0078], P(p<=0.05)=100.00%
+[01:23:05] [INFO] Block-bootstrap Wilcoxon (delay-blind 5 families, family-aware): p_median=0.0078, p_16-84=[0.0039, 0.0156], P(p<=0.05)=100.00%
+[01:23:05] [INFO] Block-bootstrap Wilcoxon (strictly blind 5 families, family-aware): p_median=0.0469, p_16-84=[0.0039, 0.2344], P(p<=0.05)=51.25%
+[01:23:05] [INFO] [CAVEAT] Wilcoxon break-even ICC (all 8): rho ≈ 0.122 — approximate, not a closed-form correction; use block-bootstrap instead.
+[01:23:05] [INFO] [CAVEAT] Wilcoxon break-even ICC (delay-blind): rho ≈ 0.103 — approximate, not a closed-form correction; use block-bootstrap instead.
+[01:23:05] [INFO] [CAVEAT] Wilcoxon break-even ICC (strictly blind): rho ≈ 0.103 — approximate, not a closed-form correction; use block-bootstrap instead.
+[01:23:05] [INFO] Interpretation: if inter-model correlation exceeds these values, p > 0.05.
+[01:23:05] [INFO] LOO robustness summary:
+[01:23:05] [INFO]   Sign-test p range: 0.0078 to 0.0078
+[01:23:05] [INFO]   Weighted-mean z range: 2.69 to 3.47
+[01:23:05] [INFO]   Δχ² (GR-TEP) range: +5.77 to +8.29
+[01:23:06] [INFO] Figure saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_11_model_dependence.png
+[01:23:06] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_11_model_dependence.json
+[01:23:06] [INFO] Step 11 complete.

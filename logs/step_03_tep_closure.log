@@ -1,20 +1,20 @@
 
-[18:49:33] [INFO] ======================================================================
-[18:49:33] [INFO] STEP 03: Proxy-Model Predicted GR Discrepancy — SN Refsdal
-[18:49:33] [INFO] ======================================================================
-[18:49:33] [INFO] Proxy-model coupling alpha = -0.055 (Expansion/Screening)
-[18:49:33] [INFO] Temporal shear factors Gamma_t per image:
-[18:49:33] [INFO]   S1: mu_rel=1.158, mu_norm=1.181, Gamma=0.99602
-[18:49:33] [INFO]   S2: mu_rel=0.887, mu_norm=0.905, Gamma=1.00239
-[18:49:33] [INFO]   S3: mu_rel=0.716, mu_norm=0.730, Gamma=1.00750
-[18:49:33] [INFO]   S4: mu_rel=1.793, mu_norm=1.829, Gamma=0.98558
-[18:49:33] [INFO]   SX: mu_rel=0.347, mu_norm=0.354, Gamma=1.02480
-[18:49:33] [INFO] Computing proxy-model predicted GR discrepancies...
-[18:49:33] [INFO]   Loop S1-S2-S3: d_proxy_GR = -0.109 ± 0.033 days (SNR = 3.27)
-[18:49:33] [INFO]   Loop S1-S2-S4: d_proxy_GR = +0.278 ± 0.111 days (SNR = 2.52)
-[18:49:33] [INFO]   Loop S1-S3-S4: d_proxy_GR = +0.342 ± 0.148 days (SNR = 2.30)
-[18:49:33] [INFO]   Loop S1-S2-SX: d_proxy_GR = -8.492 ± 0.128 days (SNR = 66.29)
-[18:49:33] [INFO]   Loop S1-S4-SX: d_proxy_GR = -14.538 ± 0.230 days (SNR = 63.31)
-[18:49:33] [INFO] Best loop by SNR: S1_S2_SX (SNR=66.29)
-[18:49:33] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_03_tep_closure.json
-[18:49:33] [INFO] Step 03 complete.
+[01:22:47] [INFO] ======================================================================
+[01:22:47] [INFO] STEP 03: Proxy-Model Predicted GR Discrepancy — SN Refsdal
+[01:22:47] [INFO] ======================================================================
+[01:22:47] [INFO] Proxy-model coupling alpha = -0.055 (Expansion/Screening)
+[01:22:47] [INFO] Temporal shear factors Gamma_t per image:
+[01:22:47] [INFO]   S1: mu_rel=1.158, mu_norm=1.181, Gamma=0.99602
+[01:22:47] [INFO]   S2: mu_rel=0.887, mu_norm=0.905, Gamma=1.00239
+[01:22:47] [INFO]   S3: mu_rel=0.716, mu_norm=0.730, Gamma=1.00750
+[01:22:47] [INFO]   S4: mu_rel=1.793, mu_norm=1.829, Gamma=0.98558
+[01:22:47] [INFO]   SX: mu_rel=0.347, mu_norm=0.354, Gamma=1.02480
+[01:22:47] [INFO] Computing proxy-model predicted GR discrepancies...
+[01:22:47] [INFO]   Loop S1-S2-S3: d_proxy_GR = -0.109 ± 0.033 days (SNR = 3.27)
+[01:22:47] [INFO]   Loop S1-S2-S4: d_proxy_GR = +0.278 ± 0.111 days (SNR = 2.52)
+[01:22:47] [INFO]   Loop S1-S3-S4: d_proxy_GR = +0.342 ± 0.148 days (SNR = 2.30)
+[01:22:47] [INFO]   Loop S1-S2-SX: d_proxy_GR = -8.492 ± 0.128 days (SNR = 66.29)
+[01:22:47] [INFO]   Loop S1-S4-SX: d_proxy_GR = -14.538 ± 0.230 days (SNR = 63.31)
+[01:22:47] [INFO] Best loop by SNR: S1_S2_SX (SNR=66.29)
+[01:22:47] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_03_tep_closure.json
+[01:22:47] [INFO] Step 03 complete.

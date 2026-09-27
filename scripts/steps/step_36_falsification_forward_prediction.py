@@ -25,7 +25,7 @@ Assumptions (from Johansson et al. 2025, ApJ 995, L17):
   arXiv:2605.11090: image A trails D by ~175 d), modelled as U(140, 210) to carry
   a ~20% geometric-model uncertainty. The probative loop is the longest-baseline
   A-D contrast, mirroring the S4-SX baseline that dominates SN Refsdal.
-- Proxy coupling: alpha_proxy loaded dynamically from Step 07 bootstrap inference.
+- Proxy coupling: kappa_lens loaded dynamically from Step 07 bootstrap inference.
 
 Algorithm:
 1. Monte Carlo over magnification priors, delay baselines, and alpha uncertainty.
@@ -46,7 +46,7 @@ from scipy import stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "36"
 
@@ -86,7 +86,7 @@ def main():
     # geometric-model uncertainty on the longest A-D baseline (the probative loop).
     dt_baseline = rng.uniform(140.0, 210.0, size=n_mc)
 
-    # Load empirical coupling from Step 07 (bootstrap alpha inference; required)
+    # Load empirical coupling from Step 07 (bootstrap coupling inference; required)
     step_07_path = PROJECT_ROOT / "results" / "outputs" / "step_07_observed_vs_predicted.json"
     if not step_07_path.exists():
         raise FileNotFoundError(
@@ -95,16 +95,16 @@ def main():
         )
     with open(step_07_path) as f:
         s07 = json.load(f)
-    bai = s07.get("bootstrap_alpha_inference", {})
-    if "alpha_mean" not in bai:
+    bai = s07.get("bootstrap_kappa_inference", {})
+    if "kappa_mean" not in bai:
         raise KeyError(
-            "bootstrap_alpha_inference missing alpha_mean in step_07 output."
+            "bootstrap_kappa_inference missing kappa_mean in step_07 output."
         )
-    alpha_mean = float(bai["alpha_mean"])
+    alpha_mean = float(bai["kappa_mean"])
     alpha_sigma = float(
-        bai.get("sigma_alpha_analytical", bai.get("alpha_std", SIGMA_ALPHA_PROXY))
+        bai.get("sigma_kappa_analytical", bai.get("kappa_std", SIGMA_KAPPA_LENS))
     )
-    alpha_scatter_model_resampling = float(bai.get("alpha_std", alpha_sigma))
+    alpha_scatter_model_resampling = float(bai.get("kappa_std", alpha_sigma))
     print_status(
         f"Loaded alpha from Step 07: {alpha_mean:+.4f} +/- {alpha_sigma:.4f} "
         f"(headline propagated uncertainty; bootstrap model-resampling std="
@@ -227,7 +227,7 @@ def main():
             "mu_bright_range": [15.0, 80.0],
             "mu_faint_range": [2.0, 15.0],
             "dt_baseline_range_days": [140.0, 210.0],
-            "alpha_prior": {"mean": alpha_mean, "sigma": alpha_sigma,
+            "kappa_prior": {"mean": alpha_mean, "sigma": alpha_sigma,
                            "source": "step_07_headline_propagated_uncertainty",
                            "bootstrap_model_resampling_sigma": alpha_scatter_model_resampling},
             "loop_geometry_factor_range": [0.6, 1.0],

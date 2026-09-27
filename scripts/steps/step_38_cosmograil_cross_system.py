@@ -4,7 +4,7 @@ TEP-LENS: Step 38 - CosmoGRAIL Cross-System Directional Consistency Check
 
 Purpose: Test whether observed time delays in 18 CosmoGRAIL-monitored quadruply-
 and triply-imaged quasar lens systems are directionally consistent with the TEP
-proxy-model prediction that more magnified images arrive earlier (alpha_proxy < 0).
+proxy-model prediction that more magnified images arrive earlier (kappa_lens < 0).
 
 This is NOT an independent evidence strand. The test is confounded by lens
 geometry: in strong lensing, more magnified images can naturally have either
@@ -43,7 +43,7 @@ Caveats (must be stated clearly in output):
   and against it in others. The geometric effect does not average to exactly
   zero; there may be weak systematic trends (e.g., cusp configurations).
 - This test is a consistency check, not independent evidence. It uses the same
-  alpha_proxy value calibrated on SN Refsdal.
+  kappa_lens value calibrated on SN Refsdal.
 - The systems are quasars, not supernovae. Different astrophysical systematics.
 """
 
@@ -57,7 +57,7 @@ from scipy import stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "38b"
 
@@ -226,7 +226,7 @@ def main():
         mu_norm = {img: mean_fluxes[img] / mu_mean for img in mean_fluxes}
 
         # Compute Gamma_t per image
-        alpha = ALPHA_PROXY
+        alpha = KAPPA_LENS
         Gamma = {img: 1.0 + alpha * np.log10(mu_norm[img]) for img in mu_norm}
 
         # Process each pair
@@ -410,7 +410,7 @@ def main():
         "description": (
             "Cross-system directional consistency check using CosmoGRAIL quasar lens "
             "systems. Tests whether brighter images systematically arrive earlier, as "
-            "predicted by the TEP proxy model with alpha_proxy < 0."
+            "predicted by the TEP proxy model with kappa_lens < 0."
         ),
         "caveats": [
             "This is a consistency check, not an independent evidence strand.",
@@ -418,7 +418,7 @@ def main():
             "The binomial p=0.5 null is approximate. Lens geometry can create systematic correlations between magnification and delay (e.g., images near the Einstein radius are both more magnified and have shorter delays). The true null is lens-model-dependent and generally unknown without blind predictions.",
             "Quasar fluxes include microlensing and intrinsic variability; mean fluxes are imperfect magnification proxies.",
             "Systems are quasars, not supernovae; different astrophysical systematics apply.",
-            f"alpha_proxy = {ALPHA_PROXY} was calibrated on SN Refsdal and applied here without refitting.",
+            f"kappa_lens = {KAPPA_LENS} was calibrated on SN Refsdal and applied here without refitting.",
             "Kendall tau is reference-dependent and its sign depends on the choice of reference image; it is not reported as an evidence metric.",
         ],
         "n_systems_processed": n_systems,

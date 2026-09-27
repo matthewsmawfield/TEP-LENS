@@ -11,7 +11,7 @@ class DevServer {
         this.buildQueue = false;
         this.liveServerProcess = null;
         this.watcherReady = false;
-        this.port = 51736; // Unique port for TEP-LENS
+        this.port = 55519; // Unique port for TEP-LENS (Paper 19)
     }
 
     async killProcessOnPort(port) {

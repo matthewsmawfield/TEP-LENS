@@ -19,7 +19,7 @@ Where:
 Priors (transparent and weakly informative):
   mu_bias ~ Normal(0, 40 d)
   tau ~ HalfNormal(20 d)
-  alpha ~ Normal(0, 0.15)  [proxy-model free-alpha model only; GR-centred null prior to avoid circularity; broadened to N(0, 0.20) in h0pe2025_informed scenario]
+  alpha ~ Normal(0, 0.15)  [proxy-model free-coupling model only; GR-centred null prior to avoid circularity; broadened to N(0, 0.20) in h0pe2025_informed scenario]
 
 Outputs:
   - Marginal log-evidence per model (numerical quadrature / grid integration)
@@ -70,7 +70,7 @@ def evaluate_scenario(
     r_unit,
     mu_grid,
     tau_grid,
-    alpha_grid,
+    kappa_grid,
     mu_prior_loc,
     mu_prior_scale,
     tau_prior_scale,
@@ -79,11 +79,11 @@ def evaluate_scenario(
 ):
     d_mu = float(mu_grid[1] - mu_grid[0])
     d_tau = float(tau_grid[1] - tau_grid[0])
-    d_alpha = float(alpha_grid[1] - alpha_grid[0])
+    d_alpha = float(kappa_grid[1] - kappa_grid[0])
 
     mu_prior = stats.norm.logpdf(mu_grid, loc=mu_prior_loc, scale=mu_prior_scale)
     tau_prior = stats.halfnorm.logpdf(tau_grid, loc=0.0, scale=tau_prior_scale)
-    alpha_prior = stats.norm.logpdf(alpha_grid, loc=alpha_prior_loc, scale=alpha_prior_scale)
+    alpha_prior = stats.norm.logpdf(kappa_grid, loc=alpha_prior_loc, scale=alpha_prior_scale)
 
     # H_GR
     log_post_gr = np.empty((len(tau_grid), len(mu_grid)))
@@ -102,10 +102,10 @@ def evaluate_scenario(
     # H_TEP_free
     log_terms = []
     log_marg_tau = np.full(len(tau_grid), -np.inf)
-    log_marg_alpha = np.full(len(alpha_grid), -np.inf)
+    log_marg_alpha = np.full(len(kappa_grid), -np.inf)
 
     for it, tau in enumerate(tau_grid):
-        shifts = alpha_grid * r_unit
+        shifts = kappa_grid * r_unit
         var = sigmas**2 + tau**2
         log_norm = np.sum(np.log(2.0 * np.pi * var))
         mu_eff = shifts[:, None] + mu_grid[None, :]
@@ -134,9 +134,9 @@ def evaluate_scenario(
     tau_p16 = float(np.interp(0.16, np.cumsum(p_tau), tau_grid))
     tau_p84 = float(np.interp(0.84, np.cumsum(p_tau), tau_grid))
 
-    alpha_mean = float(np.sum(alpha_grid * p_alpha))
-    alpha_p16 = float(np.interp(0.16, np.cumsum(p_alpha), alpha_grid))
-    alpha_p84 = float(np.interp(0.84, np.cumsum(p_alpha), alpha_grid))
+    alpha_mean = float(np.sum(kappa_grid * p_alpha))
+    alpha_p16 = float(np.interp(0.16, np.cumsum(p_alpha), kappa_grid))
+    alpha_p84 = float(np.interp(0.84, np.cumsum(p_alpha), kappa_grid))
 
     log_bf_tf_gr = float(logZ_tf - logZ_gr)
     log_bf_tfree_gr = float(logZ_tfree - logZ_gr)
@@ -155,11 +155,11 @@ def evaluate_scenario(
         "tau_mean_days": tau_mean,
         "tau_p16_days": tau_p16,
         "tau_p84_days": tau_p84,
-        "alpha_mean": alpha_mean,
-        "alpha_p16": alpha_p16,
-        "alpha_p84": alpha_p84,
+        "kappa_mean": alpha_mean,
+        "kappa_p16": alpha_p16,
+        "kappa_p84": alpha_p84,
         "posterior_tau_grid": p_tau,
-        "posterior_alpha_grid": p_alpha,
+        "posterior_kappa_grid": p_alpha,
     }
 
 
@@ -181,31 +181,31 @@ def main():
         r_tep = float(s07["tep_prediction"]["R_tep_alpha05_days"]) # Fallback if using old file
     
     # Calculate R_tep_unit (days per unit alpha)
-    # R_tep = R_tep_unit * alpha_ref
-    alpha_ref = float(s07["tep_prediction"]["alpha_ref"])
-    r_unit = float(s07["tep_prediction"]["R_tep_unit_days_per_alpha"])
+    # R_tep = R_tep_unit * kappa_ref
+    kappa_ref = float(s07["tep_prediction"]["kappa_ref"])
+    r_unit = float(s07["tep_prediction"]["R_tep_unit_days_per_kappa"])
 
     # Priors / grids
     mu_grid = np.linspace(-80.0, 80.0, 401)   # days
     tau_grid = np.linspace(0.0, 60.0, 301)    # days
     # Alpha grid for negative coupling (empirical lensing-sector value)
-    alpha_grid = np.linspace(-0.20, 0.10, 401)
+    kappa_grid = np.linspace(-0.20, 0.10, 401)
 
     scenarios = {
         "baseline": {
             "mu_prior_loc": 0.0,
             "mu_prior_scale": 40.0,
             "tau_prior_scale": 20.0,
-            "alpha_prior_loc": 0.0,  # GR-centered null prior for free-alpha model
-            "alpha_prior_scale": 0.15,
-            "note": "Proper GR-null prior for free-alpha model (alpha ~ N(0, 0.15)); fixed-alpha model tests alpha=-0.055 directly.",
+            "kappa_prior_loc": 0.0,  # GR-centered null prior for free-coupling model
+            "kappa_prior_scale": 0.15,
+            "note": "Proper GR-null prior for free-coupling model (alpha ~ N(0, 0.15)); fixed-coupling model tests alpha=-0.055 directly.",
         },
         "h0pe2025_informed": {
             "mu_prior_loc": 8.0,
             "mu_prior_scale": 50.0,
             "tau_prior_scale": 25.0,
-            "alpha_prior_loc": 0.0,  # GR-centered null prior for free-alpha model
-            "alpha_prior_scale": 0.20,
+            "kappa_prior_loc": 0.0,  # GR-centered null prior for free-coupling model
+            "kappa_prior_scale": 0.20,
             "note": (
                 "Sensitivity prior set informed by reported H0pe lens-model bias direction "
                 "(2510.07637): allows broader/positive residual-bias nuisance without forcing it."
@@ -223,12 +223,12 @@ def main():
             r_unit,
             mu_grid,
             tau_grid,
-            alpha_grid,
+            kappa_grid,
             cfg["mu_prior_loc"],
             cfg["mu_prior_scale"],
             cfg["tau_prior_scale"],
-            cfg["alpha_prior_loc"],
-            cfg["alpha_prior_scale"],
+            cfg["kappa_prior_loc"],
+            cfg["kappa_prior_scale"],
         )
         scenario_results[name] = res
 
@@ -248,8 +248,8 @@ def main():
             f"[{res['tau_p16_days']:.2f}, {res['tau_p84_days']:.2f}] d"
         )
         print_status(
-            f"[{name}] Posterior alpha = {res['alpha_mean']:.4f} "
-            f"[{res['alpha_p16']:.4f}, {res['alpha_p84']:.4f}]"
+            f"[{name}] Posterior kappa = {res['kappa_mean']:.4f} "
+            f"[{res['kappa_p16']:.4f}, {res['kappa_p84']:.4f}]"
         )
 
     baseline = scenario_results["baseline"]
@@ -271,7 +271,7 @@ def main():
         axs[0].set_ylabel("Posterior density (arb)")
         axs[0].set_title("Posterior for hierarchical overdispersion")
 
-        axs[1].plot(alpha_grid, baseline["posterior_alpha_grid"], lw=1.8, color=COLORS["tep"])
+        axs[1].plot(kappa_grid, baseline["posterior_kappa_grid"], lw=1.8, color=COLORS["tep"])
         axs[1].axvline(-0.055, ls="--", lw=1.0, color=COLORS["observed"], label="Empirical alpha = -0.055")
         axs[1].axvline(0.0, ls=":", lw=1.2, color=COLORS["red"], label="GR null (alpha = 0)")
         axs[1].set_xlabel("alpha")
@@ -317,9 +317,9 @@ def main():
                     "tau_mean_days": scenario_results[k]["tau_mean_days"],
                     "tau_p16_days": scenario_results[k]["tau_p16_days"],
                     "tau_p84_days": scenario_results[k]["tau_p84_days"],
-                    "alpha_mean": scenario_results[k]["alpha_mean"],
-                    "alpha_p16": scenario_results[k]["alpha_p16"],
-                    "alpha_p84": scenario_results[k]["alpha_p84"],
+                    "kappa_mean": scenario_results[k]["kappa_mean"],
+                    "kappa_p16": scenario_results[k]["kappa_p16"],
+                    "kappa_p84": scenario_results[k]["kappa_p84"],
                 },
             }
             for k in scenario_results

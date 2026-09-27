@@ -1,0 +1,23 @@
+
+[01:27:54] [INFO] ======================================================================
+[01:27:54] [INFO] STEP 055: TDCOSMO Cross-System Kernel Consistency Audit
+[01:27:54] [INFO] ======================================================================
+[01:27:54] [INFO] TDCOSMO systems in step_05: 8
+[01:27:54] [INFO] Saved results to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_055_tdcosmo_kernel_test.json
+[01:27:54] [INFO] Systems audited: 8
+[01:27:54] [INFO] Systems with per-image κ: 0
+[01:27:54] [INFO] Systems missing per-image κ: 8
+[01:27:54] [INFO] Verdict: A genuine cross-system kernel test is not possible with the current TDCOSMO2025 public release. Per-image convergence or potential values (κ_i or ψ_i at each image position) are required for an independent transport prediction, but these are not published for any of the 8 systems. The public release contains power-law lens parameters (γ, θ_E, κ_ext) and LOS convergence samples, but not per-image lensing quantities. Future releases that include per-image convergence tables or lens-model posterior maps would enable this test.
+
+------------------------------------------------------------------------------------------
+System               z_lens    z_src  n_pairs   logμ_max  κ_avail
+------------------------------------------------------------------------------------------
+HE0435-1223           0.454    1.693        3      0.252       NO
+WFI2033-4723          0.657    1.662        2      0.373       NO
+DES0408-5354          0.597    2.375        3      0.719       NO
+RXJ1131-1231          0.295    0.654        3      0.959       NO
+PG1115+080            0.311    1.722        2      0.796       NO
+B1608+656             0.630    1.394        3      0.796       NO
+J1206+4332            0.745    1.789        1      0.328       NO
+SN Encore             0.338    1.950        1      0.172       NO
+------------------------------------------------------------------------------------------

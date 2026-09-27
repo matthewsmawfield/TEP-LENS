@@ -1,0 +1,27 @@
+
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] STEP 44: Direct-Convergence Loop Residual (model kappa)
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] GLAFIC v3 kappa: S1=0.722, S2=0.733, S3=0.675, S4=0.727, SX=0.966
+[01:27:34] [INFO]   -> highest kappa: SX (0.966); lowest: S3 (0.675)
+[01:27:34] [INFO] 
+[flux_ratio_proxy]
+[01:27:34] [INFO]   q_norm S4=1.829  SX=0.354   dGamma(S4-SX)=-0.0392
+[01:27:34] [INFO]   R_closure=-14.54 d  -> predicted (obs-model)=+14.54 d  (observed=+30.05 d)  sign-match: True
+[01:27:34] [INFO] 
+[model_mu_abs]
+[01:27:34] [INFO]   q_norm S4=0.568  SX=0.341   dGamma(S4-SX)=-0.0122
+[01:27:34] [INFO]   R_closure=-4.94 d  -> predicted (obs-model)=+4.94 d  (observed=+30.05 d)  sign-match: True
+[01:27:34] [INFO] 
+[model_kappa]
+[01:27:34] [INFO]   q_norm S4=0.951  SX=1.263   dGamma(S4-SX)=+0.0068
+[01:27:34] [INFO]   R_closure=+2.56 d  -> predicted (obs-model)=-2.56 d  (observed=+30.05 d)  sign-match: False
+[01:27:34] [INFO] 
+[model_inv_kappa]
+[01:27:34] [INFO]   q_norm S4=1.036  SX=0.779   dGamma(S4-SX)=-0.0068
+[01:27:34] [INFO]   R_closure=-2.56 d  -> predicted (obs-model)=+2.56 d  (observed=+30.05 d)  sign-match: True
+[01:27:34] [INFO] 
+Inv-kappa residual (+2.6 d) shares the sign of the flux-proxy prediction (+14.5 d) and the observation (+30.0 d); the sign evidence survives substitution of the 1/kappa potential proxy (amplitude differs).
+[01:27:34] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_44_direct_kappa_residual.json
+[01:27:34] [INFO] Step 44 complete.

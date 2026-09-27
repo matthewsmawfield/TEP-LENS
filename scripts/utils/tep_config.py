@@ -10,18 +10,18 @@ them. This module is the single source of truth for empirical constants.
 #   - This is NOT a fundamental coupling constant and NOT a pre-observation
 #     forecast for SN Refsdal.
 #   - No solved TEP lensing transfer function exists yet.
-#   - ALPHA_PROXY is a fixed nominal value used to compute post-hoc proxy
+#   - KAPPA_LENS is a fixed nominal value used to compute post-hoc proxy
 #     sensitivity (e.g. ~14.5 d on the S1–S4–SX loop with Kelly+2023 inputs).
 #   - It must NOT be described as "TEP predicted 14.5 days before observation."
 #   - Primary Refsdal evidence is the blind sign-directional test (Tier 1).
-#   - Amplitude comparisons at this alpha are illustrative/diagnostic (Tier 3).
-#   - alpha_inferred from the corrected model ensemble (~-0.11) is a separate
+#   - Amplitude comparisons at this coupling are illustrative/diagnostic (Tier 3).
+#   - kappa_inferred from the corrected model ensemble (~-0.11) is a separate
 #     response-scale diagnostic and is definitional, not independent confirmation.
 #
-# SIGMA_ALPHA_PROXY is a nominal uncertainty envelope for sensitivity scans,
+# SIGMA_KAPPA_LENS is a nominal uncertainty envelope for sensitivity scans,
 # not a blind forecast uncertainty.
-ALPHA_PROXY = -0.055
-SIGMA_ALPHA_PROXY = 0.044
+KAPPA_LENS = -0.055
+SIGMA_KAPPA_LENS = 0.044
 
 # H0 literature values
 # Refsdal: Kelly+2023 TD-only measurement
@@ -42,3 +42,31 @@ H0_H0PE_ENC_ERR_MINUS = 4.6
 
 # Step-03 S1-S4-SX loop uncertainty (days)
 SIGMA_R_TEP_STEP03 = 0.21
+
+
+def load_refsdal_image_positions():
+    """Published J2000 positions (deg) of the five SN Refsdal images.
+
+    Single source of truth: data/raw/sn_lensing/refsdal_glafic_v3_lensing_params.json
+    (provenance: ATel #6729; Karman et al. 2016 MUSE Table 1 for S1-S4; refined
+    strong-lensing position coincident with the Kelly+2016 detection for SX).
+
+    A previous pipeline generation used incorrect positions ~10 arcsec north,
+    which sampled the cluster core and produced a spurious ~4x map-vs-table
+    kappa mismatch plus a reversed psi ordering.
+    """
+    import json
+    from pathlib import Path
+
+    params = Path(__file__).resolve().parents[2] / "data" / "raw" / "sn_lensing" / \
+        "refsdal_glafic_v3_lensing_params.json"
+    pos = json.load(open(params))["provenance"]["image_positions_deg_j2000"]
+    return {im: tuple(v) for im, v in pos.items()}
+
+
+# Source-plane rescaling for the archived GLAFIC v3 maps, which are delivered
+# at D_LS/D_OS = 1 (z_s -> infinity; GLAFIC v3 HLSP readme, Kawamata, Oguri &
+# Ishigaki 2015).  To express sampled kappa/gamma/psi on the SN Refsdal source
+# plane (z_s = 1.489), multiply by BETA_REFSDAL = D_ls/D_s = 0.5339
+# (z_l = 0.542, FlatLambdaCDM H0=70 Om0=0.3).
+BETA_REFSDAL = 0.5339

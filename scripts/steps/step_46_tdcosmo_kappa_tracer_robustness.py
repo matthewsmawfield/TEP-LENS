@@ -37,7 +37,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS
 
 STEP_NUM = "46"
 
@@ -149,7 +149,7 @@ def main():
             "quad-lens sample. Quantifies whether SN Refsdal's predicted ~15 d "
             "shift is typical or an outlier among strong-lens systems."
         ),
-        "alpha_proxy": ALPHA_PROXY,
+        "kappa_lens": KAPPA_LENS,
         "n_systems": n,
         "per_system": system_results,
         "distribution_summary": summary,

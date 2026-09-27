@@ -1,0 +1,26 @@
+
+[01:27:28] [INFO] ======================================================================
+[01:27:28] [INFO] STEP 43: Convergence-Precision Forecast (de-systematizing mu->kappa)
+[01:27:28] [INFO] ======================================================================
+[01:27:28] [INFO] Nominal flux-proxy residual (no inversion): -14.54 d
+[01:27:28] [INFO] Ladder (sigma_gamma S1-S4 | C-knowledge -> R_med [p16,p84], zero-cross?, P(dchi2>0)):
+[01:27:28] [INFO]   sg=0.180 | unknown     -> R= -19.4 [ -29.9,  0.4] zero=Y  P(dchi2>0)=0.81  kappa_eq=-0.064
+[01:27:29] [INFO]   sg=0.090 | unknown     -> R= -20.8 [ -28.8, -6.1] zero=n  P(dchi2>0)=0.87  kappa_eq=-0.068
+[01:27:29] [INFO]   sg=0.050 | unknown     -> R= -21.4 [ -28.4, -7.4] zero=n  P(dchi2>0)=0.88  kappa_eq=-0.067
+[01:27:29] [INFO]   sg=0.018 | unknown     -> R= -21.5 [ -28.2, -7.8] zero=n  P(dchi2>0)=0.88  kappa_eq=-0.066
+[01:27:30] [INFO]   sg=0.005 | unknown     -> R= -21.5 [ -28.2, -7.8] zero=n  P(dchi2>0)=0.88  kappa_eq=-0.066
+[01:27:30] [INFO]   sg=0.180 | constrained -> R= -26.8 [ -31.4,-16.2] zero=n  P(dchi2>0)=0.94  kappa_eq=-0.060
+[01:27:31] [INFO]   sg=0.090 | constrained -> R= -27.0 [ -30.0,-22.5] zero=n  P(dchi2>0)=0.99  kappa_eq=-0.061
+[01:27:31] [INFO]   sg=0.050 | constrained -> R= -27.2 [ -29.2,-24.2] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.061
+[01:27:31] [INFO]   sg=0.018 | constrained -> R= -27.3 [ -28.6,-25.1] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.060
+[01:27:32] [INFO]   sg=0.005 | constrained -> R= -27.4 [ -28.5,-25.2] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.060
+[01:27:32] [INFO]   sg=0.180 | known       -> R= -27.3 [ -31.2,-18.1] zero=n  P(dchi2>0)=0.97  kappa_eq=-0.060
+[01:27:32] [INFO]   sg=0.090 | known       -> R= -27.4 [ -29.7,-24.1] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.060
+[01:27:33] [INFO]   sg=0.050 | known       -> R= -27.5 [ -28.9,-25.8] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.060
+[01:27:33] [INFO]   sg=0.018 | known       -> R= -27.5 [ -28.0,-27.0] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.060
+[01:27:34] [INFO]   sg=0.005 | known       -> R= -27.5 [ -27.7,-27.4] zero=n  P(dchi2>0)=1.00  kappa_eq=-0.060
+[01:27:34] [INFO] 
+Convergence-precision forecast: the mu->kappa amplitude systematic is prior-width driven, not fundamental. With realistic (~20%) absolute-scale knowledge, constraining the per-image shear to sigma_gamma <= 0.180 removes the residual zero-crossing (R = -26.8 [-31.4, -16.2] d) and restores P(dchi2>0) = 0.94. This is the concrete convergence-precision target for de-systematizing the amplitude.
+[01:27:34] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_43_kappa_precision_forecast.json
+[01:27:34] [INFO] Step 43 complete.

@@ -90,16 +90,16 @@
   "independence_analysis": {
     "sn_refsdal": {
       "independence_level": "not_independent",
-      "circularity_note": "The alpha_proxy=-0.055 used here was empirically determined from the same SN Refsdal SX delay data (step_07). The H0 shift is therefore a self-consistency check, not an independent confirmation. It shows that the TEP framework is internally consistent, but does not add degrees of freedom to the evidence."
+      "circularity_note": "The kappa_lens=-0.055 used here was empirically determined from the same SN Refsdal SX delay data (step_07). The H0 shift is therefore a self-consistency check, not an independent confirmation. It shows that the TEP framework is internally consistent, but does not add degrees of freedom to the evidence."
     },
     "sn_h0pe": {
       "independence_level": "independent_prediction",
-      "circularity_note": "alpha_proxy was calibrated on SN Refsdal, then applied to H0pe without refitting. The predicted shift is an independent prediction, but the shift is negligible (~0.1) due to modest magnification contrast."
+      "circularity_note": "kappa_lens was calibrated on SN Refsdal, then applied to H0pe without refitting. The predicted shift is an independent prediction, but the shift is negligible (~0.1) due to modest magnification contrast."
     },
     "sn_encore": {
       "independence_level": "independent_prediction",
-      "circularity_note": "alpha_proxy was calibrated on SN Refsdal, then applied to Encore without refitting. The predicted shift is an independent prediction, but the shift is negligible (~0.1) due to modest magnification contrast and reference dependence of the 2-image system."
+      "circularity_note": "kappa_lens was calibrated on SN Refsdal, then applied to Encore without refitting. The predicted shift is an independent prediction, but the shift is negligible (~0.1) due to modest magnification contrast and reference dependence of the 2-image system."
     }
   },
-  "interpretation": "SN Refsdal receives the dominant TEP H0 shift (+2.4) because it has 5 images and the largest magnification contrast (S1/SX ~ 3.3). SN H0pe and SN Encore receive negligible shifts (+0.1 and +0.1 respectively) due to their smaller magnification contrasts and fewer independent delays. The combined low-H0 cluster shifts by +0.8 toward Planck, driven primarily by Refsdal. IMPORTANT: The Refsdal H0 shift is not an independent confirmation because alpha_proxy was derived from the same Refsdal data. It is an internal consistency check."
+  "interpretation": "SN Refsdal receives the dominant TEP H0 shift (+2.4) because it has 5 images and the largest magnification contrast (S1/SX ~ 3.3). SN H0pe and SN Encore receive negligible shifts (+0.1 and +0.1 respectively) due to their smaller magnification contrasts and fewer independent delays. The combined low-H0 cluster shifts by +0.8 toward Planck, driven primarily by Refsdal. IMPORTANT: The Refsdal H0 shift is not an independent confirmation because kappa_lens was derived from the same Refsdal data. It is an internal consistency check."
 }

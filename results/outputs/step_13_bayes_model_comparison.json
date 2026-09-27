@@ -15,7 +15,7 @@
   },
   "scenarios": {
     "baseline": {
-      "note": "Proper GR-null prior for free-alpha model (alpha ~ N(0, 0.15)); fixed-alpha model tests alpha=-0.055 directly.",
+      "note": "Proper GR-null prior for free-coupling model (alpha ~ N(0, 0.15)); fixed-coupling model tests alpha=-0.055 directly.",
       "evidence": {
         "logZ_gr": -39.58274597629642,
         "logZ_tep_fixed": -39.3765121633481,
@@ -29,9 +29,9 @@
         "tau_mean_days": 10.607798209611598,
         "tau_p16_days": 2.4833545955108076,
         "tau_p84_days": 18.597743381352885,
-        "alpha_mean": -0.05354741514782703,
-        "alpha_p16": -0.13879563583976393,
-        "alpha_p84": 0.03112754128714961
+        "kappa_mean": -0.05354741514782703,
+        "kappa_p16": -0.13879563583976393,
+        "kappa_p84": 0.03112754128714961
       }
     },
     "h0pe2025_informed": {
@@ -49,11 +49,11 @@
         "tau_mean_days": 11.808381335662279,
         "tau_p16_days": 2.767239342834465,
         "tau_p84_days": 20.70914428085426,
-        "alpha_mean": -0.0488919294620774,
-        "alpha_p16": -0.14089479071970945,
-        "alpha_p84": 0.0421569494706421
+        "kappa_mean": -0.0488919294620774,
+        "kappa_p16": -0.14089479071970945,
+        "kappa_p84": 0.0421569494706421
       }
     }
   },
-  "figure": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_13_bayes_comparison.png"
+  "figure": "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_13_bayes_comparison.png"
 }

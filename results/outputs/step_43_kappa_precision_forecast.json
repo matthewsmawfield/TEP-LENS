@@ -2,7 +2,7 @@
   "step": "43",
   "status": "success",
   "description": "Forecast of how the mu->kappa amplitude systematic shrinks as future high-resolution mass models constrain per-image shear and absolute scale. Conditional on the central shear estimates; quantifies the convergence precision required to remove the residual zero-crossing and restore the amplitude. The primary blind-residual SIGN evidence does not depend on this proxy.",
-  "alpha_proxy_ref": -0.055,
+  "kappa_lens_ref": -0.055,
   "nominal_flux_proxy_residual_days": -14.538035062734984,
   "current_state": {
     "gamma_std_scale": 1.0,
@@ -13,10 +13,10 @@
     "R_p84": 0.40869292313033506,
     "R_zero_crossing": true,
     "P_R_negative": 0.81505,
-    "alpha_equiv_median": -0.0644162305483894,
-    "alpha_equiv_p16": -0.13854321749494278,
-    "alpha_equiv_p84": 0.10320597743827484,
-    "alpha_zero_crossing": true,
+    "kappa_equiv_median": -0.0644162305483894,
+    "kappa_equiv_p16": -0.13854321749494278,
+    "kappa_equiv_p84": 0.10320597743827484,
+    "kappa_zero_crossing": true,
     "P_delta_chi2_gt_0": 0.8142
   },
   "precision_ladder": [
@@ -29,10 +29,10 @@
       "R_p84": 0.40869292313033506,
       "R_zero_crossing": true,
       "P_R_negative": 0.81505,
-      "alpha_equiv_median": -0.0644162305483894,
-      "alpha_equiv_p16": -0.13854321749494278,
-      "alpha_equiv_p84": 0.10320597743827484,
-      "alpha_zero_crossing": true,
+      "kappa_equiv_median": -0.0644162305483894,
+      "kappa_equiv_p16": -0.13854321749494278,
+      "kappa_equiv_p84": 0.10320597743827484,
+      "kappa_zero_crossing": true,
       "P_delta_chi2_gt_0": 0.8142
     },
     {
@@ -44,10 +44,10 @@
       "R_p84": -6.08476970595536,
       "R_zero_crossing": false,
       "P_R_negative": 0.8724,
-      "alpha_equiv_median": -0.0675492437014433,
-      "alpha_equiv_p16": -0.14724365935571118,
-      "alpha_equiv_p84": -0.050370196644240584,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.0675492437014433,
+      "kappa_equiv_p16": -0.14724365935571118,
+      "kappa_equiv_p84": -0.050370196644240584,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.87145
     },
     {
@@ -59,10 +59,10 @@
       "R_p84": -7.353759286813693,
       "R_zero_crossing": false,
       "P_R_negative": 0.8819,
-      "alpha_equiv_median": -0.06689355006417894,
-      "alpha_equiv_p16": -0.14808313114483532,
-      "alpha_equiv_p84": -0.05426161090814915,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.06689355006417894,
+      "kappa_equiv_p16": -0.14808313114483532,
+      "kappa_equiv_p84": -0.05426161090814915,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.881
     },
     {
@@ -74,10 +74,10 @@
       "R_p84": -7.794778334787328,
       "R_zero_crossing": false,
       "P_R_negative": 0.8843,
-      "alpha_equiv_median": -0.06586213638123041,
-      "alpha_equiv_p16": -0.1478963507073899,
-      "alpha_equiv_p84": -0.05630576305716179,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.06586213638123041,
+      "kappa_equiv_p16": -0.1478963507073899,
+      "kappa_equiv_p84": -0.05630576305716179,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.88355
     },
     {
@@ -89,10 +89,10 @@
       "R_p84": -7.809745131617336,
       "R_zero_crossing": false,
       "P_R_negative": 0.88495,
-      "alpha_equiv_median": -0.06577715186751197,
-      "alpha_equiv_p16": -0.1475822832873153,
-      "alpha_equiv_p84": -0.05704293130291937,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.06577715186751197,
+      "kappa_equiv_p16": -0.1475822832873153,
+      "kappa_equiv_p84": -0.05704293130291937,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.8842
     },
     {
@@ -104,10 +104,10 @@
       "R_p84": -16.16397260258141,
       "R_zero_crossing": false,
       "P_R_negative": 0.94315,
-      "alpha_equiv_median": -0.0597810601065986,
-      "alpha_equiv_p16": -0.08371014567578168,
-      "alpha_equiv_p84": -0.051166830218210065,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.0597810601065986,
+      "kappa_equiv_p16": -0.08371014567578168,
+      "kappa_equiv_p84": -0.051166830218210065,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.9419
     },
     {
@@ -119,10 +119,10 @@
       "R_p84": -22.463390259023836,
       "R_zero_crossing": false,
       "P_R_negative": 0.99345,
-      "alpha_equiv_median": -0.06102765709191649,
-      "alpha_equiv_p16": -0.07304741258678972,
-      "alpha_equiv_p84": -0.05500626269103148,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.06102765709191649,
+      "kappa_equiv_p16": -0.07304741258678972,
+      "kappa_equiv_p84": -0.05500626269103148,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.99225
     },
     {
@@ -134,10 +134,10 @@
       "R_p84": -24.173968687414487,
       "R_zero_crossing": false,
       "P_R_negative": 0.9976,
-      "alpha_equiv_median": -0.060765162329031314,
-      "alpha_equiv_p16": -0.06826265200494634,
-      "alpha_equiv_p84": -0.056589221126882236,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.060765162329031314,
+      "kappa_equiv_p16": -0.06826265200494634,
+      "kappa_equiv_p84": -0.056589221126882236,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.9965
     },
     {
@@ -149,10 +149,10 @@
       "R_p84": -25.085298766569164,
       "R_zero_crossing": false,
       "P_R_negative": 0.9983,
-      "alpha_equiv_median": -0.060417616904646615,
-      "alpha_equiv_p16": -0.06580564192045377,
-      "alpha_equiv_p84": -0.05775218109059101,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.060417616904646615,
+      "kappa_equiv_p16": -0.06580564192045377,
+      "kappa_equiv_p84": -0.05775218109059101,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.9972
     },
     {
@@ -164,10 +164,10 @@
       "R_p84": -25.223373283639567,
       "R_zero_crossing": false,
       "P_R_negative": 0.9985,
-      "alpha_equiv_median": -0.060307869065155686,
-      "alpha_equiv_p16": -0.06547272493243607,
-      "alpha_equiv_p84": -0.05795730235146034,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.060307869065155686,
+      "kappa_equiv_p16": -0.06547272493243607,
+      "kappa_equiv_p84": -0.05795730235146034,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.99735
     },
     {
@@ -179,10 +179,10 @@
       "R_p84": -18.110086215464296,
       "R_zero_crossing": false,
       "P_R_negative": 0.96555,
-      "alpha_equiv_median": -0.059569072269987824,
-      "alpha_equiv_p16": -0.08234505218511318,
-      "alpha_equiv_p84": -0.05228310622954277,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.059569072269987824,
+      "kappa_equiv_p16": -0.08234505218511318,
+      "kappa_equiv_p84": -0.05228310622954277,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.96555
     },
     {
@@ -194,10 +194,10 @@
       "R_p84": -24.124132936803345,
       "R_zero_crossing": false,
       "P_R_negative": 0.99905,
-      "alpha_equiv_median": -0.060205513341693315,
-      "alpha_equiv_p16": -0.06846245452238621,
-      "alpha_equiv_p84": -0.05565431227029021,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.060205513341693315,
+      "kappa_equiv_p16": -0.06846245452238621,
+      "kappa_equiv_p84": -0.05565431227029021,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 0.99905
     },
     {
@@ -209,10 +209,10 @@
       "R_p84": -25.831916294987856,
       "R_zero_crossing": false,
       "P_R_negative": 1.0,
-      "alpha_equiv_median": -0.06008264279792546,
-      "alpha_equiv_p16": -0.06398002770445793,
-      "alpha_equiv_p84": -0.0572831418435962,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.06008264279792546,
+      "kappa_equiv_p16": -0.06398002770445793,
+      "kappa_equiv_p84": -0.0572831418435962,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 1.0
     },
     {
@@ -224,10 +224,10 @@
       "R_p84": -26.970662605750736,
       "R_zero_crossing": false,
       "P_R_negative": 1.0,
-      "alpha_equiv_median": -0.060044762596170184,
-      "alpha_equiv_p16": -0.06127868433788716,
-      "alpha_equiv_p84": -0.05895096122647882,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.060044762596170184,
+      "kappa_equiv_p16": -0.06127868433788716,
+      "kappa_equiv_p84": -0.05895096122647882,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 1.0
     },
     {
@@ -239,10 +239,10 @@
       "R_p84": -27.364800701419835,
       "R_zero_crossing": false,
       "P_R_negative": 1.0,
-      "alpha_equiv_median": -0.060041626683403286,
-      "alpha_equiv_p16": -0.06039608101738644,
-      "alpha_equiv_p84": -0.059700519806476046,
-      "alpha_zero_crossing": false,
+      "kappa_equiv_median": -0.060041626683403286,
+      "kappa_equiv_p16": -0.06039608101738644,
+      "kappa_equiv_p84": -0.059700519806476046,
+      "kappa_zero_crossing": false,
       "P_delta_chi2_gt_0": 1.0
     }
   ],

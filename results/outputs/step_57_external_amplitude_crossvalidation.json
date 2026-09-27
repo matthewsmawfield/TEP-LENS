@@ -1,0 +1,121 @@
+{
+  "step": "57",
+  "status": "success",
+  "description": "Leave-one-system-out amplitude cross-validation with shared-observation covariance.",
+  "systems": {
+    "Refsdal": {
+      "observed_delay_days": 376.0,
+      "observed_sigma_days": 5.6,
+      "combined_model_prediction_days": 346.38197516536343,
+      "combined_model_sigma_days": 8.539877010330011,
+      "residual_days": 29.61802483463657,
+      "residual_sigma_days": 10.212223036712578,
+      "models_used": [
+        "Oguri-a*",
+        "Oguri-g*",
+        "Sharon-a*",
+        "Sharon-g*",
+        "Diego-a",
+        "Grillo-g",
+        "Jauzac15.2*",
+        "Grillo+2024"
+      ],
+      "excluded_models": [],
+      "covariance_rule": "The common observed-delay error is added once after combining model predictions; it is not treated as independent across models.",
+      "unit_sensitivity_days_per_kappa": -264.32791023154516
+    },
+    "Encore": {
+      "observed_delay_days": -39.8,
+      "observed_sigma_days": 3.5999999999999996,
+      "combined_model_prediction_days": -35.71575912859324,
+      "combined_model_sigma_days": 1.334224068341252,
+      "residual_days": -4.084240871406756,
+      "residual_sigma_days": 3.8392908022890215,
+      "models_used": [
+        "glafic",
+        "GLEE",
+        "GLEE-baseline",
+        "Lenstool I",
+        "Lenstool II",
+        "MrMARTIAN",
+        "WSLAP+",
+        "Zitrin-analytic"
+      ],
+      "excluded_models": [],
+      "covariance_rule": "The common observed-delay error is added once after combining model predictions; it is not treated as independent across models.",
+      "unit_sensitivity_days_per_kappa": 8.81523426293782
+    },
+    "H0pe-AB": {
+      "observed_delay_days": -116.6,
+      "observed_sigma_days": 10.05,
+      "combined_model_prediction_days": -104.59450284867567,
+      "combined_model_sigma_days": 2.725921316000327,
+      "residual_days": -12.00549715132432,
+      "residual_sigma_days": 10.413123787846995,
+      "models_used": [
+        "GLAFIC",
+        "Zitrin-analytic",
+        "LENSTOOL",
+        "MARS",
+        "Chen-2020",
+        "Zitrin-LTM"
+      ],
+      "excluded_models": [
+        "WSLAP+"
+      ],
+      "covariance_rule": "The common observed-delay error is added once after combining model predictions; it is not treated as independent across models.",
+      "unit_sensitivity_days_per_kappa": 28.164899962864713
+    }
+  },
+  "external_training": {
+    "systems": [
+      "Encore",
+      "H0pe-AB"
+    ],
+    "kappa_lens": -0.44177825808551163,
+    "sigma_kappa_lens": 0.2818572969576071,
+    "chi2": 0.004207860299650379
+  },
+  "held_out_refsdal_prediction": {
+    "predicted_residual_days": 116.77432374547551,
+    "predicted_sigma_days": 74.50275028831634,
+    "observed_residual_days": 29.61802483463657,
+    "observed_sigma_days": 10.212223036712578,
+    "pull_sigma": -1.1590026311304127
+  },
+  "reverse_refsdal_calibration": {
+    "kappa_lens": -0.11205031208657408,
+    "sigma_kappa_lens": 0.038634675497441436,
+    "external_predictions": {
+      "Encore": {
+        "prediction_days": -0.9877497502784435,
+        "prediction_sigma_days": 0.34057371518253,
+        "observed_residual_days": -4.084240871406756,
+        "pull_sigma": -0.8033721721203304
+      },
+      "H0pe-AB": {
+        "prediction_days": -3.1558858307261297,
+        "prediction_sigma_days": 1.0881417704831786,
+        "observed_residual_days": -12.00549715132432,
+        "pull_sigma": -0.8452493497885029
+      }
+    }
+  },
+  "model_comparison": {
+    "one_contrast_per_independent_system": [
+      "Refsdal",
+      "Encore",
+      "H0pe-AB"
+    ],
+    "tep_proxy": {
+      "chi2": 1.3474949592668695,
+      "aic": 3.3474949592668697
+    },
+    "uniform_fractional_delay": {
+      "chi2": 0.11478116796069136,
+      "aic": 2.1147811679606914
+    },
+    "delta_aic_tep_minus_fractional": 1.2327137913061783
+  },
+  "verdict": "After holding Refsdal out and treating each observed-delay uncertainty as a shared system-level error, Encore plus H0pe-AB give kappa_lens = -0.442 +/- 0.282.  This predicts a Refsdal residual of +116.8 +/- 74.5 d, compared with the covariance-corrected +29.6 +/- 10.2 d; the difference is 1.16 sigma.  The external prediction is therefore statistically consistent but too imprecise to close the amplitude test, and its central value is larger than Refsdal by a factor 3.9.  A generic fractional-delay model remains modestly preferred over the log-magnification proxy (Delta AIC = 1.23)."
+}

@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-TEP-LENS: Step 054 — Transfer-Kernel First-Principles Derivation
+TEP-LENS: Step 054 — Transfer-Kernel Ansatz Diagnostic
 
-Purpose: derive the TEP lensing response from the scalar-field action by
-computing the lensing Jacobian at each image position and evaluating the
-first-order transfer-kernel ansatz.
+Purpose: evaluate a phenomenological lensing-Jacobian ansatz at each image
+position. This calculation is not a derivation from the scalar-field action.
 
 The lensing Jacobian is A_ij = delta_ij - d^2 psi / dtheta_i dtheta_j.
 Its determinant is |det A| = (1-kappa)^2 - gamma^2, so the magnification
@@ -18,8 +17,9 @@ where:
           geodesic-integrated Phi, or 1/kappa)
     K_i = log10(mu_i) - <log10(mu)>  (regularised log-magnification kernel)
 
-This step tests whether the mixed ansatz closes the amplitude gap between
-pure potential transport (sub-day) and the observed residual (+30.1 d).
+This step tests whether the mixed ansatz can reproduce the observed residual
+(+30.1 d). The potential contribution is an ordinary GR Fermat diagnostic and
+cannot be interpreted as an additional static conformal delay.
 
 Inputs : data/raw/sn_lensing/maps/hlsp_frontier_model_macs1149_glafic_v3_*.fits
          results/outputs/step_50_psi_transport.json
@@ -37,18 +37,14 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, BETA_REFSDAL, load_refsdal_image_positions
 
 STEP_NUM = "054"
 LOOP = ("S1", "S4", "SX")
 
-IMAGE_POSITIONS_DEG = {
-    "S1": (177.3984940, 22.3983310),
-    "S2": (177.3982950, 22.3985050),
-    "S3": (177.3987020, 22.3986000),
-    "S4": (177.3981840, 22.3987060),
-    "SX": (177.3974730, 22.3995270),
-}
+# Published J2000 positions (single source of truth: refsdal_glafic_v3_lensing_params.json).
+# An earlier version sampled ~10 arcsec north of the true image field.
+IMAGE_POSITIONS_DEG = load_refsdal_image_positions()
 
 MAP_URLS = {
     "kappa": "https://archive.stsci.edu/pub/hlsp/frontier/macs1149/models/glafic/v3/hlsp_frontier_model_macs1149_glafic_v3_kappa.fits",
@@ -69,10 +65,29 @@ def download_map_if_missing(map_dir: Path, key: str) -> Path:
     local_path = map_dir / filename
     if local_path.exists():
         return local_path
-    import urllib.request
+    import subprocess
+    import shutil
     url = MAP_URLS[key]
     print_status(f"Downloading {filename} from STScI archive ...", "INFO")
-    urllib.request.urlretrieve(url, local_path)
+    # Use curl with resume and retry for reliability; fall back to urllib if curl unavailable
+    if shutil.which("curl"):
+        for attempt in range(3):
+            try:
+                resume_flag = ["-C", "-"] if local_path.exists() else []
+                subprocess.run(
+                    ["curl", "-fsSL", "--retry", "3", "--retry-delay", "2"]
+                    + resume_flag + ["-o", str(local_path), url],
+                    check=True,
+                )
+                break
+            except subprocess.CalledProcessError:
+                if attempt < 2:
+                    print_status(f"Download attempt {attempt+1} failed; retrying...", "WARN")
+                else:
+                    raise
+    else:
+        import urllib.request
+        urllib.request.urlretrieve(url, local_path)
     print_status(f"Saved to {local_path}", "INFO")
     return local_path
 
@@ -84,6 +99,18 @@ def load_map_and_wcs(path: Path):
         data = hdul[0].data.astype(float)
         wcs = WCS(hdul[0].header)
     return data, wcs
+
+
+def validate_fits_size(path: Path) -> bool:
+    """Check whether the on-disk file size matches the FITS header expectation."""
+    from astropy.io import fits
+    try:
+        with fits.open(path) as hdul:
+            expected = hdul[0].data.nbytes + hdul[0].header.cards * 80
+        actual = path.stat().st_size
+        return actual >= expected
+    except Exception:
+        return False
 
 
 def sample_map_at_positions(data, wcs, positions_deg):
@@ -117,13 +144,13 @@ def loop_residual_linear(alpha, quantity, delays, loop=LOOP):
                  + (G[k] - 1.0) * (delays[i] - delays[k])), qn, G
 
 
-def transfer_kernel_residual(alpha_phi, alpha_k, P, K, delays, loop=LOOP):
+def transfer_kernel_residual(kappa_phi, kappa_k, P, K, delays, loop=LOOP):
     """
     Transfer-kernel ansatz:
-        Gamma_i = 1 + alpha_phi * P_i + alpha_k * P_i * K_i
+        Gamma_i = 1 + kappa_phi * P_i + kappa_k * P_i * K_i
     where P_i and K_i are already normalised (mean-subtracted or zero-mean).
     """
-    G = {im: 1.0 + alpha_phi * P[im] + alpha_k * P[im] * K[im] for im in P}
+    G = {im: 1.0 + kappa_phi * P[im] + kappa_k * P[im] * K[im] for im in P}
     i, j, k = loop
     return float((G[i] - 1.0) * (delays[j] - delays[i])
                  + (G[j] - 1.0) * (delays[k] - delays[j])
@@ -131,7 +158,7 @@ def transfer_kernel_residual(alpha_phi, alpha_k, P, K, delays, loop=LOOP):
 
 
 def main():
-    print_status(f"STEP {STEP_NUM}: Transfer-Kernel First-Principles Derivation", "TITLE")
+    print_status(f"STEP {STEP_NUM}: Transfer-Kernel Ansatz Diagnostic", "TITLE")
 
     # Load delays
     gl = json.load(open(PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "refsdal_glafic_v3_lensing_params.json"))
@@ -151,18 +178,62 @@ def main():
 
     kappa_map, wcs = load_map_and_wcs(kappa_path)
     psi_map, _ = load_map_and_wcs(psi_path)
-    gamma1_map, _ = load_map_and_wcs(gamma1_path)
-    gamma2_map, _ = load_map_and_wcs(gamma2_path)
 
-    kappa_vals = sample_map_at_positions(kappa_map, wcs, IMAGE_POSITIONS_DEG)
+    # Validate gamma maps; fall back to JSON values if truncated
+    gamma_from_json = False
+    if validate_fits_size(gamma1_path) and validate_fits_size(gamma2_path):
+        gamma1_map, _ = load_map_and_wcs(gamma1_path)
+        gamma2_map, _ = load_map_and_wcs(gamma2_path)
+    else:
+        print_status("WARNING: Gamma maps appear truncated on disk. "
+                     "Using JSON tabulated gamma values instead.", "WARN")
+        gamma_from_json = True
+
+    kappa_vals_raw = sample_map_at_positions(kappa_map, wcs, IMAGE_POSITIONS_DEG)
     psi_vals = sample_map_at_positions(psi_map, wcs, IMAGE_POSITIONS_DEG)
-    g1_vals = sample_map_at_positions(gamma1_map, wcs, IMAGE_POSITIONS_DEG)
-    g2_vals = sample_map_at_positions(gamma2_map, wcs, IMAGE_POSITIONS_DEG)
+    if not gamma_from_json:
+        g1_vals_raw = sample_map_at_positions(gamma1_map, wcs, IMAGE_POSITIONS_DEG)
+        g2_vals_raw = sample_map_at_positions(gamma2_map, wcs, IMAGE_POSITIONS_DEG)
+    else:
+        g1_vals_raw = {im: 0.0 for im in imgs}
+        g2_vals_raw = {im: imgs[im]["gamma"] / BETA_REFSDAL for im in imgs}  # restore D_ls/D_s=1 units
 
-    print_status("Map-sampled values at image positions:", "INFO")
+    # The archived maps are scaled to D_ls/D_s = 1 (z_s -> infinity; HLSP
+    # readme).  Rescale sampled kappa/gamma to the SN Refsdal source plane
+    # (z_s = 1.489) by beta = D_ls/D_s = 0.5339 before the Jacobian evaluation.
+    kappa_vals = {im: kappa_vals_raw[im] * BETA_REFSDAL for im in kappa_vals_raw}
+    g1_vals = {im: g1_vals_raw[im] * BETA_REFSDAL for im in g1_vals_raw}
+    g2_vals = {im: g2_vals_raw[im] * BETA_REFSDAL for im in g2_vals_raw}
+
+    print_status("Map-sampled values at image positions (kappa, gamma rescaled "
+                 "by beta=0.5339 to z_s=1.489):", "INFO")
     for im in imgs:
         g = np.sqrt(g1_vals[im]**2 + g2_vals[im]**2)
         print_status(f"  {im}: kappa={kappa_vals[im]:.3f}, gamma={g:.3f}, psi={psi_vals[im]:.2f}", "INFO")
+
+    # ------------------------------------------------------------------
+    # 1b. Verify map consistency with tabulated JSON values
+    # ------------------------------------------------------------------
+    kappa_json = {im: imgs[im]["kappa"] for im in imgs}
+    map_json_agreement = {}
+    for im in imgs:
+        map_json_agreement[im] = {
+            "kappa_map_raw_DlspDs1": kappa_vals_raw[im],
+            "kappa_map_rescaled": kappa_vals[im],
+            "kappa_json": kappa_json[im],
+            "ratio": float(kappa_vals[im] / kappa_json[im]) if kappa_json[im] > 0 else None,
+        }
+    ratios = [v["ratio"] for v in map_json_agreement.values() if v["ratio"] is not None]
+    ratio_std = np.std(ratios) if ratios else np.inf
+    ratio_mean = np.mean(ratios) if ratios else np.inf
+    maps_consistent = ratio_std < 0.2 * ratio_mean  # within 20% relative scatter
+
+    if maps_consistent:
+        print_status(f"Rescaled map kappa consistent with JSON (mean ratio={ratio_mean:.3f}, "
+                     f"std={ratio_std:.3f}). Using rescaled map-based Jacobian.", "INFO")
+    else:
+        print_status("WARNING: Rescaled map kappa does NOT match tabulated JSON values. "
+                     "Using JSON-based K for transfer-kernel evaluation.", "WARN")
 
     # ------------------------------------------------------------------
     # 2. Compute lensing Jacobian determinant and magnification
@@ -199,6 +270,13 @@ def main():
     for im in imgs:
         print_status(f"  {im}: K_json = {K_json[im]:+.4f}", "INFO")
 
+    # If map normalization is inconsistent with JSON, use JSON ground truth
+    # for the main transfer-kernel evaluation (K replaces the unphysical map-based K)
+    if not maps_consistent:
+        print_status("Map Jacobian inconsistent with JSON; substituting K_json for K in"
+                     " transfer-kernel evaluation.", "WARN")
+        K = K_json.copy()
+
     # ------------------------------------------------------------------
     # 4. Potential transport tracers P_i
     # ------------------------------------------------------------------
@@ -221,10 +299,17 @@ def main():
     kappa_json = {im: imgs[im]["kappa"] for im in imgs}
     P_inv_kappa = {im: 1.0 / kappa_json[im] for im in imgs}
 
-    # (c) Geodesic-integrated Phi from step 51
-    s51 = json.load(open(PROJECT_ROOT / "results" / "outputs" / "step_51_geodesic_transport.json"))
-    Phi_int = s51.get("geodesic_integration", {}).get("Phi_integral_Mpc", {})
-    P_geodesic = {im: Phi_int.get(im, 0.0) for im in imgs}
+    # (c) Geodesic-integrated Phi from step 51 (if available)
+    s51_path = PROJECT_ROOT / "results" / "outputs" / "step_51_geodesic_transport.json"
+    if s51_path.exists():
+        s51 = json.load(open(s51_path))
+        Phi_int = s51.get("geodesic_integration", {}).get("Phi_integral_Mpc", {})
+        P_geodesic = {im: Phi_int.get(im, 0.0) for im in imgs}
+        have_geodesic = True
+    else:
+        print_status("Step 51 output not found; skipping geodesic_Phi tracer.", "WARN")
+        P_geodesic = {im: 0.0 for im in imgs}
+        have_geodesic = False
 
     # Normalise each tracer to unit mean (so P_i is dimensionless and mean-centred)
     def normalise(q):
@@ -236,8 +321,9 @@ def main():
         "psi_max": normalise(P_psi_max),
         "psi_mean": normalise(P_psi_mean),
         "inv_kappa": normalise(P_inv_kappa),
-        "geodesic_Phi": normalise(P_geodesic),
     }
+    if have_geodesic:
+        tracers_P["geodesic_Phi"] = normalise(P_geodesic)
 
     print_status(f"\nNormalised potential tracers P_i (zero-mean):", "INFO")
     for name, P in tracers_P.items():
@@ -280,9 +366,9 @@ def main():
 
         # Fit alpha_phi and alpha_k simultaneously to match R_obs
         # System: alpha_phi * coeff_phi + alpha_k * coeff_pk = R_obs
-        # We need a second constraint.  Use alpha_phi = ALPHA_PROXY (lab-scale)
+        # We need a second constraint.  Use alpha_phi = KAPPA_LENS (lab-scale)
         # and solve for alpha_k.
-        alpha_phi_fixed = ALPHA_PROXY
+        alpha_phi_fixed = KAPPA_LENS
         if abs(coeff_pk) > 1e-12:
             alpha_k_fit = (R_obs - alpha_phi_fixed * coeff_phi) / coeff_pk
         else:
@@ -341,12 +427,12 @@ def main():
     # 6. Canonical comparison: log-magnification proxy vs transfer kernel
     # ------------------------------------------------------------------
     flux = {"S1": 1.158, "S2": 0.887, "S3": 0.716, "S4": 1.793, "SX": 0.347}
-    R_flux, _, _ = loop_residual(ALPHA_PROXY, flux, delays)
+    R_flux, _, _ = loop_residual(KAPPA_LENS, flux, delays)
     R_flux_obs = -R_flux
 
     print_status(f"\n--- Canonical comparison ---", "INFO")
     print_status(f"  Observed residual:           R_obs = {R_obs:+.2f} d", "INFO")
-    print_status(f"  Log-magnification proxy:     R_pred = {R_flux_obs:+.2f} d (alpha={ALPHA_PROXY})", "INFO")
+    print_status(f"  Log-magnification proxy:     R_pred = {R_flux_obs:+.2f} d (kappa={KAPPA_LENS})", "INFO")
 
     # Best transfer-kernel prediction (ridge fit with geodesic Phi)
     best_ridge = results_by_tracer.get("geodesic_Phi", {}).get("R_ridge_days")
@@ -370,40 +456,49 @@ def main():
                     best_match_name = f"{name}/{key}"
                     matched = err < 1.0  # within 1 day
 
-    # Ground-truth K_json result: does alpha_k_json ≈ alpha_proxy?
+    # Ground-truth K_json result: does alpha_k_json ≈ kappa_lens?
     alpha_k_json_best = results_by_tracer.get("inv_kappa", {}).get("alpha_k_json")
     alpha_k_json_match = False
     if alpha_k_json_best is not None:
-        alpha_k_json_match = abs(alpha_k_json_best - abs(ALPHA_PROXY)) < 0.01
+        alpha_k_json_match = abs(alpha_k_json_best - abs(KAPPA_LENS)) < 0.01
 
     # Summarise key numerical findings
     alpha_k_map = results_by_tracer.get("inv_kappa", {}).get("alpha_k_only")
     alpha_k_json = results_by_tracer.get("inv_kappa", {}).get("alpha_k_json")
     alpha_phi_geo = results_by_tracer.get("geodesic_Phi", {}).get("alpha_phi_only")
 
+    if maps_consistent:
+        kappa_source_clause = (
+            f"The lensing Jacobian determinant det A = (1-kappa)^2 - gamma^2 is computed "
+            f"directly from the GLAFIC v3 maps at each image position. "
+        )
+        alpha_k_clause = f"alpha_k = {alpha_k_map:.4f} (map-based)"
+    else:
+        kappa_source_clause = (
+            f"The archived GLAFIC v3 map kappa values are NOT in the same normalization as the "
+            f"Kelly+2023 tabulated parameters (ratio mean={ratio_mean:.2f}, std={ratio_std:.2f}). "
+            f"The transfer-kernel evaluation therefore uses the JSON ground-truth magnifications "
+            f"(mu = 14.6, 16.8, 19.0, 7.0, 4.2) for K_i, not the unphysical map-derived values. "
+        )
+        alpha_k_clause = f"alpha_k = {alpha_k_json:.4f} (JSON ground truth)"
+
     verdict = (
-        f"The lensing Jacobian determinant det A = (1-kappa)^2 - gamma^2 is computed "
-        f"directly from the GLAFIC v3 maps at each image position. The regularised "
-        f"kernel K_i = log10(mu_i) - <log10(mu)> quantifies the critical-lensing amplification. "
+        kappa_source_clause +
+        f"The regularised kernel K_i = log10(mu_i) - <log10(mu)> quantifies the critical-lensing amplification. "
         f"\n\n"
         f"Key findings: "
-        f"(1) Pure potential transport requires alpha_phi ~ {alpha_phi_geo:.2e} to match the observed residual, "
-        f"seven orders of magnitude larger than the lab-scale coupling. "
+        f"(1) A fitted multiple of the potential diagnostic requires alpha_phi ~ {alpha_phi_geo:.2e}; "
+        f"this is not a physical static conformal coupling because the GR potential term is already modelled. "
         f"(2) The regularised kernel K_i alone (linear in K) reproduces the residual with "
-        f"alpha_k = {alpha_k_map:.4f} (map-based) or {alpha_k_json:.4f} (JSON model), confirming that "
-        f"the Jacobian amplification is the dominant physical mechanism. "
-        f"(3) The map-based kappa values are inflated by ~4x relative to the Kelly+2023 tabulated parameters, "
-        f"so the map-derived Jacobian does not match the ground-truth lens model. "
-        f"(4) The JSON model magnifications (mu = 14.6, 16.8, 19.0, 7.0, 4.2) have a different rank ordering "
+        f"{alpha_k_clause}; this demonstrates descriptive flexibility, not a derived physical mechanism. "
+        f"(3) The JSON model magnifications (mu = 14.6, 16.8, 19.0, 7.0, 4.2) have a different rank ordering "
         f"than the flux-proxy ratios (1.16, 0.89, 0.72, 1.79, 0.35), so the transfer kernel using model magnifications "
         f"gives a different S4-SX contrast than the operational proxy. "
         f"\n\n"
-        f"Conclusion: the transfer-kernel framework identifies the lensing Jacobian as the leading "
-        f"amplification mechanism, but a precise first-principles prediction requires (a) resolving the "
-        f"map normalization offset, and (b) reconciling the model-vs-observed magnification discrepancy. "
-        f"The operational log-magnification proxy is the regularised observable form of the Jacobian kernel, "
-        f"and the amplitude gap is physical — it reflects the magnification-amplified response near "
-        f"critical lensing structure — not a numerical artefact."
+        f"Conclusion: the lensing Jacobian is a plausible variable for a future response kernel, but this "
+        f"fit neither derives that kernel from the action nor distinguishes it from other flexible responses. "
+        f"A first-principles prediction must specify the non-conformal or backreaction channel and reconcile "
+        f"the model-vs-observed magnification discrepancy before fitting the residual."
     )
 
     print_status("\n" + verdict)
@@ -415,12 +510,12 @@ def main():
         "step": STEP_NUM,
         "status": "success",
         "description": (
-            "First-principles transfer-kernel derivation: compute lensing Jacobian "
+            "Phenomenological transfer-kernel diagnostic: compute lensing Jacobian "
             "from GLAFIC maps, evaluate regularised log-magnification kernel K_i, "
             "and test the mixed ansatz Gamma = 1 + alpha_phi*P_i + alpha_k*P_i*K_i "
             "against the observed Refsdal residual."
         ),
-        "alpha_proxy_ref": ALPHA_PROXY,
+        "kappa_lens_ref": KAPPA_LENS,
         "observed_residual_days": R_obs,
         "flux_proxy_prediction_days": R_flux_obs,
         "Jacobian": {
@@ -430,6 +525,8 @@ def main():
             "mu_json_ground_truth": {im: float(mu_json[im]) for im in mu_json},
             "K_json_ground_truth": {im: float(K_json[im]) for im in K_json},
         },
+        "map_json_agreement": map_json_agreement,
+        "maps_consistent_with_json": maps_consistent,
         "transfer_kernel_results": results_by_tracer,
         "best_match": {
             "formulation": best_match_name,
@@ -439,12 +536,16 @@ def main():
         "verdict": verdict,
         "interpretation": (
             "The lensing Jacobian determinant det A = (1-kappa)^2 - gamma^2 is computed "
-            "directly from the GLAFIC v3 maps at each image position. The regularised "
-            "kernel K_i = log10(mu_i) - <log10(mu)> quantifies the critical-lensing "
-            "amplification. The first-order transfer-kernel ansatz separates the "
-            "potential transport (P_i) from the Jacobian amplification (K_i), providing "
-            "a framework for deriving the TEP lensing response from the scalar-field "
-            "action."
+            "from the GLAFIC v3 model. The regularised kernel K_i = log10(mu_i) - <log10(mu)> "
+            "quantifies critical-lensing sensitivity. The fitted first-order ansatz combines "
+            "the GR potential diagnostic (P_i) with the Jacobian variable (K_i), but is not "
+            "derived from the scalar-field action and is not an additional static conformal delay. "
+            + (
+                "When the archived map normalization is inconsistent with the Kelly+2023 "
+                "tabulated parameters, the JSON ground-truth magnifications are used for K_i."
+                if not maps_consistent else
+                ""
+            )
         ),
     }
     out_path = PROJECT_ROOT / "results" / "outputs" / f"step_{STEP_NUM}_transfer_kernel_first_principles.json"

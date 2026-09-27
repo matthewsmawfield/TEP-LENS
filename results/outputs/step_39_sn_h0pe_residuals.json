@@ -3,7 +3,7 @@
   "system": "SN H0pe",
   "status": "success",
   "description": "Blind-prediction residual test for SN H0pe (PLCK G165.7+67.0). Seven independent lens models from Pascale+2025 compared against Pierel+2024 observed delays for two image pairs (AB, CB).",
-  "alpha_prior": {
+  "kappa_prior": {
     "mean": -0.11801455702619729,
     "sigma": 0.02866574993909914
   },
@@ -429,7 +429,7 @@
   "tep_prediction": {
     "R_tep_AB_days": -3.3238681928046394,
     "R_tep_CB_days": -0.5422571244112978,
-    "alpha_used": -0.11801455702619729,
+    "kappa_used": -0.11801455702619729,
     "log10_mu_ratio_AB": -0.2566862607688741,
     "log10_mu_ratio_CB": -0.09487901406772153,
     "dt_mean_pred_AB": -109.72500000000001,

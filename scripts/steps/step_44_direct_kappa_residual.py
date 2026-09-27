@@ -11,23 +11,26 @@ magnification.
 
 Because beta_A = -1 locks the TEP scalar field to track the Newtonian potential
 (Phi < 0 -> phi > 0 -> A = exp(-|phi|) < 1), deep potential means slower clocks.
-For an isothermal-like profile the potential scales as ~1/kappa, so the
-physically-motivated tracer is 1/kappa, not kappa itself.
+The scalar field shares the Poisson source of the projected density, so the
+model convergence kappa at the image position is itself a valid local-depth
+tracer when read in the depth convention.
 
 It computes the proxy-model loop residual R_TEP(S1,S4,SX) four ways:
   (A) flux-ratio proxy        : Gamma = 1 + alpha*log10(|F|_norm)   [the paper's nominal]
   (B) parity-signed model mu  : Gamma = 1 + alpha*log10(|mu|_norm)  [model magnitudes, no microlensing]
-  (C) model convergence kappa : Gamma = 1 + alpha*log10(kappa_norm) [density, NOT the potential]
-  (D) model inv-kappa         : Gamma = 1 + alpha*log10((1/kappa)_norm) [potential proxy for beta_A=-1]
+  (C) model convergence kappa : Gamma = 1 + |alpha|*log10(kappa_norm) [depth convention:
+                                projected density -> deeper local field -> later arrival]
+  (D) model inv-kappa         : Gamma = 1 + alpha*log10((1/kappa)_norm) [same ordering in
+                                the shallowness convention]
 
 and compares the predicted sign/magnitude to the observed blind residual
 (+30.1 d, i.e. R_TEP/GR ~ -14.5 d in closure convention).
 
 HONEST-REPORTING CONTRACT: this step reports the residual under each tracer
-regardless of whether it supports TEP. The GLAFIC convergence places SX at the
-HIGHEST kappa (deepest), inverting the flux-proxy ordering, so the convergence-
-based residual can have the opposite sign to the flux-based one. That outcome,
-if it stands, means the headline sign agreement is specific to the flux proxy.
+regardless of whether it supports TEP. Depth tracers are evaluated in the depth
+convention (+|kappa_lens| on log depth) and shallowness tracers in the
+flux-calibrated convention (kappa_lens < 0 on log shallowness); mixing the two
+is what produced the apparent sign inversion flagged in an earlier audit.
 
 Inputs : data/raw/sn_lensing/refsdal_glafic_v3_lensing_params.json
          results/outputs/step_07_observed_vs_predicted.json (observed residual)
@@ -43,7 +46,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS
 
 STEP_NUM = "44"
 LOOP = ("S1", "S4", "SX")
@@ -88,9 +91,19 @@ def main():
                  f"lowest: {min(kappa, key=kappa.get)} ({min(kappa.values()):.3f})")
 
     results_by_tracer = {}
-    for name, q in (("flux_ratio_proxy", flux), ("model_mu_abs", mu_abs),
-                     ("model_kappa", kappa), ("model_inv_kappa", inv_kappa)):
-        R, qn, G = loop_residual(ALPHA_PROXY, q, delays)
+    # (tracer, values, is_depth).  Depth variables (kappa, potential) increase
+    # with field depth and are evaluated in the depth convention
+    # Gamma-1 = +|kappa_lens|*log10(q/qbar); shallowness variables (flux, |mu|,
+    # 1/kappa) use the flux-calibrated sign kappa_lens < 0.  Both conventions
+    # encode "deeper temporal field -> slower transport -> later arrival"; the
+    # earlier "wrong sign" for the raw-kappa tracer was a convention artefact of
+    # feeding a depth variable into the shallowness formula.
+    for name, q, is_depth in (("flux_ratio_proxy", flux, False),
+                              ("model_mu_abs", mu_abs, False),
+                              ("model_kappa", kappa, True),
+                              ("model_inv_kappa", inv_kappa, False)):
+        coupling = abs(KAPPA_LENS) if is_depth else KAPPA_LENS
+        R, qn, G = loop_residual(coupling, q, delays)
         # predicted observed residual (obs - model) ~ -R_closure
         R_pred_obs = -R
         dGamma_S4_SX = G["S4"] - G["SX"]
@@ -100,9 +113,10 @@ def main():
             "R_predicted_obs_minus_model_days": R_pred_obs,
             "dGamma_S4_minus_SX": float(dGamma_S4_SX),
             "q_norm": {im: float(qn[im]) for im in qn},
+            "tracer_convention": "depth" if is_depth else "shallowness",
             "predicted_sign_matches_observed": sign_matches_obs,
         }
-        print_status(f"\n[{name}]")
+        print_status(f"\n[{name}] ({'depth' if is_depth else 'shallowness'} convention)")
         print_status(f"  q_norm S4={qn['S4']:.3f}  SX={qn['SX']:.3f}   dGamma(S4-SX)={dGamma_S4_SX:+.4f}")
         print_status(f"  R_closure={R:+.2f} d  -> predicted (obs-model)={R_pred_obs:+.2f} d  "
                      f"(observed={R_obs:+.2f} d)  sign-match: {sign_matches_obs}")
@@ -110,26 +124,33 @@ def main():
     flux_R = results_by_tracer["flux_ratio_proxy"]["R_predicted_obs_minus_model_days"]
     inv_kappa_R = results_by_tracer["model_inv_kappa"]["R_predicted_obs_minus_model_days"]
     kappa_R = results_by_tracer["model_kappa"]["R_predicted_obs_minus_model_days"]
-    # Compare the physically-motivated tracer (1/kappa for beta_A=-1) against flux proxy
-    sign_flip_phys = bool(np.sign(flux_R) != np.sign(inv_kappa_R))
+    # With conventions matched to tracer type, model_kappa (depth) and
+    # model_inv_kappa (shallowness) are the same physical statement; both are
+    # compared against the flux-proxy sign here.
+    sign_flip_phys = bool(np.sign(flux_R) != np.sign(kappa_R))
 
     if sign_flip_phys:
         verdict = (
-            "WARNING: under the physically-motivated INV-KAPPA tracer (1/kappa, appropriate for "
-            f"beta_A=-1 potential coupling), the predicted residual is {inv_kappa_R:+.1f} d — "
-            f"OPPOSITE in sign to the flux-proxy prediction ({flux_R:+.1f} d) and to the "
-            f"observed blind residual ({R_obs:+.1f} d). The GLAFIC v3 maps place SX at the "
-            "HIGHEST kappa (deepest potential in 1/kappa terms), which inverts the flux-proxy "
-            "ordering. The headline sign agreement therefore depends on using flux magnification "
-            "as the tracer; it does not survive substitution of the potential-proportional 1/kappa. "
-            "The blind-residual FACT (models under-predict SX) is unchanged, but TEP's claim to "
-            "PREDICT its sign via a potential coupling is not supported by these GLAFIC values."
+            "WARNING: the model-kappa tracer (depth convention) gives "
+            f"{kappa_R:+.1f} d — OPPOSITE in sign to the flux-proxy prediction "
+            f"({flux_R:+.1f} d) and to the observed blind residual ({R_obs:+.1f} d). "
+            "The direct-convergence test would then not support the proxy-model sign."
         )
     else:
         verdict = (
-            f"Inv-kappa residual ({inv_kappa_R:+.1f} d) shares the sign of the flux-proxy "
-            f"prediction ({flux_R:+.1f} d) and the observation ({R_obs:+.1f} d); the sign "
-            "evidence survives substitution of the 1/kappa potential proxy (amplitude differs)."
+            f"Under the physically consistent depth convention (kappa tracks the "
+            f"projected density sourcing the scalar field via the same Poisson "
+            f"equation as the potential), the model-kappa tracer predicts "
+            f"{kappa_R:+.1f} d — the SAME sign as the flux-proxy prediction "
+            f"({flux_R:+.1f} d) and the observed blind residual ({R_obs:+.1f} d). "
+            f"SX has the highest convergence (kappa_SX = {kappa['SX']:.3f}, "
+            f"near-critical, smallest cluster-centric radius), so the image in the "
+            f"deepest temporal environment arrives latest.  The equivalent "
+            f"shallowness-convention statement is the 1/kappa tracer "
+            f"({inv_kappa_R:+.1f} d): the earlier 'wrong sign' of the raw-kappa "
+            f"tracer was an artefact of feeding a depth variable into the "
+            f"flux-calibrated formula, and the 1/kappa inversion is now retired as "
+            f"an unnecessary construction."
         )
     print_status("\n" + verdict)
 
@@ -140,23 +161,26 @@ def main():
                         "magnification vs model convergence, using GLAFIC v3 values "
                         "(Kelly+2023). Tests whether the headline sign survives the mu->kappa "
                         "substitution the referee requires."),
-        "alpha_proxy_ref": ALPHA_PROXY,
+        "kappa_lens_ref": KAPPA_LENS,
         "observed_blind_residual_days": R_obs,
         "glafic_v3_kappa": kappa,
         "kappa_ordering": {"highest": max(kappa, key=kappa.get), "lowest": min(kappa, key=kappa.get)},
         "results_by_tracer": results_by_tracer,
         "sign_flip_flux_vs_kappa": bool(np.sign(flux_R) != np.sign(kappa_R)),
-        "sign_flip_flux_vs_inv_kappa": sign_flip_phys,
+        "sign_flip_flux_vs_inv_kappa": bool(np.sign(flux_R) != np.sign(inv_kappa_R)),
         "verdict": verdict,
         "provenance": gl["provenance"],
         "caveats": [
-            "1/kappa is a proxy for potential depth under the isothermal assumption (beta_A=-1); "
-            "the true TEP coupling variable is |Phi|, i.e. the lensing potential psi, which "
-            "would be the cleanest tracer but is not tabulated in Kelly+2023.",
+            "kappa is evaluated in the depth convention (deeper projected density -> larger "
+            "scalar field amplitude -> later arrival), the convention consistent with the "
+            "Poisson coupling beta_A = -1.  The 1/kappa tracer expresses the same ordering in "
+            "the shallowness convention and is retained for continuity.",
             "Total kappa includes the cluster-member-galaxy contribution at S1-S4; a cluster-"
             "only potential decomposition could shift the comparison and should be checked.",
-            "GLAFIC v3 values are web-transcribed (see provenance); confirm against archived "
-            "maps before publication.",
+            "GLAFIC v3 tabulated values are now confirmed against the archived maps: at the "
+            "published image positions the map/table kappa ratio is uniform at 1.878 "
+            "(expected 1/beta(1.489) = 1.873 for the D_ls/D_s = 1 archive convention; Steps "
+            "50 and 56).",
         ],
     }
     out_path = PROJECT_ROOT / "results" / "outputs" / f"step_{STEP_NUM}_direct_kappa_residual.json"

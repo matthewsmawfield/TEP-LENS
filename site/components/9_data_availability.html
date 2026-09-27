@@ -14,8 +14,8 @@
         <em>GitHub Repository:</em> <a href="https://github.com/matthewsmawfield/TEP-LENS">github.com/matthewsmawfield/TEP-LENS</a>
     </p>
     <p>
-        The repository contains a deterministic, version-controlled analysis pipeline covering <em>Steps 00–20, 30–46, and 50–55</em>,
-        including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting.
+        The repository contains a deterministic, version-controlled analysis pipeline covering <em>Steps 00–20, 30–46, and 50–57</em>,
+        including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, conformal-cancellation auditing, response-transfer auditing, cross-system kernel consistency auditing, external amplitude cross-validation, and future-system forecasting.
     </p>
 
     <h4>Repository Structure</h4>
@@ -101,7 +101,7 @@ cd TEP-LENS
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–55
+# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–57
 python scripts/steps/run_all_steps.py
 
 # 4. Build manuscript
@@ -145,7 +145,7 @@ npm run build
     </table>
 
     <h4>Detailed Pipeline Steps</h4>
-    <p>The analysis pipeline covers <em>Steps 00–20, 30–46, and 50–55</em>, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:</p>
+    <p>The analysis pipeline covers <em>Steps 00–20, 30–46, and 50–57</em>, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, conformal-cancellation auditing, external amplitude cross-validation, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:</p>
 
     <h5>Data Acquisition & Closure Tests (Steps 00-04)</h5>
     <ul>
@@ -159,7 +159,7 @@ npm run build
     <h5>TDCOSMO & H0 Analysis (Steps 05-10)</h5>
     <ul>
         <li><em>step_05_tdcosmo_shear.py</em> — TDCOSMO temporal shear test; computes TEP-predicted delay shifts as a predicted-sensitivity consistency check</li>
-        <li><em>step_06_alpha_sensitivity.py</em> — α₀ parameter sensitivity analysis; tests how predicted GR discrepancies depend on TEP coupling</li>
+        <li><em>step_06_kappa_sensitivity.py</em> — κ₀ parameter sensitivity analysis; tests how predicted GR discrepancies depend on TEP coupling</li>
         <li><em>step_07_observed_vs_predicted.py</em> — Observed vs blind-predicted delay comparison; blind sign evidence + post-hoc proxy sensitivity (not pre-observation forecast)</li>
         <li><em>step_08_new_evidence.py</em> — Compile new evidence from independent lens systems</li>
         <li><em>step_09_precision_roadmap.py</em> — Precision requirements analysis; quantifies significance as a function of model precision and sample size</li>
@@ -194,7 +194,7 @@ npm run build
         <li><em>step_34_agnostic_rank_test.py</em> — Agnostic rank test; proxy-agnostic statistical verification of rank-order predictions</li>
         <li><em>step_35_single_contrast_dominance.py</em> — Single-contrast dominance quantification; effective degrees of freedom and signal-energy fractions</li>
         <li><em>step_36_falsification_forward_prediction.py</em> — Falsification forward prediction; forward-projected thresholds for SN 2025wny</li>
-        <li><em>step_37_multi_system_evidence.py</em> — Multi-system evidence accumulation projection; Stouffer projection and alpha-inference scaling with N independent systems</li>
+        <li><em>step_37_multi_system_evidence.py</em> — Multi-system evidence accumulation projection; Stouffer projection and coupling-inference scaling with N independent systems</li>
         <li><em>step_38_cosmograil_cross_system.py</em> — CosmoGRAIL cross-system directional consistency diagnostic; caveated quasar check separate from the supernova residual tests</li>
         <li><em>step_38_sn_encore_residuals.py</em> — SN Encore blind-prediction residual test; 8 independent lens models from Suyu+2025 vs Pierel+2026 observed delay</li>
         <li><em>step_39_sn_h0pe_residuals.py</em> — SN H0pe blind-prediction residual test; 7 independent lens models from Pascale+2025 vs Pierel+2024 observed delays</li>
@@ -221,6 +221,10 @@ npm run build
         <li><code>results/outputs/step_38_sn_encore_residuals.json</code> — SN Encore blind-prediction residuals and GR null tests</li>
         <li><code>results/outputs/step_39_sn_h0pe_residuals.json</code> — SN H0pe blind-prediction residuals and GR null tests</li>
         <li><code>results/outputs/step_40_cross_system_trio.json</code> — Cross-system trio Stouffer combination and sign-consistency check</li>
+        <li><code>results/outputs/step_56_transport_lapse.json</code> — Conformal transport audit; demonstrates that the static $\psi$ term is already the GR Fermat/Shapiro contribution</li>
+        <li><code>results/outputs/step_57_external_amplitude_crossvalidation.json</code> — Refsdal hold-out amplitude prediction from Encore and H0pe with shared-observation covariance retained</li>
+        <li><code>results/outputs/step_58_h0_channel_audit.json</code> — H0LiCOW/TDCOSMO-class time-delay channel audit under the TEP mechanism (per-system propagated-transport ceilings, endpoint rescaling, mass-model self-consistency, kinematic-prior slip sign, real $\kappa_{\rm ext}$ widths and the SDSS1206+4332 power-law-vs-composite distance floor)</li>
+        <li><code>results/outputs/step_60_mass_slip_two_directions.json</code> — two-direction mass-sheet slip bookkeeping: per-contrast implied slips $\lambda = \mathcal{R}_{\rm obs}/\langle\Delta t_{\rm pred}\rangle$, counter-direction $|\lambda|$ bounds for zero-consistent contrasts, negative-slip census across all per-model residuals, and the pooled common-slip consistency test</li>
     </ul>
 
     <h3>Software Versions</h3>

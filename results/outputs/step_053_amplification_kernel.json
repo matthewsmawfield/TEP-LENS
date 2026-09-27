@@ -3,20 +3,20 @@
   "status": "success",
   "observed_residual_days": 30.04957673068333,
   "transport_residuals": {
-    "psi_map_best_days": 1.398709961130021,
+    "psi_map_best_days": 2.4682388605135475,
     "psi_map_best_tracer": "psi_map_bg_annulus",
-    "geodesic_proxy_days": 0.34595105273079507,
-    "fundamental_formula_days": 0.7817342923820156,
+    "geodesic_proxy_days": 0.14808992093122797,
+    "fundamental_formula_days": 0.3416215430561529,
     "psi_x_logmu_days": 0.0,
     "geodesic_phi_x_logmu_days": 0.0
   },
   "amplification_factors": {
-    "psi_map": 21.483779744019415,
-    "geodesic": 86.86077551573945,
-    "fundamental": 38.439629709884585,
+    "psi_map": 12.174501103362074,
+    "geodesic": 202.91439513049755,
+    "fundamental": 87.9615976845583,
     "psi_x_logmu": null,
     "geodesic_phi_x_logmu": null
   },
-  "verdict": "Direct potential transport underpredicts the observed amplitude by a factor of 21. Geodesic transport underpredicts by 87x, and the fundamental formula by 38x. This quantifies the magnification-amplification kernel: the log-magnification response captures an empirical amplification of order 10\u2013400 relative to pure potential transport, consistent with near-critical lensing structure enhancing the temporal response.",
-  "interpretation": "The amplification kernel K quantifies how much stronger the observed residual is compared to pure potential/geodesic transport predictions. K ~ 10\u2013400 indicates that the log-magnification response encodes a lensing-geometry amplification not captured by scalar potential alone. This identifies the central theoretical target: the TEP lensing transfer function must explain not only the sign of temporal shear, but the magnification-amplified response near critical lensing structure."
+  "verdict": "The observed residual is numerically 12 times the selected psi diagnostic; the corresponding geodesic and endpoint-rescaling ratios are 203 and 88. These are descriptive scale ratios, not a derived amplification kernel: the static potential terms are already included in the GR Fermat delay. A physical residual requires an independently derived backreaction, time-dependent, or disformal response.",
+  "interpretation": "The reported K values are numerical ratios to lens-environment diagnostics, not physical amplification measurements. The central theoretical target is an action-derived non-conformal or backreaction lensing response that predicts both the sign and amplitude without reusing the GR potential term."
 }

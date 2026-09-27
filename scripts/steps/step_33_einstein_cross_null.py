@@ -25,7 +25,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
 from scripts.utils.plot_style import set_pub_style, COLORS
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "33"
 
@@ -67,7 +67,7 @@ def main():
     mu_ref = np.mean(list(mu_rel.values()))
     mu_norm = {img: mu_rel[img] / mu_ref for img in mu_rel}
 
-    alpha_nominal = ALPHA_PROXY
+    alpha_nominal = KAPPA_LENS
     Gamma = {img: 1.0 + alpha_nominal * np.log10(mu_norm[img]) for img in mu_norm}
 
     # ------------------------------------------------------------------

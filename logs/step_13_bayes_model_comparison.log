@@ -1,21 +1,21 @@
 
-[18:50:16] [INFO] ======================================================================
-[18:50:16] [INFO] STEP 13: Bayesian GR vs TEP Comparison
-[18:50:16] [INFO] ======================================================================
-[18:50:18] [INFO] [baseline] logZ(GR)        = -39.22
-[18:50:18] [INFO] [baseline] logZ(TEP fixed) = -39.16
-[18:50:18] [INFO] [baseline] logZ(TEP free)  = -39.70
-[18:50:18] [INFO] [baseline] log BF fixed/GR = +0.06 (BF=1.06)
-[18:50:18] [INFO] [baseline] log BF free/GR  = -0.49 (BF=0.615)
-[18:50:18] [INFO] [baseline] Posterior tau   = 10.10 [2.29, 17.81] d
-[18:50:18] [INFO] [baseline] Posterior alpha = -0.0384 [-0.1237, 0.0455]
-[18:50:20] [INFO] [h0pe2025_informed] logZ(GR)        = -39.51
-[18:50:20] [INFO] [h0pe2025_informed] logZ(TEP fixed) = -39.51
-[18:50:20] [INFO] [h0pe2025_informed] logZ(TEP free)  = -40.22
-[18:50:20] [INFO] [h0pe2025_informed] log BF fixed/GR = -0.00 (BF=0.997)
-[18:50:20] [INFO] [h0pe2025_informed] log BF free/GR  = -0.71 (BF=0.492)
-[18:50:20] [INFO] [h0pe2025_informed] Posterior tau   = 11.16 [2.51, 19.72] d
-[18:50:20] [INFO] [h0pe2025_informed] Posterior alpha = -0.0379 [-0.1300, 0.0516]
-[18:50:20] [INFO] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_13_bayes_comparison.png
-[18:50:20] [INFO] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_13_bayes_model_comparison.json
-[18:50:20] [INFO] Step 13 complete.
+[01:23:06] [INFO] ======================================================================
+[01:23:06] [INFO] STEP 13: Bayesian GR vs TEP Comparison
+[01:23:06] [INFO] ======================================================================
+[01:23:07] [INFO] [baseline] logZ(GR)        = -39.58
+[01:23:07] [INFO] [baseline] logZ(TEP fixed) = -39.38
+[01:23:07] [INFO] [baseline] logZ(TEP free)  = -39.95
+[01:23:07] [INFO] [baseline] log BF fixed/GR = +0.21 (BF=1.23)
+[01:23:07] [INFO] [baseline] log BF free/GR  = -0.37 (BF=0.692)
+[01:23:07] [INFO] [baseline] Posterior tau   = 10.61 [2.48, 18.60] d
+[01:23:07] [INFO] [baseline] Posterior kappa = -0.0535 [-0.1388, 0.0311]
+[01:23:09] [INFO] [h0pe2025_informed] logZ(GR)        = -39.74
+[01:23:09] [INFO] [h0pe2025_informed] logZ(TEP fixed) = -39.65
+[01:23:09] [INFO] [h0pe2025_informed] logZ(TEP free)  = -40.38
+[01:23:09] [INFO] [h0pe2025_informed] log BF fixed/GR = +0.09 (BF=1.1)
+[01:23:09] [INFO] [h0pe2025_informed] log BF free/GR  = -0.64 (BF=0.529)
+[01:23:09] [INFO] [h0pe2025_informed] Posterior tau   = 11.81 [2.77, 20.71] d
+[01:23:09] [INFO] [h0pe2025_informed] Posterior kappa = -0.0489 [-0.1409, 0.0422]
+[01:23:09] [INFO] Figure saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_13_bayes_comparison.png
+[01:23:09] [INFO] Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_13_bayes_model_comparison.json
+[01:23:09] [INFO] Step 13 complete.

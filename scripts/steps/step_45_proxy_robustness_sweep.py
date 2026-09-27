@@ -44,7 +44,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS
 
 STEP_NUM = "45"
 LOOP = ("S1", "S4", "SX")
@@ -165,7 +165,7 @@ def process_model(model_path, observed_residual, flux_proxy):
             }
             continue
 
-        R, qn, G = loop_residual(ALPHA_PROXY, q, delays, loop=tuple(present))
+        R, qn, G = loop_residual(KAPPA_LENS, q, delays, loop=tuple(present))
         pred_obs = -R  # closure convention -> observed residual
         sign_match = bool(np.sign(pred_obs) == np.sign(observed_residual))
 
@@ -223,7 +223,7 @@ def run_theory_space_mc(observed_residual, n_draws=20000, seed=20260607):
                 k = 0.01
             kappa_draw[img] = k
 
-        R, _, _ = loop_residual(ALPHA_PROXY, kappa_draw, delays, LOOP)
+        R, _, _ = loop_residual(KAPPA_LENS, kappa_draw, delays, LOOP)
         pred_obs = -R
         sign_match_flags.append(np.sign(pred_obs) == np.sign(observed_residual))
         pred_obs_vals.append(pred_obs)
@@ -361,7 +361,7 @@ def main():
             "under multiple lens-model tracers. Measures how proxy-dependent "
             "the headline directional evidence is."
         ),
-        "alpha_proxy": ALPHA_PROXY,
+        "kappa_lens": KAPPA_LENS,
         "observed_residual_days": observed_residual,
         "loop_images": list(LOOP),
         "n_models_evaluated": len(model_results),

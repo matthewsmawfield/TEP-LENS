@@ -20,7 +20,7 @@ The analysis:
    Which hypothesis is better supported by the ensemble of residuals?
 6. TEP-corrected consistency: compute the TEP-corrected observation
    Delta_t_corr = Delta_t_obs - R_TEP and show it reduces scatter vs raw.
-7. Inferred alpha from weighted mean residual.
+7. Inferred kappa from weighted mean residual.
 
 Data sources:
 - Kelly et al. 2023, Science 380, abh1322, Supplementary Table S4 (blind model predictions)
@@ -37,7 +37,7 @@ from scipy import stats as scipy_stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 from scripts.utils.plot_style import set_pub_style, COLORS, FIG_SIZE
 
 STEP_NUM = "07"
@@ -239,7 +239,7 @@ def main():
     with open(step03_path) as f:
         s3 = json.load(f)
     d_tep_gr_days = s3["tep_predicted_discrepancies"]["S1_S4_SX"]["tep_gr_discrepancy_days"]
-    alpha_ref      = s3["alpha_tep"]
+    kappa_ref      = s3["kappa_tep"]
 
     # Flip sign to get Residual Prediction
     R_tep_prediction = -d_tep_gr_days
@@ -247,9 +247,9 @@ def main():
     # Unit sensitivity (Residual per alpha)
     # R_resid = -d_TEP_GR = -(k * alpha) = (-k) * alpha.
     # So unit = - (d_TEP_GR / alpha)
-    R_tep_unit = R_tep_prediction / alpha_ref
+    R_tep_unit = R_tep_prediction / kappa_ref
 
-    print_status(f"TEP predicted GR discrepancy from Step 03: {d_tep_gr_days:.3f} d (alpha={alpha_ref})")
+    print_status(f"TEP predicted GR discrepancy from Step 03: {d_tep_gr_days:.3f} d (alpha={kappa_ref})")
     print_status(f"TEP Predicted Residual (Obs-Model): {R_tep_prediction:.3f} d")
     print_status(f"Sensitivity: {R_tep_unit:.1f} d per unit alpha")
 
@@ -268,7 +268,7 @@ def main():
         sigma_m = (m["err_plus"] + m["err_minus"]) / 2.0
         sigma_tot = float(np.sqrt(obs_err**2 + sigma_m**2))
         z = delta / sigma_tot
-        alpha_inferred = delta / R_tep_unit if R_tep_unit != 0 else None
+        kappa_inferred = delta / R_tep_unit if R_tep_unit != 0 else None
         dt_pred_original = m.get("dt_pred_original", m["dt_pred"])
         delta_original = obs_value - dt_pred_original
         z_original = delta_original / sigma_tot
@@ -294,7 +294,7 @@ def main():
             "sigma_total_days": sigma_tot,
             "z_score": float(z),
             "z_score_original": float(z_original),
-            "alpha_inferred": float(alpha_inferred) if alpha_inferred is not None else None,
+            "kappa_inferred": float(kappa_inferred) if kappa_inferred is not None else None,
         })
 
         print_status(
@@ -436,14 +436,14 @@ def main():
     sigma_tep_comparison = sigma_R_obs
     z_tep = tep_residual / sigma_tep_comparison
 
-    # Inferred alpha from weighted mean
-    alpha_inferred_wmean = R_obs_weighted / R_tep_unit
+    # Inferred kappa from weighted mean
+    kappa_inferred_wmean = R_obs_weighted / R_tep_unit
 
     print_status(f"\nProxy sensitivity check (post-hoc, not pre-observation forecast):")
     print_status(f"  R_obs (weighted)  = {R_obs_weighted:+.2f} +/- {sigma_R_obs:.2f} d")
-    print_status(f"  Nominal proxy   = {R_tep_prediction:+.3f} d  (alpha={alpha_ref})")
+    print_status(f"  Nominal proxy   = {R_tep_prediction:+.3f} d  (alpha={kappa_ref})")
     print_status(f"  Tension           = {z_tep:+.2f} sigma")
-    print_status(f"  Inferred alpha    = {alpha_inferred_wmean:.4f} "
+    print_status(f"  Inferred kappa    = {kappa_inferred_wmean:.4f} "
                  f"(if R_obs attributed entirely to TEP)")
 
     # GR null test: is R_obs consistent with zero?
@@ -453,7 +453,7 @@ def main():
     print_status(f"  Tension with GR (R=0): {z_gr:+.2f} sigma")
 
     # ------------------------------------------------------------------
-    # Bootstrap confidence interval for alpha inference (sign-stability check).
+    # Bootstrap confidence interval for coupling inference (sign-stability check).
     # Resample models with replacement to characterise model-to-model scatter.
     # NOTE: this interval reflects scatter in the ensemble MEAN only; it ignores
     # per-model measurement errors and is therefore NARROWER than the analytical
@@ -463,30 +463,30 @@ def main():
     rng = np.random.default_rng(42)
     n_boot = 10000
     n_mod = len(models)
-    boot_alphas = []
+    boot_kappas = []
     for _ in range(n_boot):
         idx = rng.integers(0, n_mod, size=n_mod)
         d_boot = deltas[idx]
         s_boot = sigma_tots[idx]
         w_boot = 1.0 / s_boot**2
         r_boot = float((w_boot * d_boot).sum() / w_boot.sum())
-        boot_alphas.append(r_boot / R_tep_unit)
-    boot_alphas = np.array(boot_alphas)
-    boot_alpha_p16 = float(np.percentile(boot_alphas, 16))
-    boot_alpha_p50 = float(np.percentile(boot_alphas, 50))
-    boot_alpha_p84 = float(np.percentile(boot_alphas, 84))
-    boot_alpha_mean = float(boot_alphas.mean())
-    boot_alpha_std = float(boot_alphas.std(ddof=1))
+        boot_kappas.append(r_boot / R_tep_unit)
+    boot_kappas = np.array(boot_kappas)
+    boot_alpha_p16 = float(np.percentile(boot_kappas, 16))
+    boot_alpha_p50 = float(np.percentile(boot_kappas, 50))
+    boot_alpha_p84 = float(np.percentile(boot_kappas, 84))
+    boot_alpha_mean = float(boot_kappas.mean())
+    boot_alpha_std = float(boot_kappas.std(ddof=1))
     # Fraction of bootstrap draws with alpha < 0 (GR exclusion)
-    boot_frac_negative = float(np.mean(boot_alphas < 0))
+    boot_frac_negative = float(np.mean(boot_kappas < 0))
     # Analytical 1-sigma uncertainty on alpha from residual precision
     sigma_alpha_analytical = sigma_R_obs / abs(R_tep_unit)
-    # Fraction consistent with empirical alpha_ref within 1 sigma
+    # Fraction consistent with empirical kappa_ref within 1 sigma
     boot_frac_consistent = float(
-        np.mean((boot_alphas >= alpha_ref - sigma_alpha_analytical) & (boot_alphas <= alpha_ref + sigma_alpha_analytical))
+        np.mean((boot_kappas >= kappa_ref - sigma_alpha_analytical) & (boot_kappas <= kappa_ref + sigma_alpha_analytical))
     )
 
-    print_status(f"\nBootstrap alpha inference (N={n_boot}, resampling models with replacement):")
+    print_status(f"\nBootstrap coupling inference (N={n_boot}, resampling models with replacement):")
     print_status(f"  Bootstrap mean alpha   = {boot_alpha_mean:+.4f}")
     print_status(f"  Bootstrap std (resampling scatter ONLY) = {boot_alpha_std:.4f}")
     print_status(f"  WARNING: bootstrap std is NOT the headline uncertainty.")
@@ -494,7 +494,7 @@ def main():
     print_status(f"  Bootstrap median       = {boot_alpha_p50:+.4f}")
     print_status(f"  68% CI (16th-84th pct) = [{boot_alpha_p16:+.4f}, {boot_alpha_p84:+.4f}]")
     print_status(f"  P(alpha < 0 | data)    = {boot_frac_negative:.3f} ({boot_frac_negative*100:.1f}%)")
-    print_status(f"  P(|alpha - alpha_ref| < {sigma_alpha_analytical:.3f}) = {boot_frac_consistent:.3f}")
+    print_status(f"  P(|alpha - kappa_ref| < {sigma_alpha_analytical:.3f}) = {boot_frac_consistent:.3f}")
 
     # ------------------------------------------------------------------
     # Binomial sign tests
@@ -658,7 +658,7 @@ def main():
 
     # Proxy-corrected observed value
     ax.axvline(dt_corr, color=COLORS['tep'], lw=1.8, ls="--", zorder=4,
-               label=f"Proxy-corrected: {dt_corr:.1f} d (obs $-$ $\\mathcal{{R}}_{{\\rm pred}}$, $\\alpha_{{\\rm lens}}={alpha_ref}$)")
+               label=f"Proxy-corrected: {dt_corr:.1f} d (obs $-$ $\\mathcal{{R}}_{{\\rm pred}}$, $\\alpha_{{\\rm lens}}={kappa_ref}$)")
     ax.axvspan(dt_corr - obs_err, dt_corr + obs_err,
                alpha=0.10, color=COLORS['tep'], zorder=1)
 
@@ -708,7 +708,7 @@ def main():
                 alpha=0.18, color=COLORS['observed'])
     ax2.axvline(R_tep_prediction, color=COLORS['tep'], lw=1.8, ls="--",
                 label=f"Proxy prediction $\\mathcal{{R}}_{{\\rm pred}}$ = "
-                      f"{R_tep_prediction:+.1f} d ($\\alpha_{{\\rm lens}}={alpha_ref}$)")
+                      f"{R_tep_prediction:+.1f} d ($\\alpha_{{\\rm lens}}={kappa_ref}$)")
 
     ax2.set_yticks(y_pos)
     ax2.set_yticklabels(model_names, )
@@ -778,8 +778,8 @@ def main():
 
     ax3.axhline(0, color="black", lw=1.0, ls=":", label="GR null ($\\alpha=0$)")
 
-    ax3.axvline(alpha_ref, color="grey", lw=1.0, ls=":",
-                label=rf"$\alpha_{{\rm ref}} = {alpha_ref}$")
+    ax3.axvline(kappa_ref, color="grey", lw=1.0, ls=":",
+                label=rf"$\alpha_{{\rm ref}} = {kappa_ref}$")
 
     ax3.set_xlabel(r"Proxy-model coupling $\alpha$", )
     ax3.set_ylabel(r"$\mathcal{R}_{\rm pred}$ [days]", )
@@ -909,7 +909,7 @@ def main():
             f"Delta chi2={delta_chi2:+.1f} in favour of TEP (no formal p-value for non-nested fixed predictions). "
             f"TEP correction ({R_tep_prediction:.1f} d) reduces wRMS by {wrms_improvement_pct:.0f}%, "
             f"improving {n_improved}/{n_models_total} models. "
-            f"Inferred alpha = {alpha_inferred_wmean:.4f} +/- "
+            f"Inferred kappa = {kappa_inferred_wmean:.4f} +/- "
             f"{abs(sigma_R_obs / R_tep_unit):.4f}."
         ),
         "observed": {
@@ -919,8 +919,8 @@ def main():
         },
         "proxy_sensitivity": {
             "R_nominal_proxy_days": float(R_tep_prediction),
-            "alpha_nominal": float(alpha_ref),
-            "R_tep_unit_days_per_alpha": float(R_tep_unit),
+            "kappa_nominal": float(kappa_ref),
+            "R_tep_unit_days_per_kappa": float(R_tep_unit),
             "loop": "S1-S4-SX (obs-model residual = -closure)",
             "ref": "This work, step_03",
             "status": "post_hoc_illustrative",
@@ -932,8 +932,8 @@ def main():
         },
         "tep_prediction": {
             "R_tep_prediction_days": float(R_tep_prediction),
-            "alpha_ref": float(alpha_ref),
-            "R_tep_unit_days_per_alpha": float(R_tep_unit),
+            "kappa_ref": float(kappa_ref),
+            "R_tep_unit_days_per_kappa": float(R_tep_unit),
             "loop": "S1-S4-SX (Residual Prediction = -Closure)",
             "ref": "This work, step_03",
             "deprecated_alias_of": "proxy_sensitivity",
@@ -959,21 +959,21 @@ def main():
             "sigma_days": float(sigma_R_obs),
             "z_from_gr_null": float(z_weighted),
             "z_from_tep_prediction": float(z_tep),
-            "alpha_inferred": float(alpha_inferred_wmean),
-            "alpha_inferred_err": float(abs(sigma_R_obs / R_tep_unit)),
+            "kappa_inferred": float(kappa_inferred_wmean),
+            "kappa_inferred_err": float(abs(sigma_R_obs / R_tep_unit)),
             "n_models": n_total,
             "n_positive_residual": n_pos,
         },
-        "bootstrap_alpha_inference": {
+        "bootstrap_kappa_inference": {
             "n_bootstrap": n_boot,
             "random_seed": 42,
             "method": "Resample models with replacement, compute weighted-mean residual, convert to alpha",
-            "alpha_mean": boot_alpha_mean,
-            "alpha_std": boot_alpha_std,
-            "alpha_median": boot_alpha_p50,
-            "alpha_p16": boot_alpha_p16,
-            "alpha_p84": boot_alpha_p84,
-            "sigma_alpha_analytical": float(sigma_alpha_analytical),
+            "kappa_mean": boot_alpha_mean,
+            "kappa_std": boot_alpha_std,
+            "kappa_median": boot_alpha_p50,
+            "kappa_p16": boot_alpha_p16,
+            "kappa_p84": boot_alpha_p84,
+            "sigma_kappa_analytical": float(sigma_alpha_analytical),
             "P_alpha_lt_0": boot_frac_negative,
             "P_alpha_consistent_with_ref": boot_frac_consistent,
         },
@@ -1033,7 +1033,7 @@ def main():
         "evidence_tier": {
             "description": "Separation of genuinely independent directional evidence from definitional amplitude evidence",
             "tier_1_directional_sign_consistency": {
-                "description": "Tests that are independent of the amplitude calibration of alpha_proxy",
+                "description": "Tests that are independent of the amplitude calibration of kappa_lens",
                 "tests": {
                     "wilcoxon_signed_rank_blind": {
                         "p_value": float(p_wilcoxon_blind),
@@ -1070,7 +1070,7 @@ def main():
                     "These tests require only that the residuals have a consistent sign, "
                     "not that their amplitude matches a pre-calibrated value. They are "
                     "the most robust evidence strand because they are independent of "
-                    "alpha_proxy calibration and of the proxy-model amplitude."
+                    "kappa_lens calibration and of the proxy-model amplitude."
                 ),
             },
             "tier_2_amplitude_consistency": {
@@ -1081,7 +1081,7 @@ def main():
                         "sigma_days": float(sigma_R_obs),
                         "z_from_gr_null": float(z_weighted),
                         "p_value": float(1 - scipy_stats.norm.cdf(z_weighted)),
-                        "note": "Definitional: alpha_proxy was calibrated from this same weighted mean residual via R_obs / R_tep_unit.",
+                        "note": "Definitional: kappa_lens was calibrated from this same weighted mean residual via R_obs / R_tep_unit.",
                     },
                     "chi2_model_comparison": {
                         "delta_chi2": float(delta_chi2),
@@ -1091,12 +1091,12 @@ def main():
                     },
                     "tep_corrected_wrms": {
                         "improvement_pct": float(wrms_improvement_pct),
-                        "note": "R_tep_prediction used for correction is derived from alpha_proxy, so this is a self-consistency check.",
+                        "note": "R_tep_prediction used for correction is derived from kappa_lens, so this is a self-consistency check.",
                     },
                 },
                 "interpretation": (
                     "These tests compare the observed residual amplitude to the proxy-model "
-                    "prediction at the empirically calibrated alpha_proxy. Because alpha_proxy "
+                    "prediction at the empirically calibrated kappa_lens. Because kappa_lens "
                     "was derived from the same SN Refsdal data (R_obs / R_tep_unit), the "
                     "amplitude agreement is definitional, not an independent confirmation. "
                     "The probative content lies in the directional sign consistency (Tier 1), "

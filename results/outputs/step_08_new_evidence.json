@@ -142,45 +142,45 @@
     "per_model": [
       {
         "name": "Oguri-a*",
-        "alpha_inferred": -0.08398659067274923,
+        "kappa_inferred": -0.08398659067274923,
         "sigma": 0.07493752416241548
       },
       {
         "name": "Oguri-g*",
-        "alpha_inferred": -0.17137804312952898,
+        "kappa_inferred": -0.17137804312952898,
         "sigma": 0.07729939863947959
       },
       {
         "name": "Sharon-a*",
-        "alpha_inferred": -0.2950880212826326,
+        "kappa_inferred": -0.2950880212826326,
         "sigma": 0.1434423924296741
       },
       {
         "name": "Sharon-g*",
-        "alpha_inferred": -0.17024308920151882,
+        "kappa_inferred": -0.17024308920151882,
         "sigma": 0.12476523058165469
       },
       {
         "name": "Diego-a",
-        "alpha_inferred": -0.43128249264384766,
+        "kappa_inferred": -0.43128249264384766,
         "sigma": 0.2091506560383657
       },
       {
         "name": "Grillo-g",
-        "alpha_inferred": -0.056747696400506274,
+        "kappa_inferred": -0.056747696400506274,
         "sigma": 0.08955514488762262
       },
       {
         "name": "Jauzac15.2*",
-        "alpha_inferred": -0.056747696400506274,
+        "kappa_inferred": -0.056747696400506274,
         "sigma": 0.16029971494142914
       }
     ],
     "weighted_mean_alpha": -0.13658091981898432,
-    "sigma_alpha": 0.03938295863227226,
+    "sigma_kappa": 0.03938295863227226,
     "z_vs_gr_null": -3.4680208029638346,
     "p_vs_gr_null_onesided": 0.00026215334950881945,
-    "z_vs_tep_alpha_proxy": -2.071477681012342,
+    "z_vs_tep_kappa_lens": -2.071477681012342,
     "p_vs_tep_twosided": 0.03831417808650933,
     "scatter_chi2": 5.017186881246744,
     "scatter_chi2_dof": 6,
@@ -216,7 +216,7 @@
     "caveat": "Tests are derived from same SN Refsdal dataset -- not independent. Combining p-values via Fisher/Stouffer is invalid (double-dipping). Independence-primary significance is driven by the Wilcoxon blind test.",
     "included_tests": {
       "Wilcoxon signed-rank (blind nonzero positive)": 0.0078125,
-      "alpha_inferred vs zero (blind models)": 0.00026215334950881945
+      "kappa_inferred vs zero (blind models)": 0.00026215334950881945
     },
     "excluded_tests": {
       "delay_mu_pearson": {
@@ -237,7 +237,7 @@
       "binomial_sign_test_blind7": 0.0078125,
       "delay_mu_pearson": 0.01058290409089799,
       "arrival_order_kendall": 0.4083333333333333,
-      "alpha_inference_vs_zero": 0.00026215334950881945,
+      "kappa_inference_vs_zero": 0.00026215334950881945,
       "snh0pe_closure_PREDICTED": 0.0003169637449590173
     },
     "headline_z": 2.417559016236505,
@@ -246,10 +246,10 @@
     "h0pe_sensitivity_note": "Future 4th-image delay for H0pe detectable at SNR=3.42"
   },
   "figures": [
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_B_arrival_order.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_C_alpha_inference.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png",
-    "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_E_evidence_ladder.png"
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_A_delay_vs_mu.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_B_arrival_order.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_C_alpha_inference.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_D_snh0pe_closure.png",
+    "/Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/figures/step_08_E_evidence_ladder.png"
   ]
 }

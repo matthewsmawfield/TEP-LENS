@@ -1,0 +1,21 @@
+
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] STEP 45: Proxy-Robustness Sweep — SN Refsdal
+[01:27:34] [INFO] ======================================================================
+[01:27:34] [INFO] Observed residual (step_07): R_obs = +30.05 d
+[01:27:34] [INFO] Discovered 1 lens-model parameter file(s)
+[01:27:34] [INFO]   refsdal_glafic_v3: processed
+[01:27:34] [INFO] 
+Running theory-space Monte Carlo (20,000 kappa draws)...
+[01:27:34] [INFO]   Theory-space sign-match: 15936/20000 (79.7%)
+[01:27:34] [INFO]   Predicted residual (kappa MC): median=+17.66 d, mean=+6.69 d, std=45.00 d
+[01:27:34] [INFO]   95% CI: [-88.95, +116.50] d
+[01:27:34] [INFO] 
+Robustness summary:
+[01:27:34] [INFO]   flux_ratio_proxy: sign-match = 1/1 (100%)
+[01:27:34] [INFO]   model_mu_abs: sign-match = 1/1 (100%)
+[01:27:34] [INFO]   model_kappa: sign-match = 0/1 (0%)
+[01:27:34] [INFO]   theory_space_mc (kappa, 20k draws): sign-match = 15936/20000 (79.7%)
+[01:27:34] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_45_proxy_robustness_sweep.json
+[01:27:34] [INFO] Step 45 complete.

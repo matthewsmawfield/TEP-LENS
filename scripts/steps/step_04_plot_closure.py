@@ -39,7 +39,7 @@ def main():
     with open(tep_path, 'r') as f:
         tep_data = json.load(f)
 
-    alpha = tep_data["alpha_tep"]
+    alpha = tep_data["kappa_tep"]
     loops = tep_data["tep_predicted_discrepancies"]
 
     try:
@@ -99,7 +99,7 @@ def main():
     ax.set_ylabel(r'Predicted GR Discrepancy $\mathcal{R}_{\rm TEP/GR}$ [days]', )
     ax.set_title(
         'SN Refsdal: Predicted GR Discrepancy — GR Null vs TEP Prediction\n'
-        r'(Kelly et al. 2023, $\alpha_{\rm lens}=-0.055$)',
+        r'(Kelly et al. 2023, $\kappa_{\rm lens}=-0.055$)',
         pad=12
     )
     ax.legend(loc='upper left')
@@ -135,7 +135,7 @@ def main():
     ax2.set_xlabel('Maximum pairwise delay in loop [days]', )
     ax2.set_ylabel(r'$|\mathcal{R}_{\rm TEP/GR}|$ [days]', )
     ax2.set_title(
-        r'TEP Predicted Discrepancy Magnitude vs Loop Time-Baseline (SN Refsdal, $\alpha_{\rm lens}=-0.055$)',
+        r'TEP Predicted Discrepancy Magnitude vs Loop Time-Baseline (SN Refsdal, $\kappa_{\rm lens}=-0.055$)',
         pad=10
     )
     # fig.tight_layout()

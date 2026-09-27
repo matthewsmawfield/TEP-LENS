@@ -1,14 +1,14 @@
 {
   "step": "38b",
   "status": "success",
-  "description": "Cross-system directional consistency check using CosmoGRAIL quasar lens systems. Tests whether brighter images systematically arrive earlier, as predicted by the TEP proxy model with alpha_proxy < 0.",
+  "description": "Cross-system directional consistency check using CosmoGRAIL quasar lens systems. Tests whether brighter images systematically arrive earlier, as predicted by the TEP proxy model with kappa_lens < 0.",
   "caveats": [
     "This is a consistency check, not an independent evidence strand.",
     "Lens geometry can confound the delay-magnification relationship; the blind-prediction residual test (Step 07) is the only pre-specified primary test because it compares observed delays to lens-model-predicted geometric delays.",
     "The binomial p=0.5 null is approximate. Lens geometry can create systematic correlations between magnification and delay (e.g., images near the Einstein radius are both more magnified and have shorter delays). The true null is lens-model-dependent and generally unknown without blind predictions.",
     "Quasar fluxes include microlensing and intrinsic variability; mean fluxes are imperfect magnification proxies.",
     "Systems are quasars, not supernovae; different astrophysical systematics apply.",
-    "alpha_proxy = -0.055 was calibrated on SN Refsdal and applied here without refitting.",
+    "kappa_lens = -0.055 was calibrated on SN Refsdal and applied here without refitting.",
     "Kendall tau is reference-dependent and its sign depends on the choice of reference image; it is not reported as an evidence metric."
   ],
   "n_systems_processed": 10,

@@ -1,18 +1,21 @@
 # Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20572720.svg)](https://doi.org/10.5281/zenodo.20572720)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-
-## Abstract
+**Version:** v0.2 (Lisboa)  
+**First published:** 10 June 2026 · **Last updated:** 16 September 2026
+**DOI:** [10.5281/zenodo.20572720](https://doi.org/10.5281/zenodo.20572720)
 
 The Temporal Equivalence Principle posits that the effective rate of temporal propagation scales with the depth of the local gravitational potential. Strong gravitational lensing provides a geometric test: a single source imaged through multiple sightlines accumulates differential temporal shear along each path, producing a blind-prediction residual between the observed delay and the delay predicted by a standard GR lens model. SN Refsdal, currently unique among multiply-imaged supernovae in having five resolved images and precision-measured delays, offers an unusually high-leverage case. Seven lens-model variants spanning five modelling families published blind predictions for the long-baseline SX reappearance delay before the image was observed; Kelly et al. (2023) later measured that same delay independently from SN light-curve fitting. All seven delay-blind model variants yield positive residuals (observed delay longer than predicted), matching the sign expected for a negative temporal-shear coupling. The directional evidence does not depend on amplitude calibration.
 
 The probative signal is structurally concentrated in the S4–SX contrast: the inner Einstein cross provides negligible probative leverage under the adopted proxy, while the 376-day SX baseline amplifies the differential temporal-shear signature. Direct potential-map and 3D geodesic reconstructions preserve the residual sign but predict sub-day amplitudes, indicating that the corrected-compilation response scale points to a magnification-sensitive amplification mechanism. The operational log-magnification response captures the sign and the corrected-compilation order of magnitude, yet the amplitude match remains phenomenological: deriving the corresponding transfer kernel from the scalar-field action remains the central open theoretical task. The decisive next step is a prospective amplitude test on a future long-baseline multiply-imaged supernova.
 
 **Author:** Matthew Lukin Smawfield  
-**Version:** v0.1 (Lisboa)  
+**Version:** v0.2 (Lisboa)  
 **First published:** 10 June 2026  
-**Status:** In Development  
+**Status:** Preprint  
+**DOI:** [10.5281/zenodo.20572720](https://doi.org/10.5281/zenodo.20572720)  
 **Website:** [https://mlsmawfield.com/tep/lens](https://mlsmawfield.com/tep/lens)  
 **Paper Series:** TEP Series: Paper 19 (Strong Lensing Time Delays)
 
@@ -33,8 +36,8 @@ The probative signal is structurally concentrated in the S4–SX contrast: the i
 | Paper | Repository | Title | DOI |
 |-------|-----------|-------|-----|
 | **Paper 0** | [TEP](https://github.com/matthewsmawfield/TEP) | Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed | [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) |
-| **Paper 13** | [TEP-WB](https://github.com/matthewsmawfield/TEP-WB) | Temporal Shear Recovery in Gaia DR3 Wide Binaries | [10.5281/zenodo.19102062](https://doi.org/10.5281/zenodo.19102062) |
-| **Paper 15** | [TEP-EFA](https://github.com/matthewsmawfield/TEP-EFA) | Temporal Shear in the Earth Flyby Anomaly | [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863) |
+| **Paper 13** | [TEP-WB](https://github.com/matthewsmawfield/TEP-WB) | Temporal Shear Recovery in Gaia DR3 Wide Binaries | [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) |
+| **Paper 15** | [TEP-EFA](https://github.com/matthewsmawfield/TEP-EFA) | Temporal Shear in the Earth Flyby Anomaly | [10.5281/zenodo.19454862](https://doi.org/10.5281/zenodo.19454862) |
 | **Paper 17** | [TEP-LLR](https://github.com/matthewsmawfield/TEP-LLR) | Lunar Laser Ranging and the Nordtvedt Effect | [10.5281/zenodo.19446029](https://doi.org/10.5281/zenodo.19446029) |
 | **Paper 18** | [TEP-HC](https://github.com/matthewsmawfield/TEP-HC) | EFT Mapping and Acoustic Peak Constraints via hi_class | — |
 | **Paper 19** | **TEP-LENS** (This repo) | Blind-Prediction Residual Test in Multiply-Imaged Supernovae | — |
@@ -80,11 +83,11 @@ python scripts/steps/run_all_steps.py
 
 # Build manuscript from HTML components (static site + markdown)
 cd site && npm ci && npm run build
-# Output: 19-TEP-LENS-v0.1-Lisboa.md (repo root and manuscripts/)
+# Output: 19-TEP-LENS-v0.2-Lisboa.md (repo root and manuscripts/)
 
 # Generate PDF (requires playwright: pip install playwright && playwright install chromium)
 python scripts/generate_site_pdf.py --quality high --wait-time 5
-# Output: site/public/docs/19-TEP-LENS-v0.1-Lisboa.pdf and repo root copy
+# Output: site/public/docs/19-TEP-LENS-v0.2-Lisboa.pdf and repo root copy
 
 # Deploy static site
 ./deploy.sh
@@ -101,7 +104,7 @@ python scripts/generate_site_pdf.py --quality high --wait-time 5
   title={Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae},
   author={Smawfield, Matthew Lukin},
   year={2026},
-  note={Preprint v0.1 (Lisboa)},
+  note={Preprint v0.2 (Lisboa)},
   url={https://github.com/matthewsmawfield/TEP-LENS}
 }
 ```

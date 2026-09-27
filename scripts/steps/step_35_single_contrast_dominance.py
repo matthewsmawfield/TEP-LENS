@@ -56,7 +56,7 @@ def main():
     loops = s03["tep_predicted_discrepancies"]
     gamma = s03["gamma_per_image"]
     mu_norm = s03["mu_norm_per_image"]
-    alpha_tep = s03["alpha_tep"]
+    kappa_tep = s03["kappa_tep"]
 
     # Original residuals
     R_orig = np.array([loops[name]["tep_gr_discrepancy_days"] for name in loops])
@@ -174,7 +174,7 @@ def main():
         "step": STEP_NUM,
         "status": "success",
         "system": "SN Refsdal (MACS J1149.6+2223)",
-        "alpha_tep": alpha_tep,
+        "kappa_tep": kappa_tep,
         "energy_metrics": {
             "total_energy_sum_R2_d2": energy_total,
             "total_abs_sum_R_d": energy_abs_total,

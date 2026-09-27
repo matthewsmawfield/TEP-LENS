@@ -2,9 +2,9 @@
   "step": "06",
   "status": "success",
   "system": "SN Refsdal (MACS J1149.6+2223)",
-  "key_finding": "SNR = |R_TEP| / sigma_R is exactly alpha-independent for all loops under the linear TEP ansatz Gamma = 1 + alpha*log10(mu_norm). R_TEP and sigma_R both scale linearly with alpha, so their ratio is a geometric constant determined by delay ratios and magnification contrasts. Inner-cross loops have intrinsic SNR < 3; SX loops have intrinsic SNR = 60-78.",
+  "key_finding": "SNR = |R_TEP| / sigma_R is exactly coupling-independent for all loops under the linear TEP ansatz Gamma = 1 + alpha*log10(mu_norm). R_TEP and sigma_R both scale linearly with alpha, so their ratio is a geometric constant determined by delay ratios and magnification contrasts. Inner-cross loops have intrinsic SNR < 3; SX loops have intrinsic SNR = 60-78.",
   "model_assumption_caveat": "The alpha-independence of SNR holds strictly for the assumed linear log-magnification ansatz (Gamma = 1 + alpha * log10(mu_norm)). A different functional form (e.g., power-law, screened coupling, or potential-dependent alpha) would break this invariance. The falsification statement that an independent S4-SX measurement rules out TEP at all alpha simultaneously is therefore conditional on the correctness of the adopted TEP parameterisation.",
-  "alpha_grid": [
+  "kappa_grid": [
     -0.15,
     -0.149,
     -0.148,

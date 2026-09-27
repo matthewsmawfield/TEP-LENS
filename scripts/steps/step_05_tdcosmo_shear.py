@@ -34,7 +34,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "05"
 
@@ -204,7 +204,7 @@ TDCOSMO_QUADS = {
     }
 }
 
-def tep_predicted_delay_ratio(dt_obs, flux_i, flux_A, alpha=ALPHA_PROXY):
+def tep_predicted_delay_ratio(dt_obs, flux_i, flux_A, alpha=KAPPA_LENS):
     """
     Under TEP, the observed delay dt_iA = dt_geom * (Gamma_i / Gamma_A).
     For a reference pair, this introduces a fractional correction:
@@ -226,8 +226,8 @@ def tep_predicted_delay_ratio(dt_obs, flux_i, flux_A, alpha=ALPHA_PROXY):
 def main():
     print_status(f"STEP {STEP_NUM}: TDCOSMO Quad-Lens Temporal Shear Test", "TITLE")
 
-    alpha_tep = ALPHA_PROXY
-    print_status(f"TEP coupling alpha = {alpha_tep} (empirical lensing-sector coupling)")
+    kappa_tep = KAPPA_LENS
+    print_status(f"TEP coupling alpha = {kappa_tep} (empirical lensing-sector coupling)")
 
     out_dir = PROJECT_ROOT / "results" / "outputs"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -261,7 +261,7 @@ def main():
             dt_err = dval["err"]
 
             # TEP fractional residual (dimensionless)
-            delta_frac = tep_predicted_delay_ratio(dt, flux_i, flux_A, alpha_tep)
+            delta_frac = tep_predicted_delay_ratio(dt, flux_i, flux_A, kappa_tep)
             # TEP absolute predicted delay shift (days)
             dt_tep_shift = delta_frac * abs(dt)
             log_flux_ratio = float(np.log10(flux_i / flux_A))
@@ -304,8 +304,8 @@ def main():
     rho, pval = spearmanr(log_fr, tep_r)
 
     print_status(f"Spearman rho(log_flux_ratio, TEP_shift) = {rho:.3f}, p = {pval:.4f}")
-    print_status("Note: by construction sign(rho) = sign(alpha_proxy) since TEP_shift = alpha_proxy*log(F)*|dt|")
-    print_status("With alpha_proxy=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).")
+    print_status("Note: by construction sign(rho) = sign(kappa_lens) since TEP_shift = kappa_lens*log(F)*|dt|")
+    print_status("With kappa_lens=-0.055 < 0, the tautological correlation is negative (computed rho=-0.733).")
     print_status("The physically meaningful test is the magnitude of predicted shifts vs measurement errors.")
 
     # Fraction of pairs where predicted TEP shift > 1-sigma measurement error
@@ -371,7 +371,7 @@ def main():
         ax.set_ylabel(r"TEP predicted delay shift $\delta t_{\rm TEP}$ [days]",
                       )
         ax.set_title(
-            rf"TDCOSMO Quad-Lens Temporal Shear ($\alpha={alpha_tep}$)",
+            rf"TDCOSMO Quad-Lens Temporal Shear ($\alpha={kappa_tep}$)",
             pad=10
         )
         ax.legend(loc="upper left")
@@ -388,7 +388,7 @@ def main():
     results = {
         "step": STEP_NUM,
         "status": "success",
-        "alpha_tep": alpha_tep,
+        "kappa_tep": kappa_tep,
         "systems": system_results,
         "summary": {
             "n_systems": len(TDCOSMO_QUADS),
@@ -400,11 +400,11 @@ def main():
             "interpretation": (
                 "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. "
                 "These are PREDICTED shifts at the empirically measured coupling "
-                "alpha_proxy=-0.055; they are NOT observed detections of TEP in these "
+                "kappa_lens=-0.055; they are NOT observed detections of TEP in these "
                 "systems. The physically meaningful quantity is the predicted shift "
                 "magnitude versus published delay measurement uncertainties. "
                 "The Spearman correlation between log(flux_ratio) and predicted shift "
-                "is tautological (sign set by alpha_proxy < 0; computed rho=-0.733) and therefore not independent evidence."
+                "is tautological (sign set by kappa_lens < 0; computed rho=-0.733) and therefore not independent evidence."
             ),
             "caveat": (
                 "These systems do not permit a full geometric blind-prediction residual test "

@@ -32,7 +32,7 @@ from scipy import stats as scipy_stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "38"
 
@@ -183,17 +183,17 @@ def main():
     if s07_path.exists():
         with open(s07_path) as f:
             s07 = json.load(f)
-        bai = s07.get("bootstrap_alpha_inference", {})
-        alpha_mean = float(bai.get("alpha_mean", -0.055))
-        alpha_std = float(bai.get("alpha_std", 0.011))
+        bai = s07.get("bootstrap_kappa_inference", {})
+        alpha_mean = float(bai.get("kappa_mean", -0.055))
+        alpha_std = float(bai.get("kappa_std", 0.011))
         print_status(
             f"Loaded alpha from Step 07: {alpha_mean:+.4f} +/- {alpha_std:.4f}"
         )
     else:
-        alpha_mean = ALPHA_PROXY
-        alpha_std = SIGMA_ALPHA_PROXY
+        alpha_mean = KAPPA_LENS
+        alpha_std = SIGMA_KAPPA_LENS
         print_status(
-            f"Step 07 output not found; falling back to alpha = {ALPHA_PROXY} +/- {SIGMA_ALPHA_PROXY}",
+            f"Step 07 output not found; falling back to alpha = {KAPPA_LENS} +/- {SIGMA_KAPPA_LENS}",
             "WARN",
         )
 
@@ -223,7 +223,7 @@ def main():
         sigma_m = (m["err_plus"] + m["err_minus"]) / 2.0
         sigma_tot = float(np.sqrt(obs_err_sym**2 + sigma_m**2))
         z = delta / sigma_tot
-        alpha_inferred = delta / R_tep_unit if R_tep_unit != 0 else None
+        kappa_inferred = delta / R_tep_unit if R_tep_unit != 0 else None
 
         results_per_model.append(
             {
@@ -239,8 +239,8 @@ def main():
                 "delta_obs_minus_pred_days": float(delta),
                 "sigma_total_days": sigma_tot,
                 "z_score": float(z),
-                "alpha_inferred": (
-                    float(alpha_inferred) if alpha_inferred is not None else None
+                "kappa_inferred": (
+                    float(kappa_inferred) if kappa_inferred is not None else None
                 ),
             }
         )
@@ -281,7 +281,7 @@ def main():
     # ------------------------------------------------------------------
     tep_residual = R_obs_weighted - R_tep_prediction
     z_tep = tep_residual / sigma_R_obs
-    alpha_inferred_wmean = R_obs_weighted / R_tep_unit if R_tep_unit != 0 else None
+    kappa_inferred_wmean = R_obs_weighted / R_tep_unit if R_tep_unit != 0 else None
 
     print_status(f"\nTEP consistency test:")
     print_status(
@@ -289,9 +289,9 @@ def main():
     )
     print_status(f"  R_TEP_pred        = {R_tep_prediction:+.3f} d")
     print_status(f"  Tension           = {z_tep:+.2f} sigma")
-    if alpha_inferred_wmean is not None:
+    if kappa_inferred_wmean is not None:
         print_status(
-            f"  Inferred alpha    = {alpha_inferred_wmean:.4f} "
+            f"  Inferred kappa    = {kappa_inferred_wmean:.4f} "
             f"(if R_obs attributed entirely to TEP; highly uncertain)"
         )
 
@@ -373,8 +373,8 @@ def main():
             "R_obs_days": R_obs_weighted,
             "sigma_R_obs_days": sigma_R_obs,
             "z_score": z_weighted,
-            "alpha_inferred": (
-                float(alpha_inferred_wmean) if alpha_inferred_wmean is not None else None
+            "kappa_inferred": (
+                float(kappa_inferred_wmean) if kappa_inferred_wmean is not None else None
             ),
         },
         "unweighted_statistics": {
@@ -385,10 +385,10 @@ def main():
         },
         "tep_prediction": {
             "R_tep_prediction_days": R_tep_prediction,
-            "alpha_used": alpha_mean,
+            "kappa_used": alpha_mean,
             "log10_mu_ratio": float(log_mu_ratio),
             "dt_mean_pred_days": float(dt_mean_pred),
-            "R_tep_unit_days_per_alpha": float(R_tep_unit),
+            "R_tep_unit_days_per_kappa": float(R_tep_unit),
             "note": (
                 "Single-pair TEP residual is ~<1 d because magnification contrast "
                 "is modest. No loop-closure test possible with only two images."

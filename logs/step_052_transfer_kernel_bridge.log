@@ -1,0 +1,19 @@
+
+[01:27:54] [INFO] ======================================================================
+[01:27:54] [INFO] STEP 052: Response-Transfer Audit
+[01:27:54] [INFO] ======================================================================
+[01:27:54] [INFO] 
+Tracer                                R_pred [d]   Sign  |R/R_obs|   K factor
+[01:27:54] [INFO] --------------------------------------------------------------------------------
+[01:27:54] [INFO] log(|mu|) flux proxy                    +14.5380  match      0.484         2x
+[01:27:54] [INFO] model |mu|                               +4.9443  match      0.165         6x
+[01:27:54] [INFO] raw kappa                                -2.5561 opposite      0.085       -12x
+[01:27:54] [INFO] 1/kappa                                  +2.5561  match      0.085        12x
+[01:27:54] [INFO] psi(theta) global background             +0.0405  match      0.001       742x
+[01:27:54] [INFO] 3D geodesic potential                    +0.3460  match      0.012        87x
+[01:27:54] [INFO] fundamental formula (Phi/c^2)            +0.7817  match      0.026        38x
+[01:27:54] [INFO] 
+Transport-oriented tracers (psi-map, geodesic, 1/kappa) consistently preserve the observed residual sign. The sole sign inversion occurs for raw kappa, which is expected because kappa measures projected density, not potential depth. The amplitude gap between pure transport and the log-magnification response identifies the missing theoretical object: a transfer/amplification kernel that maps lensing geometry (Jacobian, magnification) into temporal response. The log-magnification term is therefore interpreted as a regularised critical-lensing amplification kernel, not merely an empirical proxy.
+[01:27:54] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_052_transfer_kernel_bridge.json
+[01:27:54] [INFO] Step 052 complete.

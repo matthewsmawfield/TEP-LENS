@@ -1,7 +1,7 @@
 {
   "step": "05",
   "status": "success",
-  "alpha_tep": -0.055,
+  "kappa_tep": -0.055,
   "systems": {
     "HE0435-1223": {
       "metadata": {
@@ -330,7 +330,7 @@
     "spearman_rho": -0.7334714657637699,
     "spearman_pval": 0.0005322591726799869,
     "test_type": "predicted_sensitivity_check",
-    "interpretation": "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. These are PREDICTED shifts at the empirically measured coupling alpha_proxy=-0.055; they are NOT observed detections of TEP in these systems. The physically meaningful quantity is the predicted shift magnitude versus published delay measurement uncertainties. The Spearman correlation between log(flux_ratio) and predicted shift is tautological (sign set by alpha_proxy < 0; computed rho=-0.733) and therefore not independent evidence.",
+    "interpretation": "TEP-predicted delay shifts for TDCOSMO quad lenses and SN Encore. These are PREDICTED shifts at the empirically measured coupling kappa_lens=-0.055; they are NOT observed detections of TEP in these systems. The physically meaningful quantity is the predicted shift magnitude versus published delay measurement uncertainties. The Spearman correlation between log(flux_ratio) and predicted shift is tautological (sign set by kappa_lens < 0; computed rho=-0.733) and therefore not independent evidence.",
     "caveat": "These systems do not permit a full geometric blind-prediction residual test because all independent pairwise delays are referenced to the same image. Any closure sum is arithmetically zero by construction. The analysis here is a structural consistency check: it asks whether the predicted TEP shift pattern is compatible with the data, not whether TEP is detected."
   }
 }

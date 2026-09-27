@@ -80,7 +80,7 @@
       "p98": 88.94529806556821
     },
     "closure_residual_mu_nominal": -14.538035062734984,
-    "alpha_equiv_to_match_obs": {
+    "kappa_equiv_to_match_obs": {
       "median": -0.03204598365584023,
       "mean": -0.035894693153948054,
       "std": 1.1642599162213476,
@@ -292,7 +292,7 @@
     "interpretation": "The evidence is suggestive rather than decisive because the proxy-systematic contribution to the total uncertainty budget is 28%, comparable to the lens-model contribution (96%)."
   },
   "key_findings": {
-    "sn_refsdal": "SN Refsdal: The flux-proxy mu and inferred kappa give different S1-S4-SX closure residuals: mu-proxy = -14.54 d, kappa-inferred = -17.66 [-29.71, 16.06] d. Equivalent alpha shifts to -0.0320 [-0.0675, 0.0090]. Crucially, the S4-SX contrast sign is stable: P(same sign) = 80.0%.",
+    "sn_refsdal": "SN Refsdal: The flux-proxy mu and inferred kappa give different S1-S4-SX closure residuals: mu-proxy = -14.54 d, kappa-inferred = -17.66 [-29.71, 16.06] d. Equivalent kappa shifts to -0.0320 [-0.0675, 0.0090]. Crucially, the S4-SX contrast sign is stable: P(same sign) = 80.0%.",
     "tdcosmo": "TDCOSMO spherical power-law ratios reach up to 3.1, but elliptical lenses with external shear amplify this to 3.2. The spherical comparison is a lower bound on the proxy discrepancy; real lenses exhibit larger misestimation."
   }
 }

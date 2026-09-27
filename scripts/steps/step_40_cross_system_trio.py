@@ -34,7 +34,7 @@ from scipy import stats
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 
 STEP_NUM = "40"
 
@@ -128,7 +128,7 @@ def main():
         R_obs = s07["weighted_mean_residual"]["R_obs_days"]
         sigma_R = s07["weighted_mean_residual"]["sigma_days"]
         R_tep = s07["tep_prediction"]["R_tep_prediction_days"]
-        alpha = s07.get("bootstrap_alpha_inference", {}).get("alpha_mean", ALPHA_PROXY)
+        alpha = s07.get("bootstrap_kappa_inference", {}).get("kappa_mean", KAPPA_LENS)
 
         systems.append(
             {

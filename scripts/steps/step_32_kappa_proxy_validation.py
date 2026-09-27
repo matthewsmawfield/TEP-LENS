@@ -42,7 +42,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
-from scripts.utils.tep_config import ALPHA_PROXY, SIGMA_ALPHA_PROXY
+from scripts.utils.tep_config import KAPPA_LENS, SIGMA_KAPPA_LENS
 from scripts.utils.plot_style import set_pub_style, COLORS, FIG_SIZE
 
 STEP_NUM = "32"
@@ -149,7 +149,7 @@ def sn_refsdal_sensitivity_envelope(n_draws=20000, seed=20260607):
         "SX": {"mean": 0.18, "std": 0.12, "low": 0.02, "high": 0.70},
     }
 
-    alpha_nominal = ALPHA_PROXY
+    alpha_nominal = KAPPA_LENS
     mu_values = fluxes  # proxy assumption: F_i proportional to mu_i
 
     draws_R = []
@@ -191,15 +191,15 @@ def sn_refsdal_sensitivity_envelope(n_draws=20000, seed=20260607):
         # Recompute closure residual using kappa-based Gamma
         R_kappa = closure_residual(alpha_nominal, kappa_draw, delays, ("S1", "S4", "SX"))
 
-        # Equivalent alpha to match the same nominal observed residual
+        # Equivalent kappa to match the same nominal observed residual
         R_mu = closure_residual(alpha_nominal, mu_values, delays, ("S1", "S4", "SX"))
         if abs(R_kappa) > 1e-6 and np.isfinite(R_kappa):
-            alpha_equiv = alpha_nominal * (R_mu / R_kappa)
+            kappa_equiv = alpha_nominal * (R_mu / R_kappa)
         else:
-            alpha_equiv = np.nan
+            kappa_equiv = np.nan
 
         draws_R.append(R_kappa)
-        draws_alpha.append(alpha_equiv)
+        draws_alpha.append(kappa_equiv)
         for img in fluxes:
             draws_kappa[img].append(kappa_draw[img])
             draws_mu[img].append(mu_draw[img])
@@ -257,7 +257,7 @@ def sn_refsdal_sensitivity_envelope(n_draws=20000, seed=20260607):
         "mu_norm_per_image": {img: float(mu_norm_list[img]) for img in fluxes},
         "closure_residual_kappa": R_summary,
         "closure_residual_mu_nominal": float(R_mu),
-        "alpha_equiv_to_match_obs": alpha_summary,
+        "kappa_equiv_to_match_obs": alpha_summary,
         "C_prior_summary": C_summary,
         "P_rank_agreement_mu_vs_kappa": float(P_rank_agreement),
         "P_contrast_sign_agreement_S4_SX": float(P_contrast_same_sign),
@@ -518,8 +518,8 @@ def main():
     s = sn_results["closure_residual_kappa"]
     print_status(f"Closure residual (kappa inferred): {s['median']:.3f} [{s['p16']:.3f}, {s['p84']:.3f}] d")
 
-    s = sn_results["alpha_equiv_to_match_obs"]
-    print_status(f"Equivalent alpha (to match same observed residual): {s['median']:.4f} [{s['p16']:.4f}, {s['p84']:.4f}]")
+    s = sn_results["kappa_equiv_to_match_obs"]
+    print_status(f"Equivalent kappa (to match same observed residual): {s['median']:.4f} [{s['p16']:.4f}, {s['p84']:.4f}]")
     print_status(f"Rank-order agreement P(mu_rank == kappa_rank) = {sn_results['P_rank_agreement_mu_vs_kappa']:.3f}")
     print_status(f"S4-SX contrast sign agreement P = {sn_results['P_contrast_sign_agreement_S4_SX']:.3f}")
 
@@ -588,7 +588,7 @@ def main():
     R_mu_nom = sn_results["closure_residual_mu_nominal"]
     sigma_proxy = float(abs(R_kappa["p84"] - R_kappa["p16"]) / 2.0)
 
-    # Microlensing: 10-30% flux perturbation -> ~10-20% shift in alpha_equiv
+    # Microlensing: 10-30% flux perturbation -> ~10-20% shift in kappa_equiv
     # Approximate as 15% of the nominal residual amplitude
     sigma_microlensing = float(0.15 * abs(R_mu_nom))
 
@@ -601,11 +601,11 @@ def main():
     P_sign_stable = sn_results["P_contrast_sign_agreement_S4_SX"]
 
     # Amplitude uncertainty fraction: ratio of kappa-based to mu-proxy spread
-    alpha_equiv = sn_results["alpha_equiv_to_match_obs"]
-    if alpha_equiv["median"] and abs(alpha_equiv["median"]) > 1e-6:
+    kappa_equiv = sn_results["kappa_equiv_to_match_obs"]
+    if kappa_equiv["median"] and abs(kappa_equiv["median"]) > 1e-6:
         amp_uncertainty_frac = float(
-            abs((alpha_equiv["p84"] - alpha_equiv["p16"]) / 2.0)
-            / abs(alpha_equiv["median"])
+            abs((kappa_equiv["p84"] - kappa_equiv["p16"]) / 2.0)
+            / abs(kappa_equiv["median"])
         )
     else:
         amp_uncertainty_frac = None
@@ -651,9 +651,9 @@ def main():
                 f"kappa-inferred = {sn_results['closure_residual_kappa']['median']:.2f} "
                 f"[{sn_results['closure_residual_kappa']['p16']:.2f}, "
                 f"{sn_results['closure_residual_kappa']['p84']:.2f}] d. "
-                f"Equivalent alpha shifts to {sn_results['alpha_equiv_to_match_obs']['median']:.4f} "
-                f"[{sn_results['alpha_equiv_to_match_obs']['p16']:.4f}, "
-                f"{sn_results['alpha_equiv_to_match_obs']['p84']:.4f}]. "
+                f"Equivalent kappa shifts to {sn_results['kappa_equiv_to_match_obs']['median']:.4f} "
+                f"[{sn_results['kappa_equiv_to_match_obs']['p16']:.4f}, "
+                f"{sn_results['kappa_equiv_to_match_obs']['p84']:.4f}]. "
                 f"Crucially, the S4-SX contrast sign is stable: "
                 f"P(same sign) = {sn_results['P_contrast_sign_agreement_S4_SX']:.1%}."
             ),

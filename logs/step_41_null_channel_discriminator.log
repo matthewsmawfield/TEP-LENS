@@ -1,0 +1,24 @@
+
+[01:27:27] [INFO] ======================================================================
+[01:27:27] [INFO] STEP 41: Null-Channel Discriminator (TEP vs generic bias)
+[01:27:27] [INFO] ======================================================================
+[01:27:27] [INFO] Contrasts: ['Refsdal', 'Encore', 'H0pe-AB', 'H0pe-CB']
+[01:27:27] [INFO] r_aligned (TEP+ frame): [30.05, 3.33, 10.16, 0.23]
+[01:27:27] [INFO] sigma:                  [8.87, 2.13, 5.13, 2.67]
+[01:27:27] [INFO] 
+Model comparison (lower AIC = preferred):
+[01:27:27] [INFO]   tep_proxy            chi2=  0.71 (dof=3)  AIC=  2.71  dAIC= 0.00
+[01:27:27] [INFO]   uniform_fractional   chi2=  1.77 (dof=3)  AIC=  3.77  dAIC= 1.06
+[01:27:27] [INFO]   constant_offset      chi2= 12.12 (dof=3)  AIC= 14.12  dAIC=11.41
+[01:27:27] [INFO]   null_GR              chi2= 17.84 (dof=4)  AIC= 17.84  dAIC=15.13
+[01:27:27] [INFO] 
+Amplitude-excess (obs / TEP-pred) per contrast:
+[01:27:27] [INFO]   Refsdal    obs/pred = 2.1
+[01:27:27] [INFO]   Encore     obs/pred = 3.2
+[01:27:27] [INFO]   H0pe-AB    obs/pred = 3.1
+[01:27:27] [INFO]   H0pe-CB    obs/pred = 0.4
+[01:27:28] [INFO] 
+Cross-system discriminator (n=4): AIC-preferred amplitude model = 'tep_proxy'. TEP proxy dAIC = 0.00, uniform-fractional dAIC = 1.06. Sign match 4/4 (p=0.062). Amplitude does not favour TEP over a generic baseline-scaling bias; the sign pattern is the residual evidence.
+[01:27:28] [INFO] 
+Results saved to /Users/matthewsmawfield/Library/CloudStorage/Dropbox/www/Temporal Equivalence Principle/TEP-LENS/results/outputs/step_41_null_channel_discriminator.json
+[01:27:28] [INFO] Step 41 complete.

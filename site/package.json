@@ -1,6 +1,6 @@
 {
   "name": "tep-lens-site",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae",
   "main": "index.html",
   "scripts": {

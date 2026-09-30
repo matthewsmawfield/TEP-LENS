@@ -1,0 +1,280 @@
+{
+  "step": "063",
+  "channel": "disformal delay on deprojected NFW + host-galaxy field",
+  "centroid": {
+    "method": "argmax of gaussian-smoothed kappa (sigma=10.0 arcsec)",
+    "ra_deg": 177.39923131321726,
+    "dec_deg": 22.398434965965052
+  },
+  "nfw_fit": {
+    "sig_s_kg_m2": 1.6862266635954668,
+    "r_s_kpc": 740.0961281147612,
+    "rho_s_kg_m3": 3.69187747449051e-23,
+    "background_kg_m2": 0.2534730916562271,
+    "profile_frac_scatter": 0.04289220164547269,
+    "radii_kpc": [
+      49.99999999999999,
+      69.99999999999999,
+      95.0,
+      130.0,
+      175.0,
+      235.00000000000003,
+      310.0,
+      399.99999999999994,
+      500.0
+    ],
+    "sigma_kg_m2": [
+      4.318454077724679,
+      3.812764202571544,
+      3.2361312927397803,
+      2.7588548137625084,
+      2.306007681731433,
+      1.9552674577564226,
+      1.7837663662458734,
+      1.3637203738538135,
+      1.0384342395110153
+    ],
+    "model": [
+      4.3096843512223035,
+      3.763421376809115,
+      3.2791408091307273,
+      2.7987539088859723,
+      2.365986388628313,
+      1.9658683887091861,
+      1.6232932536245295,
+      1.3419397852287085,
+      1.1253122273313556
+    ]
+  },
+  "galaxy": {
+    "aperture_kpc": 25.0,
+    "plummer_a_kpc": 15.0,
+    "m_aperture_msun": 3238063590428.861,
+    "m_smooth_in_aperture_msun": 3469893640267.258,
+    "m_gal_excess_msun": 0.0
+  },
+  "kappa_validation": {
+    "S1": {
+      "model": 0.7699188902903987,
+      "tabulated": 0.722
+    },
+    "S2": {
+      "model": 0.7659848842916506,
+      "tabulated": 0.733
+    },
+    "S3": {
+      "model": 0.7281317395285197,
+      "tabulated": 0.675
+    },
+    "S4": {
+      "model": 0.7136702154106602,
+      "tabulated": 0.727
+    },
+    "SX": {
+      "model": 0.912371650222976,
+      "tabulated": 0.966
+    }
+  },
+  "per_image": {
+    "S1": {
+      "b_cluster_kpc": 67.81487349993239,
+      "b_galaxy_kpc": 9.533870315879419,
+      "u_midplane": 9.529572705099161e-05,
+      "sigma_peak_per_B0": 5.670631297247903e-10,
+      "delay_days_per_B0": 0.622492764787771
+    },
+    "S2": {
+      "b_cluster_kpc": 68.6411434462884,
+      "b_galaxy_kpc": 6.046884952197974,
+      "u_midplane": 9.523319143502625e-05,
+      "sigma_peak_per_B0": 5.63435762898469e-10,
+      "delay_days_per_B0": 0.6202043081257106
+    },
+    "S3": {
+      "b_cluster_kpc": 77.16799932034216,
+      "b_galaxy_kpc": 8.528688531938847,
+      "u_midplane": 9.459108088464321e-05,
+      "sigma_peak_per_B0": 5.280420390241377e-10,
+      "delay_days_per_B0": 0.5972233767338806
+    },
+    "S4": {
+      "b_cluster_kpc": 80.72228111264059,
+      "b_galaxy_kpc": 8.32644757326752,
+      "u_midplane": 9.43251591663004e-05,
+      "sigma_peak_per_B0": 5.142989938497457e-10,
+      "delay_days_per_B0": 0.5879733892558845
+    },
+    "SX": {
+      "b_cluster_kpc": 43.986238337574996,
+      "b_galaxy_kpc": 56.469917193128744,
+      "u_midplane": 9.712345561860233e-05,
+      "sigma_peak_per_B0": 6.910259845939881e-10,
+      "delay_days_per_B0": 0.6936953286685547
+    }
+  },
+  "residual_SX_minus_S1_days_per_B0": 0.07120256388078361,
+  "residual_days_at_B0max": 5.532439213536887,
+  "B0_required_for_Robs": 422.0294199095998,
+  "B0_max": 77.7,
+  "no_galaxy_variant": {
+    "residual_days_per_B0": 0.07120256388078361,
+    "B0_required": 422.0294199095998
+  },
+  "r_s_scan_kpc": {
+    "200": {
+      "sig_s": 2.8324371431387023,
+      "bg": 1.0944050317052705,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.011044612851182817,
+      "B0_required": 2720.7451393341676,
+      "scatter": 0.11358455563811994
+    },
+    "300": {
+      "sig_s": 2.2836705777333997,
+      "bg": 0.886350930110531,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.0183183108944939,
+      "B0_required": 1640.4119846942658,
+      "scatter": 0.08494384541717295
+    },
+    "500": {
+      "sig_s": 1.8733512477959,
+      "bg": 0.5593319372103288,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.03793034561558417,
+      "B0_required": 792.2305015416753,
+      "scatter": 0.05626291089586512
+    },
+    "740": {
+      "sig_s": 1.6862266650437525,
+      "bg": 0.25347309153379466,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.07120256406220249,
+      "B0_required": 422.0294188343,
+      "scatter": 0.04289220165824898
+    },
+    "1000": {
+      "sig_s": 1.590746463115827,
+      "bg": -0.014827217399443473,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.11991841796311675,
+      "B0_required": 250.5834986909656,
+      "scatter": 0.03829362486320694
+    },
+    "1500": {
+      "sig_s": 1.5066772741612102,
+      "bg": -0.4206759341820541,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.25255236461273434,
+      "B0_required": 118.98354931960971,
+      "scatter": 0.03763296058126708
+    },
+    "2000": {
+      "sig_s": 1.468544313889243,
+      "bg": -0.7366859942722606,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.4381560019207029,
+      "B0_required": 68.58191283231966,
+      "scatter": 0.038895889550103
+    },
+    "3000": {
+      "sig_s": 1.3577754095949548,
+      "bg": -0.9999999999999997,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 0.8231750203174144,
+      "B0_required": 36.504480807855764,
+      "scatter": 0.042993906615250585
+    },
+    "5000": {
+      "sig_s": 1.149217553339093,
+      "bg": -0.9999999999999999,
+      "m_gal_msun": 0.0,
+      "resid_days_per_B0": 1.4347261202551351,
+      "B0_required": 20.944468987112092,
+      "scatter": 0.10847727545750491
+    }
+  },
+  "ambient_consistent_variant": {
+    "u_bar_z_l": 0.4330802751411378,
+    "shape_at_ambient": 0.15518256906981567,
+    "resid_days_per_B0": 1284779.3370463476,
+    "B0_required": 2.3388901007519327e-05,
+    "B0_max_drift_term_GW170817": 3.115022885488526e-11,
+    "signature_wall_B0_at_u_amb": 6.444022714626578,
+    "note": "total-field convention: B(u) evaluated at u_bar(z_l)+u_halo; drift term (du_bar/dx)R_H=1 tightens the multimessenger bound to ~3e-11; signature wall at z_l ambient is B0 <~ 6.5"
+  },
+  "admissible_gated_form": {
+    "model": "B_eff = B(phi_tot)*G(delta_u); G closed on ambient, saturating above the DLA depth scale (gate10b). G(u) = g_sat*min(1, u/U_ACT), U_ACT=1e-7",
+    "u_act": 1e-07,
+    "G_sat_bracket": {
+      "1e-03": {
+        "G_sat": 0.001,
+        "resid_days_per_B0": 1284.7786503741913,
+        "B0_required": 0.023388913508121733,
+        "B0_max_GW_same_convention": 2.078173651238168e-05,
+        "margin": 0.000888529366922721
+      },
+      "3e-03": {
+        "G_sat": 0.003,
+        "resid_days_per_B0": 3854.3359511225594,
+        "B0_required": 0.007796304502707273,
+        "B0_max_GW_same_convention": 6.927245504127226e-06,
+        "margin": 0.0008885293669227177
+      },
+      "7e-03": {
+        "G_sat": 0.007,
+        "resid_days_per_B0": 8993.450552619304,
+        "B0_required": 0.0033412733583031177,
+        "B0_max_GW_same_convention": 2.9688195017688113e-06,
+        "margin": 0.0008885293669227175
+      }
+    },
+    "u_act_scan": {
+      "1e-08": {
+        "U_ACT": 1e-08,
+        "B0_required": 0.023388902424372023,
+        "B0_max_GW": 2.078173651238168e-05,
+        "margin": 0.0008885297879872471,
+        "dla_gate_open_fraction_at_5e-8": 1.0
+      },
+      "1e-07": {
+        "U_ACT": 1e-07,
+        "B0_required": 0.023388913508121733,
+        "B0_max_GW": 2.078173651238168e-05,
+        "margin": 0.000888529366922721,
+        "dla_gate_open_fraction_at_5e-8": 0.5
+      },
+      "1e-06": {
+        "U_ACT": 1e-06,
+        "B0_required": 0.0233890289568284,
+        "B0_max_GW": 0.00013299524496194522,
+        "margin": 0.005686223451492089,
+        "dla_gate_open_fraction_at_5e-8": 0.05
+      },
+      "1e-05": {
+        "U_ACT": 1e-05,
+        "B0_required": 0.023390427126484235,
+        "B0_max_GW": 0.0013299524496194525,
+        "margin": 0.05685883555814121,
+        "dla_gate_open_fraction_at_5e-8": 0.004999999999999999
+      },
+      "1e-04": {
+        "U_ACT": 0.0001,
+        "B0_required": 0.025286743096951482,
+        "B0_max_GW": 0.013299524496194525,
+        "margin": 0.5259484958265697,
+        "dla_gate_open_fraction_at_5e-8": 0.0004999999999999999
+      },
+      "1e-03": {
+        "U_ACT": 0.001,
+        "B0_required": 0.25286743096951536,
+        "B0_max_GW": 0.13299524496194526,
+        "margin": 0.5259484958265686,
+        "dla_gate_open_fraction_at_5e-8": 4.9999999999999996e-05
+      }
+    },
+    "note": "corpus admissible coupling form (registry 29-4); the uniform-B0 exclusion above does not apply to this form because the ambient/drift bounds are evaded by gate closure, while the GW bound under the same gated convention is evaluated on the step_50 host profile. Corrected margin: the same-convention bound is B0_max ~ 2e-5 (host well saturated at the gate10b-consistent U_ACT=1e-7), so the gated channel is also excluded by ~10^3; the u_act_scan shows no activation scale rescues it (best-case margin ~0.5 requires U_ACT ~ 1e-4, which closes the DLA wells and destroys the absorber-sector fit)."
+  },
+  "R_obs_days": 30.04957673068333,
+  "verdict_basis": "B0_required vs 77.7 galactic-profile bound"
+}

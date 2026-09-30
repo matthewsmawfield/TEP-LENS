@@ -69,6 +69,9 @@ STEPS = [
     "step_055_tdcosmo_kernel_test.py",            # Cross-system kernel consistency audit: TDCOSMO sample data availability
     "step_58_h0_channel_audit.py",                # H0LiCOW/TDCOSMO-class time-delay channel audit under the TEP mechanism (issue 11-9)
     "step_60_mass_slip_two_directions.py",        # Two-direction mass-sheet slip bookkeeping: per-system implied slips, counter-direction bounds, negative-slip census
+    "step_061_backreaction_lens_solve.py",        # Coupled scalar+lens solve: alpha(phi) = Psi_phi evaluated on the GLAFIC map; derived channel bound
+    "step_062_disformal_lens_path.py",            # Disformal delay on lens paths: correct GW170817->B0 bound transfer (replaces step_58 per-length transfer)
+    "step_063_nfw_deprojection.py",               # NFW+galaxy deprojection of GLAFIC kappa map: decisive disformal B0 under the measured halo profile
     "step_20_external_completeness_synthesis.py", # Completeness-aware Tier-A significance synthesis from steps 16+19
 ]
 

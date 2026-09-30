@@ -1,0 +1,224 @@
+{
+  "step": "062",
+  "channel": "disformal transport (B(phi) cone tilt) on the lens paths",
+  "correction_to_step_58": "step_58 applied |sigma| < 1e-15 as a per-length bound on the local cone tilt in the lens halo. GW170817 bounds B0 through the PEAK of shape(u)*(du/dr*R_H)^2 on the NGC 4993 galaxy profile (B0 <~ 77.7, Paper 0 step_50). On the MACS J1149 profile the same B0 gives a local tilt larger by the ratio of the two profile functionals; the bound transfers through B0, not through sigma.",
+  "formula": "sigma/B0 = shape(u) (du/dl R_H)^2 cos^2 theta ; shape(u) = u^2/(1+u^2) e^{-u^4/2} ; dt = (1/c) int sigma dl",
+  "per_image_environment": {
+    "S1": {
+      "g_sheet": 1.5155816700564328e-09,
+      "y": 0.3240491875139524,
+      "du_dl_per_m": 5.464480432625597e-27,
+      "b_mpc": 0.07899651912423337,
+      "psi_rad2": 2.930135131126877e-08,
+      "g_3d_deprojected": 9.255459614400225e-10,
+      "g_scale_deprojection": 0.6106869591564535,
+      "potential_column_int_phi_dl_m3_s2": 5.334060959977667e+34,
+      "excess_column_over_edge_m3_s2": 8.762240460070121e+33
+    },
+    "S2": {
+      "g_sheet": 1.4943400344353188e-09,
+      "y": 0.3266867804213841,
+      "du_dl_per_m": 5.431747668932304e-27,
+      "b_mpc": 0.07932163028354658,
+      "psi_rad2": 2.9354881848447478e-08,
+      "g_3d_deprojected": 9.240160649610241e-10,
+      "g_scale_deprojection": 0.6183439134789634,
+      "potential_column_int_phi_dl_m3_s2": 5.343805737462445e+34,
+      "excess_column_over_edge_m3_s2": 8.859688234917881e+33
+    },
+    "S3": {
+      "g_sheet": 1.3840656933088608e-09,
+      "y": 0.3413093361898788,
+      "du_dl_per_m": 5.256098147777827e-27,
+      "b_mpc": 0.08770434752083693,
+      "psi_rad2": 3.0246093419183726e-08,
+      "g_3d_deprojected": 8.887018446760033e-10,
+      "g_scale_deprojection": 0.6420951324581999,
+      "potential_column_int_phi_dl_m3_s2": 5.506043198665006e+34,
+      "excess_column_over_edge_m3_s2": 1.0482062846943498e+34
+    },
+    "S4": {
+      "g_sheet": 1.5052181775544497e-09,
+      "y": 0.32532925898855564,
+      "du_dl_per_m": 5.448552908570106e-27,
+      "b_mpc": 0.09177672207525409,
+      "psi_rad2": 3.0682027154338557e-08,
+      "g_3d_deprojected": 8.725145354953101e-10,
+      "g_scale_deprojection": 0.5796598450019368,
+      "potential_column_int_phi_dl_m3_s2": 5.5854012150624385e+34,
+      "excess_column_over_edge_m3_s2": 1.1275643010917834e+34
+    },
+    "SX": {
+      "g_sheet": 2.011013551156816e-09,
+      "y": 0.274735217132561,
+      "du_dl_per_m": 6.147349775609781e-27,
+      "b_mpc": 0.05365418214151787,
+      "psi_rad2": 2.671229754484397e-08,
+      "g_3d_deprojected": 1.0647092738294407e-09,
+      "g_scale_deprojection": 0.529439134419048,
+      "potential_column_int_phi_dl_m3_s2": 4.8627458157693345e+34,
+      "excess_column_over_edge_m3_s2": 4.049089017986786e+33
+    }
+  },
+  "fiducial": {
+    "h_mpc": 0.5,
+    "L_int_mpc": 4.0,
+    "per_image": {
+      "S1": {
+        "h_mpc": 0.5,
+        "u_midplane": 0.00011855456578329279,
+        "W_int_g_dl_m2_s2": 46404831282127.87,
+        "v_equiv_km_s": 6812.109165458806,
+        "sigma_peak_per_B0": 3.969808264899462e-09,
+        "delay_integral_m_per_B0": 75011902448331.06,
+        "delay_days_per_B0": 2.895981176998796
+      },
+      "S2": {
+        "h_mpc": 0.5,
+        "u_midplane": 0.00011748200363831498,
+        "W_int_g_dl_m2_s2": 45754444347111.99,
+        "v_equiv_km_s": 6764.203156847966,
+        "sigma_peak_per_B0": 3.841862808870722e-09,
+        "delay_integral_m_per_B0": 72493092159389.23,
+        "delay_days_per_B0": 2.798737580354505
+      },
+      "S3": {
+        "h_mpc": 0.5,
+        "u_midplane": 0.000110912247541236,
+        "W_int_g_dl_m2_s2": 42378009875896.37,
+        "v_equiv_km_s": 6509.839466215459,
+        "sigma_peak_per_B0": 3.0533183828418755e-09,
+        "delay_integral_m_per_B0": 57867852948882.74,
+        "delay_days_per_B0": 2.234101621522429
+      },
+      "S4": {
+        "h_mpc": 0.5,
+        "u_midplane": 0.0001163043239602726,
+        "W_int_g_dl_m2_s2": 46087516728547.79,
+        "v_equiv_km_s": 6788.778736160709,
+        "sigma_peak_per_B0": 3.5521868716402626e-09,
+        "delay_integral_m_per_B0": 68627515108428.15,
+        "delay_days_per_B0": 2.649499419310225
+      },
+      "SX": {
+        "h_mpc": 0.5,
+        "u_midplane": 0.0001447666681240058,
+        "W_int_g_dl_m2_s2": 61574210345279.555,
+        "v_equiv_km_s": 7846.923623005359,
+        "sigma_peak_per_B0": 8.750499383172955e-09,
+        "delay_integral_m_per_B0": 163067018545187.78,
+        "delay_days_per_B0": 6.295521122417343
+      }
+    },
+    "residual_SX_minus_S1_days_per_B0": 3.399539945418547,
+    "residual_days_at_B0_max_77p7": 264.1442537590211,
+    "B0_required_for_Robs": 8.83930685126386,
+    "B0_max_from_GW170817_galactic": 77.7,
+    "margin_B0req_over_B0max": 0.11376199293775881
+  },
+  "halo_scale_scan": {
+    "h_0.1_Mpc": {
+      "resid_days_per_B0": 0.012114915111340854,
+      "B0_required_for_Robs": 2480.378645208477,
+      "W_m2_s2_SX": 12314842069055.914,
+      "u_midplane_SX": 2.3188813771554386e-05,
+      "residual_days_at_B0max": 0.9413289041511843
+    },
+    "h_0.25_Mpc": {
+      "resid_days_per_B0": 0.34912723391776634,
+      "B0_required_for_Robs": 86.07056056177281,
+      "W_m2_s2_SX": 30787105172639.777,
+      "u_midplane_SX": 6.816207904279701e-05,
+      "residual_days_at_B0max": 27.127186075410446
+    },
+    "h_0.5_Mpc": {
+      "resid_days_per_B0": 3.399539945418547,
+      "B0_required_for_Robs": 8.83930685126386,
+      "W_m2_s2_SX": 61574210345279.555,
+      "u_midplane_SX": 0.0001447666681240058,
+      "residual_days_at_B0max": 264.1442537590211
+    },
+    "h_1.0_Mpc": {
+      "resid_days_per_B0": 29.646421278184402,
+      "B0_required_for_Robs": 1.0135987898409713,
+      "W_m2_s2_SX": 123148420690559.11,
+      "u_midplane_SX": 0.00029877691649821044,
+      "residual_days_at_B0max": 2303.526933314928
+    },
+    "h_2.0_Mpc": {
+      "resid_days_per_B0": 229.56355446679282,
+      "B0_required_for_Robs": 0.130898725629508,
+      "W_m2_s2_SX": 246296841381118.22,
+      "u_midplane_SX": 0.0006072455000528061,
+      "residual_days_at_B0max": 17837.0881820698
+    }
+  },
+  "normalization_bracket": {
+    "g_scale_1.0": {
+      "resid_days_per_B0": 3.399539945418547,
+      "B0_required_for_Robs": 8.83930685126386
+    },
+    "g_scale_0.3": {
+      "resid_days_per_B0": 0.2175230833639424,
+      "B0_required_for_Robs": 138.14431216206492
+    },
+    "g_scale_0.1": {
+      "resid_days_per_B0": 0.009114337654645591,
+      "B0_required_for_Robs": 3296.9567147171706
+    },
+    "deprojected_data": {
+      "resid_days_per_B0": 0.583240219808146,
+      "B0_required_for_Robs": 51.521784181084065,
+      "per_image_g_scale": {
+        "S1": 0.6106869591564535,
+        "S2": 0.6183439134789634,
+        "S3": 0.6420951324581999,
+        "S4": 0.5796598450019368,
+        "SX": 0.529439134419048
+      }
+    }
+  },
+  "deprojected_halo_scan": {
+    "h_0.1_Mpc": {
+      "resid_days_per_B0": 0.002231609241821908,
+      "B0_required_for_Robs": 13465.429416375135
+    },
+    "h_0.25_Mpc": {
+      "resid_days_per_B0": 0.0628891668254627,
+      "B0_required_for_Robs": 477.81801298275104
+    },
+    "h_0.5_Mpc": {
+      "resid_days_per_B0": 0.583240219808146,
+      "B0_required_for_Robs": 51.521784181084065
+    },
+    "h_1.0_Mpc": {
+      "resid_days_per_B0": 4.852581066714828,
+      "B0_required_for_Robs": 6.192493503467988
+    },
+    "h_2.0_Mpc": {
+      "resid_days_per_B0": 37.1372766532439,
+      "B0_required_for_Robs": 0.8091486355141373
+    }
+  },
+  "cos2_sensitivity": {
+    "geometry": {
+      "resid_days_per_B0": 3.399539945418547,
+      "B0_required": 8.83930685126386
+    },
+    "unity": {
+      "resid_days_per_B0": 4.01537715700889,
+      "B0_required": 7.483624963655387
+    },
+    "isotropic": {
+      "resid_days_per_B0": 0.450497823785617,
+      "B0_required": 66.70304526261891
+    }
+  },
+  "bound_transfer_headroom": {
+    "galactic_peak_sigma_per_B0": 1.2870012870012871e-17,
+    "cluster_peak_sigma_per_B0": 8.750499383172955e-09,
+    "ratio": 679913802.0725386,
+    "note": "how much the naive 1e-15-per-length transfer undercounts the permitted local tilt on a cluster-depth path"
+  },
+  "R_obs_days": 30.04957673068333
+}

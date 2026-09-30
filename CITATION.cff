@@ -6,83 +6,8 @@ authors:
   given-names: Matthew Lukin
   orcid: https://orcid.org/0009-0003-8219-3159
 title: 'Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae'
-abstract: 'The Temporal Equivalence Principle (TEP) predicts that light rays traversing
-
-  different gravitational potential depths experience differential temporal scaling
-
-  ($\alpha \neq 0$). This work applies a blind-prediction residual test to SN Refsdal,
-
-  currently unique among multiply-imaged supernovae in having five resolved images and precision-measured
-
-  time delays. The key observational lever is a comparison of seven blind
-
-  pre-reappearance GR predictions of $\Delta t_{\rm SX,S1}$ against the later Kelly
-
-  et al. (2023) measurement -- two completely disjoint datasets. This single-system
-
-  probe reduces to a single-contrast measurement: signal-energy partitioning (Step
-  35)
-
-  shows that 99.9% of the predicted proxy-model signal resides in the long-baseline
-
-  S4--SX contrast, with an effective dimensionality $D_{\rm eff} \approx 2.0$; the
-
-  inner Einstein cross serves as a null region providing no probative leverage.
-
-  The underlying algebraic loop identity is insensitive to a uniform Mass Sheet
-
-  Degeneracy, but the empirical blind-prediction residual remains limited by GR
-
-  lens-model precision and correlated modelling systematics.
-
-
-  The primary evidence is directional and sign-coherent: all seven selected blind
-
-  pre-reappearance model variants yield positive residuals, matching the TEP-predicted
-
-  sign for a negative temporal-shear coupling. The independence-assuming non-parametric
-
-  benchmark is a Wilcoxon signed-rank test on the seven non-zero residuals ($p = 0.0078$,
-
-  approximately $2.4\sigma$ under between-model independence). Because the independence
-
-  assumption is not strictly justified, the correlation-aware headline is an exact
-
-  family-sign-flip test enumerating all method-family sign assignments ($p = 0.031$,
-
-  one-sided), which is the most rigorous dependence-aware rank bound. A method-family
-
-  block-bootstrap (Step 11) yields $p_{\rm median} = 0.0078$ [0.0039, 0.0156] blind-only,
-
-  reported as a sensitivity exploration. The supplementary all-eight-model Wilcoxon gives
-
-  $p = 0.0039$ ($2.8\sigma$). Hierarchical Bayesian model comparison remains inconclusive
-
-  (BF $\sim 1$), indicating that present lens-model uncertainties dominate formal
-
-  model-selection metrics. The corrected-compilation amplitude $\mathcal{R}_{\rm obs}
-
-  = +30.1 \pm 8.9$ d is retained as a secondary response-scale diagnostic, implying
-
-  $\alpha_{\rm inferred} = -0.114 \pm 0.034$. Direct potential-map and 3D geodesic
-
-  reconstructions preserve the observed residual sign but yield sub-day amplitudes,
-
-  identifying the missing theoretical object as a magnification-sensitive transfer/amplification
-
-  kernel. Blind-prediction residual tests for SN Encore and SN H0pe are directionally
-
-  consistent with the proxy model (3/3 systems, exact binomial $p = 0.125$) but serve
-
-  as consistency checks rather than high-precision evidence strands. The present result
-
-  is a sign-coherent directional measurement of an operational lensing-sector temporal
-
-  response; the decisive next step is a prospective blind test on a future long-baseline
-
-  multiply-imaged supernova.
-
-  '
+abstract: |
+  The Temporal Equivalence Principle modifies gravitational lensing not through the photon path but through mass inference. The conformal transport of photons produces exactly zero additional delay (null-curve invariance); the scalar field's backreaction on the photon path, evaluated from the common action (Step 61), is foreclosed at ~ 2 × 10³ below the required phantom mass; and the disformal contribution, evaluated on the cluster path with the GW170817 constraint applied to the coupling B_0 rather than to the local cone tilt (Step 62), falls a factor ≈ 5 short of the observed residual under a genuine deprojection of the GLAFIC convergence map — B_0 req ≈ 420 against the bound B_0 ≲ 78 at the best-fit NFW halo scale, reaching the envelope only for coherent line-of-sight extents ≳ 1.8 Mpc well beyond standard cluster concentrations (Step 63). The surviving channel is the lensing–dynamical mass inference: stellar kinematics can break the lens-model mass-sheet degeneracy, making the dynamical–lensing mass difference — which measures the phantom mass — a concrete, sign-testable consequence of the coupled reconstruction, and the image-plane calculation below is a forward force-response realization and target scale for that mechanism. SN Refsdal offers an unusually high-leverage case. Seven pre-reappearance lens-model variants spanning five modelling families published predictions for the long-baseline SX reappearance delay before the image was observed; Kelly et al. (2023) later measured that same delay independently from SN light-curve fitting. Six of seven strictly blind original predictions and all seven delay-blind revised predictions yield positive residuals (observed delay longer than predicted). Under a uniform time-delay rescaling, the +30.1 d residual corresponds to the required target scale shift of approximately 8.7%. This is the measured response that the coupled reconstruction must reproduce, with external-convergence and mass-model uncertainty propagated in the amplitude fit. The correlation-aware family-sign-flip test gives p = 0.031 on the delay-blind ensemble. The evidence establishes a single-system, sign-only directional result; the decisive amplitude test is the preregistered geometric forecast for the next long-baseline multiply-imaged supernova (SN 2025wny). The remaining theoretical task is narrow: the action-level scalar backreaction and screening law are already specified and tested in their native benchmarks. The open closure is their lens-domain projection through one solved lens geometry, with the GR halo contribution kept separate and the absolute delay amplitude fixed without fitting the Refsdal residual. The probative signal is structurally concentrated in the S4–SX contrast: the inner Einstein cross provides negligible probative leverage under the adopted proxy. A transport audit establishes that the archived ψ map measures the ordinary Fermat/Shapiro potential already included in the GR lens predictions; because tilde g_μν=A²g_μν preserves null curves exactly, it cannot be counted again as a static conformal residual. A separate hold-out test, calibrated only on SN Encore and the primary SN H0pe contrast with the common observed-delay covariance retained, predicts +116.8 ± 74.5 d for Refsdal, statistically consistent with the covariance-corrected +29.6 ± 10.2 d at 1.16σ but too imprecise and centrally too large to close the amplitude channel. The blind sign result survives; with the direct backreaction kernel now evaluated and foreclosed (Step 61) and the disformal transport bounded ~ 5 ×  short under the measured deprojection (Step 63), a quantitative amplitude prediction requires the surviving channel — the phantom mass carried by the mass-sheet/dynamics inference — to be derived from the action before application to the next long-baseline system.
 version: v0.2 (Lisboa)
 date-released: 2026-06-10
 url: https://mlsmawfield.com/tep/lens

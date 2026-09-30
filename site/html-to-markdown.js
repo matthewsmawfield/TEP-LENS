@@ -93,11 +93,11 @@ class HTMLToMarkdownConverter {
 
     htmlToMarkdown(html) {
         const mathBlocks = [];
-        html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, content) => {
+        html = html.replace(/(?<!\\)\$\$([\s\S]*?)\$\$/g, (match, content) => {
             mathBlocks.push(`$$${content}$$`);
             return `___MATH_BLOCK_${mathBlocks.length - 1}___`;
         });
-        html = html.replace(/\$([^$\n]+?)\$/g, (match, content) => {
+        html = html.replace(/(?<!\\)\$([^$\n]+?)\$/g, (match, content) => {
             mathBlocks.push(`$${content}$`);
             return `___MATH_INLINE_${mathBlocks.length - 1}___`;
         });
@@ -143,7 +143,7 @@ class HTMLToMarkdownConverter {
         });
 
         html = html.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '\n> $1\n\n');
-        html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (match, content) => {
+        html = html.replace(/<p\b[^>]*>([\s\S]*?)<\/p>/gi, (match, content) => {
             const stripped = content.split('\n').map(line => line.trim()).join(' ').trim();
             return `${stripped}\n\n`;
         });
@@ -169,7 +169,11 @@ class HTMLToMarkdownConverter {
             return `\n\n\`\`\`${language}\n${code}\n\`\`\`\n\n`;
         });
 
-        html = html.split('\n').map(line => line.replace(/^\s+/, '')).join('\n');
+        let inFence = false;
+        html = html.split('\n').map((line) => {
+            if (line.trimStart().startsWith('```')) inFence = !inFence;
+            return inFence ? line : line.replace(/^\s+/, '');
+        }).join('\n');
         return html.replace(/\n{3,}/g, '\n\n').trim();
     }
 
@@ -183,8 +187,8 @@ class HTMLToMarkdownConverter {
 
             const citationPath = path.join(__dirname, '..', 'CITATION.cff');
             let author = 'Matthew Lukin Smawfield';
-            let version = 'v0.1 (Lisboa)';
-            let dateReleased = '2026-06-07';
+            let version = 'v0.2 (Lisboa)';
+            let dateReleased = '2026-06-10';
             let doi = '';
 
             if (fs.existsSync(citationPath)) {

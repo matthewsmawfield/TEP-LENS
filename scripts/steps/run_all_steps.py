@@ -72,6 +72,7 @@ STEPS = [
     "step_061_backreaction_lens_solve.py",        # Coupled scalar+lens solve: alpha(phi) = Psi_phi evaluated on the GLAFIC map; derived channel bound
     "step_062_disformal_lens_path.py",            # Disformal delay on lens paths: correct GW170817->B0 bound transfer (replaces step_58 per-length transfer)
     "step_063_nfw_deprojection.py",               # NFW+galaxy deprojection of GLAFIC kappa map: decisive disformal B0 under the measured halo profile
+    "step_064_two_branch_backreaction_solve.py",  # Selected-sector stress tensor lensing solve: exact static-branch rho_phi = -P, anisotropic-LOS bookkeeping, scalar/phantom column ratio
     "step_20_external_completeness_synthesis.py", # Completeness-aware Tier-A significance synthesis from steps 16+19
 ]
 

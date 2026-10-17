@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const PAPER_ID = '19';
+const PAPER_ID = 'D19';
 const PROJECT_CODE = 'TEP-LENS';
 const DEFAULT_CODENAME = 'Lisboa';
 
@@ -187,7 +187,7 @@ class HTMLToMarkdownConverter {
 
             const citationPath = path.join(__dirname, '..', 'CITATION.cff');
             let author = 'Matthew Lukin Smawfield';
-            let version = 'v0.2 (Lisboa)';
+            let version = 'v0.3 (Lisboa)';
             let dateReleased = '2026-06-10';
             let doi = '';
 

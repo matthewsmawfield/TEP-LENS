@@ -85,7 +85,7 @@ def main():
             "paper": "https://www.aanda.org/articles/aa/full_html/2025/12/aa55801-25/aa55801-25.html",
             "local_path": str(tdcosmo2025_stage.relative_to(PROJECT_ROOT)),
             "local_status": summarize_path(tdcosmo2025_stage),
-            "integration_steps": ["planned: step_19_tdcosmo2025_ingestion.py"],
+            "integration_steps": ["step_19_tdcosmo2025_ingestion.py", "step_055_tdcosmo_kernel_test.py", "step_46_tdcosmo_kappa_tracer_robustness.py"],
         },
         {
             "name": "SN H0pe updates",

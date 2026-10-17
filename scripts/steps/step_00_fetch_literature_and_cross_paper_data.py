@@ -54,11 +54,11 @@ TEP_RESPONSE_COEFFICIENTS = {
             "not predicted from first principles."
         ),
         "source_papers": [
-            "10-TEP-COS-v0.6-Caracas.md (pulsar spin-down)",
-            "11-TEP-H0-v0.6-KingstonUponHull.md (Cepheid bias)",
-            "13-TEP-WB-v0.3-Kilifi.md (wide binaries)",
-            "15-TEP-EFA-v0.1-Yogyakarta.md (Earth flyby)",
-            "17-TEP-LLR-v0.1-Lucknow.md (lunar laser ranging)",
+            "E10-TEP-COS-v0.10-Caracas.md (pulsar spin-down)",
+            "E11-TEP-H0-v0.12-KingstonUponHull.md (Cepheid bias)",
+            "D13-TEP-WB-v0.7-Kilifi.md (wide binaries)",
+            "C15-TEP-EFA-v0.4-Yogyakarta.md (Earth flyby)",
+            "C17-TEP-LLR-v0.5-Lucknow.md (lunar laser ranging)",
         ]
     },
     "coefficients": {

@@ -59,7 +59,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.logger import print_status
 from scripts.utils.tep_config import BETA_REFSDAL, load_refsdal_image_positions
 from core import constants as tep_const
-from core.scalar_field import screening_y
+from core.scalar_field import screening_y  # retained unit-term profile control
 
 STEP_NUM = "061"
 
@@ -96,10 +96,11 @@ def angular_diameter(z):
 
 
 def scalar_energy_density_gev4(g_sheet, y):
-    """Quasi-static scalar self-energy density in GeV^4.
+    """Historical sheet-energy proxy in GeV^4, retained for this control.
 
     rho_phi = (1/2) M_Pl^2 |grad u|^2 (2 P_,X - 1) with P_,X = 1/y on the
-    flux-conserving profile |grad u| = y g / c^2.
+    flux-conserving profile |grad u| = y g / c^2. This is not the exact
+    selected-action stress tensor or a complete anisotropic optical source.
     """
     grad_u = y * g_sheet / tep_const.C_LIGHT**2          # m^-1
     grad_phi = (                                       # GeV^2
@@ -277,6 +278,7 @@ def main():
     ratio_needed = slip_required / max(
         per_image["SX"]["kappa_phi_A_per_mpc_L"] * L_EFF_MPC_FIDUCIAL, 1e-30
     )
+    delay_shortfall = abs(r_obs / pred_A_sx_s1) if pred_A_sx_s1 else None
 
     y_min = min(r["y"] for r in per_image.values())
     y_max = max(r["y"] for r in per_image.values())
@@ -290,32 +292,34 @@ def main():
         f"Channel A (strict Einstein-frame scalar self-energy): at the Refsdal "
         f"image sheet densities (g/g_t = {min(r['g_over_g_t'] for r in per_image.values()):.1f}"
         f"-{max(r['g_over_g_t'] for r in per_image.values()):.1f}, "
-        f"y = {y_min:.2f}-{y_max:.2f}), the canonical "
+        f"y = {y_min:.2f}-{y_max:.2f}), the retained unit-term profile control "
         f"screening profile gives |grad u| = yg/c^2 ~ "
         f"{per_image['SX']['grad_u_per_m']:.2e} m^-1 at SX, i.e. rho_phi ~ "
         f"{rho_phi_sx:.2e} kg/m^3. "
         f"Projected over a fiducial {L_EFF_MPC_FIDUCIAL} Mpc halo depth this is "
         f"kappa_phi ~ {per_image['SX']['kappa_phi_A_per_mpc_L']*L_EFF_MPC_FIDUCIAL:.2e}, "
         f"a SX-S1 differential Fermat delay of {pred_A_sx_s1*86400:.3f} s "
-        f"({pred_A_sx_s1:.5f} d) versus the observed +{r_obs:.1f} d — a shortfall "
-        f"of ~{ratio_needed:.0e}. Channel B (treating the scalar fifth force as "
+        f"({pred_A_sx_s1:.5f} d) versus the observed +{r_obs:.1f} d — a delay shortfall "
+        f"of {delay_shortfall:.1f}. The separate local convergence/slip comparison "
+        f"has ratio {ratio_needed:.1f}; it is not the delay ratio. Channel B (treating the scalar fifth force as "
         f"an equivalent lensing density, kappa_ph = 2 beta^2 y kappa) would give "
         f"{pred_B_sx_s1:+.2f} d, overshooting the residual — but the fifth force "
         f"acts on matter geodesics of the matter metric, not on g's curvature; "
         f"photons couple only to T_mn^phi (channel A). "
-        "Verdict: the direct backreaction channel cannot supply the observed "
-        "amplitude at canonical parameters; the +30.1 d residual, if TEP-sourced, "
-        "must enter through the mass-sheet/dynamics-slip systematics channel "
-        "(step_60), not through scalar curvature of the light path. This "
-        "converts the log-magnification proxy's open kernel question into a "
-        "derived bound: alpha(phi) = Psi_phi is now computed, and it is ~1e-6."
+        "This retained profile/sheet-energy control does not reproduce the "
+        "residual. Its result is not a universal exclusion of the selected "
+        "two-branch action: a matched three-dimensional field, exact stress "
+        "tensor and anisotropic optical response remain required. The separate "
+        "mass-sheet/dynamics-slip calculation is recorded in step_60."
     )
 
     out = {
         "step": STEP_NUM,
         "status": "success",
+        'kinetic_scope': 'Retained unit-term screening_y control; not the selected two-branch profile or a complete three-dimensional scalar/matter/metric lens solution.',
+        'stress_energy_scope': 'Historical sheet self-energy approximation; a complete optical prediction requires the selected action stress tensor, including anisotropic stress and the matched field geometry.',
         "description": (
-            "Coupled scalar + lens solve: canonical screening profile on the "
+            "Retained unit-term sheet control: screening profile on the "
             "GLAFIC v3 kappa map, scalar self-energy projected to kappa_phi, "
             "FFT Poisson solve for psi_phi, delta-A at image positions, "
             "differential Fermat delays vs the +30.1 d observed residual. "
@@ -344,6 +348,7 @@ def main():
             "B_phantom_equivalent_SX_minus_S1_days": float(pred_B_sx_s1),
             "slip_required_frac": float(slip_required),
             "A_shortfall_vs_required_slip": float(ratio_needed),
+            "A_delay_shortfall_vs_observed_residual": delay_shortfall,
             "psi_diff_needed_rad2_for_30d": float(psi_needed_rad2),
         },
         "alpha_phi_identification": (

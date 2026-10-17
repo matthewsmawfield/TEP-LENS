@@ -1,7 +1,9 @@
 {
   "step": "061",
   "status": "success",
-  "description": "Coupled scalar + lens solve: canonical screening profile on the GLAFIC v3 kappa map, scalar self-energy projected to kappa_phi, FFT Poisson solve for psi_phi, delta-A at image positions, differential Fermat delays vs the +30.1 d observed residual. Channel A = scalar self-energy (what photons couple to); Channel B = phantom force-equivalent density (bookkeeping comparison only).",
+  "kinetic_scope": "Retained unit-term screening_y control; not the selected two-branch profile or a complete three-dimensional scalar/matter/metric lens solution.",
+  "stress_energy_scope": "Historical sheet self-energy approximation; a complete optical prediction requires the selected action stress tensor, including anisotropic stress and the matched field geometry.",
+  "description": "Retained unit-term sheet control: screening profile on the GLAFIC v3 kappa map, scalar self-energy projected to kappa_phi, FFT Poisson solve for psi_phi, delta-A at image positions, differential Fermat delays vs the +30.1 d observed residual. Channel A = scalar self-energy (what photons couple to); Channel B = phantom force-equivalent density (bookkeeping comparison only).",
   "cosmology": {
     "z_l": 0.542,
     "z_s": 1.489,
@@ -128,8 +130,9 @@
     "B_phantom_equivalent_SX_minus_S1_days": 3778.6270641325896,
     "slip_required_frac": 0.08686093356009636,
     "A_shortfall_vs_required_slip": 2194.271154920444,
+    "A_delay_shortfall_vs_observed_residual": 122.22747212373942,
     "psi_diff_needed_rad2_for_30d": 6.652920983683732e-12
   },
   "alpha_phi_identification": "alpha(phi) := Psi_phi, the scalar self-energy lensing potential solving nabla^2 Psi_phi = 2 kappa_phi in the thin-lens limit. This is the first evaluation of the manuscript's Eq. 3_methodology_02a kernel with a defined alpha.",
-  "verdict": "Channel A (strict Einstein-frame scalar self-energy): at the Refsdal image sheet densities (g/g_t = 4.1-5.9, y = 0.27-0.34), the canonical screening profile gives |grad u| = yg/c^2 ~ 6.15e-27 m^-1 at SX, i.e. rho_phi ~ 6.36e-27 kg/m^3. Projected over a fiducial 1.0 Mpc halo depth this is kappa_phi ~ 3.96e-05, a SX-S1 differential Fermat delay of 21241.407 s (0.24585 d) versus the observed +30.0 d \u2014 a shortfall of ~2e+03. Channel B (treating the scalar fifth force as an equivalent lensing density, kappa_ph = 2 beta^2 y kappa) would give +3778.63 d, overshooting the residual \u2014 but the fifth force acts on matter geodesics of the matter metric, not on g's curvature; photons couple only to T_mn^phi (channel A). Verdict: the direct backreaction channel cannot supply the observed amplitude at canonical parameters; the +30.1 d residual, if TEP-sourced, must enter through the mass-sheet/dynamics-slip systematics channel (step_60), not through scalar curvature of the light path. This converts the log-magnification proxy's open kernel question into a derived bound: alpha(phi) = Psi_phi is now computed, and it is ~1e-6."
+  "verdict": "Channel A (strict Einstein-frame scalar self-energy): at the Refsdal image sheet densities (g/g_t = 4.1-5.9, y = 0.27-0.34), the retained unit-term profile control screening profile gives |grad u| = yg/c^2 ~ 6.15e-27 m^-1 at SX, i.e. rho_phi ~ 6.36e-27 kg/m^3. Projected over a fiducial 1.0 Mpc halo depth this is kappa_phi ~ 3.96e-05, a SX-S1 differential Fermat delay of 21241.407 s (0.24585 d) versus the observed +30.0 d \u2014 a delay shortfall of 122.2. The separate local convergence/slip comparison has ratio 2194.3; it is not the delay ratio. Channel B (treating the scalar fifth force as an equivalent lensing density, kappa_ph = 2 beta^2 y kappa) would give +3778.63 d, overshooting the residual \u2014 but the fifth force acts on matter geodesics of the matter metric, not on g's curvature; photons couple only to T_mn^phi (channel A). This retained profile/sheet-energy control does not reproduce the residual. Its result is not a universal exclusion of the selected two-branch action: a matched three-dimensional field, exact stress tensor and anisotropic optical response remain required. The separate mass-sheet/dynamics-slip calculation is recorded in step_60."
 }

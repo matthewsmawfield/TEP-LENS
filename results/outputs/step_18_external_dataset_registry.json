@@ -59,7 +59,9 @@
         ]
       },
       "integration_steps": [
-        "planned: step_19_tdcosmo2025_ingestion.py"
+        "step_19_tdcosmo2025_ingestion.py",
+        "step_055_tdcosmo_kernel_test.py",
+        "step_46_tdcosmo_kappa_tracer_robustness.py"
       ]
     },
     {

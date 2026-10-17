@@ -1,7 +1,7 @@
 {
   "name": "TEP-LENS",
   "short_name": "TEP-LENS",
-  "version": "v0.2 (Lisboa)",
+  "version": "v0.3 (Lisboa)",
   "first_published": "10 June 2026",
   "start_url": ".",
   "display": "standalone",
@@ -21,8 +21,8 @@
   ],
   "title": "Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae",
   "author": "Matthew Lukin Smawfield",
-  "date": "2026-09-30",
-  "doi": "10.5281/zenodo.20572720",
+  "date": "17 October 2026",
+  "doi": "10.5281/zenodo.20572719",
   "sections": [
     {
       "id": "section-abstract",

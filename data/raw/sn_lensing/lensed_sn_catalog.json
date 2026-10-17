@@ -164,10 +164,10 @@
         "D"
       ],
       "image_separation_arcsec": 1.7,
-      "notes": "Johansson et al. 2025, ApJ 995, L17; Taubenberger et al. 2025 (HOLISMOKES XIX). First lensed SLSN-I. Four images in Einstein cross pattern. Host galaxy PS1J0716+3821 known quadruple since Ca\u00f1ameras et al. 2020. Time delays not yet measured. HST (PID 17611) and JWST (PID 5564) follow-up ongoing (PI: Goobar). High magnification contrast makes this the most promising future TEP test after Refsdal."
+      "notes": "Johansson et al. 2025, ApJ 995, L17; Taubenberger et al. 2025 (HOLISMOKES XIX); Goobar et al. 2026 (arXiv:2608.28413); Townsend et al. 2026 (arXiv:2608.28427); Mortsell et al. 2026 (arXiv:2608.28430). First lensed SLSN-I. Four images (A-D) in ground-based Einstein cross pattern; five images (A-E) resolved in HST (PID 17611) and JWST (PID 5564) follow-up across two lens galaxies (z=0.3755, 0.3766). Time delays published August 2026 (dt_AD = -65.7 +/- 3.5 d; evaluated in Step 36b alongside the prospective Step 36 record)."
     },
     "time_delays_days": {
-      "note": "Not yet measured. Ongoing photometric monitoring by Maidanak, Lulin, COLIBRI, Wendelstein. HST/JWST follow-up scheduled.",
+      "note": "Published August 2026 (Townsend et al. 2026, arXiv:2608.28427; Johansson et al. 2026, arXiv:2608.28416; Mortsell et al. 2026, arXiv:2608.28430): dt_AB = -10.4 +/- 1.7 d, dt_AC = 0.8 +/- 2.1 d, dt_AD = -65.7 +/- 3.5 d (combined); dt_AE = 3.7 +/- 8.8 d (spectroscopic). Step 36 retains the pre-measurement Witt-Wynne geometric forecast; Step 36b evaluates the measured A-D baseline.",
       "post_hoc_predictions": {
         "reference": "Witt-Wynne model, Wynne & Schechter 2018, as applied in arXiv:2605.11090. NOTE: post-hoc, not blind.",
         "dt_CA_days": {

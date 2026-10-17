@@ -1,0 +1,110 @@
+{
+ "step": "36b",
+ "inputs": {
+  "dt_AD_days": [
+   -65.7,
+   3.5
+  ],
+  "dt_AB_days": [
+   -10.4,
+   1.7
+  ],
+  "dt_AC_days": [
+   0.8,
+   2.1
+  ],
+  "dt_AE_days_spec": [
+   3.7,
+   8.8
+  ],
+  "resolved_images_space_data": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E"
+  ],
+  "z_sn_space": 2.0151,
+  "z_deflectors": [
+   0.3755,
+   0.3766
+  ],
+  "theta_E_two_deflectors_arcsec": [
+   1.6,
+   0.75
+  ],
+  "H0_lens_model_isothermal": [
+   66.7,
+   7.6,
+   6.3
+  ],
+  "H0_lens_model_free_slope": [
+   70.8,
+   8.2,
+   6.1
+  ],
+  "H0_lens_model": [
+   66.7,
+   7.6,
+   6.3
+  ],
+  "kappa_calibrated_step07": [
+   -0.11801455702619729,
+   0.03356007159701878
+  ],
+  "sources": [
+   "arXiv:2608.28413",
+   "arXiv:2608.28416",
+   "arXiv:2608.28427",
+   "arXiv:2608.28430"
+  ]
+ },
+ "forecast_step36_premise_baseline_days": [
+  140.0,
+  210.0
+ ],
+ "predicted_residual_days_measured_baseline": {
+  "p16": 2.3181021853141446,
+  "p50": 4.374613819574037,
+  "p84": 7.122360204335613,
+  "p95": 9.413365092864286
+ },
+ "current_lens_model_fractional_precision": 0.10419790104947525,
+ "current_sigma_model_days_on_AD": 6.845802098950524,
+ "required_sigma_model_days": {
+  "3sigma_median": 1.458204606524679,
+  "5sigma_median": 0.8749227639148074
+ },
+ "cosmographic_h0_implication": {
+  "H0_GR_inferred_km_s_Mpc": 66.7,
+  "H0_TEP_zero_param_cosmic_root_km_s_Mpc": 68.167,
+  "tension_vs_TEP_cosmic_root_sigma": 0.21107913669064732,
+  "H0_TEP_proxy_corrected_p50_km_s_Mpc": 71.45800903898298,
+  "H0_TEP_proxy_corrected_p16_p84_km_s_Mpc": [
+   69.1394570230844,
+   74.80994480635164
+  ]
+ },
+ "two_branch_einstein_ring_screening": {
+  "theta_E_arcsec": 0.85,
+  "R_E_kpc": 4.503002612653969,
+  "M_E_enclosed_Msun": 135058209684.39783,
+  "benchmarks": {
+   "fb_0p25_early_type": {
+    "f_b_enclosed": 0.25,
+    "q_gb_over_gt": 0.700915932932575,
+    "y_two_branch": 0.3509903649441391,
+    "M_tot_over_M_b_2x": 1.701980729888278,
+    "apparent_dark_matter_fraction_inside_R_E": 0.4124492819224562
+   },
+   "fb_0p35_early_type": {
+    "f_b_enclosed": 0.35,
+    "q_gb_over_gt": 0.9812823061056051,
+    "y_two_branch": 0.2960725093439747,
+    "M_tot_over_M_b_2x": 1.5921450186879493,
+    "apparent_dark_matter_fraction_inside_R_E": 0.3719165099520411
+   }
+  }
+ },
+ "status": "open: predicted residual is below the current lens-model precision on the measured A-D baseline; neither confirmed nor excluded"
+}

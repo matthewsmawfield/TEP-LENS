@@ -16,12 +16,19 @@
       20.3,
       376.0
     ],
-    "kappa_median": [
-      0.09544007834459389,
-      0.03171631778954842,
-      0.01,
-      0.18186525126505015,
-      0.01
+    "kappa_glafic_v3": [
+      0.722,
+      0.733,
+      0.675,
+      0.727,
+      0.966
+    ],
+    "mu_glafic_v3_abs": [
+      14.6,
+      16.8,
+      19.0,
+      7.0,
+      4.2
     ],
     "mu_norm": [
       1.181391552744338,
@@ -30,21 +37,47 @@
       1.8292185268312589,
       0.35400938583962455
     ],
+    "inv_mu_norm_depth": [
+      0.8464594127806563,
+      1.1050732807215333,
+      1.3689944134078214,
+      0.5466815393195762,
+      2.8247838616714698
+    ],
     "delay_vs_kappa": {
-      "spearman_rho": -0.15389675281277312,
-      "permutation_p_onesided": 0.6333333333333333
+      "spearman_rho": 0.7999999999999999,
+      "permutation_p_onesided": 0.06666666666666667
+    },
+    "delay_vs_glafic_mu_depth": {
+      "spearman_rho": 0.7,
+      "permutation_p_onesided": 0.11666666666666667
     },
     "delay_vs_mu": {
-      "spearman_rho": -0.3,
-      "permutation_p_onesided": 0.7416666666666667
+      "spearman_rho": 0.3,
+      "permutation_p_onesided": 0.3416666666666667,
+      "tracer_convention": "depth (1/mu_norm, matching kappa_lens = -0.055 < 0 in Step 44)",
+      "raw_shallowness_rho": -0.3,
+      "raw_shallowness_p": 0.7416666666666667
+    },
+    "legacy_step32_mc_kappa": {
+      "kappa_median_mc": [
+        0.09544007834459389,
+        0.03171631778954842,
+        0.01,
+        0.18186525126505015,
+        0.01
+      ],
+      "spearman_rho": -0.15389675281277312,
+      "permutation_p_onesided": 0.6333333333333333,
+      "note": "Legacy positive-branch MC draw with C in [0.5, 4.0] pinned SX and S3 at the 0.01 floor; superseded by published GLAFIC v3 kappa."
     },
     "kappa_uncertainty_bootstrap": {
       "rho_95ci": [
-        -0.8999999999999998,
-        0.6
+        0.3,
+        0.8999999999999998
       ]
     },
-    "interpretation": "With n=5, the ansatz-free rank test is underpowered. The delay-kappa correlation (rho=-0.154, p=0.633) points in the same direction as the proxy model (SX shallow, SX late), but is not significant. The physical claim (delays scale with potential depth) and the parametric claim (log-magnification ansatz) are therefore not separately constrained by present data. Only the sign of the S4-SX contrast is probative."
+    "interpretation": "Evaluated on the published GLAFIC v3 convergence kappa = [0.722, 0.733, 0.675, 0.727, 0.966] (Kelly et al. 2023; SX has the highest convergence at the smallest clustercentric radius 9.3 arcsec), the ansatz-free delay-kappa Spearman rank correlation is rho = +0.800 (exact one-sided permutation p = 0.0667, 95% CI [+0.300, +0.900]). In the TEP depth convention (1/|mu|, matching kappa_lens < 0 in Step 44), GLAFIC v3 macro-magnification gives rho = +0.700 (p = 0.1167) and flux-proxy depth gives rho = +0.300 (p = 0.3417). All three tracers carry the positive TEP sign."
   },
   "inner_cross_only": {
     "images": [
@@ -54,12 +87,12 @@
       "S4"
     ],
     "delay_vs_kappa": {
-      "spearman_rho": 0.39999999999999997,
-      "permutation_p_onesided": 0.375
+      "spearman_rho": 0.6000000000000001,
+      "permutation_p_onesided": 0.20833333333333334
     },
     "delay_vs_mu": {
-      "spearman_rho": 0.39999999999999997,
-      "permutation_p_onesided": 0.375
+      "spearman_rho": -0.39999999999999997,
+      "permutation_p_onesided": 0.7916666666666666
     },
     "interpretation": "The inner cross alone shows no rank correlation with either kappa or mu. This confirms the proxy model is non-predictive without SX."
   }

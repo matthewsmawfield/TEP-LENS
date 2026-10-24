@@ -4,8 +4,8 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 **Author:** Matthew Lukin Smawfield  
-**Version:** v0.3 (Lisboa)  
-**First published:** 10 June 2026 · **Last updated:** 17 October 2026  
+**Version:** v0.4 (Lisboa)  
+**First published:** 10 June 2026 · **Last updated:** 24 October 2026  
 **Status:** Preprint  
 **DOI:** [10.5281/zenodo.20572719](https://doi.org/10.5281/zenodo.20572719)  
 **Website:** [https://mlsmawfield.com/tep/lens/](https://mlsmawfield.com/tep/lens/)  
@@ -81,11 +81,11 @@ python scripts/steps/run_all_steps.py
 
 # Build manuscript from HTML components (static site + markdown)
 cd site && npm ci && npm run build
-# Output: D19-TEP-LENS-v0.3-Lisboa.md (repo root and manuscripts/)
+# Output: D19-TEP-LENS-v0.4-Lisboa.md (repo root and manuscripts/)
 
 # Generate PDF (requires playwright: pip install playwright && playwright install chromium)
 python scripts/generate_site_pdf.py --quality high --wait-time 5
-# Output: site/public/docs/D19-TEP-LENS-v0.3-Lisboa.pdf and repo root copy
+# Output: site/public/docs/D19-TEP-LENS-v0.4-Lisboa.pdf and repo root copy
 
 # Deploy static site
 ./deploy.sh
@@ -93,7 +93,7 @@ python scripts/generate_site_pdf.py --quality high --wait-time 5
 
 ## Known Data Caveats
 
-- **GLAFIC v3 map normalization offset (§3.3.1):** The archived GLAFIC v3 lensing-potential and convergence maps (used in Steps 44–54) exhibit a ~4 ×  normalization offset relative to the Kelly et al. (2023) tabulated parameters. Diagnostic checks show this is not a simple source-redshift rescaling ($D_{\rm ls}/D_{\rm s}$ and $\Sigma_{\rm crit}$ ratios do not account for the discrepancy). The most probable origin is either a localized pixel-to-arcsecond unit-translation error in the raw archived map files or an undocumented mass-sheet projection effect inside the GLAFIC inversion coordinate system. Neither invalidates the tabulated parameters, but researchers re-running the 3D Abel deprojection or Jacobian transfer-kernel reconstruction (Step 54) should treat the map-derived absolute amplitudes as exploratory and rely on the Kelly+2023 tabulated values for quantitative comparison.
+- **GLAFIC v3 map normalization (§3.3.1, Steps 44, 50, 56):** The archived GLAFIC v3 HLSP maps (`psi`, `kappa`, `gamma1`, `gamma2`) are scaled to $D_{\rm LS}/D_{\rm OS} = 1$ ($z_s \to \infty$, per Kawamata, Oguri &amp; Ishigaki 2015). Multiplying by $\beta(z_s = 1.489) = D_{\rm ls}/D_{\rm s} = 0.5339$ ($z_l = 0.542$) at the published HST image positions reproduces all five Kelly et al. (2023) tabulated $\kappa$ values to $1\text{–}3\%$ (uniform map/table ratio $1.878$ versus $1/\beta = 1.873$ expected).
 
 ## Citation
 
@@ -102,7 +102,7 @@ python scripts/generate_site_pdf.py --quality high --wait-time 5
   title={Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae},
   author={Smawfield, Matthew Lukin},
   year={2026},
-  note={Preprint v0.3 (Lisboa)},
+  note={Preprint v0.4 (Lisboa)},
   url={https://github.com/matthewsmawfield/TEP-LENS}
 }
 ```

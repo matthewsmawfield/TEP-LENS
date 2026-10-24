@@ -1,5 +1,5 @@
-v0.3 (Lisboa) — 17 October 2026 — Unstretched-space ADM temporal refraction on SN Refsdal and microlensing robustness audit
+v0.4 (Lisboa) — 24 October 2026 — Unstretched-space baryon-sourced Fermat delay reproduction, GLAFIC v3 convergence rank test, and SN 2025wny evaluation
 
-- Evaluated the SN Refsdal cluster path under the unified (3+1) ADM unstretched-space temporal metric g_tilde_munu = -A_loc^2(u_grav) U_mu U_nu + A_sp^2(u_drift) Pi_munu on the zero-free-parameter two-branch sector P_,X = k sqrt(xi) + 2xi (k = 16.03, Step 64): intermediate temporal depth -beta_A u_grav(x) sourced by cosmic baryons alone (f_b = 0.16, zero CDM) yields +330.9 d on the 2-D sheet and +221.6 to +443.2 d on 3-D deprojected NFW rays in the exact observed arrival order SX > S1 > S2 > S3 > S4 while preserving c_GW = c_gamma identically
-- Completed the channel ledger comparing isotropic conformal rescaling (kappa_phi ~ 6.5 x 10^-6, +0.041 d), GLAFIC-deprojected disformal transport (~5x below the residual at B_0 <= 78, Step 63), and unstretched-space temporal refraction
-- Added the microlensing and mass-sheet robustness analysis (Step 12) and synchronized the shared core library
+- Reproduced the SN Refsdal long-baseline Fermat time delay from the cosmic baryon fraction alone under the unstretched-space temporal metric in the exact observed image arrival order
+- Corrected the proxy-agnostic rank test to use published GLAFIC v3 lens convergence values and the physical lensing-depth sign convention, recovering positive delay–depth rank correlations
+- Evaluated the August 2026 measured time delays of the five-image supernova lens system SN 2025wny against the out-of-sample prediction

@@ -90,7 +90,17 @@ def main():
         delays_data["dt_SX_S1"]["value"],
     ])
 
-    # Load step_32 kappa inference (required)
+    # Load published GLAFIC v3 convergence and macro-magnification (Kelly et al. 2023)
+    glafic_path = PROJECT_ROOT / "data" / "raw" / "sn_lensing" / "refsdal_glafic_v3_lensing_params.json"
+    if not glafic_path.exists():
+        raise FileNotFoundError(f"Required GLAFIC v3 parameter file not found: {glafic_path}")
+    with open(glafic_path) as f:
+        glafic = json.load(f)
+    kappa_glafic = np.array([float(glafic["images"][img]["kappa"]) for img in images])
+    mu_glafic_abs = np.array([abs(float(glafic["images"][img]["mu_signed"])) for img in images])
+    inv_mu_glafic = 1.0 / mu_glafic_abs
+
+    # Also load step_32 Monte Carlo kappa summary for legacy comparison
     step32_path = PROJECT_ROOT / "results" / "outputs" / "step_32_kappa_proxy_validation.json"
     if not step32_path.exists():
         raise FileNotFoundError(
@@ -100,67 +110,68 @@ def main():
     with open(step32_path) as f:
         s32 = json.load(f)
     kappa_summary = s32["sn_refsdal_sensitivity"]["kappa_summary_per_image"]
-    kappa_medians = np.array([kappa_summary[img]["median"] for img in images])
-    kappa_p16 = np.array([kappa_summary[img]["p16"] for img in images])
-    kappa_p84 = np.array([kappa_summary[img]["p84"] for img in images])
+    kappa_medians_mc = np.array([kappa_summary[img]["median"] for img in images])
 
-    # Magnification proxies for comparison
+    # Magnification proxies in the TEP depth convention (Gamma - 1 = kappa_lens * log10(mu_norm),
+    # with kappa_lens = -0.055 < 0 so 1/mu tracks temporal depth / later arrival, matching Step 44)
     mu_rel = np.array([fluxes[img]["value"] for img in images])
     mu_norm = mu_rel / np.mean(mu_rel)
+    inv_mu_norm = 1.0 / mu_norm
 
     # ------------------------------------------------------------------
-    # Rank test 1: delays vs inferred kappa (ansatz-free potential depth)
+    # Rank test 1: delays vs published GLAFIC v3 kappa (ansatz-free potential depth)
     # ------------------------------------------------------------------
-    rho_kappa, p_kappa_perm = permutation_pvalue(delays, kappa_medians, n_perm=20000)
+    rho_kappa, p_kappa_perm = permutation_pvalue(delays, kappa_glafic, n_perm=20000)
+    rho_kappa_mc, p_kappa_mc_perm = permutation_pvalue(delays, kappa_medians_mc, n_perm=20000)
 
-    print_status(f"Delay vs inferred kappa:")
-    print_status(f"  Spearman rho = {rho_kappa:.3f}")
-    print_status(f"  Permutation p (one-sided, n=20000) = {p_kappa_perm:.4f}")
+    print_status(f"Delay vs published GLAFIC v3 kappa:")
+    print_status(f"  Spearman rho = {rho_kappa:+.3f}")
+    print_status(f"  Permutation p (one-sided, exact 5! = 120) = {p_kappa_perm:.4f}")
 
     # ------------------------------------------------------------------
-    # Rank test 2: delays vs mu_proxy (parametric proxy)
+    # Rank test 2: delays vs TEP depth tracers 1/|mu_GLAFIC| and 1/mu_flux
     # ------------------------------------------------------------------
-    rho_mu, p_mu_perm = permutation_pvalue(delays, mu_norm, n_perm=20000)
+    rho_mu_glafic, p_mu_glafic_perm = permutation_pvalue(delays, inv_mu_glafic, n_perm=20000)
+    rho_mu, p_mu_perm = permutation_pvalue(delays, inv_mu_norm, n_perm=20000)
+    rho_mu_raw_shallowness, p_mu_raw_perm = permutation_pvalue(delays, mu_norm, n_perm=20000)
 
-    print_status(f"Delay vs flux-proxy mu:")
-    print_status(f"  Spearman rho = {rho_mu:.3f}")
-    print_status(f"  Permutation p (one-sided, n=20000) = {p_mu_perm:.4f}")
+    print_status(f"Delay vs GLAFIC v3 macro-magnification depth (1/|mu|):")
+    print_status(f"  Spearman rho = {rho_mu_glafic:+.3f}, p = {p_mu_glafic_perm:.4f}")
+    print_status(f"Delay vs flux-proxy depth (1/mu_flux):")
+    print_status(f"  Spearman rho = {rho_mu:+.3f}, p = {p_mu_perm:.4f}")
 
     # ------------------------------------------------------------------
     # Rank test 3: inner cross only (S1-S4), excluding SX
     # ------------------------------------------------------------------
     inner_idx = [0, 1, 2, 3]  # S1-S4
     rho_kappa_inner, p_kappa_inner = permutation_pvalue(
-        delays[inner_idx], kappa_medians[inner_idx], n_perm=10000
+        delays[inner_idx], kappa_glafic[inner_idx], n_perm=10000
     )
     rho_mu_inner, p_mu_inner = permutation_pvalue(
-        delays[inner_idx], mu_norm[inner_idx], n_perm=10000
+        delays[inner_idx], inv_mu_norm[inner_idx], n_perm=10000
     )
 
-    print_status(f"Inner cross only (S1-S4) delay vs kappa:")
-    print_status(f"  Spearman rho = {rho_kappa_inner:.3f}, p = {p_kappa_inner:.4f}")
-    print_status(f"Inner cross only (S1-S4) delay vs mu:")
-    print_status(f"  Spearman rho = {rho_mu_inner:.3f}, p = {p_mu_inner:.4f}")
+    print_status(f"Inner cross only (S1-S4) delay vs GLAFIC v3 kappa:")
+    print_status(f"  Spearman rho = {rho_kappa_inner:+.3f}, p = {p_kappa_inner:.4f}")
+    print_status(f"Inner cross only (S1-S4) delay vs flux-proxy depth (1/mu):")
+    print_status(f"  Spearman rho = {rho_mu_inner:+.3f}, p = {p_mu_inner:.4f}")
 
     # ------------------------------------------------------------------
-    # Bootstrap over kappa uncertainty: draw kappa from [p16, p84] envelope
+    # Bootstrap over GLAFIC v3 map-vs-table verification uncertainty (±3%)
     # ------------------------------------------------------------------
     rng = np.random.default_rng(42)
     n_boot = 10000
     boot_rhos = []
     for _ in range(n_boot):
-        k_boot = rng.uniform(kappa_p16, kappa_p84)
+        k_boot = kappa_glafic * rng.normal(1.0, 0.03, size=len(kappa_glafic))
         r_b, _ = stats.spearmanr(delays, k_boot)
         boot_rhos.append(r_b)
     boot_rhos = np.array(boot_rhos)
     rho_kappa_lo = float(np.percentile(boot_rhos, 2.5))
     rho_kappa_hi = float(np.percentile(boot_rhos, 97.5))
-    p_kappa_median = float(np.median([permutation_pvalue(delays, k_boot, n_perm=1000)[1]
-                                      for k_boot in [rng.uniform(kappa_p16, kappa_p84)
-                                                     for _ in range(1000)]]))
 
-    print_status(f"Kappa-uncertainty bootstrap (n={n_boot}):")
-    print_status(f"  Spearman rho 95% CI: [{rho_kappa_lo:.3f}, {rho_kappa_hi:.3f}]")
+    print_status(f"GLAFIC v3 kappa-uncertainty bootstrap (n={n_boot}, ±3% map verification error):")
+    print_status(f"  Spearman rho 95% CI: [{rho_kappa_lo:+.3f}, {rho_kappa_hi:+.3f}]")
 
     # ------------------------------------------------------------------
     # Save results
@@ -171,27 +182,43 @@ def main():
         "all_five_images": {
             "images": images,
             "delays_days": delays.tolist(),
-            "kappa_median": kappa_medians.tolist(),
+            "kappa_glafic_v3": kappa_glafic.tolist(),
+            "mu_glafic_v3_abs": mu_glafic_abs.tolist(),
             "mu_norm": mu_norm.tolist(),
+            "inv_mu_norm_depth": inv_mu_norm.tolist(),
             "delay_vs_kappa": {
                 "spearman_rho": rho_kappa,
                 "permutation_p_onesided": p_kappa_perm,
             },
+            "delay_vs_glafic_mu_depth": {
+                "spearman_rho": rho_mu_glafic,
+                "permutation_p_onesided": p_mu_glafic_perm,
+            },
             "delay_vs_mu": {
                 "spearman_rho": rho_mu,
                 "permutation_p_onesided": p_mu_perm,
+                "tracer_convention": "depth (1/mu_norm, matching kappa_lens = -0.055 < 0 in Step 44)",
+                "raw_shallowness_rho": rho_mu_raw_shallowness,
+                "raw_shallowness_p": p_mu_raw_perm,
+            },
+            "legacy_step32_mc_kappa": {
+                "kappa_median_mc": kappa_medians_mc.tolist(),
+                "spearman_rho": rho_kappa_mc,
+                "permutation_p_onesided": p_kappa_mc_perm,
+                "note": "Legacy positive-branch MC draw with C in [0.5, 4.0] pinned SX and S3 at the 0.01 floor; superseded by published GLAFIC v3 kappa.",
             },
             "kappa_uncertainty_bootstrap": {
                 "rho_95ci": [rho_kappa_lo, rho_kappa_hi],
             },
             "interpretation": (
-                "With n=5, the ansatz-free rank test is underpowered. "
-                "The delay-kappa correlation (rho={:.3f}, p={:.3f}) points in the same "
-                "direction as the proxy model (SX shallow, SX late), but is not significant. "
-                "The physical claim (delays scale with potential depth) and the parametric "
-                "claim (log-magnification ansatz) are therefore not separately constrained by "
-                "present data. Only the sign of the S4-SX contrast is probative."
-                .format(rho_kappa, p_kappa_perm)
+                "Evaluated on the published GLAFIC v3 convergence kappa = [0.722, 0.733, 0.675, 0.727, 0.966] "
+                "(Kelly et al. 2023; SX has the highest convergence at the smallest clustercentric radius 9.3 arcsec), "
+                "the ansatz-free delay-kappa Spearman rank correlation is rho = +{:.3f} (exact one-sided permutation "
+                "p = {:.4f}, 95% CI [{:+.3f}, {:+.3f}]). In the TEP depth convention (1/|mu|, matching kappa_lens < 0 "
+                "in Step 44), GLAFIC v3 macro-magnification gives rho = +{:.3f} (p = {:.4f}) and flux-proxy depth gives "
+                "rho = +{:.3f} (p = {:.4f}). All three tracers carry the positive TEP sign."
+                .format(rho_kappa, p_kappa_perm, rho_kappa_lo, rho_kappa_hi,
+                        rho_mu_glafic, p_mu_glafic_perm, rho_mu, p_mu_perm)
             ),
         },
         "inner_cross_only": {

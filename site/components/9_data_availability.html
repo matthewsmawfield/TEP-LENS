@@ -14,7 +14,7 @@
         <em>GitHub Repository:</em> <a href="https://github.com/matthewsmawfield/TEP-LENS">github.com/matthewsmawfield/TEP-LENS</a>
     </p>
     <p>
-        The repository contains a deterministic, version-controlled analysis pipeline covering <em>Steps 00–20, 30–46, and 50–57</em>,
+        The repository contains a deterministic, version-controlled analysis pipeline covering <em>Steps 00–20, 30–46, and 50–64</em>,
         including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, conformal-cancellation auditing, response-transfer auditing, cross-system kernel consistency auditing, external amplitude cross-validation, and future-system forecasting.
     </p>
 
@@ -101,7 +101,7 @@ cd TEP-LENS
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–57
+# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–64
 python scripts/steps/run_all_steps.py
 
 # 4. Build manuscript
@@ -145,7 +145,7 @@ npm run build
     </table>
 
     <h4>Detailed Pipeline Steps</h4>
-    <p>The analysis pipeline covers <em>Steps 00–20, 30–46, and 50–57</em>, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, conformal-cancellation auditing, external amplitude cross-validation, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:</p>
+    <p>The analysis pipeline covers <em>Steps 00–20, 30–46, and 50–64</em>, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, conformal-cancellation auditing, external amplitude cross-validation, response-transfer auditing, cross-system kernel consistency auditing, action-level scalar backreaction, disformal cone-tilt bounds, NFW deprojection, unstretched-space temporal refraction, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:</p>
 
     <h5>Data Acquisition & Closure Tests (Steps 00-04)</h5>
     <ul>
@@ -194,6 +194,7 @@ npm run build
         <li><em>step_34_agnostic_rank_test.py</em> — Agnostic rank test; proxy-agnostic statistical verification of rank-order predictions</li>
         <li><em>step_35_single_contrast_dominance.py</em> — Single-contrast dominance quantification; effective degrees of freedom and signal-energy fractions</li>
         <li><em>step_36_falsification_forward_prediction.py</em> — Falsification forward prediction; forward-projected thresholds for SN 2025wny</li>
+        <li><em>step_36b_sn2025wny_measured_baseline_update.py</em> — Post-measurement evaluation of SN 2025wny on the August 2026 measured $65.7\pm3.5$ d A–D delay baseline</li>
         <li><em>step_37_multi_system_evidence.py</em> — Multi-system evidence accumulation projection; Stouffer projection and coupling-inference scaling with N independent systems</li>
         <li><em>step_38_cosmograil_cross_system.py</em> — CosmoGRAIL cross-system directional consistency diagnostic; caveated quasar check separate from the supernova residual tests</li>
         <li><em>step_38_sn_encore_residuals.py</em> — SN Encore blind-prediction residual test; 8 independent lens models from Suyu+2025 vs Pierel+2026 observed delay</li>
@@ -201,6 +202,13 @@ npm run build
         <li><em>step_40_cross_system_trio.py</em> — Cross-system trio evidence synthesis; Stouffer combination of directional evidence from Refsdal, Encore, and H0pe</li>
         <li><em>step_41_null_channel_discriminator.py</em> — Null-channel discriminator; AIC comparison of the TEP proxy against generic bias models (null, constant offset, uniform-fractional H0/MSD-like) across cross-system contrasts, separating amplitude from sign evidence</li>
         <li><em>step_42_precision_persistence.py</em> — Precision-persistence test; extrapolates the SN Refsdal SX residual to the high-precision lens-model limit to test the model-immaturity explanation</li>
+        <li><em>step_43_kappa_precision_forecast.py</em> — Convergence precision forecast across multi-system strong-lensing samples</li>
+        <li><em>step_44_direct_kappa_residual.py</em> — Direct GLAFIC v3 convergence loop residual in the depth and shallowness conventions</li>
+        <li><em>step_45_proxy_robustness_sweep.py</em> &amp; <em>step_46_tdcosmo_kappa_tracer_robustness.py</em> — Proxy and convergence-tracer robustness sweeps</li>
+        <li><em>step_50_psi_transport.py</em> – <em>step_60_mass_slip_two_directions.py</em> — Lensing-potential transport, geodesic lapse, first-principles transfer kernel, external amplitude cross-validation, H0 channel audit, and two-direction phantom-mass bookkeeping</li>
+        <li><em>step_61_backreaction_lens_solve.py</em> — Isotropic-conformal scalar stress-energy backreaction control ($\kappa_\phi \approx 4\times 10^{-5}$)</li>
+        <li><em>step_62_disformal_lens_path.py</em> &amp; <em>step_63_nfw_deprojection.py</em> — GW170817-bounded disformal cone-tilt transfer ($B_0 \lesssim 78$) and 3-D spherical NFW + constant-sheet GLAFIC deprojection ($B_0^{\rm req} \simeq 420$)</li>
+        <li><em>step_64_two_branch_backreaction_solve.py</em> — Unstretched-space ADM temporal refraction solve on the zero-free-parameter two-branch sector $P_{,X}=k\sqrt{\xi}+2\xi$ ($k=16.03$; $+330.9$ d 2-D sheet and $+221.6$ to $+443.2$ d 3-D NFW ray delay from $f_b=0.16$ baryons alone)</li>
     </ul>
 
     <p>
@@ -225,6 +233,8 @@ npm run build
         <li><code>results/outputs/step_57_external_amplitude_crossvalidation.json</code> — Refsdal hold-out amplitude prediction from Encore and H0pe with shared-observation covariance retained</li>
         <li><code>results/outputs/step_58_h0_channel_audit.json</code> — H0LiCOW/TDCOSMO-class time-delay channel audit under the TEP mechanism (per-system propagated-transport ceilings, endpoint rescaling, mass-model self-consistency, kinematic-prior phantom-mass sign, real $\kappa_{\rm ext}$ widths and the SDSS1206+4332 power-law-vs-composite distance floor)</li>
         <li><code>results/outputs/step_60_mass_slip_two_directions.json</code> — two-direction phantom-mass bookkeeping: per-contrast implied phantom fractions $\lambda = \mathcal{R}_{\rm obs}/\langle\Delta t_{\rm pred}\rangle$, counter-direction $|\lambda|$ bounds for zero-consistent contrasts, negative-phantom-fraction census across all per-model residuals, and the pooled common-phantom-fraction consistency test</li>
+        <li><code>results/outputs/step_36b_sn2025wny_measured_baseline_update.json</code> — Post-measurement proxy delay evaluation on the August 2026 SN 2025wny $65.7\pm3.5$ d A–D baseline</li>
+        <li><code>results/outputs/step_61_backreaction_lens_solve.json</code>, <code>step_62_disformal_lens_path.json</code>, <code>step_63_nfw_deprojection.json</code>, and <code>step_64_two_branch_backreaction_solve.json</code> — Action-level isotropic-conformal backreaction, disformal cone-tilt, 3-D NFW deprojection, and unstretched-space two-branch temporal refraction outputs</li>
     </ul>
 
     <h3>Software Versions</h3>

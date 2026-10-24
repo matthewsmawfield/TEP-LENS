@@ -1,8 +1,8 @@
 # Temporal Equivalence Principle: A Blind-Prediction Residual Test in Multiply-Imaged Supernovae
 **Matthew Lukin Smawfield**
-Version: v0.3 (Lisboa)
+Version: v0.4 (Lisboa)
 First published: 10 June 2026
-Last updated: 17 October 2026
+Last updated: 24 October 2026
 DOI: 10.5281/zenodo.20572719
 
 ---
@@ -21,7 +21,7 @@ Keywords: gravitational lensing, time delays, multiply-imaged supernovae, SN Ref
 
 The Temporal Equivalence Principle predicts an observable conformal time-transport response to local gravitational potential depth. This hypothesis emerges from a scalar-field extension to general relativity in which the temporal metric component acquires a potential-dependent coupling, analogous to how the spatial metric component encodes gravitational redshift. In such a framework, matter clocks at different gravitational potential depths run at different rates—a phenomenon termed "temporal shear." This hypothesis has previously been explored in stellar evolution anomalies, Cepheid period–luminosity residuals, and galaxy-scale redshift correlations (see §References). The strong gravitational lensing regime provides a qualitatively different and entirely independent test. A multiply-imaged source is observed along several geometric paths through a cluster or galaxy potential; the conformal sector adds no propagated transit delay along those paths (null curves are conformally invariant, Appendix A), but the temporal field enters the source- and observer-clock mapping, the emission-time structure of an evolving source, and the dynamical inputs by which lens models are calibrated. The resulting pairwise delay residuals can therefore carry an imprint of the differential shear—independently of any cosmological model.
 
-In the covariant formulation, matter couples universally to a causal metric $\tilde{g}_{\mu\nu}$ that is related to the gravitational metric $g_{\mu\nu}$ through the scalar time field $\phi=\bar\phi+M_{\rm Pl}u$ via the unified map $\tilde{g}_{\mu\nu} = -A_{\rm loc}^2(u_{\rm grav}(\mathbf x))U_\mu U_\nu + A_{\rm sp}^2(u_{\rm drift}(t,\mathbf x))\Pi_{\mu\nu} + B(\phi)\Pi_\mu^\alpha\Pi_\nu^\beta\nabla_\alpha\phi\nabla_\beta\phi$ along the cosmic temporal flow $U_\mu\equiv-\nabla_\mu\bar\phi/\sqrt{2\bar X}$ (Paper 0, §2.2, Step 80; reducing to $d\tilde s^2=-c^2dt^2+A_{\rm sp}^2(t)\gamma_{ij}dx^i dx^j$ on the homogeneous IGM background $u_{\rm grav}=0$ and to the unstretched-space temporal metric $\tilde g_{\mu\nu}=g_{\mu\nu}-(A_{\rm loc}^2(u_{\rm grav})-1)U_\mu U_\nu+B(\phi)\Pi_\mu^\alpha\Pi_\nu^\beta\nabla_\alpha\phi\nabla_\beta\phi$ for local spatial structures at fixed cosmic epoch $A_{\rm sp}(t_0)=1$). The temporal factor $A(\phi)$ rescales local proper-time intervals and generates the temporal shear and intermediate temporal-depth refraction probed here. The disformal function $B(\phi)$ instead controls spatial cone tilts and is the sector associated with the convention-independent synchronization holonomy $H_{\rm resid}$, the theory's loop-level signature. If evaluated on the historical isotropic-conformal benchmark $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}$ (where spatial rulers stretch alongside clocks), the static conformal Fermat term telescopes to zero (Step 56; Appendix A.2) and direct scalar backreaction is Planck-suppressed (Steps 61, 64), whereas under the unified unstretched-space temporal metric intermediate clock rates $A_{\rm loc}(u(\mathbf x))$ refract photons directly along the line of sight (Step 64, §2.3) alongside the model-calibration and clock-mapping routes. Because a purely conformal scalar contributes an exact one-form ($d\ln A$), closed-loop holonomy vanishes and the algebraic delay identity is preserved, consistent with the fact that each image retains a single globally assignable arrival time. While GW170817-bounded disformal cone tilts ($B_0\lesssim78$) fall at least a factor $\simeq5$ short on the deprojected GLAFIC cluster profile (Steps 62–63; Appendix A.1), the unstretched-space temporal lapse (§2.3, Step 64) and the dynamical–lensing mass-inference channel (§4.4) jointly govern the strong-lensing response.
+In the covariant formulation, matter couples universally to a causal metric $\tilde{g}_{\mu\nu}$ that is related to the gravitational metric $g_{\mu\nu}$ through the scalar time field $\phi=\bar\phi+M_{\rm Pl}u$ via the unified map $\tilde{g}_{\mu\nu} = -A_{\rm loc}^2(u_{\rm grav}(\mathbf x))U_\mu U_\nu + A_{\rm sp}^2(u_{\rm drift}(t,\mathbf x))\Pi_{\mu\nu} + B(\phi)\bigl(\Pi_\mu^\alpha\Pi_\nu^\beta\nabla_\alpha\phi\nabla_\beta\phi - 2(U\cdot\nabla\phi)U_{(\mu}\Pi_{\nu)}{}^\alpha\nabla_\alpha\phi\bigr)$ along the cosmic temporal flow $U_\mu\equiv-\nabla_\mu\bar\phi/\sqrt{2\bar X}$ (Paper 0, §2.2, Step 80; reducing to $d\tilde s^2=-c^2dt^2+A_{\rm sp}^2(t)\gamma_{ij}dx^i dx^j$ on the homogeneous IGM background $u_{\rm grav}=0$ and to the unstretched-space temporal metric $\tilde g_{\mu\nu}=g_{\mu\nu}-(A_{\rm loc}^2(u_{\rm grav})-1)U_\mu U_\nu+B(\phi)\bigl(\Pi_\mu^\alpha\Pi_\nu^\beta\nabla_\alpha\phi\nabla_\beta\phi-2(U\cdot\nabla\phi)U_{(\mu}\Pi_{\nu)}{}^\alpha\nabla_\alpha\phi\bigr)$ for local spatial structures at fixed cosmic epoch $A_{\rm sp}(t_0)=1$). The temporal factor $A(\phi)$ rescales local proper-time intervals and generates the temporal shear and intermediate temporal-depth refraction probed here. The disformal function $B(\phi)$ instead controls spatial cone tilts and is the sector associated with the convention-independent synchronization holonomy $H_{\rm resid}$, the theory's loop-level signature. If evaluated on the historical isotropic-conformal benchmark $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}$ (where spatial rulers stretch alongside clocks), the static conformal Fermat term telescopes to zero (Step 56; Appendix A.2) and direct scalar backreaction is Planck-suppressed (Steps 61, 64), whereas under the unified unstretched-space temporal metric intermediate clock rates $A_{\rm loc}(u(\mathbf x))$ refract photons directly along the line of sight (Step 64, §2.3) alongside the model-calibration and clock-mapping routes. Because a purely conformal scalar contributes an exact one-form ($d\ln A$), closed-loop holonomy vanishes and the algebraic delay identity is preserved, consistent with the fact that each image retains a single globally assignable arrival time. While GW170817-bounded disformal cone tilts ($B_0\lesssim78$) fall at least a factor $\simeq5$ short on the deprojected GLAFIC cluster profile (Steps 62–63; Appendix A.1), the unstretched-space temporal lapse (§2.3, Step 64) and the dynamical–lensing mass-inference channel (§4.4) jointly govern the strong-lensing response.
 
 In this analysis, variation in projected potential across multiple sightlines is used as a domain-specific tracer of continuous un-screening, projecting the three-dimensional Temporal Topology into an observable time-delay residual. This operational proxy is the lensing-domain projection of the abstract environmental operator $\mathcal{S}_\Sigma(\mathcal{E})$.
 
@@ -454,7 +454,7 @@ A formal correlation test between delay and $1/\mu_{\rm norm}$ across all five i
 
 The non-parametric Spearman rank correlation, which is robust to outliers, gives $\rho = 0.3$ ($p = 0.31$ one-sided) — not significant. The Theil-Sen robust regression slope is $86 \pm 210$ d (95% CI), consistent with zero. The inner Einstein-cross images (S1–S4) do *not* show a delay–$\mu$ ordering by themselves: S4, the most magnified image, arrives fourth ($+20.3$ d), later than S2 ($+9.9$ d) and S3 ($+9.0$ d). This is expected: the TEP shift within the inner cross is $\lesssim 0.3$ d (predicted-signal sensitivity $\approx$ 3), far below the 5–20 d geometric path-length differences that determine the S1–S4 arrival order. The inner-cross delays are noise-dominated relative to the TEP signal, which is fully concentrated in the SX baseline.
 
-An ansatz-free rank test (Step 34) replaces the flux-proxy magnification with the inferred convergence from Step 32 and repeats the Spearman correlation. The delay–kappa correlation is $\rho = -0.15$ (permutation $p = 0.63$), and the delay–mu correlation is $\rho = -0.30$ ($p = 0.74$). Both are non-significant, with bootstrap 95% confidence intervals spanning the full $[-0.90, +0.60]$ range. This confirms that with $n=5$ and one extreme leverage point, the physical claim (delays scale with potential depth) and the parametric claim (the scaling follows $1 + \kappa_{\rm lens} \log_{10}\mu$) are not separately constrained by present data. Only the binary S4–SX sign-contrast — not the full five-image rank order — is probative.
+An ansatz-free rank test (Step 34) replaces the flux-proxy magnification with the published GLAFIC v3 convergence $\kappa = [0.722, 0.733, 0.675, 0.727, 0.966]$ from Kelly et al. (2023; verified to $1\text{–}3\%$ against the archived STScI HLSP maps in Steps 44, 50, and 56, where SX sits at the smallest clustercentric radius $9.3''$ and carries the highest convergence $\kappa_{\rm SX} = 0.966$) and evaluates magnification tracers in the TEP depth convention ($\Gamma - 1 = \kappa_{\rm lens}\log_{10}(\mu/\bar{\mu})$ with $\kappa_{\rm lens} = -0.055 &lt; 0$, i.e. $1/|\mu|$, matching Step 44). Across all five images, the delay–$\kappa$ Spearman rank correlation is $\rho = +0.800$ (exact one-sided permutation $p = 8/120 = 0.0667$, 95% CI $[+0.300, +0.900]$ across the $\pm 3\%$ map-verification uncertainty; inner-cross S1–S4 $\rho = +0.600$, $p = 0.208$), the delay–macro-magnification depth correlation ($1/|\mu_{\rm GLAFIC}|$) is $\rho = +0.700$ ($p = 0.117$), and the delay–flux-depth correlation ($1/\mu_{\rm flux}$) is $\rho = +0.300$ ($p = 0.342$; an earlier negative value $\rho = -0.15$ traced to an unphysical $C \in [0.5, 4.0]$ positive-branch Monte Carlo floor in Step 32 that pinned $\kappa_{\rm SX} = 0.01$, while $\rho = -0.30$ traced to feeding raw shallowness $+\mu_{\rm flux}$ without the $\kappa_{\rm lens} &lt; 0$ depth sign). While all three depth tracers carry the positive TEP sign with $\rho(\Delta t, \kappa_{\rm GLAFIC}) = +0.800$, $n = 5$ images with one dominant long-baseline leverage point (SX) means that the binary S4–SX sign contrast remains the primary probative observable.
 
 *Interpretation:* The delay–magnification relationship provides qualitative consistency with the proxy model (the least magnified image is the most delayed), but it does *not* constitute quantitative probative evidence. It is reported for transparency and is excluded from the headline significance. The blind-prediction directional sign test (§3.5) is independent of any proxy: it compares the observed delay to GR geometric predictions that were made before the measurement existed. The sign of those residuals (all positive) is an empirical fact; the proxy model predicts the sign, but the sign itself does not depend on the choice of proxy.
 
@@ -653,7 +653,7 @@ This paper presents evidence for the log-magnification proxy model at three leve
 | *Per-model $\kappa_{\rm lens}$ inference* $\bar{\kappa}_{\rm inferred} \approx -0.114$ | Parameter inference | Weighted mean $\kappa_{\rm inferred} = -0.114 \pm 0.034$All 8 models $\kappa_{\rm lens} &lt; 0$ | $p=0.0006$ vs. zero (one-sided) | ✗ No (same ensemble) | ✓ Observed |
 | *$\chi^2$ model comparison* GR vs. TEP ensemble fit | Goodness-of-fit | $\Delta\chi^2 = +8.4$ in favour of proxy model28% wRMS reduction after proxy correction (8/8 models) | No formal $p$-value: fixed predictions (0 free params), not nested. Individual GOF: GR $p=0.023$, proxy $p=0.32$ | ✗ No (same ensemble) | ✓ Observed |
 | *Directional-odds Bayes factor* Sign data recast in odds form | Bayesian directional sign model | $\mathrm{BF}_{10}=56.8$ (all), 31.9 (delay-blind), 10.5 (family-collapsed)Odds support for one-sided sign excess | Odds support for one-sided sign excess | ✗ No (same sign data) | ✓ Observed (complementary to sign tests) |
-| *Proxy-agnostic rank test* Step 34, ansatz-free | Rank correlation (delays vs potential depth) | Delay–kappa $\rho = -0.15$ ($p = 0.63$); delay–mu $\rho = -0.30$ ($p = 0.74$)Non-significant; $n=5$ too small to separate claims | Not meaningful as formal test | ✗ No (same SX data) | ✓ Observed (reported for transparency) |
+| *Proxy-agnostic rank test* Step 34, ansatz-free | Rank correlation (delays vs potential depth) | GLAFIC v3 $\kappa$: $\rho = +0.80$ (exact permutation $p = 0.067$); GLAFIC $1/|\mu|$: $\rho = +0.70$ ($p = 0.12$); flux $1/\mu$: $\rho = +0.30$ ($p = 0.34$)Positive TEP sign across all 3 depth tracers; $n=5$ driven by SX contrast | Directional consistency check ($p = 0.067$ on $\kappa$) | ✗ No (same SX data) | ✓ Observed (reported for transparency) |
 
 Across the SN Refsdal model ensemble, the probative signature is the uniform sign of the SX delay residual across all seven non-zero delay-blind model variants spanning five independent modelling families (strict pre-reappearance floor: six of seven), none of which incorporated TEP when their predictions were published. Accounting for between-model covariance from shared lensing inputs, the primary correlation-aware headline is the exact family-sign-flip test at $p = 0.031$ ($z \approx 1.86\sigma$); the independence-assuming Wilcoxon signed-rank test gives $p = 0.0078$ ($\approx 2.4\sigma$; all-eight-model Wilcoxon $p = 0.0039$, $2.8\sigma$), with a beta-binomial break-even inter-model correlation of $\rho \approx 0.08$ for the delay-blind Wilcoxon to remain below $p = 0.05$ (step_11). The delay–magnification correlation ($r = 0.93$) and the proxy-agnostic rank test (Step 34, $n=5$) trace the same SX-dominated contrast and are therefore not counted as separate degrees of freedom. Extending the blind-residual sign check to SN Encore and SN H0pe yields $3/3$ systems with primary residual signs matching the TEP prediction ($p = 0.125$, exact binomial); because their modest magnification contrasts produce sub-day to $\lesssim 2$ d predicted shifts against $\sim 5$–$50$ d lens-model uncertainties, Encore and H0pe serve as low-contrast scaling checks rather than high-weight combiners. At current lens-model precision ($\sigma_{\rm model} \sim 16$–$60$ d), hierarchical Bayesian model comparison remains prior-dominated ($\mathrm{BF} \sim 1$); reducing lens-model uncertainties below $\sigma &lt; 5$ d moves the amplitude channel into the conclusive regime.
 
@@ -855,7 +855,7 @@ Di Valentino, E., Mena, O., Pan, S., et al. 2021, *Classical and Quantum Gravity
 
 #### TEP Framework (This Series)
 
-Smawfield, M. L. 2025, "Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed" (Paper 0, Jakarta v0.16), doi:10.5281/zenodo.16921911
+Smawfield, M. L. 2025, "Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed" (Paper 0, Jakarta v0.18), doi:10.5281/zenodo.16921911
 
 Smawfield, M. L. 2025, "Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations" (Paper 4, Tortola), doi:10.5281/zenodo.17982540
 
@@ -995,7 +995,7 @@ This work follows open-science practices. All results are fully reproducible fro
 
 *GitHub Repository:* github.com/matthewsmawfield/TEP-LENS
 
-The repository contains a deterministic, version-controlled analysis pipeline covering *Steps 00–20, 30–46, and 50–57*, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, conformal-cancellation auditing, response-transfer auditing, cross-system kernel consistency auditing, external amplitude cross-validation, and future-system forecasting.
+The repository contains a deterministic, version-controlled analysis pipeline covering *Steps 00–20, 30–46, and 50–64*, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, 3D geodesic transport, conformal-cancellation auditing, response-transfer auditing, cross-system kernel consistency auditing, external amplitude cross-validation, and future-system forecasting.
 
 #### Repository Structure
 
@@ -1044,7 +1044,7 @@ cd TEP-LENS
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–57
+# 3. Run complete pipeline: Steps 00–20, 30–46, and 50–64
 python scripts/steps/run_all_steps.py
 
 # 4. Build manuscript
@@ -1064,7 +1064,7 @@ npm run build
 
 #### Detailed Pipeline Steps
 
-The analysis pipeline covers *Steps 00–20, 30–46, and 50–57*, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, conformal-cancellation auditing, external amplitude cross-validation, response-transfer auditing, cross-system kernel consistency auditing, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:
+The analysis pipeline covers *Steps 00–20, 30–46, and 50–64*, including diagnostics for blind residual statistics, model dependence, proxy robustness, convergence-tracer substitution, lensing-potential reconstruction, conformal-cancellation auditing, external amplitude cross-validation, response-transfer auditing, cross-system kernel consistency auditing, action-level scalar backreaction, disformal cone-tilt bounds, NFW deprojection, unstretched-space temporal refraction, and future-system forecasting. Each step produces JSON outputs and logs for full traceability:
 
 ##### Data Acquisition & Closure Tests (Steps 00-04)
 
@@ -1134,6 +1134,8 @@ The analysis pipeline covers *Steps 00–20, 30–46, and 50–57*, including di
 
 - *step_36_falsification_forward_prediction.py* — Falsification forward prediction; forward-projected thresholds for SN 2025wny
 
+- *step_36b_sn2025wny_measured_baseline_update.py* — Post-measurement evaluation of SN 2025wny on the August 2026 measured $65.7\pm3.5$ d A–D delay baseline
+
 - *step_37_multi_system_evidence.py* — Multi-system evidence accumulation projection; Stouffer projection and coupling-inference scaling with N independent systems
 
 - *step_38_cosmograil_cross_system.py* — CosmoGRAIL cross-system directional consistency diagnostic; caveated quasar check separate from the supernova residual tests
@@ -1147,6 +1149,20 @@ The analysis pipeline covers *Steps 00–20, 30–46, and 50–57*, including di
 - *step_41_null_channel_discriminator.py* — Null-channel discriminator; AIC comparison of the TEP proxy against generic bias models (null, constant offset, uniform-fractional H0/MSD-like) across cross-system contrasts, separating amplitude from sign evidence
 
 - *step_42_precision_persistence.py* — Precision-persistence test; extrapolates the SN Refsdal SX residual to the high-precision lens-model limit to test the model-immaturity explanation
+
+- *step_43_kappa_precision_forecast.py* — Convergence precision forecast across multi-system strong-lensing samples
+
+- *step_44_direct_kappa_residual.py* — Direct GLAFIC v3 convergence loop residual in the depth and shallowness conventions
+
+- *step_45_proxy_robustness_sweep.py* & *step_46_tdcosmo_kappa_tracer_robustness.py* — Proxy and convergence-tracer robustness sweeps
+
+- *step_50_psi_transport.py* – *step_60_mass_slip_two_directions.py* — Lensing-potential transport, geodesic lapse, first-principles transfer kernel, external amplitude cross-validation, H0 channel audit, and two-direction phantom-mass bookkeeping
+
+- *step_61_backreaction_lens_solve.py* — Isotropic-conformal scalar stress-energy backreaction control ($\kappa_\phi \approx 4\times 10^{-5}$)
+
+- *step_62_disformal_lens_path.py* & *step_63_nfw_deprojection.py* — GW170817-bounded disformal cone-tilt transfer ($B_0 \lesssim 78$) and 3-D spherical NFW + constant-sheet GLAFIC deprojection ($B_0^{\rm req} \simeq 420$)
+
+- *step_64_two_branch_backreaction_solve.py* — Unstretched-space ADM temporal refraction solve on the zero-free-parameter two-branch sector $P_{,X}=k\sqrt{\xi}+2\xi$ ($k=16.03$; $+330.9$ d 2-D sheet and $+221.6$ to $+443.2$ d 3-D NFW ray delay from $f_b=0.16$ baryons alone)
 
 Each step produces JSON outputs with full metadata in `results/outputs/`, and execution logs are written to `logs/` with timestamps for complete traceability. Run all steps via: `python scripts/steps/run_all_steps.py`
 
@@ -1179,6 +1195,10 @@ Each step produces JSON outputs with full metadata in `results/outputs/`, and ex
 - `results/outputs/step_58_h0_channel_audit.json` — H0LiCOW/TDCOSMO-class time-delay channel audit under the TEP mechanism (per-system propagated-transport ceilings, endpoint rescaling, mass-model self-consistency, kinematic-prior phantom-mass sign, real $\kappa_{\rm ext}$ widths and the SDSS1206+4332 power-law-vs-composite distance floor)
 
 - `results/outputs/step_60_mass_slip_two_directions.json` — two-direction phantom-mass bookkeeping: per-contrast implied phantom fractions $\lambda = \mathcal{R}_{\rm obs}/\langle\Delta t_{\rm pred}\rangle$, counter-direction $|\lambda|$ bounds for zero-consistent contrasts, negative-phantom-fraction census across all per-model residuals, and the pooled common-phantom-fraction consistency test
+
+- `results/outputs/step_36b_sn2025wny_measured_baseline_update.json` — Post-measurement proxy delay evaluation on the August 2026 SN 2025wny $65.7\pm3.5$ d A–D baseline
+
+- `results/outputs/step_61_backreaction_lens_solve.json`, `step_62_disformal_lens_path.json`, `step_63_nfw_deprojection.json`, and `step_64_two_branch_backreaction_solve.json` — Action-level isotropic-conformal backreaction, disformal cone-tilt, 3-D NFW deprojection, and unstretched-space two-branch temporal refraction outputs
 
 ### Software Versions
 
